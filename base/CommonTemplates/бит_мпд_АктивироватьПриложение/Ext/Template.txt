@@ -1,0 +1,13 @@
+﻿Set WshShell = CreateObject("WScript.Shell")
+
+for i = 1 to 5 
+WScript.sleep(1000)
+
+if WshShell.AppActivate("%AppID%") then
+exit for
+End if
+next 
+
+set oFileSystemObject = CreateObject("Scripting.FileSystemObject") 
+set f = oFileSystemObject.GetFile(WScript.ScriptFullName)
+f.Delete()

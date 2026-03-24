@@ -1,0 +1,111 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.BitFinance.ru/Approval">
+	<objectType name="KeyValue">
+		<property name="Key" type="xs:string"/>
+		<property name="Value" type="xs:anyType"/>
+	</objectType>
+	<objectType name="ObjectModel">
+		<property name="ID" type="xs:string"/>
+		<property name="ObjectName" type="xs:string"/>
+		<property name="CollectionName" type="xs:string"/>
+		<property name="Presentation" type="xs:string"/>
+	</objectType>
+	<objectType name="ObjectInfo">
+		<property name="Company" type="xs:string"/>
+		<property name="Department" type="xs:string"/>
+		<property name="TurnoverItem" type="xs:string"/>
+		<property name="Project" type="xs:string"/>
+		<property name="Partner" type="xs:string"/>
+		<property name="Contract" type="xs:string"/>
+		<property name="PaymentDate" type="xs:string"/>
+		<property name="Amount" type="xs:string"/>
+		<property name="Currency" type="xs:string"/>
+		<property name="ManagerialPurpose" type="xs:string"/>
+		<property name="OverBudget" type="xs:boolean"/>
+		<property name="Status" type="xs:string"/>
+		<property name="ResponsiblePerson" type="xs:string"/>
+		<property name="Scenario" type="xs:string"/>
+		<property name="Comment" type="xs:string"/>
+		<property name="Number" type="xs:string"/>
+		<property name="Date" type="xs:string"/>
+	</objectType>
+	<objectType name="ApprovalListItem">
+		<property name="IsChecked" type="xs:boolean"/>
+		<property name="Visas" type="xs:string"/>
+		<property name="VisasID" type="xs:string"/>
+		<property xmlns:d3p1="http://www.BitFinance.ru/Approval" name="ObjectModel" type="d3p1:ObjectModel"/>
+		<property xmlns:d3p1="http://www.BitFinance.ru/Approval" name="ObjectInfo" type="d3p1:ObjectInfo"/>
+		<property xmlns:d3p1="http://www.BitFinance.ru/Approval" name="Files" type="d3p1:FileInfo" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="http://www.BitFinance.ru/Approval" name="ApplicationReestr" type="d3p1:ApplicationReestr"/>
+	</objectType>
+	<objectType name="ApprovalList">
+		<property xmlns:d3p1="http://www.BitFinance.ru/Approval" name="Items" type="d3p1:ApprovalListItem" lowerBound="0" upperBound="-1" localName="ApprovalList"/>
+	</objectType>
+	<objectType name="StrList">
+		<property name="Items" type="xs:string" lowerBound="0" upperBound="-1" localName="StrList"/>
+	</objectType>
+	<objectType name="Task">
+		<property xmlns:d3p1="http://www.BitFinance.ru/Approval" name="ObjectModel" type="d3p1:ObjectModel"/>
+		<property name="IsCompleted" type="xs:boolean"/>
+		<property name="Number" type="xs:string"/>
+		<property name="State" type="xs:string"/>
+		<property name="Date" type="xs:date"/>
+		<property name="Deadline" type="xs:date"/>
+		<property name="Name" type="xs:string"/>
+		<property name="Author" type="xs:string"/>
+		<property name="Responsible" type="xs:string"/>
+		<property name="Direction" type="xs:string"/>
+		<property name="Description" type="xs:string"/>
+		<property name="Result" type="xs:string"/>
+		<property name="Importance" type="xs:string"/>
+		<property name="Object" type="xs:string"/>
+	</objectType>
+	<objectType name="TaskList">
+		<property xmlns:d3p1="http://www.BitFinance.ru/Approval" name="Items" type="d3p1:Task" lowerBound="0" upperBound="-1" localName="Tasks"/>
+	</objectType>
+	<objectType name="FileInfo">
+		<property name="ID" type="xs:string"/>
+		<property name="VersionID" type="xs:string"/>
+		<property name="Name" type="xs:string"/>
+		<property name="Ext" type="xs:string"/>
+		<property name="Size" type="xs:int"/>
+		<property name="DateChanged" type="xs:dateTime"/>
+	</objectType>
+	<objectType name="FileInfoList">
+		<property xmlns:d3p1="http://www.BitFinance.ru/Approval" name="Items" type="d3p1:FileInfo" lowerBound="0" upperBound="-1" localName="Files"/>
+	</objectType>
+	<objectType name="FileData">
+		<property name="ID" type="xs:string"/>
+		<property name="VersionID" type="xs:string"/>
+		<property name="Data" type="xs:string"/>
+		<property name="StatusCode" type="xs:int"/>
+		<property name="Message" type="xs:string"/>
+	</objectType>
+	<objectType name="ServiceInfo">
+		<property name="ServiceVersion" type="xs:string"/>
+		<property name="ConfigurationName" type="xs:string"/>
+		<property name="ConfigurationVersion"/>
+	</objectType>
+	<objectType name="ObjectTypeInfo">
+		<property name="Name" type="xs:string"/>
+		<property name="Title" type="xs:string"/>
+		<property name="Synonim" type="xs:string"/>
+	</objectType>
+	<objectType name="ObjectTypeInfoList">
+		<property xmlns:d3p1="http://www.BitFinance.ru/Approval" name="Items" type="d3p1:ObjectTypeInfo" lowerBound="0" upperBound="-1" localName="ObjectTypeInfo"/>
+	</objectType>
+	<objectType name="ApplicationReestrRow">
+		<property name="RowNumber" type="xs:integer"/>
+		<property name="ApplicationID" type="xs:string"/>
+		<property name="ApplicationPresentation" type="xs:string"/>
+		<property name="Amount" type="xs:string"/>
+		<property name="Currency" type="xs:string"/>
+	</objectType>
+	<objectType name="ApplicationReestr">
+		<property name="ID" type="xs:string"/>
+		<property name="Number" type="xs:string"/>
+		<property name="Date" type="xs:dateTime"/>
+		<property name="Company" type="xs:string"/>
+		<property name="Comment" type="xs:string"/>
+		<property xmlns:d3p1="http://www.BitFinance.ru/Approval" name="Applications" type="d3p1:ApplicationReestrRow" lowerBound="0" upperBound="-1"/>
+	</objectType>
+</package>

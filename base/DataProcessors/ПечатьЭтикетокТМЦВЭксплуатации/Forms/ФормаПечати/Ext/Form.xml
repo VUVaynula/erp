@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Печать этикеток ТМЦ в эксплуатации</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Print labels of inventory in operation</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаПечать" id="27">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Печать</CommandName>
+				<ExtendedTooltip name="ФормаПечатьРасширеннаяПодсказка" id="29"/>
+			</Button>
+			<Button name="ФормаСправка" id="75">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="76"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="30"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаШапкаЛево" id="25">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Шапка лево</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Header left</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаШапкаЛевоРасширеннаяПодсказка" id="31"/>
+					<ChildItems>
+						<InputField name="ШаблонЭтикетки" id="18">
+							<DataPath>Объект.ШаблонЭтикетки</DataPath>
+							<ContextMenu name="ШаблонЭтикеткиКонтекстноеМеню" id="19"/>
+							<ExtendedTooltip name="ШаблонЭтикеткиРасширеннаяПодсказка" id="32"/>
+						</InputField>
+						<InputField name="КоличествоЭкземпляров" id="16">
+							<DataPath>Объект.КоличествоЭкземпляров</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Количество экземпляров этикеток, выводимых на печать.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Number of copies of labels to be printed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<SpinButton>true</SpinButton>
+							<ContextMenu name="КоличествоЭкземпляровКонтекстноеМеню" id="17"/>
+							<ExtendedTooltip name="КоличествоЭкземпляровРасширеннаяПодсказка" id="33"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаТМЦВЭксплуатации" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ТМЦ в эксплуатации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory in operation</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаТМЦВЭксплуатацииРасширеннаяПодсказка" id="37"/>
+			<ChildItems>
+				<Table name="ТМЦВЭксплуатации" id="79">
+					<Representation>List</Representation>
+					<DataPath>Объект.ТМЦВЭксплуатации</DataPath>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ТМЦВЭксплуатацииКонтекстноеМеню" id="81"/>
+					<AutoCommandBar name="ТМЦВЭксплуатацииКоманднаяПанель" id="80">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="ТМЦВЭксплуатацииДобавить" id="113">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ТМЦВЭксплуатации.StandardCommand.Add</CommandName>
+								<ExtendedTooltip name="ТМЦВЭксплуатацииДобавитьРасширеннаяПодсказка" id="114"/>
+							</Button>
+							<Button name="ТМЦВЭксплуатацииПодобрать" id="95">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Подобрать</CommandName>
+								<ExtendedTooltip name="ТМЦВЭксплуатацииПодобратьРасширеннаяПодсказка" id="96"/>
+							</Button>
+							<ButtonGroup name="ТМЦВЭксплуатацииГруппаСписок" id="117">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Команды списка</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>List commands</v8:content>
+									</v8:item>
+								</Title>
+								<CommandSource>Item.ТМЦВЭксплуатации</CommandSource>
+								<ExtendedTooltip name="ТМЦВЭксплуатацииГруппаСписокРасширеннаяПодсказка" id="118"/>
+							</ButtonGroup>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="ТМЦВЭксплуатацииРасширеннаяПодсказка" id="82"/>
+					<SearchStringAddition name="ТМЦВЭксплуатацииСтрокаПоиска" id="83">
+						<AdditionSource>
+							<Item>ТМЦВЭксплуатации</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ТМЦВЭксплуатацииСтрокаПоискаКонтекстноеМеню" id="84"/>
+						<ExtendedTooltip name="ТМЦВЭксплуатацииСтрокаПоискаРасширеннаяПодсказка" id="85"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ТМЦВЭксплуатацииСостояниеПросмотра" id="89">
+						<AdditionSource>
+							<Item>ТМЦВЭксплуатации</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ТМЦВЭксплуатацииСостояниеПросмотраКонтекстноеМеню" id="90"/>
+						<ExtendedTooltip name="ТМЦВЭксплуатацииСостояниеПросмотраРасширеннаяПодсказка" id="91"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ТМЦВЭксплуатацииУправлениеПоиском" id="86">
+						<AdditionSource>
+							<Item>ТМЦВЭксплуатации</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ТМЦВЭксплуатацииУправлениеПоискомКонтекстноеМеню" id="87"/>
+						<ExtendedTooltip name="ТМЦВЭксплуатацииУправлениеПоискомРасширеннаяПодсказка" id="88"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<LabelField name="ТМЦВЭксплуатацииНомерСтроки" id="125">
+							<DataPath>Объект.ТМЦВЭксплуатации.LineNumber</DataPath>
+							<ContextMenu name="ТМЦВЭксплуатацииНомерСтрокиКонтекстноеМеню" id="126"/>
+							<ExtendedTooltip name="ТМЦВЭксплуатацииНомерСтрокиРасширеннаяПодсказка" id="127"/>
+						</LabelField>
+						<InputField name="ТМЦВЭксплуатацииИнвентарныйНомер" id="119">
+							<DataPath>Объект.ТМЦВЭксплуатации.ИнвентарныйНомер</DataPath>
+							<ContextMenu name="ТМЦВЭксплуатацииИнвентарныйНомерКонтекстноеМеню" id="120"/>
+							<ExtendedTooltip name="ТМЦВЭксплуатацииИнвентарныйНомерРасширеннаяПодсказка" id="121"/>
+							<Events>
+								<Event name="AutoComplete">ТМЦВЭксплуатацииИнвентарныйНомерАвтоПодбор</Event>
+								<Event name="ChoiceProcessing">ТМЦВЭксплуатацииИнвентарныйНомерОбработкаВыбора</Event>
+							</Events>
+						</InputField>
+						<InputField name="ТМЦВЭксплуатацииНоменклатура" id="99">
+							<DataPath>Объект.ТМЦВЭксплуатации.Номенклатура</DataPath>
+							<ContextMenu name="ТМЦВЭксплуатацииНоменклатураКонтекстноеМеню" id="100"/>
+							<ExtendedTooltip name="ТМЦВЭксплуатацииНоменклатураРасширеннаяПодсказка" id="101"/>
+							<Events>
+								<Event name="OnChange">ТМЦВЭксплуатацииНоменклатураПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ТМЦВЭксплуатацииХарактеристика" id="102">
+							<DataPath>Объект.ТМЦВЭксплуатации.Характеристика</DataPath>
+							<ContextMenu name="ТМЦВЭксплуатацииХарактеристикаКонтекстноеМеню" id="103"/>
+							<ExtendedTooltip name="ТМЦВЭксплуатацииХарактеристикаРасширеннаяПодсказка" id="104"/>
+							<Events>
+								<Event name="OnChange">ТМЦВЭксплуатацииХарактеристикаПриИзменении</Event>
+							</Events>
+						</InputField>
+						<ColumnGroup name="ТМЦВЭксплуатацииГруппаСерия" id="108">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ТМЦ в эксплуатации группа серия</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Inventory in operation group batch</v8:content>
+								</v8:item>
+							</Title>
+							<Group>InCell</Group>
+							<ExtendedTooltip name="ТМЦВЭксплуатацииГруппаСерияРасширеннаяПодсказка" id="109"/>
+							<ChildItems>
+								<PictureField name="ТМЦВЭксплуатацииСтатусУказанияСерий" id="110">
+									<DataPath>Объект.ТМЦВЭксплуатации.СтатусУказанияСерий</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<HeaderPicture>
+										<xr:Ref>CommonPicture.СерииНоменклатурыКолонкаСтатусов</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</HeaderPicture>
+									<ValuesPicture>
+										<xr:Ref>CommonPicture.СтатусыУказанияСерий</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</ValuesPicture>
+									<ContextMenu name="ТМЦВЭксплуатацииСтатусУказанияСерийКонтекстноеМеню" id="111"/>
+									<ExtendedTooltip name="ТМЦВЭксплуатацииСтатусУказанияСерийРасширеннаяПодсказка" id="112"/>
+								</PictureField>
+								<InputField name="ТМЦВЭксплуатацииСерия" id="105">
+									<DataPath>Объект.ТМЦВЭксплуатации.Серия</DataPath>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+									<ContextMenu name="ТМЦВЭксплуатацииСерияКонтекстноеМеню" id="106"/>
+									<ExtendedTooltip name="ТМЦВЭксплуатацииСерияРасширеннаяПодсказка" id="107"/>
+									<Events>
+										<Event name="OnChange">ТМЦВЭксплуатацииСерияПриИзменении</Event>
+										<Event name="StartChoice">ТМЦВЭксплуатацииСерияНачалоВыбора</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+						<InputField name="ТМЦВЭксплуатацииФизическоеЛицо" id="122">
+							<DataPath>Объект.ТМЦВЭксплуатации.ФизическоеЛицо</DataPath>
+							<ContextMenu name="ТМЦВЭксплуатацииФизическоеЛицоКонтекстноеМеню" id="123"/>
+							<ExtendedTooltip name="ТМЦВЭксплуатацииФизическоеЛицоРасширеннаяПодсказка" id="124"/>
+						</InputField>
+						<InputField name="ТМЦВЭксплуатацииПартия" id="92">
+							<DataPath>Объект.ТМЦВЭксплуатации.Партия</DataPath>
+							<DropListButton>false</DropListButton>
+							<ChoiceButton>true</ChoiceButton>
+							<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+							<ContextMenu name="ТМЦВЭксплуатацииПартияКонтекстноеМеню" id="93"/>
+							<ExtendedTooltip name="ТМЦВЭксплуатацииПартияРасширеннаяПодсказка" id="94"/>
+							<Events>
+								<Event name="ChoiceProcessing">ТМЦВЭксплуатацииПартияОбработкаВыбора</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ПечатьЭтикетокТМЦВЭксплуатации</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Columns>
+				<AdditionalColumns table="Объект.ТМЦВЭксплуатации">
+					<Column name="ХарактеристикиИспользуются" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Характеристики используются</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Variants are used</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ТипНоменклатуры" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Тип номенклатуры</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Item type</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:EnumRef.ТипыНоменклатуры</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ИнвентарныйУчет" id="5">
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="УчетПоФизЛицам" id="6">
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПараметрыУказанияСерий" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры указания серий</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Batch specification parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Печать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Печать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Печать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Print</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Печать</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="Подобрать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ПодобратьТовары</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>Подобрать</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="АдресВХранилище">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

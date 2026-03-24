@@ -1,0 +1,724 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Отчет по проблемам</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Report on problems</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПользовательскиеОшибки" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользовательские ошибки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User errors</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПользовательскиеОшибкиРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<LabelDecoration name="Предупреждение" id="3">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Найдены некорректные настройки сервиса или модели, из-за которых построение прогноза невозможно.
+Следуйте рекомендациям для их решения или воспользуйтесь командой автоматического исправления (не все настройки возможно исправить автоматически).
+Строки ошибок удаляются при их успешном исправлении.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Incorrect service or model settings found. Cannot generate a forecast.
+To fix the issue, follow the recommendations or click Fix automatically (some settings cannot be fixed automatically).
+Error lines are deleted when fixed.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ПредупреждениеКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="ПредупреждениеРасширеннаяПодсказка" id="5"/>
+				</LabelDecoration>
+				<UsualGroup name="ГруппаОбъекты" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объекты</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Objects</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОбъектыРасширеннаяПодсказка" id="7"/>
+					<ChildItems>
+						<LabelField name="Сценарий" id="8">
+							<DataPath>Сценарий</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<ContextMenu name="СценарийКонтекстноеМеню" id="9"/>
+							<ExtendedTooltip name="СценарийРасширеннаяПодсказка" id="10"/>
+						</LabelField>
+						<LabelField name="ВидПлана" id="11">
+							<DataPath>ВидПлана</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<ContextMenu name="ВидПланаКонтекстноеМеню" id="12"/>
+							<ExtendedTooltip name="ВидПланаРасширеннаяПодсказка" id="13"/>
+						</LabelField>
+					</ChildItems>
+				</UsualGroup>
+				<Table name="Ошибки" id="14">
+					<Representation>List</Representation>
+					<ReadOnly>true</ReadOnly>
+					<DataPath>Ошибки</DataPath>
+					<RowPictureDataPath>Ошибки.СтатусИсправления</RowPictureDataPath>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ОшибкиКонтекстноеМеню" id="16"/>
+					<AutoCommandBar name="ОшибкиКоманднаяПанель" id="15">
+						<Autofill>false</Autofill>
+					</AutoCommandBar>
+					<ExtendedTooltip name="ОшибкиРасширеннаяПодсказка" id="17"/>
+					<SearchStringAddition name="ОшибкиСтрокаПоиска" id="18">
+						<AdditionSource>
+							<Item>Ошибки</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ОшибкиСтрокаПоискаКонтекстноеМеню" id="19"/>
+						<ExtendedTooltip name="ОшибкиСтрокаПоискаРасширеннаяПодсказка" id="20"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ОшибкиСостояниеПросмотра" id="24">
+						<AdditionSource>
+							<Item>Ошибки</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ОшибкиСостояниеПросмотраКонтекстноеМеню" id="25"/>
+						<ExtendedTooltip name="ОшибкиСостояниеПросмотраРасширеннаяПодсказка" id="26"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ОшибкиУправлениеПоиском" id="21">
+						<AdditionSource>
+							<Item>Ошибки</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ОшибкиУправлениеПоискомКонтекстноеМеню" id="22"/>
+						<ExtendedTooltip name="ОшибкиУправлениеПоискомРасширеннаяПодсказка" id="23"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">ОшибкиВыбор</Event>
+					</Events>
+					<ChildItems>
+						<LabelField name="ОшибкиОписание" id="27">
+							<DataPath>Ошибки.Описание</DataPath>
+							<Width>38</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Height>4</Height>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="ОшибкиОписаниеКонтекстноеМеню" id="28"/>
+							<ExtendedTooltip name="ОшибкиОписаниеРасширеннаяПодсказка" id="29"/>
+						</LabelField>
+						<LabelField name="ОшибкиРекомендация" id="30">
+							<DataPath>Ошибки.Рекомендация</DataPath>
+							<Width>38</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Height>4</Height>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="ОшибкиРекомендацияКонтекстноеМеню" id="31"/>
+							<ExtendedTooltip name="ОшибкиРекомендацияРасширеннаяПодсказка" id="32"/>
+						</LabelField>
+						<LabelField name="ОшибкиИсправление" id="36">
+							<DataPath>Ошибки.Исправление</DataPath>
+							<CellHyperlink>true</CellHyperlink>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextColor>style:ГиперссылкаТабличнойЧасти</TextColor>
+							<ContextMenu name="ОшибкиИсправлениеКонтекстноеМеню" id="37"/>
+							<ExtendedTooltip name="ОшибкиИсправлениеРасширеннаяПодсказка" id="38"/>
+						</LabelField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Подвал" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+			</Title>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ПодвалРасширеннаяПодсказка" id="40"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаЛево" id="41">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Лево</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Left</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalAlign>Left</HorizontalAlign>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЛевоРасширеннаяПодсказка" id="42"/>
+					<ChildItems>
+						<LabelDecoration name="СформироватьИнформациюДляТехподдержки" id="51">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сформировать информацию для техподдержки</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate information for the technical support</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сформировать информацию по причине возникновения ошибки для передачи в техподдержку</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate error reason details to send to the technical support</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="СформироватьИнформациюДляТехподдержкиКонтекстноеМеню" id="52"/>
+							<ExtendedTooltip name="СформироватьИнформациюДляТехподдержкиРасширеннаяПодсказка" id="53"/>
+							<Events>
+								<Event name="Click">СформироватьИнформациюДляТехподдержкиНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ОчиститьИнформациюОТехническойОшибке" id="54">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Очистить информацию о технической ошибке</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Очистить информацию о технической ошибке</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Очистить информацию о технической ошибке и закрыть отчет по проблемам.
+В истории обмена данными с сервисом информация не будет удалена.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Очистить информацию о технической ошибке и закрыть отчет по проблемам.
+В истории обмена данными с сервисом информация не будет удалена.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ОчиститьИнформациюОТехническойОшибкеКонтекстноеМеню" id="55"/>
+							<ExtendedTooltip name="ОчиститьИнформациюОТехническойОшибкеРасширеннаяПодсказка" id="56"/>
+							<Events>
+								<Event name="Click">ОчиститьИнформациюОТехническойОшибкеНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПраво" id="43">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Право</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Right</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПравоРасширеннаяПодсказка" id="44"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаКнопокПользовательскиеОшибки" id="45">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Кнопки пользовательские ошибки</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Buttons user errors</v8:content>
+								</v8:item>
+							</Title>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаКнопокПользовательскиеОшибкиРасширеннаяПодсказка" id="46"/>
+							<ChildItems>
+								<Button name="ВыполнитьАвтоматически" id="47">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.ВыполнитьАвтоматически</CommandName>
+									<ExtendedTooltip name="ВыполнитьАвтоматическиРасширеннаяПодсказка" id="48"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<Button name="КомандаОК" id="49">
+							<Type>UsualButton</Type>
+							<DefaultButton>true</DefaultButton>
+							<CommandName>Form.Command.КомандаОК</CommandName>
+							<ExtendedTooltip name="КомандаОКРасширеннаяПодсказка" id="50"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Ошибки" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ошибки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Errors</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Описание" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Details</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Рекомендация" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Рекомендация</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Recommendation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СтатусИсправления" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус исправления</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Correction status</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8ui:Picture</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Исправление" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исправление</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Correct</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Причина" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Причина</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Reason</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДополнительныйПараметр" id="20">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительный параметр</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additional parameter</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Сценарий" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сценарий</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Scenario</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.СценарииТоварногоПланирования</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидПлана" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид плана</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Plan profile</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ВидыПланов</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторЗаданияИсправитьОшибки" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор задания исправить ошибки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Job ID fix errors</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>36</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресХранилищаИсправитьОшибки" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес хранилища исправить ошибки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Storage address fix errors</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НачалоПрогнозирования" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Начало прогнозирования</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Forecasting start</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КоличествоПериодов" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество периодов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Number of periods</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтсутствиеОжидаемыхДетализаций" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отсутствие ожидаемых детализаций</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Missing expected details</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="КоличествоНеХватающихПериодов" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество не хватающих периодов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Number of missing periods</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаЗапрета" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата запрета</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period-end closing date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="МаксимальноДопустимаяДата" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Максимально допустимая дата</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Maximum date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаНачалаПродаж" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата начала продаж</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sales start date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОшибокСВозможностьюИсправления" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество пользовательских ошибок с возможностью автоматического исправления</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Number of user errors with auto fixing</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПользовательскиеОшибки" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользовательские ошибки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User errors</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Периодичность" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Периодичность</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Frequency</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.Периодичность</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ВыполнитьАвтоматически" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исправить автоматически</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fix automatically</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Попробовать исправить автоматически проблемы, по которым возможно исправление</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Automatically fix issues that can be fixed</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыполнитьАвтоматически</Action>
+		</Command>
+		<Command name="КомандаОК" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаОК</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ПереданныеОшибки">
+			<Type/>
+		</Parameter>
+		<Parameter name="Сценарий">
+			<Type>
+				<v8:Type>cfg:CatalogRef.СценарииТоварногоПланирования</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ВидПлана">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ВидыПланов</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

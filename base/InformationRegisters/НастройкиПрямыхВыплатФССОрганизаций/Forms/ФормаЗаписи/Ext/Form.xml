@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoTitle>false</AutoTitle>
+	<AutoURL>false</AutoURL>
+	<Customizable>false</Customizable>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Организация" id="1">
+			<DataPath>Запись.Организация</DataPath>
+			<Visible>false</Visible>
+			<ContextMenu name="ОрганизацияКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<UsualGroup name="ГруппаНастройкиПрямыхВыплатФСС" id="16">
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНастройкиПрямыхВыплатФССРасширеннаяПодсказка" id="17"/>
+			<ChildItems>
+				<LabelDecoration name="НастройкиПрямыхВыплатФССЗаголовок" id="18">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<TextColor>style:ГруппаВариантовОтчетовЦвет</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Как правило, пособия от имени ФСС перечисляются:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>As a rule, benefits on behalf of the SSF are transferred:</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="НастройкиПрямыхВыплатФССЗаголовокКонтекстноеМеню" id="19"/>
+					<ExtendedTooltip name="НастройкиПрямыхВыплатФССЗаголовокРасширеннаяПодсказка" id="20"/>
+				</LabelDecoration>
+				<UsualGroup name="ГруппаНастройкиПрямыхВыплатЗарплатныйПроект" id="21">
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНастройкиПрямыхВыплатЗарплатныйПроектРасширеннаяПодсказка" id="22">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Поскольку ФСС перечисляет по номеру расчетного счета, а в зарплатных проектах хранится номер лицевого счета, то в выбранном зарплатном проекте номера лицевых счетов должен совпадать с соответствующими номерами расчетных счетов.</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Since the SSF transfers by the current account number, and the personal account number is stored in payroll card programs, the personal account numbers in the selected payroll card program must match the corresponding current account numbers.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<ChildItems>
+						<CheckBoxField name="ИспользоватьЗарплатныйПроект" id="23">
+							<DataPath>Запись.ИспользоватьЗарплатныйПроект</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>На банковский счет в отдельном проекте:</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>To a bank account in a separate program:</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ИспользоватьЗарплатныйПроектКонтекстноеМеню" id="24"/>
+							<ExtendedTooltip name="ИспользоватьЗарплатныйПроектРасширеннаяПодсказка" id="25"/>
+							<Events>
+								<Event name="OnChange">ИспользоватьЗарплатныйПроектПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<InputField name="ЗарплатныйПроект" id="26">
+							<DataPath>Запись.ЗарплатныйПроект</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<CreateButton>true</CreateButton>
+							<ContextMenu name="ЗарплатныйПроектКонтекстноеМеню" id="27"/>
+							<ExtendedTooltip name="ЗарплатныйПроектРасширеннаяПодсказка" id="28"/>
+							<Events>
+								<Event name="OnChange">ЗарплатныйПроектПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Группа3" id="29">
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="30"/>
+					<ChildItems>
+						<CheckBoxField name="ИспользоватьЗарплатныйБанковскийСчет" id="31">
+							<DataPath>Запись.ИспользоватьЗарплатныйБанковскийСчет</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>На зарплатный банковский счет (при наличии)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>To payroll bank account (if any)</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ИспользоватьЗарплатныйБанковскийСчетКонтекстноеМеню" id="32"/>
+							<ExtendedTooltip name="ИспользоватьЗарплатныйБанковскийСчетРасширеннаяПодсказка" id="33"/>
+							<Events>
+								<Event name="OnChange">ИспользоватьЗарплатныйБанковскийСчетПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<PictureDecoration name="Декорация1" id="34">
+							<Width>1</Width>
+							<Height>1</Height>
+							<ContextMenu name="Декорация1КонтекстноеМеню" id="35"/>
+							<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="36"/>
+						</PictureDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<CheckBoxField name="ИспользоватьОсновноеМестоРаботы" id="37">
+					<DataPath>Запись.ИспользоватьОсновноеМестоРаботы</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Определять из настроек по основному месту работы (для внешних совместителей)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Determine from the settings at the main place of work (for external secondary employment employees)</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ИспользоватьОсновноеМестоРаботыКонтекстноеМеню" id="38"/>
+					<ExtendedTooltip name="ИспользоватьОсновноеМестоРаботыРасширеннаяПодсказка" id="39"/>
+					<Events>
+						<Event name="OnChange">ИспользоватьОсновноеМестоРаботыПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<LabelDecoration name="НастройкиПрямыхВыплатФССПояснение" id="40">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<ContextMenu name="НастройкиПрямыхВыплатФССПояснениеКонтекстноеМеню" id="41"/>
+					<ExtendedTooltip name="НастройкиПрямыхВыплатФССПояснениеРасширеннаяПодсказка" id="42"/>
+					<Events>
+						<Event name="URLProcessing">НастройкиПрямыхВыплатФССПояснениеОбработкаНавигационнойСсылки</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Группа1" id="43">
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="44"/>
+			<ChildItems>
+				<LabelField name="СостояниеФормы" id="45">
+					<DataPath>СостояниеФормы</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HorizontalAlign>Left</HorizontalAlign>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>64</MaxWidth>
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<ContextMenu name="СостояниеФормыКонтекстноеМеню" id="46"/>
+					<ExtendedTooltip name="СостояниеФормыРасширеннаяПодсказка" id="47"/>
+				</LabelField>
+				<CommandBar name="Группа4" id="48">
+					<HorizontalStretch>false</HorizontalStretch>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<ExtendedTooltip name="Группа4РасширеннаяПодсказка" id="49"/>
+					<ChildItems>
+						<Button name="ФормаЗакрыть" id="50">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.StandardCommand.Close</CommandName>
+							<ExtendedTooltip name="ФормаЗакрытьРасширеннаяПодсказка" id="51"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Запись" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.НастройкиПрямыхВыплатФССОрганизаций</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СостояниеФормы" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние формы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Form state</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:FormattedString</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ГоловнаяОрганизация" id="3">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Parameters>
+		<Parameter name="Организация">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

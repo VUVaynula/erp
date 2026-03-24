@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПризнаниеРасходов" id="315">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа признание расходов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group expense recognition</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПризнаниеРасходовРасширеннаяПодсказка" id="316"/>
+			<ChildItems>
+				<RadioButtonField name="ПризнаниеРасходов" id="317">
+					<DataPath>ПризнаниеРасходов</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Tumbler</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Признаются расходами</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Recognized as expenses</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">1</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Не признаются расходами</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Not recognized as expenses</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">2</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Все статьи</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>All items</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:nil="true"/>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ПризнаниеРасходовКонтекстноеМеню" id="318"/>
+					<ExtendedTooltip name="ПризнаниеРасходовРасширеннаяПодсказка" id="319"/>
+					<Events>
+						<Event name="OnChange">ПризнаниеРасходовПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<Button name="НеПризнаватьРасходом" id="322">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.НеПризнаватьРасходом</CommandName>
+					<RepresentationInContextMenu>None</RepresentationInContextMenu>
+					<ExtendedTooltip name="НеПризнаватьРасходомРасширеннаяПодсказка" id="323"/>
+				</Button>
+				<Button name="ПризнаватьРасходом" id="320">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ПризнаватьРасходом</CommandName>
+					<RepresentationInContextMenu>None</RepresentationInContextMenu>
+					<ExtendedTooltip name="ПризнаватьРасходомРасширеннаяПодсказка" id="321"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="Список" id="143">
+			<CommandBarLocation>None</CommandBarLocation>
+			<SkipOnInput>false</SkipOnInput>
+			<DefaultItem>true</DefaultItem>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<InitialTreeView>ExpandTopLevel</InitialTreeView>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Список</DataPath>
+			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
+			<CommandSet>
+				<ExcludedCommand>CancelSearch</ExcludedCommand>
+				<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+				<ExcludedCommand>Find</ExcludedCommand>
+				<ExcludedCommand>LevelDown</ExcludedCommand>
+				<ExcludedCommand>LevelUp</ExcludedCommand>
+			</CommandSet>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+			<ContextMenu name="СписокКонтекстноеМеню" id="145"/>
+			<AutoCommandBar name="СписокКоманднаяПанель" id="144"/>
+			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="146"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="147">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="148"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="149"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="153">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<HorizontalLocation>Left</HorizontalLocation>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="154"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="155"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокУправлениеПоиском" id="150">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="151"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="152"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="Код" id="156">
+					<DataPath>Список.Code</DataPath>
+					<ContextMenu name="КодКонтекстноеМеню" id="157"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="158"/>
+				</InputField>
+				<InputField name="Наименование" id="159">
+					<DataPath>Список.Description</DataPath>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="160"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="161"/>
+				</InputField>
+				<CheckBoxField name="ПризнаватьРасходамиПриУСН" id="231">
+					<DataPath>Список.ПризнаватьРасходамиПриУСН</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ПризнаватьРасходамиПриУСНКонтекстноеМеню" id="232"/>
+					<ExtendedTooltip name="ПризнаватьРасходамиПриУСНРасширеннаяПодсказка" id="233"/>
+				</CheckBoxField>
+				<InputField name="ТипЗначения" id="162">
+					<DataPath>Список.ValueType</DataPath>
+					<ContextMenu name="ТипЗначенияКонтекстноеМеню" id="163"/>
+					<ExtendedTooltip name="ТипЗначенияРасширеннаяПодсказка" id="164"/>
+				</InputField>
+				<InputField name="ВариантРаспределенияРасходовРегл" id="171">
+					<DataPath>Список.ВариантРаспределенияРасходовРегл</DataPath>
+					<ContextMenu name="ВариантРаспределенияРасходовРеглКонтекстноеМеню" id="172"/>
+					<ExtendedTooltip name="ВариантРаспределенияРасходовРеглРасширеннаяПодсказка" id="173"/>
+				</InputField>
+				<InputField name="ВариантРаспределенияРасходовУпр" id="174">
+					<DataPath>Список.ВариантРаспределенияРасходовУпр</DataPath>
+					<ContextMenu name="ВариантРаспределенияРасходовУпрКонтекстноеМеню" id="175"/>
+					<ExtendedTooltip name="ВариантРаспределенияРасходовУпрРасширеннаяПодсказка" id="176"/>
+				</InputField>
+				<InputField name="ВидДеятельностиРасходов" id="183">
+					<DataPath>Список.ВидДеятельностиРасходов</DataPath>
+					<ContextMenu name="ВидДеятельностиРасходовКонтекстноеМеню" id="184"/>
+					<ExtendedTooltip name="ВидДеятельностиРасходовРасширеннаяПодсказка" id="185"/>
+				</InputField>
+				<InputField name="Описание" id="219">
+					<DataPath>Список.Описание</DataPath>
+					<ContextMenu name="ОписаниеКонтекстноеМеню" id="220"/>
+					<ExtendedTooltip name="ОписаниеРасширеннаяПодсказка" id="221"/>
+				</InputField>
+				<InputField name="ТипРасходов" id="273">
+					<DataPath>Список.ТипРасходов</DataPath>
+					<ContextMenu name="ТипРасходовКонтекстноеМеню" id="274"/>
+					<ExtendedTooltip name="ТипРасходовРасширеннаяПодсказка" id="275"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Список" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ref</Field>
+				<Field>Список.РеквизитДопУпорядочивания</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>ChartOfCharacteristicTypes.СтатьиРасходов</MainTable>
+				<ListSettings/>
+			</Settings>
+		</Attribute>
+		<Attribute name="ПризнаниеРасходов" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Признание расходов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Expense recognition</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="НеПризнаватьРасходом" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не признавать расходом</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Do not recognize as expense</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не признавать расходом</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Do not recognize as expense</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.УстановитьСтатусЗаявкиОтклонена</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>НеПризнаватьРасходом</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ПрименяетсяУСНДоходыМинусРасходы</Item>
+			</FunctionalOptions>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПризнаватьРасходом" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Признавать расходом</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Recognize as expense</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Признавать расходом</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Recognize as expense</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ОтгрузкаРазрешена</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ПризнаватьРасходом</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ПрименяетсяУСНДоходыМинусРасходы</Item>
+			</FunctionalOptions>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

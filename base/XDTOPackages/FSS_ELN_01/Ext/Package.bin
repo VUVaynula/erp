@@ -1,0 +1,131 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.fss.ru/integration/types/eln/v01" elementFormQualified="true" attributeFormQualified="false">
+	<import namespace="http://www.fss.ru/integration/types/common/v01"/>
+	<import namespace="http://www.fss.ru/integration/types/person/v01"/>
+	<import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/eln/v01" name="Info" type="d2p1:Info"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/common/v01" name="hospital" type="d2p1:period"/>
+	<property name="Id" type="xs:ID" form="Attribute"/>
+	<property name="author" form="Attribute">
+		<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="120"/>
+	</property>
+	<property name="email" form="Attribute">
+		<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="40"/>
+	</property>
+	<property name="phone" form="Attribute">
+		<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="30"/>
+	</property>
+	<property name="software" form="Attribute">
+		<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+	</property>
+	<property name="version" form="Attribute">
+		<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="10"/>
+	</property>
+	<property name="version_software" form="Attribute">
+		<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="30"/>
+	</property>
+	<valueType name="correctionNote" base="xs:string" variety="Atomic" maxLength="4000"/>
+	<valueType name="diagnosis" base="xs:string" variety="Atomic" maxLength="10"/>
+	<valueType name="dictCode" base="xs:string" variety="Atomic" maxLength="3"/>
+	<valueType name="doctorRole" base="xs:string" variety="Atomic" maxLength="300"/>
+	<valueType name="employer" base="xs:string" variety="Atomic" maxLength="255"/>
+	<valueType name="fio" base="xs:string" variety="Atomic" maxLength="90"/>
+	<valueType name="lnCode" base="xs:string" variety="Atomic" length="12"/>
+	<valueType name="lnHash" base="xs:string" variety="Atomic" maxLength="32"/>
+	<valueType name="lnState" base="xs:string" variety="Atomic" maxLength="3"/>
+	<valueType name="lpuAddress" base="xs:string" variety="Atomic" maxLength="2000"/>
+	<valueType name="lpuName" base="xs:string" variety="Atomic" maxLength="90"/>
+	<valueType name="name" base="xs:string" variety="Atomic" maxLength="60"/>
+	<valueType name="patronymic" base="xs:string" variety="Atomic" maxLength="60"/>
+	<valueType name="simpleDate" base="xs:date" variety="Atomic">
+		<pattern>\d{4}-\d\d-\d\d</pattern>
+	</valueType>
+	<valueType name="surname" base="xs:string" variety="Atomic" maxLength="60"/>
+	<valueType name="voucherNo" base="xs:string" variety="Atomic" length="10"/>
+	<objectType name="HospitalBreachInfo">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="hospitalBreachCode" type="d3p1:dictCode"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="hospitalBreachDt" type="d3p1:simpleDate"/>
+	</objectType>
+	<objectType name="Info">
+		<property name="infoRowset" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="infoRow" upperBound="-1">
+					<typeDef xsi:type="ObjectType" ordered="false" sequenced="true">
+						<property name="rowNo" type="xs:integer" nillable="true"/>
+						<property xmlns:d7p1="http://www.fss.ru/integration/types/eln/v01" name="lnCode" type="d7p1:lnCode"/>
+						<property xmlns:d7p1="http://www.fss.ru/integration/types/eln/v01" name="lnHash" type="d7p1:lnHash" lowerBound="0"/>
+						<property xmlns:d7p1="http://www.fss.ru/integration/types/eln/v01" name="lnState" type="d7p1:lnState" lowerBound="0"/>
+						<property name="status" type="xs:int"/>
+						<property name="errors" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="error" upperBound="-1">
+									<typeDef xsi:type="ObjectType" ordered="false" sequenced="true">
+										<property name="errCode" type="xs:string"/>
+										<property name="errMess" type="xs:string"/>
+									</typeDef>
+								</property>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="LnCodeList">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="lnCode" type="d3p1:lnCode" upperBound="-1"/>
+	</objectType>
+	<objectType name="LnResult" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="returnDateLpu" type="d3p1:simpleDate" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="mseResult" type="d3p1:dictCode" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="otherStateDt" type="d3p1:simpleDate" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="nextLnCode" type="d3p1:lnCode" lowerBound="0"/>
+	</objectType>
+	<objectType name="ServFullData">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="servRelationCode" type="d3p1:dictCode"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="servDt1" type="d3p1:simpleDate"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="servDt2" type="d3p1:simpleDate"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="treatmentType" type="d3p1:dictCode" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="surname" type="d3p1:surname" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="name" type="d3p1:name" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="patronymic" type="d3p1:patronymic" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="birthday" type="d3p1:simpleDate" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="reason1" type="d3p1:dictCode" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/person/v01" name="snils" type="d3p1:snils" lowerBound="0"/>
+	</objectType>
+	<objectType name="TreatFullPeriod">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="treatChairman" type="d3p1:fio" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="treatChairmanRole" type="d3p1:doctorRole" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="treatPeriod" type="d3p1:TreatPeriod"/>
+	</objectType>
+	<objectType name="TreatFullPeriodMo">
+		<property xmlns:d3p1="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" ref="d3p1:Id" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="treatChairman" type="d3p1:fio" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="treatChairmanRole" type="d3p1:doctorRole" lowerBound="0"/>
+		<property name="treatPeriod">
+			<typeDef xmlns:d4p1="http://www.fss.ru/integration/types/eln/v01" xsi:type="ObjectType" base="d4p1:TreatPeriod">
+				<property xmlns:d5p1="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" ref="d5p1:Id" lowerBound="0"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="TreatPeriod" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="treatDt1" type="d3p1:simpleDate"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="treatDt2" type="d3p1:simpleDate" lowerBound="0"/>
+		<property name="idDoctor" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="treatDoctorRole" type="d3p1:doctorRole" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="treatDoctor" type="d3p1:fio" lowerBound="0"/>
+	</objectType>
+	<objectType name="WSResult">
+		<property name="requestId" type="xs:string" nillable="false"/>
+		<property name="status" type="xs:int" lowerBound="0"/>
+		<property name="mess" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="info" type="d3p1:Info" lowerBound="0"/>
+	</objectType>
+	<objectType name="hospitalBreach">
+		<property name="code" type="xs:string"/>
+		<property name="date" type="xs:date"/>
+	</objectType>
+	<objectType name="serv">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/common/v01" name="age" type="d3p1:countYear"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/common/v01" name="mm" type="d3p1:countMount"/>
+		<property name="days" type="xs:int"/>
+	</objectType>
+</package>

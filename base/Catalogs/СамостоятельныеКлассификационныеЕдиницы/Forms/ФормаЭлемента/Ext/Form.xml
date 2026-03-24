@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Самостоятельная классификационная единица</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Independent classification unit</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Help</ExcludedCommand>
+		<ExcludedCommand>Write</ExcludedCommand>
+		<ExcludedCommand>WriteAndClose</ExcludedCommand>
+	</CommandSet>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="КомандаЗаписатьИЗакрыть" id="92">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.КомандаЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="КомандаЗаписатьИЗакрытьРасширеннаяПодсказка" id="93"/>
+			</Button>
+			<Button name="Записать" id="90">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.КомандаЗаписать</CommandName>
+				<ExtendedTooltip name="ЗаписатьРасширеннаяПодсказка" id="91"/>
+			</Button>
+			<ButtonGroup name="ФормаГруппаКомандФормы" id="94">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Форма группа команд формы</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Form group form commands</v8:content>
+					</v8:item>
+				</Title>
+				<CommandSource>Form</CommandSource>
+				<ExtendedTooltip name="ФормаГруппаКомандФормыРасширеннаяПодсказка" id="95"/>
+			</ButtonGroup>
+			<Button name="ФормаСправка" id="96">
+				<Type>CommandBarButton</Type>
+				<CommandName>0</CommandName>
+				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="97"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Владелец" id="46">
+			<DataPath>Объект.Owner</DataPath>
+			<SkipOnInput>true</SkipOnInput>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+			<ContextMenu name="ВладелецКонтекстноеМеню" id="47"/>
+			<ExtendedTooltip name="ВладелецРасширеннаяПодсказка" id="71"/>
+			<Events>
+				<Event name="OnChange">ВладелецПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="Наименование" id="3">
+			<DataPath>Объект.Description</DataPath>
+			<TitleLocation>Left</TitleLocation>
+			<TitleHeight>2</TitleHeight>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="74"/>
+		</InputField>
+		<InputField name="НаименованиеОКВЭД2" id="98">
+			<DataPath>Объект.НаименованиеОКВЭД2</DataPath>
+			<ContextMenu name="НаименованиеОКВЭД2КонтекстноеМеню" id="99"/>
+			<ExtendedTooltip name="НаименованиеОКВЭД2РасширеннаяПодсказка" id="100"/>
+		</InputField>
+		<InputField name="КодОКВЭД2" id="19">
+			<DataPath>Объект.КодОКВЭД2</DataPath>
+			<TitleLocation>Left</TitleLocation>
+			<TitleHeight>1</TitleHeight>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+			<ContextMenu name="КодОКВЭД2КонтекстноеМеню" id="20"/>
+			<ExtendedTooltip name="КодОКВЭД2РасширеннаяПодсказка" id="77"/>
+		</InputField>
+		<InputField name="КлассПрофессиональногоРиска" id="65">
+			<DataPath>Объект.КлассПрофессиональногоРиска</DataPath>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+			<ContextMenu name="КлассПрофессиональногоРискаКонтекстноеМеню" id="66"/>
+			<ExtendedTooltip name="КлассПрофессиональногоРискаРасширеннаяПодсказка" id="76"/>
+		</InputField>
+		<UsualGroup name="ГруппаДополнительныеРеквизиты" id="78">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительно</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>More</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаДополнительныеРеквизитыРасширеннаяПодсказка" id="79"/>
+		</UsualGroup>
+		<UsualGroup name="ГруппаСтавкаФСС_НС" id="80">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ставка ФССНС</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Rate of SSF industrial accidents</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСтавкаФСС_НСРасширеннаяПодсказка" id="81"/>
+			<ChildItems>
+				<InputField name="Ставка" id="82">
+					<DataPath>СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев.Ставка</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ставка взносов в ФСС НС и ПЗ</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Rates of contributions to SSF industrial accidents and occupational diseases</v8:content>
+						</v8:item>
+					</Title>
+					<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+					<ContextMenu name="СтавкаКонтекстноеМеню" id="83"/>
+					<ExtendedTooltip name="СтавкаРасширеннаяПодсказка" id="84"/>
+					<Events>
+						<Event name="OnChange">СтавкаПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевПериодСтрокой" id="85">
+					<DataPath>СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевПериодСтрокой</DataPath>
+					<Width>15</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ChoiceButton>true</ChoiceButton>
+					<SpinButton>true</SpinButton>
+					<ChoiceListButton>true</ChoiceListButton>
+					<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+					<ContextMenu name="СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевПериодСтрокойКонтекстноеМеню" id="86"/>
+					<ExtendedTooltip name="СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевПериодСтрокойРасширеннаяПодсказка" id="87"/>
+					<Events>
+						<Event name="OnChange">СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевПериодСтрокойПриИзменении</Event>
+						<Event name="AutoComplete">СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевПериодСтрокойАвтоПодбор</Event>
+						<Event name="StartChoice">СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевПериодСтрокойНачалоВыбора</Event>
+						<Event name="Tuning">СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевПериодСтрокойРегулирование</Event>
+						<Event name="TextEditEnd">СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевПериодСтрокойОкончаниеВводаТекста</Event>
+					</Events>
+				</InputField>
+				<Button name="СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевИстория" id="88">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевИстория</CommandName>
+					<ExtendedTooltip name="СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевИсторияРасширеннаяПодсказка" id="89"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.СамостоятельныеКлассификационныеЕдиницы</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев" id="2">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевНаборЗаписей" id="3">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаев</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевНаборЗаписейПрочитан" id="4">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевНоваяЗапись" id="5">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевПериод" id="6">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевПериодСтрокой" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применяется с</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Applied from</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевПрежняя" id="8">
+			<Type/>
+		</Attribute>
+		<Attribute name="СсылкаНаОбъект" id="9">
+			<Type>
+				<v8:Type>cfg:CatalogRef.СамостоятельныеКлассификационныеЕдиницы</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевИстория" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История изменения...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change history...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ставка взноса на страхование от несчастных случаев история</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Rate of contribution for insurance against accidents history</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СтавкаВзносаНаСтрахованиеОтНесчастныхСлучаевИстория</Action>
+		</Command>
+		<Command name="КомандаЗаписать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда записать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save command</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+S</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Write</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаЗаписать</Action>
+		</Command>
+		<Command name="КомандаЗаписатьИЗакрыть" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаЗаписатьИЗакрыть</Action>
+			<Representation>Text</Representation>
+		</Command>
+	</Commands>
+</Form>

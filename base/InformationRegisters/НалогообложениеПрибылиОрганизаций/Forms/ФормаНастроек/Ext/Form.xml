@@ -1,0 +1,715 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Настройки налогообложения прибыли</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Profit taxation settings</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаПрименитьИЗакрыть" id="442">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ПрименитьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаПрименитьИЗакрытьРасширеннаяПодсказка" id="443"/>
+			</Button>
+			<Button name="ФормаПрименитьНастройки" id="168">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ПрименитьНастройки</CommandName>
+				<ExtendedTooltip name="ФормаПрименитьНастройкиРасширеннаяПодсказка" id="169"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="143">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<Width>70</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ThroughAlign>DontUse</ThroughAlign>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="144"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаПериодОрганизация" id="444">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа период организация</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group period company</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПериодОрганизацияРасширеннаяПодсказка" id="445"/>
+					<ChildItems>
+						<InputField name="Период" id="402">
+							<DataPath>Период</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>На дату</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>As of</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПериодКонтекстноеМеню" id="403"/>
+							<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="404"/>
+							<Events>
+								<Event name="OnChange">ПериодПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="Организация" id="1">
+							<DataPath>Организация</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="ОрганизацияКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="3"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаНастройкаОбособленногоПодразделения" id="446">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройка для обособленного подразделения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Business unit setup</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНастройкаОбособленногоПодразделенияРасширеннаяПодсказка" id="447"/>
+					<ChildItems>
+						<CheckBoxField name="НастройкаДляОбособленногоПодразделения" id="448">
+							<DataPath>НастройкаДляОбособленногоПодразделения</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="НастройкаДляОбособленногоПодразделенияКонтекстноеМеню" id="449"/>
+							<ExtendedTooltip name="НастройкаДляОбособленногоПодразделенияРасширеннаяПодсказка" id="450"/>
+							<Events>
+								<Event name="OnChange">НастройкаДляОбособленногоПодразделенияПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<InputField name="ОбособленноеПодразделение" id="451">
+							<DataPath>ОбособленноеПодразделение</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Отбор.ГоловнаяОрганизация</xr:Name>
+									<xr:DataPath xsi:type="xs:string">Организация</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<ChoiceParameters>
+								<app:item name="Отбор.ОбособленноеПодразделение">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:boolean">true</Value>
+									</app:value>
+								</app:item>
+							</ChoiceParameters>
+							<ContextMenu name="ОбособленноеПодразделениеКонтекстноеМеню" id="452"/>
+							<ExtendedTooltip name="ОбособленноеПодразделениеРасширеннаяПодсказка" id="453"/>
+							<Events>
+								<Event name="OnChange">ОбособленноеПодразделениеПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаНастройки" id="416">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа настройки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНастройкиРасширеннаяПодсказка" id="417"/>
+			<ChildItems>
+				<LabelDecoration name="Декорация_ПравилаВытеснения" id="405">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Height>5</Height>
+					<HorizontalStretch>true</HorizontalStretch>
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Приоритет настроек:
+- настройки по статьям доходов/номенклатуре вытесняют настройки по подразделениям
+- настройки по направлениям деятельности вытесняют все вышестоящие настройки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settings priority:
+- settings by income items/items preempt settings by business units
+- settings by lines of business preempt all upstream settings</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Center</VerticalAlign>
+					<ContextMenu name="Декорация_ПравилаВытесненияКонтекстноеМеню" id="406"/>
+					<ExtendedTooltip name="Декорация_ПравилаВытесненияРасширеннаяПодсказка" id="407"/>
+				</LabelDecoration>
+				<Pages name="ГруппаСтраницыОбластиНастройки" id="268">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа страницы общие настройки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group pages general settings</v8:content>
+						</v8:item>
+					</Title>
+					<PagesRepresentation>TabsOnTop</PagesRepresentation>
+					<ExtendedTooltip name="ГруппаСтраницыОбластиНастройкиРасширеннаяПодсказка" id="269"/>
+					<ChildItems>
+						<Page name="Страница_Подразделения" id="270">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подразделения</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Business units</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="Страница_ПодразделенияРасширеннаяПодсказка" id="271"/>
+							<ChildItems>
+								<Table name="Настройки_Подразделения" id="272">
+									<Representation>List</Representation>
+									<DataPath>Настройки_Подразделения</DataPath>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="Настройки_ПодразделенияКонтекстноеМеню" id="273"/>
+									<AutoCommandBar name="Настройки_ПодразделенияКоманднаяПанель" id="274"/>
+									<ExtendedTooltip name="Настройки_ПодразделенияРасширеннаяПодсказка" id="275"/>
+									<SearchStringAddition name="Настройки_ПодразделенияСтрокаПоиска" id="276">
+										<AdditionSource>
+											<Item>Настройки_Подразделения</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="Настройки_ПодразделенияСтрокаПоискаКонтекстноеМеню" id="277"/>
+										<ExtendedTooltip name="Настройки_ПодразделенияСтрокаПоискаРасширеннаяПодсказка" id="278"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="Настройки_ПодразделенияСостояниеПросмотра" id="279">
+										<AdditionSource>
+											<Item>Настройки_Подразделения</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<HorizontalLocation>Left</HorizontalLocation>
+										<ContextMenu name="Настройки_ПодразделенияСостояниеПросмотраКонтекстноеМеню" id="280"/>
+										<ExtendedTooltip name="Настройки_ПодразделенияСостояниеПросмотраРасширеннаяПодсказка" id="281"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="Настройки_ПодразделенияУправлениеПоиском" id="282">
+										<AdditionSource>
+											<Item>Настройки_Подразделения</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="Настройки_ПодразделенияУправлениеПоискомКонтекстноеМеню" id="283"/>
+										<ExtendedTooltip name="Настройки_ПодразделенияУправлениеПоискомРасширеннаяПодсказка" id="284"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<InputField name="Настройки_ПодразделенияОбъектНастройки" id="285">
+											<DataPath>Настройки_Подразделения.ОбъектНастройки</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Подразделение</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Business unit</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="Настройки_ПодразделенияОбъектНастройкиКонтекстноеМеню" id="286"/>
+											<ExtendedTooltip name="Настройки_ПодразделенияОбъектНастройкиРасширеннаяПодсказка" id="287"/>
+										</InputField>
+										<InputField name="Настройки_ПодразделенияВариантНалогообложенияПрибыли" id="288">
+											<DataPath>Настройки_Подразделения.ВариантНалогообложенияПрибыли</DataPath>
+											<ContextMenu name="Настройки_ПодразделенияВариантНалогообложенияПрибылиКонтекстноеМеню" id="289"/>
+											<ExtendedTooltip name="Настройки_ПодразделенияВариантНалогообложенияПрибылиРасширеннаяПодсказка" id="290"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</Page>
+						<Page name="Страница_ОбъектыУчета" id="291">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Объекты учета</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Accounting objects</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="Страница_ОбъектыУчетаРасширеннаяПодсказка" id="292"/>
+							<ChildItems>
+								<Table name="Настройки_ОбъектыУчета" id="293">
+									<Representation>List</Representation>
+									<DataPath>Настройки_ОбъектыУчета</DataPath>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="Настройки_ОбъектыУчетаКонтекстноеМеню" id="294"/>
+									<AutoCommandBar name="Настройки_ОбъектыУчетаКоманднаяПанель" id="295">
+										<ChildItems>
+											<Button name="Настройки_ОбъектыУчетаПодобратьСтатьиДоходов" id="412">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ПодобратьСтатьиДоходов</CommandName>
+												<ExtendedTooltip name="Настройки_ОбъектыУчетаПодобратьСтатьиДоходовРасширеннаяПодсказка" id="413"/>
+											</Button>
+											<Button name="Настройки_ОбъектыУчетаПодобратьНоменклатуру" id="414">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ПодобратьНоменклатуру</CommandName>
+												<ExtendedTooltip name="Настройки_ОбъектыУчетаПодобратьНоменклатуруРасширеннаяПодсказка" id="415"/>
+											</Button>
+										</ChildItems>
+									</AutoCommandBar>
+									<ExtendedTooltip name="Настройки_ОбъектыУчетаРасширеннаяПодсказка" id="296"/>
+									<SearchStringAddition name="Настройки_ОбъектыУчетаСтрокаПоиска" id="297">
+										<AdditionSource>
+											<Item>Настройки_ОбъектыУчета</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="Настройки_ОбъектыУчетаСтрокаПоискаКонтекстноеМеню" id="298"/>
+										<ExtendedTooltip name="Настройки_ОбъектыУчетаСтрокаПоискаРасширеннаяПодсказка" id="299"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="Настройки_ОбъектыУчетаСостояниеПросмотра" id="300">
+										<AdditionSource>
+											<Item>Настройки_ОбъектыУчета</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<HorizontalLocation>Left</HorizontalLocation>
+										<ContextMenu name="Настройки_ОбъектыУчетаСостояниеПросмотраКонтекстноеМеню" id="301"/>
+										<ExtendedTooltip name="Настройки_ОбъектыУчетаСостояниеПросмотраРасширеннаяПодсказка" id="302"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="Настройки_ОбъектыУчетаУправлениеПоиском" id="303">
+										<AdditionSource>
+											<Item>Настройки_ОбъектыУчета</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="Настройки_ОбъектыУчетаУправлениеПоискомКонтекстноеМеню" id="304"/>
+										<ExtendedTooltip name="Настройки_ОбъектыУчетаУправлениеПоискомРасширеннаяПодсказка" id="305"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<InputField name="Настройки_ОбъектыУчетаОбъектНастройки" id="436">
+											<DataPath>Настройки_ОбъектыУчета.ОбъектНастройки</DataPath>
+											<ContextMenu name="Настройки_ОбъектыУчетаОбъектНастройкиКонтекстноеМеню" id="437"/>
+											<ExtendedTooltip name="Настройки_ОбъектыУчетаОбъектНастройкиРасширеннаяПодсказка" id="438"/>
+										</InputField>
+										<InputField name="Настройки_ОбъектыУчетаВариантНалогообложенияПрибыли" id="439">
+											<DataPath>Настройки_ОбъектыУчета.ВариантНалогообложенияПрибыли</DataPath>
+											<ContextMenu name="Настройки_ОбъектыУчетаВариантНалогообложенияПрибылиКонтекстноеМеню" id="440"/>
+											<ExtendedTooltip name="Настройки_ОбъектыУчетаВариантНалогообложенияПрибылиРасширеннаяПодсказка" id="441"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</Page>
+						<Page name="Страница_НаправленияДеятельности" id="315">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Направления деятельности</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Line of business</v8:content>
+								</v8:item>
+							</Title>
+							<Group>AlwaysHorizontal</Group>
+							<ExtendedTooltip name="Страница_НаправленияДеятельностиРасширеннаяПодсказка" id="316"/>
+							<ChildItems>
+								<Table name="Настройки_НаправленияДеятельности" id="317">
+									<Representation>List</Representation>
+									<DataPath>Настройки_НаправленияДеятельности</DataPath>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="Настройки_НаправленияДеятельностиКонтекстноеМеню" id="318"/>
+									<AutoCommandBar name="Настройки_НаправленияДеятельностиКоманднаяПанель" id="319"/>
+									<ExtendedTooltip name="Настройки_НаправленияДеятельностиРасширеннаяПодсказка" id="320"/>
+									<SearchStringAddition name="Настройки_НаправленияДеятельностиСтрокаПоиска" id="321">
+										<AdditionSource>
+											<Item>Настройки_НаправленияДеятельности</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="Настройки_НаправленияДеятельностиСтрокаПоискаКонтекстноеМеню" id="322"/>
+										<ExtendedTooltip name="Настройки_НаправленияДеятельностиСтрокаПоискаРасширеннаяПодсказка" id="323"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="Настройки_НаправленияДеятельностиСостояниеПросмотра" id="324">
+										<AdditionSource>
+											<Item>Настройки_НаправленияДеятельности</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<HorizontalLocation>Left</HorizontalLocation>
+										<ContextMenu name="Настройки_НаправленияДеятельностиСостояниеПросмотраКонтекстноеМеню" id="325"/>
+										<ExtendedTooltip name="Настройки_НаправленияДеятельностиСостояниеПросмотраРасширеннаяПодсказка" id="326"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="Настройки_НаправленияДеятельностиУправлениеПоиском" id="327">
+										<AdditionSource>
+											<Item>Настройки_НаправленияДеятельности</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="Настройки_НаправленияДеятельностиУправлениеПоискомКонтекстноеМеню" id="328"/>
+										<ExtendedTooltip name="Настройки_НаправленияДеятельностиУправлениеПоискомРасширеннаяПодсказка" id="329"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<InputField name="Настройки_НаправленияДеятельностиОбъектНастройки" id="333">
+											<DataPath>Настройки_НаправленияДеятельности.ОбъектНастройки</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Направление деятельности</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Line of business</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="Настройки_НаправленияДеятельностиОбъектНастройкиКонтекстноеМеню" id="334"/>
+											<ExtendedTooltip name="Настройки_НаправленияДеятельностиОбъектНастройкиРасширеннаяПодсказка" id="335"/>
+										</InputField>
+										<InputField name="Настройки_НаправленияДеятельностиВариантНалогообложенияПрибыли" id="336">
+											<DataPath>Настройки_НаправленияДеятельности.ВариантНалогообложенияПрибыли</DataPath>
+											<ContextMenu name="Настройки_НаправленияДеятельностиВариантНалогообложенияПрибылиКонтекстноеМеню" id="337"/>
+											<ExtendedTooltip name="Настройки_НаправленияДеятельностиВариантНалогообложенияПрибылиРасширеннаяПодсказка" id="338"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Организация" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Настройки_НаправленияДеятельности" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки по направлениям деятельности</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings by lines of business</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="ОбъектНастройки" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объект настройки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Setting object</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.НаправленияДеятельности</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВариантНалогообложенияПрибыли" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вариант налогообложения прибыли</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Profit taxation option</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ВариантыНалогообложенияПрибыли</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Настройки_Подразделения" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки по подразделениям</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings by business units</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="ОбъектНастройки" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объект настройки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Setting object</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.СтруктураПредприятия</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВариантНалогообложенияПрибыли" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вариант налогообложения прибыли</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Profit taxation option</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ВариантыНалогообложенияПрибыли</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Период" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Настройки_ОбъектыУчета" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки по объектам учета (номенклатуре, статьям доходов)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings by accounting objects (items, income items)</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="ОбъектНастройки" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объект настройки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Setting object</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+						<v8:Type>cfg:ChartOfCharacteristicTypesRef.СтатьиДоходов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВариантНалогообложенияПрибыли" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вариант налогообложения прибыли</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Profit taxation option</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ВариантыНалогообложенияПрибыли</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПериодИсходный" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период исходный</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Initial period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкаДляОбособленногоПодразделения" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка для обособленного подразделения:</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Business unit setup:</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбособленноеПодразделение" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обособленное подразделение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Branch office</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбособленноеПодразделениеИсходное" id="31">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПрименитьНастройки" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применить настройки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Apply settings</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПрименитьНастройки</Action>
+		</Command>
+		<Command name="ПодобратьСтатьиДоходов" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать статьи доходов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select income items</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПодобратьСтатьиДоходов</Action>
+		</Command>
+		<Command name="ПодобратьНоменклатуру" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать номенклатуру</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select items</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПодобратьНоменклатуру</Action>
+		</Command>
+		<Command name="ПрименитьИЗакрыть" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применить и закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Apply and close</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПрименитьИЗакрыть</Action>
+		</Command>
+	</Commands>
+</Form>

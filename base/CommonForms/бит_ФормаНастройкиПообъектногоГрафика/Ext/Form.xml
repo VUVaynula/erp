@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="СформироватьГрафик" id="19">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СформироватьГрафик</CommandName>
+				<ExtendedTooltip name="СформироватьГрафикExtendedTooltip" id="38"/>
+			</Button>
+			<Button name="ДобавитьДанныеПоГрафику" id="20">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ДобавитьДанныеПоГрафику</CommandName>
+				<ExtendedTooltip name="ДобавитьДанныеПоГрафикуExtendedTooltip" id="39"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Режим" id="3">
+			<DataPath>Режим</DataPath>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим распределения суммы (определяет указывается ли общая сумма  или сумма одного платежа)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Distribution of the total mode (determines whether the total amount or one payment amount is specified)</v8:content>
+				</v8:item>
+			</ToolTip>
+			<DropListButton>true</DropListButton>
+			<ChoiceButton>false</ChoiceButton>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<TextEdit>false</TextEdit>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="xs:string">Распределение</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="xs:string">Периодическое заполнение</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<ChoiceListButton>true</ChoiceListButton>
+			<ContextMenu name="РежимКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="РежимExtendedTooltip" id="25"/>
+		</InputField>
+		<InputField name="Объект" id="7">
+			<DataPath>ТекОбъект</DataPath>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>object</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ChoiceButton>true</ChoiceButton>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<ChooseType>false</ChooseType>
+			<TextEdit>false</TextEdit>
+			<ContextMenu name="ОбъектКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ОбъектExtendedTooltip" id="26"/>
+			<Events>
+				<Event name="Clearing">ОбъектОчистка</Event>
+			</Events>
+		</InputField>
+		<InputField name="Периодичность" id="5">
+			<DataPath>Периодичность</DataPath>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Периодичность планирования</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Planning Periodicity</v8:content>
+				</v8:item>
+			</ToolTip>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<TextEdit>false</TextEdit>
+			<ContextMenu name="ПериодичностьКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="ПериодичностьExtendedTooltip" id="27"/>
+		</InputField>
+		<UsualGroup name="Период" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ПериодExtendedTooltip" id="28"/>
+			<ChildItems>
+				<InputField name="ПериодДатаНачала" id="9">
+					<DataPath>Период.StartDate</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период от</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Period from</v8:content>
+						</v8:item>
+					</Title>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="ПериодДатаНачалаКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="ПериодДатаНачалаExtendedTooltip" id="29"/>
+				</InputField>
+				<InputField name="ПериодДатаОкончания" id="11">
+					<DataPath>Период.EndDate</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>до</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DrT</v8:content>
+						</v8:item>
+					</Title>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="ПериодДатаОкончанияКонтекстноеМеню" id="12"/>
+					<ExtendedTooltip name="ПериодДатаОкончанияExtendedTooltip" id="30"/>
+				</InputField>
+				<Button name="ДействиеВыборПериода" id="17">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ДействиеВыборПериода</CommandName>
+					<ExtendedTooltip name="ДействиеВыборПериодаExtendedTooltip" id="31"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="РасходДоход" id="21">
+			<DataPath>РасходДоход</DataPath>
+			<Visible>false</Visible>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Направление</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Direction</v8:content>
+				</v8:item>
+			</Title>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<TextEdit>false</TextEdit>
+			<ContextMenu name="РасходДоходКонтекстноеМеню" id="22"/>
+			<ExtendedTooltip name="РасходДоходExtendedTooltip" id="32"/>
+			<Events>
+				<Event name="OnChange">РасходДоходПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="СтатьяОборотов" id="23">
+			<DataPath>СтатьяОборотов</DataPath>
+			<Visible>false</Visible>
+			<ChoiceParameterLinks>
+				<xr:Link>
+					<xr:Name>Отбор.РасходДоход</xr:Name>
+					<xr:DataPath xsi:type="xs:string">РасходДоход</xr:DataPath>
+					<xr:ValueChange>Clear</xr:ValueChange>
+				</xr:Link>
+			</ChoiceParameterLinks>
+			<ContextMenu name="СтатьяОборотовКонтекстноеМеню" id="24"/>
+			<ExtendedTooltip name="СтатьяОборотовExtendedTooltip" id="33"/>
+		</InputField>
+		<InputField name="Сумма" id="13">
+			<DataPath>Сумма</DataPath>
+			<HorizontalStretch>true</HorizontalStretch>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<ContextMenu name="СуммаКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="СуммаExtendedTooltip" id="34"/>
+		</InputField>
+		<InputField name="СтавкаНДС" id="15">
+			<DataPath>СтавкаНДС</DataPath>
+			<ContextMenu name="СтавкаНДСКонтекстноеМеню" id="16"/>
+			<ExtendedTooltip name="СтавкаНДСExtendedTooltip" id="35"/>
+		</InputField>
+		<InputField name="НазначениеПлатежа" id="40">
+			<DataPath>НазначениеПлатежа</DataPath>
+			<Visible>false</Visible>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="НазначениеПлатежаКонтекстноеМеню" id="41"/>
+			<ExtendedTooltip name="НазначениеПлатежаРасширеннаяПодсказка" id="42"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Период" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:StandardPeriod</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Периодичность" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Периодичность</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>periodicity</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.бит_ПериодичностьПланирования</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РасходДоход" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расход доход</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Expense Revenue</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.бит_РасходДоход</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Режим" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mode</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтавкаНДС" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ставка НДС</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>VAT Rate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.СтавкиНДС</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СтруктураСумм" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Структура сумм</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amounts Structure</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="Сумма" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекОбъект" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ОбъектыЭксплуатации</v8:Type>
+				<v8:Type>cfg:CatalogRef.ЦенныеБумаги</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидГрафика" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид графика</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Schedule Type</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>15</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="фОтказ" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ф отказ</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>F failure</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СтатьяОборотов" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статья оборотов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Line Item</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.бит_СтатьиОборотов</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="фСтруктураПараметров" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Структура параметров</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Structure of Parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="мКэшЗначений" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>М кэш значений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>M values cache</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="НазначениеПлатежа" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назначение платежа</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment Purpose</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ДействиеВыборПериода" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period selection action</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДействиеВыборПериода</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ДобавитьДанныеПоГрафику" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить данные в график</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add schedule data</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add schedule data</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДобавитьДанныеПоГрафику</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СформироватьГрафик" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать график</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate Schedule</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate Schedule</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СформироватьГрафик</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ДатаНачала">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ДатаОкончания">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Объект">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ОбъектыЭксплуатации</v8:Type>
+				<v8:Type>cfg:CatalogRef.ДоговорыКонтрагентов</v8:Type>
+				<v8:Type>cfg:CatalogRef.ЦенныеБумаги</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Периодичность">
+			<Type>
+				<v8:Type>cfg:EnumRef.бит_ПериодичностьПланирования</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="СтавкаНДС">
+			<Type/>
+		</Parameter>
+		<Parameter name="ВидГрафика">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ТипДоговора">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

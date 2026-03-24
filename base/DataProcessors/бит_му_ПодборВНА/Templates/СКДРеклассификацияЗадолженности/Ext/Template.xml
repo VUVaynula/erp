@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Счет</dataPath>
+			<field>Счет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто1</dataPath>
+			<field>Субконто1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто2</dataPath>
+			<field>Субконто2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто3</dataPath>
+			<field>Субконто3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто4</dataPath>
+			<field>Субконто4</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Валюта</dataPath>
+			<field>Валюта</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидСтавки</dataPath>
+			<field>ВидСтавки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДоговорКонтрагента</dataPath>
+			<field>ДоговорКонтрагента</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контрагент</dataPath>
+			<field>Контрагент</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Объект</dataPath>
+			<field>Объект</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РасходДоход</dataPath>
+			<field>РасходДоход</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаПоГрафику</dataPath>
+			<field>СуммаПоГрафику</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаПоСчету</dataPath>
+			<field>СуммаПоСчету</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетУчетаДолгосрочный</dataPath>
+			<field>СчетУчетаДолгосрочный</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетУчетаКраткосрочный</dataPath>
+			<field>СчетУчетаКраткосрочный</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидИсточникаЗадолженности</dataPath>
+			<field>ВидИсточникаЗадолженности</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ПараметрыКЗ_СД.ДоговорКонтрагента.Владелец КАК Контрагент,
+	ПараметрыКЗ_СД.ДоговорКонтрагента КАК ДоговорКонтрагента,
+	ПараметрыКЗ_СД.ЗначениеПараметра КАК СчетУчетаДолгосрочный,
+	ПараметрыКЗ_СК.ЗначениеПараметра КАК СчетУчетаКраткосрочный
+ПОМЕСТИТЬ СчетаУчета
+ИЗ
+	РегистрСведений.бит_му_ПараметрыФинИнструментов.СрезПоследних(&amp;Дата, Параметр = &amp;ПараметрСД) КАК ПараметрыКЗ_СД
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.бит_му_ПараметрыФинИнструментов.СрезПоследних(&amp;Дата, Параметр = &amp;ПараметрСК) КАК ПараметрыКЗ_СК
+		ПО ПараметрыКЗ_СД.ДоговорКонтрагента = ПараметрыКЗ_СК.ДоговорКонтрагента
+{ГДЕ
+	ПараметрыКЗ_СД.ДоговорКонтрагента.*,
+	ПараметрыКЗ_СД.ДоговорКонтрагента.Владелец.* КАК Контрагент}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	ТаблСчетаУчета.ДоговорКонтрагента КАК ДоговорКонтрагента,
+	ТаблСчетаУчета.СчетУчетаДолгосрочный КАК СчетУчетаДолгосрочный,
+	ТаблСчетаУчета.СчетУчетаКраткосрочный КАК СчетУчетаКраткосрочный,
+	РегБухОстатки.СуммаРеглОстатокКт КАК СуммаПоСчету,
+	ТаблСчетаУчета.Контрагент
+ПОМЕСТИТЬ ИнфПоДоговору
+ИЗ
+	СчетаУчета КАК ТаблСчетаУчета
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрБухгалтерии.бит_Дополнительный_2.Остатки(&amp;Дата, , , Организация = &amp;Организация) КАК РегБухОстатки
+		ПО ТаблСчетаУчета.ДоговорКонтрагента = РегБухОстатки.Субконто2
+			И ТаблСчетаУчета.СчетУчетаДолгосрочный = РегБухОстатки.Счет
+{ГДЕ
+	ТаблСчетаУчета.Контрагент.*,
+	ТаблСчетаУчета.ДоговорКонтрагента.*}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	РегФинНач.Контрагент,
+	РегФинНач.ДоговорКонтрагента,
+	РегФинНач.СуммаПлатежаРеглОборот - РегФинНач.ПогашеннаяСуммаФинансовыхПроцентовРеглОборот КАК СуммаПоГрафику
+ПОМЕСТИТЬ РегФинНач
+ИЗ
+	РегистрНакопления.бит_му_ФинансовыеНачисления.Обороты(&amp;ДатаЧерезГод, , , Организация = &amp;Организация) КАК РегФинНач
+ГДЕ
+	РегФинНач.Организация = &amp;Организация
+{ГДЕ
+	РегФинНач.Контрагент.*,
+	РегФинНач.ДоговорКонтрагента.*}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	РегФинНач.Контрагент КАК Контрагент,
+	ИнфПоДоговору.ДоговорКонтрагента КАК ДоговорКонтрагента,
+	ИнфПоДоговору.СчетУчетаДолгосрочный КАК СчетУчетаДолгосрочный,
+	ИнфПоДоговору.СчетУчетаКраткосрочный КАК СчетУчетаКраткосрочный,
+	ИнфПоДоговору.СуммаПоСчету КАК СуммаПоСчету,
+	РегФинНач.СуммаПоГрафику КАК СуммаПоГрафику
+{ВЫБРАТЬ
+	Контрагент.*,
+	ДоговорКонтрагента.*,
+	СчетУчетаДолгосрочный.*,
+	СчетУчетаКраткосрочный.*,
+	СуммаПоСчету,
+	СуммаПоГрафику}
+ИЗ
+	РегФинНач КАК РегФинНач
+		ЛЕВОЕ СОЕДИНЕНИЕ ИнфПоДоговору КАК ИнфПоДоговору
+		ПО РегФинНач.ДоговорКонтрагента = ИнфПоДоговору.ДоговорКонтрагента
+{ГДЕ
+	РегФинНач.Контрагент.*,
+	ИнфПоДоговору.ДоговорКонтрагента.*}
+
+УПОРЯДОЧИТЬ ПО
+	Контрагент,
+	ДоговорКонтрагента
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ СчетаУчета
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ИнфПоДоговору
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ РегФинНач</query>
+	</dataSet>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Period Start</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Period End</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>Дата</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Date</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ДатаЧерезГод</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата через год</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Next Year Date</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>Организация</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Организация</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Organization</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Организации</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.Организации.ПустаяСсылка</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ПараметрСД</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Параметр СД</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>DS parameter</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfCharacteristicTypesRef.бит_му_ВидыПараметровФинИнструментов</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">ПланВидовХарактеристик.бит_му_ВидыПараметровФинИнструментов.ПустаяСсылка</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ПараметрСК</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Параметр СК</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>AS parameter</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfCharacteristicTypesRef.бит_му_ВидыПараметровФинИнструментов</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">ПланВидовХарактеристик.бит_му_ВидыПараметровФинИнструментов.ПустаяСсылка</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Контрагент</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДоговорКонтрагента</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СчетУчетаДолгосрочный</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СчетУчетаКраткосрочный</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаПоСчету</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаПоГрафику</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Контрагент</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Контрагенты.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>be5fe1cd-724b-4f05-9da8-d1dff81c1c54</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДоговорКонтрагента</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.ДоговорыКонтрагентов.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>6bf0721c-9da0-449e-bb5d-323767a860b4</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:filter>
+					<dcsset:userSettingID>0328513f-5da8-439e-87c4-8eb6a9ff8d54</dcsset:userSettingID>
+				</dcsset:filter>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

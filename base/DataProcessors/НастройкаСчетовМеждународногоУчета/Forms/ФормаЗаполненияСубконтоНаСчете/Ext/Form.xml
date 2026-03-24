@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Настройки заполнения субконто на счете</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Settings of filling extra dimensions on the account</v8:content>
+		</v8:item>
+	</Title>
+	<Width>50</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаСохранить" id="94">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаСохранитьРасширеннаяПодсказка" id="95"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="114">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Записать</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="115"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelField name="СчетУчета" id="44">
+			<DataPath>СчетУчета</DataPath>
+			<Hiperlink>true</Hiperlink>
+			<ContextMenu name="СчетУчетаКонтекстноеМеню" id="45"/>
+			<ExtendedTooltip name="СчетУчетаРасширеннаяПодсказка" id="46"/>
+			<Events>
+				<Event name="Click">СчетУчетаНажатие</Event>
+			</Events>
+		</LabelField>
+		<CheckBoxField name="ПользовательскаяНастройка" id="105">
+			<DataPath>ПользовательскаяНастройка</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ПользовательскаяНастройкаКонтекстноеМеню" id="106"/>
+			<ExtendedTooltip name="ПользовательскаяНастройкаРасширеннаяПодсказка" id="107"/>
+			<Events>
+				<Event name="OnChange">ПользовательскаяНастройкаПриИзменении</Event>
+			</Events>
+		</CheckBoxField>
+		<Table name="НастройкиЗаполненияСубконто" id="47">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<InitialTreeView>ExpandAllLevels</InitialTreeView>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>НастройкиЗаполненияСубконто</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнение субконто</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill in extra dimension</v8:content>
+				</v8:item>
+			</Title>
+			<CommandSet>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>Delete</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>SortListAsc</ExcludedCommand>
+				<ExcludedCommand>SortListDesc</ExcludedCommand>
+			</CommandSet>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="НастройкиЗаполненияСубконтоКонтекстноеМеню" id="48"/>
+			<AutoCommandBar name="НастройкиЗаполненияСубконтоКоманднаяПанель" id="49">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="НастройкиЗаполненияСубконтоРасширеннаяПодсказка" id="50"/>
+			<SearchStringAddition name="НастройкиЗаполненияСубконтоСтрокаПоиска" id="51">
+				<AdditionSource>
+					<Item>НастройкиЗаполненияСубконто</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="НастройкиЗаполненияСубконтоСтрокаПоискаКонтекстноеМеню" id="52"/>
+				<ExtendedTooltip name="НастройкиЗаполненияСубконтоСтрокаПоискаРасширеннаяПодсказка" id="53"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="НастройкиЗаполненияСубконтоСостояниеПросмотра" id="54">
+				<AdditionSource>
+					<Item>НастройкиЗаполненияСубконто</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<HorizontalLocation>Left</HorizontalLocation>
+				<ContextMenu name="НастройкиЗаполненияСубконтоСостояниеПросмотраКонтекстноеМеню" id="55"/>
+				<ExtendedTooltip name="НастройкиЗаполненияСубконтоСостояниеПросмотраРасширеннаяПодсказка" id="56"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="НастройкиЗаполненияСубконтоУправлениеПоиском" id="57">
+				<AdditionSource>
+					<Item>НастройкиЗаполненияСубконто</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="НастройкиЗаполненияСубконтоУправлениеПоискомКонтекстноеМеню" id="58"/>
+				<ExtendedTooltip name="НастройкиЗаполненияСубконтоУправлениеПоискомРасширеннаяПодсказка" id="59"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="OnActivateRow">НастройкиЗаполненияСубконтоПриАктивизацииСтроки</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ВидСубконто" id="79">
+					<DataPath>НастройкиЗаполненияСубконто.ВидСубконто</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ВидСубконтоКонтекстноеМеню" id="80"/>
+					<ExtendedTooltip name="ВидСубконтоРасширеннаяПодсказка" id="81"/>
+				</InputField>
+				<InputField name="СпособЗаполнения" id="111">
+					<DataPath>НастройкиЗаполненияСубконто.СпособЗаполненияСубконто</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Способ заполнения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filling option</v8:content>
+						</v8:item>
+					</Title>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ContextMenu name="СпособЗаполненияКонтекстноеМеню" id="112"/>
+					<ExtendedTooltip name="СпособЗаполненияРасширеннаяПодсказка" id="113"/>
+					<Events>
+						<Event name="OnChange">СпособЗаполненияПриИзменении</Event>
+					</Events>
+				</InputField>
+				<ColumnGroup name="ГруппаЗначение" id="66">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение заполнения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Population value</v8:content>
+						</v8:item>
+					</Title>
+					<ShowInHeader>true</ShowInHeader>
+					<ExtendedTooltip name="ГруппаЗначениеРасширеннаяПодсказка" id="67"/>
+					<ChildItems>
+						<ColumnGroup name="ГруппаУказанноеЗначение" id="119">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа указанное значение</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group specified value</v8:content>
+								</v8:item>
+							</Title>
+							<Group>InCell</Group>
+							<ExtendedTooltip name="ГруппаУказанноеЗначениеРасширеннаяПодсказка" id="120"/>
+							<ChildItems>
+								<PictureField name="ЕстьПроблемыЗаполненияСубконто" id="121">
+									<DataPath>НастройкиЗаполненияСубконто.ЕстьПроблемыЗаполненияСубконто</DataPath>
+									<ShowInHeader>false</ShowInHeader>
+									<ShowInFooter>false</ShowInFooter>
+									<ValuesPicture>
+										<xr:Ref>CommonPicture.КонтактнаяИнформацияНеактуально</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</ValuesPicture>
+									<ContextMenu name="ЕстьПроблемыЗаполненияСубконтоКонтекстноеМеню" id="122"/>
+									<ExtendedTooltip name="ЕстьПроблемыЗаполненияСубконтоРасширеннаяПодсказка" id="123"/>
+								</PictureField>
+								<InputField name="УказанноеЗначениеСубконто" id="85">
+									<DataPath>НастройкиЗаполненияСубконто.УказанноеЗначениеСубконто</DataPath>
+									<ShowInHeader>false</ShowInHeader>
+									<ContextMenu name="УказанноеЗначениеСубконтоКонтекстноеМеню" id="86"/>
+									<ExtendedTooltip name="УказанноеЗначениеСубконтоРасширеннаяПодсказка" id="87"/>
+									<Events>
+										<Event name="OnChange">УказанноеЗначениеПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+						<ColumnGroup name="ГруппаИзРегистра" id="71">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа из регистра</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group from register</v8:content>
+								</v8:item>
+							</Title>
+							<Group>InCell</Group>
+							<ExtendedTooltip name="ГруппаИзРегистраРасширеннаяПодсказка" id="72"/>
+							<ChildItems>
+								<PictureField name="ПредставлениеВыраженияЕстьПроблемыЗаполненияСубконто" id="116">
+									<DataPath>НастройкиЗаполненияСубконто.ЕстьПроблемыЗаполненияСубконто</DataPath>
+									<ShowInHeader>false</ShowInHeader>
+									<ShowInFooter>false</ShowInFooter>
+									<ValuesPicture>
+										<xr:Ref>CommonPicture.КонтактнаяИнформацияНеактуально</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</ValuesPicture>
+									<ContextMenu name="ПредставлениеВыраженияЕстьПроблемыЗаполненияСубконтоКонтекстноеМеню" id="117"/>
+									<ExtendedTooltip name="ПредставлениеВыраженияЕстьПроблемыЗаполненияСубконтоРасширеннаяПодсказка" id="118"/>
+								</PictureField>
+								<InputField name="ПредставлениеВыражения" id="91">
+									<DataPath>НастройкиЗаполненияСубконто.ПредставлениеВыражения</DataPath>
+									<ShowInHeader>false</ShowInHeader>
+									<ChoiceButton>true</ChoiceButton>
+									<ClearButton>false</ClearButton>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="ПредставлениеВыраженияКонтекстноеМеню" id="92"/>
+									<ExtendedTooltip name="ПредставлениеВыраженияРасширеннаяПодсказка" id="93"/>
+									<Events>
+										<Event name="StartChoice">НастройкиЗаполненияСубконтоПредставлениеВыраженияНачалоВыбора</Event>
+										<Event name="Clearing">НастройкиЗаполненияСубконтоПредставлениеВыраженияОчистка</Event>
+										<Event name="ChoiceProcessing">НастройкиЗаполненияСубконтоПредставлениеВыраженияОбработкаВыбора</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+					</ChildItems>
+				</ColumnGroup>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ПланСчетов" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>План счетов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Chart of accounts</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ПланыСчетовМеждународногоУчета</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкиЗаполненияСубконто" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки заполнения субконто</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings of extra dimension population </v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="ВидСубконто" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид субконто</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Extra dimension type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:ChartOfCharacteristicTypesRef.ВидыСубконтоМеждународные</v8:Type>
+					</Type>
+				</Column>
+				<Column name="УказанноеЗначениеСубконто" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указанное значение субконто</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Specified extra dimension value</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:Characteristic.ВидыСубконтоМеждународные</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="ВыражениеЗаполненияСубконто" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выражение заполнения субконто</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Extra dimension population expression</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПредставлениеВыражения" id="17">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление выражения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Expression presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ЕстьПроблемыЗаполненияСубконто" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Есть проблемы заполнения субконто</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>There are extra dimension filling issues</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СпособЗаполненияСубконто" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Способ заполнения субконто</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Extra dimension population method</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.СпособыЗаполненияСубконтоМеждународногоУчета</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ТипЗначенияСубконто" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип значения субконто</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Extra dimension value type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:TypeDescription</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="НастройкаФормированияПроводок" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка формирования проводок</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Posting schema</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.НастройкиФормированияПроводокМеждународногоУчета</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбъектУчета" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект учета</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounting object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:ChartOfCharacteristicTypesRef.СтатьиАктивовПассивов</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СчетУчета" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет учета</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ledger account</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:ChartOfAccountsRef.Международный</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПользовательскаяНастройка" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользовательская настройка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User setting</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="КомпоновщикНастроек" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Компоновщик настроек</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings composer</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>dcsset:SettingsComposer</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресСхемыКомпоновкиДанных" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес схемы компоновки данных</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Address of data composition schema</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаписатьИЗакрыть" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ЗаписатьИЗакрыть</Action>
+		</Command>
+		<Command name="Записать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Записать</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ПланСчетов">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ПланыСчетовМеждународногоУчета</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="НастройкаФормированияПроводок">
+			<Type>
+				<v8:Type>cfg:CatalogRef.НастройкиФормированияПроводокМеждународногоУчета</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ОбъектУчета">
+			<Type>
+				<v8:Type>cfg:ChartOfCharacteristicTypesRef.СтатьиАктивовПассивов</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="СчетУчета">
+			<Type>
+				<v8:Type>cfg:ChartOfAccountsRef.Международный</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ИсточникДанных">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

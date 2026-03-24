@@ -1,0 +1,927 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Выбор присоединенного файла</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Select attachment</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаВыбрать" id="63">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Выбрать</CommandName>
+				<ExtendedTooltip name="ФормаВыбратьРасширеннаяПодсказка" id="64"/>
+			</Button>
+			<ButtonGroup name="ГруппаДействияСФайлом" id="129">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Действия с файлом</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Actions with file</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ГруппаДействияСФайломРасширеннаяПодсказка" id="130"/>
+				<ChildItems>
+					<Button name="ФормаПросмотреть" id="91">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Просмотреть</CommandName>
+						<ExtendedTooltip name="ФормаПросмотретьРасширеннаяПодсказка" id="92"/>
+					</Button>
+					<Button name="ФормаОткрытьКарточку" id="93">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ОткрытьКарточку</CommandName>
+						<ExtendedTooltip name="ФормаОткрытьКарточкуРасширеннаяПодсказка" id="94"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<SearchStringAddition name="СтрокаПоиска" id="95">
+				<AdditionSource>
+					<Item>ПрисоединенныеФайлы</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Строка поиска</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Search bar</v8:content>
+					</v8:item>
+				</Title>
+				<ContextMenu name="СтрокаПоискаКонтекстноеМеню" id="96"/>
+				<ExtendedTooltip name="СтрокаПоискаРасширеннаяПодсказка" id="97"/>
+			</SearchStringAddition>
+			<Button name="ФормаПоказыватьПомеченныеНаУдаление" id="131">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ПоказыватьПомеченныеНаУдаление</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаПоказыватьПомеченныеНаУдалениеРасширеннаяПодсказка" id="132"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="ДекорацияОписаниеОтбора" id="211">
+			<Visible>false</Visible>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<HorizontalStretch>true</HorizontalStretch>
+			<TextColor>style:ТекстПредопределенногоЗначения</TextColor>
+			<ContextMenu name="ДекорацияОписаниеОтбораКонтекстноеМеню" id="212"/>
+			<ExtendedTooltip name="ДекорацияОписаниеОтбораРасширеннаяПодсказка" id="213"/>
+		</LabelDecoration>
+		<LabelDecoration name="ДекорацияПрисоединенныеФайлыОтсутствуют" id="122">
+			<Visible>false</Visible>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>true</VerticalStretch>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Присоединенные файлы отсутствуют</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Attachments are missing</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalAlign>Center</HorizontalAlign>
+			<Border width="1">
+				<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+			</Border>
+			<ContextMenu name="ДекорацияПрисоединенныеФайлыОтсутствуютКонтекстноеМеню" id="123"/>
+			<ExtendedTooltip name="ДекорацияПрисоединенныеФайлыОтсутствуютРасширеннаяПодсказка" id="124"/>
+		</LabelDecoration>
+		<UsualGroup name="ГруппаОсновное" id="201">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основное</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОсновноеРасширеннаяПодсказка" id="202"/>
+			<ChildItems>
+				<Table name="ТипыОбъектов" id="39">
+					<Representation>Tree</Representation>
+					<CommandBarLocation>None</CommandBarLocation>
+					<ReadOnly>true</ReadOnly>
+					<Width>20</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<SelectionMode>SingleRow</SelectionMode>
+					<Header>false</Header>
+					<HorizontalLines>false</HorizontalLines>
+					<VerticalLines>false</VerticalLines>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<InitialTreeView>ExpandAllLevels</InitialTreeView>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>ТипыОбъектов</DataPath>
+					<RowPictureDataPath>ТипыОбъектов.КартинкаСтроки</RowPictureDataPath>
+					<RowsPicture>
+						<xr:Ref>CommonPicture.ПиктограммыЭлементов</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</RowsPicture>
+					<CommandSet>
+						<ExcludedCommand>Add</ExcludedCommand>
+						<ExcludedCommand>Change</ExcludedCommand>
+						<ExcludedCommand>Copy</ExcludedCommand>
+						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+						<ExcludedCommand>Delete</ExcludedCommand>
+						<ExcludedCommand>EndEdit</ExcludedCommand>
+						<ExcludedCommand>HierarchicalList</ExcludedCommand>
+						<ExcludedCommand>List</ExcludedCommand>
+						<ExcludedCommand>MoveDown</ExcludedCommand>
+						<ExcludedCommand>MoveUp</ExcludedCommand>
+						<ExcludedCommand>OutputList</ExcludedCommand>
+						<ExcludedCommand>SearchEverywhere</ExcludedCommand>
+						<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+						<ExcludedCommand>SortListAsc</ExcludedCommand>
+						<ExcludedCommand>SortListDesc</ExcludedCommand>
+						<ExcludedCommand>Tree</ExcludedCommand>
+					</CommandSet>
+					<ContextMenu name="ТипыОбъектовКонтекстноеМеню" id="40"/>
+					<AutoCommandBar name="ТипыОбъектовКоманднаяПанель" id="41"/>
+					<ExtendedTooltip name="ТипыОбъектовРасширеннаяПодсказка" id="42"/>
+					<SearchStringAddition name="ТипыОбъектовСтрокаПоиска" id="43">
+						<AdditionSource>
+							<Item>ТипыОбъектов</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ТипыОбъектовСтрокаПоискаКонтекстноеМеню" id="44"/>
+						<ExtendedTooltip name="ТипыОбъектовСтрокаПоискаРасширеннаяПодсказка" id="45"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ТипыОбъектовСостояниеПросмотра" id="46">
+						<AdditionSource>
+							<Item>ТипыОбъектов</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ТипыОбъектовСостояниеПросмотраКонтекстноеМеню" id="47"/>
+						<ExtendedTooltip name="ТипыОбъектовСостояниеПросмотраРасширеннаяПодсказка" id="48"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ТипыОбъектовУправлениеПоиском" id="49">
+						<AdditionSource>
+							<Item>ТипыОбъектов</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ТипыОбъектовУправлениеПоискомКонтекстноеМеню" id="50"/>
+						<ExtendedTooltip name="ТипыОбъектовУправлениеПоискомРасширеннаяПодсказка" id="51"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="OnActivateRow">ТипыОбъектовПриАктивизацииСтроки</Event>
+					</Events>
+					<ChildItems>
+						<InputField name="ТипыОбъектовПредставление" id="55">
+							<DataPath>ТипыОбъектов.Представление</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>8</MaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ТипыОбъектовПредставлениеКонтекстноеМеню" id="56"/>
+							<ExtendedTooltip name="ТипыОбъектовПредставлениеРасширеннаяПодсказка" id="57"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+				<Pages name="ГруппаПрисоединенныеФайлыСтраницы" id="133">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Присоединенные файлы (страницы)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attachments (pages)</v8:content>
+						</v8:item>
+					</Title>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="ГруппаПрисоединенныеФайлыСтраницыРасширеннаяПодсказка" id="134"/>
+					<ChildItems>
+						<Page name="ГруппаПрисоединенныеФайлы" id="135">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Присоединенные файлы</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Attachments</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ГруппаПрисоединенныеФайлыРасширеннаяПодсказка" id="136"/>
+							<ChildItems>
+								<Table name="ПрисоединенныеФайлы" id="17">
+									<Representation>List</Representation>
+									<CommandBarLocation>None</CommandBarLocation>
+									<ReadOnly>true</ReadOnly>
+									<ChangeRowSet>false</ChangeRowSet>
+									<ChangeRowOrder>false</ChangeRowOrder>
+									<Width>80</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<DataPath>ПрисоединенныеФайлы</DataPath>
+									<RowPictureDataPath>ПрисоединенныеФайлы.ИндексКартинки</RowPictureDataPath>
+									<RowsPicture>
+										<xr:Ref>CommonPicture.КоллекцияПиктограммФайлов</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</RowsPicture>
+									<CommandSet>
+										<ExcludedCommand>SearchEverywhere</ExcludedCommand>
+										<ExcludedCommand>ShowMultipleSelection</ExcludedCommand>
+									</CommandSet>
+									<AutoRefresh>false</AutoRefresh>
+									<AutoRefreshPeriod>60</AutoRefreshPeriod>
+									<Period>
+										<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+										<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+										<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+									</Period>
+									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+									<RestoreCurrentRow>true</RestoreCurrentRow>
+									<TopLevelParent xsi:nil="true"/>
+									<ShowRoot>true</ShowRoot>
+									<AllowRootChoice>false</AllowRootChoice>
+									<UpdateOnDataChange>Auto</UpdateOnDataChange>
+									<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+									<ContextMenu name="ПрисоединенныеФайлыКонтекстноеМеню" id="18">
+										<Autofill>false</Autofill>
+										<ChildItems>
+											<ButtonGroup name="ПрисоединенныеФайлыКонтекстноеМенюГруппаДействияСФайлом" id="127">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Действия с файлом</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Actions with file</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="ПрисоединенныеФайлыКонтекстноеМенюГруппаДействияСФайломРасширеннаяПодсказка" id="128"/>
+												<ChildItems>
+													<Button name="ПрисоединенныеФайлыКонтекстноеМенюПросмотреть" id="110">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.Просмотреть</CommandName>
+														<ExtendedTooltip name="ПрисоединенныеФайлыКонтекстноеМенюПросмотретьРасширеннаяПодсказка" id="111"/>
+													</Button>
+													<Button name="ПрисоединенныеФайлыКонтекстноеМенюОткрытьКарточку" id="112">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.ОткрытьКарточку</CommandName>
+														<ExtendedTooltip name="ПрисоединенныеФайлыКонтекстноеМенюОткрытьКарточкуРасширеннаяПодсказка" id="113"/>
+													</Button>
+												</ChildItems>
+											</ButtonGroup>
+											<ButtonGroup name="ПрисоединенныеФайлыКонтекстноеМенюСтандартныеКоманды" id="114">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Стандартные команды</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Standard commands</v8:content>
+													</v8:item>
+												</Title>
+												<CommandSource>Item.ПрисоединенныеФайлы</CommandSource>
+												<ExtendedTooltip name="ПрисоединенныеФайлыКонтекстноеМенюСтандартныеКомандыРасширеннаяПодсказка" id="115"/>
+											</ButtonGroup>
+										</ChildItems>
+									</ContextMenu>
+									<AutoCommandBar name="ПрисоединенныеФайлыКоманднаяПанель" id="19"/>
+									<ExtendedTooltip name="ПрисоединенныеФайлыРасширеннаяПодсказка" id="20"/>
+									<SearchStringAddition name="ПрисоединенныеФайлыСтрокаПоиска" id="21">
+										<AdditionSource>
+											<Item>ПрисоединенныеФайлы</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ПрисоединенныеФайлыСтрокаПоискаКонтекстноеМеню" id="22"/>
+										<ExtendedTooltip name="ПрисоединенныеФайлыСтрокаПоискаРасширеннаяПодсказка" id="23"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ПрисоединенныеФайлыСостояниеПросмотра" id="24">
+										<AdditionSource>
+											<Item>ПрисоединенныеФайлы</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ПрисоединенныеФайлыСостояниеПросмотраКонтекстноеМеню" id="25"/>
+										<ExtendedTooltip name="ПрисоединенныеФайлыСостояниеПросмотраРасширеннаяПодсказка" id="26"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ПрисоединенныеФайлыУправлениеПоиском" id="27">
+										<AdditionSource>
+											<Item>ПрисоединенныеФайлы</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ПрисоединенныеФайлыУправлениеПоискомКонтекстноеМеню" id="28"/>
+										<ExtendedTooltip name="ПрисоединенныеФайлыУправлениеПоискомРасширеннаяПодсказка" id="29"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="Selection">ПрисоединенныеФайлыВыбор</Event>
+										<Event name="OnActivateRow">ПрисоединенныеФайлыПриАктивизацииСтроки</Event>
+									</Events>
+									<ChildItems>
+										<LabelField name="ПрисоединенныеФайлыСсылка" id="101">
+											<DataPath>ПрисоединенныеФайлы.Ссылка</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Файл</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>File</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ПрисоединенныеФайлыСсылкаКонтекстноеМеню" id="102"/>
+											<ExtendedTooltip name="ПрисоединенныеФайлыСсылкаРасширеннаяПодсказка" id="103"/>
+										</LabelField>
+										<LabelField name="ПрисоединенныеФайлыДата" id="70">
+											<DataPath>ПрисоединенныеФайлы.Дата</DataPath>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<MaxWidth>12</MaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="ПрисоединенныеФайлыДатаКонтекстноеМеню" id="71"/>
+											<ExtendedTooltip name="ПрисоединенныеФайлыДатаРасширеннаяПодсказка" id="72"/>
+										</LabelField>
+										<LabelField name="ПрисоединенныеФайлыНомер" id="82">
+											<DataPath>ПрисоединенныеФайлы.Номер</DataPath>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<MaxWidth>10</MaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="ПрисоединенныеФайлыНомерКонтекстноеМеню" id="83"/>
+											<ExtendedTooltip name="ПрисоединенныеФайлыНомерРасширеннаяПодсказка" id="84"/>
+										</LabelField>
+										<LabelField name="ПрисоединенныеФайлыСумма" id="98">
+											<DataPath>ПрисоединенныеФайлы.Сумма</DataPath>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<MaxWidth>12</MaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="ПрисоединенныеФайлыСуммаКонтекстноеМеню" id="99"/>
+											<ExtendedTooltip name="ПрисоединенныеФайлыСуммаРасширеннаяПодсказка" id="100"/>
+										</LabelField>
+										<LabelField name="ПрисоединенныеФайлыКонтрагент" id="79">
+											<DataPath>ПрисоединенныеФайлы.Контрагент</DataPath>
+											<ContextMenu name="ПрисоединенныеФайлыКонтрагентКонтекстноеМеню" id="80"/>
+											<ExtendedTooltip name="ПрисоединенныеФайлыКонтрагентРасширеннаяПодсказка" id="81"/>
+										</LabelField>
+										<LabelField name="ПрисоединенныеФайлыДоговор" id="73">
+											<DataPath>ПрисоединенныеФайлы.Договор</DataPath>
+											<ContextMenu name="ПрисоединенныеФайлыДоговорКонтекстноеМеню" id="74"/>
+											<ExtendedTooltip name="ПрисоединенныеФайлыДоговорРасширеннаяПодсказка" id="75"/>
+										</LabelField>
+										<LabelField name="ПрисоединенныеФайлыФизЛицо" id="107">
+											<DataPath>ПрисоединенныеФайлы.ФизЛицо</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Физ. лицо</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Person</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ПрисоединенныеФайлыФизЛицоКонтекстноеМеню" id="108"/>
+											<ExtendedTooltip name="ПрисоединенныеФайлыФизЛицоРасширеннаяПодсказка" id="109"/>
+										</LabelField>
+										<LabelField name="ПрисоединенныеФайлыОрганизация" id="85">
+											<DataPath>ПрисоединенныеФайлы.Организация</DataPath>
+											<ContextMenu name="ПрисоединенныеФайлыОрганизацияКонтекстноеМеню" id="86"/>
+											<ExtendedTooltip name="ПрисоединенныеФайлыОрганизацияРасширеннаяПодсказка" id="87"/>
+										</LabelField>
+										<LabelField name="ПрисоединенныеФайлыОтветственный" id="104">
+											<DataPath>ПрисоединенныеФайлы.Ответственный</DataPath>
+											<ContextMenu name="ПрисоединенныеФайлыОтветственныйКонтекстноеМеню" id="105"/>
+											<ExtendedTooltip name="ПрисоединенныеФайлыОтветственныйРасширеннаяПодсказка" id="106"/>
+										</LabelField>
+										<LabelField name="ПрисоединенныеФайлыКомментарий" id="76">
+											<DataPath>ПрисоединенныеФайлы.Комментарий</DataPath>
+											<ContextMenu name="ПрисоединенныеФайлыКомментарийКонтекстноеМеню" id="77"/>
+											<ExtendedTooltip name="ПрисоединенныеФайлыКомментарийРасширеннаяПодсказка" id="78"/>
+										</LabelField>
+										<LabelField name="ПрисоединенныеФайлыВладелец" id="67">
+											<DataPath>ПрисоединенныеФайлы.Владелец</DataPath>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<ContextMenu name="ПрисоединенныеФайлыВладелецКонтекстноеМеню" id="68"/>
+											<ExtendedTooltip name="ПрисоединенныеФайлыВладелецРасширеннаяПодсказка" id="69"/>
+										</LabelField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</Page>
+						<Page name="ГруппаНеобходимоВыбратьВидДокумента" id="191">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Необходимо выбрать вид документа</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Select document kind</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ГруппаНеобходимоВыбратьВидДокументаРасширеннаяПодсказка" id="192"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияНеобходимоВыбратьВидДокумента" id="193">
+									<Width>80</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>true</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>
+     Для просмотра файлов необходимо выбрать вид документа</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>
+     To view files, select a document kind</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<Border width="1">
+										<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+									</Border>
+									<ContextMenu name="ДекорацияНеобходимоВыбратьВидДокументаКонтекстноеМеню" id="194"/>
+									<ExtendedTooltip name="ДекорацияНеобходимоВыбратьВидДокументаРасширеннаяПодсказка" id="195"/>
+								</LabelDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="ГруппаНеобходимоВыбратьВидСправочника" id="196">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Необходимо выбрать вид справочника</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Select catalog kind</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ГруппаНеобходимоВыбратьВидСправочникаРасширеннаяПодсказка" id="197"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияНеобходимоВыбратьВидСправочника" id="198">
+									<Width>80</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>true</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>
+     Для просмотра файлов необходимо выбрать вид справочника</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>
+     To view files, select a catalog kind</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<Border width="1">
+										<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+									</Border>
+									<ContextMenu name="ДекорацияНеобходимоВыбратьВидСправочникаКонтекстноеМеню" id="199"/>
+									<ExtendedTooltip name="ДекорацияНеобходимоВыбратьВидСправочникаРасширеннаяПодсказка" id="200"/>
+								</LabelDecoration>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ТипыОбъектов" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Типы объектов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Types of objects</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Имя" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Name</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+				<Column name="Представление" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Владелец" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Владелец</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Owner</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ЭтоГруппа" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это группа</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>This is a group</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КартинкаСтроки" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка строки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Line picture</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПрисоединенныеФайлы" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Присоединенные файлы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Attachments</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ПрисоединенныеФайлы.Владелец</Field>
+				<Field>ПрисоединенныеФайлы.Дата</Field>
+				<Field>ПрисоединенныеФайлы.Договор</Field>
+				<Field>ПрисоединенныеФайлы.ИндексКартинки</Field>
+				<Field>ПрисоединенныеФайлы.Комментарий</Field>
+				<Field>ПрисоединенныеФайлы.Контрагент</Field>
+				<Field>ПрисоединенныеФайлы.Номер</Field>
+				<Field>ПрисоединенныеФайлы.Организация</Field>
+				<Field>ПрисоединенныеФайлы.Ответственный</Field>
+				<Field>ПрисоединенныеФайлы.ПометкаУдаления</Field>
+				<Field>ПрисоединенныеФайлы.Размер</Field>
+				<Field>ПрисоединенныеФайлы.Расширение</Field>
+				<Field>ПрисоединенныеФайлы.Ссылка</Field>
+				<Field>ПрисоединенныеФайлы.Сумма</Field>
+				<Field>ПрисоединенныеФайлы.ФизЛицо</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	0 КАК ИндексКартинки,
+	ЛОЖЬ КАК ПометкаУдаления,
+	NULL КАК Номер,
+	NULL КАК Дата,
+	NULL КАК Сумма,
+	NULL КАК Контрагент,
+	NULL КАК Договор,
+	NULL КАК ФизЛицо,
+	NULL КАК Организация,
+	NULL КАК Ответственный,
+	NULL КАК Комментарий,
+	NULL КАК Расширение,
+	0 КАК Размер,
+	ЗНАЧЕНИЕ(Документ.РеализацияТоваровУслуг.ПустаяСсылка) КАК Владелец,
+	ЗНАЧЕНИЕ(Справочник.РеализацияТоваровУслугПрисоединенныеФайлы.ПустаяСсылка) КАК Ссылка
+</QueryText>
+				<KeyType>FieldValue</KeyType>
+				<KeyField>Ссылка</KeyField>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ИспользоватьНесколькоОрганизаций" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать несколько организаций</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use multiple companies</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказыватьПомеченныеНаУдаление" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать помеченные на удаление</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show objects marked for deletion</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="МножественныйВыбор" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Множественный выбор</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Multiselect</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СохраненныйФайл" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохраненный файл</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Saved file</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="МаксимальныйРазмерФайла" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Максимальный размер файла</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>File size limit</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДопустимыеТипыФайлов" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Допустимые типы файлов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Allowed file types</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+		<Attribute name="ДопустимыеТипыФайловПредставление" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Допустимые типы файлов представление</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Allowed file types presentation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Выбрать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ChooseValue</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Выбрать</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="Просмотреть" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Просмотреть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>View</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Просмотреть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>View</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Просмотреть</Action>
+		</Command>
+		<Command name="ОткрытьКарточку" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть карточку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open card</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть карточку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open card</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F2</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьКарточку</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ПоказыватьПомеченныеНаУдаление" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать помеченные на удаление</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show objects marked for deletion</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПоказыватьПомеченныеНаУдаление</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Заголовок">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="МаксимальныйРазмер">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ФильтрДиалогаВыбора">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

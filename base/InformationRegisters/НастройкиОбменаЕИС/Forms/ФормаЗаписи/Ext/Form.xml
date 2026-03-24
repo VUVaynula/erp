@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Настройка подключения поставщика к личному кабинету ЕИС в сфере закупок</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Set up vendor connection to the personal UIS account in procurement</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandSet>
+		<ExcludedCommand>Write</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаОткрытьМастерНастроек" id="22">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ОткрытьМастерНастроек</CommandName>
+				<ExtendedTooltip name="ФормаОткрытьМастерНастроекРасширеннаяПодсказка" id="23"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Организация" id="1">
+			<DataPath>Запись.Организация</DataPath>
+			<ContextMenu name="ОрганизацияКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<CheckBoxField name="ОбменВключен" id="24">
+			<DataPath>Запись.ОбменВключен</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ОбменВключенКонтекстноеМеню" id="25"/>
+			<ExtendedTooltip name="ОбменВключенРасширеннаяПодсказка" id="26"/>
+		</CheckBoxField>
+		<InputField name="НаименованиеОрганизации" id="27">
+			<DataPath>Запись.НаименованиеОрганизации</DataPath>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="НаименованиеОрганизацииКонтекстноеМеню" id="28"/>
+			<ExtendedTooltip name="НаименованиеОрганизацииРасширеннаяПодсказка" id="29"/>
+		</InputField>
+		<InputField name="РегистрационныйНомерЕРУЗ" id="4">
+			<DataPath>Запись.РегистрационныйНомерЕРУЗ</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер реестровой записи ЕРУЗ</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Registry record number of the unified register of procurement participants</v8:content>
+				</v8:item>
+			</Title>
+			<TitleHeight>1</TitleHeight>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<ContextMenu name="РегистрационныйНомерЕРУЗКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="РегистрационныйНомерЕРУЗРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<InputField name="ТокенАвторизации" id="7">
+			<DataPath>Запись.ТокенАвторизации</DataPath>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Токен-ключ можно найти в личном кабинете участника закупок в разделе "Администрирование" &gt; "Профиль участника" в поле "Уникальный токен ключ".</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>You can find a token key in the personal account of the procurement party in the "Administration" &gt; "Member profile" section in the "Unique token key" field.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="ТокенАвторизацииКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ТокенАвторизацииРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<InputField name="ИдентификаторУчастникаДокументооборота" id="19">
+			<DataPath>Запись.ИдентификаторУчастникаДокументооборота</DataPath>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="ИдентификаторУчастникаДокументооборотаКонтекстноеМеню" id="20"/>
+			<ExtendedTooltip name="ИдентификаторУчастникаДокументооборотаРасширеннаяПодсказка" id="21"/>
+		</InputField>
+		<InputField name="КодСводногоРеестра" id="38">
+			<DataPath>Запись.КодСводногоРеестра</DataPath>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>8-значный код присвоенный организации в сводном реестре участников бюджетного процесса</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>The 8-digit code assigned to the company in the summary registry of budget process parties</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<ContextMenu name="КодСводногоРеестраКонтекстноеМеню" id="39"/>
+			<ExtendedTooltip name="КодСводногоРеестраРасширеннаяПодсказка" id="40"/>
+		</InputField>
+		<InputField name="ЛицевойСчетДляКазначейскогоСопровождения" id="41">
+			<DataPath>Запись.ЛицевойСчетДляКазначейскогоСопровождения</DataPath>
+			<ContextMenu name="ЛицевойСчетДляКазначейскогоСопровожденияКонтекстноеМеню" id="42"/>
+			<ExtendedTooltip name="ЛицевойСчетДляКазначейскогоСопровожденияРасширеннаяПодсказка" id="43"/>
+		</InputField>
+		<InputField name="ДатаПоследнегоПолученияКонтрактов" id="47">
+			<DataPath>Запись.ДатаПоследнегоПолученияКонтрактов</DataPath>
+			<ContextMenu name="ДатаПоследнегоПолученияКонтрактовКонтекстноеМеню" id="48"/>
+			<ExtendedTooltip name="ДатаПоследнегоПолученияКонтрактовРасширеннаяПодсказка" id="49"/>
+		</InputField>
+		<InputField name="ДатаПоследнегоПолученияДокументов" id="44">
+			<DataPath>Запись.ДатаПоследнегоПолученияДокументов</DataPath>
+			<ContextMenu name="ДатаПоследнегоПолученияДокументовКонтекстноеМеню" id="45"/>
+			<ExtendedTooltip name="ДатаПоследнегоПолученияДокументовРасширеннаяПодсказка" id="46"/>
+		</InputField>
+		<UsualGroup name="ГруппаГИСНР" id="50">
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаГИСНРРасширеннаяПодсказка" id="51"/>
+			<ChildItems>
+				<LabelDecoration name="ДекорацияЗаголовокГИСНР" id="66">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Height>1</Height>
+					<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem" scale="100"/>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Регистрация событий отправки документов в государственной информационной системе "Независимый регистратор" (ГИС НР)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document sending event logging in "Independent Registrar" State Information System</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<VerticalAlign>Bottom</VerticalAlign>
+					<ContextMenu name="ДекорацияЗаголовокГИСНРКонтекстноеМеню" id="67"/>
+					<ExtendedTooltip name="ДекорацияЗаголовокГИСНРРасширеннаяПодсказка" id="68">
+						<VerticalAlign>Bottom</VerticalAlign>
+						<Events>
+							<Event name="URLProcessing">ДекорацияВидеоЗаписьОбработкаНавигационнойСсылки</Event>
+						</Events>
+					</ExtendedTooltip>
+				</LabelDecoration>
+				<UsualGroup name="ГруппаОбмен" id="78">
+					<Group>AlwaysHorizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОбменРасширеннаяПодсказка" id="79"/>
+					<ChildItems>
+						<CheckBoxField name="ОбменСГИСНРВключен" id="52">
+							<DataPath>Запись.ОбменСГИСНРВключен</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Фиксировать события отправки документов</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Record document sending events</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ОбменСГИСНРВключенКонтекстноеМеню" id="53"/>
+							<ExtendedTooltip name="ОбменСГИСНРВключенРасширеннаяПодсказка" id="54">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Регистрируются следующие события:
+- отправка документов в ЕИС;
+- получение подтверждающих квитанций из ЕИС.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>The following events are logged:
+ - Sending documents to Unified Information System.
+- Receiving confirming receipts from Unified Information System.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">ОбменСГИСНРВключенПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<LabelDecoration name="ДекорацияЖурналГИСНР" id="69">
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;link События&gt;Журнал событий&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;link События&gt;Event log&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияЖурналГИСНРКонтекстноеМеню" id="70"/>
+							<ExtendedTooltip name="ДекорацияЖурналГИСНРРасширеннаяПодсказка" id="71"/>
+							<Events>
+								<Event name="URLProcessing">ДекорацияВидеоЗаписьОбработкаНавигационнойСсылки</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаВидеоЗапись" id="61">
+					<ToolTipRepresentation>None</ToolTipRepresentation>
+					<Group>Vertical</Group>
+					<VerticalSpacing>Half</VerticalSpacing>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаВидеоЗаписьРасширеннаяПодсказка" id="62"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаВидеоЗаписьГоризонтально" id="80">
+							<Group>AlwaysHorizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаВидеоЗаписьГоризонтальноРасширеннаяПодсказка" id="81"/>
+							<ChildItems>
+								<CheckBoxField name="ВидеоЗаписьГИСНРВключена" id="55">
+									<DataPath>Запись.ВидеозаписьГИСНРВключена</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Автоматически производить видеозапись отправки документов</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Automatically record document sending</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ВидеоЗаписьГИСНРВключенаКонтекстноеМеню" id="56"/>
+									<ExtendedTooltip name="ВидеоЗаписьГИСНРВключенаРасширеннаяПодсказка" id="57"/>
+									<Events>
+										<Event name="OnChange">ВидеоЗаписьГИСНРВключенаПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<LabelDecoration name="ДекорацияВидео" id="63">
+									<Title formatted="true">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>&lt;link Настройки&gt;Настройки&lt;/&gt;</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>&lt;link Настройки&gt;Settings&lt;/&gt;</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ДекорацияВидеоКонтекстноеМеню" id="64"/>
+									<ExtendedTooltip name="ДекорацияВидеоРасширеннаяПодсказка" id="65"/>
+									<Events>
+										<Event name="URLProcessing">ДекорацияВидеоЗаписьОбработкаНавигационнойСсылки</Event>
+									</Events>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаВидеоЗаписьГоризонтально1" id="82">
+							<Group>AlwaysHorizontal</Group>
+							<HorizontalSpacing>None</HorizontalSpacing>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаВидеоЗаписьГоризонтально1РасширеннаяПодсказка" id="83"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияПусто" id="84">
+									<Width>2</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<ContextMenu name="ДекорацияПустоКонтекстноеМеню" id="85"/>
+									<ExtendedTooltip name="ДекорацияПустоРасширеннаяПодсказка" id="86"/>
+								</LabelDecoration>
+								<LabelDecoration name="ДекорацияНастройкиВидеоЗаписи" id="75">
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пример</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Example</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ДекорацияНастройкиВидеоЗаписиКонтекстноеМеню" id="76"/>
+									<ExtendedTooltip name="ДекорацияНастройкиВидеоЗаписиРасширеннаяПодсказка" id="77"/>
+									<Events>
+										<Event name="URLProcessing">ДекорацияВидеоЗаписьОбработкаНавигационнойСсылки</Event>
+									</Events>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаУПДУКД" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа УПДУКД</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group UTD UAD</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаУПДУКДРасширеннаяПодсказка" id="37"/>
+			<ChildItems>
+				<InputField name="ИспользоватьУПД" id="30">
+					<ContextMenu name="ИспользоватьУПДКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="ИспользоватьУПДРасширеннаяПодсказка" id="32"/>
+				</InputField>
+				<InputField name="ИспользоватьУКД" id="33">
+					<ContextMenu name="ИспользоватьУКДКонтекстноеМеню" id="34"/>
+					<ExtendedTooltip name="ИспользоватьУКДРасширеннаяПодсказка" id="35"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Запись" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.НастройкиОбменаЕИС</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ПлагинПроблемы" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Плагин проблемы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Issue plugin</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидеозаписьГИСНРБылаВключена" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Видеозапись ГИСНРБыла включена</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Video recording of Independent Registrar State Information System was enabled</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Состояние_Длительность" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Длительность видеозаписи (сек.)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Video length (sec)</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОткрытьМастерНастроек" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Помощник настройки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Setup wizard</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть мастер настроек</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open the setup wizard</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьМастерНастроек</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Повторная отправка заказов</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Resend orders</v8:content>
+		</v8:item>
+	</Title>
+	<Width>55</Width>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаОбновитьСписокЗаказов" id="46">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ОбновитьСписокЗаказов</CommandName>
+				<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаОбновитьСписокЗаказовРасширеннаяПодсказка" id="47"/>
+			</Button>
+			<Button name="ФормаИгнорироватьИзменения" id="28">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ИгнорироватьИзменения</CommandName>
+				<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаИгнорироватьИзмененияРасширеннаяПодсказка" id="29"/>
+			</Button>
+			<Button name="ФормаЗакрыть" id="30">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаЗакрытьРасширеннаяПодсказка" id="31"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПодпискаНаСервис" id="32">
+			<Visible>false</Visible>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:ЦветНавигацииСервисДоставки</BackColor>
+			<ExtendedTooltip name="ГруппаПодпискаНаСервисРасширеннаяПодсказка" id="33"/>
+			<ChildItems>
+				<LabelDecoration name="ДекорацияПолучениеИнформацииПоОпции" id="34">
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Получение информации по подписке...</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Get information on subscription...</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДекорацияПолучениеИнформацииПоОпцииКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="ДекорацияПолучениеИнформацииПоОпцииРасширеннаяПодсказка" id="36"/>
+				</LabelDecoration>
+				<PictureDecoration name="ДекорацияКартинкаСостояниеОпцияКурьерика" id="37">
+					<Visible>false</Visible>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Декорация картинка состояние опция курьерика</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Decoration picture state option Courierica</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.ЗеленыйШарБЭД</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="ДекорацияКартинкаСостояниеОпцияКурьерикаКонтекстноеМеню" id="38"/>
+					<ExtendedTooltip name="ДекорацияКартинкаСостояниеОпцияКурьерикаРасширеннаяПодсказка" id="39"/>
+				</PictureDecoration>
+				<LabelDecoration name="ДекорацияСостояниеОпцияКурьерика" id="40">
+					<Visible>false</Visible>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>
+</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>
+</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДекорацияСостояниеОпцияКурьерикаКонтекстноеМеню" id="41"/>
+					<ExtendedTooltip name="ДекорацияСостояниеОпцияКурьерикаРасширеннаяПодсказка" id="42"/>
+					<Events>
+						<Event name="URLProcessing">ДекорацияСостояниеОпцияКурьерикаОбработкаНавигационнойСсылки</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="СписокЗаказов" id="1">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<Header>false</Header>
+			<HorizontalLines>false</HorizontalLines>
+			<VerticalLines>false</VerticalLines>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<DataPath>СписокЗаказов</DataPath>
+			<RowPictureDataPath>СписокЗаказов.Picture</RowPictureDataPath>
+			<CommandSet>
+				<ExcludedCommand>Pickup</ExcludedCommand>
+			</CommandSet>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Здесь отображаются уже отправленные заказы на доставку, в которых был изменен товарный состав. Для обновления данных в сервисе зайдите в документы, перезаполните товарный состав и отправьте их в сервис повторно. Если заказы не требуется отправлять повторно в сервис, выберите вариант "Игнорировать изменения" в дополнительном подменю.</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Here you can see the already sent delivery orders, in which the goods list was changed. To update data in the service, open the documents, refill the goods, and send them to the service again. If you do not need to send the orders to the service again, select the "Ignore changes" option in the additional submenu.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ToolTipRepresentation>ShowTop</ToolTipRepresentation>
+			<ContextMenu name="СписокЗаказовКонтекстноеМеню" id="2"/>
+			<AutoCommandBar name="СписокЗаказовКоманднаяПанель" id="3">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="СписокЗаказовУстановитьФлажки" id="22">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.СписокЗаказов.StandardCommand.CheckAll</CommandName>
+						<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+						<ExtendedTooltip name="СписокЗаказовУстановитьФлажкиРасширеннаяПодсказка" id="23"/>
+					</Button>
+					<Button name="СписокЗаказовСнятьФлажки" id="20">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.СписокЗаказов.StandardCommand.UncheckAll</CommandName>
+						<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+						<ExtendedTooltip name="СписокЗаказовСнятьФлажкиРасширеннаяПодсказка" id="21"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="СписокЗаказовРасширеннаяПодсказка" id="4">
+				<AutoMaxWidth>false</AutoMaxWidth>
+			</ExtendedTooltip>
+			<SearchStringAddition name="СписокЗаказовСтрокаПоиска" id="5">
+				<AdditionSource>
+					<Item>СписокЗаказов</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокЗаказовСтрокаПоискаКонтекстноеМеню" id="6"/>
+				<ExtendedTooltip name="СписокЗаказовСтрокаПоискаРасширеннаяПодсказка" id="7"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокЗаказовСостояниеПросмотра" id="8">
+				<AdditionSource>
+					<Item>СписокЗаказов</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокЗаказовСостояниеПросмотраКонтекстноеМеню" id="9"/>
+				<ExtendedTooltip name="СписокЗаказовСостояниеПросмотраРасширеннаяПодсказка" id="10"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокЗаказовУправлениеПоиском" id="11">
+				<AdditionSource>
+					<Item>СписокЗаказов</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокЗаказовУправлениеПоискомКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="СписокЗаказовУправлениеПоискомРасширеннаяПодсказка" id="13"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">СписокЗаказовВыбор</Event>
+			</Events>
+			<ChildItems>
+				<CheckBoxField name="СписокЗаказовПометка" id="17">
+					<DataPath>СписокЗаказов.Check</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="СписокЗаказовПометкаКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="СписокЗаказовПометкаРасширеннаяПодсказка" id="19"/>
+				</CheckBoxField>
+				<InputField name="СписокЗаказовЗначение" id="14">
+					<DataPath>СписокЗаказов.Value</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="СписокЗаказовЗначениеКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="СписокЗаказовЗначениеРасширеннаяПодсказка" id="16"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.СервисДоставки</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="СписокЗаказов" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список заказов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Order list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription">
+				<v8:Type>v8:UUID</v8:Type>
+			</Settings>
+		</Attribute>
+		<Attribute name="ТипГрузоперевозки" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип грузоперевозки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cargo transportation type</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ТипыГрузоперевозки</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Организация" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DefinedType.ОрганизацияСервисДоставки</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="Кэш" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кэш</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cache</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="БалансОпцияКурьерика" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Баланс опция курьерика</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Balance option Courierica</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КомментарийОпцияКурьерика" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Комментарий опция Курьерика</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Comment option Courierica</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>500</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОпцияДоступнаКурьерика" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Опция доступна Курьерика</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Option is available Courierica</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтображатьУведомлениеПоОпцииКурьерика" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отображать уведомление по опции курьерика</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Display option notification Courierica</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СрокДействияОпцияКурьерика" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Срок действия опция курьерика</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Validity period option Courierica</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДоступенТестовыйПериод" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступен тестовый период</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Trial period is available</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ИгнорироватьИзменения" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Игнорировать изменения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ignore changes</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Игнорировать изменения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ignore changes</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИгнорироватьИзменения</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ОбновитьСписокЗаказов" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОбновитьСписокЗаказов</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="СписокЗаказов">
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

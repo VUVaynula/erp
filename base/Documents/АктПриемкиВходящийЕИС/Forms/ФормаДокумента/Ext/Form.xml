@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<CommandSet>
+		<ExcludedCommand>Post</ExcludedCommand>
+		<ExcludedCommand>PostAndClose</ExcludedCommand>
+		<ExcludedCommand>Write</ExcludedCommand>
+	</CommandSet>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗакрыть" id="31">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ExtendedTooltip name="ФормаЗакрытьРасширеннаяПодсказка" id="32"/>
+			</Button>
+			<Popup name="КомандыЭДО" id="13">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ЭДО</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>EDI</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Команды ЭДО</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>EDI commands</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="КомандыЭДОРасширеннаяПодсказка" id="14"/>
+			</Popup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Номер" id="1">
+			<DataPath>Объект.Number</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="Дата" id="4">
+			<DataPath>Объект.Date</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<InputField name="Организация" id="25">
+			<DataPath>Объект.Организация</DataPath>
+			<ContextMenu name="ОрганизацияКонтекстноеМеню" id="26"/>
+			<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="27"/>
+		</InputField>
+		<InputField name="Контрагент" id="28">
+			<DataPath>Объект.Контрагент</DataPath>
+			<ContextMenu name="КонтрагентКонтекстноеМеню" id="29"/>
+			<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="30"/>
+		</InputField>
+		<CheckBoxField name="ЭтоКорректировка" id="81">
+			<DataPath>Объект.ЭтоКорректировка</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ЭтоКорректировкаКонтекстноеМеню" id="82"/>
+			<ExtendedTooltip name="ЭтоКорректировкаРасширеннаяПодсказка" id="83"/>
+		</CheckBoxField>
+		<Table name="ТРУОбъектовЗакупки" id="35">
+			<Representation>List</Representation>
+			<ReadOnly>true</ReadOnly>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<DataPath>Объект.ТРУОбъектовЗакупки</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ТРУОбъектовЗакупкиКонтекстноеМеню" id="37"/>
+			<AutoCommandBar name="ТРУОбъектовЗакупкиКоманднаяПанель" id="36"/>
+			<ExtendedTooltip name="ТРУОбъектовЗакупкиРасширеннаяПодсказка" id="38"/>
+			<SearchStringAddition name="ТРУОбъектовЗакупкиСтрокаПоиска" id="39">
+				<AdditionSource>
+					<Item>ТРУОбъектовЗакупки</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТРУОбъектовЗакупкиСтрокаПоискаКонтекстноеМеню" id="40"/>
+				<ExtendedTooltip name="ТРУОбъектовЗакупкиСтрокаПоискаРасширеннаяПодсказка" id="41"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ТРУОбъектовЗакупкиСостояниеПросмотра" id="45">
+				<AdditionSource>
+					<Item>ТРУОбъектовЗакупки</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТРУОбъектовЗакупкиСостояниеПросмотраКонтекстноеМеню" id="46"/>
+				<ExtendedTooltip name="ТРУОбъектовЗакупкиСостояниеПросмотраРасширеннаяПодсказка" id="47"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ТРУОбъектовЗакупкиУправлениеПоиском" id="42">
+				<AdditionSource>
+					<Item>ТРУОбъектовЗакупки</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ТРУОбъектовЗакупкиУправлениеПоискомКонтекстноеМеню" id="43"/>
+				<ExtendedTooltip name="ТРУОбъектовЗакупкиУправлениеПоискомРасширеннаяПодсказка" id="44"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="ТРУОбъектовЗакупкиНомерСтроки" id="48">
+					<DataPath>Объект.ТРУОбъектовЗакупки.LineNumber</DataPath>
+					<ContextMenu name="ТРУОбъектовЗакупкиНомерСтрокиКонтекстноеМеню" id="49"/>
+					<ExtendedTooltip name="ТРУОбъектовЗакупкиНомерСтрокиРасширеннаяПодсказка" id="50"/>
+				</InputField>
+				<InputField name="ТРУОбъектовЗакупкиНаименование" id="69">
+					<DataPath>Объект.ТРУОбъектовЗакупки.Наименование</DataPath>
+					<ContextMenu name="ТРУОбъектовЗакупкиНаименованиеКонтекстноеМеню" id="70"/>
+					<ExtendedTooltip name="ТРУОбъектовЗакупкиНаименованиеРасширеннаяПодсказка" id="71"/>
+				</InputField>
+				<InputField name="ТРУОбъектовЗакупкиИдентификатор" id="51">
+					<DataPath>Объект.ТРУОбъектовЗакупки.Идентификатор</DataPath>
+					<ContextMenu name="ТРУОбъектовЗакупкиИдентификаторКонтекстноеМеню" id="52"/>
+					<ExtendedTooltip name="ТРУОбъектовЗакупкиИдентификаторРасширеннаяПодсказка" id="53"/>
+				</InputField>
+				<InputField name="ТРУОбъектовЗакупкиВнешнийИдентификатор" id="54">
+					<DataPath>Объект.ТРУОбъектовЗакупки.ВнешнийИдентификатор</DataPath>
+					<Visible>false</Visible>
+					<ContextMenu name="ТРУОбъектовЗакупкиВнешнийИдентификаторКонтекстноеМеню" id="55"/>
+					<ExtendedTooltip name="ТРУОбъектовЗакупкиВнешнийИдентификаторРасширеннаяПодсказка" id="56"/>
+				</InputField>
+				<InputField name="ТРУОбъектовЗакупкиВнутреннийИдентификаторЕИС" id="57">
+					<DataPath>Объект.ТРУОбъектовЗакупки.ВнутреннийИдентификаторЕИС</DataPath>
+					<Visible>false</Visible>
+					<ContextMenu name="ТРУОбъектовЗакупкиВнутреннийИдентификаторЕИСКонтекстноеМеню" id="58"/>
+					<ExtendedTooltip name="ТРУОбъектовЗакупкиВнутреннийИдентификаторЕИСРасширеннаяПодсказка" id="59"/>
+				</InputField>
+				<InputField name="ТРУОбъектовЗакупкиЕдиницаИзмерения" id="60">
+					<DataPath>Объект.ТРУОбъектовЗакупки.ЕдиницаИзмерения</DataPath>
+					<ContextMenu name="ТРУОбъектовЗакупкиЕдиницаИзмеренияКонтекстноеМеню" id="61"/>
+					<ExtendedTooltip name="ТРУОбъектовЗакупкиЕдиницаИзмеренияРасширеннаяПодсказка" id="62"/>
+				</InputField>
+				<InputField name="ТРУОбъектовЗакупкиЕдиницаИзмеренияНаименование" id="63">
+					<DataPath>Объект.ТРУОбъектовЗакупки.ЕдиницаИзмеренияНаименование</DataPath>
+					<ContextMenu name="ТРУОбъектовЗакупкиЕдиницаИзмеренияНаименованиеКонтекстноеМеню" id="64"/>
+					<ExtendedTooltip name="ТРУОбъектовЗакупкиЕдиницаИзмеренияНаименованиеРасширеннаяПодсказка" id="65"/>
+				</InputField>
+				<InputField name="ТРУОбъектовЗакупкиКодТовараДляЕИС" id="66">
+					<DataPath>Объект.ТРУОбъектовЗакупки.КодТовараДляЕИС</DataPath>
+					<ContextMenu name="ТРУОбъектовЗакупкиКодТовараДляЕИСКонтекстноеМеню" id="67"/>
+					<ExtendedTooltip name="ТРУОбъектовЗакупкиКодТовараДляЕИСРасширеннаяПодсказка" id="68"/>
+				</InputField>
+				<InputField name="ТРУОбъектовЗакупкиКоличество" id="72">
+					<DataPath>Объект.ТРУОбъектовЗакупки.Количество</DataPath>
+					<ContextMenu name="ТРУОбъектовЗакупкиКоличествоКонтекстноеМеню" id="73"/>
+					<ExtendedTooltip name="ТРУОбъектовЗакупкиКоличествоРасширеннаяПодсказка" id="74"/>
+				</InputField>
+				<InputField name="ТРУОбъектовЗакупкиВсего" id="75">
+					<DataPath>Объект.ТРУОбъектовЗакупки.Всего</DataPath>
+					<ContextMenu name="ТРУОбъектовЗакупкиВсегоКонтекстноеМеню" id="76"/>
+					<ExtendedTooltip name="ТРУОбъектовЗакупкиВсегоРасширеннаяПодсказка" id="77"/>
+				</InputField>
+				<InputField name="ТРУОбъектовЗакупкиОбъемРаботыУслуги" id="78">
+					<DataPath>Объект.ТРУОбъектовЗакупки.ОбъемРаботыУслуги</DataPath>
+					<ContextMenu name="ТРУОбъектовЗакупкиОбъемРаботыУслугиКонтекстноеМеню" id="79"/>
+					<ExtendedTooltip name="ТРУОбъектовЗакупкиОбъемРаботыУслугиРасширеннаяПодсказка" id="80"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="ГруппаСостояние" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа состояние</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>State group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСостояниеРасширеннаяПодсказка" id="16"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаСостояниеЭДО" id="17">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа состояние ЭДО</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group EDI state</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСостояниеЭДОРасширеннаяПодсказка" id="18"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияСостояниеЭДО" id="19">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состояние ЭДО</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>EDI state</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состояние ЭДО</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>EDI state</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияСостояниеЭДОКонтекстноеМеню" id="20"/>
+							<ExtendedTooltip name="ДекорацияСостояниеЭДОРасширеннаяПодсказка" id="21"/>
+							<Events>
+								<Event name="Click">ДекорацияСостояниеЭДОНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<LabelDecoration name="ДекорацияПустая" id="22">
+					<Hyperlink>true</Hyperlink>
+					<ContextMenu name="ДекорацияПустаяКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="ДекорацияПустаяРасширеннаяПодсказка" id="24"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.АктПриемкиВходящийЕИС</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+	</Attributes>
+</Form>

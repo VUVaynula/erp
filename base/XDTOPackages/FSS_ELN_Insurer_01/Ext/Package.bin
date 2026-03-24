@@ -1,0 +1,165 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.fss.ru/integration/types/eln/ins/v01" elementFormQualified="true" attributeFormQualified="false">
+	<import namespace="http://www.fss.ru/integration/types/organization/v01"/>
+	<import namespace="http://www.fss.ru/integration/types/person/v01"/>
+	<import namespace="http://www.fss.ru/integration/types/eln/v01"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/eln/ins/v01" name="data" type="d2p1:Data"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/eln/ins/v01" name="getPrivateLNDataRequest" type="d2p1:GetPrivateLNDataRequest"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/eln/ins/v01" name="getPrivateLNDataResponse" type="d2p1:GetPrivateLNDataResponse"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/eln/v01" name="info" type="d2p1:Info"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/eln/ins/v01" name="outRowset" type="d2p1:OutRowset"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/eln/ins/v01" name="prParseReestrFileRequest" type="d2p1:PrParseReestrFileRequest"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/eln/ins/v01" name="prParseReestrFileResponse" type="d2p1:PrParseReestrFileResponse"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/eln/ins/v01" name="rowset" type="d2p1:Rowset"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/eln/ins/v01" name="rowsetWrapper" type="d2p1:RowsetWrapper"/>
+	<objectType name="Data">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/ins/v01" name="outRowset" type="d3p1:OutRowset" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.fss.ru/integration/types/eln/v01" name="FileOperationsLnUserGetLNDataOut" base="d2p1:WSResult">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/ins/v01" name="data" type="d3p1:Data" lowerBound="0"/>
+	</objectType>
+	<objectType name="GetPrivateLNDataRequest">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/organization/v01" name="regNum" type="d3p1:regNum" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/organization/v01" name="regNumSFR" type="d3p1:regNum" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="lnCode" type="d3p1:lnCode"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/person/v01" name="snils" type="d3p1:snils"/>
+	</objectType>
+	<objectType name="GetPrivateLNDataResponse">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/ins/v01" name="fileOperationsLnUserGetPrivateLNDataOut" type="d3p1:FileOperationsLnUserGetLNDataOut"/>
+	</objectType>
+	<objectType name="OutRowset">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/ins/v01" name="responseRow" type="d3p1:ResponseRow"/>
+	</objectType>
+	<objectType name="PrParseReestrFileRequest">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/ins/v01" name="request" type="d3p1:PrParseReestrFileType"/>
+	</objectType>
+	<objectType name="PrParseReestrFileResponse">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="wsResult" type="d3p1:WSResult" lowerBound="0"/>
+	</objectType>
+	<objectType name="PrParseReestrFileType">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/organization/v01" name="regNum" type="d3p1:regNum"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/ins/v01" name="pXmlFile" type="d3p1:RowsetWrapper"/>
+	</objectType>
+	<objectType name="ResponseRow" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/person/v01" name="snils" type="d3p1:snils"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="surname" type="d3p1:surname"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="name" type="d3p1:name"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="patronymic" type="d3p1:patronymic" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="lnCode" type="d3p1:lnCode"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="prevLnCode" type="d3p1:lnCode" lowerBound="0"/>
+		<property name="primaryFlag" type="xs:boolean"/>
+		<property name="duplicateFlag" type="xs:boolean"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="lnDate" type="d3p1:simpleDate"/>
+		<property name="idMo" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="lpuName" type="d3p1:lpuName"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="lpuAddress" type="d3p1:lpuAddress" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/organization/v01" name="lpuOgrn" type="d3p1:OgrnType"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="birthday" type="d3p1:simpleDate"/>
+		<property name="gender" type="xs:int"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="reason1" type="d3p1:dictCode" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="reason2" type="d3p1:dictCode" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="reason3" type="d3p1:dictCode" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="date1" type="d3p1:simpleDate" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="date2" type="d3p1:simpleDate" lowerBound="0"/>
+		<property name="voucherNo" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/organization/v01" name="voucherOgrn" type="d3p1:OgrnType" lowerBound="0"/>
+		<property name="servData" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="servFullData" lowerBound="0" upperBound="-1">
+					<typeDef xmlns:d6p1="http://www.fss.ru/integration/types/eln/v01" xsi:type="ObjectType" base="d6p1:ServFullData">
+						<property name="servAge" type="xs:int" lowerBound="0"/>
+						<property name="servMm" type="xs:int" lowerBound="0"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="pregn12wFlag" type="xs:boolean" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="hospitalDt1" type="d3p1:simpleDate" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="hospitalDt2" type="d3p1:simpleDate" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="hospitalBreach" type="d3p1:HospitalBreachInfo" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="mseDt1" type="d3p1:simpleDate" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="mseDt2" type="d3p1:simpleDate" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="mseDt3" type="d3p1:simpleDate" lowerBound="0"/>
+		<property name="mseInvalidGroup" type="xs:int" lowerBound="0"/>
+		<property name="treatPeriods">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/eln/v01" name="treatFullPeriod" type="d5p1:TreatFullPeriod" upperBound="3"/>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="lnResult" type="d3p1:LnResult" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="lnState" type="d3p1:lnState"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/person/v01" name="innPerson" type="d3p1:inn" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="employer" type="d3p1:employer" lowerBound="0"/>
+		<property name="emplFlag" type="xs:boolean" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/organization/v01" name="emplRegNo" type="d3p1:regNum" lowerBound="0"/>
+		<property name="emplParentNo" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/organization/v01" name="emplRegNo2" type="d3p1:regNum" lowerBound="0"/>
+		<property name="approve1" type="xs:string" lowerBound="0"/>
+		<property name="approve2" type="xs:string" lowerBound="0"/>
+		<property name="baseAvgSal" type="xs:double" lowerBound="0"/>
+		<property name="baseAvgDailySal" type="xs:double" lowerBound="0"/>
+		<property name="insurYy" type="xs:int" lowerBound="0"/>
+		<property name="insurMm" type="xs:int" lowerBound="0"/>
+		<property name="notInsurYy" type="xs:int" lowerBound="0"/>
+		<property name="notInsurMm" type="xs:int" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="calcCondition1" type="d3p1:dictCode" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="calcCondition2" type="d3p1:dictCode" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="calcCondition3" type="d3p1:dictCode" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="calcCondition4" type="d3p1:dictCode" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="form1Dt" type="d3p1:simpleDate" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="returnDateEmpl" type="d3p1:simpleDate" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="dt1Ln" type="d3p1:simpleDate" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="dt2Ln" type="d3p1:simpleDate" lowerBound="0"/>
+		<property name="emplPayment" type="xs:double" lowerBound="0"/>
+		<property name="fssPayment" type="xs:double" lowerBound="0"/>
+		<property name="payment" type="xs:double" lowerBound="0"/>
+		<property name="correctionReason" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="correctionNote" type="d3p1:correctionNote" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" name="previouslyIssuedCode" type="d3p1:lnCode" lowerBound="0"/>
+		<property name="intermittentMethodFlag" type="xs:boolean" lowerBound="0"/>
+	</objectType>
+	<objectType name="Rowset">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" ref="d3p1:version" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" ref="d3p1:software" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" ref="d3p1:version_software" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" ref="d3p1:author" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" ref="d3p1:phone" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/v01" ref="d3p1:email" lowerBound="0"/>
+		<property name="row" upperBound="30">
+			<typeDef xsi:type="ObjectType" ordered="false" sequenced="true">
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/eln/v01" ref="d5p1:Id" lowerBound="0"/>
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/eln/v01" name="lnCode" type="d5p1:lnCode"/>
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/person/v01" name="snils" type="d5p1:snils"/>
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/person/v01" name="innPerson" type="d5p1:inn" lowerBound="0"/>
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/eln/v01" name="employer" type="d5p1:employer"/>
+				<property name="emplFlag" type="xs:boolean"/>
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/organization/v01" name="emplRegNo" type="d5p1:regNum" lowerBound="0"/>
+				<property name="emplParentNo" type="xs:string"/>
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/organization/v01" name="emplRegNo2" type="d5p1:regNum" lowerBound="0"/>
+				<property name="approve1" type="xs:string"/>
+				<property name="approve2" type="xs:string" lowerBound="0"/>
+				<property name="baseAvgSal" type="xs:double" lowerBound="0"/>
+				<property name="baseAvgDailySal" type="xs:double" lowerBound="0"/>
+				<property name="insurYy" type="xs:int" nillable="true"/>
+				<property name="insurMm" type="xs:int" nillable="true"/>
+				<property name="notInsurYy" type="xs:int" nillable="true"/>
+				<property name="notInsurMm" type="xs:int" nillable="true"/>
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/eln/v01" name="calcCondition1" type="d5p1:dictCode" lowerBound="0"/>
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/eln/v01" name="calcCondition2" type="d5p1:dictCode" lowerBound="0"/>
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/eln/v01" name="calcCondition3" type="d5p1:dictCode" lowerBound="0"/>
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/eln/v01" name="calcCondition4" type="d5p1:dictCode" lowerBound="0"/>
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/eln/v01" name="form1Dt" type="d5p1:simpleDate" nillable="true"/>
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/eln/v01" name="returnDateEmpl" type="d5p1:simpleDate" nillable="true"/>
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/eln/v01" name="dt1Ln" type="d5p1:simpleDate" nillable="true"/>
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/eln/v01" name="dt2Ln" type="d5p1:simpleDate" nillable="true"/>
+				<property name="emplPayment" type="xs:double" lowerBound="0"/>
+				<property name="fssPayment" type="xs:double" lowerBound="0"/>
+				<property name="payment" type="xs:double" lowerBound="0"/>
+				<property name="correctionReason" type="xs:string" lowerBound="0"/>
+				<property xmlns:d5p1="http://www.fss.ru/integration/types/eln/v01" name="correctionNote" type="d5p1:correctionNote" lowerBound="0"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="RowsetWrapper">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/eln/ins/v01" name="rowset" type="d3p1:Rowset"/>
+	</objectType>
+</package>

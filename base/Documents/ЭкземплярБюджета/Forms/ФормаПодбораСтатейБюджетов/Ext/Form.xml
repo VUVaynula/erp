@@ -1,0 +1,535 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Подбор оборотов по статьям бюджетов для корректировки</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Pick turnovers by budget flow items for adjustment</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаОтбор" id="77">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа отбор</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group Filter</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа отбор</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group Filter</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОтборРасширеннаяПодсказка" id="78"/>
+			<ChildItems>
+				<InputField name="СтатьяБюджетов" id="79">
+					<DataPath>СтатьяБюджетов</DataPath>
+					<ClearButton>true</ClearButton>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="СтатьяБюджетовКонтекстноеМеню" id="80"/>
+					<ExtendedTooltip name="СтатьяБюджетовРасширеннаяПодсказка" id="81"/>
+					<Events>
+						<Event name="OnChange">СтатьяБюджетовПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ПериодПланирования" id="82">
+					<DataPath>ПериодПланирования</DataPath>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ПериодПланированияКонтекстноеМеню" id="83"/>
+					<ExtendedTooltip name="ПериодПланированияРасширеннаяПодсказка" id="84"/>
+					<Events>
+						<Event name="OnChange">ПериодПланированияПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ОборотыПоСтатьямБюджетов" id="1">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ОборотыПоСтатьямБюджетов</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ОборотыПоСтатьямБюджетовКонтекстноеМеню" id="2"/>
+			<AutoCommandBar name="ОборотыПоСтатьямБюджетовКоманднаяПанель" id="3"/>
+			<ExtendedTooltip name="ОборотыПоСтатьямБюджетовРасширеннаяПодсказка" id="4"/>
+			<SearchStringAddition name="ОборотыПоСтатьямБюджетовСтрокаПоиска" id="5">
+				<AdditionSource>
+					<Item>ОборотыПоСтатьямБюджетов</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ОборотыПоСтатьямБюджетовСтрокаПоискаКонтекстноеМеню" id="6"/>
+				<ExtendedTooltip name="ОборотыПоСтатьямБюджетовСтрокаПоискаРасширеннаяПодсказка" id="7"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ОборотыПоСтатьямБюджетовСостояниеПросмотра" id="8">
+				<AdditionSource>
+					<Item>ОборотыПоСтатьямБюджетов</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ОборотыПоСтатьямБюджетовСостояниеПросмотраКонтекстноеМеню" id="9"/>
+				<ExtendedTooltip name="ОборотыПоСтатьямБюджетовСостояниеПросмотраРасширеннаяПодсказка" id="10"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ОборотыПоСтатьямБюджетовУправлениеПоиском" id="11">
+				<AdditionSource>
+					<Item>ОборотыПоСтатьямБюджетов</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ОборотыПоСтатьямБюджетовУправлениеПоискомКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="ОборотыПоСтатьямБюджетовУправлениеПоискомРасширеннаяПодсказка" id="13"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ОборотыПоСтатьямБюджетовВыбор</Event>
+			</Events>
+			<ChildItems>
+				<CheckBoxField name="ОборотыПоСтатьямБюджетовПометка" id="85">
+					<DataPath>ОборотыПоСтатьямБюджетов.Пометка</DataPath>
+					<Visible>false</Visible>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ОборотыПоСтатьямБюджетовПометкаКонтекстноеМеню" id="86"/>
+					<ExtendedTooltip name="ОборотыПоСтатьямБюджетовПометкаРасширеннаяПодсказка" id="87"/>
+				</CheckBoxField>
+				<InputField name="ОборотыПоСтатьямБюджетовСтатьяБюджетов" id="14">
+					<DataPath>ОборотыПоСтатьямБюджетов.СтатьяБюджетов</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОборотыПоСтатьямБюджетовСтатьяБюджетовКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="ОборотыПоСтатьямБюджетовСтатьяБюджетовРасширеннаяПодсказка" id="16"/>
+				</InputField>
+				<InputField name="ОборотыПоСтатьямБюджетовПериодПланирования" id="55">
+					<DataPath>ОборотыПоСтатьямБюджетов.ПериодПланирования</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОборотыПоСтатьямБюджетовПериодПланированияКонтекстноеМеню" id="56"/>
+					<ExtendedTooltip name="ОборотыПоСтатьямБюджетовПериодПланированияРасширеннаяПодсказка" id="57"/>
+				</InputField>
+				<InputField name="ОборотыПоСтатьямБюджетовАналитика1" id="17">
+					<DataPath>ОборотыПоСтатьямБюджетов.Аналитика1</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОборотыПоСтатьямБюджетовАналитика1КонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ОборотыПоСтатьямБюджетовАналитика1РасширеннаяПодсказка" id="19"/>
+				</InputField>
+				<InputField name="ОборотыПоСтатьямБюджетовАналитика2" id="20">
+					<DataPath>ОборотыПоСтатьямБюджетов.Аналитика2</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОборотыПоСтатьямБюджетовАналитика2КонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ОборотыПоСтатьямБюджетовАналитика2РасширеннаяПодсказка" id="22"/>
+				</InputField>
+				<InputField name="ОборотыПоСтатьямБюджетовАналитика3" id="23">
+					<DataPath>ОборотыПоСтатьямБюджетов.Аналитика3</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОборотыПоСтатьямБюджетовАналитика3КонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ОборотыПоСтатьямБюджетовАналитика3РасширеннаяПодсказка" id="25"/>
+				</InputField>
+				<InputField name="ОборотыПоСтатьямБюджетовАналитика4" id="26">
+					<DataPath>ОборотыПоСтатьямБюджетов.Аналитика4</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОборотыПоСтатьямБюджетовАналитика4КонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="ОборотыПоСтатьямБюджетовАналитика4РасширеннаяПодсказка" id="28"/>
+				</InputField>
+				<InputField name="ОборотыПоСтатьямБюджетовАналитика5" id="29">
+					<DataPath>ОборотыПоСтатьямБюджетов.Аналитика5</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОборотыПоСтатьямБюджетовАналитика5КонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ОборотыПоСтатьямБюджетовАналитика5РасширеннаяПодсказка" id="31"/>
+				</InputField>
+				<InputField name="ОборотыПоСтатьямБюджетовАналитика6" id="32">
+					<DataPath>ОборотыПоСтатьямБюджетов.Аналитика6</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОборотыПоСтатьямБюджетовАналитика6КонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ОборотыПоСтатьямБюджетовАналитика6РасширеннаяПодсказка" id="34"/>
+				</InputField>
+				<InputField name="ОборотыПоСтатьямБюджетовВалюта" id="35">
+					<DataPath>ОборотыПоСтатьямБюджетов.Валюта</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОборотыПоСтатьямБюджетовВалютаКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="ОборотыПоСтатьямБюджетовВалютаРасширеннаяПодсказка" id="37"/>
+				</InputField>
+				<InputField name="ОборотыПоСтатьямБюджетовСумма" id="41">
+					<DataPath>ОборотыПоСтатьямБюджетов.Сумма</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОборотыПоСтатьямБюджетовСуммаКонтекстноеМеню" id="42"/>
+					<ExtendedTooltip name="ОборотыПоСтатьямБюджетовСуммаРасширеннаяПодсказка" id="43"/>
+				</InputField>
+				<InputField name="ОборотыПоСтатьямБюджетовСуммаВВалюте" id="38">
+					<DataPath>ОборотыПоСтатьямБюджетов.СуммаВВалюте</DataPath>
+					<Visible>false</Visible>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОборотыПоСтатьямБюджетовСуммаВВалютеКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="ОборотыПоСтатьямБюджетовСуммаВВалютеРасширеннаяПодсказка" id="40"/>
+				</InputField>
+				<InputField name="ОборотыПоСтатьямБюджетовКоличество" id="44">
+					<DataPath>ОборотыПоСтатьямБюджетов.Количество</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОборотыПоСтатьямБюджетовКоличествоКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="ОборотыПоСтатьямБюджетовКоличествоРасширеннаяПодсказка" id="46"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ОборотыПоСтатьямБюджетов" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обороты по статьям бюджетов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Budget flow item turnovers</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="СтатьяБюджетов" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статья/показатель бюджетов</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Budget flow item/indicator</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.СтатьиБюджетов</v8:Type>
+						<v8:Type>cfg:CatalogRef.ПоказателиБюджетов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Аналитика1" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аналитика 1</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Dimension 1</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:Characteristic.АналитикиСтатейБюджетов</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Аналитика2" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аналитика 2</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Dimension 2</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:Characteristic.АналитикиСтатейБюджетов</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Аналитика3" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аналитика 3</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Dimension 3</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:Characteristic.АналитикиСтатейБюджетов</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Аналитика4" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аналитика 4</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Dimension 4</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:Characteristic.АналитикиСтатейБюджетов</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Аналитика5" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аналитика 5</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Dimension 5</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:Characteristic.АналитикиСтатейБюджетов</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Аналитика6" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аналитика 6</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Dimension 6</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:Characteristic.АналитикиСтатейБюджетов</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Валюта" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Валюта</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Currency</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СуммаВВалюте" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма в валюте</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount in currency</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.ДенежнаяСуммаЛюбогоЗнака</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Сумма" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.ДенежнаяСуммаНеотрицательная</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Количество" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>3</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПериодПланирования" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период планирования</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Planning period</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="УчитыватьПоВалюте" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Учитывать по валюте</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Record by currency</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="УчитыватьПоКоличеству" id="17">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Учитывать по количеству</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Record by quantity</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КоличествоАналитик" id="18">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество аналитик</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Number of dimensions</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>2</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Пометка" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пометка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Check mark</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="СтруктураПараметровБюджета" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Структура параметров бюджета</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Budget parameter structure</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="СтатьяБюджетов" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статья бюджетов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Budget flow item</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.СтатьиБюджетов</v8:Type>
+				<v8:Type>cfg:CatalogRef.ПоказателиБюджетов</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПериодПланирования" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период планирования</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Planning period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+</Form>

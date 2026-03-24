@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаНаименованиеКод" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование код</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>name code</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНаименованиеКодРасширеннаяПодсказка" id="11"/>
+			<ChildItems>
+				<InputField name="Наименование" id="4">
+					<DataPath>Объект.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
+				</InputField>
+				<InputField name="Код" id="1">
+					<DataPath>Объект.Code</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="3"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Родитель" id="7">
+			<DataPath>Объект.Parent</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="РодительКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<UsualGroup name="ГруппаСостав" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состав группы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Composition of the group</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСоставРасширеннаяПодсказка" id="13"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаЦФО" id="128">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЦФО</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>CFA</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<ExtendedTooltip name="ГруппаЦФОРасширеннаяПодсказка" id="129"/>
+					<ChildItems>
+						<Table name="СписокЦФО" id="101">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>СписокЦФО</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>SelectAll</ExcludedCommand>
+							</CommandSet>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="СписокЦФОКонтекстноеМеню" id="102"/>
+							<AutoCommandBar name="СписокЦФОКоманднаяПанель" id="103">
+								<ChildItems>
+									<Button name="СписокЦФОПодборЦФО" id="120">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПодборЦФО</CommandName>
+										<ExtendedTooltip name="СписокЦФОПодборЦФОРасширеннаяПодсказка" id="121"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокЦФОРасширеннаяПодсказка" id="104"/>
+							<SearchStringAddition name="СписокЦФОСтрокаПоиска" id="105">
+								<AdditionSource>
+									<Item>СписокЦФО</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокЦФОСтрокаПоискаКонтекстноеМеню" id="106"/>
+								<ExtendedTooltip name="СписокЦФОСтрокаПоискаРасширеннаяПодсказка" id="107"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокЦФОСостояниеПросмотра" id="108">
+								<AdditionSource>
+									<Item>СписокЦФО</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокЦФОСостояниеПросмотраКонтекстноеМеню" id="109"/>
+								<ExtendedTooltip name="СписокЦФОСостояниеПросмотраРасширеннаяПодсказка" id="110"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокЦФОУправлениеПоиском" id="111">
+								<AdditionSource>
+									<Item>СписокЦФО</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокЦФОУправлениеПоискомКонтекстноеМеню" id="112"/>
+								<ExtendedTooltip name="СписокЦФОУправлениеПоискомРасширеннаяПодсказка" id="113"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="СписокЦФОЗначение" id="122">
+									<DataPath>СписокЦФО.ЦФО</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписокЦФОЗначениеКонтекстноеМеню" id="123"/>
+									<ExtendedTooltip name="СписокЦФОЗначениеРасширеннаяПодсказка" id="124"/>
+								</InputField>
+								<InputField name="СписокЦФОЗначениеКод" id="125">
+									<DataPath>СписокЦФО.ЦФО.Code</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписокЦФОЗначениеКодКонтекстноеМеню" id="126"/>
+									<ExtendedTooltip name="СписокЦФОЗначениеКодРасширеннаяПодсказка" id="127"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСтатьиОборотов" id="130">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статьи оборотов</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Article</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<ExtendedTooltip name="ГруппаСтатьиОборотовРасширеннаяПодсказка" id="131"/>
+					<ChildItems>
+						<Table name="СписокСтатей" id="80">
+							<Representation>List</Representation>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>СписокСтатей</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>SelectAll</ExcludedCommand>
+							</CommandSet>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="СписокСтатейКонтекстноеМеню" id="81"/>
+							<AutoCommandBar name="СписокСтатейКоманднаяПанель" id="82">
+								<ChildItems>
+									<Button name="СписокСтатейПодборСтатейОборотов" id="99">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПодборСтатейОборотов</CommandName>
+										<ExtendedTooltip name="СписокСтатейПодборСтатейОборотовРасширеннаяПодсказка" id="100"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокСтатейРасширеннаяПодсказка" id="83"/>
+							<SearchStringAddition name="СписокСтатейСтрокаПоиска" id="84">
+								<AdditionSource>
+									<Item>СписокСтатей</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокСтатейСтрокаПоискаКонтекстноеМеню" id="85"/>
+								<ExtendedTooltip name="СписокСтатейСтрокаПоискаРасширеннаяПодсказка" id="86"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокСтатейСостояниеПросмотра" id="87">
+								<AdditionSource>
+									<Item>СписокСтатей</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокСтатейСостояниеПросмотраКонтекстноеМеню" id="88"/>
+								<ExtendedTooltip name="СписокСтатейСостояниеПросмотраРасширеннаяПодсказка" id="89"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокСтатейУправлениеПоиском" id="90">
+								<AdditionSource>
+									<Item>СписокСтатей</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокСтатейУправлениеПоискомКонтекстноеМеню" id="91"/>
+								<ExtendedTooltip name="СписокСтатейУправлениеПоискомРасширеннаяПодсказка" id="92"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="СписокСтатейЗначение" id="93">
+									<DataPath>СписокСтатей.СтатьяОборотов</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+									<ContextMenu name="СписокСтатейЗначениеКонтекстноеМеню" id="94"/>
+									<ExtendedTooltip name="СписокСтатейЗначениеРасширеннаяПодсказка" id="95"/>
+								</InputField>
+								<InputField name="СписокСтатейЗначениеКод" id="96">
+									<DataPath>СписокСтатей.СтатьяОборотов.Code</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписокСтатейЗначениеКодКонтекстноеМеню" id="97"/>
+									<ExtendedTooltip name="СписокСтатейЗначениеКодРасширеннаяПодсказка" id="98"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.бит_ГруппыКлючейДоступаЦФОСтатьиОборотов</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СписокСтатей" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список статей</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>list of articles</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="СтатьяОборотов" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статья оборотов</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Article</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.бит_СтатьиОборотов</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="СписокЦФО" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список ЦФО</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>list of CFD</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ЦФО" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЦФО</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>CFA</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Подразделения</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПодборСтатейОборотов" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>selection</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор статей оборотов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Selection of revolutions Articles</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборСтатейОборотов</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПодборЦФО" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>selection</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор ЦФО</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>selection of the Central Federal District</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборЦФО</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

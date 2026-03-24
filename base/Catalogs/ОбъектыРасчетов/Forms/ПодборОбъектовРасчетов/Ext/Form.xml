@@ -1,0 +1,1308 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<CommandSet>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>Help</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ПеренестиВДокумент" id="1">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ПеренестиВДокумент</CommandName>
+				<ExtendedTooltip name="ПеренестиВДокументРасширеннаяПодсказка" id="2"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="68">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="69"/>
+			<ChildItems>
+				<InputField name="Партнер" id="70">
+					<DataPath>Партнер</DataPath>
+					<DropListButton>false</DropListButton>
+					<ChoiceButton>true</ChoiceButton>
+					<ClearButton>true</ClearButton>
+					<OpenButton>false</OpenButton>
+					<ContextMenu name="ПартнерКонтекстноеМеню" id="71"/>
+					<ExtendedTooltip name="ПартнерРасширеннаяПодсказка" id="72"/>
+					<Events>
+						<Event name="OnChange">ПартнерПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="Контрагент" id="73">
+					<DataPath>Контрагент</DataPath>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="КонтрагентКонтекстноеМеню" id="74"/>
+					<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="75"/>
+					<Events>
+						<Event name="OnChange">КонтрагентПриИзменении</Event>
+					</Events>
+				</InputField>
+				<CheckBoxField name="ПодбиратьНаСумму" id="99">
+					<DataPath>ПодбиратьНаСумму</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<CheckBoxType>Tumbler</CheckBoxType>
+					<ContextMenu name="ПодбиратьНаСуммуКонтекстноеМеню" id="100"/>
+					<ExtendedTooltip name="ПодбиратьНаСуммуРасширеннаяПодсказка" id="101"/>
+					<Events>
+						<Event name="OnChange">ПодбиратьНаСуммуПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<CheckBoxField name="ПоДатамПлатежей" id="111">
+					<DataPath>ПоДатамПлатежей</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Детализировать данные по плановым датам платежей</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Detail data by planned payment dates</v8:content>
+						</v8:item>
+					</ToolTip>
+					<CheckBoxType>Switcher</CheckBoxType>
+					<ContextMenu name="ПоДатамПлатежейКонтекстноеМеню" id="112"/>
+					<ExtendedTooltip name="ПоДатамПлатежейРасширеннаяПодсказка" id="113"/>
+					<Events>
+						<Event name="OnChange">ПоДатамПлатежейПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ТаблицаОстатковРасчетов" id="3">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<DataPath>ТаблицаОстатковРасчетов</DataPath>
+			<CommandSet>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>Delete</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>SortListAsc</ExcludedCommand>
+				<ExcludedCommand>SortListDesc</ExcludedCommand>
+			</CommandSet>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ТаблицаОстатковРасчетовКонтекстноеМеню" id="5"/>
+			<AutoCommandBar name="ТаблицаОстатковРасчетовКоманднаяПанель" id="4">
+				<ChildItems>
+					<Button name="ТаблицаОстатковРасчетовВыбратьПлатежи" id="52">
+						<Type>CommandBarButton</Type>
+						<Representation>Picture</Representation>
+						<CommandName>Form.Command.ВыбратьПлатежи</CommandName>
+						<Picture>
+							<xr:Ref>StdPicture.CheckAll</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ТаблицаОстатковРасчетовВыбратьПлатежиРасширеннаяПодсказка" id="53"/>
+					</Button>
+					<Button name="ТаблицаОстатковРасчетовИсключитьПлатежи" id="54">
+						<Type>CommandBarButton</Type>
+						<Representation>Picture</Representation>
+						<CommandName>Form.Command.ИсключитьПлатежи</CommandName>
+						<Picture>
+							<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ТаблицаОстатковРасчетовИсключитьПлатежиРасширеннаяПодсказка" id="55"/>
+					</Button>
+					<Button name="ТаблицаОстатковРасчетовВыбратьВыделенныеПлатежи" id="56">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ВыбратьВыделенныеПлатежи</CommandName>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Выбрать выделенные</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Select marked</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ТаблицаОстатковРасчетовВыбратьВыделенныеПлатежиРасширеннаяПодсказка" id="57"/>
+					</Button>
+					<Button name="ТаблицаОстатковРасчетовИсключитьВыделенныеПлатежи" id="58">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ИсключитьВыделенныеПлатежи</CommandName>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Исключить выделенные</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Clear marked</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ТаблицаОстатковРасчетовИсключитьВыделенныеПлатежиРасширеннаяПодсказка" id="59"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ТаблицаОстатковРасчетовРасширеннаяПодсказка" id="6"/>
+			<SearchStringAddition name="ТаблицаОстатковРасчетовСтрокаПоиска" id="7">
+				<AdditionSource>
+					<Item>ТаблицаОстатковРасчетов</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаОстатковРасчетовСтрокаПоискаКонтекстноеМеню" id="8"/>
+				<ExtendedTooltip name="ТаблицаОстатковРасчетовСтрокаПоискаРасширеннаяПодсказка" id="9"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ТаблицаОстатковРасчетовСостояниеПросмотра" id="13">
+				<AdditionSource>
+					<Item>ТаблицаОстатковРасчетов</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<HorizontalLocation>Left</HorizontalLocation>
+				<ContextMenu name="ТаблицаОстатковРасчетовСостояниеПросмотраКонтекстноеМеню" id="14"/>
+				<ExtendedTooltip name="ТаблицаОстатковРасчетовСостояниеПросмотраРасширеннаяПодсказка" id="15"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ТаблицаОстатковРасчетовУправлениеПоиском" id="10">
+				<AdditionSource>
+					<Item>ТаблицаОстатковРасчетов</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаОстатковРасчетовУправлениеПоискомКонтекстноеМеню" id="11"/>
+				<ExtendedTooltip name="ТаблицаОстатковРасчетовУправлениеПоискомРасширеннаяПодсказка" id="12"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="OnEditEnd">ТаблицаОстатковРасчетовПриОкончанииРедактирования</Event>
+				<Event name="Selection">ТаблицаОстатковРасчетовВыбор</Event>
+			</Events>
+			<ChildItems>
+				<CheckBoxField name="ТаблицаОстатковРасчетовВыбран" id="16">
+					<DataPath>ТаблицаОстатковРасчетов.Выбран</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТаблицаОстатковРасчетовВыбранКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="ТаблицаОстатковРасчетовВыбранРасширеннаяПодсказка" id="18"/>
+					<Events>
+						<Event name="OnChange">ТаблицаОстатковРасчетовВыбранПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<InputField name="ТаблицаОстатковРасчетовОбъектРасчетов" id="19">
+					<DataPath>ТаблицаОстатковРасчетов.ОбъектРасчетов</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Width>40</Width>
+					<ContextMenu name="ТаблицаОстатковРасчетовОбъектРасчетовКонтекстноеМеню" id="20"/>
+					<ExtendedTooltip name="ТаблицаОстатковРасчетовОбъектРасчетовРасширеннаяПодсказка" id="21"/>
+				</InputField>
+				<ColumnGroup name="ТаблицаОстатковРасчетовГруппаСумма" id="76">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таблица остатков расчетов группа сумма</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settlement balance table amount group</v8:content>
+						</v8:item>
+					</Title>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ТаблицаОстатковРасчетовГруппаСуммаРасширеннаяПодсказка" id="77"/>
+					<ChildItems>
+						<InputField name="ТаблицаОстатковРасчетовСумма" id="22">
+							<DataPath>ТаблицаОстатковРасчетов.Сумма</DataPath>
+							<ContextMenu name="ТаблицаОстатковРасчетовСуммаКонтекстноеМеню" id="23"/>
+							<ExtendedTooltip name="ТаблицаОстатковРасчетовСуммаРасширеннаяПодсказка" id="24"/>
+						</InputField>
+						<InputField name="ТаблицаОстатковРасчетовВалютаДокумента" id="78">
+							<DataPath>ТаблицаОстатковРасчетов.ВалютаДокумента</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>4</Width>
+							<ContextMenu name="ТаблицаОстатковРасчетовВалютаДокументаКонтекстноеМеню" id="79"/>
+							<ExtendedTooltip name="ТаблицаОстатковРасчетовВалютаДокументаРасширеннаяПодсказка" id="80"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<InputField name="ТаблицаОстатковРасчетовДатаПлатежа" id="105">
+					<DataPath>ТаблицаОстатковРасчетов.ДатаПлатежа</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ТаблицаОстатковРасчетовДатаПлатежаКонтекстноеМеню" id="106"/>
+					<ExtendedTooltip name="ТаблицаОстатковРасчетовДатаПлатежаРасширеннаяПодсказка" id="107"/>
+				</InputField>
+				<ColumnGroup name="ТаблицаОстатковРасчетовГруппаКоплате" id="81">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таблица остатков расчетов группа к оплате</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settlement balance table for payment group</v8:content>
+						</v8:item>
+					</Title>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ТаблицаОстатковРасчетовГруппаКоплатеРасширеннаяПодсказка" id="82"/>
+					<ChildItems>
+						<InputField name="ТаблицаОстатковРасчетовКОплате" id="25">
+							<DataPath>ТаблицаОстатковРасчетов.КОплате</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="ТаблицаОстатковРасчетовКОплатеКонтекстноеМеню" id="26"/>
+							<ExtendedTooltip name="ТаблицаОстатковРасчетовКОплатеРасширеннаяПодсказка" id="27"/>
+						</InputField>
+						<InputField name="ТаблицаОстатковРасчетовВалютаВзаиморасчетов" id="37">
+							<DataPath>ТаблицаОстатковРасчетов.ВалютаВзаиморасчетов</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>4</Width>
+							<ContextMenu name="ТаблицаОстатковРасчетовВалютаВзаиморасчетовКонтекстноеМеню" id="38"/>
+							<ExtendedTooltip name="ТаблицаОстатковРасчетовВалютаВзаиморасчетовРасширеннаяПодсказка" id="39"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<InputField name="ТаблицаОстатковРасчетовОплачивается" id="108">
+					<DataPath>ТаблицаОстатковРасчетов.Оплачивается</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ТаблицаОстатковРасчетовОплачиваетсяКонтекстноеМеню" id="109"/>
+					<ExtendedTooltip name="ТаблицаОстатковРасчетовОплачиваетсяРасширеннаяПодсказка" id="110"/>
+				</InputField>
+				<ColumnGroup name="ТаблицаОстатковРасчетовГруппаДолгПартнера" id="86">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таблица остатков расчетов группа долг партнера</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settlement balance table partner's debt group</v8:content>
+						</v8:item>
+					</Title>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ТаблицаОстатковРасчетовГруппаДолгПартнераРасширеннаяПодсказка" id="87"/>
+					<ChildItems>
+						<InputField name="ТаблицаОстатковРасчетовДолгПартнера" id="28">
+							<DataPath>ТаблицаОстатковРасчетов.ДолгПартнера</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="ТаблицаОстатковРасчетовДолгПартнераКонтекстноеМеню" id="29"/>
+							<ExtendedTooltip name="ТаблицаОстатковРасчетовДолгПартнераРасширеннаяПодсказка" id="30"/>
+						</InputField>
+						<InputField name="ТаблицаОстатковРасчетовВалютаВзаиморасчетовДолгПартнера" id="83">
+							<DataPath>ТаблицаОстатковРасчетов.ВалютаВзаиморасчетов</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>4</Width>
+							<ContextMenu name="ТаблицаОстатковРасчетовВалютаВзаиморасчетовДолгПартнераКонтекстноеМеню" id="84"/>
+							<ExtendedTooltip name="ТаблицаОстатковРасчетовВалютаВзаиморасчетовДолгПартнераРасширеннаяПодсказка" id="85"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ТаблицаОстатковРасчетовГруппаНашДолг" id="91">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таблица остатков расчетов группа наш долг</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settlement balance table payables group</v8:content>
+						</v8:item>
+					</Title>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ТаблицаОстатковРасчетовГруппаНашДолгРасширеннаяПодсказка" id="92"/>
+					<ChildItems>
+						<InputField name="ТаблицаОстатковРасчетовНашДолг" id="31">
+							<DataPath>ТаблицаОстатковРасчетов.НашДолг</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="ТаблицаОстатковРасчетовНашДолгКонтекстноеМеню" id="32"/>
+							<ExtendedTooltip name="ТаблицаОстатковРасчетовНашДолгРасширеннаяПодсказка" id="33"/>
+						</InputField>
+						<InputField name="ТаблицаОстатковРасчетовВалютаВзаиморасчетовНашДолг" id="88">
+							<DataPath>ТаблицаОстатковРасчетов.ВалютаВзаиморасчетов</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>4</Width>
+							<ContextMenu name="ТаблицаОстатковРасчетовВалютаВзаиморасчетовНашДолгКонтекстноеМеню" id="89"/>
+							<ExtendedTooltip name="ТаблицаОстатковРасчетовВалютаВзаиморасчетовНашДолгРасширеннаяПодсказка" id="90"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<InputField name="ТаблицаОстатковРасчетовПартнер" id="40">
+					<DataPath>ТаблицаОстатковРасчетов.Партнер</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ТаблицаОстатковРасчетовПартнерКонтекстноеМеню" id="41"/>
+					<ExtendedTooltip name="ТаблицаОстатковРасчетовПартнерРасширеннаяПодсказка" id="42"/>
+				</InputField>
+				<InputField name="ТаблицаОстатковРасчетовОрганизация" id="43">
+					<DataPath>ТаблицаОстатковРасчетов.Организация</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ТаблицаОстатковРасчетовОрганизацияКонтекстноеМеню" id="44"/>
+					<ExtendedTooltip name="ТаблицаОстатковРасчетовОрганизацияРасширеннаяПодсказка" id="45"/>
+				</InputField>
+				<InputField name="ТаблицаОстатковРасчетовИдентификаторПлатежа" id="46">
+					<DataPath>ТаблицаОстатковРасчетов.ИдентификаторПлатежа</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ТаблицаОстатковРасчетовИдентификаторПлатежаКонтекстноеМеню" id="47"/>
+					<ExtendedTooltip name="ТаблицаОстатковРасчетовИдентификаторПлатежаРасширеннаяПодсказка" id="48"/>
+				</InputField>
+				<InputField name="ТаблицаОстатковРасчетовДоговор" id="49">
+					<DataPath>ТаблицаОстатковРасчетов.Договор</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ТаблицаОстатковРасчетовДоговорКонтекстноеМеню" id="50"/>
+					<ExtendedTooltip name="ТаблицаОстатковРасчетовДоговорРасширеннаяПодсказка" id="51"/>
+				</InputField>
+				<InputField name="ТаблицаОстатковРасчетовСтатьяДвиженияДенежныхСредств" id="96">
+					<DataPath>ТаблицаОстатковРасчетов.СтатьяДвиженияДенежныхСредств</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ТаблицаОстатковРасчетовСтатьяДвиженияДенежныхСредствКонтекстноеМеню" id="97"/>
+					<ExtendedTooltip name="ТаблицаОстатковРасчетовСтатьяДвиженияДенежныхСредствРасширеннаяПодсказка" id="98"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="ГруппаПодвал" id="60">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа подвал</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer group</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>false</HorizontalStretch>
+			<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:ИтогиФон</BackColor>
+			<ExtendedTooltip name="ГруппаПодвалРасширеннаяПодсказка" id="61"/>
+			<ChildItems>
+				<LabelField name="СуммаПлатежей" id="62">
+					<DataPath>СуммаПлатежей</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выбранные платежи</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Selected payments</v8:content>
+						</v8:item>
+					</Title>
+					<Width>12</Width>
+					<ContextMenu name="СуммаПлатежейКонтекстноеМеню" id="63"/>
+					<ExtendedTooltip name="СуммаПлатежейРасширеннаяПодсказка" id="64"/>
+				</LabelField>
+				<LabelField name="СуммаДокумента" id="65">
+					<DataPath>СуммаДокумента</DataPath>
+					<ContextMenu name="СуммаДокументаКонтекстноеМеню" id="66"/>
+					<ExtendedTooltip name="СуммаДокументаРасширеннаяПодсказка" id="67"/>
+				</LabelField>
+				<LabelField name="ВалютаДокумента" id="93">
+					<DataPath>ВалютаДокумента</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Width>4</Width>
+					<ContextMenu name="ВалютаДокументаКонтекстноеМеню" id="94"/>
+					<ExtendedTooltip name="ВалютаДокументаРасширеннаяПодсказка" id="95"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ТаблицаОстатковРасчетов" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица остатков расчетов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment balance table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Выбран" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выбран</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Selected</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ОбъектРасчетов" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объект расчетов</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>AR/AP object</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ОбъектыРасчетов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Сумма" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.ДенежнаяСуммаЛюбогоЗнака</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="КОплате" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>К оплате</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>For payment</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.ДенежнаяСуммаЛюбогоЗнака</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="ДолгПартнера" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Долг партнера</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Partner debt</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.ДенежнаяСуммаЛюбогоЗнака</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="НашДолг" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наш долг</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payables</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.ДенежнаяСуммаЛюбогоЗнака</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="ВалютаВзаиморасчетов" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Валюта взаиморасчетов</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>AR/AP currency</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Партнер" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Партнер</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Partner</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Партнеры</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Организация" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИдентификаторПлатежа" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор платежа</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payment ID</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>25</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Договор" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Договор</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Contract</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ДоговорыМеждуОрганизациями</v8:Type>
+						<v8:Type>cfg:CatalogRef.ДоговорыКонтрагентов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Контрагент" id="32">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагент</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+						<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ТипРасчетов" id="33">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип расчетов</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payment type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.ТипыРасчетовСПартнерами</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВалютаДокумента" id="35">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Валюта документа</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document currency</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СтатьяДвиженияДенежныхСредств" id="36">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статья ДДС</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cash flow item</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.СтатьиДвиженияДенежныхСредств</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВариантКурсаДоговора" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вариант курса договора</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Contract rate option</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.ВариантыКурсаДоговора</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДатаПогашения" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата погашения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Repayment date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаПлатежа" id="47">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата платежа</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payment date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.НоваяАрхитектураВзаиморасчетов</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="Оплачивается" id="48">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оплачивается</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Being paid</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.ДенежнаяСуммаЛюбогоЗнака</v8:TypeSet>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.НоваяАрхитектураВзаиморасчетов</Item>
+					</FunctionalOptions>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Организация" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТипРасчетов" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип расчетов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment type</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ТипыРасчетовСПартнерами</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Контрагент" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагент</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+				<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Партнер" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Партнер</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Partner</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Партнеры</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьПартнеровИКонтрагентов</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ВалютаВзаиморасчетов" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта взаиморасчетов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>AR/AP currency</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторПлатежа" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор платежа</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>25</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СуммаДокумента" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма документа</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DefinedType.ДенежнаяСуммаЛюбогоЗнака</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="ВалютаДокумента" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта документа</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document currency</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаДокумента" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата документа</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресПлатежейВХранилище" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес платежей в хранилище</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Address of payments in the storage</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПартнерПрочиеОтношения" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Партнер прочие отношения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Partner other relations</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПодборДебиторскойЗадолженности" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор дебиторской задолженности</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick receivables</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПодборТолькоБезусловнойЗадолженности" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор только безусловной задолженности</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick only unconditional debt</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="УчитыватьФилиалы" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Учитывать филиалы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Record branch offices</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбъектСсылка" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект ссылка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object link</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:AnyIBRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="СуммаПлатежей" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма платежей</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payments amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DefinedType.ДенежнаяСуммаЛюбогоЗнака</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="ОднаВалютаВзаиморасчетов" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Одна валюта взаиморасчетов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>One AR/AP currency</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПодбиратьНаСумму" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбирать на сумму</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick for amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>ПодбиратьНаСумму</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="КоэффициентыПересчета" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Коэффициенты пересчета</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Conversion ratios</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Валюта" id="40">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Валюта</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Currency</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Коэффициент" id="41">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Коэффициент</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Coefficient</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>31</v8:Digits>
+							<v8:FractionDigits>17</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПараметрДополнительныеОтборы" id="45">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметр дополнительные отборы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional filter parameter</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+		<Attribute name="ЗаполнятьНДСВРасшифровке" id="46">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнять НДС в расшифровке</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill VAT in drill-down</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоДатамПлатежей" id="49">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>По датам платежей</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>By payment dates</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>ПоДатамПлатежей</Field>
+			</Save>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПеренестиВДокумент" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перенести в документ</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add to document</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПеренестиВДокументВыполнить</Action>
+		</Command>
+		<Command name="ВыбратьВыделенныеПлатежи" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать выделенные платежи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select selected payments</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ВыбратьВыделенныеПлатежи</Action>
+		</Command>
+		<Command name="ВыбратьПлатежи" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать платежи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select payments</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ВыбратьПлатежиВыполнить</Action>
+		</Command>
+		<Command name="ИсключитьВыделенныеПлатежи" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исключить выделенные платежи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exclude selected payments</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ИсключитьВыделенныеПлатежи</Action>
+		</Command>
+		<Command name="ИсключитьПлатежи" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исключить платежи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exclude payments</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ИсключитьПлатежиВыполнить</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Организация">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ИдентификаторПлатежа">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>25</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Контрагент">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+				<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Партнер">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Партнеры</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ВалютаВзаиморасчетов">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ПартнерПрочиеОтношения">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ПодборДебиторскойЗадолженности">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ПодборТолькоБезусловнойЗадолженности">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="УчитыватьФилиалы">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="АдресПлатежейВХранилище">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ВалютаДокумента">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ДатаДокумента">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="СуммаДокумента">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>31</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ТипРасчетов">
+			<Type>
+				<v8:Type>cfg:EnumRef.ТипыРасчетовСПартнерами</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ОбъектСсылка">
+			<Type>
+				<v8:TypeSet>cfg:AnyIBRef</v8:TypeSet>
+			</Type>
+		</Parameter>
+		<Parameter name="ДополнительныеОтборы">
+			<Type/>
+		</Parameter>
+		<Parameter name="ЗаполнятьНДСВРасшифровке">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

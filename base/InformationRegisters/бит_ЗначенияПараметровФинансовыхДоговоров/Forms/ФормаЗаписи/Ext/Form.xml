@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Организация" id="9">
+			<DataPath>Запись.Организация</DataPath>
+			<ContextMenu name="ОрганизацияКонтекстноеМеню" id="10"/>
+			<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="15"/>
+		</InputField>
+		<InputField name="Контрагент" id="11">
+			<DataPath>Запись.Контрагент</DataPath>
+			<ContextMenu name="КонтрагентКонтекстноеМеню" id="12"/>
+			<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="16"/>
+		</InputField>
+		<InputField name="ДоговорКонтрагента" id="1">
+			<DataPath>Запись.ДоговорКонтрагента</DataPath>
+			<ContextMenu name="ДоговорКонтрагентаКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ДоговорКонтрагентаРасширеннаяПодсказка" id="17"/>
+		</InputField>
+		<InputField name="СоставляющаяПлатежа" id="3">
+			<DataPath>Запись.СоставляющаяПлатежа</DataPath>
+			<ContextMenu name="СоставляющаяПлатежаКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="СоставляющаяПлатежаРасширеннаяПодсказка" id="18"/>
+		</InputField>
+		<InputField name="Параметр" id="5">
+			<DataPath>Запись.Параметр</DataPath>
+			<ContextMenu name="ПараметрКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="ПараметрРасширеннаяПодсказка" id="19"/>
+		</InputField>
+		<InputField name="ЗначениеПараметра" id="7">
+			<DataPath>Запись.ЗначениеПараметра</DataPath>
+			<TypeLink>
+				<xr:DataPath>Запись.Параметр</xr:DataPath>
+				<xr:LinkItem>0</xr:LinkItem>
+			</TypeLink>
+			<ContextMenu name="ЗначениеПараметраКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ЗначениеПараметраРасширеннаяПодсказка" id="20"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Запись" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.бит_ЗначенияПараметровФинансовыхДоговоров</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ЗначениеПараметра</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Запись.Параметр</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+</Form>

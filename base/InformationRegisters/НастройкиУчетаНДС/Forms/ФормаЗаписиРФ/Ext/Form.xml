@@ -1,0 +1,1204 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Настройки учета НДС</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>VAT accounting settings</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="131">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="132"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="129">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Записать</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="130"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаИзмеренияИстория" id="154">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа история изменений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group change history</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаИзмеренияИсторияРасширеннаяПодсказка" id="155"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаИстория" id="115">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>История</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>History</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаИсторияРасширеннаяПодсказка" id="116"/>
+					<ChildItems>
+						<InputField name="ДатаИзменения" id="123">
+							<DataPath>ДатаИзменения</DataPath>
+							<ContextMenu name="ДатаИзмененияКонтекстноеМеню" id="124"/>
+							<ExtendedTooltip name="ДатаИзмененияРасширеннаяПодсказка" id="125"/>
+							<Events>
+								<Event name="OnChange">ДатаИзмененияПриИзменении</Event>
+							</Events>
+						</InputField>
+						<LabelField name="ОписаниеИстории" id="126">
+							<DataPath>ОписаниеИстории</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="ОписаниеИсторииКонтекстноеМеню" id="127"/>
+							<ExtendedTooltip name="ОписаниеИсторииРасширеннаяПодсказка" id="128"/>
+							<Events>
+								<Event name="URLProcessing">ОписаниеИсторииОбработкаНавигационнойСсылки</Event>
+							</Events>
+						</LabelField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="Организация" id="4">
+					<DataPath>Запись.Организация</DataPath>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="6"/>
+					<Events>
+						<Event name="OnChange">ОрганизацияПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<CheckBoxField name="ПрименяетсяОсвобождениеОтУплатыНДС" id="45">
+			<DataPath>Запись.ПрименяетсяОсвобождениеОтУплатыНДС</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ПрименяетсяОсвобождениеОтУплатыНДСКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="ПрименяетсяОсвобождениеОтУплатыНДСРасширеннаяПодсказка" id="47">
+				<Title formatted="false">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Организация применяет освобождение от уплаты НДС по ст. 145 или 145.1 НК РФ</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>The company applies exemption from VAT under art. 145 or 145.1 of the Tax Code of the Russian Federation</v8:content>
+					</v8:item>
+				</Title>
+			</ExtendedTooltip>
+			<Events>
+				<Event name="OnChange">ПрименяетсяОсвобождениеОтУплатыНДСПриИзменении</Event>
+			</Events>
+		</CheckBoxField>
+		<CheckBoxField name="ЕстьРеализацияРаботУслугНеНаТерриторииРФ" id="485">
+			<DataPath>Запись.ЕстьРеализацияРаботУслугНеНаТерриторииРФ</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ЕстьРеализацияРаботУслугНеНаТерриторииРФКонтекстноеМеню" id="486"/>
+			<ExtendedTooltip name="ЕстьРеализацияРаботУслугНеНаТерриторииРФРасширеннаяПодсказка" id="487">
+				<Title formatted="false">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Если местом реализации работ или услуг не признается РФ, то "входной" НДС можно принять к вычету. Установка признака позволяет указывать в документах реализации налогообложение НДС "Реализация услуг на экспорт".</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>If the Russian Federation is not recognized as the place of sale of works or services, then the "input" VAT can be deductible. By setting the flag you can specify in the sales documents the VAT taxation “Sales of services for export”.</v8:content>
+					</v8:item>
+				</Title>
+			</ExtendedTooltip>
+		</CheckBoxField>
+		<CheckBoxField name="ЗаписьЕстьРеализацияТоваровФизлицамВЕАЭС" id="506">
+			<DataPath>Запись.ЕстьРеализацияТоваровФизлицамВЕАЭС</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ЗаписьЕстьРеализацияТоваровФизлицамВЕАЭСКонтекстноеМеню" id="507"/>
+			<ExtendedTooltip name="ЗаписьЕстьРеализацияТоваровФизлицамВЕАЭСРасширеннаяПодсказка" id="508">
+				<Title formatted="false">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Если товары продаются через интернет-площадки физическим лицам в ЕАЭС, то "входной" НДС можно принять к вычету, хотя НДС с реализации начисляется и уплачивается в бюджеты других стран. Установка признака позволяет указывать в документах реализации налогообложение НДС "Облагается НДС в стране ЕАЭС (не РФ)".</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>If goods are sold to persons in EAEU via online platforms, the input VAT can be deducted, although VAT on the sale is charged and paid to other country budgets. If you select the checkbox, you can specify the "Sales are subject to VAT in EAEU country (not the Russian Federation)" VAT taxation in sales documents.</v8:content>
+					</v8:item>
+				</Title>
+			</ExtendedTooltip>
+		</CheckBoxField>
+		<InputField name="ПравилоОтбораАвансовДляРегистрацииСчетовФактур" id="73">
+			<DataPath>Запись.ПравилоОтбораАвансовДляРегистрацииСчетовФактур</DataPath>
+			<TitleLocation>Top</TitleLocation>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<MaxWidth>41</MaxWidth>
+			<ListChoiceMode>true</ListChoiceMode>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="xr:DesignTimeRef">Enum.ПорядокРегистрацииСчетовФактурНаАванс.EnumValue.КромеЗачтенныхВТечениеДня</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="xr:DesignTimeRef">Enum.ПорядокРегистрацииСчетовФактурНаАванс.EnumValue.КромеЗачтенныхВТечениеПятиДней</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="xr:DesignTimeRef">Enum.ПорядокРегистрацииСчетовФактурНаАванс.EnumValue.КромеЗачтенныхВТечениеМесяца</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="xr:DesignTimeRef">Enum.ПорядокРегистрацииСчетовФактурНаАванс.EnumValue.КромеЗачтенныхВТечениеКвартала</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<ContextMenu name="ПравилоОтбораАвансовДляРегистрацииСчетовФактурКонтекстноеМеню" id="41"/>
+			<ExtendedTooltip name="ПравилоОтбораАвансовДляРегистрацииСчетовФактурРасширеннаяПодсказка" id="42"/>
+		</InputField>
+		<InputField name="ПериодичностьОформленияСводныхСправок" id="159">
+			<DataPath>Запись.ПериодичностьОформленияСводныхСправок</DataPath>
+			<TitleLocation>Top</TitleLocation>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<MaxWidth>41</MaxWidth>
+			<ListChoiceMode>true</ListChoiceMode>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Ежемесячно</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Monthly</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xr:DesignTimeRef">Enum.Периодичность.EnumValue.Месяц</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Ежеквартально</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Quarterly</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xr:DesignTimeRef">Enum.Периодичность.EnumValue.Квартал</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<ContextMenu name="ПериодичностьОформленияСводныхСправокКонтекстноеМеню" id="160"/>
+			<ExtendedTooltip name="ПериодичностьОформленияСводныхСправокРасширеннаяПодсказка" id="161"/>
+		</InputField>
+		<InputField name="ПериодичностьФормированияВычетовИВосстановленийНДС" id="488">
+			<DataPath>Запись.ПериодичностьФормированияВычетовИВосстановленийНДС</DataPath>
+			<TitleLocation>Top</TitleLocation>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<MaxWidth>41</MaxWidth>
+			<ListChoiceMode>true</ListChoiceMode>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="xr:DesignTimeRef">Enum.Периодичность.EnumValue.Месяц</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="xr:DesignTimeRef">Enum.Периодичность.EnumValue.Квартал</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<ContextMenu name="ПериодичностьФормированияВычетовИВосстановленийНДСКонтекстноеМеню" id="489"/>
+			<ExtendedTooltip name="ПериодичностьФормированияВычетовИВосстановленийНДСРасширеннаяПодсказка" id="490"/>
+		</InputField>
+		<UsualGroup name="ГруппаСложныйУчетНДС" id="48">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа сложный учет НДС</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group complex VAT accounting</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСложныйУчетНДСРасширеннаяПодсказка" id="49"/>
+			<ChildItems>
+				<CheckBoxField name="РаздельныйУчетТоваровПоНалогообложениюНДС" id="50">
+					<DataPath>Запись.РаздельныйУчетТоваровПоНалогообложениюНДС</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="РаздельныйУчетТоваровПоНалогообложениюНДСКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="РаздельныйУчетТоваровПоНалогообложениюНДСРасширеннаяПодсказка" id="52"/>
+					<Events>
+						<Event name="OnChange">РаздельныйУчетТоваровПоНалогообложениюНДСПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<CheckBoxField name="ФормироватьНДСПредъявленныйПриВключенииВСтоимость" id="494">
+					<DataPath>Запись.ФормироватьНДСПредъявленныйПриВключенииВСтоимость</DataPath>
+					<Enabled>false</Enabled>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>При приобретении под необлагаемую деятельность проводить включение НДС в стоимость через 19 счет</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>When purchasing for non-taxable activity, post VAT inclusion in cost over account 19</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ФормироватьНДСПредъявленныйПриВключенииВСтоимостьКонтекстноеМеню" id="495"/>
+					<ExtendedTooltip name="ФормироватьНДСПредъявленныйПриВключенииВСтоимостьРасширеннаяПодсказка" id="496"/>
+				</CheckBoxField>
+				<CheckBoxField name="РаздельныйУчетПостатейныхПроизводственныхЗатратПоНалогообложениюНДС" id="53">
+					<DataPath>Запись.РаздельныйУчетПостатейныхПроизводственныхЗатратПоНалогообложениюНДС</DataPath>
+					<Enabled>false</Enabled>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="РаздельныйУчетПостатейныхПроизводственныхЗатратПоНалогообложениюНДСКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="РаздельныйУчетПостатейныхПроизводственныхЗатратПоНалогообложениюНДСРасширеннаяПодсказка" id="55"/>
+					<Events>
+						<Event name="OnChange">РаздельныйУчетПостатейныхПроизводственныхЗатратПоНалогообложениюНДСПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="ГруппаРаздельныйУчетПостатейныхПроизводственныхЗатратКомментарий" id="141">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа раздельный учет постатейных расходов</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group separate accounting of itemized expenses</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРаздельныйУчетПостатейныхПроизводственныхЗатратКомментарийРасширеннаяПодсказка" id="142"/>
+					<ChildItems>
+						<PictureDecoration name="РаздельныйУчетПостатейныхПроизводственныхЗатратКомментарийКартинка" id="143">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Раздельный учет постатейных производственных затрат комментарий картинка</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Separate accounting of itemized production expenses comment picture</v8:content>
+								</v8:item>
+							</Title>
+							<Picture>
+								<xr:Ref>CommonPicture.ИнформацияПоНедоступнымПолям</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="РаздельныйУчетПостатейныхПроизводственныхЗатратКомментарийКартинкаКонтекстноеМеню" id="144"/>
+							<ExtendedTooltip name="РаздельныйУчетПостатейныхПроизводственныхЗатратКомментарийКартинкаРасширеннаяПодсказка" id="145"/>
+						</PictureDecoration>
+						<LabelDecoration name="РаздельныйУчетПостатейныхПроизводственныхЗатратКомментарий" id="146">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Раздельный учет постатейных производственных затрат возможен только при использовании партионного учета 2.2 и методе оценки стоимости "ФИФО скользящая оценка".</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Separate accounting of itemized production expenses is possible only with lot accounting 2.2 and the “FIFO rolling estimate” cost evaluation method.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="РаздельныйУчетПостатейныхПроизводственныхЗатратКомментарийКонтекстноеМеню" id="147"/>
+							<ExtendedTooltip name="РаздельныйУчетПостатейныхПроизводственныхЗатратКомментарийРасширеннаяПодсказка" id="148"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<CheckBoxField name="УчетНДСДлительногоЦиклаПроизводства" id="56">
+					<DataPath>Запись.УчетНДСДлительногоЦиклаПроизводства</DataPath>
+					<Enabled>false</Enabled>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="УчетНДСДлительногоЦиклаПроизводстваКонтекстноеМеню" id="20"/>
+					<ExtendedTooltip name="УчетНДСДлительногоЦиклаПроизводстваРасширеннаяПодсказка" id="58">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Учет НДС при длительном цикле производства (п. 13 ст. 167 НК РФ) и учет НДС постатейных расходов. Возможен при включенном партионном учете версии 2.2 и методе оценки стоимости "ФИФО скользящая".</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>VAT accounting for long production cycle (cl. 13 art. 167 of the Tax Code) and VAT accounting of itemized expenses. It can be used if lot accounting 2.2 and the "FIFO rolling" cost evaluation method are selected.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</CheckBoxField>
+				<CheckBoxField name="УчетНДСВКосмическойДеятельности" id="500">
+					<DataPath>Запись.УчетНДСВКосмическойДеятельности</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Учет НДС в космической деятельности</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>VAT accounting in space activity</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="УчетНДСВКосмическойДеятельностиКонтекстноеМеню" id="501"/>
+					<ExtendedTooltip name="УчетНДСВКосмическойДеятельностиРасширеннаяПодсказка" id="502">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Учет НДС в области космической деятельности (пп. 5 п. 1 ст. 164 и п. 7 ст. 165 НК РФ)</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>VAT accounting in space activity (subcl. 5 cl. 1 art. 164 and cl. 7 art. 165 of the Tax Code of the Russian Federation)</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</CheckBoxField>
+				<CheckBoxField name="УчетНДСПоФактическомуИспользованию" id="59">
+					<DataPath>Запись.ПрименяетсяУчетНДСПоФактическомуИспользованию</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="УчетНДСПоФактическомуИспользованиюКонтекстноеМеню" id="60"/>
+					<ExtendedTooltip name="УчетНДСПоФактическомуИспользованиюРасширеннаяПодсказка" id="61"/>
+				</CheckBoxField>
+				<CheckBoxField name="ЗаписьПрименяетсяРасчетНДССМежценовойРазницы" id="497">
+					<DataPath>Запись.ПрименяетсяРасчетНДССМежценовойРазницы</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ЗаписьПрименяетсяРасчетНДССМежценовойРазницыКонтекстноеМеню" id="498"/>
+					<ExtendedTooltip name="ЗаписьПрименяетсяРасчетНДССМежценовойРазницыРасширеннаяПодсказка" id="499"/>
+				</CheckBoxField>
+				<CheckBoxField name="Учитывать5ПроцентныйПорог" id="65">
+					<DataPath>Запись.Учитывать5ПроцентныйПорог</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="Учитывать5ПроцентныйПорогКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="Учитывать5ПроцентныйПорогРасширеннаяПодсказка" id="67"/>
+				</CheckBoxField>
+				<CheckBoxField name="РаспределятьНДСВМесяцеОсуществленияКапВложений" id="491">
+					<DataPath>Запись.РаспределятьНДСВМесяцеОсуществленияКапВложений</DataPath>
+					<Enabled>false</Enabled>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="РаспределятьНДСВМесяцеОсуществленияКапВложенийКонтекстноеМеню" id="492"/>
+					<ExtendedTooltip name="РаспределятьНДСВМесяцеОсуществленияКапВложенийРасширеннаяПодсказка" id="493"/>
+				</CheckBoxField>
+				<CheckBoxField name="СписыватьНДСПоРасходамНеПринимаемымВНУ" id="503">
+					<DataPath>Запись.СписыватьНДСПоРасходамНеПринимаемымВНУ</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Списывать НДС по расходам, не принимаемым в НУ</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Write off VAT by expenses that are not recorded in TA</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="СписыватьНДСПоРасходамНеПринимаемымВНУКонтекстноеМеню" id="504"/>
+					<ExtendedTooltip name="СписыватьНДСПоРасходамНеПринимаемымВНУРасширеннаяПодсказка" id="505">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>При отражении не принимаемых в НУ расходов или при списании товаров на непринимаемую статью НДС будет списываться на определенную в учетной политике статью</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>When recording expenses that cannot be accepted to TA or writing off goods to an item which cannot be accepted, VAT will be written off to the item specified in the accounting policy</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаСтатьяРасходовСписаниеНДС" id="133">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Направление списания НДС, не принимаемого к НУ:</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>The direction of write-off of VAT not accepted for tax accounting:</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:FormTextColor</TitleTextColor>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаСтатьяРасходовСписаниеНДСРасширеннаяПодсказка" id="134"/>
+			<ChildItems>
+				<LabelDecoration name="ДекорацияСтатьяРасходовСписаниеНДС" id="151">
+					<Width>2</Width>
+					<ContextMenu name="ДекорацияСтатьяРасходовСписаниеНДСКонтекстноеМеню" id="152"/>
+					<ExtendedTooltip name="ДекорацияСтатьяРасходовСписаниеНДСРасширеннаяПодсказка" id="153"/>
+				</LabelDecoration>
+				<UsualGroup name="ГруппаСтатьяРасходовСписаниеНДСВертикальная" id="149">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статья списания НДС (вертикальная)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>VAT debiting item (vertical)</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСтатьяРасходовСписаниеНДСВертикальнаяРасширеннаяПодсказка" id="150"/>
+					<ChildItems>
+						<InputField name="СтатьяРасходовСписаниеНДС" id="135">
+							<DataPath>Запись.СтатьяРасходовСписаниеНДС</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Статья расходов</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Expense item</v8:content>
+								</v8:item>
+							</Title>
+							<Width>25</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="СтатьяРасходовСписаниеНДСКонтекстноеМеню" id="136"/>
+							<ExtendedTooltip name="СтатьяРасходовСписаниеНДСРасширеннаяПодсказка" id="137"/>
+							<Events>
+								<Event name="OnChange">СтатьяРасходовСписаниеНДСПриИзменении</Event>
+								<Event name="StartChoice">СтатьяРасходовСписаниеНДСНачалоВыбора</Event>
+							</Events>
+						</InputField>
+						<InputField name="АналитикаРасходовСписаниеНДС" id="138">
+							<DataPath>Запись.АналитикаРасходовСписаниеНДС</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Аналитика расходов</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Expense dimension</v8:content>
+								</v8:item>
+							</Title>
+							<Width>27</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ChoiceButton>true</ChoiceButton>
+							<ContextMenu name="АналитикаРасходовСписаниеНДСКонтекстноеМеню" id="139"/>
+							<ExtendedTooltip name="АналитикаРасходовСписаниеНДСРасширеннаяПодсказка" id="140"/>
+							<Events>
+								<Event name="AutoComplete">АналитикаРасходовСписаниеНДСАвтоПодбор</Event>
+								<Event name="StartChoice">АналитикаРасходовСписаниеНДСНачалоВыбора</Event>
+								<Event name="TextEditEnd">АналитикаРасходовСписаниеНДСОкончаниеВводаТекста</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПравилоОтбораАвансовДляРегистрацииСчетовФактур" id="71">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Правило отбора авансов для регистрации счетов фактур</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Rule of advance payment filter to register tax invoices</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПравилоОтбораАвансовДляРегистрацииСчетовФактурРасширеннаяПодсказка" id="72"/>
+		</UsualGroup>
+		<UsualGroup name="ГруппаВариантУчетаНДСПриИзмененииВидаДеятельности" id="76">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант учета НДС, выделенного из стоимости товаров, при изменении деятельности на необлагаемую:</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>VAT accounting option selected from the goods cost on changing activity for non-taxable one:</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:FormTextColor</TitleTextColor>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаВариантУчетаНДСПриИзмененииВидаДеятельностиРасширеннаяПодсказка" id="77"/>
+			<ChildItems>
+				<RadioButtonField name="ВариантУчетаНДСПриИзмененииВидаДеятельности" id="78">
+					<DataPath>Запись.ВариантУчетаНДСПриИзмененииВидаДеятельности</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вариант учета НДС, выделенного из стоимости товаров, при изменении деятельности на необлагаемую (облагаемую ЕНВД)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>VAT accounting option selected from the goods cost on changing activity for non-taxable (taxable) UTII</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Списать на прочие расходы</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Expense as</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ВариантыУчетаНДСПриИзмененииВидаДеятельностиНаНеоблагаемую.EnumValue.ВключатьВПрочиеРасходы</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Включить в стоимость</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Include in cost</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ВариантыУчетаНДСПриИзмененииВидаДеятельностиНаНеоблагаемую.EnumValue.ВключатьВСтоимость</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>При изменении в периоде поступления - включить в стоимость, в последующих периодах - списать на прочие расходы</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Include in cost while changing in the receipt period, write off as expenses in subsequent periods</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ВариантыУчетаНДСПриИзмененииВидаДеятельностиНаНеоблагаемую.EnumValue.ВключатьВСтоимостьИлиРасходыВЗависимостиОтПериода</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ВариантУчетаНДСПриИзмененииВидаДеятельностиКонтекстноеМеню" id="26"/>
+					<ExtendedTooltip name="ВариантУчетаНДСПриИзмененииВидаДеятельностиРасширеннаяПодсказка" id="27"/>
+					<Events>
+						<Event name="OnChange">ВариантУчетаНДСПриИзмененииВидаДеятельностиПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПравилаСписанияНДСПоТоварам" id="81">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Правила списания НДС при изменении деятельности на необлагаемую</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>VAT debiting rules when changing activity to non-taxable</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПравилаСписанияНДСПоТоварамРасширеннаяПодсказка" id="82"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаСтатьяРасходовНеНДС" id="83">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Направление списания НДС при изменении вида деятельности на "Продажи, не облагаемые НДС":</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>VAT debiting direction when changing the activity type to "VAT-exempt sales":</v8:content>
+						</v8:item>
+					</Title>
+					<TitleTextColor>style:FormTextColor</TitleTextColor>
+					<Width>80</Width>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ГруппаСтатьяРасходовНеНДСРасширеннаяПодсказка" id="84"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияСтатьяРасходовНеНДС" id="85">
+							<Width>2</Width>
+							<ContextMenu name="ДекорацияСтатьяРасходовНеНДСКонтекстноеМеню" id="86"/>
+							<ExtendedTooltip name="ДекорацияСтатьяРасходовНеНДСРасширеннаяПодсказка" id="87"/>
+						</LabelDecoration>
+						<UsualGroup name="ГруппаСтатьяРасходовНеНДСВертикальная" id="88">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Статья расходов не НДС вертикальная</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Expense item not VAT vertical</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаСтатьяРасходовНеНДСВертикальнаяРасширеннаяПодсказка" id="89"/>
+							<ChildItems>
+								<InputField name="СтатьяЗатратНеНДС" id="90">
+									<DataPath>Запись.СтатьяРасходовНеНДС</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Статья расходов</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Expense item</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>25</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="СтатьяЗатратНеНДСКонтекстноеМеню" id="91"/>
+									<ExtendedTooltip name="СтатьяЗатратНеНДСРасширеннаяПодсказка" id="92"/>
+									<Events>
+										<Event name="OnChange">СтатьяЗатратНеНДСПриИзменении</Event>
+										<Event name="StartChoice">СтатьяЗатратНеНДСНачалоВыбора</Event>
+									</Events>
+								</InputField>
+								<InputField name="АналитикаРасходовНеНДС" id="93">
+									<DataPath>Запись.АналитикаРасходовНеНДС</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Аналитика расходов</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Expense dimension</v8:content>
+										</v8:item>
+									</Title>
+									<Width>27</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+									<ChooseType>false</ChooseType>
+									<ContextMenu name="АналитикаРасходовНеНДСКонтекстноеМеню" id="32"/>
+									<ExtendedTooltip name="АналитикаРасходовНеНДСРасширеннаяПодсказка" id="95"/>
+									<Events>
+										<Event name="AutoComplete">АналитикаРасходовНеНДСАвтоПодбор</Event>
+										<Event name="StartChoice">АналитикаРасходовНеНДСНачалоВыбора</Event>
+										<Event name="TextEditEnd">АналитикаРасходовНеНДСОкончаниеВводаТекста</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСтатьяРасходовЕНВД" id="96">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Направление списания НДС при изменении вида деятельности на "Продажи, облагаемые ЕНВД":</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>VAT debiting direction when changing the activity type to "Sales subject to UTII":</v8:content>
+						</v8:item>
+					</Title>
+					<TitleTextColor>style:FormTextColor</TitleTextColor>
+					<Width>80</Width>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ГруппаСтатьяРасходовЕНВДРасширеннаяПодсказка" id="97"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияСтатьяРасходовЕНВД" id="98">
+							<Width>2</Width>
+							<ContextMenu name="ДекорацияСтатьяРасходовЕНВДКонтекстноеМеню" id="99"/>
+							<ExtendedTooltip name="ДекорацияСтатьяРасходовЕНВДРасширеннаяПодсказка" id="100"/>
+						</LabelDecoration>
+						<UsualGroup name="ГруппаСтатьяРасходовЕНВДВертикальная" id="101">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Статья расходов ЕНВД вертикальная</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>UTII expense item vertical</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаСтатьяРасходовЕНВДВертикальнаяРасширеннаяПодсказка" id="102"/>
+							<ChildItems>
+								<InputField name="СтатьяЗатратЕНВД" id="103">
+									<DataPath>Запись.СтатьяРасходовЕНВД</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Статья расходов</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Expense item</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>25</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="СтатьяЗатратЕНВДКонтекстноеМеню" id="104"/>
+									<ExtendedTooltip name="СтатьяЗатратЕНВДРасширеннаяПодсказка" id="105"/>
+									<Events>
+										<Event name="OnChange">СтатьяЗатратЕНВДПриИзменении</Event>
+										<Event name="StartChoice">СтатьяЗатратЕНВДНачалоВыбора</Event>
+									</Events>
+								</InputField>
+								<InputField name="АналитикаРасходовЕНВД" id="106">
+									<DataPath>Запись.АналитикаРасходовЕНВД</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Аналитика расходов</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Expense dimension</v8:content>
+										</v8:item>
+									</Title>
+									<Width>27</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+									<ChooseType>false</ChooseType>
+									<ContextMenu name="АналитикаРасходовЕНВДКонтекстноеМеню" id="38"/>
+									<ExtendedTooltip name="АналитикаРасходовЕНВДРасширеннаяПодсказка" id="108"/>
+									<Events>
+										<Event name="AutoComplete">АналитикаРасходовЕНВДАвтоПодбор</Event>
+										<Event name="StartChoice">АналитикаРасходовЕНВДНачалоВыбора</Event>
+										<Event name="TextEditEnd">АналитикаРасходовЕНВДОкончаниеВводаТекста</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Запись" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.НастройкиУчетаНДС</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ДатаИзменения" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="ИмяРегистра" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя регистра</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОписаниеИстории" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание истории</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>History description</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:FormattedString</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Организация" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоФормаЗаписи" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это форма записи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is a record form</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="МетодОценкиСтоимостиТоваров" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Метод оценки стоимости товаров</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory valuation method</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.МетодыОценкиСтоимостиТоваров</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПартионныйУчетВерсии22" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Партионный учет версии22</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Lot accounting22</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбособленноеПодразделение" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обособленное подразделение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Branch office</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПрименяетсяЕНВД" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применяется ЕНВД</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>UTII is applied</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СистемаНалогообложения" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Система налогообложения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Taxation system</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.СистемыНалогообложения</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АналитикаРасходовЕНВДЗаказРеализация" id="12">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АналитикаРасходовЕНВДОбязательна" id="13">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АналитикаРасходовНеНДСЗаказРеализация" id="14">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АналитикаРасходовНеНДСОбязательна" id="15">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АналитикаРасходовСписаниеНДСЗаказРеализация" id="16">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АналитикаРасходовСписаниеНДСОбязательна" id="17">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Копирование" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Копирование</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Copy</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОписаниеВыбранныхСтавокНДС" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание выбранных ставок НДС</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Description of selected VAT rates</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:FormattedString</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОсновноеНалогообложение" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основное налогообложение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>General taxation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ТипыНалогообложенияНДС</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Записать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Write</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Записать</Action>
+			<Representation>Picture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаписатьИЗакрыть" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаписатьИЗакрыть</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Организация">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

@@ -1,0 +1,1687 @@
+﻿openapi: "3.0.3"
+info:
+    title: API Мобильного приложения
+    version: "1.1.2.0"
+servers:
+    - url: https://demo.1cbit.online/Finans_Test_WEB/hs/approval/v1
+paths:
+    /object_types:
+        get:
+            summary: Описание типов всех доступных для визирования объектов
+            responses:
+                "200":
+                    description: Описание типов всех доступных для визирования объектов
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: "#/components/schemas/object_type"
+    /ping:
+        get:
+            summary: Диагностический адрес проверки доступности сервера
+            responses:
+                "200":
+                    description: Диагностический адрес проверки доступности сервера
+                    content:
+                        application/json:
+                            schema:
+                                type: string
+                                example: pong
+    /additional_measurements:
+        get:
+            summary: Все назначенные доп. измерения
+            responses:
+                "200":
+                    description: Все назначенные доп. измерения
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: "#/components/schemas/measurement"
+    /objects:
+        post:
+            summary: Возвращает информация по запрошенным объектам
+            responses:
+                "200":
+                    description: Возвращает информация по переданным объектам
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: "#/components/schemas/objectsObject"
+            requestBody:
+                description: Имена типов и УИД запрошенных объектов
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                $ref: "#/components/schemas/objectsRequest"
+    /object:
+        post:
+            summary: Возвращает информация по запрошенному объекту
+            responses:
+                "200":
+                    description: Возвращает информация по запрошенному объекту
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/object"
+            requestBody:
+                description: УИД и имя типа запрошенного объекта
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                ID:
+                                    type: string
+                                    format: uuid
+                                    example: ec6dc5cc-ac0c-11e2-ad92-005056aa43d6
+                                ObjectName:
+                                    type: string
+                                    minLength: 1
+                                    example: бит_РеестрПлатежей
+                                User:
+                                    type: string
+                                    minLength: 1
+                                    example: Агличев В.В. (БИТ.ФИНАНС)
+    /decisions:
+        post:
+            summary: Установка решения по объектам визирования
+            responses:
+                "200":
+                    description: Возвращает "Ок", текст с описанием ошибок или массив УИД проблемных объектов отправленных в запросе.
+                    content:
+                        application/json:
+                            schema:
+                                oneOf:
+                                    - type: string
+                                    - type: array
+                                      items:
+                                          type: object
+                                          properties:
+                                              Id:
+                                                  type: string
+                                                  format: uuid
+                                                  example: ec6dc5cc-ac0c-11e2-ad92-005056aa43d6
+                                example: Решение "Мое решение" не найдено.
+            requestBody:
+                description: Выбранное решение, имена и УИД визируемых объектов
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                Decision:
+                                    type: string
+                                    example: Согласовано
+                                Objects:
+                                    type: array
+                                    items:
+                                        type: object
+                                        properties:
+                                            CollectionName:
+                                                type: string
+                                                example: Документы
+                                            Comment:
+                                                type: string
+                                                example: Мой комментарий
+                                            CreditLimit:
+                                                description: Не используется
+                                                type: string
+                                                nullable: true
+                                                deprecated: true
+                                            Id:
+                                                type: string
+                                                format: uuid
+                                                example: cbba03dd-33ff-11ed-accd-04d9f564f4b4
+                                            ObjectName:
+                                                type: string
+                                                example: бит_ЗаявкаНаРасходованиеСредств
+                                            VisasID:
+                                                type: string
+                                                format: uuid
+                                                example: e87a7496-fd80-11e1-965f-005056aa43d6
+    /object_file_data:
+        post:
+            summary: Данные вложения и информация о нем
+            responses:
+                "200":
+                    description: Данные вложения и информация о нем
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    Data:
+                                        description: base64 строка данных файла
+                                        type: string
+                                        format: byte
+                                    ID:
+                                        type: string
+                                        format: uuid
+                                        example: bd0b8172-c6d6-11ec-acab-04d9f564f4b4
+                                    Message:
+                                        description: \"OK\" или описание ошибки
+                                        type: string
+                                        example: OK
+                                    StatusCode:
+                                        description: 200 или 500 или 404
+                                        type: number
+                                        example: 200
+                                    VersionID:
+                                        type: string
+                                        format: uuid
+                                        example: bd0b8172-c6d6-11ec-acab-04d9f564f4b4
+            requestBody:
+                description: Идентификатор файла и имя типа владельца вложенного файла
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                ID:
+                                    description: Идентификатор файла
+                                    type: string
+                                    format: uuid
+                                    example: bd0b8172-c6d6-11ec-acab-04d9f564f4b4
+                                Name:
+                                    type: string
+                                    example: бит_РеестрПлатежей
+    /refresh_token:
+        post:
+            summary: Записывает или обновляет информацию об устройстве с которого выполнено подключение
+            responses:
+                "200":
+                    description: Записывает или обновляет информацию об устройстве с которого выполнено подключение
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    code:
+                                        description: Строковый представление кода ошибки - 200, 500
+                                        type: string
+                                        example: 200
+                                    message:
+                                        description: Сообщение
+                                        type: string
+                                        example: New device created and assigned to user.
+                                    error:
+                                        description: Строковый представление номера ошибки - 0, 1, 2, 3
+                                        type: string
+                                        example: 0
+            requestBody:
+                description: Информация о телефоне и приложении
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                DeviceId:
+                                    description: Идентификатор устройства
+                                    type: string
+                                    format: uuid
+                                    example: d9de55fd-d022-4984-83ef-16ba6ac33dfa
+                                DeviceInfo:
+                                    type: object
+                                    properties:
+                                        AppVersion:
+                                            description: Версия приложения
+                                            type: string
+                                            example: 2.9.8
+                                        Idiom:
+                                            type: string
+                                            example: Phone
+                                        Manufacturer:
+                                            type: string
+                                            example: Google
+                                        Model:
+                                            type: string
+                                            example: sdk_gphone64_x86_64
+                                        OsVersion:
+                                            type: string
+                                            example: 13
+                                OS:
+                                    type: string
+                                    example: android
+                                Token:
+                                    type: string
+                                    example: ezh8pHof2Ds:APA91bHgZbfI5h-yw7y8-rW1ewJZWO4HqxVUfRZls137qoGbj3YDExCa-_yZvzgCku1E3ZM_cuGPEpFZi7m1Atq6IA9yJJ4h_31C7jRJGbvys0Pp80KyBL_RPKOlCOLxEFAg7-2o6s4F
+                                UserName:
+                                    type: string
+                                    example: Агличев В.В. (БИТ.ФИНАНС)
+    /service_info:
+        get:
+            summary: Возвращает информацию о конфигурации 1С
+            responses:
+                "200":
+                    description: Возвращает информацию о конфигурации 1С
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ServiceVersion:
+                                        description: Версия API
+                                        type: string
+                                        example: 1.1.2.0
+                                    ConfigurationName:
+                                        description: Название конфигурации 1С
+                                        type: string
+                                        example: БухгалтерияПредприятия
+                                    ConfigurationVersion:
+                                        description: Версия выпуска конфигурации 1С
+                                        type: string
+                                        example: 3.0.122.97
+    /measurements_for_objects:
+        post:
+            summary: Возвращает информацию о заполненных аналитиках запрошенных объектов визирования
+            responses:
+                "200":
+                    description: Возвращает информацию о заполненных аналитиках запрошенных объектов визирования
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        ObjectType:
+                                            type: string
+                                            example: ДокументСсылка.бит_ЗаявкаНаРасходованиеСредств
+                                        Id:
+                                            description: УИД владельца аналитик
+                                            type: string
+                                            format: uuid
+                                            example: cbba03dd-33ff-11ed-accd-04d9f564f4b4
+                                        Analytics:
+                                            description: Заполненные аналитики объекта визирования
+                                            type: array
+                                            items:
+                                                type: object
+                                                properties:
+                                                    Name:
+                                                        description: Имя аналитики
+                                                        type: string
+                                                        example: Аналитика_5
+                                                    Value:
+                                                        description: Имя аналитики
+                                                        type: string
+                                                        example: 1000МГТС
+            requestBody:
+                description: Информация о телефоне и приложении
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                ObjectTypes:
+                                    type: array
+                                    items:
+                                        type: object
+                                        properties:
+                                            AnalyticsArray:
+                                                type: array
+                                                items:
+                                                    type: string
+                                                    example: Аналитика_7
+                                            DocsArray:
+                                                type: array
+                                                items:
+                                                    type: string
+                                                    format: uuid
+                                                    example: cbba03dd-33ff-11ed-accd-04d9f564f4b4
+                                            ObjectType:
+                                                description: Имя типа объекта
+                                                type: string
+                                                example: ДокументСсылка.бит_ЗаявкаНаРасходованиеСредств
+    /tasks:
+        post:
+            summary: Возвращает список задач пользователя
+            responses:
+                "200":
+                    description: Возвращает список задач пользователя
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: "#/components/schemas/task"
+            requestBody:
+                description: Информация о телефоне и приложении
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                User:
+                                    type: string
+                                    example: Агличев В.В. (БИТ.ФИНАНС)
+    /task/{Action}:
+        post:
+            summary: Применение действия к задаче
+            parameters:
+                - name: Action
+                  in: path
+                  required: true
+                  schema:
+                      type: string
+                      enum: [accept, perform, update, create]
+            responses:
+                "200":
+                    description: Результат применения действия к задаче
+                    content:
+                        application/json:
+                            schema:
+                                type: boolean
+                                example: true
+            requestBody:
+                description: Информация о текущей или новой задаче
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            oneOf:
+                                - $ref: "#/components/schemas/newTask"
+                                - $ref: "#/components/schemas/taskInfo"
+    /objects_for_approval:
+        post:
+            summary: Возвращает список объектов визирования
+            responses:
+                "200":
+                    description: Возвращает список объектов визирования
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: "#/components/schemas/object"
+            requestBody:
+                description: Информация о текущей или новой задаче
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                User:
+                                    type: string
+                                    example: Агличев В.В. (БИТ.ФИНАНС)
+                                Objects:
+                                    type: string
+                                    example: ДокументСсылка.бит_КорректировкаБюджета/ДокументСсылка.бит_ПроектДоговора/ДокументСсылка.бит_мдм_ЗаявкаНаУдаление
+                                DateStart:
+                                    type: string
+                                    nullable: true
+                                    deprecated: true
+                                DateFinish:
+                                    type: string
+                                    nullable: true
+                                    deprecated: true
+    /users:
+        get:
+            summary: Список пользователей
+            responses:
+                "200":
+                    description: Возвращает список пользователей
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        Id:
+                                            type: string
+                                            format: uuid
+                                            example: 123d8304-ad95-11e2-ad92-005056aa43d6
+                                        Name:
+                                            type: string
+                                            example: Инициатор Заявок
+                                        Department:
+                                            type: string
+                                            example: Отдел продаж
+    /approval_decisions:
+        post:
+            summary: Список решиний, которые можно установить
+            responses:
+                "200":
+                    description: Возвращает массив доступных пользователю решений для визирования
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        Id:
+                                            type: string
+                                            format: uuid
+                                            example: 00000000-0000-0000-0000-000000000000
+                                        Description:
+                                            type: string
+                                        Organizations:
+                                            type: array
+                                            items:
+                                                type: object
+                                                properties:
+                                                    Id:
+                                                        type: string
+                                                        format: uuid
+                                                        example: 00000000-0000-0000-0000-000000000000
+                                                    Description:
+                                                        type: string
+                                                    Decisions:
+                                                        type: array
+                                                        items:
+                                                            type: object
+                                                            properties:
+                                                                Id:
+                                                                    type: string
+                                                                    format: uuid
+                                                                    example: 6b77bcce-718a-41d3-b136-6d2db95b8894
+                                                                Description:
+                                                                    type: string
+                                                                    example: Отклонено
+                                                                ? NeedCommentOrTask
+                                                                : type: boolean
+                                                                  example: true
+            requestBody:
+                description: Пустой массив или массив типов объектов заданных в фильтре пользователем
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                type: string
+                                example: бит_мдм_ЗаявкаНаУдаление
+    /object_table:
+        post:
+            summary: Возвращает табличную часть документа
+            responses:
+                "200":
+                    description: Возвращает табличную часть документа в виде html-документа
+                    content:
+                        text/html; charset=utf-8:
+                            schema:
+                                $ref: "#/components/schemas/objectTable"
+            requestBody:
+                description: Информация владельца таблицы
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                ID:
+                                    type: string
+                                    format: uuid
+                                    example: 3a10c498-bf89-11ea-abf9-04d9f564f4b4
+                                ObjectType:
+                                    type: string
+                                    example: Документ.бит_РеестрПлатежей
+    /internal_object_table:
+        post:
+            deprecated: true
+            summary: Заготовка под интерактивную работу с табличной частью реестра
+            responses:
+                "200":
+                    description: Возвращает список пользователей
+                    content:
+                        application/json:
+                            schema:
+                                type: string
+                                nullable: true
+            requestBody:
+                description: Информация владельца таблицы
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+    /approval_history:
+        post:
+            summary: История визирования выбранного объекта
+            responses:
+                "200":
+                    description: История визирования выбранного объекта
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        Comment:
+                                            type: string
+                                            example: Мой комментарий
+                                        Decision:
+                                            type: string
+                                            example: Согласовано
+                                        Period:
+                                            type: string
+                                            format: date-time
+                                            example: 2022-10-03T18:02:17
+                                        User:
+                                            type: string
+                                            example: Агличев В.В. (БИТ.ФИНАНС)
+                                        Visa:
+                                            type: string
+                                            example: Казначей
+            requestBody:
+                description: Информация о владельце запрошенной истории визирования
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: string
+                                    format: uuid
+                                    example: cbba03dd-33ff-11ed-accd-04d9f564f4b4
+                                Name:
+                                    type: string
+                                    example: бит_ЗаявкаНаРасходованиеСредств
+    /budget_balances:
+        post:
+            summary: Информация о баланса бюджета объекта визирования
+            responses:
+                "200":
+                    description: Информация о баланса бюджета объекта визирования
+                    content:
+                        application/json:
+                            schema:
+                                nullable: true
+                                oneOf:
+                                    - $ref: "#/components/schemas/budgetBalances"
+                                    - type: string
+            requestBody:
+                description: Информация о владельце баланса
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: string
+                                    format: uuid
+                                    example: cbba03dd-33ff-11ed-accd-04d9f564f4b4
+                                Name:
+                                    type: string
+                                    example: бит_ЗаявкаНаРасходованиеСредств
+    /history_approval:
+        post:
+            summary: Получение архива завизированных объектов
+            responses:
+                "200":
+                    description: Получение архива завизированных объектов
+                    content:
+                        application/json:
+                            schema:
+                                nullable: true
+                                type: array
+                                items:
+                                    $ref: "#/components/schemas/historyApprovalObject"
+            requestBody:
+                description: Отборы заданные пользователем для архива
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                DateStart:
+                                    type: string
+                                    example: 20211101000000
+                                DateFinish:
+                                    type: string
+                                    example: 20211130235959
+                                Objects:
+                                    type: string
+                                    example: ДокументСсылка.бит_БюджетнаяОперация/ДокументСсылка.бит_ВерсияОтчета
+                                Status:
+                                    type: string
+                                    example: Исполнена,К выдаче
+                                User:
+                                    type: string
+                                    example: "Агличев В.В. (БИТ.ФИНАНС)"
+    /Get_Statuses:
+        post:
+            summary: Статусы объектов визирования для пользовательского фильтра архива
+            responses:
+                "200":
+                    description: Статусы объектов визирования для пользовательского фильтра архива
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                                    example: Выполнена
+    /DecisionListDifferentStatuses:
+        post:
+            deprecated: true
+            summary: Что-то устаревшее
+            responses:
+                "200":
+                    description: Что-то устаревшее
+components:
+    schemas:
+        object_type:
+            description: Описание типа доступного для визирования объекта
+            type: object
+            properties:
+                Name:
+                    type: string
+                    minLength: 1
+                    example: ДокументСсылка.бит_КорректировкаБюджета
+                Title:
+                    type: string
+                    minLength: 1
+                    example: Корректировка бюджета (БИТ)
+                Synonim:
+                    type: string
+                    minLength: 1
+                    example: "Корректировка бюджета (БИТ)  {{Date:dd.MM.yyyy}}"
+                ShowBudgetBalances:
+                    type: boolean
+                    example: false
+                ShowTabularSection:
+                    type: boolean
+                Properties:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/dimension"
+        dimension:
+            description: Доп. аналитики
+            type: object
+            properties:
+                Id:
+                    type: string
+                    format: uuid
+                    example: ec6dc5cc-ac0c-11e2-ad92-005056aa43d6
+                Description:
+                    type: string
+                    minLength: 1
+                    example: Моя новая аналитика
+        measurement:
+            description: Доп. измерение объектов визирования
+            type: object
+            properties:
+                Name:
+                    type: string
+                    minLength: 1
+                    example: Аналитика_3
+                Description:
+                    type: string
+                    example: Менеджер
+        objectsRequest:
+            description: Идентификаторы и имена типов запрошенных объектов
+            type: object
+            properties:
+                ObjectType:
+                    type: string
+                    minLength: 1
+                    example: Документ.бит_ЗаявкаНаРасходованиеСредств
+                IDsArray:
+                    type: array
+                    items:
+                        type: string
+                        format: uuid
+                        example: ec6dc5cc-ac0c-11e2-ad92-005056aa43d6
+        objectsObject:
+            description: Идентификаторы и имена типов запрошенных объектов
+            type: object
+            properties:
+                ObjectType:
+                    type: string
+                    minLength: 1
+                    example: Документ.бит_ЗаявкаНаРасходованиеСредств
+                ObjectsArray:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            ID:
+                                type: string
+                                format: uuid
+                                example: ec6dc5cc-ac0c-11e2-ad92-005056aa43d6
+                            Date:
+                                type: string
+                                example: 02.07.2020
+                            Number:
+                                type: string
+                                example: РАБП-000005
+                            Company:
+                                type: string
+                                example: Атлантика
+                            Department:
+                                type: string
+                                example: Атлантика-Трейдинг, ООО Бриз, ЗАО Рога и Копыта
+                            TurnoverItem:
+                                type: string
+                                example: Прочие платежи по операционной деятельности, Оплата сырья и материалов
+                            Partner:
+                                type: string
+                                example: Гостиница "Заря"
+                            Amount:
+                                type: string
+                                example: 322,13
+                            Currency:
+                                type: string
+                                example: руб.
+                            ManagerialPurpose:
+                                type: string
+                                example: Оплата по договору 123123
+                                    Сумма 322-13
+                                    В т.ч. НДС(20%) 16-69, НДС(18%) 33-86
+                            Status:
+                                type: string
+                                example: Утвержден
+                            ResponsiblePerson:
+                                type: string
+                                example: Агличев В.В. (БИТ.ФИНАНС)
+                            Scenario:
+                                type: string
+                                example: Утвержденный бюджет 2016  года
+                            Comment:
+                                type: string
+                                example: Мой новый комментарий
+                            OverBudget:
+                                type: boolean
+                                example: true
+                            BasisForecast:
+                                type: boolean
+                                nullable: true
+                                example: false
+                            Executor:
+                                type: string
+                                example: Агличев В.В. (БИТ.ФИНАНС)
+                            PaymentDate:
+                                oneOf:
+                                    - type: string
+                                    - type: string
+                                      format: date-time
+                                      example: 08.07.2020
+                            AvailableVisas:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        Id:
+                                            type: string
+                                            format: uuid
+                                            example: ec6dc5cc-ac0c-11e2-ad92-005056aa43d6
+                                        Description:
+                                            type: string
+                                            example: Генеральный директор
+                            Project:
+                                type: string
+                                example: Инвест проект
+                            Contract:
+                                type: string
+                                example: Наш договор
+                            Files:
+                                type: array
+                                items:
+                                    $ref: "#/components/schemas/file"
+        object:
+            description: Полная информация об объекте визирования
+            type: object
+            properties:
+                Visas:
+                    type: string
+                    example: Реестр платежей утвержден, Казначей
+                VisasID:
+                    type: string
+                    format: uuid
+                    example: e87a749e-fd80-11e1-965f-005056aa43d6
+                ObjectModel:
+                    type: object
+                    properties:
+                        ID:
+                            type: string
+                            format: uuid
+                            example: 3a10c498-bf89-11ea-abf9-04d9f564f4b4
+                        ObjectName:
+                            type: string
+                            example: бит_РеестрПлатежей
+                        CollectionName:
+                            type: string
+                            example: Документы
+                ObjectInfo:
+                    type: object
+                    properties:
+                        Company:
+                            type: string
+                            example: Моя компания
+                        Department:
+                            type: string
+                            example: Атлантика-Трейдинг, АХО, Веб-разработчики
+                        TurnoverItem:
+                            type: string
+                            example: Общие расходы, Расходы на рекламу
+                        Partner:
+                            type: string
+                            example: Красный котябрь
+                        Amount:
+                            type: string
+                            example: 257,6
+                        Currency:
+                            type: string
+                            example: руб.
+                        ManagerialPurpose:
+                            type: string
+                            example: Оплата по договору 123123
+                                Сумма 322-13
+                                В т.ч. НДС(20%) 16-69, НДС(18%) 33-86
+                        OverBudget:
+                            type: boolean
+                            example: true
+                        Status:
+                            type: string
+                            example: На согласовании
+                        ResponsiblePerson:
+                            type: string
+                            example: Агличев В.В. (БИТ.ФИНАНС)
+                        Scenario:
+                            type: string
+                            example: Утвержденный бюджет 2022 года
+                        Comment:
+                            type: string
+                            example: Мой комментарий
+                        Date:
+                            type: string
+                            example: 02.07.2020
+                        Number:
+                            type: string
+                            example: 00БП-000002
+                        AdditionalProps:
+                            type: array
+                            items:
+                                type: object
+                                properties:
+                                    Id:
+                                        type: string
+                                        format: uuid
+                                        example: e87a749e-fd80-11e1-965f-005056aa43d6
+                                    Description:
+                                        type: string
+                                        example: Цвет
+                                    Value:
+                                        type: string
+                                        example: Салатовый
+                        UseInternalTables:
+                            type: boolean
+                            example: false
+                        BasisForecast:
+                            type: boolean
+                            nullable: true
+                            example: false
+                        Executor:
+                            type: string
+                            example: Иван Иванов
+                        PaymentDate:
+                            oneOf:
+                                - type: string
+                                - type: string
+                                  format: date-time
+                                  example: 08.07.2020
+                        Project:
+                            type: string
+                            example: Инвест проект
+                        Contract:
+                            type: string
+                            example: Наш договор
+                ApplicationReestr:
+                    description: Информация о табличной части Реестра платежей
+                    type: object
+                    nullable: true
+                    properties:
+                        ID:
+                            description: УИД Реестра платежей
+                            type: string
+                            format: uuid
+                            example: 3a10c498-bf89-11ea-abf9-04d9f564f4b4
+                        Number:
+                            description: Номер Реестра платежей
+                            type: string
+                            example: 00БП-000002
+                        Date:
+                            description: Дата Реестра платежей
+                            type: string
+                            format: date-time
+                            example: 2020-07-06T16:04:30
+                        Company:
+                            description: Организация Реестра платежей
+                            type: string
+                            example: Моя организация
+                        Comment:
+                            description: Комментарий Реестра платежей
+                            type: string
+                            example: Мой комментарий
+                        Applications:
+                            description: Заявки/Платежные позиции и т.д.
+                            type: array
+                            items:
+                                type: object
+                                properties:
+                                    RowNumber:
+                                        type: number
+                                        example: 1
+                                    ObjectName:
+                                        type: string
+                                        example: бит_кзн_ЗаявкаНаПеремещениеДенежныхСредств
+                                    ApplicationID:
+                                        description: УИД документа табличной части
+                                        type: string
+                                        format: uuid
+                                        example: b89d2af6-bca6-11ea-abf9-04d9f564f4b4
+                                    ApplicationPresentation:
+                                        type: string
+                                        example: Заявка на расходование ДС РАБП-000005 от 02.07.2020 23:58:12
+                                    Amount:
+                                        description: Общая сумма
+                                        type: string
+                                        example: 300
+                                    AmountPayable:
+                                        description: Сумма к оплате
+                                        type: string
+                                        example: 257,6
+                                    TotalSchedule:
+                                        type: string
+                                        example: 257,6
+                                    Currency:
+                                        type: string
+                                        example: руб.
+                Files:
+                    description: Информация о вложениях (файлы)
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/file"
+        file:
+            description: Вложение (Файл)
+            type: object
+            properties:
+                Name:
+                    type: string
+                    example: IT Support
+                DateChanged:
+                    type: string
+                    format: date-time
+                    example: 2022-04-28T09:32:07
+                ID:
+                    type: string
+                    format: uuid
+                    example: 81faf9b9-c6d6-11ec-acab-04d9f564f4b4
+                VersionID:
+                    type: string
+                    format: uuid
+                    example: 81faf9b9-c6d6-11ec-acab-04d9f564f4b4
+                Ext:
+                    type: string
+                    example: pdf
+                Size:
+                    type: number
+                    example: 381541
+        task:
+            description: Описание задачи
+            type: object
+            properties:
+                Author:
+                    type: string
+                    example: Агличев В.В. (БИТ.ФИНАНС)
+                Date:
+                    type: string
+                    format: date-time
+                    example: 2019-10-28T10:03:48
+                Deadline:
+                    type: string
+                    format: date-time
+                    example: 2019-10-29T00:00:00
+                Description:
+                    type: string
+                    example: Разобраться с заявкой!
+                Direction:
+                    type: string
+                    enum: [MyTasks, TasksFromMe]
+                    example: MyTasks
+                Importance:
+                    type: string
+                    example: Средняя
+                IsCompleted:
+                    type: boolean
+                    example: false
+                Name:
+                    type: string
+                    example: Разобраться тест
+                Number:
+                    type: string
+                    example: 000000033
+                Object:
+                    type: string
+                    example: Заявка на расходование ДС 0000-000021 от 25.10.2019 14:34:58
+                ObjectModel:
+                    type: object
+                    properties:
+                        ID:
+                            type: string
+                            format: uuid
+                            example: 16b2be2a-f951-11e9-abbe-04d9f564f4b4
+                        ObjectName:
+                            type: string
+                            example: бит_Задача
+                        CollectionName:
+                            type: string
+                            example: Задачи
+                    example: Разобраться тест
+                RelatedDocument:
+                    $ref: "#/components/schemas/object"
+                Responsible:
+                    type: string
+                    example: Агличев В.В. (БИТ.ФИНАНС)
+                Result:
+                    type: string
+                    example: Мой отчет о выполнении
+                State:
+                    type: string
+                    example: Создана
+        newTask:
+            description: Результат обработки задачи
+            type: object
+            properties:
+                Deadline:
+                    type: string
+                    example: 20221110
+                Description:
+                    type: string
+                    example: Мое описание
+                Importance:
+                    type: string
+                    example: Средняя
+                Name:
+                    type: string
+                    example: Имя задачи
+                ObjectID:
+                    type: string
+                    format: uuid
+                    example: 3a10c498-bf89-11ea-abf9-04d9f564f4b4
+                ObjectName:
+                    type: string
+                    example: бит_РеестрПлатежей
+                Responsible:
+                    type: string
+                    example: Агличев В.В. (БИТ.ФИНАНС)
+                VisaID:
+                    type: string
+                    format: uuid
+                    example: e87a749e-fd80-11e1-965f-005056aa43d6
+        taskInfo:
+            description: Краткая информация о задаче
+            type: object
+            properties:
+                ID:
+                    type: string
+                    format: uuid
+                    example: 16b2be2a-f951-11e9-abbe-04d9f564f4b4
+                Result:
+                    description: Комментарий сотрудника к задаче
+                    type: string
+                    example: бит_Задача
+        budgetBalances:
+            description: Состояние остатков бюджета объекта визирования
+            type: array
+            items:
+                type: object
+                properties:
+                    Name:
+                        type: string
+                        enum: [DocumentSums, PaymentDetails, Balances]
+                        example: DocumentSums
+                    Description:
+                        type: string
+                        example: Суммы документа
+                    Details:
+                        description: Свойства разреза бюджета
+                        type: array
+                        items:
+                            type: object
+                            properties:
+                                Name:
+                                    type: string
+                                    example: Атлантика-Трейдинг/Прочие платежи по операционной деятельности/Утвержденный бюджет 2016  года /Атлантика/1000МГТС/МГТС/1000МГТС/Инвест проект
+                                Value:
+                                    type: string
+                                    example: 100,00 руб.
+                                Entries:
+                                    type: array
+                                    items:
+                                        type: object
+                                        properties:
+                                            Name:
+                                                type: string
+                                                example: "Исполнение:"
+                                            Value:
+                                                type: string
+                                                example: 400,00
+        historyApprovalObject:
+            description: Полная информация об объекте визирования в архиве
+            type: object
+            properties:
+                Visas:
+                    type: string
+                    example: Генеральный директор, Генеральный директор, Генеральный директор, Генеральный директор, Генеральный директор, Генеральный директор, Генеральный директор, Финансовый директор, Бухгалтерия, Юридический отдел, Служба безопасности, Руководитель ЦФО, Генеральный директор, Финансовый директор, Бухгалтерия, Юридический отдел, Служба безопасности, Руководитель ЦФО
+                VisasID:
+                    type: string
+                    format: uuid
+                    example: e87a74b0-fd80-11e1-965f-005056aa43d6
+                ObjectModel:
+                    type: object
+                    properties:
+                        ID:
+                            type: string
+                            format: uuid
+                            example: d28e0ec3-52b3-11ec-ac7b-04d9f564f4b4
+                        ObjectName:
+                            type: string
+                            example: бит_ПроектДоговора
+                        CollectionName:
+                            type: string
+                            example: Документы
+                ObjectInfo:
+                    type: object
+                    properties:
+                        Company:
+                            type: string
+                            example: Магазин 23
+                        Department:
+                            type: string
+                            example: Атлантика-Трейдинг, АХО, Веб-разработчики
+                        TurnoverItem:
+                            type: string
+                            example: Общие расходы, Расходы на рекламу
+                        Partner:
+                            type: string
+                            example: ВЭБ
+                        Amount:
+                            type: string
+                            example: 257,6
+                        Currency:
+                            type: string
+                            example: USD
+                        ManagerialPurpose:
+                            type: string
+                            example: Оплата по договору 123123
+                                Сумма 322-13
+                                В т.ч. НДС(20%) 16-69, НДС(18%) 33-86
+                        OverBudget:
+                            type: boolean
+                            example: true
+                        Status:
+                            type: string
+                            example: Утвержден
+                        StatusDate:
+                            type: string
+                            example: 07.12.2021
+                        ResponsiblePerson:
+                            type: string
+                            example: Агличев В.В. (БИТ.ФИНАНС)
+                        Scenario:
+                            type: string
+                            example: Утвержденный бюджет 2022 года
+                        Comment:
+                            type: string
+                            example: Мой комментарий
+                        Date:
+                            type: string
+                            example: 01.12.2021
+                        Number:
+                            type: string
+                            example: 00БП-000001
+                        AdditionalProps:
+                            type: array
+                            items:
+                                type: object
+                                properties:
+                                    Id:
+                                        type: string
+                                        format: uuid
+                                        example: e87a749e-fd80-11e1-965f-005056aa43d6
+                                    Description:
+                                        type: string
+                                        example: Цвет
+                                    Value:
+                                        type: string
+                                        example: Салатовый
+                        UseInternalTables:
+                            type: boolean
+                            example: false
+                        BasisForecast:
+                            type: boolean
+                            nullable: true
+                            example: false
+                        Executor:
+                            type: string
+                            example: Иван Иванов
+                        PaymentDate:
+                            oneOf:
+                                - type: string
+                                - type: string
+                                  format: date-time
+                                  example: 08.07.2020
+                        Agreed:
+                            type: boolean
+                            example: false
+                        Project:
+                            type: string
+                            example: Инвест проект
+                        Contract:
+                            type: string
+                            example: Наш договор
+                VisaHistory:
+                    type: object
+                    properties:
+                        Row:
+                            type: array
+                            items:
+                                type: object
+                                properties:
+                                    Visa:
+                                        type: string
+                                        example:
+                                    Decision:
+                                        type: string
+                                        example: Согласовано
+                                    Period:
+                                        type: string
+                                        format: date-time
+                                        example: 2022-04-28T09:32:07
+                                    User:
+                                        type: string
+                                        example: Агличев В.В. (БИТ.ФИНАНС)
+                                    Comment:
+                                        type: string
+                                        example: Мой комментарий к визе
+                ApplicationReestr:
+                    description: Информация о табличной части Реестра платежей
+                    type: object
+                    nullable: true
+                    properties:
+                        ID:
+                            description: УИД Реестра платежей
+                            type: string
+                            format: uuid
+                            example: 3a10c498-bf89-11ea-abf9-04d9f564f4b4
+                        Number:
+                            description: Номер Реестра платежей
+                            type: string
+                            example: 00БП-000002
+                        Date:
+                            description: Дата Реестра платежей
+                            type: string
+                            format: date-time
+                            example: 2020-07-06T16:04:30
+                        Company:
+                            description: Организация Реестра платежей
+                            type: string
+                            example: Моя организация
+                        Comment:
+                            description: Комментарий Реестра платежей
+                            type: string
+                            example: Мой комментарий
+                        Applications:
+                            description: Заявки/Платежные позиции и т.д.
+                            type: array
+                            items:
+                                type: object
+                                properties:
+                                    RowNumber:
+                                        type: number
+                                        example: 1
+                                    ObjectName:
+                                        type: string
+                                        example: бит_кзн_ЗаявкаНаПеремещениеДенежныхСредств
+                                    ApplicationID:
+                                        description: УИД документа табличной части
+                                        type: string
+                                        format: uuid
+                                        example: b89d2af6-bca6-11ea-abf9-04d9f564f4b4
+                                    ApplicationPresentation:
+                                        type: string
+                                        example: Заявка на расходование ДС РАБП-000005 от 02.07.2020 23:58:12
+                                    Amount:
+                                        description: Общая сумма
+                                        type: string
+                                        example: 300
+                                    AmountPayable:
+                                        description: Сумма к оплате
+                                        type: string
+                                        example: 257,6
+                                    TotalSchedule:
+                                        type: string
+                                        example: 257,6
+                                    Currency:
+                                        type: string
+                                        example: руб.
+                Files:
+                    description: Информация о вложениях (файлы)
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/file"
+        objectTable:
+            description: Краткая информация о задаче
+            type: string
+            example: >
+                <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 5.0 Transitional//EN">
+                <HTML>
+
+                <HEAD>
+                    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+                    <TITLE></TITLE>
+                    <STYLE TYPE="text/css">
+                        body {
+                            background: #ffffff;
+                            margin: 0;
+                            font-family: Arial;
+                            font-size: 8pt;
+                            font-style: normal;
+                        }
+
+                        tr.R0 {
+                            height: 15px;
+                        }
+
+                        tr.R0 td.R0C6 {
+                            text-align: left;
+                        }
+
+                        tr.R1 {
+                            font-family: Tahoma;
+                            font-size: 8pt;
+                            font-style: normal;
+                            height: 55px;
+                        }
+
+                        tr.R1 td.R1C0 {
+                            font-family: Arial;
+                            font-size: 12pt;
+                            font-style: normal;
+                            font-weight: bold;
+                            color: #000080;
+                            text-align: center;
+                            vertical-align: middle;
+                            border-right: #ffffff 0px none;
+                        }
+
+                        tr.R1 td.R1C1 {
+                            font-family: Arial;
+                            font-size: 12pt;
+                            font-style: normal;
+                            font-weight: bold;
+                            color: #000080;
+                            text-align: left;
+                            vertical-align: middle;
+                        }
+
+                        tr.R1 td.R1C6 {
+                            text-align: left;
+                            vertical-align: middle;
+                        }
+
+                        tr.R3 {
+                            height: 30px;
+                        }
+
+                        tr.R3 td.R3C1 {
+                            font-family: Tahoma;
+                            font-size: 9pt;
+                            font-style: normal;
+                            font-weight: bold;
+                            background-color: #e0ffe0;
+                            text-align: center;
+                            vertical-align: middle;
+                            border-left: #000000 1px solid;
+                            border-top: #000000 1px solid;
+                            border-bottom: #000000 1px solid;
+                            border-right: #000000 1px solid;
+                        }
+
+                        tr.R4 {
+                            height: 34px;
+                        }
+
+                        tr.R4 td.R4C1 {
+                            font-family: Arial;
+                            font-size: 12pt;
+                            font-style: normal;
+                            font-weight: bold;
+                            color: #000080;
+                            text-align: left;
+                            vertical-align: bottom;
+                            overflow: visible;
+                        }
+
+                        tr.R6 {
+                            height: 16px;
+                        }
+
+                        tr.R6 td.R6C1 {
+                            font-family: Tahoma ??????????;
+                            font-size: 9pt;
+                            font-style: normal;
+                            font-weight: bold;
+                            background-color: #e0ffe0;
+                            text-align: center;
+                            border-left: #000000 1px solid;
+                            border-top: #000000 1px solid;
+                            border-bottom: #000000 1px solid;
+                            border-right: #000000 1px solid;
+                        }
+
+                        tr.R6 td.R6C7 {
+                            text-align: left;
+                        }
+
+                        table {
+                            table-layout: fixed;
+                            padding: 0px;
+                            padding-left: 2px;
+                            vertical-align: bottom;
+                            border-collapse: collapse;
+                            width: 100%;
+                            font-family: Arial;
+                            font-size: 8pt;
+                            font-style: normal;
+                        }
+
+                        td {
+                            padding: 0px;
+                            padding-left: 2px;
+                            overflow: hidden;
+                        }
+                    </STYLE>
+                </HEAD>
+
+                <BODY STYLE="background: #ffffff; margin: 0; font-family: Arial; font-size: 8pt; font-style: normal; ">
+                    <table>
+                        <tr></tr>
+                    </table>
+                    <TABLE style="width:100%; height:0px; " CELLSPACING=0>
+                        <COL WIDTH=21>
+                        <COL WIDTH=35>
+                        <COL WIDTH=105>
+                        <COL WIDTH=105>
+                        <COL WIDTH=105>
+                        <COL WIDTH=105>
+                        <COL WIDTH=105>
+                        <COL WIDTH=105>
+                        <COL WIDTH=105>
+                        <COL WIDTH=121>
+                        <COL WIDTH=175>
+                        <COL WIDTH=91>
+                        <COL WIDTH=58>
+                        <COL WIDTH=77>
+                        <COL WIDTH=77>
+                        <COL WIDTH=70>
+                        <COL>
+                        <TR CLASS=R0>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD>&nbsp;</TD>
+                        </TR>
+                        <TR CLASS=R1>
+                            <TD CLASS="R1C0">
+                                <DIV STYLE="position:relative; height:55px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV>
+                            </TD>
+                            <TD CLASS="R1C1" COLSPAN=5>Реестр платежей № 2 от 06.07.2020</TD>
+                            <TD CLASS="R1C6">
+                                <DIV STYLE="position:relative; height:55px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV>
+                            </TD>
+                            <TD CLASS="R1C1" COLSPAN=2>
+                                <DIV STYLE="position:relative; height:55px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV>
+                            </TD>
+                            <TD CLASS="R1C1">
+                                <DIV STYLE="position:relative; height:55px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV>
+                            </TD>
+                            <TD CLASS="R1C1">
+                                <DIV STYLE="position:relative; height:55px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV>
+                            </TD>
+                            <TD CLASS="R1C6">
+                                <DIV STYLE="position:relative; height:55px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV>
+                            </TD>
+                            <TD CLASS="R1C6">
+                                <DIV STYLE="position:relative; height:55px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV>
+                            </TD>
+                            <TD CLASS="R1C1">
+                                <DIV STYLE="position:relative; height:55px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV>
+                            </TD>
+                            <TD CLASS="R1C1" COLSPAN=2>
+                                <DIV STYLE="position:relative; height:55px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV>
+                            </TD>
+                            <TD>
+                                <DIV STYLE="position:relative; height:55px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV>
+                            </TD>
+                            <TD>
+                                <DIV STYLE="width:100%;height:55px;overflow:hidden;"></DIV>
+                            </TD>
+                        </TR>
+                        <TR CLASS=R0>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD>&nbsp;</TD>
+                        </TR>
+                        <TR CLASS=R3>
+                            <TD><SPAN></SPAN></TD>
+                            <TD CLASS="R3C1">№ п/п</TD>
+                            <TD CLASS="R3C1">Заявка</TD>
+                            <TD CLASS="R3C1">ЦФО</TD>
+                            <TD CLASS="R3C1">Статья оборотов</TD>
+                            <TD CLASS="R3C1">Проект</TD>
+                            <TD CLASS="R3C1">Получатель</TD>
+                            <TD CLASS="R3C1">Договор</TD>
+                            <TD CLASS="R3C1">Назначение платежа</TD>
+                            <TD CLASS="R3C1">Назначение платежа упр.</TD>
+                            <TD CLASS="R3C1">Сумма к оплате</TD>
+                            <TD CLASS="R3C1">Валюта</TD>
+                            <TD CLASS="R3C1" COLSPAN=2>Сверх бюджета</TD>
+                            <TD CLASS="R3C1">Тип заявки</TD>
+                            <TD CLASS="R3C1">Статус</TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD></TD>
+                        </TR>
+                        <TR CLASS=R4>
+                            <TD>
+                                <DIV STYLE="position:relative; height:34px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV>
+                            </TD>
+                            <TD CLASS="R4C1" COLSPAN=16>
+                                <SPAN STYLE="white-space:nowrap;max-width:0px;">Итого&nbsp;по&nbsp;организациям:</SPAN></TD>
+                            <TD>
+                                <DIV STYLE="width:100%;height:34px;overflow:hidden;"></DIV>
+                            </TD>
+                        </TR>
+                        <TR CLASS=R0>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD CLASS="R0C6"><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD>&nbsp;</TD>
+                        </TR>
+                        <TR CLASS=R6>
+                            <TD><SPAN></SPAN></TD>
+                            <TD CLASS="R6C1" COLSPAN=4><SPAN STYLE="white-space:nowrap;max-width:0px;">Организация</SPAN></TD>
+                            <TD CLASS="R6C1"><SPAN STYLE="white-space:nowrap;max-width:0px;">Валюта</SPAN></TD>
+                            <TD CLASS="R6C1"><SPAN STYLE="white-space:nowrap;max-width:0px;">Сумма</SPAN></TD>
+                            <TD CLASS="R6C7"><SPAN></SPAN></TD>
+                            <TD CLASS="R6C7"><SPAN></SPAN></TD>
+                            <TD CLASS="R6C7"><SPAN></SPAN></TD>
+                            <TD CLASS="R6C7"><SPAN></SPAN></TD>
+                            <TD CLASS="R6C7"><SPAN></SPAN></TD>
+                            <TD CLASS="R6C7"><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD><SPAN></SPAN></TD>
+                            <TD></TD>
+                        </TR>
+                    </TABLE>
+                </BODY>
+
+                </HTML>

@@ -1,0 +1,654 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаКомандаЗаписать" id="36">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.КомандаЗаписать</CommandName>
+				<ExtendedTooltip name="ФормаКомандаЗаписатьExtendedTooltip" id="44"/>
+			</Button>
+			<Button name="ФормаКомандаОбновить" id="35">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.КомандаОбновить</CommandName>
+				<ExtendedTooltip name="ФормаКомандаОбновитьExtendedTooltip" id="45"/>
+			</Button>
+			<Button name="ФормаКомандаЗаполнитьПоШаблону" id="39">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.КомандаЗаполнитьПоШаблону</CommandName>
+				<ExtendedTooltip name="ФормаКомандаЗаполнитьПоШаблонуExtendedTooltip" id="46"/>
+			</Button>
+			<ButtonGroup name="ФормаГруппаСохранениеНастроек" id="42">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Форма группа сохранение настроек</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Form group save settings</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаГруппаСохранениеНастроекExtendedTooltip" id="47"/>
+				<ChildItems>
+					<Button name="ФормаКомандаВосстановитьНастройки" id="40">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.КомандаВосстановитьНастройки</CommandName>
+						<ExtendedTooltip name="ФормаКомандаВосстановитьНастройкиExtendedTooltip" id="48"/>
+					</Button>
+					<Button name="ФормаКомандаСохранитьНастройки" id="41">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.КомандаСохранитьНастройки</CommandName>
+						<ExtendedTooltip name="ФормаКомандаСохранитьНастройкиExtendedTooltip" id="49"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="УсловиеОтключено" id="37">
+			<DataPath>Объект.УсловиеОтключено</DataPath>
+			<ListChoiceMode>true</ListChoiceMode>
+			<ContextMenu name="УсловиеОтключеноКонтекстноеМеню" id="38"/>
+			<ExtendedTooltip name="УсловиеОтключеноExtendedTooltip" id="51"/>
+			<Events>
+				<Event name="OnChange">УсловиеОтключеноПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="СубъектДоступа" id="3">
+			<DataPath>Объект.СубъектДоступа</DataPath>
+			<ClearButton>true</ClearButton>
+			<ContextMenu name="СубъектДоступаКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="СубъектДоступаExtendedTooltip" id="52"/>
+			<Events>
+				<Event name="OnChange">СубъектДоступаПриИзменении</Event>
+				<Event name="StartChoice">СубъектДоступаНачалоВыбора</Event>
+				<Event name="Clearing">СубъектДоступаОчистка</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="ГруппаПраваДоступа" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Права доступа</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Access Rights</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаПраваДоступаExtendedTooltip" id="53"/>
+			<ChildItems>
+				<Pages name="ГруппаСтраницыОсновная" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страницы</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Pages</v8:content>
+						</v8:item>
+					</Title>
+					<PagesRepresentation>TabsOnTop</PagesRepresentation>
+					<ExtendedTooltip name="ГруппаСтраницыОсновнаяExtendedTooltip" id="54"/>
+					<ChildItems>
+						<Page name="ГруппаСтраницаСправочники" id="15">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Справочники</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Catalogs</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ГруппаСтраницаСправочникиExtendedTooltip" id="55"/>
+							<ChildItems>
+								<Table name="ДеревоСправочники" id="20">
+									<Representation>Tree</Representation>
+									<ChangeRowSet>false</ChangeRowSet>
+									<ChangeRowOrder>false</ChangeRowOrder>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>ДеревоСправочники</DataPath>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<ContextMenu name="ДеревоСправочникиКонтекстноеМеню" id="21"/>
+									<AutoCommandBar name="ДеревоСправочникиКоманднаяПанель" id="22">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="ДеревоСправочникиExtendedTooltip" id="56"/>
+									<SearchStringAddition name="ДеревоСправочникиСтрокаПоиска" id="65">
+										<AdditionSource>
+											<Item>ДеревоСправочники</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоСправочникиСтрокаПоискаКонтекстноеМеню" id="66"/>
+										<ExtendedTooltip name="ДеревоСправочникиСтрокаПоискаРасширеннаяПодсказка" id="67"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ДеревоСправочникиСостояниеПросмотра" id="68">
+										<AdditionSource>
+											<Item>ДеревоСправочники</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоСправочникиСостояниеПросмотраКонтекстноеМеню" id="69"/>
+										<ExtendedTooltip name="ДеревоСправочникиСостояниеПросмотраРасширеннаяПодсказка" id="70"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ДеревоСправочникиУправлениеПоиском" id="71">
+										<AdditionSource>
+											<Item>ДеревоСправочники</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоСправочникиУправлениеПоискомКонтекстноеМеню" id="72"/>
+										<ExtendedTooltip name="ДеревоСправочникиУправлениеПоискомРасширеннаяПодсказка" id="73"/>
+									</SearchControlAddition>
+								</Table>
+							</ChildItems>
+						</Page>
+						<Page name="ГруппаСтраницаДокументы" id="16">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Документы</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Documents</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ГруппаСтраницаДокументыExtendedTooltip" id="57"/>
+							<ChildItems>
+								<Table name="ДеревоДокументы" id="23">
+									<Representation>Tree</Representation>
+									<ChangeRowSet>false</ChangeRowSet>
+									<ChangeRowOrder>false</ChangeRowOrder>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>ДеревоДокументы</DataPath>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<ContextMenu name="ДеревоДокументыКонтекстноеМеню" id="24"/>
+									<AutoCommandBar name="ДеревоДокументыКоманднаяПанель" id="25">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="ДеревоДокументыExtendedTooltip" id="58"/>
+									<SearchStringAddition name="ДеревоДокументыСтрокаПоиска" id="74">
+										<AdditionSource>
+											<Item>ДеревоДокументы</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоДокументыСтрокаПоискаКонтекстноеМеню" id="75"/>
+										<ExtendedTooltip name="ДеревоДокументыСтрокаПоискаРасширеннаяПодсказка" id="76"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ДеревоДокументыСостояниеПросмотра" id="77">
+										<AdditionSource>
+											<Item>ДеревоДокументы</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоДокументыСостояниеПросмотраКонтекстноеМеню" id="78"/>
+										<ExtendedTooltip name="ДеревоДокументыСостояниеПросмотраРасширеннаяПодсказка" id="79"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ДеревоДокументыУправлениеПоиском" id="80">
+										<AdditionSource>
+											<Item>ДеревоДокументы</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоДокументыУправлениеПоискомКонтекстноеМеню" id="81"/>
+										<ExtendedTooltip name="ДеревоДокументыУправлениеПоискомРасширеннаяПодсказка" id="82"/>
+									</SearchControlAddition>
+								</Table>
+							</ChildItems>
+						</Page>
+						<Page name="ГруппаСтраницаОтчеты" id="17">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отчеты</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Reports</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ГруппаСтраницаОтчетыExtendedTooltip" id="59"/>
+							<ChildItems>
+								<Table name="ДеревоОтчеты" id="26">
+									<Representation>Tree</Representation>
+									<ChangeRowSet>false</ChangeRowSet>
+									<ChangeRowOrder>false</ChangeRowOrder>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>ДеревоОтчеты</DataPath>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<ContextMenu name="ДеревоОтчетыКонтекстноеМеню" id="27"/>
+									<AutoCommandBar name="ДеревоОтчетыКоманднаяПанель" id="28">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="ДеревоОтчетыExtendedTooltip" id="60"/>
+									<SearchStringAddition name="ДеревоОтчетыСтрокаПоиска" id="83">
+										<AdditionSource>
+											<Item>ДеревоОтчеты</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоОтчетыСтрокаПоискаКонтекстноеМеню" id="84"/>
+										<ExtendedTooltip name="ДеревоОтчетыСтрокаПоискаРасширеннаяПодсказка" id="85"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ДеревоОтчетыСостояниеПросмотра" id="86">
+										<AdditionSource>
+											<Item>ДеревоОтчеты</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоОтчетыСостояниеПросмотраКонтекстноеМеню" id="87"/>
+										<ExtendedTooltip name="ДеревоОтчетыСостояниеПросмотраРасширеннаяПодсказка" id="88"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ДеревоОтчетыУправлениеПоиском" id="89">
+										<AdditionSource>
+											<Item>ДеревоОтчеты</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоОтчетыУправлениеПоискомКонтекстноеМеню" id="90"/>
+										<ExtendedTooltip name="ДеревоОтчетыУправлениеПоискомРасширеннаяПодсказка" id="91"/>
+									</SearchControlAddition>
+								</Table>
+							</ChildItems>
+						</Page>
+						<Page name="ГруппаСтраницаОбработки" id="18">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Обработки</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Data Processors</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ГруппаСтраницаОбработкиExtendedTooltip" id="61"/>
+							<ChildItems>
+								<Table name="ДеревоОбработки" id="29">
+									<Representation>Tree</Representation>
+									<ChangeRowSet>false</ChangeRowSet>
+									<ChangeRowOrder>false</ChangeRowOrder>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>ДеревоОбработки</DataPath>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<ContextMenu name="ДеревоОбработкиКонтекстноеМеню" id="30"/>
+									<AutoCommandBar name="ДеревоОбработкиКоманднаяПанель" id="31">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="ДеревоОбработкиExtendedTooltip" id="62"/>
+									<SearchStringAddition name="ДеревоОбработкиСтрокаПоиска" id="92">
+										<AdditionSource>
+											<Item>ДеревоОбработки</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоОбработкиСтрокаПоискаКонтекстноеМеню" id="93"/>
+										<ExtendedTooltip name="ДеревоОбработкиСтрокаПоискаРасширеннаяПодсказка" id="94"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ДеревоОбработкиСостояниеПросмотра" id="95">
+										<AdditionSource>
+											<Item>ДеревоОбработки</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоОбработкиСостояниеПросмотраКонтекстноеМеню" id="96"/>
+										<ExtendedTooltip name="ДеревоОбработкиСостояниеПросмотраРасширеннаяПодсказка" id="97"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ДеревоОбработкиУправлениеПоиском" id="98">
+										<AdditionSource>
+											<Item>ДеревоОбработки</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоОбработкиУправлениеПоискомКонтекстноеМеню" id="99"/>
+										<ExtendedTooltip name="ДеревоОбработкиУправлениеПоискомРасширеннаяПодсказка" id="100"/>
+									</SearchControlAddition>
+								</Table>
+							</ChildItems>
+						</Page>
+						<Page name="ГруппаСтраницаРегистрыСведений" id="19">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Регистры сведений</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Information registers</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ГруппаСтраницаРегистрыСведенийExtendedTooltip" id="63"/>
+							<ChildItems>
+								<Table name="ДеревоРегистрыСведений" id="32">
+									<Representation>Tree</Representation>
+									<ChangeRowSet>false</ChangeRowSet>
+									<ChangeRowOrder>false</ChangeRowOrder>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<InitialTreeView>ExpandAllLevels</InitialTreeView>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>ДеревоРегистрыСведений</DataPath>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<ContextMenu name="ДеревоРегистрыСведенийКонтекстноеМеню" id="33"/>
+									<AutoCommandBar name="ДеревоРегистрыСведенийКоманднаяПанель" id="34">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="ДеревоРегистрыСведенийExtendedTooltip" id="64"/>
+									<SearchStringAddition name="ДеревоРегистрыСведенийСтрокаПоиска" id="101">
+										<AdditionSource>
+											<Item>ДеревоРегистрыСведений</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоРегистрыСведенийСтрокаПоискаКонтекстноеМеню" id="102"/>
+										<ExtendedTooltip name="ДеревоРегистрыСведенийСтрокаПоискаРасширеннаяПодсказка" id="103"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ДеревоРегистрыСведенийСостояниеПросмотра" id="104">
+										<AdditionSource>
+											<Item>ДеревоРегистрыСведений</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоРегистрыСведенийСостояниеПросмотраКонтекстноеМеню" id="105"/>
+										<ExtendedTooltip name="ДеревоРегистрыСведенийСостояниеПросмотраРасширеннаяПодсказка" id="106"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ДеревоРегистрыСведенийУправлениеПоиском" id="107">
+										<AdditionSource>
+											<Item>ДеревоРегистрыСведений</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоРегистрыСведенийУправлениеПоискомКонтекстноеМеню" id="108"/>
+										<ExtendedTooltip name="ДеревоРегистрыСведенийУправлениеПоискомРасширеннаяПодсказка" id="109"/>
+									</SearchControlAddition>
+								</Table>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.бит_НастройкаПравДоступа</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ДеревоСправочники" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево справочники</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>reference Tree</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ДеревоДокументы" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево документы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>document tree</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ДеревоРегистрыСведений" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево регистры сведений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>registers information tree</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ДеревоОтчеты" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево отчеты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Wood reports</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ДеревоОбработки" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево обработки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Wood processing</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="фИменаДеревьев" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имена деревьев</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Names of Trees</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="фКэшЗначений" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кэш значений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Value Cache</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="КомандаОбновить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда обновить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command update</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаОбновить</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаЗаписать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать изменения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save changes</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Write</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаЗаписать</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаЗаполнитьПоШаблону" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по шаблону</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill in by Template</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить права доступа по шаблону</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill-in access rights by the template</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateInitialImage</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаЗаполнитьПоШаблону</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаВосстановитьНастройки" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать настройку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select Settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать настройку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select Settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.LoadReportSettings</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ДействияФормыНастройкиВосстановить</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаСохранитьНастройки" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить настройку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save Settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить настройку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save Settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SaveReportSettings</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ДействияФормыНастройкиСохранить</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

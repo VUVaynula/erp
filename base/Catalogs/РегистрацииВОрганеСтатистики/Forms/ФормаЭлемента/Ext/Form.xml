@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ПосмотретьИспользование" id="85">
+				<Type>CommandBarHyperlink</Type>
+				<CommandName>Form.Command.ПосмотретьСостав</CommandName>
+				<ExtendedTooltip name="ПосмотретьИспользованиеРасширеннаяПодсказка" id="86"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Код" id="1">
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="КодРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="Владелец" id="7">
+			<DataPath>Объект.Owner</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="ВладелецКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ВладелецРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<InputField name="СтруктурнаяЕдиница" id="19">
+			<DataPath>Объект.СтруктурнаяЕдиница</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Респондент (структурная единица)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Respondent (business unit)</v8:content>
+				</v8:item>
+			</Title>
+			<EditMode>EnterOnInput</EditMode>
+			<ChoiceParameterLinks>
+				<xr:Link>
+					<xr:Name>Отбор.Владелец</xr:Name>
+					<xr:DataPath xsi:type="xs:string">Объект.Owner</xr:DataPath>
+					<xr:ValueChange>Clear</xr:ValueChange>
+				</xr:Link>
+			</ChoiceParameterLinks>
+			<ContextMenu name="СтруктурнаяЕдиницаКонтекстноеМеню" id="20"/>
+			<ExtendedTooltip name="СтруктурнаяЕдиницаРасширеннаяПодсказка" id="21"/>
+			<Events>
+				<Event name="OnChange">СтруктурнаяЕдиницаПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="Наименование" id="4">
+			<DataPath>Объект.Description</DataPath>
+			<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<UsualGroup name="ГруппаКодОрганаФСГС" id="43">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код органа ФСГС</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>FSSS body code</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа код органа ФСГС</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group FSSS body code</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ThroughAlign>Use</ThroughAlign>
+			<ExtendedTooltip name="ГруппаКодОрганаФСГСРасширеннаяПодсказка" id="44"/>
+			<ChildItems>
+				<InputField name="КодОрганаФСГС" id="34">
+					<DataPath>Объект.КодОрганаФСГС</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Необходим для сдачи отчетности в Росстат в электронном виде</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Required for electronic submission of reporting to the Russian Federal State Statistics Service</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<ChoiceButton>true</ChoiceButton>
+					<Mask>99-XXXXXXX</Mask>
+					<ContextMenu name="КодОрганаФСГСКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="КодОрганаФСГСРасширеннаяПодсказка" id="36"/>
+					<Events>
+						<Event name="OnChange">КодОрганаФСГСПриИзменении</Event>
+						<Event name="StartChoice">КодОрганаФСГСНачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<LabelField name="НаименованиеОрганаФСГС" id="40">
+					<DataPath>НаименованиеОрганаФСГС</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<ContextMenu name="НаименованиеОрганаФСГСКонтекстноеМеню" id="41"/>
+					<ExtendedTooltip name="НаименованиеОрганаФСГСРасширеннаяПодсказка" id="42"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаИдентификационныйНомер" id="77">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа идентификационный номер</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group Identification number</v8:content>
+				</v8:item>
+			</Title>
+			<VerticalAlign>Center</VerticalAlign>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаИдентификационныйНомерРасширеннаяПодсказка" id="78"/>
+			<ChildItems>
+				<InputField name="ИдентификационныйНомер" id="31">
+					<DataPath>Объект.ИдентификационныйНомер</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификационный номер</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Identification number</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Присваивается территориальным органом Росстата</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Assigned by the territorial body of the Russian Federal State Statistics Service</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ИдентификационныйНомерКонтекстноеМеню" id="32"/>
+					<ExtendedTooltip name="ИдентификационныйНомерРасширеннаяПодсказка" id="33"/>
+					<Events>
+						<Event name="OnChange">ИдентификационныйНомерПриИзменении</Event>
+					</Events>
+				</InputField>
+				<PictureDecoration name="ИдентификационныйНомерКартинка" id="82">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификационный номер картинка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Identification number picture</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="ИдентификационныйНомерКартинкаКонтекстноеМеню" id="83"/>
+					<ExtendedTooltip name="ИдентификационныйНомерКартинкаРасширеннаяПодсказка" id="84"/>
+				</PictureDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="АдресПочтовый" id="71">
+			<DataPath>АдресПочтовый</DataPath>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<ChoiceButton>true</ChoiceButton>
+			<InputHint>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&lt;Не заполнен&gt;</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>&lt;Not populated&gt;</v8:content>
+				</v8:item>
+			</InputHint>
+			<ContextMenu name="АдресПочтовыйКонтекстноеМеню" id="72"/>
+			<ExtendedTooltip name="АдресПочтовыйРасширеннаяПодсказка" id="73"/>
+			<Events>
+				<Event name="OnChange">АдресПочтовыйПриИзменении</Event>
+				<Event name="StartChoice">АдресПочтовыйНачалоВыбора</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="ГруппаПодписаниеОтчетности" id="45">
+			<EnableContentChange>true</EnableContentChange>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подписание отчетности</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sign reporting</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<VerticalAlign>Bottom</VerticalAlign>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПодписаниеОтчетностиРасширеннаяПодсказка" id="46"/>
+			<ChildItems>
+				<RadioButtonField name="ОтчетностьПодписываетПредставитель" id="47">
+					<DataPath>ОтчетностьПодписываетПредставитель</DataPath>
+					<TitleLocation>Left</TitleLocation>
+					<TitleHeight>1</TitleHeight>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Руководитель</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Manager</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">0</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Представитель</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Agent</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">1</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ОтчетностьПодписываетПредставительКонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="ОтчетностьПодписываетПредставительРасширеннаяПодсказка" id="49"/>
+					<Events>
+						<Event name="OnChange">ОтчетностьПодписываетПредставительПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<UsualGroup name="ГруппаПредставлениеПредставителя" id="50">
+					<EnableContentChange>true</EnableContentChange>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представитель</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Agent</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПредставлениеПредставителяРасширеннаяПодсказка" id="51"/>
+					<ChildItems>
+						<Pages name="ГруппаПредставлениеПредставителяСтраницы" id="52">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Представление представителя (страницы)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Representative (page) presentation</v8:content>
+								</v8:item>
+							</Title>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="ГруппаПредставлениеПредставителяСтраницыРасширеннаяПодсказка" id="53"/>
+							<ChildItems>
+								<Page name="ГруппаПредставительГиперссылка" id="54">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Представитель (гиперссылка)</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Representative (hyperlink)</v8:content>
+										</v8:item>
+									</Title>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаПредставительГиперссылкаРасширеннаяПодсказка" id="55"/>
+									<ChildItems>
+										<LabelField name="ПредставлениеПредставителя" id="56">
+											<DataPath>ПредставлениеПредставителя</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Данные о представителе организации в органе статистики</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Data on company agent in the tax authority</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Hiperlink>true</Hiperlink>
+											<ContextMenu name="ПредставлениеПредставителяКонтекстноеМеню" id="57"/>
+											<ExtendedTooltip name="ПредставлениеПредставителяРасширеннаяПодсказка" id="58"/>
+											<Events>
+												<Event name="Click">ПредставлениеПредставителяНажатие</Event>
+											</Events>
+										</LabelField>
+									</ChildItems>
+								</Page>
+								<Page name="ГруппаПредставительНеВыбран" id="59">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Представитель (не выбран)</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Representative (not selected)</v8:content>
+										</v8:item>
+									</Title>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаПредставительНеВыбранРасширеннаяПодсказка" id="60"/>
+									<ChildItems>
+										<LabelDecoration name="НадписьПредставительНеВыбран" id="61">
+											<Height>1</Height>
+											<TextColor>#646464</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>&lt;не заполнен&gt;</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>&lt;Not filled in&gt;</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="НадписьПредставительНеВыбранКонтекстноеМеню" id="62"/>
+											<ExtendedTooltip name="НадписьПредставительНеВыбранРасширеннаяПодсказка" id="63"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<CheckBoxField name="ВАрхиве" id="74">
+			<DataPath>Объект.ВАрхиве</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Регистрация больше не используется</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Registration is no longer used</v8:content>
+				</v8:item>
+			</Title>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ВАрхивеКонтекстноеМеню" id="75"/>
+			<ExtendedTooltip name="ВАрхивеРасширеннаяПодсказка" id="76"/>
+		</CheckBoxField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.РегистрацииВОрганеСтатистики</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="НаименованиеОрганаФСГС" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование территориального органа Росстата</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Name of the territorial body of Russian Federal State Statistics Service</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ОтчетностьПодписываетПредставитель" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отчетность подписывает</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reporting is signed by</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<Edit>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Edit>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ПредставлениеПредставителя" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление представителя</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Representative presentation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресПочтовый" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес почтовый</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Postal address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользуетсяАдресРеспондента" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Используется адрес респондента</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Respondent address is used</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПосмотретьСостав" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>См. состав</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>See content</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Посмотреть состав</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>View content</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПосмотретьСостав</Action>
+		</Command>
+	</Commands>
+</Form>

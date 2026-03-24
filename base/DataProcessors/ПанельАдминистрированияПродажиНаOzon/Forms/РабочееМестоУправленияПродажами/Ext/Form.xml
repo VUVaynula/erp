@@ -1,0 +1,1683 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Управление продажами на Ozon</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Sales management on Ozon</v8:content>
+		</v8:item>
+	</Title>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeLoadDataFromSettingsAtServer">ПередЗагрузкойДанныхИзНастроекНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаНастройкиУчетнойЗаписи" id="189">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа настройки учетной записи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group Account settings</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНастройкиУчетнойЗаписиРасширеннаяПодсказка" id="190"/>
+			<ChildItems>
+				<InputField name="УчетнаяЗапись" id="144">
+					<DataPath>УчетнаяЗапись</DataPath>
+					<SkipOnInput>true</SkipOnInput>
+					<TitleTextColor>style:AccentColor</TitleTextColor>
+					<TitleFont ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Учетная запись из списка подключений к торговой площадке, для которой доступно управление каталогом, настройками и оформление документов.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Account from the list of connections to the marketplace, which allows you to manage the directory, settings, and document registration.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ChoiceButton>false</ChoiceButton>
+					<OpenButton>false</OpenButton>
+					<CreateButton>false</CreateButton>
+					<QuickChoice>true</QuickChoice>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ChoiceParameters>
+						<app:item name="Отбор.ПометкаУдаления">
+							<app:value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xs:boolean">false</Value>
+							</app:value>
+						</app:item>
+						<app:item name="Отбор.ВидМаркетплейса">
+							<app:value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ВидыМаркетплейсов.EnumValue.МаркетплейсOzon</Value>
+							</app:value>
+						</app:item>
+					</ChoiceParameters>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>&lt;необходимо выбрать учетную запись&gt;</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>&lt;select an account&gt;</v8:content>
+						</v8:item>
+					</InputHint>
+					<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+					<ContextMenu name="УчетнаяЗаписьКонтекстноеМеню" id="145"/>
+					<ExtendedTooltip name="УчетнаяЗаписьРасширеннаяПодсказка" id="146"/>
+					<Events>
+						<Event name="OnChange">УчетнаяЗаписьПриИзменении</Event>
+					</Events>
+				</InputField>
+				<Button name="ОткрытьНастройкиВыгрузкиТоварногоКаталога" id="194">
+					<Type>Hyperlink</Type>
+					<GroupVerticalAlign>Center</GroupVerticalAlign>
+					<CommandName>Form.Command.ОткрытьНастройкиОбменаДанными</CommandName>
+					<ExtendedTooltip name="ОткрытьНастройкиВыгрузкиТоварногоКаталогаРасширеннаяПодсказка" id="195"/>
+				</Button>
+				<Button name="ОбновитьКомандыФормы" id="270">
+					<Type>UsualButton</Type>
+					<Representation>Picture</Representation>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+					<CommandName>Form.Command.ОбновитьКомандыФормы</CommandName>
+					<ExtendedTooltip name="ОбновитьКомандыФормыРасширеннаяПодсказка" id="271"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаРаботаСТоварнымКаталогом" id="147">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Товарный каталог</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Goods directory</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаРаботаСТоварнымКаталогомРасширеннаяПодсказка" id="148"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаТоварныйКаталог" id="178">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа товарный каталог</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group Goods directory</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаТоварныйКаталогРасширеннаяПодсказка" id="179"/>
+					<ChildItems>
+						<Button name="ОткрытьПубликациюТоваровНаТорговойПлощадке" id="149">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.ОткрытьПубликациюТоваровНаТорговойПлощадке</CommandName>
+							<Font ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+							<PictureLocation>Left</PictureLocation>
+							<ExtendedTooltip name="ОткрытьПубликациюТоваровНаТорговойПлощадкеРасширеннаяПодсказка" id="150"/>
+						</Button>
+						<LabelDecoration name="ДекорацияОтступ1_1" id="182">
+							<Width>14</Width>
+							<ContextMenu name="ДекорацияОтступ1_1КонтекстноеМеню" id="183"/>
+							<ExtendedTooltip name="ДекорацияОтступ1_1РасширеннаяПодсказка" id="184"/>
+						</LabelDecoration>
+						<Button name="ОткрытьНастройкуПринадлежностиТоваровСхемамРаботы" id="180">
+							<Type>Hyperlink</Type>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<CommandName>Form.Command.ОткрытьНастройкуПринадлежностиТоваровСхемамРаботы</CommandName>
+							<ExtendedTooltip name="ОткрытьНастройкуПринадлежностиТоваровСхемамРаботыРасширеннаяПодсказка" id="181"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаУправлениеЦенами" id="185">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа управление ценами</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group Price management</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаУправлениеЦенамиРасширеннаяПодсказка" id="186"/>
+					<ChildItems>
+						<Button name="ОткрытьПрайсЛист" id="187">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.ОткрытьПрайсЛист</CommandName>
+							<Font ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+							<ExtendedTooltip name="ОткрытьПрайсЛистРасширеннаяПодсказка" id="188"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаДокументы" id="51">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа документы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Documents group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаДокументыРасширеннаяПодсказка" id="52"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаПоставки" id="33">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поставки на склады торговой площадки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Shipments to marketplace warehouses</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>NormalSeparation</Representation>
+					<ThroughAlign>Use</ThroughAlign>
+					<ExtendedTooltip name="ГруппаПоставкиРасширеннаяПодсказка" id="34"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаПоставкиВсе" id="61">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа поставки все</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group All shipments</v8:content>
+								</v8:item>
+							</Title>
+							<Group>AlwaysHorizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПоставкиВсеРасширеннаяПодсказка" id="62"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияОтступ3_1" id="92">
+									<ContextMenu name="ДекорацияОтступ3_1КонтекстноеМеню" id="93"/>
+									<ExtendedTooltip name="ДекорацияОтступ3_1РасширеннаяПодсказка" id="94"/>
+								</LabelDecoration>
+								<UsualGroup name="ГруппаДокументыПоставок" id="294">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа документы поставок</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group Shipment documents</v8:content>
+										</v8:item>
+									</Title>
+									<Width>45</Width>
+									<Group>AlwaysHorizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаДокументыПоставокРасширеннаяПодсказка" id="295"/>
+									<ChildItems>
+										<Button name="ОткрытьДокументыПоставок" id="1">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.ОткрытьДокументыПоставок</CommandName>
+											<Font ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+											<ExtendedTooltip name="ОткрытьДокументыПоставокРасширеннаяПодсказка" id="2"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<Button name="ОткрытьАнализОстатковИПланированиеПоставокТоваров" id="59">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.ОткрытьАнализОстатковИПланированиеПоставокТоваров</CommandName>
+									<Font ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+									<ExtendedTooltip name="ОткрытьАнализОстатковИПланированиеПоставокТоваровРасширеннаяПодсказка" id="60"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаПоставкиДокументы" id="67">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа поставки документы</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group Shipment documents</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПоставкиДокументыРасширеннаяПодсказка" id="68"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаПоставкиКОформлениюОтгрузки" id="69">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа поставки к оформлению отгрузки</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group Shipments to register shipment</v8:content>
+										</v8:item>
+									</Title>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<United>false</United>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаПоставкиКОформлениюОтгрузкиРасширеннаяПодсказка" id="70"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияОтступ4_1" id="264">
+											<Width>3</Width>
+											<ContextMenu name="ДекорацияОтступ4_1КонтекстноеМеню" id="265"/>
+											<ExtendedTooltip name="ДекорацияОтступ4_1РасширеннаяПодсказка" id="266"/>
+										</LabelDecoration>
+										<Button name="ОткрытьДокументыПоставокЗаявкиНаПоставку" id="35">
+											<Type>Hyperlink</Type>
+											<Width>31</Width>
+											<CommandName>Form.Command.ОткрытьДокументыПоставокЗаявкиНаПоставку</CommandName>
+											<ExtendedTooltip name="ОткрытьДокументыПоставокЗаявкиНаПоставкуРасширеннаяПодсказка" id="36"/>
+										</Button>
+										<Button name="ОткрытьДокументыПоставокЗаявкиНаПоставкуКОформлению" id="246">
+											<Type>Hyperlink</Type>
+											<Width>12</Width>
+											<CommandName>Form.Command.ОткрытьДокументыПоставокЗаявкиНаПоставкуКОформлению</CommandName>
+											<TextColor>style:НезаполненноеПолеТаблицы</TextColor>
+											<ExtendedTooltip name="ОткрытьДокументыПоставокЗаявкиНаПоставкуКОформлениюРасширеннаяПодсказка" id="247"/>
+										</Button>
+										<Button name="ВыгрузитьЗаявкуНаПоставку" id="129">
+											<Type>Hyperlink</Type>
+											<Width>20</Width>
+											<CommandName>Form.Command.ВыгрузитьЗаявкуНаПоставку</CommandName>
+											<ExtendedTooltip name="ВыгрузитьЗаявкуНаПоставкуРасширеннаяПодсказка" id="130"/>
+										</Button>
+										<LabelDecoration name="ДекорацияОтступ4_2" id="8">
+											<Width>2</Width>
+											<ContextMenu name="ДекорацияОтступ4_2КонтекстноеМеню" id="9"/>
+											<ExtendedTooltip name="ДекорацияОтступ4_2РасширеннаяПодсказка" id="10"/>
+										</LabelDecoration>
+										<Button name="ЗагрузитьПоставки" id="65">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.ЗагрузитьПоставки</CommandName>
+											<ExtendedTooltip name="ЗагрузитьПоставкиРасширеннаяПодсказка" id="66"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаПоставкиВДоставке" id="71">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа поставки в доставке</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group Shipments in delivery</v8:content>
+										</v8:item>
+									</Title>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<United>false</United>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаПоставкиВДоставкеРасширеннаяПодсказка" id="72"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияОтступ5_1" id="126">
+											<Width>3</Width>
+											<ContextMenu name="ДекорацияОтступ5_1КонтекстноеМеню" id="127"/>
+											<ExtendedTooltip name="ДекорацияОтступ5_1РасширеннаяПодсказка" id="128"/>
+										</LabelDecoration>
+										<Button name="ОткрытьДокументыПоставокАктыРасхождений" id="37">
+											<Type>Hyperlink</Type>
+											<Width>31</Width>
+											<CommandName>Form.Command.ОткрытьДокументыПоставокАктыРасхождений</CommandName>
+											<ExtendedTooltip name="ОткрытьДокументыПоставокАктыРасхожденийРасширеннаяПодсказка" id="38"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаПоставкиКВозврату" id="122">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа поставки к возврату</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group Shipments to return</v8:content>
+										</v8:item>
+									</Title>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<United>false</United>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаПоставкиКВозвратуРасширеннаяПодсказка" id="123"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияОтступ6_1" id="138">
+											<Width>3</Width>
+											<ContextMenu name="ДекорацияОтступ6_1КонтекстноеМеню" id="139"/>
+											<ExtendedTooltip name="ДекорацияОтступ6_1РасширеннаяПодсказка" id="140"/>
+										</LabelDecoration>
+										<Button name="ОткрытьДокументыПоставокЗаявкиНаВозврат" id="124">
+											<Type>Hyperlink</Type>
+											<Width>31</Width>
+											<CommandName>Form.Command.ОткрытьДокументыПоставокЗаявкиНаВозврат</CommandName>
+											<ExtendedTooltip name="ОткрытьДокументыПоставокЗаявкиНаВозвратРасширеннаяПодсказка" id="125"/>
+										</Button>
+										<Button name="ОткрытьДокументыПоставокЗаявкиНаВозвратКОформлению" id="248">
+											<Type>Hyperlink</Type>
+											<Width>12</Width>
+											<CommandName>Form.Command.ОткрытьДокументыПоставокЗаявкиНаВозвратКОформлению</CommandName>
+											<TextColor>style:НезаполненноеПолеТаблицы</TextColor>
+											<ExtendedTooltip name="ОткрытьДокументыПоставокЗаявкиНаВозвратКОформлениюРасширеннаяПодсказка" id="249"/>
+										</Button>
+										<Button name="ВыгрузитьЗаявкуНаВозврат" id="134">
+											<Type>Hyperlink</Type>
+											<Width>20</Width>
+											<CommandName>Form.Command.ВыгрузитьЗаявкуНаВозврат</CommandName>
+											<ExtendedTooltip name="ВыгрузитьЗаявкуНаВозвратРасширеннаяПодсказка" id="135"/>
+										</Button>
+										<LabelDecoration name="ДекорацияОтступ6_2" id="267">
+											<Width>2</Width>
+											<ContextMenu name="ДекорацияОтступ6_2КонтекстноеМеню" id="268"/>
+											<ExtendedTooltip name="ДекорацияОтступ6_2РасширеннаяПодсказка" id="269"/>
+										</LabelDecoration>
+										<Button name="ЗагрузитьЗаявкуНаВозврат" id="136">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.ЗагрузитьЗаявкуНаВозврат</CommandName>
+											<ExtendedTooltip name="ЗагрузитьЗаявкуНаВозвратРасширеннаяПодсказка" id="137"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПродажи" id="169">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продажи</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sales</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<ExtendedTooltip name="ГруппаПродажиРасширеннаяПодсказка" id="170"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаДокументыПродажВсе" id="73">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа документы продаж все</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group Sales documents all</v8:content>
+								</v8:item>
+							</Title>
+							<Group>AlwaysHorizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаДокументыПродажВсеРасширеннаяПодсказка" id="74"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияОтступ7_1" id="5">
+									<ContextMenu name="ДекорацияОтступ7_1КонтекстноеМеню" id="6"/>
+									<ExtendedTooltip name="ДекорацияОтступ7_1РасширеннаяПодсказка" id="7"/>
+								</LabelDecoration>
+								<UsualGroup name="ГруппаДокументыПродаж" id="296">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа документы продаж</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group Sales documents</v8:content>
+										</v8:item>
+									</Title>
+									<Width>45</Width>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаДокументыПродажРасширеннаяПодсказка" id="297"/>
+									<ChildItems>
+										<Button name="ОткрытьДокументыПродаж" id="171">
+											<Type>Hyperlink</Type>
+											<HorizontalStretch>true</HorizontalStretch>
+											<CommandName>Form.Command.ОткрытьДокументыПродаж</CommandName>
+											<Font ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+											<ExtendedTooltip name="ОткрытьДокументыПродажРасширеннаяПодсказка" id="172"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<Button name="ЗагрузитьОтчетыОРеализациях" id="289">
+									<Type>Hyperlink</Type>
+									<Representation>PictureAndText</Representation>
+									<CommandName>Form.Command.ЗагрузитьОтчетыОРеализациях</CommandName>
+									<Font ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+									<ExtendedTooltip name="ЗагрузитьОтчетыОРеализацияхРасширеннаяПодсказка" id="290"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаЗаказыИОтчетыПоСхемам" id="232">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа заказы и отчеты по схемам</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group Orders and reports by schemes</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЗаказыИОтчетыПоСхемамРасширеннаяПодсказка" id="233"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаДокументыПродажFBSВДоставке" id="83">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа документы продаж FBS (в доставке)</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group Sales documents FBS (in delivery)</v8:content>
+										</v8:item>
+									</Title>
+									<Group>AlwaysHorizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<United>false</United>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаДокументыПродажFBSВДоставкеРасширеннаяПодсказка" id="84"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияОтступ10_1" id="98">
+											<Width>3</Width>
+											<ContextMenu name="ДекорацияОтступ10_1КонтекстноеМеню" id="99"/>
+											<ExtendedTooltip name="ДекорацияОтступ10_1РасширеннаяПодсказка" id="100"/>
+										</LabelDecoration>
+										<Button name="ОткрытьДокументыПродажССобственныхСкладовВсеЗаказы" id="57">
+											<Type>Hyperlink</Type>
+											<Width>31</Width>
+											<CommandName>Form.Command.ОткрытьДокументыПродажССобственныхСкладовВсеЗаказы</CommandName>
+											<ExtendedTooltip name="ОткрытьДокументыПродажССобственныхСкладовВсеЗаказыРасширеннаяПодсказка" id="58"/>
+										</Button>
+										<Button name="ОткрытьДокументыПродажССобственныхСкладовКОформлению" id="234">
+											<Type>Hyperlink</Type>
+											<Width>12</Width>
+											<CommandName>Form.Command.ОткрытьДокументыПродажССобственныхСкладовКОформлению</CommandName>
+											<TextColor>style:НезаполненноеПолеТаблицы</TextColor>
+											<ExtendedTooltip name="ОткрытьДокументыПродажССобственныхСкладовКОформлениюРасширеннаяПодсказка" id="235"/>
+										</Button>
+										<Button name="ОткрытьДокументыПродажССобственныхСкладовВсеЗаказыOzon" id="281">
+											<Type>Hyperlink</Type>
+											<Width>20</Width>
+											<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+											<CommandName>Form.Command.ОткрытьДокументыПродажССобственныхСкладовВсеЗаказыOzon</CommandName>
+											<ExtendedTooltip name="ОткрытьДокументыПродажССобственныхСкладовВсеЗаказыOzonРасширеннаяПодсказка" id="282"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаДокументыПродажFBOЗаказы" id="75">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа документы продаж FBO (заказы)</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group Sales documents FBO (orders)</v8:content>
+										</v8:item>
+									</Title>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<United>false</United>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаДокументыПродажFBOЗаказыРасширеннаяПодсказка" id="76"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияОтступ9_1" id="155">
+											<Width>3</Width>
+											<ContextMenu name="ДекорацияОтступ9_1КонтекстноеМеню" id="156"/>
+											<ExtendedTooltip name="ДекорацияОтступ9_1РасширеннаяПодсказка" id="157"/>
+										</LabelDecoration>
+										<Button name="ОткрытьДокументыПродажСоСкладовТорговойПлощадкиЗаказы" id="53">
+											<Type>Hyperlink</Type>
+											<Width>31</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<CommandName>Form.Command.ОткрытьДокументыПродажСоСкладовТорговойПлощадкиЗаказы</CommandName>
+											<ExtendedTooltip name="ОткрытьДокументыПродажСоСкладовТорговойПлощадкиЗаказыРасширеннаяПодсказка" id="54"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаПродажиКВозврату" id="272">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа продажи к возврату</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group Sales to return</v8:content>
+										</v8:item>
+									</Title>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<United>false</United>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаПродажиКВозвратуРасширеннаяПодсказка" id="273"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияОтступ15_1" id="274">
+											<Width>3</Width>
+											<ContextMenu name="ДекорацияОтступ15_1КонтекстноеМеню" id="275"/>
+											<ExtendedTooltip name="ДекорацияОтступ15_1РасширеннаяПодсказка" id="276"/>
+										</LabelDecoration>
+										<Button name="ОткрытьДокументыПродажЗаявкиНаВозврат" id="277">
+											<Type>Hyperlink</Type>
+											<Width>31</Width>
+											<CommandName>Form.Command.ОткрытьДокументыПродажЗаявкиНаВозврат</CommandName>
+											<ExtendedTooltip name="ОткрытьДокументыПродажЗаявкиНаВозвратРасширеннаяПодсказка" id="278"/>
+										</Button>
+										<Button name="ОткрытьДокументыПродажЗаявкиНаВозвратКОформлению" id="279">
+											<Type>Hyperlink</Type>
+											<Width>11</Width>
+											<CommandName>Form.Command.ОткрытьДокументыПродажЗаявкиНаВозвратКОформлению</CommandName>
+											<TextColor>style:НезаполненноеПолеТаблицы</TextColor>
+											<ExtendedTooltip name="ОткрытьДокументыПродажЗаявкиНаВозвратКОформлениюРасширеннаяПодсказка" id="280"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаДокументыПродажПередачаВДоставку" id="298">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа документы продаж (передача в доставку)</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group Sales documents (transfer to delivery service)</v8:content>
+										</v8:item>
+									</Title>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<United>false</United>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаДокументыПродажПередачаВДоставкуРасширеннаяПодсказка" id="299"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияОтступ16_1" id="300">
+											<Width>3</Width>
+											<ContextMenu name="ДекорацияОтступ16_1КонтекстноеМеню" id="301"/>
+											<ExtendedTooltip name="ДекорацияОтступ16_1РасширеннаяПодсказка" id="302"/>
+										</LabelDecoration>
+										<Button name="ОткрытьДокументыПродажПередачаВДоставку" id="305">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.ОткрытьДокументыПродажПередачаВДоставку</CommandName>
+											<ExtendedTooltip name="ОткрытьДокументыПродажПередачаВДоставкуРасширеннаяПодсказка" id="306"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаКОформлениюОтчетовОПродажах" id="238">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа к оформлению отчетов о продажах</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group For registration of sales reports</v8:content>
+										</v8:item>
+									</Title>
+									<Group>AlwaysHorizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<United>false</United>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаКОформлениюОтчетовОПродажахРасширеннаяПодсказка" id="239"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияОтступ8_1" id="196">
+											<Width>3</Width>
+											<ContextMenu name="ДекорацияОтступ8_1КонтекстноеМеню" id="197"/>
+											<ExtendedTooltip name="ДекорацияОтступ8_1РасширеннаяПодсказка" id="198"/>
+										</LabelDecoration>
+										<Button name="ОткрытьДокументыПродажКОформлениюОтчетов" id="236">
+											<Type>Hyperlink</Type>
+											<Width>31</Width>
+											<CommandName>Form.Command.ОткрытьДокументыПродажКОформлениюОтчетов</CommandName>
+											<ExtendedTooltip name="ОткрытьДокументыПродажКОформлениюОтчетовРасширеннаяПодсказка" id="237"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаВзаиморасчеты" id="47">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Взаиморасчеты</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>AR/AP accounting</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>NormalSeparation</Representation>
+					<ThroughAlign>Use</ThroughAlign>
+					<ExtendedTooltip name="ГруппаВзаиморасчетыРасширеннаяПодсказка" id="48"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаУслуги" id="45">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Услуги</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Services</v8:content>
+								</v8:item>
+							</Title>
+							<Behavior>Usual</Behavior>
+							<ShowTitle>false</ShowTitle>
+							<ThroughAlign>Use</ThroughAlign>
+							<ExtendedTooltip name="ГруппаУслугиРасширеннаяПодсказка" id="46"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияОтступ11_1" id="106">
+									<ContextMenu name="ДекорацияОтступ11_1КонтекстноеМеню" id="107"/>
+									<ExtendedTooltip name="ДекорацияОтступ11_1РасширеннаяПодсказка" id="108"/>
+								</LabelDecoration>
+								<Button name="ОткрытьДокументыПриобретенияУслуг" id="13">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.ОткрытьДокументыПриобретенияУслуг</CommandName>
+									<Font ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+									<ExtendedTooltip name="ОткрытьДокументыПриобретенияУслугРасширеннаяПодсказка" id="14"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаВзаимозачеты" id="104">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Взаимозачеты</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Offsets</v8:content>
+								</v8:item>
+							</Title>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаВзаимозачетыРасширеннаяПодсказка" id="105"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияОтступ12_1" id="109">
+									<ContextMenu name="ДекорацияОтступ12_1КонтекстноеМеню" id="110"/>
+									<ExtendedTooltip name="ДекорацияОтступ12_1РасширеннаяПодсказка" id="111"/>
+								</LabelDecoration>
+								<Button name="ОткрытьДокументыВзаимозачетаЗадолженности" id="18">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.ОткрытьДокументыВзаимозачетаЗадолженности</CommandName>
+									<Font ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+									<ExtendedTooltip name="ОткрытьДокументыВзаимозачетаЗадолженностиРасширеннаяПодсказка" id="19"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаОплаты" id="112">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа оплаты</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group Payments</v8:content>
+								</v8:item>
+							</Title>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаОплатыРасширеннаяПодсказка" id="113"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияОтступ13_1" id="114">
+									<ContextMenu name="ДекорацияОтступ13_1КонтекстноеМеню" id="115"/>
+									<ExtendedTooltip name="ДекорацияОтступ13_1РасширеннаяПодсказка" id="116"/>
+								</LabelDecoration>
+								<Button name="ОткрытьДокументыОплаты" id="23">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.ОткрытьДокументыПлатежей</CommandName>
+									<Font ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+									<ExtendedTooltip name="ОткрытьДокументыОплатыРасширеннаяПодсказка" id="24"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаСверка" id="117">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сверка</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Reconciliation</v8:content>
+								</v8:item>
+							</Title>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаСверкаРасширеннаяПодсказка" id="118"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияОтступ14_1" id="119">
+									<ContextMenu name="ДекорацияОтступ14_1КонтекстноеМеню" id="120"/>
+									<ExtendedTooltip name="ДекорацияОтступ14_1РасширеннаяПодсказка" id="121"/>
+								</LabelDecoration>
+								<Button name="ОткрытьДокументыСверкиВзаиморасчетов" id="28">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.ОткрытьДокументыСверкиВзаиморасчетов</CommandName>
+									<Font ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+									<ExtendedTooltip name="ОткрытьДокументыСверкиВзаиморасчетовРасширеннаяПодсказка" id="29"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="УчетнаяЗапись" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Учетная запись</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.УчетныеЗаписиМаркетплейсов</v8:Type>
+			</Type>
+			<Save>
+				<Field>УчетнаяЗапись</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ИспользуемыеХозОперации" id="9">
+			<Type/>
+		</Attribute>
+		<Attribute name="Объект" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ПанельАдминистрированияПродажиНаOzon</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ПодключениеКСервисуВыполнено" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подключение к сервису выполнено</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Connection to service is established</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьСоглашенияСКлиентами" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать соглашения с клиентами</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use terms of sales</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДанныеТорговойПлощадки" id="15">
+			<Type/>
+		</Attribute>
+		<Attribute name="ЗначенияФункциональныхОпций" id="1">
+			<Type/>
+		</Attribute>
+		<Attribute name="ПодсказкиЭлементовПоУмолчанию" id="3">
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОткрытьДокументыПоставок" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы поставки на склады торговой площадки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Documents of shipment to marketplace warehouses</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть документы оформления поставок</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open shipment registration documents</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DocumentJournal</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьДокументыПоставок</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПриобретенияУслуг" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы приобретения услуг</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Service purchase documents</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть документы приобретения услуг</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open service purchase documents</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DocumentJournal</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьДокументыПриобретенияУслуг</Action>
+		</Command>
+		<Command name="ОткрытьДокументыВзаимозачетаЗадолженности" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы взаимозачета задолженности</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>AR/AP offset documents</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть документы взаимозачета задолженности</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open AR/AP offset documents</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DocumentJournal</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьДокументыВзаимозачетаЗадолженности</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПлатежей" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы безналичных платежей</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Bank account payment documents</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть документы платежей</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open payment documents</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DocumentJournal</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьДокументыПлатежей</Action>
+		</Command>
+		<Command name="ОткрытьДокументыСверкиВзаиморасчетов" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы сверки взаиморасчетов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>AR/AP reconciliation documents</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть документы сверки взаиморасчетов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open AR/AP reconciliation documents</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DocumentJournal</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьДокументыСверкиВзаиморасчетов</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПоставокЗаявкиНаПоставку" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список заявок на поставку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of shipment requests</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть заявки на поставку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open shipment requests</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьДокументыПоставокЗаявкиНаПоставку</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПоставокАктыРасхождений" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список актов расхождений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Discrepancy report list</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть акты расхождений по поставкам</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open shipment discrepancy reports</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьДокументыПоставокАктыРасхождений</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПродажСоСкладовТорговойПлощадкиЗаказы" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список заказов отгрузки со складов Ozon</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of shipment orders from Ozon warehouses</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Посмотреть заказы при отгрузке со складов торговой площадки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>View orders during shipment from marketplace warehouses</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьДокументыПродажСоСкладовТорговойПлощадкиЗаказы</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПродажССобственныхСкладовВсеЗаказы" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список заказов отгрузки с собственных складов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of shipment orders from own warehouses</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть заказы отгрузки с собственных складов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open shipment orders from own warehouses</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьДокументыПродажССобственныхСкладовВсеЗаказы</Action>
+		</Command>
+		<Command name="ОткрытьАнализОстатковИПланированиеПоставокТоваров" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Анализ остатков и планирование поставок товаров</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Balance analysis and shipment planning</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть анализ остатков и планирование поставок товаров</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open balance analysis and shipment planning</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DataProcessor</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьАнализОстатковИПланированиеПоставокТоваров</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ЗагрузитьПоставки" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить поставки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import shipments</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить поставки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import shipments</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Загрузить</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗагрузитьПоставки</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ЗагрузитьОтчетыОРеализациях" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить отчеты о реализациях</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import sales reports</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить отчеты о реализациях</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import sales reports</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Загрузить</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗагрузитьОтчетыОРеализациях</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПоставокЗаявкиНаВозврат" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список заявок на возврат</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of sales return requests</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть заявки на возврат по поставкам</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open shipment return requests</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьДокументыПоставокЗаявкиНаВозврат</Action>
+		</Command>
+		<Command name="ВыгрузитьЗаявкуНаПоставку" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить заявку на поставку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export shipment request</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить заявку на поставку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export shipment request</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СохранитьСписок</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ВыгрузитьЗаявкуНаПоставку</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ВыгрузитьЗаявкуНаВозврат" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить заявку на возврат</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export sales return request</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить заявку на возврат</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export sales return request</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СохранитьСписок</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ВыгрузитьЗаявкуНаВозврат</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ЗагрузитьЗаявкуНаВозврат" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить заявку на возврат</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import sales return request</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить заявку на возврат</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import sales return request</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Загрузить</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗагрузитьЗаявкуНаВозврат</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ОткрытьПубликациюТоваровНаТорговойПлощадке" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Публикация товаров на торговой площадке</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Product publication on marketplace</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть список товаров на торговой площадке</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open a list of goods on the marketplace</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ТоварыВыгрузить</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьПубликациюТоваровНаТорговойПлощадке</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПродаж" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы продажи через торговую площадку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Marketplace sales documents</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть документы продаж</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open sales documents</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DocumentJournal</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьДокументыПродаж</Action>
+		</Command>
+		<Command name="ОткрытьНастройкуПринадлежностиТоваровСхемамРаботы" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка принадлежности товаров схемам работы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings of goods affiliation to work schemas</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть настройку принадлежности товаров схемам работы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open settings of goods affiliation to work schemas</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DataProcessor</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьНастройкуПринадлежностиТоваровСхемамРаботы</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ОткрытьПрайсЛист" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цены (прайс-лист)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prices (price list)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Управление ценами товаров</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Goods price management</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DataProcessor</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьПрайсЛист</Action>
+		</Command>
+		<Command name="ОткрытьНастройкиОбменаДанными" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки обмена данными</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data exchange settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть настройки обмена данными с торговой площадкой</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open settings for data exchange with marketplace</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Setting</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьНастройкиОбменаДанными</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПродажССобственныхСкладовКОформлению" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отгрузить (0)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ship (0)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть документы продаж с собственных складов к оформлению</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open documents of sales from own warehouses to register</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьДокументыПродажССобственныхСкладовКОформлению</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПоставокЗаявкиНаПоставкуКОформлению" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отгрузить (0)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ship (0)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть заявки на поставку к оформлению</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open shipment requests to register</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьДокументыПоставокЗаявкиНаПоставкуКОформлению</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПродажКОформлениюОтчетов" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отчеты о реализациях (к оформлению)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sales reports (to register)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть отчеты о реализациях к оформлению</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open sales reports to register</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьДокументыПродажКОформлениюОтчетов</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПоставокЗаявкиНаВозвратКОформлению" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Принять (0)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accept (0)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть заявки на возврат по поставкам к оформлению</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open shipment return requests to register</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьДокументыПоставокЗаявкиНаВозвратКОформлению</Action>
+		</Command>
+		<Command name="ОбновитьКомандыФормы" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить команды формы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update form commands</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить отображаемую на форме информацию</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update information shown in the form</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОбновитьКомандыФормы</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПродажЗаявкиНаВозврат" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список заявок на возврат</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of sales return requests</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть заявки на возврат по продажам</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open sales return requests</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьДокументыПродажЗаявкиНаВозврат</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПродажЗаявкиНаВозвратКОформлению" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Принять (0)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accept (0)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть заявки на возврат по продажам к оформлению</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open sales return requests to register</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьДокументыПродажЗаявкиНаВозвратКОформлению</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПродажССобственныхСкладовВсеЗаказыOzon" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Посмотреть заказы на Ozon</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>View Ozon orders</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Посмотреть заказы при отгрузке с собственных складов по данным Ozon</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>View orders on shipment from own warehouses according to Ozon data</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ShowData</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьДокументыПродажССобственныхСкладовВсеЗаказыOzon</Action>
+		</Command>
+		<Command name="ОткрытьДокументыПродажПередачаВДоставку" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Передачи в доставку с собственных складов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Transfers to delivery service from own warehouses</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть документы передачи в доставку с собственных складов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open documents of transfers to the delivery service from own warehouses</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьДокументыПродажПередачаВДоставку</Action>
+		</Command>
+	</Commands>
+</Form>

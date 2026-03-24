@@ -1,0 +1,1254 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Изменение табличной части документа</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Edit document tabular section</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаПерезаполнитьТЧДокументаИЗакрыть" id="217">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ПерезаполнитьТЧДокументаИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаПерезаполнитьТЧДокументаИЗакрытьРасширеннаяПодсказка" id="218"/>
+			</Button>
+			<Button name="АналитикиПерезаполнитьТЧДокумента" id="213">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ПерезаполнитьТЧДокумента</CommandName>
+				<ExtendedTooltip name="АналитикиПерезаполнитьТЧДокументаРасширеннаяПодсказка" id="214"/>
+			</Button>
+			<Button name="ФормаСохранитьИЗакрыть" id="480">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СохранитьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаСохранитьИЗакрытьРасширеннаяПодсказка" id="481"/>
+			</Button>
+			<Button name="ФормаЗакрыть" id="215">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ExtendedTooltip name="ФормаЗакрытьРасширеннаяПодсказка" id="216"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="ТипОперации" id="477">
+			<DataPath>Объект.ТипОперации</DataPath>
+			<ListChoiceMode>true</ListChoiceMode>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Изменить значения реквизитов</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Change attribute values</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:string">ИзменитьРеквизиты</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Изменить знак количества и суммы</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Change sign of quantity and amount</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:string">ИзменитьЗнак</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<ContextMenu name="ТипОперацииКонтекстноеМеню" id="478"/>
+			<ExtendedTooltip name="ТипОперацииРасширеннаяПодсказка" id="479"/>
+			<Events>
+				<Event name="OnChange">ТипОперацииПриИзменении</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="ГруппаИзменениеТабличнойЧасти" id="473">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменение табличной части</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Editing Tabular Section</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаИзменениеТабличнойЧастиРасширеннаяПодсказка" id="474"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаШапка" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизиты документа</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document Attributes</v8:content>
+						</v8:item>
+					</Title>
+					<Height>5</Height>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="2"/>
+					<ChildItems>
+						<Table name="Аналитики" id="3">
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.Аналитики</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Аналитики</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Analysts</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="АналитикиКонтекстноеМеню" id="4"/>
+							<AutoCommandBar name="АналитикиКоманднаяПанель" id="5"/>
+							<ExtendedTooltip name="АналитикиРасширеннаяПодсказка" id="6"/>
+							<SearchStringAddition name="АналитикиСтрокаПоиска" id="219">
+								<AdditionSource>
+									<Item>Аналитики</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="АналитикиСтрокаПоискаКонтекстноеМеню" id="220"/>
+								<ExtendedTooltip name="АналитикиСтрокаПоискаРасширеннаяПодсказка" id="221"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="АналитикиСостояниеПросмотра" id="222">
+								<AdditionSource>
+									<Item>Аналитики</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="АналитикиСостояниеПросмотраКонтекстноеМеню" id="223"/>
+								<ExtendedTooltip name="АналитикиСостояниеПросмотраРасширеннаяПодсказка" id="224"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="АналитикиУправлениеПоиском" id="225">
+								<AdditionSource>
+									<Item>Аналитики</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="АналитикиУправлениеПоискомКонтекстноеМеню" id="226"/>
+								<ExtendedTooltip name="АналитикиУправлениеПоискомРасширеннаяПодсказка" id="227"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="АналитикиНомерСтроки" id="7">
+									<DataPath>Объект.Аналитики.LineNumber</DataPath>
+									<Visible>false</Visible>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="АналитикиНомерСтрокиКонтекстноеМеню" id="8"/>
+									<ExtendedTooltip name="АналитикиНомерСтрокиРасширеннаяПодсказка" id="9"/>
+								</LabelField>
+								<CheckBoxField name="АналитикиВыполнять" id="10">
+									<DataPath>Объект.Аналитики.Выполнять</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="АналитикиВыполнятьКонтекстноеМеню" id="11"/>
+									<ExtendedTooltip name="АналитикиВыполнятьРасширеннаяПодсказка" id="12"/>
+								</CheckBoxField>
+								<InputField name="АналитикиАналитика" id="13">
+									<DataPath>Объект.Аналитики.Аналитика</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Реквизит</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Attribute</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>15</Width>
+									<ChoiceButton>true</ChoiceButton>
+									<ChooseType>false</ChooseType>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="АналитикиАналитикаКонтекстноеМеню" id="14"/>
+									<ExtendedTooltip name="АналитикиАналитикаРасширеннаяПодсказка" id="15"/>
+									<Events>
+										<Event name="StartChoice">АналитикиАналитикаНачалоВыбора</Event>
+									</Events>
+								</InputField>
+								<InputField name="АналитикиЗначениеАналитикиНачальное" id="237">
+									<DataPath>Объект.Аналитики.ЗначениеАналитикиНачальное</DataPath>
+									<SkipOnInput>false</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Начальное значение</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Initial value</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ClearButton>true</ClearButton>
+									<ChooseType>false</ChooseType>
+									<ContextMenu name="АналитикиЗначениеАналитикиНачальноеКонтекстноеМеню" id="238"/>
+									<ExtendedTooltip name="АналитикиЗначениеАналитикиНачальноеРасширеннаяПодсказка" id="239"/>
+									<Events>
+										<Event name="OnChange">АналитикиЗначениеАналитикиНачальноеПриИзменении</Event>
+										<Event name="AutoComplete">АналитикиЗначениеАналитикиНачальноеАвтоПодбор</Event>
+										<Event name="StartChoice">АналитикиЗначениеАналитикиНачальноеНачалоВыбора</Event>
+										<Event name="Clearing">АналитикиЗначениеАналитикиНачальноеОчистка</Event>
+									</Events>
+								</InputField>
+								<InputField name="АналитикиЗначениеАналитики" id="16">
+									<DataPath>Объект.Аналитики.ЗначениеАналитики</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Конечное значение</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>End value</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ChooseType>false</ChooseType>
+									<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+									<ContextMenu name="АналитикиЗначениеАналитикиКонтекстноеМеню" id="17"/>
+									<ExtendedTooltip name="АналитикиЗначениеАналитикиРасширеннаяПодсказка" id="18"/>
+									<Events>
+										<Event name="OnChange">АналитикиЗначениеАналитикиПриИзменении</Event>
+										<Event name="AutoComplete">АналитикиЗначениеАналитикиАвтоПодбор</Event>
+										<Event name="StartChoice">АналитикиЗначениеАналитикиНачалоВыбора</Event>
+										<Event name="Clearing">АналитикиЗначениеАналитикиОчистка</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаТЧДокумента1" id="262">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Табличная часть документа</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document Tabular Section</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<ExtendedTooltip name="ГруппаТЧДокумента1РасширеннаяПодсказка" id="263"/>
+					<ChildItems>
+						<Table name="АналитикиТЧ" id="264">
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.АналитикиТЧ</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Аналитики табличной части</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Tabular analytics</v8:content>
+								</v8:item>
+							</Title>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="АналитикиТЧКонтекстноеМеню" id="265"/>
+							<AutoCommandBar name="АналитикиТЧКоманднаяПанель" id="266">
+								<ChildItems>
+									<Button name="АналитикиТЧУстановитьФлажки" id="459">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.УстановитьФлажки</CommandName>
+										<ExtendedTooltip name="АналитикиТЧУстановитьФлажкиРасширеннаяПодсказка" id="460"/>
+									</Button>
+									<Button name="АналитикиТЧСнятьФлажки" id="461">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.СнятьФлажки</CommandName>
+										<ExtendedTooltip name="АналитикиТЧСнятьФлажкиРасширеннаяПодсказка" id="462"/>
+									</Button>
+									<Button name="АналитикиТЧИнвертироватьФлажки" id="463">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ИнвертироватьФлажки</CommandName>
+										<ExtendedTooltip name="АналитикиТЧИнвертироватьФлажкиРасширеннаяПодсказка" id="464"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="АналитикиТЧРасширеннаяПодсказка" id="267"/>
+							<SearchStringAddition name="АналитикиТЧСтрокаПоиска" id="268">
+								<AdditionSource>
+									<Item>АналитикиТЧ</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="АналитикиТЧСтрокаПоискаКонтекстноеМеню" id="269"/>
+								<ExtendedTooltip name="АналитикиТЧСтрокаПоискаРасширеннаяПодсказка" id="270"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="АналитикиТЧСостояниеПросмотра" id="271">
+								<AdditionSource>
+									<Item>АналитикиТЧ</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="АналитикиТЧСостояниеПросмотраКонтекстноеМеню" id="272"/>
+								<ExtendedTooltip name="АналитикиТЧСостояниеПросмотраРасширеннаяПодсказка" id="273"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="АналитикиТЧУправлениеПоиском" id="274">
+								<AdditionSource>
+									<Item>АналитикиТЧ</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="АналитикиТЧУправлениеПоискомКонтекстноеМеню" id="275"/>
+								<ExtendedTooltip name="АналитикиТЧУправлениеПоискомРасширеннаяПодсказка" id="276"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<CheckBoxField name="АналитикиТЧВыполнять" id="277">
+									<DataPath>Объект.АналитикиТЧ.Выполнять</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="АналитикиТЧВыполнятьКонтекстноеМеню" id="278"/>
+									<ExtendedTooltip name="АналитикиТЧВыполнятьРасширеннаяПодсказка" id="279"/>
+								</CheckBoxField>
+								<LabelField name="АналитикиТЧНомерСтроки" id="280">
+									<DataPath>Объект.АналитикиТЧ.LineNumber</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>6</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="АналитикиТЧНомерСтрокиКонтекстноеМеню" id="281"/>
+									<ExtendedTooltip name="АналитикиТЧНомерСтрокиРасширеннаяПодсказка" id="282"/>
+								</LabelField>
+								<ColumnGroup name="АналитикиТЧГруппаНадписи" id="465">
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Надписи</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>inscriptions</v8:content>
+										</v8:item>
+									</Title>
+									<ShowTitle>false</ShowTitle>
+									<ShowInHeader>true</ShowInHeader>
+									<FixingInTable>Left</FixingInTable>
+									<ExtendedTooltip name="АналитикиТЧГруппаНадписиРасширеннаяПодсказка" id="466"/>
+									<ChildItems>
+										<InputField name="АналитикиТЧНадписиСтароеЗначение" id="467">
+											<DataPath>Объект.АналитикиТЧ.НадписиСтароеЗначение</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<MaxWidth>11</MaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Font ref="style:бит_ЗаголовкиСтрокШрифт" kind="StyleItem"/>
+											<ContextMenu name="АналитикиТЧНадписиСтароеЗначениеКонтекстноеМеню" id="468"/>
+											<ExtendedTooltip name="АналитикиТЧНадписиСтароеЗначениеРасширеннаяПодсказка" id="469"/>
+										</InputField>
+										<InputField name="АналитикиТЧНадписиНовоеЗначение" id="470">
+											<DataPath>Объект.АналитикиТЧ.НадписиНовоеЗначение</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<Width>8</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Font ref="style:бит_ЗаголовкиСтрокШрифт" kind="StyleItem"/>
+											<ContextMenu name="АналитикиТЧНадписиНовоеЗначениеКонтекстноеМеню" id="471"/>
+											<ExtendedTooltip name="АналитикиТЧНадписиНовоеЗначениеРасширеннаяПодсказка" id="472"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="АналитикиТЧГруппаПериод" id="283">
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Период</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Period</v8:content>
+										</v8:item>
+									</Title>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="АналитикиТЧГруппаПериодРасширеннаяПодсказка" id="284"/>
+									<ChildItems>
+										<InputField name="АналитикиТЧПериод_Старый" id="285">
+											<DataPath>Объект.АналитикиТЧ.Период_Старый</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧПериод_СтарыйКонтекстноеМеню" id="286"/>
+											<ExtendedTooltip name="АналитикиТЧПериод_СтарыйРасширеннаяПодсказка" id="287"/>
+										</InputField>
+										<InputField name="АналитикиТЧПериод" id="288">
+											<DataPath>Объект.АналитикиТЧ.Период</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧПериодКонтекстноеМеню" id="289"/>
+											<ExtendedTooltip name="АналитикиТЧПериодРасширеннаяПодсказка" id="290"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="АналитикиТЧГруппаЦФО" id="291">
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ЦФО</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Fin. Resp. Ctr.</v8:content>
+										</v8:item>
+									</Title>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="АналитикиТЧГруппаЦФОРасширеннаяПодсказка" id="292"/>
+									<ChildItems>
+										<InputField name="АналитикиТЧЦФО_Старый" id="293">
+											<DataPath>Объект.АналитикиТЧ.ЦФО_Старый</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧЦФО_СтарыйКонтекстноеМеню" id="294"/>
+											<ExtendedTooltip name="АналитикиТЧЦФО_СтарыйРасширеннаяПодсказка" id="295"/>
+										</InputField>
+										<InputField name="АналитикиТЧЦФО" id="296">
+											<DataPath>Объект.АналитикиТЧ.ЦФО</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧЦФОКонтекстноеМеню" id="297"/>
+											<ExtendedTooltip name="АналитикиТЧЦФОРасширеннаяПодсказка" id="298"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="АналитикиТЧГруппаСтатьяОборотов" id="299">
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Статья оборотов</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Line Item</v8:content>
+										</v8:item>
+									</Title>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="АналитикиТЧГруппаСтатьяОборотовРасширеннаяПодсказка" id="300"/>
+									<ChildItems>
+										<InputField name="АналитикиТЧСтатьяОборотов_Старый" id="301">
+											<DataPath>Объект.АналитикиТЧ.СтатьяОборотов_Старый</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧСтатьяОборотов_СтарыйКонтекстноеМеню" id="302"/>
+											<ExtendedTooltip name="АналитикиТЧСтатьяОборотов_СтарыйРасширеннаяПодсказка" id="303"/>
+										</InputField>
+										<InputField name="АналитикиТЧСтатьяОборотов" id="304">
+											<DataPath>Объект.АналитикиТЧ.СтатьяОборотов</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧСтатьяОборотовКонтекстноеМеню" id="305"/>
+											<ExtendedTooltip name="АналитикиТЧСтатьяОборотовРасширеннаяПодсказка" id="306"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="АналитикиТЧГруппаКоличество" id="403">
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Количество</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Quantity</v8:content>
+										</v8:item>
+									</Title>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="АналитикиТЧГруппаКоличествоРасширеннаяПодсказка" id="404"/>
+									<ChildItems>
+										<InputField name="АналитикиТЧКоличество_Старый" id="405">
+											<DataPath>Объект.АналитикиТЧ.Количество_Старый</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧКоличество_СтарыйКонтекстноеМеню" id="406"/>
+											<ExtendedTooltip name="АналитикиТЧКоличество_СтарыйРасширеннаяПодсказка" id="407"/>
+										</InputField>
+										<InputField name="АналитикиТЧКоличество" id="408">
+											<DataPath>Объект.АналитикиТЧ.Количество</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧКоличествоКонтекстноеМеню" id="409"/>
+											<ExtendedTooltip name="АналитикиТЧКоличествоРасширеннаяПодсказка" id="410"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="АналитикиТЧГруппаСтавкаНДС" id="411">
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>% НДС</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>VAT %</v8:content>
+										</v8:item>
+									</Title>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="АналитикиТЧГруппаСтавкаНДСРасширеннаяПодсказка" id="412"/>
+									<ChildItems>
+										<InputField name="АналитикиТЧСтавкаНДС_Старый" id="413">
+											<DataPath>Объект.АналитикиТЧ.СтавкаНДС_Старый</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧСтавкаНДС_СтарыйКонтекстноеМеню" id="414"/>
+											<ExtendedTooltip name="АналитикиТЧСтавкаНДС_СтарыйРасширеннаяПодсказка" id="415"/>
+										</InputField>
+										<InputField name="АналитикиТЧСтавкаНДС" id="416">
+											<DataPath>Объект.АналитикиТЧ.СтавкаНДС</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧСтавкаНДСКонтекстноеМеню" id="417"/>
+											<ExtendedTooltip name="АналитикиТЧСтавкаНДСРасширеннаяПодсказка" id="418"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="АналитикиТЧГруппаСценарий" id="419">
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма сценария</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Scenario Amount</v8:content>
+										</v8:item>
+									</Title>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="АналитикиТЧГруппаСценарийРасширеннаяПодсказка" id="420"/>
+									<ChildItems>
+										<InputField name="АналитикиТЧСуммаСценарий_Старый" id="421">
+											<DataPath>Объект.АналитикиТЧ.СуммаСценарий_Старый</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧСуммаСценарий_СтарыйКонтекстноеМеню" id="422"/>
+											<ExtendedTooltip name="АналитикиТЧСуммаСценарий_СтарыйРасширеннаяПодсказка" id="423"/>
+										</InputField>
+										<InputField name="АналитикиТЧСуммаСценарий" id="424">
+											<DataPath>Объект.АналитикиТЧ.СуммаСценарий</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧСуммаСценарийКонтекстноеМеню" id="425"/>
+											<ExtendedTooltip name="АналитикиТЧСуммаСценарийРасширеннаяПодсказка" id="426"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="АналитикиТЧГруппаСуммаРегл" id="427">
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма (регл.)</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Amount (Regla.)</v8:content>
+										</v8:item>
+									</Title>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="АналитикиТЧГруппаСуммаРеглРасширеннаяПодсказка" id="428"/>
+									<ChildItems>
+										<InputField name="АналитикиТЧСуммаРегл_Старый" id="429">
+											<DataPath>Объект.АналитикиТЧ.СуммаРегл_Старый</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧСуммаРегл_СтарыйКонтекстноеМеню" id="430"/>
+											<ExtendedTooltip name="АналитикиТЧСуммаРегл_СтарыйРасширеннаяПодсказка" id="431"/>
+										</InputField>
+										<InputField name="АналитикиТЧСуммаРегл" id="432">
+											<DataPath>Объект.АналитикиТЧ.СуммаРегл</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧСуммаРеглКонтекстноеМеню" id="433"/>
+											<ExtendedTooltip name="АналитикиТЧСуммаРеглРасширеннаяПодсказка" id="434"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="АналитикиТЧГруппаСуммаУпр" id="435">
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма (упр.)</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>sum (Ex.)</v8:content>
+										</v8:item>
+									</Title>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="АналитикиТЧГруппаСуммаУпрРасширеннаяПодсказка" id="436"/>
+									<ChildItems>
+										<InputField name="АналитикиТЧСуммаУпр_Старый" id="437">
+											<DataPath>Объект.АналитикиТЧ.СуммаУпр_Старый</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧСуммаУпр_СтарыйКонтекстноеМеню" id="438"/>
+											<ExtendedTooltip name="АналитикиТЧСуммаУпр_СтарыйРасширеннаяПодсказка" id="439"/>
+										</InputField>
+										<InputField name="АналитикиТЧСуммаУпр" id="440">
+											<DataPath>Объект.АналитикиТЧ.СуммаУпр</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧСуммаУпрКонтекстноеМеню" id="441"/>
+											<ExtendedTooltip name="АналитикиТЧСуммаУпрРасширеннаяПодсказка" id="442"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="АналитикиТЧГруппаСумма" id="443">
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Amount</v8:content>
+										</v8:item>
+									</Title>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="АналитикиТЧГруппаСуммаРасширеннаяПодсказка" id="444"/>
+									<ChildItems>
+										<InputField name="АналитикиТЧСумма_Старый" id="445">
+											<DataPath>Объект.АналитикиТЧ.Сумма_Старый</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧСумма_СтарыйКонтекстноеМеню" id="446"/>
+											<ExtendedTooltip name="АналитикиТЧСумма_СтарыйРасширеннаяПодсказка" id="447"/>
+										</InputField>
+										<InputField name="АналитикиТЧСумма" id="448">
+											<DataPath>Объект.АналитикиТЧ.Сумма</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧСуммаКонтекстноеМеню" id="449"/>
+											<ExtendedTooltip name="АналитикиТЧСуммаРасширеннаяПодсказка" id="450"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="АналитикиТЧГруппаВалюта" id="451">
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Валюта</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Currency</v8:content>
+										</v8:item>
+									</Title>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="АналитикиТЧГруппаВалютаРасширеннаяПодсказка" id="452"/>
+									<ChildItems>
+										<InputField name="АналитикиТЧВалюта_Старый" id="453">
+											<DataPath>Объект.АналитикиТЧ.Валюта_Старый</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧВалюта_СтарыйКонтекстноеМеню" id="454"/>
+											<ExtendedTooltip name="АналитикиТЧВалюта_СтарыйРасширеннаяПодсказка" id="455"/>
+										</InputField>
+										<InputField name="АналитикиТЧВалюта" id="456">
+											<DataPath>Объект.АналитикиТЧ.Валюта</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<ContextMenu name="АналитикиТЧВалютаКонтекстноеМеню" id="457"/>
+											<ExtendedTooltip name="АналитикиТЧВалютаРасширеннаяПодсказка" id="458"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаТЧДокумента" id="19">
+			<Visible>false</Visible>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Табличная часть документа</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document Tabular Section</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаТЧДокументаРасширеннаяПодсказка" id="20"/>
+			<ChildItems>
+				<Table name="РеквизитыТабличнойЧасти" id="240">
+					<Representation>List</Representation>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>РеквизитыТабличнойЧасти</DataPath>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="РеквизитыТабличнойЧастиКонтекстноеМеню" id="241"/>
+					<AutoCommandBar name="РеквизитыТабличнойЧастиКоманднаяПанель" id="242">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="РеквизитыТабличнойЧастиУстановитьФлажки" id="260">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.УстановитьФлажки</CommandName>
+								<ExtendedTooltip name="РеквизитыТабличнойЧастиУстановитьФлажкиРасширеннаяПодсказка" id="261"/>
+							</Button>
+							<Button name="РеквизитыТабличнойЧастиСнятьФлажки" id="258">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.СнятьФлажки</CommandName>
+								<ExtendedTooltip name="РеквизитыТабличнойЧастиСнятьФлажкиРасширеннаяПодсказка" id="259"/>
+							</Button>
+							<Button name="РеквизитыТабличнойЧастиИнвертироватьФлажки" id="256">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ИнвертироватьФлажки</CommandName>
+								<ExtendedTooltip name="РеквизитыТабличнойЧастиИнвертироватьФлажкиРасширеннаяПодсказка" id="257"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="РеквизитыТабличнойЧастиРасширеннаяПодсказка" id="243"/>
+					<SearchStringAddition name="РеквизитыТабличнойЧастиСтрокаПоиска" id="244">
+						<AdditionSource>
+							<Item>РеквизитыТабличнойЧасти</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="РеквизитыТабличнойЧастиСтрокаПоискаКонтекстноеМеню" id="245"/>
+						<ExtendedTooltip name="РеквизитыТабличнойЧастиСтрокаПоискаРасширеннаяПодсказка" id="246"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="РеквизитыТабличнойЧастиСостояниеПросмотра" id="247">
+						<AdditionSource>
+							<Item>РеквизитыТабличнойЧасти</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="РеквизитыТабличнойЧастиСостояниеПросмотраКонтекстноеМеню" id="248"/>
+						<ExtendedTooltip name="РеквизитыТабличнойЧастиСостояниеПросмотраРасширеннаяПодсказка" id="249"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="РеквизитыТабличнойЧастиУправлениеПоиском" id="250">
+						<AdditionSource>
+							<Item>РеквизитыТабличнойЧасти</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="РеквизитыТабличнойЧастиУправлениеПоискомКонтекстноеМеню" id="251"/>
+						<ExtendedTooltip name="РеквизитыТабличнойЧастиУправлениеПоискомРасширеннаяПодсказка" id="252"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<CheckBoxField name="РеквизитыТабличнойЧастиВыполнять" id="253">
+							<DataPath>РеквизитыТабличнойЧасти.Выполнять</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="РеквизитыТабличнойЧастиВыполнятьКонтекстноеМеню" id="254"/>
+							<ExtendedTooltip name="РеквизитыТабличнойЧастиВыполнятьРасширеннаяПодсказка" id="255"/>
+						</CheckBoxField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.бит_ИзменениеТабличнойЧастиДокументаБюджетирования</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Columns>
+				<AdditionalColumns table="Объект.Аналитики">
+					<Column name="Реквизит" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Реквизит</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Attribute</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Объект.АналитикиТЧ">
+					<Column name="НадписиСтароеЗначение" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Надписи (старое значение)</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Inscriptions (old value)</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>16</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="НадписиНовоеЗначение" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Надписи (новое значение)</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Inscriptions (new value)</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>16</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="СоответствиеАналитик" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Соответствие аналитик</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mapping Dimensions</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="РеквизитыТабличнойЧасти" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Реквизиты табличной части</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tabular Section Attributes</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Выполнять" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выполнять</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Execute</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="СписокАналитик" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список аналитик</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Dimension List</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КэшЗначений" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кэш значений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Value Cache</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ИмяТабличнойЧасти" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя табличной части</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tabular Section Name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>50</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресВоВременномХранилище" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес во временном хранилище</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЕстьНесохраненныеДанные" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Есть несохраненные данные</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПрограммноеЗакрытие" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Программное закрытие</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КлючОбъекта" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ключ объекта</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="УстановитьФлажки" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить все</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set All</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить флажки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьФлажки</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СнятьФлажки" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять все</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Remove All</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять все флажки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unmark All</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СнятьФлажки</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ИнвертироватьФлажки" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инвертировать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Toggle</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инвертировать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Toggle</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.бит_ИнвертироватьФлажки</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:TransparentPixel x="13" y="12"/>
+			</Picture>
+			<Action>ИнвертироватьФлажки</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПерезаполнитьТЧДокумента" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Execute</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перезаполнить табличную часть документа.</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refill in the document tabular section.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПерезаполнитьТЧДокумента</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПерезаполнитьТЧДокументаИЗакрыть" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить и закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Execute and Close</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перезаполнить табличную часть документа.</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refill in the document tabular section.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПерезаполнитьТЧДокументаИЗакрыть</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СохранитьИЗакрыть" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and Close</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СохранитьИЗакрыть</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Команда">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>50</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Объект">
+			<Type>
+				<v8:Type>cfg:DocumentRef.бит_БюджетнаяОперация</v8:Type>
+				<v8:Type>cfg:DocumentRef.бит_ПолучениеФактическихДанных</v8:Type>
+				<v8:Type>cfg:DocumentRef.бит_КорректировкаБюджета</v8:Type>
+				<v8:Type>cfg:DocumentRef.бит_ФормаВводаБюджета</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ИмяТабличнойЧасти">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>50</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ВидимостьАналитик">
+			<Type/>
+		</Parameter>
+		<Parameter name="ТабличнаяЧасть">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

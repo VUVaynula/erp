@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Popup name="Перейти" id="10">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Перейти</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Go To</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ПерейтиРасширеннаяПодсказка" id="11"/>
+				<ChildItems>
+					<Button name="ДополнительныеЗначенияАналитик" id="12">
+						<Type>CommandBarButton</Type>
+						<CommandName>Catalog.бит_ДополнительныеЗначенияАналитик.StandardCommand.OpenByValue</CommandName>
+						<DataPath>Объект.Ref</DataPath>
+						<ExtendedTooltip name="ДополнительныеЗначенияАналитикРасширеннаяПодсказка" id="13"/>
+					</Button>
+					<Button name="НазначениеДополнительныхАналитик" id="14">
+						<Type>CommandBarButton</Type>
+						<CommandName>InformationRegister.бит_НазначениеДополнительныхАналитик.StandardCommand.OpenByValue.Аналитика</CommandName>
+						<DataPath>Объект.Ref</DataPath>
+						<ExtendedTooltip name="НазначениеДополнительныхАналитикРасширеннаяПодсказка" id="15"/>
+					</Button>
+				</ChildItems>
+			</Popup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Наименование" id="3">
+			<DataPath>Объект.Description</DataPath>
+			<DefaultItem>true</DefaultItem>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="8"/>
+			<Events>
+				<Event name="OnChange">НаименованиеПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="Код" id="1">
+			<DataPath>Объект.Code</DataPath>
+			<SkipOnInput>true</SkipOnInput>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя (для программиста)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Name (for the programmer)</v8:content>
+				</v8:item>
+			</Title>
+			<TitleHeight>2</TitleHeight>
+			<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="КодРасширеннаяПодсказка" id="7">
+				<Title formatted="false">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Именем  может быть любая последовательность букв, цифр и знаков подчеркивания, начинающаяся с буквы или знака подчеркивания.</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>A name can be any sequence of letters, digits and underscore characters that begins with a letter or underscore character.</v8:content>
+					</v8:item>
+				</Title>
+			</ExtendedTooltip>
+			<Events>
+				<Event name="OnChange">КодПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="ТипЗначения" id="5">
+			<DataPath>Объект.ValueType</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="ТипЗначенияКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="ТипЗначенияРасширеннаяПодсказка" id="9"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:ChartOfCharacteristicTypesObject.бит_ВидыДополнительныхАналитик</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

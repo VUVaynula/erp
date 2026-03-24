@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Заявления о ввозе товаров из ЕАЭС к оформлению</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Applications for goods import from EAEU for registration</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="ОрганизацияОтбор" id="138">
+			<DataPath>Организация</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отбор по организации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter by company</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>28</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ClearButton>true</ClearButton>
+			<InputHint>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</InputHint>
+			<ContextMenu name="ОрганизацияОтборКонтекстноеМеню" id="139"/>
+			<ExtendedTooltip name="ОрганизацияОтборРасширеннаяПодсказка" id="140"/>
+			<Events>
+				<Event name="OnChange">ОрганизацияОтборПриИзменении</Event>
+			</Events>
+		</InputField>
+		<Table name="СписокРаспоряжения" id="5">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>СписокРаспоряжения</DataPath>
+			<RowPictureDataPath>~СписокРаспоряжения.DefaultPicture</RowPictureDataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Распоряжения на оформление Заявлений о ввозе товаров</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>References to register Applications for goods import</v8:content>
+				</v8:item>
+			</Title>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+			<ContextMenu name="СписокРаспоряженияКонтекстноеМеню" id="6"/>
+			<AutoCommandBar name="СписокРаспоряженияКоманднаяПанель" id="7">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="СформироватьЗаявлениеОВвозеТоваров" id="68">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<CommandName>Form.Command.СформироватьЗаявлениеОВвозеТоваров</CommandName>
+						<Picture>
+							<xr:Ref>CommonPicture.ОформитьПоРаспоряжению</xr:Ref>
+							<xr:LoadTransparent>false</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="СформироватьЗаявлениеОВвозеТоваровРасширеннаяПодсказка" id="69"/>
+					</Button>
+					<SearchStringAddition name="ДополнениеСтрокаПоиска" id="179">
+						<AdditionSource>
+							<Item>СписокРаспоряжения</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Дополнение строка поиска</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Addition search bar</v8:content>
+							</v8:item>
+						</Title>
+						<ContextMenu name="ДополнениеСтрокаПоискаКонтекстноеМеню" id="180"/>
+						<ExtendedTooltip name="ДополнениеСтрокаПоискаРасширеннаяПодсказка" id="181"/>
+					</SearchStringAddition>
+					<SearchControlAddition name="ДополнениеУправлениеПоиском" id="176">
+						<AdditionSource>
+							<Item>СписокРаспоряжения</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Дополнение управление поиском</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Addition search control</v8:content>
+							</v8:item>
+						</Title>
+						<ContextMenu name="ДополнениеУправлениеПоискомКонтекстноеМеню" id="177"/>
+						<ExtendedTooltip name="ДополнениеУправлениеПоискомРасширеннаяПодсказка" id="178"/>
+					</SearchControlAddition>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="СписокРаспоряженияРасширеннаяПодсказка" id="8"/>
+			<SearchStringAddition name="СписокРаспоряженияСтрокаПоиска" id="9">
+				<AdditionSource>
+					<Item>СписокРаспоряжения</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокРаспоряженияСтрокаПоискаКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="СписокРаспоряженияСтрокаПоискаРасширеннаяПодсказка" id="13"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокРаспоряженияСостояниеПросмотра" id="14">
+				<AdditionSource>
+					<Item>СписокРаспоряжения</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<HorizontalLocation>Left</HorizontalLocation>
+				<ContextMenu name="СписокРаспоряженияСостояниеПросмотраКонтекстноеМеню" id="17"/>
+				<ExtendedTooltip name="СписокРаспоряженияСостояниеПросмотраРасширеннаяПодсказка" id="18"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокРаспоряженияУправлениеПоиском" id="19">
+				<AdditionSource>
+					<Item>СписокРаспоряжения</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокРаспоряженияУправлениеПоискомКонтекстноеМеню" id="22"/>
+				<ExtendedTooltip name="СписокРаспоряженияУправлениеПоискомРасширеннаяПодсказка" id="23"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">СписокРаспоряженияВыбор</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="СписокРаспоряженияНомер" id="27">
+					<DataPath>СписокРаспоряжения.Номер</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Number</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СписокРаспоряженияНомерКонтекстноеМеню" id="28"/>
+					<ExtendedTooltip name="СписокРаспоряженияНомерРасширеннаяПодсказка" id="29"/>
+				</LabelField>
+				<LabelField name="СписокРаспоряженияДата" id="24">
+					<DataPath>СписокРаспоряжения.Дата</DataPath>
+					<Width>9</Width>
+					<ContextMenu name="СписокРаспоряженияДатаКонтекстноеМеню" id="25"/>
+					<ExtendedTooltip name="СписокРаспоряженияДатаРасширеннаяПодсказка" id="26"/>
+				</LabelField>
+				<LabelField name="СписокРаспоряженияКонтрагент" id="45">
+					<DataPath>СписокРаспоряжения.Контрагент</DataPath>
+					<ContextMenu name="СписокРаспоряженияКонтрагентКонтекстноеМеню" id="46"/>
+					<ExtendedTooltip name="СписокРаспоряженияКонтрагентРасширеннаяПодсказка" id="47"/>
+				</LabelField>
+				<LabelField name="СписокРаспоряженияСуммаДокумента" id="57">
+					<DataPath>СписокРаспоряжения.СуммаДокумента</DataPath>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧДЦ=2</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>NFD=2</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="СписокРаспоряженияСуммаДокументаКонтекстноеМеню" id="58"/>
+					<ExtendedTooltip name="СписокРаспоряженияСуммаДокументаРасширеннаяПодсказка" id="59"/>
+				</LabelField>
+				<LabelField name="СписокРаспоряженияВалюта" id="36">
+					<DataPath>СписокРаспоряжения.Валюта</DataPath>
+					<ContextMenu name="СписокРаспоряженияВалютаКонтекстноеМеню" id="37"/>
+					<ExtendedTooltip name="СписокРаспоряженияВалютаРасширеннаяПодсказка" id="38"/>
+				</LabelField>
+				<LabelField name="СписокРаспоряженияОрганизация" id="112">
+					<DataPath>СписокРаспоряжения.Организация</DataPath>
+					<ContextMenu name="СписокРаспоряженияОрганизацияКонтекстноеМеню" id="113"/>
+					<ExtendedTooltip name="СписокРаспоряженияОрганизацияРасширеннаяПодсказка" id="114"/>
+				</LabelField>
+				<LabelField name="СписокРаспоряженияРаспоряжение" id="185">
+					<DataPath>СписокРаспоряжения.Распоряжение</DataPath>
+					<ContextMenu name="СписокРаспоряженияРаспоряжениеКонтекстноеМеню" id="186"/>
+					<ExtendedTooltip name="СписокРаспоряженияРаспоряжениеРасширеннаяПодсказка" id="187"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+		<LabelDecoration name="ГиперссылкаЖурналЗакупки" id="173">
+			<Title formatted="true">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>См. также: &lt;link ДокументыЗакупки&gt;Документы закупки (оформленные накладные)&lt;/&gt;</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>See also: &lt;link ДокументыЗакупки&gt;Purchase documents (registered invoices)&lt;/&gt;</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ГиперссылкаЖурналЗакупкиКонтекстноеМеню" id="174"/>
+			<ExtendedTooltip name="ГиперссылкаЖурналЗакупкиРасширеннаяПодсказка" id="175"/>
+			<Events>
+				<Event name="URLProcessing">ГиперссылкаЖурналЗакупкиОбработкаНавигационнойСсылки</Event>
+			</Events>
+		</LabelDecoration>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СписокРаспоряжения" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Распоряжения на оформление Заявлений о ввозе товаров</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>References to register Applications for goods import</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>СписокРаспоряжения.Организация</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДокументПриобретениеТоваровУслугПереопределяемый.Ссылка КАК Ссылка,
+	ДокументПриобретениеТоваровУслугПереопределяемый.Ссылка КАК Распоряжение,
+	ВЫРАЗИТЬ(ДокументПриобретениеТоваровУслугПереопределяемый.Номер КАК СТРОКА(12)) КАК Номер,
+	ДокументПриобретениеТоваровУслугПереопределяемый.Дата КАК Дата,
+	ДокументПриобретениеТоваровУслугПереопределяемый.Валюта КАК Валюта,
+	ДокументПриобретениеТоваровУслугПереопределяемый.Контрагент КАК Контрагент,
+	ДокументПриобретениеТоваровУслугПереопределяемый.СуммаДокумента КАК СуммаДокумента,
+	ДокументПриобретениеТоваровУслугПереопределяемый.Организация КАК Организация
+ИЗ
+	Документ.ПриобретениеТоваровУслуг КАК ДокументПриобретениеТоваровУслугПереопределяемый
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрНакопления.ТоварыКОформлениюЗаявленийОВвозе.Остатки КАК ТоварыКОформлениюЗаявленийОВвозеОстатки
+		ПО ДокументПриобретениеТоваровУслугПереопределяемый.Ссылка = ТоварыКОформлениюЗаявленийОВвозеОстатки.ДокументПоступления
+
+СГРУППИРОВАТЬ ПО
+	ДокументПриобретениеТоваровУслугПереопределяемый.Ссылка,
+	ДокументПриобретениеТоваровУслугПереопределяемый.Дата,
+	ДокументПриобретениеТоваровУслугПереопределяемый.Валюта,
+	ДокументПриобретениеТоваровУслугПереопределяемый.Контрагент,
+	ДокументПриобретениеТоваровУслугПереопределяемый.СуммаДокумента,
+	ДокументПриобретениеТоваровУслугПереопределяемый.Организация,
+	ВЫРАЗИТЬ(ДокументПриобретениеТоваровУслугПереопределяемый.Номер КАК СТРОКА(12))</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Контрагент</dcssch:dataPath>
+					<dcssch:field>Контрагент</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Организация</dcssch:dataPath>
+					<dcssch:field>Организация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Распоряжение</dcssch:dataPath>
+					<dcssch:field>Распоряжение</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Распоряжение</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Reference</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дата</dcssch:dataPath>
+					<dcssch:field>Дата</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номер</dcssch:dataPath>
+					<dcssch:field>Номер</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>#</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Валюта</dcssch:dataPath>
+					<dcssch:field>Валюта</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СуммаДокумента</dcssch:dataPath>
+					<dcssch:field>СуммаДокумента</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДокументПоступления</dcssch:dataPath>
+					<dcssch:field>ДокументПоступления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номенклатура</dcssch:dataPath>
+					<dcssch:field>Номенклатура</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Характеристика</dcssch:dataPath>
+					<dcssch:field>Характеристика</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Серия</dcssch:dataPath>
+					<dcssch:field>Серия</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Склад</dcssch:dataPath>
+					<dcssch:field>Склад</dcssch:field>
+				</Field>
+				<Parameter>
+					<dcssch:name>Период</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Period</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</dcssch:valueType>
+					<dcssch:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcssch:value>
+					<dcssch:useRestriction>false</dcssch:useRestriction>
+				</Parameter>
+				<KeyField>Ссылка</KeyField>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Дата</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="Организация" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьНесколькоОрганизаций</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ОрганизацияСохраненноеЗначение" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация сохраненное значение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company saved value</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="СформироватьЗаявлениеОВвозеТоваров" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать заявление о ввозе товаров</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate application for goods import</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать заявление о ввозе товаров</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate application for goods import</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СформироватьПодтверждения</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>СформироватьЗаявлениеОВвозеТоваров</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

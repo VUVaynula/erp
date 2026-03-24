@@ -1,0 +1,1115 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Настройки учета по налогу на прибыль</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Profit tax accounting settings</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="93">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="94"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="95">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Записать</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="96"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="67">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ThroughAlign>DontUse</ThroughAlign>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="68"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаИстория" id="88">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа история</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group history</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаИсторияРасширеннаяПодсказка" id="89"/>
+					<ChildItems>
+						<InputField name="Период" id="1">
+							<DataPath>ДатаИзменения</DataPath>
+							<ContextMenu name="ПериодКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="3"/>
+							<Events>
+								<Event name="OnChange">ДатаИзмененияПриИзменении</Event>
+							</Events>
+						</InputField>
+						<LabelField name="ОписаниеИстории" id="90">
+							<DataPath>ОписаниеИстории</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="ОписаниеИсторииКонтекстноеМеню" id="91"/>
+							<ExtendedTooltip name="ОписаниеИсторииРасширеннаяПодсказка" id="92"/>
+							<Events>
+								<Event name="URLProcessing">ОписаниеИсторииОбработкаНавигационнойСсылки</Event>
+							</Events>
+						</LabelField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="Организация" id="4">
+					<DataPath>Запись.Организация</DataPath>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="6"/>
+					<Events>
+						<Event name="OnChange">ОрганизацияПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаСтавкиНалогаНаПрибыль" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ставки налога</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tax rates</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<VerticalSpacing>Half</VerticalSpacing>
+			<Behavior>Collapsible</Behavior>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>None</Representation>
+			<ThroughAlign>DontUse</ThroughAlign>
+			<ExtendedTooltip name="ГруппаСтавкиНалогаНаПрибыльРасширеннаяПодсказка" id="32"/>
+			<ChildItems>
+				<Button name="ОткрытьСтавкиНалогаНаПрибыль" id="133">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.ОткрытьСтавкиНалогаНаПрибыль</CommandName>
+					<ExtendedTooltip name="ОткрытьСтавкиНалогаНаПрибыльРасширеннаяПодсказка" id="134"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаКосвенныеРасходы" id="62">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>База распределения расходов по видам деятельности</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Expense allocation base according to activity categories</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<VerticalSpacing>Half</VerticalSpacing>
+			<Behavior>Collapsible</Behavior>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаКосвенныеРасходыРасширеннаяПодсказка" id="63"/>
+			<ChildItems>
+				<RadioButtonField name="БазаРаспределенияКосвенныхРасходовПоВидамДеятельности" id="64">
+					<DataPath>Запись.БазаРаспределенияКосвенныхРасходовПоВидамДеятельности</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>База распределения расходов по видам деятельности</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Expense allocation base according to activity categories</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>None</TitleLocation>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content> Только доходы от реализации</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content> Income from sales only</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.БазыРаспределенияКосвенныхРасходовПоВидамДеятельности.EnumValue.ДоходыОтРеализации</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content> Доходы от реализации и внереализационные</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content> Income from sales and non-operating income</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.БазыРаспределенияКосвенныхРасходовПоВидамДеятельности.EnumValue.ДоходыОтРеализацииИВнереализационные</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="БазаРаспределенияКосвенныхРасходовПоВидамДеятельностиКонтекстноеМеню" id="65"/>
+					<ExtendedTooltip name="БазаРаспределенияКосвенныхРасходовПоВидамДеятельностиРасширеннаяПодсказка" id="66">
+						<AutoMaxWidth>false</AutoMaxWidth>
+						<MaxWidth>60</MaxWidth>
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>При совмещении общей системы налогообложения и ЕНВД расходы, которые невозможно отнести к конкретным видам деятельности, распределяются согласно указанной базе распределения.</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>When combining the general taxation system and UTII, expenses which cannot be allocated to certain activity categories are allocated according to the specified allocation base.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</RadioButtonField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаФормироватьРезервыПоСомнительнымДолгамНУ" id="69">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Резервы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reserves</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Collapsible</Behavior>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаФормироватьРезервыПоСомнительнымДолгамНУРасширеннаяПодсказка" id="70"/>
+			<ChildItems>
+				<CheckBoxField name="ФормироватьРезервыПоСомнительнымДолгамНУ" id="74">
+					<DataPath>Запись.ФормироватьРезервыПоСомнительнымДолгамНУ</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Формировать резервы по сомнительным долгам с периодичностью</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Generate loss allowance with frequency</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Если срок возникновения задолженности превышает 45 календарных дней, то начисляется резерв в размере 50% от суммы остатка дебиторской задолженности.
+Если срок превышает 90 дней, то в размере 100%.
+Но не более 10% от выручки.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>If the debt incurrence period exceeds 45 calendar days, then a reserve is charged in the amount of 50% of the accounts receivable balance.
+If the period exceeds 90 days, then the amount is 100%.
+However it cannot exceed 10% of the revenue.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ФормироватьРезервыПоСомнительнымДолгамНУКонтекстноеМеню" id="75"/>
+					<ExtendedTooltip name="ФормироватьРезервыПоСомнительнымДолгамНУРасширеннаяПодсказка" id="76"/>
+					<Events>
+						<Event name="OnChange">ФормироватьРезервыПоСомнительнымДолгамНУПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<InputField name="ПериодичностьРезервовПоСомнительнымДолгамНУ" id="77">
+					<DataPath>Запись.ПериодичностьРезервовПоСомнительнымДолгамНУ</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Месяц</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Month</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.Периодичность.EnumValue.Месяц</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Квартал</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Quarter</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.Периодичность.EnumValue.Квартал</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ПериодичностьРезервовПоСомнительнымДолгамНУКонтекстноеМеню" id="78"/>
+					<ExtendedTooltip name="ПериодичностьРезервовПоСомнительнымДолгамНУРасширеннаяПодсказка" id="79"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаВНАиЛизинг" id="80">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Внеоборотные активы и лизинг</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Non-current assets and leasing</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаВНАиЛизингРасширеннаяПодсказка" id="81"/>
+			<ChildItems>
+				<CheckBoxField name="ВключатьВСоставНалоговыхРасходовАрендныеПлатежи" id="82">
+					<DataPath>Запись.ВключатьВСоставНалоговыхРасходовАрендныеПлатежи</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ВключатьВСоставНалоговыхРасходовАрендныеПлатежиКонтекстноеМеню" id="83"/>
+					<ExtendedTooltip name="ВключатьВСоставНалоговыхРасходовАрендныеПлатежиРасширеннаяПодсказка" id="84">
+						<AutoMaxWidth>false</AutoMaxWidth>
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>При учете стоимости ОС образуются временные разницы.
+Признание в НУ лизинговых платежей выполняется при помощи регламентной операции закрытия месяца.</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Temporary differences appear while accounting FA cost.
+Lease payments are recognized in TA using month-end closing operations.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">ВключатьВСоставНалоговыхРасходовАрендныеПлатежиПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<RadioButtonField name="МетодНачисленияАмортизацииНУ" id="85">
+					<DataPath>Запись.МетодНачисленияАмортизацииНУ</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Метод начисления амортизации в налоговом учете</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Depreciation method — Tax accounting</v8:content>
+						</v8:item>
+					</Title>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.МетодыНачисленияАмортизации.EnumValue.Линейный</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.МетодыНачисленияАмортизации.EnumValue.Нелинейный</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="МетодНачисленияАмортизацииНУКонтекстноеМеню" id="86"/>
+					<ExtendedTooltip name="МетодНачисленияАмортизацииНУРасширеннаяПодсказка" id="87"/>
+				</RadioButtonField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаНалогообложениеПрибыли" id="100">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Налогообложение прибыли</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Profit taxation</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>None</Representation>
+			<ThroughAlign>DontUse</ThroughAlign>
+			<ExtendedTooltip name="ГруппаНалогообложениеПрибылиРасширеннаяПодсказка" id="101"/>
+			<ChildItems>
+				<InputField name="ЗаписьНалогообложениеПрибыли" id="97">
+					<DataPath>Запись.ОсновнойВариантНалогообложенияПрибыли</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основной вариант налогообложения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Major taxation option</v8:content>
+						</v8:item>
+					</Title>
+					<Width>30</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ЗаписьНалогообложениеПрибылиКонтекстноеМеню" id="98"/>
+					<ExtendedTooltip name="ЗаписьНалогообложениеПрибылиРасширеннаяПодсказка" id="99"/>
+				</InputField>
+				<UsualGroup name="ГруппаРаздельныйУчетНалогаНаПрибыль" id="107">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа раздельный учет налога на прибыль</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group separate income tax accounting</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРаздельныйУчетНалогаНаПрибыльРасширеннаяПодсказка" id="108"/>
+					<ChildItems>
+						<CheckBoxField name="ЗаписьРаздельныйУчетПоНалогуНаПрибыль" id="130">
+							<DataPath>Запись.РаздельныйУчетПоНалогуНаПрибыль</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ЗаписьРаздельныйУчетПоНалогуНаПрибыльКонтекстноеМеню" id="131"/>
+							<ExtendedTooltip name="ЗаписьРаздельныйУчетПоНалогуНаПрибыльРасширеннаяПодсказка" id="132"/>
+							<Events>
+								<Event name="OnChange">ЗаписьРаздельныйУчетПоНалогуНаПрибыльПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<Button name="НастройкиНалогообложенияПрибыли" id="102">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.НастройкиНалогообложенияПрибыли</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Перейти к настройкам</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="НастройкиНалогообложенияПрибылиРасширеннаяПодсказка" id="103"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОпределениеДолиПрибыли" id="112">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показатель определения доли прибыли для обособленных подразделений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Profit share indicator for branch offices</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+			<Width>50</Width>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаОпределениеДолиПрибылиРасширеннаяПодсказка" id="113">
+				<Width>40</Width>
+				<AutoMaxWidth>false</AutoMaxWidth>
+				<HorizontalStretch>true</HorizontalStretch>
+				<Title formatted="false">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Налогоплательщики самостоятельно определяют, какой из показателей для п.2 ст. 288 НК РФ должен применяться - среднесписочная численность работников или расходы на оплату труда.
+Выбранный налогоплательщиком показатель должен быть неизменным в течение налогового периода.</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Taxpayers independently determine the indicator from clause 2 article 288 of the Tax Code of the Russian Federation - the average number of employees or labor compensation expenses.
+The indicator chosen by the taxpayer stays the same during the fiscal period.</v8:content>
+					</v8:item>
+				</Title>
+			</ExtendedTooltip>
+			<ChildItems>
+				<RadioButtonField name="ПоказательОпределенияДолиПрибыли_РасходыНаОплатуТруда" id="117">
+					<DataPath>Запись.ПоказательОпределенияДолиПрибыли</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ToolTipRepresentation>None</ToolTipRepresentation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Расходы на оплату труда</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Labor compensation expenses</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ПоказателиДляОпределенияДолиПрибыли.EnumValue.РасходыНаОплатуТруда</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ПоказательОпределенияДолиПрибыли_РасходыНаОплатуТрудаКонтекстноеМеню" id="118"/>
+					<ExtendedTooltip name="ПоказательОпределенияДолиПрибыли_РасходыНаОплатуТрудаРасширеннаяПодсказка" id="119">
+						<MaxWidth>60</MaxWidth>
+						<HorizontalStretch>true</HorizontalStretch>
+					</ExtendedTooltip>
+				</RadioButtonField>
+				<RadioButtonField name="ПоказательОпределенияДолиПрибыли_СреднесписочнаяЧисленность" id="114">
+					<DataPath>Запись.ПоказательОпределенияДолиПрибыли</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ToolTipRepresentation>None</ToolTipRepresentation>
+					<RadioButtonType>RadioButtons</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Среднесписочная численность</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Average number of employees</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ПоказателиДляОпределенияДолиПрибыли.EnumValue.СреднесписочнаяЧисленность</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ПоказательОпределенияДолиПрибыли_СреднесписочнаяЧисленностьКонтекстноеМеню" id="115"/>
+					<ExtendedTooltip name="ПоказательОпределенияДолиПрибыли_СреднесписочнаяЧисленностьРасширеннаяПодсказка" id="116">
+						<MaxWidth>60</MaxWidth>
+						<HorizontalStretch>true</HorizontalStretch>
+					</ExtendedTooltip>
+				</RadioButtonField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПорядокПодачиДекларации" id="140">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядок подачи декларации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Declaration filing procedure</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаПорядокПодачиДекларацииРасширеннаяПодсказка" id="141"/>
+			<ChildItems>
+				<RadioButtonField name="ПорядокПодачиДекларации" id="142">
+					<DataPath>ПорядокПодачиДекларации</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Отдельно по каждому обособленному подразделению</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Separately for each branch office</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">0</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Одна декларация на все обособленные подразделения, находящиеся в одном регионе</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>One declaration for all branch offices located in the same region</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">1</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ПорядокПодачиДекларацииКонтекстноеМеню" id="143"/>
+					<ExtendedTooltip name="ПорядокПодачиДекларацииРасширеннаяПодсказка" id="144"/>
+					<Events>
+						<Event name="OnChange">ПорядокУплатыНалогаПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<Button name="НалоговыеОрганыГруппОбособленныхПодразделений" id="128">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.НалоговыеОрганыГруппОбособленныхПодразделений</CommandName>
+					<ExtendedTooltip name="НалоговыеОрганыГруппОбособленныхПодразделенийРасширеннаяПодсказка" id="129">
+						<Width>60</Width>
+						<HorizontalStretch>true</HorizontalStretch>
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Налоговые инспекции, в которые подаются декларации по налогу на прибыль по регионам</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Tax inspectorates to which income tax declarations are submitted by region</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПорядокУплатыАвансов" id="135">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядок уплаты авансов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prepayment procedure</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаПорядокУплатыАвансовРасширеннаяПодсказка" id="136"/>
+			<ChildItems>
+				<RadioButtonField name="ЗаписьПорядокУплатыАвансовПоНалогуНаПрибыль" id="137">
+					<DataPath>Запись.ПорядокУплатыАвансовПоНалогуНаПрибыль</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ПорядокУплатыАвансовПоНалогуНаПрибыль.EnumValue.Ежеквартально</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ПорядокУплатыАвансовПоНалогуНаПрибыль.EnumValue.Ежемесячно</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>По фактической прибыли</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>By actual profit</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ПорядокУплатыАвансовПоНалогуНаПрибыль.EnumValue.ПоФактическойПрибыли</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ЗаписьПорядокУплатыАвансовПоНалогуНаПрибыльКонтекстноеМеню" id="138"/>
+					<ExtendedTooltip name="ЗаписьПорядокУплатыАвансовПоНалогуНаПрибыльРасширеннаяПодсказка" id="139"/>
+				</RadioButtonField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаКурсовыеРазницыНУ" id="120">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Курсовые разницы НУ по 67-ФЗ</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>TA exchange differences under 67-FZ</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаКурсовыеРазницыНУРасширеннаяПодсказка" id="121"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаДатаНачалаПрименения67ФЗ" id="153">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа дата начала применения 67-ФЗ</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group 67-FZ application start date</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаДатаНачалаПрименения67ФЗРасширеннаяПодсказка" id="154"/>
+					<ChildItems>
+						<InputField name="ЗаписьДатаНезависимогоПризнанияДоходовРасходов" id="157">
+							<DataPath>Запись.ДатаНезависимогоПризнанияДоходовРасходов</DataPath>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<EditFormat>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ДФ=ММ.гггг</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>DF=MM/yyyy</v8:content>
+								</v8:item>
+							</EditFormat>
+							<ContextMenu name="ЗаписьДатаНезависимогоПризнанияДоходовРасходовКонтекстноеМеню" id="158"/>
+							<ExtendedTooltip name="ЗаписьДатаНезависимогоПризнанияДоходовРасходовРасширеннаяПодсказка" id="159">
+								<Title formatted="true">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>
+Требования (обязательства) дооцениваются или уцениваются ежемесячно, вне зависимости от того, признается ли в декларации доход (расход).
+При этом может быть учтен отложенный доход или расход на счетах 97.КР, 98.КР.
+&lt;link https://buh.ru/news/uchet_nalogi/154415/&gt;Подробнее&lt;/&gt;</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>
+Requirements (liabilities) are revalued or depreciated monthly no matter whether income or expense is recognized in the declaration.
+Deferred income or expense can be recognized on accounts 97.Exchange difference, 98.Exchange difference.
+&lt;link https://buh.ru/news/uchet_nalogi/154415/&gt;For more information&lt;/&gt;</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">ЗаписьДатаНезависимогоПризнанияДоходовРасходовПриИзменении</Event>
+								<Event name="StartChoice">ДатаНачалаПрименения67ФЗНачалоВыбора</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Запись" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.НастройкиУчетаНалогаНаПрибыль</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ДатаИзменения" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="ИмяРегистра" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя регистра</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбособленноеПодразделение" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обособленное подразделение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Branch office</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОписаниеИстории" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание истории</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>History description</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:FormattedString</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Организация" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоФормаЗаписи" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это форма записи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is a record form</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПрименяетсяЕНВД" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применяется ЕНВД</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>UTII is applied</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СистемаНалогообложения" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Система налогообложения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Taxation system</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.СистемыНалогообложения</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВедетсяУчетПостоянныхИВременныхРазниц" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ведется учет постоянных и временных разниц</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calculation of permanent and temporary differences is kept</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Копирование" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Копирование</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Copy</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РаздельныйУчетПоНалогуНаПрибыль" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Раздельный учет по налогу на прибыль</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Separate accounting for income tax</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ПорядокПодачиДекларации" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядок подачи декларации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Declaration filing procedure</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="УчетКурсовыхРазницПо76ФЗ" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Учет курсовых разниц по76 ФЗ</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exchange difference accounting under 79-FZ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Записать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Write</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Записать</Action>
+			<Representation>Picture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаписатьИЗакрыть" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаписатьИЗакрыть</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="НастройкиНалогообложенияПрибыли" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки налогообложения прибыли</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Profit taxation settings</v8:content>
+				</v8:item>
+			</Title>
+			<Action>НастройкиНалогообложенияПрибыли</Action>
+		</Command>
+		<Command name="НалоговыеОрганыГруппОбособленныхПодразделений" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Налоговые инспекции - получатели деклараций</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tax inspectorates that receive declarations</v8:content>
+				</v8:item>
+			</Title>
+			<Action>НалоговыеОрганыГруппОбособленныхПодразделений</Action>
+		</Command>
+		<Command name="ОткрытьСтавкиНалогаНаПрибыль" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перейти к настройкам</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОткрытьСтавкиНалогаНаПрибыль</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Организация">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

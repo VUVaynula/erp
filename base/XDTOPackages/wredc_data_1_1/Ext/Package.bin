@@ -1,0 +1,102 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" elementFormQualified="false" attributeFormQualified="false">
+	<property name="wredcData">
+		<typeDef xsi:type="ObjectType">
+			<property xmlns:d4p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="id" type="d4p1:uuidType" lowerBound="1" form="Attribute"/>
+			<property name="created" type="xs:date" lowerBound="0" form="Attribute"/>
+			<property xmlns:d4p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="version" type="d4p1:version" lowerBound="1" fixed="true" default="1.1" form="Attribute"/>
+			<property xmlns:d4p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="content" type="d4p1:employerinfoType"/>
+		</typeDef>
+	</property>
+	<valueType name="docNameType" base="xs:string" variety="Atomic" minLength="1" maxLength="255"/>
+	<valueType name="docNumberType" base="xs:string" variety="Atomic" minLength="1" maxLength="255"/>
+	<valueType name="fileExtentionType" base="xs:string" variety="Atomic">
+		<pattern>[a-z0-9]{3,6}</pattern>
+	</valueType>
+	<valueType name="fileNameType" base="xs:string" variety="Atomic">
+		<pattern>([a-zA-Zа-яА-ЯёЁ0-9_]{1,250}\.)*[a-z0-9]{3,4}</pattern>
+	</valueType>
+	<valueType name="innType" base="xs:string" variety="Atomic">
+		<pattern>\d{10}|\d{12}</pattern>
+	</valueType>
+	<valueType name="kppType" base="xs:string" variety="Atomic">
+		<pattern>\d{9}</pattern>
+	</valueType>
+	<valueType name="ogrnType" base="xs:string" variety="Atomic">
+		<pattern>\d{11}|\d{13}|\d{15}</pattern>
+	</valueType>
+	<valueType name="partPeopleFullNameType" base="xs:string" variety="Atomic">
+		<pattern>[а-яА-ЯёЁ\- ]{1,64}</pattern>
+	</valueType>
+	<valueType name="snilsType" base="xs:string" variety="Atomic">
+		<pattern>\d{3}-\d{3}-\d{3} \d{2}</pattern>
+	</valueType>
+	<valueType name="uuidType" base="xs:string" variety="Atomic">
+		<pattern>\{?[0-9a-fA-F]{8}(-?[0-9a-fA-F]{4}){3}-?[0-9a-fA-F]{12}\}?</pattern>
+	</valueType>
+	<valueType name="version" base="xs:string" variety="Atomic">
+		<enumeration>1.1</enumeration>
+	</valueType>
+	<objectType name="attachmentType">
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="extention" type="d3p1:fileExtentionType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="file" type="d3p1:fileNameType"/>
+		<property name="size" type="xs:positiveInteger"/>
+		<property name="annotation" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="employersign" type="d3p1:signatureWithPOA" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="employeesign" type="d3p1:signatureWithPOA" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="docinfoType">
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="docName" type="d3p1:docNameType"/>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="docNumber" type="d3p1:docNumberType" lowerBound="0"/>
+		<property name="date" type="xs:date"/>
+		<property name="docType" type="xs:string"/>
+		<property name="annotation" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="file" type="d3p1:fileNameType"/>
+		<property name="size" type="xs:positiveInteger"/>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="signature" type="d3p1:signatureWithPOA" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="attachment" type="d3p1:attachmentType" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="employeeinfo" type="d3p1:employeeInfoType" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="employeeInfoType">
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="lastnameinfo" type="d3p1:partPeopleFullNameType"/>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="firstnameinfo" type="d3p1:partPeopleFullNameType"/>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="patronymicInfo" type="d3p1:partPeopleFullNameType" lowerBound="0"/>
+		<property name="jobtitle" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic"/>
+		</property>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="signature" type="d3p1:signatureWithPOA" lowerBound="0"/>
+	</objectType>
+	<objectType name="employerinfoType">
+		<property name="employername">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="5" maxLength="512"/>
+		</property>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="innemployer" type="d3p1:innType"/>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="ogrn" type="d3p1:ogrnType"/>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="kpp" type="d3p1:kppType" lowerBound="0"/>
+		<property name="jobtitle" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="5" maxLength="512"/>
+		</property>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="docinfo" type="d3p1:docinfoType"/>
+	</objectType>
+	<objectType name="powerOfAttorneyType">
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="file" type="d3p1:fileNameType"/>
+		<property name="size" type="xs:positiveInteger"/>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="powerOfAttorney" type="d3p1:powerOfAttorneyType" lowerBound="0"/>
+	</objectType>
+	<objectType name="signatureType" ordered="false" sequenced="true">
+		<property name="date">
+			<typeDef xsi:type="ValueType" base="xs:date" variety="Atomic">
+				<pattern>\d{4}-(0?[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])</pattern>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="snils" type="d3p1:snilsType" lowerBound="0"/>
+		<property name="simple" type="xs:boolean" lowerBound="0"/>
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="x509" type="d3p1:x509SignatureType" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="signatureWithPOA" base="d2p1:signatureType">
+		<property name="powerOfAttorney" type="d2p1:powerOfAttorneyType" lowerBound="0"/>
+	</objectType>
+	<objectType name="x509SignatureType">
+		<property xmlns:d3p1="https://mintrud.gov.ru/uploads/eksperiment/xml_schema.xsd" name="file" type="d3p1:fileNameType"/>
+		<property name="size" type="xs:positiveInteger"/>
+	</objectType>
+</package>

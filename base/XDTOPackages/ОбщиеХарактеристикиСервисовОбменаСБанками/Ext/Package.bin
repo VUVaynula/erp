@@ -1,0 +1,38 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.v8.1c.ru/banks/CommonCharacteristic" elementFormQualified="true" attributeFormQualified="false">
+	<valueType name="ТипыПоказателей" base="xs:string" variety="Atomic">
+		<enumeration>Строка</enumeration>
+		<enumeration>Число</enumeration>
+		<enumeration>Дата</enumeration>
+		<enumeration>Булево</enumeration>
+		<enumeration>Перечисление</enumeration>
+	</valueType>
+	<valueType name="ТипыПоказателейОткрытый" variety="Union" memberTypes="{http://www.v8.1c.ru/banks/CommonCharacteristic}ТипыПоказателей {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType name="РазмерВКб" base="xs:int" variety="Atomic"/>
+	<objectType name="ЗначениеПеречисления" open="true" ordered="false" sequenced="true">
+		<property name="Порядок" type="xs:int" lowerBound="0"/>
+		<property name="Идентификатор" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="КраткоеПредставление" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ПодробноеПредставление" type="xs:string" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Показатель" open="true" ordered="false" sequenced="true">
+		<property name="Идентификатор" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="КраткоеПредставление" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ПодробноеПредставление" type="xs:string" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/CommonCharacteristic" name="ТипПоказателя" type="d3p1:ТипыПоказателейОткрытый" lowerBound="0" nillable="true"/>
+		<property name="Обязательный" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Разрядность" type="xs:int" lowerBound="0" nillable="true"/>
+		<property name="РазрядностьДробнойЧасти" type="xs:int" lowerBound="0" nillable="true"/>
+		<property name="НеОтрицательный" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="ПодсказкаВвода" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Маска" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ФорматРедактирования" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="МинимальноеЗначение" type="xs:int" lowerBound="0" nillable="true"/>
+		<property name="МаксимальноеЗначение" type="xs:int" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/CommonCharacteristic" name="ЗначенияПеречисления" type="d3p1:ЗначениеПеречисления" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="ПараметрыВыбораФайла" open="true" ordered="false" sequenced="true">
+		<property name="Расширение" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ФильтрДиалогаВыбора" type="xs:string" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/CommonCharacteristic" name="МаксРазмер" type="d3p1:РазмерВКб" lowerBound="0" nillable="true"/>
+	</objectType>
+</package>

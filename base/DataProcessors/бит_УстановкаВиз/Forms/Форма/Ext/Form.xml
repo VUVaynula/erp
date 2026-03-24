@@ -1,0 +1,2080 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="Записать" id="40">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Write</CommandName>
+				<ExtendedTooltip name="ЗаписатьExtendedTooltip" id="94"/>
+			</Button>
+			<Button name="Перечитать" id="38">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Reread</CommandName>
+				<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ПеречитатьExtendedTooltip" id="95"/>
+			</Button>
+			<Button name="Закрыть" id="39">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<Representation>PictureAndText</Representation>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ExtendedTooltip name="ЗакрытьExtendedTooltip" id="96"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаСтатус" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Status</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСтатусExtendedTooltip" id="99"/>
+			<ChildItems>
+				<LabelField name="ОбъектВизирования" id="1">
+					<DataPath>Объект.ОбъектВизирования</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<EditMode>EnterOnInput</EditMode>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="ОбъектВизированияКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="ОбъектВизированияExtendedTooltip" id="98"/>
+				</LabelField>
+				<LabelField name="Статус" id="56">
+					<DataPath>Статус</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Status</v8:content>
+						</v8:item>
+					</Title>
+					<TitleTextColor>style:бит_ЦветЗаголовкаСтатуса</TitleTextColor>
+					<TitleLocation>Left</TitleLocation>
+					<Hiperlink>true</Hiperlink>
+					<TextColor>style:бит_ЦветГиперссылки</TextColor>
+					<BackColor>style:FormBackColor</BackColor>
+					<ContextMenu name="СтатусКонтекстноеМеню" id="57"/>
+					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="100"/>
+					<Events>
+						<Event name="Click">ИнформацияСтатусНажатие</Event>
+					</Events>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="ГруппаСтраницы" id="75">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="ГруппаСтраницыExtendedTooltip" id="101"/>
+			<ChildItems>
+				<Page name="ГруппаСтраницаВизирование" id="76">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Визирование</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Approval</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаСтраницаВизированиеExtendedTooltip" id="102"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаВерх" id="51">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа верх</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group up</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаВерхExtendedTooltip" id="103"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаВизы" id="52">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Визы</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Visas</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаВизыExtendedTooltip" id="104"/>
+									<ChildItems>
+										<Table name="УстановленныеВизы" id="3">
+											<Representation>List</Representation>
+											<SkipOnInput>false</SkipOnInput>
+											<SelectionMode>SingleRow</SelectionMode>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<FileDragMode>AsFile</FileDragMode>
+											<DataPath>УстановленныеВизы</DataPath>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="УстановленныеВизыКонтекстноеМеню" id="4">
+												<ChildItems>
+													<Button name="УстановленныеВизыКонтекстноеМенюСоздатьЗадачу" id="89">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьЗадачу</CommandName>
+														<ExtendedTooltip name="УстановленныеВизыКонтекстноеМенюСоздатьЗадачуExtendedTooltip" id="105"/>
+													</Button>
+												</ChildItems>
+											</ContextMenu>
+											<AutoCommandBar name="УстановленныеВизыКоманднаяПанель" id="5">
+												<Autofill>false</Autofill>
+												<ChildItems>
+													<Button name="УстановленныеВизыДобавить" id="44">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Item.УстановленныеВизы.StandardCommand.Add</CommandName>
+														<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+														<ExtendedTooltip name="УстановленныеВизыДобавитьExtendedTooltip" id="106"/>
+													</Button>
+													<Button name="УстановленныеВизыИзменить" id="45">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Item.УстановленныеВизы.StandardCommand.Change</CommandName>
+														<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+														<ExtendedTooltip name="УстановленныеВизыИзменитьExtendedTooltip" id="107"/>
+													</Button>
+													<Button name="УстановленныеВизыУдалить" id="46">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Item.УстановленныеВизы.StandardCommand.Delete</CommandName>
+														<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+														<ExtendedTooltip name="УстановленныеВизыУдалитьExtendedTooltip" id="108"/>
+													</Button>
+													<Button name="УстановленныеВизыПереместитьВниз" id="48">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Item.УстановленныеВизы.StandardCommand.MoveDown</CommandName>
+														<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+														<ExtendedTooltip name="УстановленныеВизыПереместитьВнизExtendedTooltip" id="109"/>
+													</Button>
+													<Button name="УстановленныеВизыПереместитьВверх" id="47">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Item.УстановленныеВизы.StandardCommand.MoveUp</CommandName>
+														<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+														<ExtendedTooltip name="УстановленныеВизыПереместитьВверхExtendedTooltip" id="110"/>
+													</Button>
+													<Button name="УстановленныеВизыСортироватьСписокПоУбыванию" id="50">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Item.УстановленныеВизы.StandardCommand.SortListDesc</CommandName>
+														<ExtendedTooltip name="УстановленныеВизыСортироватьСписокПоУбываниюExtendedTooltip" id="111"/>
+													</Button>
+													<Button name="УстановленныеВизыСортироватьСписокПоВозрастанию" id="49">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Item.УстановленныеВизы.StandardCommand.SortListAsc</CommandName>
+														<ExtendedTooltip name="УстановленныеВизыСортироватьСписокПоВозрастаниюExtendedTooltip" id="112"/>
+													</Button>
+													<Button name="УстановленныеВизыПроставитьВсеВизы" id="43">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.ПроставитьВсеВизы</CommandName>
+														<Title>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Установить</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Set</v8:content>
+															</v8:item>
+														</Title>
+														<ExtendedTooltip name="УстановленныеВизыПроставитьВсеВизыExtendedTooltip" id="113"/>
+													</Button>
+													<Button name="УстановленныеВизыОчиститьВсеВизы" id="42">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.ОчиститьВсеВизы</CommandName>
+														<Title>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Очистить</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Clear</v8:content>
+															</v8:item>
+														</Title>
+														<ExtendedTooltip name="УстановленныеВизыОчиститьВсеВизыExtendedTooltip" id="114"/>
+													</Button>
+													<Button name="УстановленныеВизыОбновитьВизы" id="41">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.ОбновитьВизы</CommandName>
+														<Title>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Обновить</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Refresh</v8:content>
+															</v8:item>
+														</Title>
+														<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+														<ExtendedTooltip name="УстановленныеВизыОбновитьВизыExtendedTooltip" id="115"/>
+													</Button>
+													<Button name="УстановленныеВизыАлгоритмВидимость" id="68">
+														<Type>CommandBarButton</Type>
+														<Check>true</Check>
+														<CommandName>Form.Command.АлгоритмВидимость</CommandName>
+														<Title>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Алгоритм</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Algorithm</v8:content>
+															</v8:item>
+														</Title>
+														<ExtendedTooltip name="УстановленныеВизыАлгоритмВидимостьExtendedTooltip" id="116"/>
+													</Button>
+													<Button name="УстановленныеВизыСоздатьЗадачу" id="88">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьЗадачу</CommandName>
+														<ExtendedTooltip name="УстановленныеВизыСоздатьЗадачуExtendedTooltip" id="117"/>
+													</Button>
+													<Button name="ФормаКомандаПоказатьОтветственных" id="204">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.КомандаПоказатьОтветственных</CommandName>
+														<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+														<ExtendedTooltip name="ФормаКомандаПоказатьОтветственныхРасширеннаяПодсказка" id="205"/>
+													</Button>
+													<Popup name="ГруппаЭП" id="169">
+														<Title>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>ЭП</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Digital Signature</v8:content>
+															</v8:item>
+														</Title>
+														<ExtendedTooltip name="ГруппаЭПРасширеннаяПодсказка" id="170"/>
+														<ChildItems>
+															<Button name="УстановленныеВизыПодписатьЭП" id="171">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Command.ПодписатьЭП</CommandName>
+																<Picture>
+																	<xr:Ref>CommonPicture.ПодписанЭП</xr:Ref>
+																	<xr:LoadTransparent>true</xr:LoadTransparent>
+																</Picture>
+																<ExtendedTooltip name="УстановленныеВизыПодписатьЭПРасширеннаяПодсказка" id="172"/>
+															</Button>
+															<Button name="УстановленныеВизыПроверитьЭП" id="173">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Command.ПроверитьЭП</CommandName>
+																<Title>
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>Проверить</v8:content>
+																	</v8:item>
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>Check</v8:content>
+																	</v8:item>
+																</Title>
+																<ExtendedTooltip name="УстановленныеВизыПроверитьЭПРасширеннаяПодсказка" id="174"/>
+															</Button>
+															<Button name="УстановленныеВизыПроверитьВсе" id="175">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Command.ПроверитьВсе</CommandName>
+																<ExtendedTooltip name="УстановленныеВизыПроверитьВсеРасширеннаяПодсказка" id="176"/>
+															</Button>
+														</ChildItems>
+													</Popup>
+												</ChildItems>
+											</AutoCommandBar>
+											<ExtendedTooltip name="УстановленныеВизыExtendedTooltip" id="118"/>
+											<SearchStringAddition name="УстановленныеВизыСтрокаПоиска" id="154">
+												<AdditionSource>
+													<Item>УстановленныеВизы</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="УстановленныеВизыСтрокаПоискаКонтекстноеМеню" id="155"/>
+												<ExtendedTooltip name="УстановленныеВизыСтрокаПоискаРасширеннаяПодсказка" id="156"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="УстановленныеВизыСостояниеПросмотра" id="157">
+												<AdditionSource>
+													<Item>УстановленныеВизы</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="УстановленныеВизыСостояниеПросмотраКонтекстноеМеню" id="158"/>
+												<ExtendedTooltip name="УстановленныеВизыСостояниеПросмотраРасширеннаяПодсказка" id="159"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="УстановленныеВизыУправлениеПоиском" id="160">
+												<AdditionSource>
+													<Item>УстановленныеВизы</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="УстановленныеВизыУправлениеПоискомКонтекстноеМеню" id="161"/>
+												<ExtendedTooltip name="УстановленныеВизыУправлениеПоискомРасширеннаяПодсказка" id="162"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="OnEditEnd">УстановленныеВизыПриОкончанииРедактирования</Event>
+												<Event name="Selection">УстановленныеВизыВыбор</Event>
+												<Event name="BeforeAddRow">УстановленныеВизыПередНачаломДобавления</Event>
+												<Event name="BeforeDeleteRow">УстановленныеВизыПередУдалением</Event>
+												<Event name="OnActivateRow">УстановленныеВизыПриАктивизацииСтроки</Event>
+											</Events>
+											<ChildItems>
+												<InputField name="УстановленныеВизыИД" id="10">
+													<DataPath>УстановленныеВизы.ИД</DataPath>
+													<Visible>false</Visible>
+													<ReadOnly>true</ReadOnly>
+													<SkipOnInput>true</SkipOnInput>
+													<TitleLocation>None</TitleLocation>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>1</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="УстановленныеВизыИДКонтекстноеМеню" id="11"/>
+													<ExtendedTooltip name="УстановленныеВизыИДExtendedTooltip" id="119"/>
+												</InputField>
+												<PictureField name="ОтображениеЭЦП" id="177">
+													<DataPath>УстановленныеВизы.ОтображениеЭЦП</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<EditMode>EnterOnInput</EditMode>
+													<HeaderPicture>
+														<xr:Ref>CommonPicture.ПодписанЭП</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</HeaderPicture>
+													<ValuesPicture>
+														<xr:Ref>CommonPicture.СтатусПроверкиЭП</xr:Ref>
+														<xr:LoadTransparent>false</xr:LoadTransparent>
+													</ValuesPicture>
+													<FileDragMode>AsFile</FileDragMode>
+													<ContextMenu name="ОтображениеЭЦПКонтекстноеМеню" id="178"/>
+													<ExtendedTooltip name="ОтображениеЭЦПРасширеннаяПодсказка" id="179"/>
+												</PictureField>
+												<CheckBoxField name="ПодписанЭП" id="180">
+													<DataPath>УстановленныеВизы.ПодписанЭП</DataPath>
+													<Visible>false</Visible>
+													<EditMode>EnterOnInput</EditMode>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="ПодписанЭПКонтекстноеМеню" id="181"/>
+													<ExtendedTooltip name="ПодписанЭПРасширеннаяПодсказка" id="182"/>
+												</CheckBoxField>
+												<CheckBoxField name="ЭПДействительна" id="183">
+													<DataPath>УстановленныеВизы.ЭПДействительна</DataPath>
+													<Visible>false</Visible>
+													<EditMode>EnterOnInput</EditMode>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="ЭПДействительнаКонтекстноеМеню" id="184"/>
+													<ExtendedTooltip name="ЭПДействительнаРасширеннаяПодсказка" id="185"/>
+												</CheckBoxField>
+												<ColumnGroup name="ГруппаКолонокВиза" id="30">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа колонок виза</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Columns group visa</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ExtendedTooltip name="ГруппаКолонокВизаExtendedTooltip" id="120"/>
+													<ChildItems>
+														<InputField name="УстановленныеВизыВиза" id="8">
+															<DataPath>УстановленныеВизы.Виза</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<Width>10</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<ChoiceButton>true</ChoiceButton>
+															<ContextMenu name="УстановленныеВизыВизаКонтекстноеМеню" id="9"/>
+															<ExtendedTooltip name="УстановленныеВизыВизаExtendedTooltip" id="121"/>
+															<Events>
+																<Event name="OnChange">УстановленныеВизыВизаПриИзменении</Event>
+															</Events>
+														</InputField>
+														<ColumnGroup name="ГруппаКолонокДолжность" id="31">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Группа колонок должность</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Group of columns position</v8:content>
+																</v8:item>
+															</Title>
+															<HorizontalStretch>false</HorizontalStretch>
+															<Group>Horizontal</Group>
+															<ExtendedTooltip name="ГруппаКолонокДолжностьExtendedTooltip" id="122"/>
+															<ChildItems>
+																<InputField name="УстановленныеВизыФизическоеЛицо" id="14">
+																	<DataPath>УстановленныеВизы.ФизическоеЛицо</DataPath>
+																	<EditMode>EnterOnInput</EditMode>
+																	<Width>5</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<ContextMenu name="УстановленныеВизыФизическоеЛицоКонтекстноеМеню" id="15"/>
+																	<ExtendedTooltip name="УстановленныеВизыФизическоеЛицоExtendedTooltip" id="123"/>
+																	<Events>
+																		<Event name="OnChange">УстановленныеВизыФизическоеЛицоПриИзменении</Event>
+																		<Event name="StartChoice">УстановленныеВизыФизическоеЛицоНачалоВыбора</Event>
+																	</Events>
+																</InputField>
+																<InputField name="УстановленныеВизыДолжность" id="22">
+																	<DataPath>УстановленныеВизы.Должность</DataPath>
+																	<EditMode>EnterOnInput</EditMode>
+																	<Width>5</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<ContextMenu name="УстановленныеВизыДолжностьКонтекстноеМеню" id="23"/>
+																	<ExtendedTooltip name="УстановленныеВизыДолжностьExtendedTooltip" id="124"/>
+																</InputField>
+															</ChildItems>
+														</ColumnGroup>
+													</ChildItems>
+												</ColumnGroup>
+												<ColumnGroup name="ГруппаКолонокРешение" id="67">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа колонок решение</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group of columns solution</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="ГруппаКолонокРешениеExtendedTooltip" id="125"/>
+													<ChildItems>
+														<InputField name="УстановленныеВизыРешение" id="58">
+															<DataPath>УстановленныеВизы.Решение</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Решение</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Decision</v8:content>
+																</v8:item>
+															</Title>
+															<EditMode>EnterOnInput</EditMode>
+															<TextEdit>false</TextEdit>
+															<ChoiceListButton>true</ChoiceListButton>
+															<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+															<ContextMenu name="УстановленныеВизыРешениеКонтекстноеМеню" id="59"/>
+															<ExtendedTooltip name="УстановленныеВизыРешениеExtendedTooltip" id="126"/>
+														</InputField>
+														<InputField name="УстановленныеВизыПользователь" id="12">
+															<DataPath>УстановленныеВизы.Пользователь</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<DropListButton>false</DropListButton>
+															<ChoiceButton>false</ChoiceButton>
+															<ClearButton>false</ClearButton>
+															<SpinButton>false</SpinButton>
+															<OpenButton>false</OpenButton>
+															<ChoiceListButton>false</ChoiceListButton>
+															<ContextMenu name="УстановленныеВизыПользовательКонтекстноеМеню" id="13"/>
+															<ExtendedTooltip name="УстановленныеВизыПользовательExtendedTooltip" id="127"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<ColumnGroup name="ГруппаКолонокПользователь" id="60">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа колонок пользователь</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group of columns user</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="ГруппаКолонокПользовательExtendedTooltip" id="128"/>
+													<ChildItems>
+														<InputField name="УстановленныеВизыДатаУстановки" id="18">
+															<DataPath>УстановленныеВизы.ДатаУстановки</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="УстановленныеВизыДатаУстановкиКонтекстноеМеню" id="19"/>
+															<ExtendedTooltip name="УстановленныеВизыДатаУстановкиExtendedTooltip" id="129"/>
+														</InputField>
+														<InputField name="ДатаКрайняя" id="65">
+															<DataPath>УстановленныеВизы.ДатаКрайняя</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="ДатаКрайняяКонтекстноеМеню" id="66"/>
+															<ExtendedTooltip name="ДатаКрайняяExtendedTooltip" id="130"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<InputField name="УстановленныеВизыКомментарий" id="24">
+													<DataPath>УстановленныеВизы.Комментарий</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УстановленныеВизыКомментарийКонтекстноеМеню" id="25"/>
+													<ExtendedTooltip name="УстановленныеВизыКомментарийExtendedTooltip" id="131"/>
+												</InputField>
+												<CheckBoxField name="УстановленныеВизыДобавленаВручную" id="16">
+													<DataPath>УстановленныеВизы.ДобавленаВручную</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<EditMode>EnterOnInput</EditMode>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="УстановленныеВизыДобавленаВручнуюКонтекстноеМеню" id="17"/>
+													<ExtendedTooltip name="УстановленныеВизыДобавленаВручнуюExtendedTooltip" id="132"/>
+												</CheckBoxField>
+												<InputField name="УстановленныеВизыКодСортировки" id="20">
+													<DataPath>УстановленныеВизы.КодСортировки</DataPath>
+													<Visible>false</Visible>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УстановленныеВизыКодСортировкиКонтекстноеМеню" id="21"/>
+													<ExtendedTooltip name="УстановленныеВизыКодСортировкиExtendedTooltip" id="133"/>
+												</InputField>
+												<InputField name="УстановленныеВизыСтатус" id="26">
+													<DataPath>УстановленныеВизы.Статус</DataPath>
+													<Visible>false</Visible>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УстановленныеВизыСтатусКонтекстноеМеню" id="27"/>
+													<ExtendedTooltip name="УстановленныеВизыСтатусExtendedTooltip" id="134"/>
+												</InputField>
+												<InputField name="УстановленныеВизыМаршрут" id="28">
+													<DataPath>УстановленныеВизы.Маршрут</DataPath>
+													<Visible>false</Visible>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УстановленныеВизыМаршрутКонтекстноеМеню" id="29"/>
+													<ExtendedTooltip name="УстановленныеВизыМаршрутExtendedTooltip" id="135"/>
+												</InputField>
+												<InputField name="УстановленныеВизыОбъект" id="6">
+													<DataPath>УстановленныеВизы.Объект</DataPath>
+													<Visible>false</Visible>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="УстановленныеВизыОбъектКонтекстноеМеню" id="7"/>
+													<ExtendedTooltip name="УстановленныеВизыОбъектExtendedTooltip" id="136"/>
+												</InputField>
+												<InputField name="Алгоритм" id="61">
+													<DataPath>УстановленныеВизы.Алгоритм</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="АлгоритмКонтекстноеМеню" id="62"/>
+													<ExtendedTooltip name="АлгоритмExtendedTooltip" id="137"/>
+												</InputField>
+												<InputField name="ТочкаАлгоритма" id="63">
+													<DataPath>УстановленныеВизы.ТочкаАлгоритма</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ТочкаАлгоритмаКонтекстноеМеню" id="64"/>
+													<ExtendedTooltip name="ТочкаАлгоритмаExtendedTooltip" id="138"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаАлгоритм" id="53">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Алгоритм</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Algorithm</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаАлгоритмExtendedTooltip" id="139"/>
+									<ChildItems>
+										<CommandBar name="ГруппаКоманднаяПанельАлгоритм" id="72">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Командная панель алгоритма</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Algorithm command panel</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="ГруппаКоманднаяПанельАлгоритмExtendedTooltip" id="140"/>
+											<ChildItems>
+												<Button name="АлгоритмПоложение" id="73">
+													<Type>CommandBarButton</Type>
+													<Check>true</Check>
+													<CommandName>Form.Command.АлгоритмПоложение</CommandName>
+													<ExtendedTooltip name="АлгоритмПоложениеExtendedTooltip" id="141"/>
+												</Button>
+											</ChildItems>
+										</CommandBar>
+										<GraphicalSchemaField name="ГрафическаяСхема" id="197">
+											<DataPath>ГрафическаяСхема</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Edit>false</Edit>
+											<ContextMenu name="ГрафическаяСхемаКонтекстноеМеню" id="198">
+												<ChildItems>
+													<Button name="ГрафическаяСхемаКонтекстноеМенюОбзорСхемы" id="202">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.ОбзорСхемы</CommandName>
+														<ExtendedTooltip name="ГрафическаяСхемаКонтекстноеМенюОбзорСхемыРасширеннаяПодсказка" id="203"/>
+													</Button>
+												</ChildItems>
+											</ContextMenu>
+											<ExtendedTooltip name="ГрафическаяСхемаРасширеннаяПодсказка" id="199"/>
+											<Events>
+												<Event name="Selection">ГрафическаяСхемаВыбор</Event>
+											</Events>
+										</GraphicalSchemaField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаСтраницаИстория" id="77">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>История</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>History</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаСтраницаИсторияExtendedTooltip" id="143"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаКомандыИстории" id="92">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа команды истории</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group team history</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаКомандыИсторииExtendedTooltip" id="144"/>
+							<ChildItems>
+								<CommandBar name="ГруппаИсторияУровни" id="90">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа история уровни</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group story levels</v8:content>
+										</v8:item>
+									</Title>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ExtendedTooltip name="ГруппаИсторияУровниРасширеннаяПодсказка" id="145"/>
+									<ChildItems>
+										<Popup name="ГруппаИсторияУровниГруппировок" id="91">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Уровни</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Levels</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Уровни группировок</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Grouping Levels</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="ГруппаИсторияУровниГруппировокExtendedTooltip" id="146"/>
+										</Popup>
+									</ChildItems>
+								</CommandBar>
+								<Button name="КомандаОбновитьИсторию" id="80">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.КомандаОбновитьИсторию</CommandName>
+									<ExtendedTooltip name="КомандаОбновитьИсториюExtendedTooltip" id="147"/>
+								</Button>
+								<CommandBar name="ГруппаКоманднаяПанельИстории" id="229">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Командная панель истории</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>History Command Panel</v8:content>
+										</v8:item>
+									</Title>
+									<CommandSource>Item.тдИстория</CommandSource>
+									<ExtendedTooltip name="ГруппаКоманднаяПанельИсторииРасширеннаяПодсказка" id="230"/>
+									<ChildItems>
+										<Button name="ИсторияПечать" id="231">
+											<Type>CommandBarButton</Type>
+											<Representation>PictureAndText</Representation>
+											<CommandName>Form.Item.тдИстория.StandardCommand.Print</CommandName>
+											<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+											<ExtendedTooltip name="ИсторияПечатьРасширеннаяПодсказка" id="232"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</UsualGroup>
+						<SpreadSheetDocumentField name="тдИстория" id="78">
+							<DataPath>тдИстория</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<CommandSet>
+								<ExcludedCommand>AlignCenter</ExcludedCommand>
+								<ExcludedCommand>AlignDrawingBottom</ExcludedCommand>
+								<ExcludedCommand>AlignDrawingCenter</ExcludedCommand>
+								<ExcludedCommand>AlignDrawingLeft</ExcludedCommand>
+								<ExcludedCommand>AlignDrawingMiddle</ExcludedCommand>
+								<ExcludedCommand>AlignDrawingRight</ExcludedCommand>
+								<ExcludedCommand>AlignDrawingTop</ExcludedCommand>
+								<ExcludedCommand>AlignJustify</ExcludedCommand>
+								<ExcludedCommand>AlignLeft</ExcludedCommand>
+								<ExcludedCommand>AlignRight</ExcludedCommand>
+								<ExcludedCommand>BackColor</ExcludedCommand>
+								<ExcludedCommand>BlackAndWhiteView</ExcludedCommand>
+								<ExcludedCommand>Bold</ExcludedCommand>
+								<ExcludedCommand>BorderAll</ExcludedCommand>
+								<ExcludedCommand>BorderBottom</ExcludedCommand>
+								<ExcludedCommand>BorderColor</ExcludedCommand>
+								<ExcludedCommand>BorderInside</ExcludedCommand>
+								<ExcludedCommand>BorderLeft</ExcludedCommand>
+								<ExcludedCommand>BorderNone</ExcludedCommand>
+								<ExcludedCommand>BorderOutline</ExcludedCommand>
+								<ExcludedCommand>BorderRight</ExcludedCommand>
+								<ExcludedCommand>BorderTop</ExcludedCommand>
+								<ExcludedCommand>BringDrawingForward</ExcludedCommand>
+								<ExcludedCommand>BringDrawingToFront</ExcludedCommand>
+								<ExcludedCommand>ClearAll</ExcludedCommand>
+								<ExcludedCommand>ClearContent</ExcludedCommand>
+								<ExcludedCommand>CollapseAllGroups</ExcludedCommand>
+								<ExcludedCommand>ColumnWidth</ExcludedCommand>
+								<ExcludedCommand>CombineToGroup</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>DeleteColumns</ExcludedCommand>
+								<ExcludedCommand>DeleteComment</ExcludedCommand>
+								<ExcludedCommand>DeleteRows</ExcludedCommand>
+								<ExcludedCommand>DistributeDrawingsHorizontally</ExcludedCommand>
+								<ExcludedCommand>DistributeDrawingsVertically</ExcludedCommand>
+								<ExcludedCommand>Edit</ExcludedCommand>
+								<ExcludedCommand>Ellipse</ExcludedCommand>
+								<ExcludedCommand>EqualDrawingHeight</ExcludedCommand>
+								<ExcludedCommand>EqualDrawingSize</ExcludedCommand>
+								<ExcludedCommand>EqualDrawingWidth</ExcludedCommand>
+								<ExcludedCommand>ExpandAllGroups</ExcludedCommand>
+								<ExcludedCommand>Find</ExcludedCommand>
+								<ExcludedCommand>FindNext</ExcludedCommand>
+								<ExcludedCommand>FindPrevious</ExcludedCommand>
+								<ExcludedCommand>FixTable</ExcludedCommand>
+								<ExcludedCommand>Font</ExcludedCommand>
+								<ExcludedCommand>GoToCell</ExcludedCommand>
+								<ExcludedCommand>Group</ExcludedCommand>
+								<ExcludedCommand>HeaderFooter</ExcludedCommand>
+								<ExcludedCommand>Hide</ExcludedCommand>
+								<ExcludedCommand>InsertColumnsLeft</ExcludedCommand>
+								<ExcludedCommand>InsertColumnsRight</ExcludedCommand>
+								<ExcludedCommand>InsertComment</ExcludedCommand>
+								<ExcludedCommand>InsertPageBreak</ExcludedCommand>
+								<ExcludedCommand>InsertRows</ExcludedCommand>
+								<ExcludedCommand>InsertRowsBottom</ExcludedCommand>
+								<ExcludedCommand>InsertRowsTop</ExcludedCommand>
+								<ExcludedCommand>Italic</ExcludedCommand>
+								<ExcludedCommand>Line</ExcludedCommand>
+								<ExcludedCommand>Merge</ExcludedCommand>
+								<ExcludedCommand>Names</ExcludedCommand>
+								<ExcludedCommand>NextComment</ExcludedCommand>
+								<ExcludedCommand>PageViewMode</ExcludedCommand>
+								<ExcludedCommand>PasteFromClipboard</ExcludedCommand>
+								<ExcludedCommand>Picture</ExcludedCommand>
+								<ExcludedCommand>PreviousComment</ExcludedCommand>
+								<ExcludedCommand>Properties</ExcludedCommand>
+								<ExcludedCommand>Rectangle</ExcludedCommand>
+								<ExcludedCommand>Redo</ExcludedCommand>
+								<ExcludedCommand>RemoveFromGroup</ExcludedCommand>
+								<ExcludedCommand>RemoveName</ExcludedCommand>
+								<ExcludedCommand>RemovePageBreak</ExcludedCommand>
+								<ExcludedCommand>RemovePrintArea</ExcludedCommand>
+								<ExcludedCommand>RemoveRepeatOnEachPage</ExcludedCommand>
+								<ExcludedCommand>RepeatOnEachPage</ExcludedCommand>
+								<ExcludedCommand>RowHeight</ExcludedCommand>
+								<ExcludedCommand>Save</ExcludedCommand>
+								<ExcludedCommand>SaveAs</ExcludedCommand>
+								<ExcludedCommand>SearchEverywhere</ExcludedCommand>
+								<ExcludedCommand>SelectAll</ExcludedCommand>
+								<ExcludedCommand>SendDrawingBackward</ExcludedCommand>
+								<ExcludedCommand>SendDrawingToBack</ExcludedCommand>
+								<ExcludedCommand>SetName</ExcludedCommand>
+								<ExcludedCommand>SetPrintArea</ExcludedCommand>
+								<ExcludedCommand>Show</ExcludedCommand>
+								<ExcludedCommand>ShowCellNames</ExcludedCommand>
+								<ExcludedCommand>ShowComments</ExcludedCommand>
+								<ExcludedCommand>ShowGrid</ExcludedCommand>
+								<ExcludedCommand>ShowGroups</ExcludedCommand>
+								<ExcludedCommand>ShowHeaders</ExcludedCommand>
+								<ExcludedCommand>ShowRowAndColumnNames</ExcludedCommand>
+								<ExcludedCommand>SplitCell</ExcludedCommand>
+								<ExcludedCommand>Text</ExcludedCommand>
+								<ExcludedCommand>TextColor</ExcludedCommand>
+								<ExcludedCommand>ThickBorderBottom</ExcludedCommand>
+								<ExcludedCommand>ThickBorderOutline</ExcludedCommand>
+								<ExcludedCommand>ThickBorderTop</ExcludedCommand>
+								<ExcludedCommand>Underline</ExcludedCommand>
+								<ExcludedCommand>Undo</ExcludedCommand>
+								<ExcludedCommand>Ungroup</ExcludedCommand>
+							</CommandSet>
+							<VerticalScrollBar>true</VerticalScrollBar>
+							<HorizontalScrollBar>true</HorizontalScrollBar>
+							<ContextMenu name="тдИсторияКонтекстноеМеню" id="79"/>
+							<ExtendedTooltip name="тдИсторияExtendedTooltip" id="148"/>
+							<Events>
+								<Event name="DetailProcessing">тдИсторияОбработкаРасшифровки</Event>
+							</Events>
+						</SpreadSheetDocumentField>
+						<UsualGroup name="ГруппаСообщение" id="81">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сообщение</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Message</v8:content>
+								</v8:item>
+							</Title>
+							<Group>AlwaysHorizontal</Group>
+							<Behavior>Usual</Behavior>
+							<ExtendedTooltip name="ГруппаСообщениеExtendedTooltip" id="149"/>
+							<ChildItems>
+								<InputField name="фСообщение" id="82">
+									<DataPath>фСообщение</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MultiLine>true</MultiLine>
+									<ContextMenu name="фСообщениеКонтекстноеМеню" id="83"/>
+									<ExtendedTooltip name="фСообщениеExtendedTooltip" id="150"/>
+								</InputField>
+								<UsualGroup name="ГруппаКомандыСообщения" id="85">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Команды сообщения</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Message commands</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаКомандыСообщенияExtendedTooltip" id="151"/>
+									<ChildItems>
+										<Button name="КомандаОтправитьСообщение" id="84">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.КомандаОтправитьСообщение</CommandName>
+											<ExtendedTooltip name="КомандаОтправитьСообщениеExtendedTooltip" id="152"/>
+										</Button>
+										<Button name="КомандаОчиститьСообщение" id="86">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.КомандаОчиститьСообщение</CommandName>
+											<ExtendedTooltip name="КомандаОчиститьСообщениеExtendedTooltip" id="153"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаСтраницаПраваУстановкиВиз" id="206">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Права установки виз</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Right to visas</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаСтраницаПраваУстановкиВизРасширеннаяПодсказка" id="207"/>
+					<ChildItems>
+						<Table name="ПраваУстановкиВиз" id="208">
+							<Representation>List</Representation>
+							<Visible>false</Visible>
+							<ReadOnly>true</ReadOnly>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ПраваУстановкиВиз</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ПраваУстановкиВизКонтекстноеМеню" id="209"/>
+							<AutoCommandBar name="ПраваУстановкиВизКоманднаяПанель" id="210">
+								<ChildItems>
+									<Button name="КомандаОбновитьПраваУстановкиВиз" id="227">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.КомандаОбновитьПраваУстановкиВиз</CommandName>
+										<ExtendedTooltip name="КомандаОбновитьПраваУстановкиВизРасширеннаяПодсказка" id="228"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ПраваУстановкиВизРасширеннаяПодсказка" id="211"/>
+							<SearchStringAddition name="ПраваУстановкиВизСтрокаПоиска" id="212">
+								<AdditionSource>
+									<Item>ПраваУстановкиВиз</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПраваУстановкиВизСтрокаПоискаКонтекстноеМеню" id="213"/>
+								<ExtendedTooltip name="ПраваУстановкиВизСтрокаПоискаРасширеннаяПодсказка" id="214"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ПраваУстановкиВизСостояниеПросмотра" id="215">
+								<AdditionSource>
+									<Item>ПраваУстановкиВиз</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПраваУстановкиВизСостояниеПросмотраКонтекстноеМеню" id="216"/>
+								<ExtendedTooltip name="ПраваУстановкиВизСостояниеПросмотраРасширеннаяПодсказка" id="217"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ПраваУстановкиВизУправлениеПоиском" id="218">
+								<AdditionSource>
+									<Item>ПраваУстановкиВиз</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ПраваУстановкиВизУправлениеПоискомКонтекстноеМеню" id="219"/>
+								<ExtendedTooltip name="ПраваУстановкиВизУправлениеПоискомРасширеннаяПодсказка" id="220"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="ПраваУстановкиВизВиза" id="221">
+									<DataPath>ПраваУстановкиВиз.Виза</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ПраваУстановкиВизВизаКонтекстноеМеню" id="222"/>
+									<ExtendedTooltip name="ПраваУстановкиВизВизаРасширеннаяПодсказка" id="223"/>
+								</InputField>
+								<InputField name="ПраваУстановкиВизПользователь" id="224">
+									<DataPath>ПраваУстановкиВиз.Ответственный</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ПраваУстановкиВизПользовательКонтекстноеМеню" id="225"/>
+									<ExtendedTooltip name="ПраваУстановкиВизПользовательРасширеннаяПодсказка" id="226"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.бит_УстановкаВиз</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="УстановленныеВизы" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установленные визы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set Approval Marks</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.бит_УстановленныеВизы</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="НачальноеРешение" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Начальное решение</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Initial Decision</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.бит_ВидыРешенийСогласования</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ОтображениеЭЦП" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отображение ЭЦП</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Showing EDS</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДоступностьВизы" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доступность визы</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>The availability of visa</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВидВизы" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид визы</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Endorsement Type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.бит_ВидыВиз</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВидСвязиВизы" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид связи визы</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Type of visa relationship</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.бит_ВидыСвязиВиз</v8:Type>
+					</Type>
+				</Column>
+				<AdditionalColumns table="УстановленныеВизы"/>
+				<AdditionalColumns table="УстановленныеВизы.Filter"/>
+			</Columns>
+		</Attribute>
+		<Attribute name="Статус" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.бит_СтатусыОбъектов</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаИзмененияСтатуса" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата изменения статуса</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Status Change Date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВизыПользователя" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Визы пользователя</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User Approvals</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТаблицаТочкиВизы" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица точки визы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Table visa points</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Точка" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Точка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Point</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.бит_ТочкиАлгоритмов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВидТочки" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид точки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Point Type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.бит_ВидыТочекАлгоритмов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИсходящиеТочки" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исходящие точки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Exit Points</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:ValueTable</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВходящиеТочки" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Входящие точки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Entry Points</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:ValueTable</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИД" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИД</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Id</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>36</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИдентификаторТочки" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор точки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>point identifier</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>10</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="КодТочки" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код точки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>point code</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<AdditionalColumns table="ТаблицаТочкиВизы.ИсходящиеТочки">
+					<Column name="Точка" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Точка</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Point</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:CatalogRef.бит_ТочкиАлгоритмов</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ВидТочки" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Вид точки</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Point Type</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:EnumRef.бит_ВидыТочекАлгоритмов</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="ТаблицаТочкиВизы.ВходящиеТочки">
+					<Column name="Точка" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Точка</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Point</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:CatalogRef.бит_ТочкиАлгоритмов</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ВидТочки" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Вид точки</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Point Type</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:EnumRef.бит_ВидыТочекАлгоритмов</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="АлгоритмСкрыт" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Алгоритм скрыт</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Algorithm Hidden</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>АлгоритмСкрыт</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="АлгоритмПоложение" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Алгоритм положение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Algorithm Placement</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<Save>
+				<Field>АлгоритмПоложение</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="фОтказ" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ф отказ</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>F failure</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НеОтображатьКарту" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не отображать карту</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Do not display the map</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="тдИстория" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>History</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="фСообщение" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сообщение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Message</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>1000</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПеречитатьВладельца" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перечитать владельца</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reread owner</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="УстановленныеВизыНач" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установленные визы нач</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Installed visa early</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.бит_УстановленныеВизы</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьЭП" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать ЭП</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use Digital Signature</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ШаблонМакета" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаблон макета</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>layout template</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДанныеПоВизамФорма" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные по визам форма</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data on visa form</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ГрафическаяСхема" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Графическая схема</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>graphic layout</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.2/data/graphscheme">d5p1:FlowchartContextType</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="МенюРешений" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Меню решений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>making menu</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекущийПользователь" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий пользователь</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current User</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОсновноеРешение" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основное решение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Key action</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.бит_ВидыРешенийСогласования</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПраваУстановкиВиз" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Права установки виз</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Right to Visas</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Виза" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Виза</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Approval mark</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.бит_Визы</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Ответственный" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>User</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="РежимОчисткиРешения" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим очистки решения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПроставитьВсеВизы" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить все доступные визы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set all available visas</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроставитьВсеВизы</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОчиститьВсеВизы" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить все доступные визы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear all available approval marks</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОчиститьВсеВизы</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОбновитьВизы" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить перечень виз</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh Approval List</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОбновитьВизы</Action>
+			<Representation>TextPicture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="АлгоритмВидимость" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Алгоритм</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Algorithm</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Видимость алгоритма визирования</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Approval Algorithm Visibility</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>АлгоритмВидимость</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="АлгоритмПоложение" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Алгоритм положение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Algorithm Placement</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Алгоритм положение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Algorithm Placement</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>АлгоритмПоложение</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаОбновитьИсторию" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить историю</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update History</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить историю</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update History</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаОбновитьИсторию</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаОтправитьСообщение" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить сообщение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send Message</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить сообщение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send Message</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+M</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Forward</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаОтправитьСообщение</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаОчиститьСообщение" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить сообщение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear Message</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить сообщение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear Message</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.InputFieldClear</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаОчиститьСообщение</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьЗадачу" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать задачу</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create Task</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать задачу</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create Task</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Task</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СоздатьЗадачу</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПодписатьЭП" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подписать ЭП</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sign with DS</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подписать ЭП</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sign with DS</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодписатьЭП</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПроверитьЭП" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить ЭП</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check DS</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить ЭП</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check DS</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроверитьЭП</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПроверитьВсе" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить все</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check All</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить все</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check All</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроверитьВсе</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОбзорСхемы" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обзор схемы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Review of schemes</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обзор схемы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Review of schemes</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.бит_ПолныйЭкран</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОбзорСхемы</Action>
+		</Command>
+		<Command name="КомандаПоказатьОтветственных" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Права на визы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Right to visas</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>CommonPicture.ВариантыОтчетовДоступныеВсемПользователям</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаПоказатьОтветственных</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="КомандаОбновитьПраваУстановкиВиз" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить права установки виз</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update right to visas</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаОбновитьПраваУстановкиВиз</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ОбъектВизирования">
+			<Type>
+				<v8:TypeSet>cfg:AnyIBRef</v8:TypeSet>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

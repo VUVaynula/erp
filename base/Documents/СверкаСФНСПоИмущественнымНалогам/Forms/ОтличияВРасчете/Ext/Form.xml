@@ -1,0 +1,3194 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Расчет налога по объекту</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Tax calculation for object</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="Назад" id="470">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.Назад</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>&lt; Назад</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>&lt; Back</v8:content>
+					</v8:item>
+				</Title>
+				<ShapeRepresentation>WhenActive</ShapeRepresentation>
+				<ExtendedTooltip name="НазадРасширеннаяПодсказка" id="471"/>
+			</Button>
+			<Button name="Далее" id="468">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.Далее</CommandName>
+				<ExtendedTooltip name="ДалееРасширеннаяПодсказка" id="469"/>
+			</Button>
+			<Button name="ОК" id="47">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ОК</CommandName>
+				<ExtendedTooltip name="ОКРасширеннаяПодсказка" id="48"/>
+			</Button>
+			<Button name="Отмена" id="49">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Отмена</CommandName>
+				<ExtendedTooltip name="ОтменаРасширеннаяПодсказка" id="50"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="149">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="150"/>
+			<ChildItems>
+				<LabelDecoration name="НаименованиеОбъекта" id="141">
+					<Width>68</Width>
+					<TextColor>style:ЦветШрифтаКомментарияКСостоянию</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование объекта</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Object name</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="НаименованиеОбъектаКонтекстноеМеню" id="142"/>
+					<ExtendedTooltip name="НаименованиеОбъектаРасширеннаяПодсказка" id="143"/>
+				</LabelDecoration>
+				<LabelDecoration name="НадписьЗаголовок" id="144">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Font ref="style:NormalTextFont" height="11" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обнаружены &lt;color #000000&gt;расхождения&lt;/&gt;. Укажите, какой расчет правильный:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>&lt;color #000000&gt;Discrepancies&lt;/&gt; are found. Specify which calculation is correct:</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="НадписьЗаголовокКонтекстноеМеню" id="145"/>
+					<ExtendedTooltip name="НадписьЗаголовокРасширеннаяПодсказка" id="146"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаРасчетЗаголовки" id="221">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заголовки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Titles</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:FormBackColor</BackColor>
+			<ExtendedTooltip name="ГруппаРасчетЗаголовкиРасширеннаяПодсказка" id="222"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаЗаголовокНалоговаяБаза" id="247">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоговая база, заголовок</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tax base, title</v8:content>
+						</v8:item>
+					</Title>
+					<Width>14</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>AlwaysHorizontal</Group>
+					<HorizontalSpacing>Half</HorizontalSpacing>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЗаголовокНалоговаяБазаРасширеннаяПодсказка" id="248"/>
+					<ChildItems>
+						<LabelDecoration name="ОтступРасчетЗаголовки" id="223">
+							<Width>2</Width>
+							<ContextMenu name="ОтступРасчетЗаголовкиКонтекстноеМеню" id="224"/>
+							<ExtendedTooltip name="ОтступРасчетЗаголовкиРасширеннаяПодсказка" id="225"/>
+						</LabelDecoration>
+						<LabelDecoration name="ЗаголовокНалоговаяБаза" id="226">
+							<Width>10</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Налоговая база</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Tax base</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<ContextMenu name="ЗаголовокНалоговаяБазаКонтекстноеМеню" id="227"/>
+							<ExtendedTooltip name="ЗаголовокНалоговаяБазаРасширеннаяПодсказка" id="228"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаЗаголовокДоляВПраве" id="249">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доля в праве, заголовок</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ownership interest, title</v8:content>
+						</v8:item>
+					</Title>
+					<Width>11</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЗаголовокДоляВПравеРасширеннаяПодсказка" id="250"/>
+					<ChildItems>
+						<LabelDecoration name="ЗаголовокДоляВПраве" id="229">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Доля в праве</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Share in the right</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<ContextMenu name="ЗаголовокДоляВПравеКонтекстноеМеню" id="230"/>
+							<ExtendedTooltip name="ЗаголовокДоляВПравеРасширеннаяПодсказка" id="231"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаЗаголовокНалоговыйВычет" id="478">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоговый вычет, заголовок</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tax deduction, title</v8:content>
+						</v8:item>
+					</Title>
+					<Width>8</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЗаголовокНалоговыйВычетРасширеннаяПодсказка" id="479"/>
+					<ChildItems>
+						<LabelDecoration name="ЗаголовокНалоговыйВычет" id="480">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Налоговый
+вычет
+(руб.)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Tax
+deduction
+(rub.)</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<ContextMenu name="ЗаголовокНалоговыйВычетКонтекстноеМеню" id="481"/>
+							<ExtendedTooltip name="ЗаголовокНалоговыйВычетРасширеннаяПодсказка" id="482"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаЗаголовокНалоговаяСтавка" id="251">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоговая ставка, заголовок</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tax rate, title</v8:content>
+						</v8:item>
+					</Title>
+					<Width>8</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЗаголовокНалоговаяСтавкаРасширеннаяПодсказка" id="252"/>
+					<ChildItems>
+						<LabelDecoration name="ЗаголовокНалоговаяСтавка" id="232">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Налоговая
+ставка
+(руб.)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Tax
+rate
+(rub.)</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<ContextMenu name="ЗаголовокНалоговаяСтавкаКонтекстноеМеню" id="233"/>
+							<ExtendedTooltip name="ЗаголовокНалоговаяСтавкаРасширеннаяПодсказка" id="234"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаЗаголовокКоличествоМесяцевВладения" id="253">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество месяцев владения, заголовок</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Number of ownership months, title</v8:content>
+						</v8:item>
+					</Title>
+					<Width>8</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЗаголовокКоличествоМесяцевВладенияРасширеннаяПодсказка" id="254"/>
+					<ChildItems>
+						<LabelDecoration name="ЗаголовокКоличествоМесяцевВладения" id="235">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Количество
+месяцев
+владения в
+2022 году/12</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Number of
+ownership
+months in
+2022/12</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<ContextMenu name="ЗаголовокКоличествоМесяцевВладенияКонтекстноеМеню" id="236"/>
+							<ExtendedTooltip name="ЗаголовокКоличествоМесяцевВладенияРасширеннаяПодсказка" id="237"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаЗаголовокПовышающийКоэффициент" id="255">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Повышающий коэффициент, заголовок</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Increasing factor, title</v8:content>
+						</v8:item>
+					</Title>
+					<Width>8</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЗаголовокПовышающийКоэффициентРасширеннаяПодсказка" id="256"/>
+					<ChildItems>
+						<LabelDecoration name="ЗаголовокПовышающийКоэффициент" id="238">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Повышающий 
+коэффициент</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Increasing 
+factor</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<ContextMenu name="ЗаголовокПовышающийКоэффициентКонтекстноеМеню" id="239"/>
+							<ExtendedTooltip name="ЗаголовокПовышающийКоэффициентРасширеннаяПодсказка" id="240"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаЗаголовокРазмерНалоговыхЛьгот" id="257">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Размер налоговых льгот, заголовок</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tax relief amount, title</v8:content>
+						</v8:item>
+					</Title>
+					<Width>12</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЗаголовокРазмерНалоговыхЛьготРасширеннаяПодсказка" id="258"/>
+					<ChildItems>
+						<LabelDecoration name="ЗаголовокРазмерНалоговыхЛьгот" id="241">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Размер
+налоговых льгот
+(руб.)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Tax
+relief amount
+(rub.)</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<ContextMenu name="ЗаголовокРазмерНалоговыхЛьготКонтекстноеМеню" id="242"/>
+							<ExtendedTooltip name="ЗаголовокРазмерНалоговыхЛьготРасширеннаяПодсказка" id="243"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаЗаголовокСуммаИсчисленногоНалога" id="259">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма исчисленного налога, заголовок</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Calculated tax amount, title</v8:content>
+						</v8:item>
+					</Title>
+					<Width>12</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЗаголовокСуммаИсчисленногоНалогаРасширеннаяПодсказка" id="260"/>
+					<ChildItems>
+						<LabelDecoration name="ЗаголовокСуммаИсчисленногоНалога" id="244">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма
+исчисленного
+налога
+(руб.)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Calculated
+tax
+amount
+(rub.)</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<ContextMenu name="ЗаголовокСуммаИсчисленногоНалогаКонтекстноеМеню" id="245"/>
+							<ExtendedTooltip name="ЗаголовокСуммаИсчисленногоНалогаРасширеннаяПодсказка" id="246"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаРасчетВПрограмме" id="211">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расчет в программе</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calculation in application</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:FormBackColor</BackColor>
+			<ExtendedTooltip name="ГруппаРасчетВПрограммеРасширеннаяПодсказка" id="212"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаРасчетВПрограммеЗаголовок" id="213">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Переключатель Расчет в программе</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Radio button Calculation in application</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРасчетВПрограммеЗаголовокРасширеннаяПодсказка" id="214"/>
+					<ChildItems>
+						<RadioButtonField name="РасчетВПрограммеПравильныйРасчет" id="215">
+							<DataPath>ПравильныйРасчет</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Расчет в программе</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Calculation in application</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">2</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<Font ref="style:LargeTextFont" kind="StyleItem"/>
+							<ContextMenu name="РасчетВПрограммеПравильныйРасчетКонтекстноеМеню" id="216"/>
+							<ExtendedTooltip name="РасчетВПрограммеПравильныйРасчетРасширеннаяПодсказка" id="217"/>
+							<Events>
+								<Event name="OnChange">РасчетВПрограммеПравильныйРасчетПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+						<LabelDecoration name="РасчетВПрограммеЗаголовок" id="218">
+							<Visible>false</Visible>
+							<Font ref="style:NormalTextFont" height="11" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Расчет в программе:</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Calculation in application:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="РасчетВПрограммеЗаголовокКонтекстноеМеню" id="219"/>
+							<ExtendedTooltip name="РасчетВПрограммеЗаголовокРасширеннаяПодсказка" id="220"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаРасчетВПрограммеПоля" id="261">
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данные расчета в программе</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Calculation data in application</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРасчетВПрограммеПоляРасширеннаяПодсказка" id="262"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаНалоговаяБаза" id="295">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Налоговая база</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Tax base</v8:content>
+								</v8:item>
+							</Title>
+							<Width>14</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНалоговаяБазаРасширеннаяПодсказка" id="296"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаНалоговаяБаза0" id="428">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Налоговая база, строка расчета</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Tax base, calculation line</v8:content>
+										</v8:item>
+									</Title>
+									<Width>13</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Group>AlwaysHorizontal</Group>
+									<HorizontalSpacing>None</HorizontalSpacing>
+									<HorizontalAlign>Center</HorizontalAlign>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаНалоговаяБаза0РасширеннаяПодсказка" id="429"/>
+									<ChildItems>
+										<LabelDecoration name="ОтступРасчетВПрограмме0" id="263">
+											<Width>2</Width>
+											<ContextMenu name="ОтступРасчетВПрограмме0КонтекстноеМеню" id="264"/>
+											<ExtendedTooltip name="ОтступРасчетВПрограмме0РасширеннаяПодсказка" id="265"/>
+										</LabelDecoration>
+										<InputField name="НалоговаяБаза0" id="266">
+											<DataPath>Расчет[0].НалоговаяБаза</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>10</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<ContextMenu name="НалоговаяБаза0КонтекстноеМеню" id="267"/>
+											<ExtendedTooltip name="НалоговаяБаза0РасширеннаяПодсказка" id="268"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаДоляВПраве" id="269">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Доля в праве</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Share in the right</v8:content>
+								</v8:item>
+							</Title>
+							<Width>11</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаДоляВПравеРасширеннаяПодсказка" id="270"/>
+							<ChildItems>
+								<UsualGroup name="ДоляВПраве0" id="307">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Доля в праве, строка расчета</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Ownership interest, calculation line</v8:content>
+										</v8:item>
+									</Title>
+									<Group>AlwaysHorizontal</Group>
+									<HorizontalSpacing>Half</HorizontalSpacing>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ДоляВПраве0РасширеннаяПодсказка" id="308"/>
+									<ChildItems>
+										<InputField name="ДоляВПравеЧислитель0" id="271">
+											<DataPath>Расчет[0].ДоляВПравеЧислитель</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>3</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<ContextMenu name="ДоляВПравеЧислитель0КонтекстноеМеню" id="272"/>
+											<ExtendedTooltip name="ДоляВПравеЧислитель0РасширеннаяПодсказка" id="273"/>
+										</InputField>
+										<LabelDecoration name="НадписьДробь0" id="274">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>/</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>/</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="НадписьДробь0КонтекстноеМеню" id="275"/>
+											<ExtendedTooltip name="НадписьДробь0РасширеннаяПодсказка" id="276"/>
+										</LabelDecoration>
+										<InputField name="ДоляВПравеЗнаменатель0" id="277">
+											<DataPath>Расчет[0].ДоляВПравеЗнаменатель</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>3</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<ContextMenu name="ДоляВПравеЗнаменатель0КонтекстноеМеню" id="278"/>
+											<ExtendedTooltip name="ДоляВПравеЗнаменатель0РасширеннаяПодсказка" id="279"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаНалоговыйВычет" id="483">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Налоговый вычет</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Tax deduction</v8:content>
+								</v8:item>
+							</Title>
+							<Width>8</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНалоговыйВычетРасширеннаяПодсказка" id="484"/>
+							<ChildItems>
+								<InputField name="НалоговыйВычет0" id="485">
+									<DataPath>Расчет[0].НалоговыйВычет</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>6</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<ContextMenu name="НалоговыйВычет0КонтекстноеМеню" id="486"/>
+									<ExtendedTooltip name="НалоговыйВычет0РасширеннаяПодсказка" id="487"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаНалоговаяСтавка" id="297">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Налоговая ставка</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Tax rate</v8:content>
+								</v8:item>
+							</Title>
+							<Width>8</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНалоговаяСтавкаРасширеннаяПодсказка" id="298"/>
+							<ChildItems>
+								<InputField name="НалоговаяСтавка0" id="280">
+									<DataPath>Расчет[0].НалоговаяСтавка</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>6</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<ContextMenu name="НалоговаяСтавка0КонтекстноеМеню" id="281"/>
+									<ExtendedTooltip name="НалоговаяСтавка0РасширеннаяПодсказка" id="282"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаКоличествоМесяцевВладения" id="299">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Количество месяцев владения</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Number of ownership months</v8:content>
+								</v8:item>
+							</Title>
+							<Width>8</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаКоличествоМесяцевВладенияРасширеннаяПодсказка" id="300"/>
+							<ChildItems>
+								<InputField name="КоличествоМесяцевВладения0" id="283">
+									<DataPath>Расчет[0].КоличествоМесяцевВладения</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>6</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<ContextMenu name="КоличествоМесяцевВладения0КонтекстноеМеню" id="284"/>
+									<ExtendedTooltip name="КоличествоМесяцевВладения0РасширеннаяПодсказка" id="285"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаПовышающийКоэффициент" id="301">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Повышающий коэффициент</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Increasing factor</v8:content>
+								</v8:item>
+							</Title>
+							<Width>8</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПовышающийКоэффициентРасширеннаяПодсказка" id="302"/>
+							<ChildItems>
+								<InputField name="ПовышающийКоэффициент0" id="286">
+									<DataPath>Расчет[0].ПовышающийКоэффициент</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>6</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<ContextMenu name="ПовышающийКоэффициент0КонтекстноеМеню" id="287"/>
+									<ExtendedTooltip name="ПовышающийКоэффициент0РасширеннаяПодсказка" id="288"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаСуммаЛьгот" id="303">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма льгот</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Tax relief amount</v8:content>
+								</v8:item>
+							</Title>
+							<Width>12</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаСуммаЛьготРасширеннаяПодсказка" id="304"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаСуммаЛьгот0" id="506">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма льгот, строка расчета</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Relief amount, calculation line</v8:content>
+										</v8:item>
+									</Title>
+									<Group>AlwaysHorizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаСуммаЛьгот0РасширеннаяПодсказка" id="507"/>
+									<ChildItems>
+										<InputField name="СуммаЛьгот0" id="289">
+											<DataPath>СуммаЛьгот</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>10</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="СуммаЛьгот0КонтекстноеМеню" id="290"/>
+											<ExtendedTooltip name="СуммаЛьгот0РасширеннаяПодсказка" id="291"/>
+										</InputField>
+										<LabelDecoration name="СуммаЛьготПропуск0" id="493">
+											<Visible>false</Visible>
+											<VerticalStretch>true</VerticalStretch>
+											<ContextMenu name="СуммаЛьготПропуск0КонтекстноеМеню" id="494"/>
+											<ExtendedTooltip name="СуммаЛьготПропуск0РасширеннаяПодсказка" id="495"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаСуммаНалога" id="305">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма налога</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Tax amount</v8:content>
+								</v8:item>
+							</Title>
+							<Width>12</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаСуммаНалогаРасширеннаяПодсказка" id="306"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаСуммаНалога0" id="508">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма налога, строка расчета</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Tax amount, calculation line</v8:content>
+										</v8:item>
+									</Title>
+									<Group>AlwaysHorizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаСуммаНалога0РасширеннаяПодсказка" id="509"/>
+									<ChildItems>
+										<InputField name="СуммаНалога0" id="292">
+											<DataPath>СуммаНалога</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>10</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="СуммаНалога0КонтекстноеМеню" id="293"/>
+											<ExtendedTooltip name="СуммаНалога0РасширеннаяПодсказка" id="294"/>
+										</InputField>
+										<LabelDecoration name="СуммаНалогаПропуск0" id="475">
+											<Visible>false</Visible>
+											<VerticalStretch>true</VerticalStretch>
+											<ContextMenu name="СуммаНалогаПропуск0КонтекстноеМеню" id="476"/>
+											<ExtendedTooltip name="СуммаНалогаПропуск0РасширеннаяПодсказка" id="477"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаРасчетФНС" id="309">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные расчета в ФНС</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calculation data in FTS</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:FormBackColor</BackColor>
+			<ExtendedTooltip name="ГруппаРасчетФНСРасширеннаяПодсказка" id="310"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаРасчетФНСЗаголовок" id="311">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Переключатель Расчет в ФНС</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Radio button Calculation in FTS</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРасчетФНСЗаголовокРасширеннаяПодсказка" id="312"/>
+					<ChildItems>
+						<RadioButtonField name="РасчетФНСПравильныйРасчет" id="313">
+							<DataPath>ПравильныйРасчет</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Переключатель Расчет ФНС</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Radio button FTS calculation</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Расчет ФНС</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>FTS calculation</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">3</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<Font ref="style:LargeTextFont" kind="StyleItem"/>
+							<ContextMenu name="РасчетФНСПравильныйРасчетКонтекстноеМеню" id="314"/>
+							<ExtendedTooltip name="РасчетФНСПравильныйРасчетРасширеннаяПодсказка" id="315"/>
+							<Events>
+								<Event name="OnChange">РасчетФНСПравильныйРасчетПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+						<LabelDecoration name="РасчетФНСЗаголовок" id="316">
+							<Visible>false</Visible>
+							<Font ref="style:NormalTextFont" height="11" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Расчет ФНС:</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>FTS calculation:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="РасчетФНСЗаголовокКонтекстноеМеню" id="317"/>
+							<ExtendedTooltip name="РасчетФНСЗаголовокРасширеннаяПодсказка" id="318"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаРасчетФНСПоля" id="319">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данные расчета в ФНС</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Calculation data in FTS</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРасчетФНСПоляРасширеннаяПодсказка" id="320"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаНалоговаяБазаФНС" id="324">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Налоговая база в ФНС</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Tax base in FTS</v8:content>
+								</v8:item>
+							</Title>
+							<Width>14</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНалоговаяБазаФНСРасширеннаяПодсказка" id="325"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаНалоговаяБазаФНС0" id="409">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Налоговая база в ФНС, строка расчета</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Tax base in FTS, calculation line</v8:content>
+										</v8:item>
+									</Title>
+									<Width>13</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Group>AlwaysHorizontal</Group>
+									<HorizontalSpacing>None</HorizontalSpacing>
+									<HorizontalAlign>Center</HorizontalAlign>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаНалоговаяБазаФНС0РасширеннаяПодсказка" id="410"/>
+									<ChildItems>
+										<LabelDecoration name="ОтступРасчетФНС0" id="321">
+											<Width>2</Width>
+											<AutoMaxHeight>false</AutoMaxHeight>
+											<VerticalStretch>true</VerticalStretch>
+											<ContextMenu name="ОтступРасчетФНС0КонтекстноеМеню" id="322"/>
+											<ExtendedTooltip name="ОтступРасчетФНС0РасширеннаяПодсказка" id="323"/>
+										</LabelDecoration>
+										<Button name="УдалитьСтроку0" id="419">
+											<Type>UsualButton</Type>
+											<Visible>false</Visible>
+											<Width>2</Width>
+											<VerticalStretch>true</VerticalStretch>
+											<CommandName>Form.Command.УдалитьСтроку</CommandName>
+											<TextColor>style:SpecialTextColor</TextColor>
+											<Font ref="style:ШрифтКомандИГиперссылок" kind="StyleItem"/>
+											<Shape>Usual</Shape>
+											<ShapeRepresentation>None</ShapeRepresentation>
+											<ExtendedTooltip name="УдалитьСтроку0РасширеннаяПодсказка" id="420"/>
+										</Button>
+										<InputField name="НалоговаяБазаФНС0" id="326">
+											<DataPath>РасчетФНС[0].НалоговаяБаза</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>10</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<ContextMenu name="НалоговаяБазаФНС0КонтекстноеМеню" id="327"/>
+											<ExtendedTooltip name="НалоговаяБазаФНС0РасширеннаяПодсказка" id="328"/>
+											<Events>
+												<Event name="OnChange">ПолеРасчетаФНСПриИзменении</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаДоляВПравеФНС" id="329">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Доля в праве в ФНС</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Ownership interest in FTS</v8:content>
+								</v8:item>
+							</Title>
+							<Width>11</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаДоляВПравеФНСРасширеннаяПодсказка" id="330"/>
+							<ChildItems>
+								<UsualGroup name="ДоляВПравеФНС0" id="331">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Доля в праве в ФНС, строка расчета</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Ownership interest in FTS, calculation line</v8:content>
+										</v8:item>
+									</Title>
+									<Group>AlwaysHorizontal</Group>
+									<HorizontalSpacing>Half</HorizontalSpacing>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ДоляВПравеФНС0РасширеннаяПодсказка" id="332"/>
+									<ChildItems>
+										<InputField name="ДоляВПравеЧислительФНС0" id="333">
+											<DataPath>РасчетФНС[0].ДоляВПравеЧислитель</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>3</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<ContextMenu name="ДоляВПравеЧислительФНС0КонтекстноеМеню" id="334"/>
+											<ExtendedTooltip name="ДоляВПравеЧислительФНС0РасширеннаяПодсказка" id="335"/>
+											<Events>
+												<Event name="OnChange">ДоляВПравеЧислительФНС0ПриИзменении</Event>
+											</Events>
+										</InputField>
+										<LabelDecoration name="НадписьДробьФНС0" id="336">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>/</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>/</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="НадписьДробьФНС0КонтекстноеМеню" id="337"/>
+											<ExtendedTooltip name="НадписьДробьФНС0РасширеннаяПодсказка" id="338"/>
+										</LabelDecoration>
+										<InputField name="ДоляВПравеЗнаменательФНС0" id="339">
+											<DataPath>РасчетФНС[0].ДоляВПравеЗнаменатель</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>3</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<ContextMenu name="ДоляВПравеЗнаменательФНС0КонтекстноеМеню" id="340"/>
+											<ExtendedTooltip name="ДоляВПравеЗнаменательФНС0РасширеннаяПодсказка" id="341"/>
+											<Events>
+												<Event name="OnChange">ДоляВПравеЗнаменательФНС0ПриИзменении</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаНалоговыйВычетФНС" id="488">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Налоговый вычет в ФНС</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Tax deduction in FTS</v8:content>
+								</v8:item>
+							</Title>
+							<Width>8</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНалоговыйВычетФНСРасширеннаяПодсказка" id="489"/>
+							<ChildItems>
+								<InputField name="НалоговыйВычетФНС0" id="490">
+									<DataPath>РасчетФНС[0].НалоговыйВычет</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>6</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<ContextMenu name="НалоговыйВычетФНС0КонтекстноеМеню" id="491"/>
+									<ExtendedTooltip name="НалоговыйВычетФНС0РасширеннаяПодсказка" id="492"/>
+									<Events>
+										<Event name="OnChange">НалоговыйВычетФНС0ПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаНалоговаяСтавкаФНС" id="342">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Налоговая ставка в ФНС</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Tax rate in FTS</v8:content>
+								</v8:item>
+							</Title>
+							<Width>8</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНалоговаяСтавкаФНСРасширеннаяПодсказка" id="343"/>
+							<ChildItems>
+								<InputField name="НалоговаяСтавкаФНС0" id="344">
+									<DataPath>РасчетФНС[0].НалоговаяСтавка</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>6</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<ContextMenu name="НалоговаяСтавкаФНС0КонтекстноеМеню" id="345"/>
+									<ExtendedTooltip name="НалоговаяСтавкаФНС0РасширеннаяПодсказка" id="346"/>
+									<Events>
+										<Event name="OnChange">НалоговаяСтавкаФНС0ПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаКоличествоМесяцевВладенияФНС" id="347">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Количество месяцев владения в ФНС</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Number of ownership months in FTS</v8:content>
+								</v8:item>
+							</Title>
+							<Width>8</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаКоличествоМесяцевВладенияФНСРасширеннаяПодсказка" id="348"/>
+							<ChildItems>
+								<InputField name="КоличествоМесяцевВладенияФНС0" id="349">
+									<DataPath>РасчетФНС[0].КоличествоМесяцевВладения</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>6</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<ContextMenu name="КоличествоМесяцевВладенияФНС0КонтекстноеМеню" id="350"/>
+									<ExtendedTooltip name="КоличествоМесяцевВладенияФНС0РасширеннаяПодсказка" id="351"/>
+									<Events>
+										<Event name="OnChange">КоличествоМесяцевВладенияФНС0ПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаПовышающийКоэффициентФНС" id="352">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Повышающий коэффициент в ФНС</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Increasing factor in FTS</v8:content>
+								</v8:item>
+							</Title>
+							<Width>8</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПовышающийКоэффициентФНСРасширеннаяПодсказка" id="353"/>
+							<ChildItems>
+								<InputField name="ПовышающийКоэффициентФНС0" id="354">
+									<DataPath>РасчетФНС[0].ПовышающийКоэффициент</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Повышающий коэффициент в ФНС, строка расчета</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Increasing factor in FTS, calculation line</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<HorizontalAlign>Right</HorizontalAlign>
+									<Width>6</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<ListChoiceMode>true</ListChoiceMode>
+									<TextEdit>false</TextEdit>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>1</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>1</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">1</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>3</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>3</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">3</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="ПовышающийКоэффициентФНС0КонтекстноеМеню" id="355"/>
+									<ExtendedTooltip name="ПовышающийКоэффициентФНС0РасширеннаяПодсказка" id="356"/>
+									<Events>
+										<Event name="OnChange">ПовышающийКоэффициентФНС0ПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаСуммаЛьготФНС" id="357">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма льгот в ФНС</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Relief amount in FTS</v8:content>
+								</v8:item>
+							</Title>
+							<Width>12</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаСуммаЛьготФНСРасширеннаяПодсказка" id="358"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаСуммаЛьготФНС0" id="502">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма льгот в ФНС, строка расчета</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Relief amount in FTS, calculation line</v8:content>
+										</v8:item>
+									</Title>
+									<Group>AlwaysHorizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаСуммаЛьготФНС0РасширеннаяПодсказка" id="503"/>
+									<ChildItems>
+										<InputField name="СуммаЛьготФНС0" id="359">
+											<DataPath>СуммаЛьготФНС</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>10</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="СуммаЛьготФНС0КонтекстноеМеню" id="360"/>
+											<ExtendedTooltip name="СуммаЛьготФНС0РасширеннаяПодсказка" id="361"/>
+											<Events>
+												<Event name="OnChange">СуммаЛьготФНС0ПриИзменении</Event>
+											</Events>
+										</InputField>
+										<LabelDecoration name="СуммаЛьготФНСПропуск0" id="496">
+											<Visible>false</Visible>
+											<VerticalStretch>true</VerticalStretch>
+											<ContextMenu name="СуммаЛьготФНСПропуск0КонтекстноеМеню" id="497"/>
+											<ExtendedTooltip name="СуммаЛьготФНСПропуск0РасширеннаяПодсказка" id="498"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаСуммаНалогаФНС" id="362">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма налога в ФНС</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Tax amount in FTS</v8:content>
+								</v8:item>
+							</Title>
+							<Width>12</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаСуммаНалогаФНСРасширеннаяПодсказка" id="363"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаСуммаНалогаФНС0" id="504">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма налога в ФНС, строка расчета</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Tax amount in FTS, calculation line</v8:content>
+										</v8:item>
+									</Title>
+									<Group>AlwaysHorizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаСуммаНалогаФНС0РасширеннаяПодсказка" id="505"/>
+									<ChildItems>
+										<InputField name="СуммаНалогаФНС0" id="364">
+											<DataPath>СуммаНалогаФНС</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>10</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="СуммаНалогаФНС0КонтекстноеМеню" id="365"/>
+											<ExtendedTooltip name="СуммаНалогаФНС0РасширеннаяПодсказка" id="366"/>
+											<Events>
+												<Event name="OnChange">СуммаНалогаФНС0ПриИзменении</Event>
+											</Events>
+										</InputField>
+										<LabelDecoration name="СуммаНалогаФНСПропуск0" id="499">
+											<Visible>false</Visible>
+											<VerticalStretch>true</VerticalStretch>
+											<ContextMenu name="СуммаНалогаФНСПропуск0КонтекстноеМеню" id="500"/>
+											<ExtendedTooltip name="СуммаНалогаФНСПропуск0РасширеннаяПодсказка" id="501"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаДобавитьСтроку" id="423">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Добавить строку</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Add line</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<HorizontalSpacing>Half</HorizontalSpacing>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаДобавитьСтрокуРасширеннаяПодсказка" id="424"/>
+					<ChildItems>
+						<LabelDecoration name="ОтступРасчетФНСДобавитьСтроку" id="425">
+							<Width>2</Width>
+							<AutoMaxHeight>false</AutoMaxHeight>
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="ОтступРасчетФНСДобавитьСтрокуКонтекстноеМеню" id="426"/>
+							<ExtendedTooltip name="ОтступРасчетФНСДобавитьСтрокуРасширеннаяПодсказка" id="427"/>
+						</LabelDecoration>
+						<Button name="ДобавитьСтроку" id="421">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.ДобавитьСтроку</CommandName>
+							<ExtendedTooltip name="ДобавитьСтрокуРасширеннаяПодсказка" id="422"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаРасчетВПрограммеОбъектОтсутствует" id="367">
+			<Visible>false</Visible>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект отсутствует в расчете программы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object is not included in application calculation</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:FormBackColor</BackColor>
+			<ExtendedTooltip name="ГруппаРасчетВПрограммеОбъектОтсутствуетРасширеннаяПодсказка" id="368"/>
+			<ChildItems>
+				<RadioButtonField name="РасчетВПрограммеОбъектОтсутствует" id="371">
+					<DataPath>ПравильныйРасчет</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Нет, налог начисляться не должен</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>No, tax must not be charged</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">2</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<Font ref="style:LargeTextFont" kind="StyleItem"/>
+					<ContextMenu name="РасчетВПрограммеОбъектОтсутствуетКонтекстноеМеню" id="372"/>
+					<ExtendedTooltip name="РасчетВПрограммеОбъектОтсутствуетРасширеннаяПодсказка" id="373"/>
+					<Events>
+						<Event name="OnChange">РасчетВПрограммеОбъектОтсутствуетПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<UsualGroup name="ГруппаРасчетВПрограммеОбъектОтсутствуетПодсказка" id="374">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подсказка Объект отсутствует в расчете программы</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tooltip Object is not included in application calculation</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<HorizontalSpacing>None</HorizontalSpacing>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРасчетВПрограммеОбъектОтсутствуетПодсказкаРасширеннаяПодсказка" id="375"/>
+					<ChildItems>
+						<PictureDecoration name="ОтступРасчетВПрограммеОбъектОтсутствует" id="379">
+							<Width>2</Width>
+							<Picture>
+								<xr:Ref>CommonPicture.Пустая</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="ОтступРасчетВПрограммеОбъектОтсутствуетКонтекстноеМеню" id="380"/>
+							<ExtendedTooltip name="ОтступРасчетВПрограммеОбъектОтсутствуетРасширеннаяПодсказка" id="381"/>
+						</PictureDecoration>
+						<LabelDecoration name="РасчетВПрограммеОбъектОтсутствуетПодсказка" id="376">
+							<Width>86</Width>
+							<MaxWidth>62</MaxWidth>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>В 2022 году объект по данному месту нахождения (см. код налогового органа и код ОКТМО) не числился в организации, не подлежал налогообложению или был освобожден от налогообложения. ФНС начислила налог ошибочно.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>In 2022, the object was not registered in the company, was not subject to taxation, or was exempted from taxation at the specified location (see the tax authority code and the code in the Municipal territory classifier). The FTS charged the tax by mistake.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="РасчетВПрограммеОбъектОтсутствуетПодсказкаКонтекстноеМеню" id="377"/>
+							<ExtendedTooltip name="РасчетВПрограммеОбъектОтсутствуетПодсказкаРасширеннаяПодсказка" id="378"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаРасчетФНСОбъектОтсутствует" id="382">
+			<Visible>false</Visible>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект отсутствует в расчете ФНС</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object is not included in FTS calculation</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:FormBackColor</BackColor>
+			<ExtendedTooltip name="ГруппаРасчетФНСОбъектОтсутствуетРасширеннаяПодсказка" id="383"/>
+			<ChildItems>
+				<RadioButtonField name="РасчетФНСОбъектОтсутствует" id="384">
+					<DataPath>ПравильныйРасчет</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Нет, налог начисляться не должен</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>No, tax must not be charged</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">3</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<Font ref="style:LargeTextFont" kind="StyleItem"/>
+					<ContextMenu name="РасчетФНСОбъектОтсутствуетКонтекстноеМеню" id="385"/>
+					<ExtendedTooltip name="РасчетФНСОбъектОтсутствуетРасширеннаяПодсказка" id="386"/>
+					<Events>
+						<Event name="OnChange">РасчетФНСОбъектОтсутствуетПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<UsualGroup name="ГруппаРасчетФНСОбъектОтсутствуетПодсказка" id="387">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подсказка Объект отсутствует в ФНС</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tooltip Object is not included in FTS</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<HorizontalSpacing>None</HorizontalSpacing>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРасчетФНСОбъектОтсутствуетПодсказкаРасширеннаяПодсказка" id="388"/>
+					<ChildItems>
+						<PictureDecoration name="ОтступРасчетФНСОбъектОтсутствует" id="389">
+							<Width>2</Width>
+							<Picture>
+								<xr:Ref>CommonPicture.Пустая</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="ОтступРасчетФНСОбъектОтсутствуетКонтекстноеМеню" id="390"/>
+							<ExtendedTooltip name="ОтступРасчетФНСОбъектОтсутствуетРасширеннаяПодсказка" id="391"/>
+						</PictureDecoration>
+						<LabelDecoration name="РасчетФНСОбъектОтсутствуетПодсказка" id="392">
+							<Width>86</Width>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>В 2022 году объект по данному месту нахождения (см. код налогового органа и код ОКТМО) не числился в организации, не подлежал налогообложению или был освобожден от налогообложения. В сообщении ФНС расчет по данному месту нахождения объекта отсутствует, а в нашем расчете налог начислен ошибочно.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>In 2022, the object was not registered in the company, was not subject to taxation, or was exempted from taxation at the specified location (see the tax authority code and the code in the Municipal territory classifier). The FTS message does not contain tax calculation for the object location. In the calculation, the tax is charged by mistake.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="РасчетФНСОбъектОтсутствуетПодсказкаКонтекстноеМеню" id="393"/>
+							<ExtendedTooltip name="РасчетФНСОбъектОтсутствуетПодсказкаРасширеннаяПодсказка" id="394"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаРучнаяСверка" id="430">
+			<Visible>false</Visible>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа ручная сверка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group manual reconciliation</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа ручная сверка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group manual reconciliation</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаРучнаяСверкаРасширеннаяПодсказка" id="431"/>
+			<ChildItems>
+				<LabelDecoration name="НадписьЗаголовокРучнаяСверка" id="432">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Font ref="style:NormalTextFont" height="11" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>В сообщении ФНС те же данные?</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Does the FTS message contain the same data?</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="НадписьЗаголовокРучнаяСверкаКонтекстноеМеню" id="433"/>
+					<ExtendedTooltip name="НадписьЗаголовокРучнаяСверкаРасширеннаяПодсказка" id="434"/>
+				</LabelDecoration>
+				<RadioButtonField name="РучнаяСверкаРасчетыСовпадают" id="435">
+					<DataPath>ПравильныйРасчет</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Да, расчеты совпадают</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Yes, calculations match</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">1</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="РучнаяСверкаРасчетыСовпадаютКонтекстноеМеню" id="436"/>
+					<ExtendedTooltip name="РучнаяСверкаРасчетыСовпадаютРасширеннаяПодсказка" id="437"/>
+					<Events>
+						<Event name="OnChange">РучнаяСверкаРасчетыСовпадаютПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<RadioButtonField name="РучнаяСверкаОшибкаФНС" id="438">
+					<DataPath>ПравильныйРасчет</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Нет, ошибка в ФНС</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>No, it is an FTS error</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">2</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="РучнаяСверкаОшибкаФНСКонтекстноеМеню" id="439"/>
+					<ExtendedTooltip name="РучнаяСверкаОшибкаФНСРасширеннаяПодсказка" id="440"/>
+					<Events>
+						<Event name="OnChange">РучнаяСверкаОшибкаФНСПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<UsualGroup name="ГруппаРучнаяСверкаОшибкаФНСПодробно" id="444">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибка в ФНС</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>FTS error</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРучнаяСверкаОшибкаФНСПодробноРасширеннаяПодсказка" id="445"/>
+					<ChildItems>
+						<LabelDecoration name="ОтступРучнаяСверкаОшибкаФНСПодробно" id="448">
+							<Width>2</Width>
+							<AutoMaxHeight>false</AutoMaxHeight>
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="ОтступРучнаяСверкаОшибкаФНСПодробноКонтекстноеМеню" id="449"/>
+							<ExtendedTooltip name="ОтступРучнаяСверкаОшибкаФНСПодробноРасширеннаяПодсказка" id="450"/>
+						</LabelDecoration>
+						<InputField name="ОбъектЕстьВРасчетеФНСОшибкаФНС" id="454">
+							<DataPath>ОбъектЕстьВРасчетеФНС</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Уточните</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Specify</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<Width>30</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ListChoiceMode>true</ListChoiceMode>
+							<TextEdit>false</TextEdit>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Объект есть в расчете ФНС, но сумма неверная</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Object is included in FTS calculation, but the amount is incorrect</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:boolean">true</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Объекта нет в расчете ФНС</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Object is not included in FTS calculation</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:boolean">false</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ОбъектЕстьВРасчетеФНСОшибкаФНСКонтекстноеМеню" id="455"/>
+							<ExtendedTooltip name="ОбъектЕстьВРасчетеФНСОшибкаФНСРасширеннаяПодсказка" id="456">
+								<Title formatted="true">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>&lt;b&gt;"Объекта нет в расчете ФНС"&lt;/&gt; означает, что в сообщении ФНС за 2022 год объекта либо нет совсем, либо указано другое место нахождения (см. код налогового органа и код ОКТМО).</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>&lt;b&gt;Object is not included in FTS calculation&lt;/&gt; means that the FTS message for 2022 does not contain the object or contains another location (see the tax authority code or the code in the Municipal territory classifier).</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">ОбъектЕстьВРасчетеФНСОшибкаФНСПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<RadioButtonField name="РучнаяСверкаОшибкаВПрограмме" id="441">
+					<DataPath>ПравильныйРасчет</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Нет, ошибка в нашем расчете</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>No, this calculation contains an error</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">3</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="РучнаяСверкаОшибкаВПрограммеКонтекстноеМеню" id="442"/>
+					<ExtendedTooltip name="РучнаяСверкаОшибкаВПрограммеРасширеннаяПодсказка" id="443"/>
+					<Events>
+						<Event name="OnChange">РучнаяСверкаОшибкаВПрограммеПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<UsualGroup name="ГруппаРучнаяСверкаОшибкаВПрограммеПодробно" id="446">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибка в программе</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Application error</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРучнаяСверкаОшибкаВПрограммеПодробноРасширеннаяПодсказка" id="447"/>
+					<ChildItems>
+						<LabelDecoration name="ОтступРучнаяСверкаОшибкаВПрограмме" id="451">
+							<Width>2</Width>
+							<AutoMaxHeight>false</AutoMaxHeight>
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="ОтступРучнаяСверкаОшибкаВПрограммеКонтекстноеМеню" id="452"/>
+							<ExtendedTooltip name="ОтступРучнаяСверкаОшибкаВПрограммеРасширеннаяПодсказка" id="453"/>
+						</LabelDecoration>
+						<InputField name="ОбъектЕстьВРасчетеФНСОшибкаВПрограмме" id="457">
+							<DataPath>ОбъектЕстьВРасчетеФНС</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Уточните</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Specify</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<Width>20</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ListChoiceMode>true</ListChoiceMode>
+							<TextEdit>false</TextEdit>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Сумма должна быть другой</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Amount must be different</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:boolean">true</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Налог не должен начисляться</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Tax must not be charged</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:boolean">false</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ОбъектЕстьВРасчетеФНСОшибкаВПрограммеКонтекстноеМеню" id="458"/>
+							<ExtendedTooltip name="ОбъектЕстьВРасчетеФНСОшибкаВПрограммеРасширеннаяПодсказка" id="459">
+								<Title formatted="true">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>&lt;b&gt;"Налог не должен начисляться"&lt;/&gt; означает, что в 2022 году объект по указанному месту нахождения (см. код налогового органа и код ОКТМО) не числился в организации, не подлежал налогообложению или был освобожден от налогообложения. В сообщении ФНС расчет по данному месту нахождения объекта отсутствует, а в программе налог начислен ошибочно.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>&lt;b&gt;Tax must not be charged&lt;/&gt; means that in 2022, the object was not registered in the company, was not subject to taxation, or was exempted from taxation at the specified location (see the tax authority code and the code in the Municipal territory classifier). The FTS message does not contain tax calculation for the object location. In the application, the tax is charged by mistake.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">ОбъектЕстьВРасчетеФНСОшибкаВПрограммеПриИзменении</Event>
+							</Events>
+						</InputField>
+						<LabelDecoration name="ОтступРучнаяСверкаОшибкаВПрограммеСуммаФНС" id="463">
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="ОтступРучнаяСверкаОшибкаВПрограммеСуммаФНСКонтекстноеМеню" id="464"/>
+							<ExtendedTooltip name="ОтступРучнаяСверкаОшибкаВПрограммеСуммаФНСРасширеннаяПодсказка" id="465"/>
+						</LabelDecoration>
+						<UsualGroup name="ГруппаРучнаяСверкаСуммаНалогаФНС" id="466">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма налога ФНС</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>FTS tax amount</v8:content>
+								</v8:item>
+							</Title>
+							<Width>26</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаРучнаяСверкаСуммаНалогаФНСРасширеннаяПодсказка" id="467"/>
+							<ChildItems>
+								<InputField name="СуммаНалогаФНС" id="460">
+									<DataPath>СуммаНалогаФНС</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма налога в ФНС</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Tax amount in FTS</v8:content>
+										</v8:item>
+									</Title>
+									<Width>10</Width>
+									<ContextMenu name="СуммаНалогаФНСКонтекстноеМеню" id="461"/>
+									<ExtendedTooltip name="СуммаНалогаФНСРасширеннаяПодсказка" id="462"/>
+									<Events>
+										<Event name="OnChange">СуммаНалогаФНСПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<RadioButtonField name="РучнаяСверкаОшибкаВПрограммеОбъектОтсутствует" id="472">
+					<DataPath>ПравильныйРасчет</DataPath>
+					<Visible>false</Visible>
+					<TitleLocation>None</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Нет, налог начисляться не должен</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>No, tax must not be charged</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">2</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="РучнаяСверкаОшибкаВПрограммеОбъектОтсутствуетКонтекстноеМеню" id="473"/>
+					<ExtendedTooltip name="РучнаяСверкаОшибкаВПрограммеОбъектОтсутствуетРасширеннаяПодсказка" id="474">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>В 2022 году объект по данному месту нахождения (см. код налогового органа и код ОКТМО) не числился в организации, не подлежал налогообложению или был освобожден от налогообложения. ФНС начислила налог ошибочно.</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>In 2022, the object was not registered in the company, was not subject to taxation, or was exempted from taxation at the specified location (see the tax authority code and the code in the Municipal territory classifier). The FTS charged the tax by mistake.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">РучнаяСверкаОшибкаВПрограммеОбъектОтсутствуетПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<UsualGroup name="ГруппаРучнаяСверкаОшибкаВПрограммеОбъектОтсутствуетПодробно" id="518">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объект отсутствует</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Object is not included</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРучнаяСверкаОшибкаВПрограммеОбъектОтсутствуетПодробноРасширеннаяПодсказка" id="519"/>
+					<ChildItems>
+						<LabelDecoration name="ОтступРучнаяСверкаОшибкаВПрограммеОбъектОтсутствует" id="520">
+							<Width>2</Width>
+							<AutoMaxHeight>false</AutoMaxHeight>
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="ОтступРучнаяСверкаОшибкаВПрограммеОбъектОтсутствуетКонтекстноеМеню" id="521"/>
+							<ExtendedTooltip name="ОтступРучнаяСверкаОшибкаВПрограммеОбъектОтсутствуетРасширеннаяПодсказка" id="522"/>
+						</LabelDecoration>
+						<InputField name="РучнаяСверкаОшибкаВПрограммеПричинаСнятияСУчета" id="523">
+							<DataPath>ПричинаСнятияСУчета</DataPath>
+							<Width>22</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ListChoiceMode>true</ListChoiceMode>
+							<TextEdit>false</TextEdit>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Гибель (уничтожение)</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Loss (destruction)</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.ПричиныСнятияОбъектовСУчета.EnumValue.ГибельУничтожениеТС</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Любая, кроме гибели (уничтожения)</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Any reason except for loss (destruction)</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.ПричиныСнятияОбъектовСУчета.EmptyRef</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="РучнаяСверкаОшибкаВПрограммеПричинаСнятияСУчетаКонтекстноеМеню" id="524"/>
+							<ExtendedTooltip name="РучнаяСверкаОшибкаВПрограммеПричинаСнятияСУчетаРасширеннаяПодсказка" id="525"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПричинаСнятияСУчета" id="510">
+			<Visible>false</Visible>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Причина снятия с учета</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reason for deregistration</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПричинаСнятияСУчетаРасширеннаяПодсказка" id="511"/>
+			<ChildItems>
+				<LabelDecoration name="ЗаголовокПричинаСнятияСУчета" id="512">
+					<Height>2</Height>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Причина снятия ТС с учета:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Reason for vehicle deregistration:</v8:content>
+						</v8:item>
+					</Title>
+					<GroupVerticalAlign>Center</GroupVerticalAlign>
+					<VerticalAlign>Center</VerticalAlign>
+					<ContextMenu name="ЗаголовокПричинаСнятияСУчетаКонтекстноеМеню" id="513"/>
+					<ExtendedTooltip name="ЗаголовокПричинаСнятияСУчетаРасширеннаяПодсказка" id="514"/>
+				</LabelDecoration>
+				<RadioButtonField name="ПричинаСнятияСУчета" id="515">
+					<DataPath>ПричинаСнятияСУчета</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<GroupVerticalAlign>Center</GroupVerticalAlign>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Гибель (уничтожение)</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Loss (destruction)</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ПричиныСнятияОбъектовСУчета.EnumValue.ГибельУничтожениеТС</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Прочее</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Other</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ПричиныСнятияОбъектовСУчета.EmptyRef</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ПричинаСнятияСУчетаКонтекстноеМеню" id="516"/>
+					<ExtendedTooltip name="ПричинаСнятияСУчетаРасширеннаяПодсказка" id="517"/>
+				</RadioButtonField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СуммаЛьгот" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма льгот</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tax relief amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СуммаЛьготФНС" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма льгот</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tax relief amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СуммаНалога" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма налога</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tax amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СуммаНалогаФНС" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма налога</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tax amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="ПравильныйРасчет" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Правильный расчет</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Correct calculation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ЭтоТранспортныйНалог" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это транспортный налог</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is a vehicle tax</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаСнятияСУчета" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата снятия с учета</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Deregistration date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="НалоговыйПериод" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Налоговый период</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fiscal period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ОбъектЕстьВРасчетеФНС" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект есть в расчете ФНС</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object is included in FTS calculation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ПричинаСнятияСУчета" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Причина снятия ТС с учета</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reason for vehicle deregistration</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ПричиныСнятияОбъектовСУчета</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ОбъектЕстьВРасчете" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект есть в расчете</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object is included in calculation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ЭтоЗемельныйНалог" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это земельный налог</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is a land value tax</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗагруженРасчетФНС" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загружен расчет ФНС</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>FTS calculation is imported</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Налог" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Налог</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tax</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ВидыИмущественныхНалогов</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Расчет" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расчет</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calculation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="НалоговаяБаза" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоговая база</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tax base</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>17</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДоляВПравеЧислитель" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доля в праве числитель</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ownership interest numerator</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>20</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДоляВПравеЗнаменатель" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доля в праве знаменатель</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ownership interest denominator</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>20</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="НалоговыйВычет" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоговый вычет</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tax deduction</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="НалоговаяСтавка" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоговая ставка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tax rate</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>4</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="КоличествоМесяцевВладения" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество месяцев владения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Number of ownership months</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>2</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПовышающийКоэффициент" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Повышающий коэффициент</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Increasing factor</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>5</v8:Digits>
+							<v8:FractionDigits>4</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПоляРасхождений" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поля расхождений</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Discrepancy fields</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>150</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="РасчетФНС" id="41">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расчет ФНС</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>FTS calculation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="НалоговаяБаза" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоговая база</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tax base</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>17</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДоляВПравеЧислитель" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доля в праве числитель</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ownership interest numerator</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>20</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДоляВПравеЗнаменатель" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доля в праве знаменатель</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ownership interest denominator</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>20</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="НалоговыйВычет" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоговый вычет</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tax deduction</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="НалоговаяСтавка" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоговая ставка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tax rate</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>4</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="КоличествоМесяцевВладения" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество месяцев владения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Number of ownership months</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>2</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПовышающийКоэффициент" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Повышающий коэффициент</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Increasing factor</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>5</v8:Digits>
+							<v8:FractionDigits>4</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПоляРасхождений" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поля расхождений</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Discrepancy fields</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>150</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ЭтоНалогНаИмущество" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это налог на имущество</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is a property tax</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПараметрыСверки" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры сверки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reconciliation parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ПоляРасхождений" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поля расхождений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Discrepancy fields</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>150</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИнициализированРасчетФНС" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инициализирован расчет ФНС</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>FTS calculation is initialized</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПодключенОбработчикОжидания" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подключен обработчик ожидания</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Idle handler is attached</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОК" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОК</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="Отмена" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Отмена</Action>
+		</Command>
+		<Command name="УдалитьСтроку" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>х</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>x</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить строку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Remove the line</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УдалитьСтроку</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ДобавитьСтроку" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить строку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add line</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить строку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add line</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДобавитьСтроку</Action>
+		</Command>
+		<Command name="Далее" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Далее</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Далее</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Далее</Action>
+		</Command>
+		<Command name="Назад" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назад</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Back</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назад</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Back</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Назад</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Налог">
+			<Type>
+				<v8:Type>cfg:EnumRef.ВидыИмущественныхНалогов</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="АдресТаблицаРасчет">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="АдресТаблицаРасчетФНС">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="НаименованиеОбъекта">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="РегистрационныйЗнак">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="КадастровыйНомер">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="КодПоОКТМО">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="КодНалоговогоОргана">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

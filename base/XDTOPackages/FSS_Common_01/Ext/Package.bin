@@ -1,0 +1,131 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.fss.ru/integration/types/common/v01" elementFormQualified="true" attributeFormQualified="false">
+	<import namespace="http://www.fss.ru/integration/types/dic/errors/v01"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/common/v01" name="dictionaryRequest" type="d2p1:DictionaryRequestType"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/common/v01" name="dictionaryResponse" type="d2p1:DictionaryType"/>
+	<property name="errors">
+		<typeDef xsi:type="ObjectType">
+			<property xmlns:d4p1="http://www.fss.ru/integration/types/common/v01" name="error" type="d4p1:BaseErrorType" lowerBound="0" upperBound="-1"/>
+		</typeDef>
+	</property>
+	<valueType name="DictionaryTypeType" base="xs:string" variety="Atomic">
+		<enumeration>INSURERS</enumeration>
+		<enumeration>SEDO_MESSAGES</enumeration>
+	</valueType>
+	<valueType name="PeriodStr" base="xs:string" variety="Atomic" minLength="6" maxLength="6">
+		<pattern>([0-9]{6})</pattern>
+	</valueType>
+	<valueType name="StringMaxLen256" base="xs:string" variety="Atomic" minLength="1" maxLength="256"/>
+	<valueType name="Tariff" base="xs:decimal" variety="Atomic" totalDigits="4" fractionDigits="3"/>
+	<valueType name="amount" base="xs:decimal" variety="Atomic" totalDigits="22" fractionDigits="2"/>
+	<valueType name="countMount" base="xs:decimal" variety="Atomic" minInclusive="0" maxInclusive="11"/>
+	<valueType name="countYear" base="xs:decimal" variety="Atomic" minInclusive="0" maxInclusive="200"/>
+	<valueType name="emailAddress" base="xs:string" variety="Atomic">
+		<pattern>[^@]+@[^\.]+\..+</pattern>
+	</valueType>
+	<objectType name="BaseErrorType" abstract="true">
+		<property name="uuid" type="xs:string"/>
+		<property name="faultName" type="xs:string"/>
+		<property name="message" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.fss.ru/integration/types/common/v01" name="BusinessErrorType" base="d2p1:BaseErrorType">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/dic/errors/v01" name="errorCode" type="d3p1:BusinessErrorCodeType"/>
+	</objectType>
+	<objectType name="ChainLinkType">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/common/v01" name="responseOn" type="d3p1:ResponseOnType"/>
+	</objectType>
+	<objectType name="CompositeLinkType">
+		<property name="processUuid" type="xs:string"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/common/v01" name="responseOn" type="d3p1:ResponseOnType"/>
+	</objectType>
+	<objectType name="DictionaryRequestType">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/common/v01" name="type" type="d3p1:DictionaryTypeType"/>
+	</objectType>
+	<objectType name="DictionaryType">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/common/v01" name="code" type="d3p1:DictionaryTypeType"/>
+		<property name="name" type="xs:anyType"/>
+		<property name="fields">
+			<typeDef xsi:type="ObjectType">
+				<property name="field" lowerBound="0" upperBound="-1">
+					<typeDef xsi:type="ObjectType">
+						<property name="key" type="xs:string"/>
+						<property name="label" type="xs:string"/>
+						<property name="type">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+								<enumeration>STRING</enumeration>
+								<enumeration>INTEGER</enumeration>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="items">
+			<typeDef xsi:type="ObjectType">
+				<property name="item" lowerBound="0" upperBound="-1">
+					<typeDef xsi:type="ObjectType">
+						<property name="code" type="xs:string" lowerBound="1" form="Attribute"/>
+						<property name="parentCode" type="xs:string" lowerBound="0" form="Attribute"/>
+						<property name="field" upperBound="-1">
+							<typeDef xsi:type="ObjectType">
+								<property name="key" type="xs:string" lowerBound="1" form="Attribute"/>
+								<property name="value" type="xs:anyType" nillable="true"/>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="EntityReferenceType">
+		<property name="entityVersId" type="xs:decimal"/>
+		<property name="entityId" type="xs:decimal"/>
+		<property name="subsystemId" type="xs:decimal"/>
+		<property name="subsystemEntityId" type="xs:decimal" lowerBound="0"/>
+	</objectType>
+	<objectType name="EntityReferenceTypeEmptyId">
+		<property name="entityVersId" type="xs:decimal" lowerBound="0"/>
+		<property name="entityId" type="xs:decimal" lowerBound="0"/>
+		<property name="subsystemId" type="xs:decimal"/>
+		<property name="subsystemEntityId" type="xs:decimal" lowerBound="0"/>
+	</objectType>
+	<objectType name="ErrorType">
+		<property name="code" type="xs:string" lowerBound="0"/>
+		<property name="message" type="xs:string" lowerBound="0"/>
+		<property name="details" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType name="PingType">
+		<property name="message" type="xs:string"/>
+	</objectType>
+	<objectType name="PongType">
+		<property name="message" type="xs:string"/>
+	</objectType>
+	<objectType name="ProcessLinkType">
+		<property name="processUuid" type="xs:string"/>
+	</objectType>
+	<objectType name="ResponseOnType" abstract="true">
+		<property name="uuid" type="xs:anyType" upperBound="-1"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.fss.ru/integration/types/common/v01" name="SystemErrorType" base="d2p1:BaseErrorType">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/dic/errors/v01" name="errorCode" type="d3p1:SystemErrorCodeType"/>
+		<property name="originatingError" type="xs:string"/>
+		<property name="trace" type="xs:string" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="WarnType">
+		<property name="code" type="xs:string" lowerBound="0"/>
+		<property name="message" type="xs:string" lowerBound="0"/>
+		<property name="details" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType name="contact">
+		<property name="type" type="xs:string"/>
+		<property name="value" type="xs:string"/>
+		<property name="description" type="xs:string"/>
+	</objectType>
+	<objectType name="dictionary">
+		<property name="code" type="xs:string"/>
+		<property name="name" type="xs:string"/>
+	</objectType>
+	<objectType name="period">
+		<property name="begin" type="xs:date"/>
+		<property name="end" type="xs:date"/>
+	</objectType>
+</package>

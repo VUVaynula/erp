@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Выбор модели прогнозирования</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Select a forecasting model</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаВыбрать" id="26">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Выбрать</CommandName>
+				<ExtendedTooltip name="ФормаВыбратьРасширеннаяПодсказка" id="27"/>
+			</Button>
+			<Button name="ФормаОтмена" id="28">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Отмена</CommandName>
+				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="29"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="ДекорацияПодсказка" id="71">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сервис прогнозирования продаж строит прогноз с помощью нескольких алгоритмов (моделей прогнозирования) одновременно.
+При автоматическом выборе сервис прогнозирования вернет результат по той модели, которая предоставила лучшее прогнозирование на тестовом периоде.</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>The sales forecasting service makes projections using several algorithms (forecasting models) at the same time.
+With automatic selection, the forecasting service will return the result according to the model that provided the best forecasting during the trial period.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<ContextMenu name="ДекорацияПодсказкаКонтекстноеМеню" id="72"/>
+			<ExtendedTooltip name="ДекорацияПодсказкаРасширеннаяПодсказка" id="73"/>
+		</LabelDecoration>
+		<Table name="МоделиПрогнозирования" id="7">
+			<Representation>List</Representation>
+			<DataPath>МоделиПрогнозирования</DataPath>
+			<CommandSet>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>Delete</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>SelectAll</ExcludedCommand>
+				<ExcludedCommand>ShowMultipleSelection</ExcludedCommand>
+			</CommandSet>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="МоделиПрогнозированияКонтекстноеМеню" id="9"/>
+			<AutoCommandBar name="МоделиПрогнозированияКоманднаяПанель" id="8">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="МоделиПрогнозированияРасширеннаяПодсказка" id="10"/>
+			<SearchStringAddition name="МоделиПрогнозированияСтрокаПоиска" id="11">
+				<AdditionSource>
+					<Item>МоделиПрогнозирования</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="МоделиПрогнозированияСтрокаПоискаКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="МоделиПрогнозированияСтрокаПоискаРасширеннаяПодсказка" id="13"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="МоделиПрогнозированияСостояниеПросмотра" id="17">
+				<AdditionSource>
+					<Item>МоделиПрогнозирования</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="МоделиПрогнозированияСостояниеПросмотраКонтекстноеМеню" id="18"/>
+				<ExtendedTooltip name="МоделиПрогнозированияСостояниеПросмотраРасширеннаяПодсказка" id="19"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="МоделиПрогнозированияУправлениеПоиском" id="14">
+				<AdditionSource>
+					<Item>МоделиПрогнозирования</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="МоделиПрогнозированияУправлениеПоискомКонтекстноеМеню" id="15"/>
+				<ExtendedTooltip name="МоделиПрогнозированияУправлениеПоискомРасширеннаяПодсказка" id="16"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">МоделиПрогнозированияВыбор</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="МоделиПрогнозированияИмя" id="20">
+					<DataPath>МоделиПрогнозирования.Имя</DataPath>
+					<ContextMenu name="МоделиПрогнозированияИмяКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="МоделиПрогнозированияИмяРасширеннаяПодсказка" id="22"/>
+				</InputField>
+				<InputField name="МоделиПрогнозированияКачествоMAE" id="50">
+					<DataPath>МоделиПрогнозирования.КачествоMAE</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Средняя абсолютная ошибка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Mean absolute error</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>6</Width>
+					<ContextMenu name="МоделиПрогнозированияКачествоMAEКонтекстноеМеню" id="51"/>
+					<ExtendedTooltip name="МоделиПрогнозированияКачествоMAEРасширеннаяПодсказка" id="52"/>
+				</InputField>
+				<InputField name="МоделиПрогнозированияКачествоMAPE" id="53">
+					<DataPath>МоделиПрогнозирования.КачествоMAPE</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Средняя относительная ошибка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Mean relative error</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>6</Width>
+					<ContextMenu name="МоделиПрогнозированияКачествоMAPEКонтекстноеМеню" id="54"/>
+					<ExtendedTooltip name="МоделиПрогнозированияКачествоMAPEРасширеннаяПодсказка" id="55"/>
+				</InputField>
+				<InputField name="МоделиПрогнозированияКачествоТочность" id="65">
+					<DataPath>МоделиПрогнозирования.КачествоТочность</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Точность</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Accuracy</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>8</Width>
+					<ContextMenu name="МоделиПрогнозированияКачествоТочностьКонтекстноеМеню" id="66"/>
+					<ExtendedTooltip name="МоделиПрогнозированияКачествоТочностьРасширеннаяПодсказка" id="67"/>
+				</InputField>
+				<InputField name="МоделиПрогнозированияКачествоRMSE" id="59">
+					<DataPath>МоделиПрогнозирования.КачествоRMSE</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Среднеквадратичное отклонение</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Root-mean-square variance</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>6</Width>
+					<ContextMenu name="МоделиПрогнозированияКачествоRMSEКонтекстноеМеню" id="60"/>
+					<ExtendedTooltip name="МоделиПрогнозированияКачествоRMSEРасширеннаяПодсказка" id="61"/>
+				</InputField>
+				<InputField name="МоделиПрогнозированияКачествоPMAPE" id="56">
+					<DataPath>МоделиПрогнозирования.КачествоPMAPE</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Средняя относительная ошибка (нормирована по прогнозным значениям)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Mean relative error (standardized by forecast values)</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>6</Width>
+					<ContextMenu name="МоделиПрогнозированияКачествоPMAPEКонтекстноеМеню" id="57"/>
+					<ExtendedTooltip name="МоделиПрогнозированияКачествоPMAPEРасширеннаяПодсказка" id="58"/>
+				</InputField>
+				<InputField name="МоделиПрогнозированияКачествоSMAPE" id="62">
+					<DataPath>МоделиПрогнозирования.КачествоSMAPE</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Средняя относительная ошибка (нормирована по продажным и прогнозным значениям)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Mean relative error (standardized by sales and forecast values)</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>6</Width>
+					<ContextMenu name="МоделиПрогнозированияКачествоSMAPEКонтекстноеМеню" id="63"/>
+					<ExtendedTooltip name="МоделиПрогнозированияКачествоSMAPEРасширеннаяПодсказка" id="64"/>
+				</InputField>
+				<InputField name="МоделиПрогнозированияКачествоТочность1" id="76">
+					<DataPath>МоделиПрогнозирования.КачествоТочность1</DataPath>
+					<Width>8</Width>
+					<ContextMenu name="МоделиПрогнозированияКачествоТочность1КонтекстноеМеню" id="77"/>
+					<ExtendedTooltip name="МоделиПрогнозированияКачествоТочность1РасширеннаяПодсказка" id="78"/>
+				</InputField>
+				<InputField name="МоделиПрогнозированияКачествоТочность2" id="79">
+					<DataPath>МоделиПрогнозирования.КачествоТочность2</DataPath>
+					<Width>8</Width>
+					<ContextMenu name="МоделиПрогнозированияКачествоТочность2КонтекстноеМеню" id="80"/>
+					<ExtendedTooltip name="МоделиПрогнозированияКачествоТочность2РасширеннаяПодсказка" id="81"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ВидПлана" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид плана</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Plan profile</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ВидыПланов</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="МоделиПрогнозирования" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Модели прогнозирования</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Forecasting models</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Имя" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя модели</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Model name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИмяВСервисе" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя в сервисе</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Name in service</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="КачествоТочность" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>(1 - MAPE) * 100</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>(1 - MAPE) * 100</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="КачествоMAE" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>MAE</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>MAE</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>5</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="КачествоMAPE" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>MAPE</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>MAPE</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>5</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="КачествоPMAPE" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>PMAPE</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>PMAPE</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>5</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="КачествоRMSE" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>RMSE</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>RMSE</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>5</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="КачествоSMAPE" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>SMAPE</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>SMAPE</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>5</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="КачествоТочность1" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>(1 - PMAPE) * 100</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>(1 - PMAPE) * 100</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="КачествоТочность2" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>(1 - SMAPE) * 100</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>(1 - SMAPE) * 100</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Выбрать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Выбрать</Action>
+		</Command>
+		<Command name="Отмена" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Отмена</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ВидПлана">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ВидыПланов</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

@@ -1,0 +1,36 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.fss.ru/integration/types/person/v01" elementFormQualified="true" attributeFormQualified="false">
+	<import namespace="http://www.fss.ru/integration/types/identityDocument/v01"/>
+	<import namespace="http://www.fss.ru/integration/types/common/v01"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/person/v01" name="address" type="d2p1:address"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/person/v01" name="contacts" type="d2p1:contacts"/>
+	<property xmlns:d2p1="http://www.fss.ru/integration/types/person/v01" name="person" type="d2p1:person"/>
+	<valueType name="firstName" base="xs:string" variety="Atomic" minLength="1" maxLength="40"/>
+	<valueType name="inn" base="xs:string" variety="Atomic" maxLength="12"/>
+	<valueType name="lastName" base="xs:string" variety="Atomic" length="40"/>
+	<valueType name="middleName" base="xs:string" variety="Atomic" length="40"/>
+	<valueType name="snils" base="xs:string" variety="Atomic" length="11"/>
+	<objectType name="FullName">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/person/v01" name="firstName" type="d3p1:firstName"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/person/v01" name="secondName" type="d3p1:lastName"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/person/v01" name="middleName" type="d3p1:middleName" lowerBound="0"/>
+	</objectType>
+	<objectType name="address">
+		<property name="residence" type="xs:string"/>
+		<property name="isFixPlaceResidence_" type="xs:boolean" localName="isFixPlaceResidence "/>
+		<property name="placeRegistration" type="xs:string"/>
+		<property name="isHomeless" type="xs:boolean"/>
+	</objectType>
+	<objectType name="contacts">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/common/v01" name="contact" type="d3p1:contact"/>
+	</objectType>
+	<objectType name="person">
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/person/v01" name="firstName" type="d3p1:firstName"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/person/v01" name="lastName" type="d3p1:lastName"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/person/v01" name="middleName" type="d3p1:middleName"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/identityDocument/v01" name="id" type="d3p1:identityDocument"/>
+		<property name="birthDate" type="xs:date"/>
+		<property name="citizenship" type="xs:string"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/common/v01" name="gender" type="d3p1:dictionary"/>
+		<property xmlns:d3p1="http://www.fss.ru/integration/types/person/v01" name="snils" type="d3p1:snils"/>
+	</objectType>
+</package>

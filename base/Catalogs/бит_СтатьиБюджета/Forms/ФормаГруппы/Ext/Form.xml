@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Folders</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Владелец" id="5">
+			<DataPath>Объект.Owner</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="ВладелецКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="ВладелецРасширеннаяПодсказка" id="16"/>
+		</InputField>
+		<InputField name="Родитель" id="7">
+			<DataPath>Объект.Parent</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ClearButton>true</ClearButton>
+			<ContextMenu name="РодительКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="17"/>
+		</InputField>
+		<UsualGroup name="КодКодификатор" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код/кодификатор</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="КодКодификаторРасширеннаяПодсказка" id="18"/>
+			<ChildItems>
+				<InputField name="Кодификатор" id="13">
+					<DataPath>Объект.Кодификатор</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="КодификаторКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="КодификаторРасширеннаяПодсказка" id="20"/>
+				</InputField>
+				<InputField name="Код" id="1">
+					<DataPath>Объект.Code</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="19"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Наименование" id="3">
+			<DataPath>Объект.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="21"/>
+		</InputField>
+		<InputField name="СтатьяОборотов" id="9">
+			<DataPath>Объект.СтатьяОборотов</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ChoiceFoldersAndItems>Folders</ChoiceFoldersAndItems>
+			<AutoMarkIncomplete>false</AutoMarkIncomplete>
+			<ChoiceParameterLinks>
+				<xr:Link>
+					<xr:Name>Отбор.ТипСтатьи</xr:Name>
+					<xr:DataPath xsi:type="xs:string">Объект.Owner</xr:DataPath>
+					<xr:ValueChange>Clear</xr:ValueChange>
+				</xr:Link>
+			</ChoiceParameterLinks>
+			<ContextMenu name="СтатьяОборотовКонтекстноеМеню" id="10"/>
+			<ExtendedTooltip name="СтатьяОборотовРасширеннаяПодсказка" id="22"/>
+			<Events>
+				<Event name="OnChange">СтатьяОборотовПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="Коэффициент" id="11">
+			<DataPath>Объект.Коэффициент</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<SpinButton>true</SpinButton>
+			<ContextMenu name="КоэффициентКонтекстноеМеню" id="12"/>
+			<ExtendedTooltip name="КоэффициентРасширеннаяПодсказка" id="23"/>
+			<Events>
+				<Event name="OnChange">КоэффициентПриИзменении</Event>
+			</Events>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.бит_СтатьиБюджета</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

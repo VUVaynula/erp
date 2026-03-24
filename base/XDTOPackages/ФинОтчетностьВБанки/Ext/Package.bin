@@ -1,0 +1,255 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.v8.1c.ru/banks/FinancialReports" elementFormQualified="true" attributeFormQualified="false">
+	<import namespace="http://www.v8.1c.ru/banks/CommonCharacteristic"/>
+	<property xmlns:d2p1="http://www.v8.1c.ru/banks/FinancialReports" name="ТребованияБанка" type="d2p1:ТребованияБанка"/>
+	<valueType name="ВидыОтчетов" base="xs:string" variety="Atomic">
+		<enumeration>КарточкаСчета</enumeration>
+		<enumeration>АнализСчета</enumeration>
+		<enumeration>ОборотноСальдоваяВедомость</enumeration>
+		<enumeration>ОборотноСальдоваяВедомостьПоСчету</enumeration>
+		<enumeration>ОборотыСчета</enumeration>
+		<enumeration>ВедомостьАмортизацииОС</enumeration>
+		<enumeration>ВаловаяПрибыль</enumeration>
+		<enumeration>КнигаУчетаДоходовИРасходов</enumeration>
+		<enumeration xsi:type="xs:string">КнигаУчетаДоходовИРасходовПредпринимателя</enumeration>
+		<enumeration xsi:type="xs:string">КнигаУчетаДоходовПатент</enumeration>
+		<enumeration>КассоваяКнига</enumeration>
+		<enumeration xsi:type="xs:string">РасшифровкаЗадолженности</enumeration>
+		<enumeration xsi:type="xs:string">ОстаткиТоваровПоСрокамХранения</enumeration>
+		<enumeration>БухгалтерскаяОтчетность</enumeration>
+		<enumeration xsi:type="xs:string">БухгалтерскаяОтчетностьАудиторскоеЗаключение</enumeration>
+		<enumeration xsi:type="xs:string">БухгалтерскаяОтчетностьПояснения</enumeration>
+		<enumeration>ДекларацияПрибыль</enumeration>
+		<enumeration>ДекларацияНДС</enumeration>
+		<enumeration>ДекларацияУСН</enumeration>
+		<enumeration>ДекларацияЕНВД</enumeration>
+		<enumeration xsi:type="xs:string">ДекларацияИмущество</enumeration>
+		<enumeration>Декларация3НДФЛ</enumeration>
+		<enumeration xsi:type="xs:string">ДекларацияЕСХН</enumeration>
+		<enumeration xsi:type="xs:string">РасчетПоСтраховымВзносам</enumeration>
+		<enumeration xsi:type="xs:string">Патент</enumeration>
+		<enumeration>СправкаФНСОбИсполненииОбязанностейПоУплатеНалогов</enumeration>
+		<enumeration>СправкаФНСОбОткрытыхРасчетныхСчетах</enumeration>
+		<enumeration>СправкаБанка</enumeration>
+		<enumeration>ПроизвольныйФайл</enumeration>
+		<enumeration xsi:type="xs:string">ОтчетПоФормеБанка</enumeration>
+	</valueType>
+	<valueType name="ВидыОтчетовОткрытый" variety="Union" memberTypes="{http://www.v8.1c.ru/banks/FinancialReports}ВидыОтчетов {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType name="Периодичность" base="xs:string" variety="Atomic">
+		<enumeration>Месяц</enumeration>
+		<enumeration>Квартал</enumeration>
+		<enumeration>Год</enumeration>
+		<enumeration>КварталПолугодие9МесяцевГод</enumeration>
+	</valueType>
+	<valueType name="ПериодичностьОткрытый" variety="Union" memberTypes="{http://www.v8.1c.ru/banks/FinancialReports}Периодичность {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType name="ПериодыОтчетности" base="xs:string" variety="Atomic">
+		<enumeration>ПредыдущийГод</enumeration>
+		<enumeration>СНачалаТекущегоГода</enumeration>
+		<enumeration>ПредыдущийКвартал</enumeration>
+		<enumeration>ПредыдущийМесяц</enumeration>
+	</valueType>
+	<valueType name="ПериодыОтчетностиОткрытый" variety="Union" memberTypes="{http://www.v8.1c.ru/banks/FinancialReports}ПериодыОтчетности {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType name="ПроверкиЗаполнения" base="xs:string" variety="Atomic">
+		<enumeration>НеПроверять</enumeration>
+		<enumeration>ВыдаватьОшибку</enumeration>
+	</valueType>
+	<valueType name="ПроверкиЗаполненияОткрытый" variety="Union" memberTypes="{http://www.v8.1c.ru/banks/FinancialReports}ПроверкиЗаполнения {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType name="ТипыГруппировок" base="xs:string" variety="Atomic">
+		<enumeration>БезГрупп</enumeration>
+		<enumeration>СГруппами</enumeration>
+		<enumeration>ТолькоГруппы</enumeration>
+	</valueType>
+	<valueType name="ТипыГруппировокОткрытый" variety="Union" memberTypes="{http://www.v8.1c.ru/banks/FinancialReports}ТипыГруппировок {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType name="ФорматыСохраненияОтчетов" base="xs:string" variety="Atomic">
+		<enumeration>XLS</enumeration>
+		<enumeration>XLSX</enumeration>
+		<enumeration>XML</enumeration>
+		<enumeration xsi:type="xs:string">XLS_XML</enumeration>
+		<enumeration xsi:type="xs:string">XLSX_XML</enumeration>
+	</valueType>
+	<valueType name="ФорматыСохраненияОтчетовОткрытый" variety="Union" memberTypes="{http://www.v8.1c.ru/banks/FinancialReports}ФорматыСохраненияОтчетов {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType name="ЭкономическиеСубъекты" base="xs:string" variety="Atomic">
+		<enumeration>ОсновнаяОрганизация</enumeration>
+		<enumeration>СубъектОтчетности</enumeration>
+	</valueType>
+	<valueType name="ЭкономическиеСубъектыОткрытый" variety="Union" memberTypes="{http://www.v8.1c.ru/banks/FinancialReports}ЭкономическиеСубъекты {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType name="ДетализацияПоСрокам" base="xs:string" variety="Atomic">
+		<enumeration xsi:type="xs:string">ПоСрокамВозникновения</enumeration>
+		<enumeration xsi:type="xs:string">ПоСрокамПогашения</enumeration>
+	</valueType>
+	<valueType name="ДетализацияПоСрокамОткрытый" variety="Union" memberTypes="{http://www.v8.1c.ru/banks/FinancialReports}ДетализацияПоСрокам {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType name="РазмещениеДополнительныхПолей" base="xs:string" variety="Atomic">
+		<enumeration xsi:type="xs:string">ВместеСВладельцем</enumeration>
+		<enumeration xsi:type="xs:string">Отдельно</enumeration>
+	</valueType>
+	<valueType name="РазмещениеДополнительныхПолейОткрытый" variety="Union" memberTypes="{http://www.v8.1c.ru/banks/FinancialReports}РазмещениеДополнительныхПолей {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType name="ВариантыОтчетаРасшифровкаЗадолженности" base="xs:string" variety="Atomic">
+		<enumeration xsi:type="xs:string">ВидыЗадолженности</enumeration>
+		<enumeration xsi:type="xs:string">СтрокиБаланса</enumeration>
+	</valueType>
+	<valueType name="ВариантыОтчетаРасшифровкаЗадолженностиОткрытый" variety="Union" memberTypes="{http://www.v8.1c.ru/banks/FinancialReports}ВариантыОтчетаРасшифровкаЗадолженности {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType name="ВидыСравненийКомпоновкиДанных" base="xs:string" variety="Atomic">
+		<enumeration xsi:type="xs:string">Больше</enumeration>
+		<enumeration xsi:type="xs:string">БольшеИлиРавно</enumeration>
+		<enumeration xsi:type="xs:string">ВИерархии</enumeration>
+		<enumeration xsi:type="xs:string">ВСписке</enumeration>
+		<enumeration xsi:type="xs:string">ВСпискеПоИерархии</enumeration>
+		<enumeration xsi:type="xs:string">Заполнено</enumeration>
+		<enumeration xsi:type="xs:string">Меньше</enumeration>
+		<enumeration xsi:type="xs:string">МеньшеИлиРавно</enumeration>
+		<enumeration xsi:type="xs:string">НачинаетсяС</enumeration>
+		<enumeration xsi:type="xs:string">НеВИерархии</enumeration>
+		<enumeration xsi:type="xs:string">НеВСписке</enumeration>
+		<enumeration xsi:type="xs:string">НеВСпискеПоИерархии</enumeration>
+		<enumeration xsi:type="xs:string">НеЗаполнено</enumeration>
+		<enumeration xsi:type="xs:string">НеНачинаетсяС</enumeration>
+		<enumeration xsi:type="xs:string">НеПодобно</enumeration>
+		<enumeration xsi:type="xs:string">НеРавно</enumeration>
+		<enumeration xsi:type="xs:string">НеСодержит</enumeration>
+		<enumeration xsi:type="xs:string">Подобно</enumeration>
+		<enumeration xsi:type="xs:string">Равно</enumeration>
+		<enumeration xsi:type="xs:string">Содержит</enumeration>
+	</valueType>
+	<valueType name="ВидыСравненийКомпоновкиДанныхОткрытый" variety="Union" memberTypes="{http://www.v8.1c.ru/banks/FinancialReports}ВидыСравненийКомпоновкиДанных {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType name="ГраницыПериодов" base="xs:string" variety="Atomic">
+		<enumeration xsi:type="xs:string">ОтчетнаяДата</enumeration>
+		<enumeration xsi:type="xs:string">ПоследнийКалендарныйМесяц</enumeration>
+	</valueType>
+	<valueType name="ГраницыПериодовОткрытый" variety="Union" memberTypes="{http://www.v8.1c.ru/banks/FinancialReports}ГраницыПериодов {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType name="ВыводПериодаВЗаголовке" base="xs:string" variety="Atomic">
+		<enumeration xsi:type="xs:string">Период</enumeration>
+		<enumeration xsi:type="xs:string">ОтчетнаяДата</enumeration>
+		<enumeration xsi:type="xs:string">НеВыводить</enumeration>
+	</valueType>
+	<valueType name="ВыводПериодаВЗаголовкеОткрытый" variety="Union" memberTypes="{http://www.v8.1c.ru/banks/FinancialReports}ВыводПериодаВЗаголовке {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType name="ВидыВыгрузкиРеглОтчетов" base="xs:string" variety="Atomic">
+		<enumeration xsi:type="xs:string">Файл</enumeration>
+		<enumeration xsi:type="xs:string">Разделы</enumeration>
+		<enumeration xsi:type="xs:string">Листы</enumeration>
+	</valueType>
+	<valueType name="ВидыВыгрузкиРеглОтчетовОткрытый" variety="Union" memberTypes="{http://www.v8.1c.ru/banks/FinancialReports}ВидыВыгрузкиРеглОтчетов {http://www.w3.org/2001/XMLSchema}string"/>
+	<objectType name="ГруппировкаОтчета" open="true" ordered="false" sequenced="true">
+		<property name="НомерСтроки" type="xs:int" lowerBound="0"/>
+		<property name="Поле" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ТипГруппировки" type="d3p1:ТипыГруппировокОткрытый" lowerBound="0"/>
+	</objectType>
+	<objectType name="ДополнительноеПолеОтчета" open="true" ordered="false" sequenced="true">
+		<property name="НомерСтроки" type="xs:int" lowerBound="0"/>
+		<property name="Поле" type="xs:string"/>
+	</objectType>
+	<objectType name="КомплектОтчетности" open="true" ordered="false" sequenced="true">
+		<property name="Архивный" type="xs:boolean" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="ДатаНачала" type="xs:date" lowerBound="1" form="Attribute"/>
+		<property name="ДатаОкончания" type="xs:date" lowerBound="1" form="Attribute"/>
+		<property name="МинВерсияСервиса" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="МаксВерсияСервиса" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="Идентификатор" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="КраткоеПредставление" type="xs:string" lowerBound="0"/>
+		<property name="ПодробноеПредставление" type="xs:string" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="Периодичность" type="d3p1:ПериодичностьОткрытый" lowerBound="0" nillable="true"/>
+		<property name="СНачалаГода" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Регулярный" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="СрокПредставленияВРабочихДнях" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="СрокПредставленияМесяцев" type="xs:int" lowerBound="0" nillable="true"/>
+		<property name="СрокПредставленияДней" type="xs:int" lowerBound="0" nillable="true"/>
+		<property name="ОсобыйСрокПредставленияЗаГод" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="СрокПредставленияЗаГодМесяцев" type="xs:int" lowerBound="0" nillable="true"/>
+		<property name="СрокПредставленияЗаГодДней" type="xs:int" lowerBound="0" nillable="true"/>
+		<property name="ПереносСрокаПредставления" type="xs:int" lowerBound="0" nillable="true"/>
+		<property name="ПодставлятьПоУмолчаниюПредпоследнийЗакрытыйПериод" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="ИсключатьОтчетыПоСчетамБезОстатковИОборотов" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="РазворачиватьДерево" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/CommonCharacteristic" name="ОсновныеПараметрыВыбораФайла" type="d3p1:ПараметрыВыбораФайла" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ОсновнойПорядокПодписания" type="d3p1:ЭкономическиеСубъектыОткрытый" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ОсновнойПорядокПроверкиЗаполнения" type="d3p1:ПроверкиЗаполненияОткрытый" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ОсновнойПорядокПроверкиЗаполнения1_21" type="d3p1:ПроверкиЗаполненияОткрытый" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ОсновнойФорматСохранения" type="d3p1:ФорматыСохраненияОтчетовОткрытый" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="Отчет" type="d3p1:Отчет" lowerBound="0" upperBound="-1"/>
+		<property name="СемействоКонфигураций" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="ПрефиксФайла" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ФорматИменованияФайлов" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ДобавитьМеткуДоверенногоВремени" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="ОсновнойФорматСохранения1_27" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ОтключитьПроверкуСертификата" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="РазрешеныМЧДB2G" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="РазрешеныМЧДB2B" type="xs:boolean" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="НастройкиОтчета" open="true" ordered="false" sequenced="true">
+		<property name="Счет" type="xs:string" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="Периодичность" type="d3p1:ПериодичностьОткрытый" lowerBound="0" nillable="true"/>
+		<property name="ПоСубсчетам" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="ПоСубсчетамКорСчетов" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="РазвернутоеСальдо" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="ВыводитьЗабалансовыеСчета" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="ПоказательКоличество" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="ПоказательВалютнаяСумма" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="РазмещениеДополнительныхПолей" type="d3p1:РазмещениеДополнительныхПолейОткрытый" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ДетализацияПоСрокам" type="d3p1:ДетализацияПоСрокамОткрытый" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ВариантОтчетаРасшифровкаЗадолженности" type="d3p1:ВариантыОтчетаРасшифровкаЗадолженностиОткрытый" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="Группировка" type="d3p1:ГруппировкаОтчета" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="Отбор" type="d3p1:ОтборОтчета" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ДополнительноеПоле" type="d3p1:ДополнительноеПолеОтчета" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ГруппировкаПоСчетам" type="d3p1:НастройкиПоСчетам" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="РазвернутоеСальдоПоСчетам" type="d3p1:НастройкиПоСчетам" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="Интервалы" type="d3p1:ИнтервалОтчета" lowerBound="0" upperBound="-1"/>
+		<property name="ИмяВарианта" type="xs:string" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="НастройкиПоСчетам" open="true" ordered="false" sequenced="true">
+		<property name="НомерСтроки" type="xs:int" lowerBound="0"/>
+		<property name="Счет" type="xs:string" lowerBound="0"/>
+		<property name="ПоСубсчетам" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="ПоСубконто" type="xs:string" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Отчет" open="true" ordered="false" sequenced="true">
+		<property name="МинВерсияСервиса" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="МаксВерсияСервиса" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="ИдентификаторСтрокиКомплекта" type="xs:string"/>
+		<property name="ИдентификаторНастройкиОтчета" type="xs:string"/>
+		<property name="НомерСтроки" type="xs:int" lowerBound="0"/>
+		<property name="Архивный" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ВидОтчета" type="d3p1:ВидыОтчетовОткрытый" lowerBound="0"/>
+		<property name="КраткоеПредставление" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="КраткоеПредставлениеМнЧисло" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ПодробноеПредставление" type="xs:string" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ПериодОтчета" type="d3p1:ПериодыОтчетностиОткрытый" lowerBound="0"/>
+		<property name="КоличествоПериодов" type="xs:int" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="Периодичность" type="d3p1:ПериодичностьОткрытый" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ПраваяГраницаПериода" type="d3p1:ГраницыПериодовОткрытый" lowerBound="0" nillable="true"/>
+		<property name="СмещениеПравойГраницы" type="xs:int" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/CommonCharacteristic" name="ПараметрыВыбораФайла" type="d3p1:ПараметрыВыбораФайла" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ПорядокПодписания" type="d3p1:ЭкономическиеСубъектыОткрытый" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ПроверкаЗаполнения" type="d3p1:ПроверкиЗаполненияОткрытый" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ПроверкаЗаполнения1_21" type="d3p1:ПроверкиЗаполненияОткрытый" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ОбязанностьПредставления" type="d3p1:ЭкономическиеСубъектыОткрытый" lowerBound="0" nillable="true"/>
+		<property name="ТипЭкономическогоСубъекта" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ВидОрганизации" type="xs:string" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ФорматСохранения" type="d3p1:ФорматыСохраненияОтчетовОткрытый" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="НастройкиОтчета" type="d3p1:НастройкиОтчета" lowerBound="0" nillable="true"/>
+		<property name="КоличествоФайлов" type="xs:int" lowerBound="0" nillable="true"/>
+		<property name="ИмяФайлаШаблона" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ТребуетсяОтметкаОПриемеОтчетности" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ВыводПериодаВЗаголовке" type="d3p1:ВыводПериодаВЗаголовке" lowerBound="0"/>
+		<property name="СемействоКонфигураций" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="ШаблонИмениФайла" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ИмяМакетаОтчета" type="xs:string" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ВерсияКонфигурации" type="d3p1:ВерсияКонфигурации" lowerBound="0" upperBound="-1"/>
+		<property name="ФорматСохранения1_27" type="xs:string" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ВидВыгрузкиРеглОтчета" type="d3p1:ВидыВыгрузкиРеглОтчетовОткрытый" lowerBound="0"/>
+	</objectType>
+	<objectType name="ТребованияБанка" open="true" ordered="false" sequenced="true">
+		<property name="Версия" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="КомплектОтчетности" type="d3p1:КомплектОтчетности" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="ОтборОтчета" open="true" ordered="false" sequenced="true">
+		<property name="Поле" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/banks/FinancialReports" name="ВидСравнения" type="d3p1:ВидыСравненийКомпоновкиДанныхОткрытый" lowerBound="0"/>
+		<property name="Значение" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType name="ИнтервалОтчета" open="true" ordered="false" sequenced="true">
+		<property name="Значение" type="xs:int" lowerBound="0"/>
+	</objectType>
+	<objectType name="ВерсияКонфигурации" open="true" ordered="false" sequenced="true">
+		<property name="СемействоКонфигураций" type="xs:string" form="Attribute"/>
+		<property name="ВерсияОт" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="ВерсияДо" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+	</objectType>
+</package>

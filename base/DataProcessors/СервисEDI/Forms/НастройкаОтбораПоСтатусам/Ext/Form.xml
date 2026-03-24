@@ -1,0 +1,765 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Отбор по статусам документов в 1С: EDI</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Filter by document statuses in 1С: EDI</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаПеренести" id="68">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.УстановитьОтбор</CommandName>
+				<ExtendedTooltip name="ФормаПеренестиРасширеннаяПодсказка" id="69"/>
+			</Button>
+			<Button name="Справка" id="66">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="СправкаРасширеннаяПодсказка" id="67"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ПанельСервисEDI" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель сервис EDI</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Panel EDI service</v8:content>
+				</v8:item>
+			</Title>
+			<Width>36</Width>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ПанельСервисEDIРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаСтатусыEDI" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа статусы EDI</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group EDI statuses</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>NormalSeparation</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСтатусыEDIРасширеннаяПодсказка" id="7"/>
+					<ChildItems>
+						<CheckBoxField name="ИспользоватьОтборПоСтатусамEDI" id="70">
+							<DataPath>ИспользоватьОтборПоСтатусамEDI</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Установить отбор по статусам EDI</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Set filter by EDI statuses</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ИспользоватьОтборПоСтатусамEDIКонтекстноеМеню" id="71"/>
+							<ExtendedTooltip name="ИспользоватьОтборПоСтатусамEDIРасширеннаяПодсказка" id="72"/>
+							<Events>
+								<Event name="OnChange">ИспользоватьОтборПоСтатусамEDIПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<UsualGroup name="ГруппаОтборыСтатусыEDI" id="11">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Статусы в сервисе "1С: EDI":</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Statuses in "1С: EDI" service:</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаОтборыСтатусыEDIРасширеннаяПодсказка" id="12"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаСнятьУстановитьФлагиСтатусыEDI" id="13">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа снять или установить флаги по статусам EDI</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group select or clear check boxes by EDI statuses</v8:content>
+										</v8:item>
+									</Title>
+									<Group>AlwaysHorizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаСнятьУстановитьФлагиСтатусыEDIРасширеннаяПодсказка" id="14"/>
+									<ChildItems>
+										<Button name="УстановитьВсеСтатусы" id="15">
+											<Type>Hyperlink</Type>
+											<Representation>Picture</Representation>
+											<Width>2</Width>
+											<CommandName>Form.Command.УстановитьВсеСтатусы</CommandName>
+											<Picture>
+												<xr:Ref>StdPicture.CheckAll</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<Shape>Usual</Shape>
+											<ShapeRepresentation>Always</ShapeRepresentation>
+											<ExtendedTooltip name="УстановитьВсеСтатусыРасширеннаяПодсказка" id="16"/>
+										</Button>
+										<Button name="СнятьВсеСтатусы" id="17">
+											<Type>Hyperlink</Type>
+											<Representation>Picture</Representation>
+											<Width>2</Width>
+											<CommandName>Form.Command.СнятьВсеСтатусы</CommandName>
+											<BorderColor>style:FieldTextColor</BorderColor>
+											<Picture>
+												<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ExtendedTooltip name="СнятьВсеСтатусыРасширеннаяПодсказка" id="18"/>
+										</Button>
+										<Button name="УстановитьОтборСтатусыНаНашейСтороне" id="19">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.УстановитьОтборСтатусыНаНашейСтороне</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>На нашей стороне</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>On our side</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="УстановитьОтборСтатусыНаНашейСторонеРасширеннаяПодсказка" id="20"/>
+										</Button>
+										<Button name="УстановитьОтборСтатусыНаСторонеКонтрагента" id="21">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.УстановитьОтборСтатусыНаСторонеКонтрагента</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>На стороне контрагента</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>On counterparty side</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="УстановитьОтборСтатусыНаСторонеКонтрагентаРасширеннаяПодсказка" id="22"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<Table name="ДеревоСтатусовEDI" id="23">
+									<Representation>Tree</Representation>
+									<Width>40</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<AutoMaxHeight>false</AutoMaxHeight>
+									<HeightInTableRows>15</HeightInTableRows>
+									<SelectionMode>SingleRow</SelectionMode>
+									<RowSelectionMode>Row</RowSelectionMode>
+									<Header>false</Header>
+									<HorizontalLines>false</HorizontalLines>
+									<VerticalLines>false</VerticalLines>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<InitialTreeView>ExpandTopLevel</InitialTreeView>
+									<VerticalStretch>false</VerticalStretch>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>ДеревоСтатусовEDI</DataPath>
+									<BorderColor>style:FormBackColor</BorderColor>
+									<CommandSet>
+										<ExcludedCommand>Add</ExcludedCommand>
+										<ExcludedCommand>Change</ExcludedCommand>
+										<ExcludedCommand>Copy</ExcludedCommand>
+										<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+										<ExcludedCommand>Delete</ExcludedCommand>
+										<ExcludedCommand>EndEdit</ExcludedCommand>
+										<ExcludedCommand>HierarchicalList</ExcludedCommand>
+										<ExcludedCommand>List</ExcludedCommand>
+										<ExcludedCommand>MoveDown</ExcludedCommand>
+										<ExcludedCommand>MoveUp</ExcludedCommand>
+										<ExcludedCommand>OutputList</ExcludedCommand>
+										<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+										<ExcludedCommand>SortListAsc</ExcludedCommand>
+										<ExcludedCommand>SortListDesc</ExcludedCommand>
+										<ExcludedCommand>Tree</ExcludedCommand>
+									</CommandSet>
+									<CurrentRowUse>SelectionPresentationAndChoice</CurrentRowUse>
+									<ContextMenu name="ДеревоСтатусовEDIКонтекстноеМеню" id="24"/>
+									<AutoCommandBar name="ДеревоСтатусовEDIКоманднаяПанель" id="25">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="ДеревоСтатусовEDIРасширеннаяПодсказка" id="26"/>
+									<SearchStringAddition name="ДеревоСтатусовEDIСтрокаПоиска" id="27">
+										<AdditionSource>
+											<Item>ДеревоСтатусовEDI</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоСтатусовEDIСтрокаПоискаКонтекстноеМеню" id="28"/>
+										<ExtendedTooltip name="ДеревоСтатусовEDIСтрокаПоискаРасширеннаяПодсказка" id="29"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ДеревоСтатусовEDIСостояниеПросмотра" id="30">
+										<AdditionSource>
+											<Item>ДеревоСтатусовEDI</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоСтатусовEDIСостояниеПросмотраКонтекстноеМеню" id="31"/>
+										<ExtendedTooltip name="ДеревоСтатусовEDIСостояниеПросмотраРасширеннаяПодсказка" id="32"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ДеревоСтатусовEDIУправлениеПоиском" id="33">
+										<AdditionSource>
+											<Item>ДеревоСтатусовEDI</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ДеревоСтатусовEDIУправлениеПоискомКонтекстноеМеню" id="34"/>
+										<ExtendedTooltip name="ДеревоСтатусовEDIУправлениеПоискомРасширеннаяПодсказка" id="35"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<ColumnGroup name="ГруппаПометкаСтатус" id="36">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа пометка статус</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group status mark</v8:content>
+												</v8:item>
+											</Title>
+											<Group>InCell</Group>
+											<ExtendedTooltip name="ГруппаПометкаСтатусРасширеннаяПодсказка" id="37"/>
+											<ChildItems>
+												<CheckBoxField name="ДеревоСтатусовEDIВыбран" id="60">
+													<DataPath>ДеревоСтатусовEDI.Выбран</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ThreeState>true</ThreeState>
+													<ContextMenu name="ДеревоСтатусовEDIВыбранКонтекстноеМеню" id="61"/>
+													<ExtendedTooltip name="ДеревоСтатусовEDIВыбранРасширеннаяПодсказка" id="62"/>
+													<Events>
+														<Event name="OnChange">ДеревоСтатусовEDIВыбранПриИзменении</Event>
+													</Events>
+												</CheckBoxField>
+												<InputField name="ДеревоСтатусовEDIСтатусПредставление" id="63">
+													<DataPath>ДеревоСтатусовEDI.СтатусПредставление</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ДеревоСтатусовEDIСтатусПредставлениеКонтекстноеМеню" id="64"/>
+													<ExtendedTooltip name="ДеревоСтатусовEDIСтатусПредставлениеРасширеннаяПодсказка" id="65"/>
+												</InputField>
+											</ChildItems>
+										</ColumnGroup>
+									</ChildItems>
+								</Table>
+								<UsualGroup name="ГруппаОтборПоАктуальнойВерсии" id="47">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа отбор по актуальной версии</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group filter by current version</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаОтборПоАктуальнойВерсииРасширеннаяПодсказка" id="48"/>
+									<ChildItems>
+										<CheckBoxField name="ИспользоватьОтборПоНеактуальнойВерсииEDI" id="49">
+											<DataPath>ИспользоватьОтборПоНеактуальнойВерсииEDI</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Установить отбор по документам, с неактуальной версией по отношению к сервису 1С:EDI и документам не актуализированным в сервисе 1С:EDI</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Set the filter by documents with an irrelevant version in relation to the 1C:EDI service and documents not updated in the 1C:EDI service</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<ToolTipRepresentation>None</ToolTipRepresentation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ИспользоватьОтборПоНеактуальнойВерсииEDIКонтекстноеМеню" id="50"/>
+											<ExtendedTooltip name="ИспользоватьОтборПоНеактуальнойВерсииEDIРасширеннаяПодсказка" id="51">
+												<Title formatted="false">
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>     Будут отображаться только те документы, для которых в сервисе "1C: EDI" есть более актуальная версия. Возможно потребуется сопоставить номенклатуру вручную.</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>     Only documents with a more relevant version in the "1C: EDI" service will be displayed. You may need to manually map the products.</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="OnChange">ИспользоватьОтборПоНеактуальнойВерсииEDIПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<UsualGroup name="ГруппаОтборПоАктуальнойВерсииОтступ" id="52">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа отбор по актуальной версии отступ</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group filter by current version indent</v8:content>
+												</v8:item>
+											</Title>
+											<Group>AlwaysHorizontal</Group>
+											<Behavior>Usual</Behavior>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаОтборПоАктуальнойВерсииОтступРасширеннаяПодсказка" id="53"/>
+											<ChildItems>
+												<LabelDecoration name="ДекорацияПустаяОтборПоАктуальности" id="54">
+													<Width>1</Width>
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="ДекорацияПустаяОтборПоАктуальностиКонтекстноеМеню" id="55"/>
+													<ExtendedTooltip name="ДекорацияПустаяОтборПоАктуальностиРасширеннаяПодсказка" id="56"/>
+												</LabelDecoration>
+												<LabelDecoration name="ДекорацияПодсказкаОтборПоАктуальности" id="57">
+													<Visible>false</Visible>
+													<Width>40</Width>
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<HorizontalStretch>false</HorizontalStretch>
+													<Title formatted="true">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>&lt;colorstyle 0:a92d8a5c-b595-4c6c-9f1d-5e85b1c996b4&gt;Будут отображаться только те документы, у которых версия в сервисе "1C: EDI" более поздняя. Возможно потребуется сопоставить номенклатуру вручную.&lt;/&gt;</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>&lt;colorstyle 0:a92d8a5c-b595-4c6c-9f1d-5e85b1c996b4&gt;Only documents with a later version in the "1C: EDI" service will be displayed. You may need to manually map the products.&lt;/&gt;</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ДекорацияПодсказкаОтборПоАктуальностиКонтекстноеМеню" id="58"/>
+													<ExtendedTooltip name="ДекорацияПодсказкаОтборПоАктуальностиРасширеннаяПодсказка" id="59"/>
+												</LabelDecoration>
+												<UsualGroup name="ГруппаВариантыОтбораПоАктуальностиВерсии" id="79">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа варианты отбора по актуальности версии</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group options of filter by version relevance</v8:content>
+														</v8:item>
+													</Title>
+													<Group>Vertical</Group>
+													<Behavior>Usual</Behavior>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="ГруппаВариантыОтбораПоАктуальностиВерсииРасширеннаяПодсказка" id="80"/>
+													<ChildItems>
+														<RadioButtonField name="ВариантОтбораПоАктуальностиВерсииУчитыватьСтатус" id="73">
+															<DataPath>ВариантОтбораПоАктуальностиВерсииEDI</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Будут отображаться неактуальные документы в выбранных статусах</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Irrelevant documents in any statuses will be displayed</v8:content>
+																</v8:item>
+															</ToolTip>
+															<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+															<RadioButtonType>Auto</RadioButtonType>
+															<ChoiceList>
+																<xr:Item>
+																	<xr:Presentation/>
+																	<xr:CheckState>0</xr:CheckState>
+																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation>
+																			<v8:item>
+																				<v8:lang>ru</v8:lang>
+																				<v8:content>Как дополнительное ограничение</v8:content>
+																			</v8:item>
+																			<v8:item>
+																				<v8:lang>en</v8:lang>
+																				<v8:content>As an additional limitation</v8:content>
+																			</v8:item>
+																		</Presentation>
+																		<Value xsi:type="xr:DesignTimeRef">Enum.ВариантыОтбораПоНеактуальнойВерсииEDI.EnumValue.УчитыватьОтборПоСтатусам</Value>
+																	</xr:Value>
+																</xr:Item>
+															</ChoiceList>
+															<ContextMenu name="ВариантОтбораПоАктуальностиВерсииУчитыватьСтатусКонтекстноеМеню" id="74"/>
+															<ExtendedTooltip name="ВариантОтбораПоАктуальностиВерсииУчитыватьСтатусРасширеннаяПодсказка" id="75"/>
+														</RadioButtonField>
+														<RadioButtonField name="ВариантОтбораПоАктуальностиВерсииНеУчитыватьСтатус" id="76">
+															<DataPath>ВариантОтбораПоАктуальностиВерсииEDI</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Будут отображаться документы в выбранных статусах и неактуальные документы в любых статусах</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Documents in the selected statuses and irrelevant documents in any statuses will be displayed</v8:content>
+																</v8:item>
+															</ToolTip>
+															<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+															<RadioButtonType>Auto</RadioButtonType>
+															<ChoiceList>
+																<xr:Item>
+																	<xr:Presentation/>
+																	<xr:CheckState>0</xr:CheckState>
+																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation>
+																			<v8:item>
+																				<v8:lang>ru</v8:lang>
+																				<v8:content>Как расширение отбора по статусам</v8:content>
+																			</v8:item>
+																			<v8:item>
+																				<v8:lang>en</v8:lang>
+																				<v8:content>As an extension of filter by statuses</v8:content>
+																			</v8:item>
+																		</Presentation>
+																		<Value xsi:type="xr:DesignTimeRef">Enum.ВариантыОтбораПоНеактуальнойВерсииEDI.EnumValue.НеУчитыватьОтборПоСтатусам</Value>
+																	</xr:Value>
+																</xr:Item>
+															</ChoiceList>
+															<ContextMenu name="ВариантОтбораПоАктуальностиВерсииНеУчитыватьСтатусКонтекстноеМеню" id="77"/>
+															<ExtendedTooltip name="ВариантОтбораПоАктуальностиВерсииНеУчитыватьСтатусРасширеннаяПодсказка" id="78"/>
+														</RadioButtonField>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.СервисEDI</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ДеревоСтатусовEDI" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево статусов EDI</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>EDI status tree</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Выбран" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выбран</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Selected</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>0</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="СтатусПредставление" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус представление</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Status presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="КоличествоДокументов" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="СтатусСсылка" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус ссылка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Status reference</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.СтатусыЗаказаEDI</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Группировка" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группировка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Grouping</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.ГруппировкиСтатусовEDI</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ИспользоватьОтборПоСтатусамEDI" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать отбор по статусам EDI</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use filter by EDI statuses</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьОтборПоНеактуальнойВерсииEDI" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать отбор по неактуальной версии EDI</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use filter by irrelevant EDI version</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВариантОтбораПоАктуальностиВерсииEDI" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант отбора по актуальности версии EDI</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Option of filter by EDI version relevance</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ВариантыОтбораПоНеактуальнойВерсииEDI</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="УстановитьОтборСтатусыНаНашейСтороне" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить отбор статусы на нашей стороне</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set filter statuses on our side</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить отбор статусы на нашей стороне</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set filter statuses on our side</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УстановитьОтборСтатусыНаНашейСтороне</Action>
+		</Command>
+		<Command name="УстановитьОтборСтатусыНаСторонеКонтрагента" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить отбор статусы на стороне контрагента</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set filter statuses on couterparty side</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить отбор статусы на стороне контрагента</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set filter statuses on couterparty side</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УстановитьОтборСтатусыНаСторонеКонтрагента</Action>
+		</Command>
+		<Command name="УстановитьВсеСтатусы" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить все статусы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set all statuses</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить все статусы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set all statuses</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УстановитьВсеСтатусы</Action>
+		</Command>
+		<Command name="СнятьВсеСтатусы" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять все статусы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Remove all statuses</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять все статусы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Remove all statuses</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СнятьВсеСтатусы</Action>
+		</Command>
+		<Command name="УстановитьОтбор" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить отбор</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set filter</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить отбор</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set filter</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Перенести</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ИспользоватьОтборПоСтатусамEDI">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="МассивВыбранныхСтатусовEDI">
+			<Type/>
+		</Parameter>
+		<Parameter name="ВариантОтбораПоАктуальностиВерсииEDI">
+			<Type>
+				<v8:Type>cfg:EnumRef.ВариантыОтбораПоНеактуальнойВерсииEDI</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ИспользоватьОтборПоНеактуальнойВерсииEDI">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

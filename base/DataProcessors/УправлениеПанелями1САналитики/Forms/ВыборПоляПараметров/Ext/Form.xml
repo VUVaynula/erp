@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Параметры виртуальной таблицы</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Virtual table parameters</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<EnterKeyBehavior>DefaultButton</EnterKeyBehavior>
+	<AutoTitle>false</AutoTitle>
+	<VerticalSpacing>Double</VerticalSpacing>
+	<Customizable>false</Customizable>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="КнопкаУстановить" id="11">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<HorizontalStretch>true</HorizontalStretch>
+				<CommandName>Form.Command.Установить</CommandName>
+				<ExtendedTooltip name="КнопкаУстановитьРасширеннаяПодсказка" id="12"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="НадписьПодсказка" id="4">
+			<HorizontalStretch>true</HorizontalStretch>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выборку из виртуальной таблицы "%1" можно ограничить периодом, определяемым её параметрами. Для автоматической установки значений параметров в "1С:Аналитике", необходимо выбрать поле с типом Дата, фильтры для которого будут определять диапазон дат для виртуальной таблицы. Для таблиц оборотов в "1С:Аналитике" также можно будет устанавливать значение периодичности.</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>You can restrict the selection from the %1 virtual table by the period determined by its parameters. To set parameter values automatically in 1C:Analytics, select the field with the Date type whose filters will determine the range of dates for the virtual table. You can also set the periodicity value for the turnover tables in 1C:Analytics.</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="НадписьПодсказкаКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="НадписьПодсказкаРасширеннаяПодсказка" id="6"/>
+		</LabelDecoration>
+		<InputField name="ПолеПараметров" id="13">
+			<DataPath>ПолеПараметров</DataPath>
+			<HorizontalStretch>true</HorizontalStretch>
+			<ListChoiceMode>true</ListChoiceMode>
+			<ContextMenu name="ПолеПараметровКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="ПолеПараметровРасширеннаяПодсказка" id="15"/>
+			<Events>
+				<Event name="OnChange">ПолеПараметровПриИзменении</Event>
+			</Events>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.УправлениеПанелями1САналитики</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ПолеПараметров" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле параметров в "1С:Аналитике"</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameter field in 1C:Analytics</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Установить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Установить</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="СписокВыбораПоляПараметров">
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ЗначениеПоляПараметров">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ПсевдонимТаблицы">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

@@ -1,0 +1,638 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаЗагрузитьОтмеченныеФайлы" id="52">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗагрузитьОтмеченныеФайлы</CommandName>
+				<ExtendedTooltip name="ФормаЗагрузитьОтмеченныеФайлыРасширеннаяПодсказка" id="53"/>
+			</Button>
+			<Button name="ФормаЗакрыть" id="54">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ExtendedTooltip name="ФормаЗакрытьРасширеннаяПодсказка" id="55"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ПутьКФайламГруппа" id="56">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Путь к файлам группа</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>File path group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ПутьКФайламГруппаРасширеннаяПодсказка" id="57"/>
+			<ChildItems>
+				<InputField name="ПутьКФайлам" id="1">
+					<DataPath>ПутьКФайлам</DataPath>
+					<ChoiceButton>true</ChoiceButton>
+					<ContextMenu name="ПутьКФайламКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="ПутьКФайламРасширеннаяПодсказка" id="3"/>
+					<Events>
+						<Event name="OnChange">ПутьКФайламПриИзменении</Event>
+						<Event name="StartChoice">ПутьКФайламНачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<Button name="ФайлыСведенийНайтиФайлыСведений" id="44">
+					<Type>UsualButton</Type>
+					<Width>3</Width>
+					<CommandName>Form.Command.НайтиФайлыСведений</CommandName>
+					<ExtendedTooltip name="ФайлыСведенийНайтиФайлыСведенийРасширеннаяПодсказка" id="45"/>
+				</Button>
+				<Button name="ДобавитьФайл" id="58">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ДобавитьФайл</CommandName>
+					<ExtendedTooltip name="ДобавитьФайлРасширеннаяПодсказка" id="59"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ФайлыСведений" id="4">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<SelectionMode>SingleRow</SelectionMode>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ФайлыСведений</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Файлы сведений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information files</v8:content>
+				</v8:item>
+			</Title>
+			<CommandSet>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>Delete</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+			</CommandSet>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ФайлыСведенийКонтекстноеМеню" id="5"/>
+			<AutoCommandBar name="ФайлыСведенийКоманднаяПанель" id="6">
+				<ChildItems>
+					<Button name="ФайлыСведенийПереместитьВверх" id="48">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ФайлыСведений.StandardCommand.MoveUp</CommandName>
+						<ExtendedTooltip name="ФайлыСведенийПереместитьВверхРасширеннаяПодсказка" id="49"/>
+					</Button>
+					<Button name="ФайлыСведенийПереместитьВниз" id="50">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ФайлыСведений.StandardCommand.MoveDown</CommandName>
+						<ExtendedTooltip name="ФайлыСведенийПереместитьВнизРасширеннаяПодсказка" id="51"/>
+					</Button>
+					<Button name="ФайлыСведенийИзменитьФорму" id="46">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+						<ExtendedTooltip name="ФайлыСведенийИзменитьФормуРасширеннаяПодсказка" id="47"/>
+					</Button>
+					<Button name="ФайлыСведенийЗагружатьСЗВТДБезПроверкиПротоколаПриема" id="60">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ЗагружатьСЗВТДБезПроверкиПротоколаПриема</CommandName>
+						<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+						<ExtendedTooltip name="ФайлыСведенийЗагружатьСЗВТДБезПроверкиПротоколаПриемаРасширеннаяПодсказка" id="61"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ФайлыСведенийРасширеннаяПодсказка" id="7"/>
+			<SearchStringAddition name="ФайлыСведенийСтрокаПоиска" id="8">
+				<AdditionSource>
+					<Item>ФайлыСведений</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ФайлыСведенийСтрокаПоискаКонтекстноеМеню" id="9"/>
+				<ExtendedTooltip name="ФайлыСведенийСтрокаПоискаРасширеннаяПодсказка" id="10"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ФайлыСведенийСостояниеПросмотра" id="11">
+				<AdditionSource>
+					<Item>ФайлыСведений</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ФайлыСведенийСостояниеПросмотраКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="ФайлыСведенийСостояниеПросмотраРасширеннаяПодсказка" id="13"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ФайлыСведенийУправлениеПоиском" id="14">
+				<AdditionSource>
+					<Item>ФайлыСведений</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ФайлыСведенийУправлениеПоискомКонтекстноеМеню" id="15"/>
+				<ExtendedTooltip name="ФайлыСведенийУправлениеПоискомРасширеннаяПодсказка" id="16"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ФайлыСведенийВыбор</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="ФайлыСведенийОрганизация" id="17">
+					<DataPath>ФайлыСведений.ОрганизацияПредставление</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ФайлыСведенийОрганизацияКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ФайлыСведенийОрганизацияРасширеннаяПодсказка" id="19"/>
+				</LabelField>
+				<LabelField name="ФайлыСведенийОтчетныйПериод" id="20">
+					<DataPath>ФайлыСведений.ОтчетныйПериод</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Period</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ='ММММ гггг'</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DF='MMMM yyyy'</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="ФайлыСведенийОтчетныйПериодКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ФайлыСведенийОтчетныйПериодРасширеннаяПодсказка" id="22"/>
+				</LabelField>
+				<LabelField name="ФайлыСведенийДатаЗаполнения" id="23">
+					<DataPath>ФайлыСведений.ДатаЗаполнения</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>10</Width>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДЛФ=D</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DLF=D</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="ФайлыСведенийДатаЗаполненияКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ФайлыСведенийДатаЗаполненияРасширеннаяПодсказка" id="25"/>
+				</LabelField>
+				<CheckBoxField name="ФайлыСведенийИмпортироватьСЗВТД" id="32">
+					<DataPath>ФайлыСведений.ИмпортироватьСЗВТД</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ФайлыСведенийИмпортироватьСЗВТДКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ФайлыСведенийИмпортироватьСЗВТДРасширеннаяПодсказка" id="34"/>
+					<Events>
+						<Event name="OnChange">ФайлыСведенийИмпортироватьСЗВТДПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<LabelField name="ФайлыСведенийФайлСЗВТД" id="26">
+					<DataPath>ФайлыСведений.ФайлСЗВТД</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CellHyperlink>true</CellHyperlink>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="ФайлыСведенийФайлСЗВТДКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="ФайлыСведенийФайлСЗВТДРасширеннаяПодсказка" id="28"/>
+				</LabelField>
+				<CheckBoxField name="ФайлыСведенийИмпортироватьПротокол" id="35">
+					<DataPath>ФайлыСведений.ИмпортироватьПротокол</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ФайлыСведенийИмпортироватьПротоколКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="ФайлыСведенийИмпортироватьПротоколРасширеннаяПодсказка" id="37"/>
+					<Events>
+						<Event name="OnChange">ФайлыСведенийИмпортироватьПротоколПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<LabelField name="ФайлыСведенийФайлПротокола" id="29">
+					<DataPath>ФайлыСведений.ФайлПротокола</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CellHyperlink>true</CellHyperlink>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="ФайлыСведенийФайлПротоколаКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ФайлыСведенийФайлПротоколаРасширеннаяПодсказка" id="31"/>
+				</LabelField>
+				<LabelField name="ФайлыСведенийДокументСЗВТД" id="41">
+					<DataPath>ФайлыСведений.ДокументСЗВТД</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CellHyperlink>true</CellHyperlink>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="ФайлыСведенийДокументСЗВТДКонтекстноеМеню" id="42"/>
+					<ExtendedTooltip name="ФайлыСведенийДокументСЗВТДРасширеннаяПодсказка" id="43"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ИмпортСведенийОТрудовойДеятельности</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ПутьКФайлам" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Путь к файлам</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Path to files</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>ПутьКФайлам</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ФайлыСведений" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Файлы сведений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information files</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Организация" id="1">
+					<Type>
+						<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ОтчетныйПериод" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отчетный период</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Accounting period</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаЗаполнения" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата заполнения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filling date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ФайлСЗВТД" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Файл СЗВ-ТД</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>SZV-TD file</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ФайлПротокола" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Файл протокола</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Protocol file</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИмпортироватьСЗВТД" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Импортировать СЗВ-ТД</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Import SZV-TD</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИмпортироватьПротокол" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Импортировать протокол</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Import protocol</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДокументСЗВТД" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СЗВ-ТД</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>SZV-TD</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.СведенияОТрудовойДеятельностиРаботниковСЗВ_ТД</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ФайлПротоколаПолноеИмя" id="10">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ФайлСЗВТДПолноеИмя" id="11">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ФайлПротоколаДляПоиска" id="12">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ФайлСЗВТДДляПоиска" id="13">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ОрганизацияПредставление" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация представление</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ФайлСЗВТДГруппировка" id="15">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ХранениеСЗВТД" id="16">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ХранениеПротокола" id="17">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПринятВПФР" id="8">
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="РасширениеПодключено" id="4">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПрочитанныйПутьКФайлам" id="5">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗагружатьСЗВТДБезПроверкиПротоколаПриема" id="6">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="НайтиФайлыСведений" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Найти файлы сведений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Find details files</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить список файлов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update file list</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>НайтиФайлыСведений</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ЗагрузитьОтмеченныеФайлы" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить отмеченные файлы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import the selected files</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ЗагрузкаФайла</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗагрузитьОтмеченныеФайлы</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ДобавитьФайл" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить файл</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add file</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>CommonPicture.ЗагрузкаФайла</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ДобавитьФайл</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗагружатьСЗВТДБезПроверкиПротоколаПриема" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загружать не проверенные СЗВ-ТД</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import unchecked SZV-TD</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загружать СЗВ- ТД без проверки протокола приема</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import SZV-TD without reception protocol check</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Use>
+			<Action>ЗагружатьСЗВТДБезПроверкиПротоколаПриема</Action>
+		</Command>
+	</Commands>
+</Form>
