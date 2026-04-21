@@ -12,6 +12,7 @@
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
+	<Scale>90</Scale>
 	<CommandSet>
 		<ExcludedCommand>CustomizeForm</ExcludedCommand>
 	</CommandSet>
@@ -86,7 +87,7 @@
 			<ChildItems>
 				<Table name="СоответствиеСвойств" id="167">
 					<Representation>List</Representation>
-					<CommandBarLocation>None</CommandBarLocation>
+					<CommandBarLocation>Top</CommandBarLocation>
 					<ChangeRowSet>false</ChangeRowSet>
 					<ChangeRowOrder>false</ChangeRowOrder>
 					<HeightInTableRows>2</HeightInTableRows>
@@ -116,7 +117,25 @@
 					<SearchControlLocation>None</SearchControlLocation>
 					<RowFilter xsi:nil="true"/>
 					<ContextMenu name="СоответствиеСвойствКонтекстноеМеню" id="168"/>
-					<AutoCommandBar name="СоответствиеСвойствКоманднаяПанель" id="169"/>
+					<AutoCommandBar name="СоответствиеСвойствКоманднаяПанель" id="169">
+						<ChildItems>
+							<Button name="СоответствиеСвойствЗаполнитьПоУмолчанию" id="302">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ЗаполнитьПоУмолчанию</CommandName>
+								<ExtendedTooltip name="СоответствиеСвойствЗаполнитьПоУмолчаниюРасширеннаяПодсказка" id="303"/>
+							</Button>
+							<Button name="СоответствиеСвойствСохранить" id="304">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Сохранить</CommandName>
+								<ExtendedTooltip name="СоответствиеСвойствСохранитьРасширеннаяПодсказка" id="305"/>
+							</Button>
+							<Button name="ПравилаНаследованияДобавить" id="253">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Добавить</CommandName>
+								<ExtendedTooltip name="ПравилаНаследованияДобавитьРасширеннаяПодсказка" id="254"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
 					<ExtendedTooltip name="СоответствиеСвойствРасширеннаяПодсказка" id="180"/>
 					<SearchStringAddition name="СоответствиеСвойствСтрокаПоиска" id="184">
 						<AdditionSource>
@@ -210,6 +229,7 @@
 											<ContextMenu name="СоответствиеСвойствСвойствоПродукцииКонтекстноеМеню" id="201"/>
 											<ExtendedTooltip name="СоответствиеСвойствСвойствоПродукцииРасширеннаяПодсказка" id="202"/>
 											<Events>
+												<Event name="OnChange">СоответствиеСвойствСвойствоПродукцииПриИзменении</Event>
 												<Event name="StartChoice">СоответствиеСвойствСвойствоПродукцииНачалоВыбора</Event>
 												<Event name="Clearing">СоответствиеСвойствЗначениеИлиСвойствоПродукцииОчистка</Event>
 											</Events>
@@ -255,6 +275,8 @@
 											<ContextMenu name="СоответствиеСвойствЗначениеСвойстваКонтекстноеМеню" id="204"/>
 											<ExtendedTooltip name="СоответствиеСвойствЗначениеСвойстваРасширеннаяПодсказка" id="205"/>
 											<Events>
+												<Event name="OnChange">СоответствиеСвойствЗначениеСвойстваПриИзменении</Event>
+												<Event name="StartChoice">СоответствиеСвойствЗначениеСвойстваНачалоВыбора</Event>
 												<Event name="Clearing">СоответствиеСвойствЗначениеИлиСвойствоПродукцииОчистка</Event>
 											</Events>
 										</InputField>
@@ -271,6 +293,7 @@
 											<ContextMenu name="СоответствиеСвойствАлгоритмРасчетаЗначенияКонтекстноеМеню" id="207"/>
 											<ExtendedTooltip name="СоответствиеСвойствАлгоритмРасчетаЗначенияРасширеннаяПодсказка" id="208"/>
 											<Events>
+												<Event name="OnChange">СоответствиеСвойствАлгоритмРасчетаЗначенияПриИзменении</Event>
 												<Event name="StartChoice">СоответствиеСвойствАлгоритмРасчетаЗначенияНачалоВыбора</Event>
 												<Event name="Clearing">СоответствиеСвойствЗначениеИлиСвойствоПродукцииОчистка</Event>
 											</Events>
@@ -287,6 +310,7 @@
 											<ContextMenu name="СоответствиеСвойствФункцияРасчетаЗначенияКонтекстноеМеню" id="210"/>
 											<ExtendedTooltip name="СоответствиеСвойствФункцияРасчетаЗначенияРасширеннаяПодсказка" id="211"/>
 											<Events>
+												<Event name="OnChange">СоответствиеСвойствФункцияРасчетаЗначенияПриИзменении</Event>
 												<Event name="StartChoice">СоответствиеСвойствФункцияРасчетаЗначенияНачалоВыбора</Event>
 												<Event name="Clearing">СоответствиеСвойствЗначениеИлиСвойствоПродукцииОчистка</Event>
 											</Events>
@@ -295,99 +319,9 @@
 								</ColumnGroup>
 							</ChildItems>
 						</ColumnGroup>
-						<InputField name="СоответствиеСвойствСвойствоМатериала1" id="260">
-							<DataPath>СоответствиеСвойств.СвойствоМатериала</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="СоответствиеСвойствСвойствоМатериала1КонтекстноеМеню" id="261"/>
-							<ExtendedTooltip name="СоответствиеСвойствСвойствоМатериала1РасширеннаяПодсказка" id="262"/>
-						</InputField>
-						<InputField name="СоответствиеСвойствСвойствоПродукции1" id="263">
-							<DataPath>СоответствиеСвойств.СвойствоПродукции</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="СоответствиеСвойствСвойствоПродукции1КонтекстноеМеню" id="264"/>
-							<ExtendedTooltip name="СоответствиеСвойствСвойствоПродукции1РасширеннаяПодсказка" id="265"/>
-						</InputField>
-						<InputField name="СоответствиеСвойствСписокДоступныхСвойств" id="266">
-							<DataPath>СоответствиеСвойств.СписокДоступныхСвойств</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="СоответствиеСвойствСписокДоступныхСвойствКонтекстноеМеню" id="267"/>
-							<ExtendedTooltip name="СоответствиеСвойствСписокДоступныхСвойствРасширеннаяПодсказка" id="268"/>
-						</InputField>
-						<CheckBoxField name="СоответствиеСвойствЕстьДоступныеСвойстваДляВыбора" id="269">
-							<DataPath>СоответствиеСвойств.ЕстьДоступныеСвойстваДляВыбора</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="СоответствиеСвойствЕстьДоступныеСвойстваДляВыбораКонтекстноеМеню" id="270"/>
-							<ExtendedTooltip name="СоответствиеСвойствЕстьДоступныеСвойстваДляВыбораРасширеннаяПодсказка" id="271"/>
-						</CheckBoxField>
-						<InputField name="СоответствиеСвойствЗначениеСвойства1" id="272">
-							<DataPath>СоответствиеСвойств.ЗначениеСвойства</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="СоответствиеСвойствЗначениеСвойства1КонтекстноеМеню" id="273"/>
-							<ExtendedTooltip name="СоответствиеСвойствЗначениеСвойства1РасширеннаяПодсказка" id="274"/>
-						</InputField>
-						<InputField name="СоответствиеСвойствСвойствоМатериалаПредставление" id="275">
-							<DataPath>СоответствиеСвойств.СвойствоМатериалаПредставление</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="СоответствиеСвойствСвойствоМатериалаПредставлениеКонтекстноеМеню" id="276"/>
-							<ExtendedTooltip name="СоответствиеСвойствСвойствоМатериалаПредставлениеРасширеннаяПодсказка" id="277"/>
-						</InputField>
-						<InputField name="СоответствиеСвойствСвойствоПродукцииПредставление" id="278">
-							<DataPath>СоответствиеСвойств.СвойствоПродукцииПредставление</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="СоответствиеСвойствСвойствоПродукцииПредставлениеКонтекстноеМеню" id="279"/>
-							<ExtendedTooltip name="СоответствиеСвойствСвойствоПродукцииПредставлениеРасширеннаяПодсказка" id="280"/>
-						</InputField>
-						<InputField name="СоответствиеСвойствСпособПодбораЗначения1" id="281">
-							<DataPath>СоответствиеСвойств.СпособПодбораЗначения</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="СоответствиеСвойствСпособПодбораЗначения1КонтекстноеМеню" id="282"/>
-							<ExtendedTooltip name="СоответствиеСвойствСпособПодбораЗначения1РасширеннаяПодсказка" id="283"/>
-						</InputField>
-						<CheckBoxField name="СоответствиеСвойствЕстьВозможностьРасчетаПоФормуле" id="284">
-							<DataPath>СоответствиеСвойств.ЕстьВозможностьРасчетаПоФормуле</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="СоответствиеСвойствЕстьВозможностьРасчетаПоФормулеКонтекстноеМеню" id="285"/>
-							<ExtendedTooltip name="СоответствиеСвойствЕстьВозможностьРасчетаПоФормулеРасширеннаяПодсказка" id="286"/>
-						</CheckBoxField>
-						<InputField name="СоответствиеСвойствАлгоритмРасчетаЗначения1" id="287">
-							<DataPath>СоответствиеСвойств.АлгоритмРасчетаЗначения</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="СоответствиеСвойствАлгоритмРасчетаЗначения1КонтекстноеМеню" id="288"/>
-							<ExtendedTooltip name="СоответствиеСвойствАлгоритмРасчетаЗначения1РасширеннаяПодсказка" id="289"/>
-						</InputField>
-						<InputField name="СоответствиеСвойствСписокДоступныхФункций" id="290">
-							<DataPath>СоответствиеСвойств.СписокДоступныхФункций</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="СоответствиеСвойствСписокДоступныхФункцийКонтекстноеМеню" id="291"/>
-							<ExtendedTooltip name="СоответствиеСвойствСписокДоступныхФункцийРасширеннаяПодсказка" id="292"/>
-						</InputField>
-						<CheckBoxField name="СоответствиеСвойствЕстьДоступныеФункцииДляВыбора" id="293">
-							<DataPath>СоответствиеСвойств.ЕстьДоступныеФункцииДляВыбора</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="СоответствиеСвойствЕстьДоступныеФункцииДляВыбораКонтекстноеМеню" id="294"/>
-							<ExtendedTooltip name="СоответствиеСвойствЕстьДоступныеФункцииДляВыбораРасширеннаяПодсказка" id="295"/>
-						</CheckBoxField>
-						<InputField name="СоответствиеСвойствАлгоритмРасчетаЗначенияПредставление" id="296">
-							<DataPath>СоответствиеСвойств.АлгоритмРасчетаЗначенияПредставление</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="СоответствиеСвойствАлгоритмРасчетаЗначенияПредставлениеКонтекстноеМеню" id="297"/>
-							<ExtendedTooltip name="СоответствиеСвойствАлгоритмРасчетаЗначенияПредставлениеРасширеннаяПодсказка" id="298"/>
-						</InputField>
 						<CheckBoxField name="СоответствиеСвойствИзменена" id="299">
 							<DataPath>СоответствиеСвойств.Изменена</DataPath>
+							<Visible>false</Visible>
 							<EditMode>EnterOnInput</EditMode>
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="СоответствиеСвойствИзмененаКонтекстноеМеню" id="300"/>
@@ -411,26 +345,31 @@
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
+			<ThroughAlign>DontUse</ThroughAlign>
 			<ExtendedTooltip name="ГруппаПравилаНаследованияЗначенийПараметровАвтовыбораРасширеннаяПодсказка" id="225"/>
 			<ChildItems>
 				<UsualGroup name="Группа2" id="258">
+					<HorizontalStretch>false</HorizontalStretch>
+					<GroupHorizontalAlign>Left</GroupHorizontalAlign>
 					<Group>AlwaysHorizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="259"/>
 					<ChildItems>
-						<Button name="ПравилаНаследованияДобавить" id="253">
-							<Type>UsualButton</Type>
-							<CommandName>Form.Command.Добавить</CommandName>
-							<ExtendedTooltip name="ПравилаНаследованияДобавитьРасширеннаяПодсказка" id="254"/>
-						</Button>
 						<Button name="ПравилаНаследованияСкопировать" id="249">
 							<Type>UsualButton</Type>
+							<Width>3</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>3</MaxWidth>
+							<GroupHorizontalAlign>Left</GroupHorizontalAlign>
 							<CommandName>Form.Command.Скопировать</CommandName>
 							<ExtendedTooltip name="ПравилаНаследованияСкопироватьРасширеннаяПодсказка" id="250"/>
 						</Button>
 						<Button name="ПравилаНаследованияУдалить" id="251">
 							<Type>UsualButton</Type>
+							<Width>3</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>3</MaxWidth>
 							<CommandName>Form.Command.Удалить</CommandName>
 							<ExtendedTooltip name="ПравилаНаследованияУдалитьРасширеннаяПодсказка" id="252"/>
 						</Button>
@@ -446,6 +385,8 @@
 						</Button>
 						<InputField name="СпособОпределенияХарактеристики" id="255">
 							<DataPath>СпособОпределенияХарактеристики</DataPath>
+							<Enabled>false</Enabled>
+							<ReadOnly>true</ReadOnly>
 							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
 							<ContextMenu name="СпособОпределенияХарактеристикиКонтекстноеМеню" id="256"/>
 							<ExtendedTooltip name="СпособОпределенияХарактеристикиРасширеннаяПодсказка" id="257"/>
@@ -454,9 +395,8 @@
 				</UsualGroup>
 				<Table name="ПравилаНаследования" id="226">
 					<Representation>List</Representation>
+					<CommandBarLocation>None</CommandBarLocation>
 					<AutoInsertNewRow>true</AutoInsertNewRow>
-					<EnableStartDrag>true</EnableStartDrag>
-					<EnableDrag>true</EnableDrag>
 					<DataPath>ПравилаНаследования</DataPath>
 					<RowFilter xsi:nil="true"/>
 					<ContextMenu name="ПравилаНаследованияКонтекстноеМеню" id="227"/>
@@ -488,10 +428,21 @@
 						<ContextMenu name="ПравилаНаследованияУправлениеПоискомКонтекстноеМеню" id="237"/>
 						<ExtendedTooltip name="ПравилаНаследованияУправлениеПоискомРасширеннаяПодсказка" id="238"/>
 					</SearchControlAddition>
+					<Events>
+						<Event name="BeforeAddRow">ПравилаНаследованияПередНачаломДобавления</Event>
+						<Event name="AfterDeleteRow">ПравилаНаследованияПослеУдаления</Event>
+						<Event name="OnActivateCell">ПравилаНаследованияПриАктивизацииЯчейки</Event>
+					</Events>
 					<ChildItems>
 						<InputField name="ПравилаНаследованияНомер" id="239">
 							<DataPath>ПравилаНаследования.Номер</DataPath>
+							<Enabled>false</Enabled>
+							<ReadOnly>true</ReadOnly>
 							<EditMode>EnterOnInput</EditMode>
+							<Width>3</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>3</MaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
 							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
 							<ContextMenu name="ПравилаНаследованияНомерКонтекстноеМеню" id="240"/>
 							<ExtendedTooltip name="ПравилаНаследованияНомерРасширеннаяПодсказка" id="241"/>
@@ -850,6 +801,21 @@
 							<v8:FractionDigits>3</v8:FractionDigits>
 							<v8:AllowedSign>Any</v8:AllowedSign>
 						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="УникальныйИдентификатор" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уникальный идентификатор</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>36</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
 					</Type>
 				</Column>
 			</Columns>
@@ -1302,6 +1268,17 @@
 						</v8:StringQualifiers>
 					</Type>
 				</Column>
+				<Column name="Изменена" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Изменена</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
 			</Columns>
 		</Attribute>
 		<Attribute name="СпособОпределенияХарактеристики" id="11">
@@ -1313,6 +1290,47 @@
 			</Title>
 			<Type>
 				<v8:TypeId>bdbe1f44-5cde-4ae3-ad0c-fe6c04671aa1</v8:TypeId>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекущийУид" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий уид</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>36</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресСпискаПравил" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес списка правил</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="УИДАдреса" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>УИДАдреса</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
 			</Type>
 		</Attribute>
 		<ConditionalAppearance>
@@ -1395,9 +1413,6 @@
 					</dcsset:item>
 					<dcsset:item>
 						<dcsset:field>СоответствиеСвойствФункцияРасчетаЗначения</dcsset:field>
-					</dcsset:item>
-					<dcsset:item>
-						<dcsset:field>СоответствиеСвойствСвойствоМатериала1</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:filter>
@@ -1534,7 +1549,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Добавить</v8:content>
+					<v8:content>Добавить новое правило</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -1544,11 +1559,51 @@
 				</v8:item>
 			</ToolTip>
 			<Picture>
-				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:Ref>StdPicture.AppearanceDownArrowGray</xr:Ref>
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>Добавить</Action>
-			<Representation>Picture</Representation>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ЗаполнитьПоУмолчанию" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по умолчанию</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по умолчанию</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ЗаполнитьФорму</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗаполнитьПоУмолчанию</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Сохранить" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить изменения</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SaveValues</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Сохранить</Action>
+			<Representation>TextPicture</Representation>
 		</Command>
 	</Commands>
 	<Parameters>
