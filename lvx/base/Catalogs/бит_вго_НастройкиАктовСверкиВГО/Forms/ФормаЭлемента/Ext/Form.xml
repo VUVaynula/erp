@@ -1,0 +1,756 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаНаименованиеКод" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа наименование код</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Name Code group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНаименованиеКодExtendedTooltip" id="74"/>
+			<ChildItems>
+				<InputField name="Наименование" id="3">
+					<DataPath>Объект.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="75"/>
+				</InputField>
+				<InputField name="Код" id="1">
+					<DataPath>Объект.Code</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодExtendedTooltip" id="76"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="РегистрБухгалтерии" id="5">
+			<DataPath>Объект.РегистрБухгалтерии</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<TextEdit>false</TextEdit>
+			<ContextMenu name="РегистрБухгалтерииКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="РегистрБухгалтерииExtendedTooltip" id="77"/>
+			<Events>
+				<Event name="OnChange">РегистрБухгалтерииПриИзменении</Event>
+				<Event name="StartChoice">РегистрБухгалтерииНачалоВыбора</Event>
+			</Events>
+		</InputField>
+		<Pages name="ГруппаОсновнаяПанель" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа основная панель</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group Main Panel</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="ГруппаОсновнаяПанельExtendedTooltip" id="78"/>
+			<ChildItems>
+				<Page name="ГруппаСчета" id="24">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счета</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Accounts</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаСчетаExtendedTooltip" id="79"/>
+					<ChildItems>
+						<Table name="Счета" id="9">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.Счета</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="СчетаКонтекстноеМеню" id="10"/>
+							<AutoCommandBar name="СчетаКоманднаяПанель" id="11">
+								<ChildItems>
+									<Button name="СчетаКомандаФлажкиКолокниУстановить" id="71">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.КомандаФлажкиКолокниУстановить</CommandName>
+										<ExtendedTooltip name="СчетаКомандаФлажкиКолокниУстановитьExtendedTooltip" id="80"/>
+									</Button>
+									<Button name="СчетаКомандаФлажкиКолокниСнять" id="72">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.КомандаФлажкиКолокниСнять</CommandName>
+										<ExtendedTooltip name="СчетаКомандаФлажкиКолокниСнятьExtendedTooltip" id="81"/>
+									</Button>
+									<Button name="СчетаКомандаФлажкиКолокниИнвертировать" id="73">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.КомандаФлажкиКолокниИнвертировать</CommandName>
+										<ExtendedTooltip name="СчетаКомандаФлажкиКолокниИнвертироватьExtendedTooltip" id="82"/>
+									</Button>
+									<Popup name="СчетаГруппаИзменениеПризнаков" id="59">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Изменение признаков</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Change Characters</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="СчетаГруппаИзменениеПризнаковExtendedTooltip" id="83"/>
+										<ChildItems>
+											<ButtonGroup name="СчетаГруппаОсновные" id="60">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Счета группа основные</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Accounts group main</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="СчетаГруппаОсновныеExtendedTooltip" id="84"/>
+												<ChildItems>
+													<Button name="СчетаКомандаСчетРасчета" id="49">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.КомандаСчетРасчета</CommandName>
+														<ExtendedTooltip name="СчетаКомандаСчетРасчетаExtendedTooltip" id="85"/>
+													</Button>
+													<Button name="СчетаКомандаСчетОборотов" id="57">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.КомандаСчетОборотов</CommandName>
+														<ExtendedTooltip name="СчетаКомандаСчетОборотовExtendedTooltip" id="86"/>
+													</Button>
+													<Button name="СчетаКомандаСчетОплаты" id="58">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.КомандаСчетОплаты</CommandName>
+														<ExtendedTooltip name="СчетаКомандаСчетОплатыExtendedTooltip" id="87"/>
+													</Button>
+												</ChildItems>
+											</ButtonGroup>
+										</ChildItems>
+									</Popup>
+									<Button name="СчетаКомандаЗагрузитьПодчиненные" id="56">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.КомандаЗагрузитьПодчиненные</CommandName>
+										<ExtendedTooltip name="СчетаКомандаЗагрузитьПодчиненныеРасширеннаяПодсказка" id="88"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СчетаExtendedTooltip" id="89"/>
+							<SearchStringAddition name="СчетаСтрокаПоиска" id="111">
+								<AdditionSource>
+									<Item>Счета</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СчетаСтрокаПоискаКонтекстноеМеню" id="112"/>
+								<ExtendedTooltip name="СчетаСтрокаПоискаРасширеннаяПодсказка" id="113"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СчетаСостояниеПросмотра" id="114">
+								<AdditionSource>
+									<Item>Счета</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СчетаСостояниеПросмотраКонтекстноеМеню" id="115"/>
+								<ExtendedTooltip name="СчетаСостояниеПросмотраРасширеннаяПодсказка" id="116"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СчетаУправлениеПоиском" id="117">
+								<AdditionSource>
+									<Item>Счета</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СчетаУправлениеПоискомКонтекстноеМеню" id="118"/>
+								<ExtendedTooltip name="СчетаУправлениеПоискомРасширеннаяПодсказка" id="119"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">СчетаПередНачаломДобавления</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="СчетаНомерСтроки" id="12">
+									<DataPath>Объект.Счета.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СчетаНомерСтрокиКонтекстноеМеню" id="13"/>
+									<ExtendedTooltip name="СчетаНомерСтрокиExtendedTooltip" id="90"/>
+								</LabelField>
+								<CheckBoxField name="СчетаЭтоСчетРасчетов" id="14">
+									<DataPath>Объект.Счета.ЭтоСчетРасчетов</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Счет
+расч.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Account</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="СчетаЭтоСчетРасчетовКонтекстноеМеню" id="15"/>
+									<ExtendedTooltip name="СчетаЭтоСчетРасчетовExtendedTooltip" id="91"/>
+									<Events>
+										<Event name="OnChange">СчетаЭтоСчетРасчетовПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<CheckBoxField name="СчетаЭтоСчетОборотов" id="52">
+									<DataPath>Объект.Счета.ЭтоСчетОборотов</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Счет
+об.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Account</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="СчетаЭтоСчетОборотовКонтекстноеМеню" id="53"/>
+									<ExtendedTooltip name="СчетаЭтоСчетОборотовExtendedTooltip" id="92"/>
+									<Events>
+										<Event name="OnChange">СчетаЭтоСчетОборотовПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<CheckBoxField name="СчетаЭтоСчетОплаты" id="54">
+									<DataPath>Объект.Счета.ЭтоСчетОплаты</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Счет
+опл.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Account</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="СчетаЭтоСчетОплатыКонтекстноеМеню" id="55"/>
+									<ExtendedTooltip name="СчетаЭтоСчетОплатыExtendedTooltip" id="93"/>
+									<Events>
+										<Event name="OnChange">СчетаЭтоСчетОплатыПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<InputField name="СчетаКоличествоДоступныхСубконто" id="50">
+									<DataPath>Объект.Счета.КоличествоДоступныхСубконто</DataPath>
+									<Visible>false</Visible>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СчетаКоличествоДоступныхСубконтоКонтекстноеМеню" id="51"/>
+									<ExtendedTooltip name="СчетаКоличествоДоступныхСубконтоExtendedTooltip" id="94"/>
+								</InputField>
+								<InputField name="СчетаСчет" id="16">
+									<DataPath>Объект.Счета.Счет</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ChoiceButton>true</ChoiceButton>
+									<OpenButton>true</OpenButton>
+									<ContextMenu name="СчетаСчетКонтекстноеМеню" id="17"/>
+									<ExtendedTooltip name="СчетаСчетExtendedTooltip" id="95"/>
+									<Events>
+										<Event name="OnChange">СчетаСчетПриИзменении</Event>
+										<Event name="StartChoice">СчетаСчетНачалоВыбора</Event>
+									</Events>
+								</InputField>
+								<ColumnGroup name="СчетаГруппаСубконто1" id="29">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Субконто 1</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Subconto 1</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="СчетаГруппаСубконто1ExtendedTooltip" id="96"/>
+									<ChildItems>
+										<CheckBoxField name="СчетаРазрешеноВыбиратьСубконто_1" id="33">
+											<DataPath>Объект.Счета.РазрешеноВыбиратьСубконто_1</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="СчетаРазрешеноВыбиратьСубконто_1КонтекстноеМеню" id="34"/>
+											<ExtendedTooltip name="СчетаРазрешеноВыбиратьСубконто_1ExtendedTooltip" id="97"/>
+											<Events>
+												<Event name="OnChange">СчетаРазрешеноВыбиратьСубконтоПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<CheckBoxField name="СчетаПроверкаЗаполненияСубконто_1" id="41">
+											<DataPath>Объект.Счета.ПроверкаЗаполненияСубконто_1</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="СчетаПроверкаЗаполненияСубконто_1КонтекстноеМеню" id="42"/>
+											<ExtendedTooltip name="СчетаПроверкаЗаполненияСубконто_1ExtendedTooltip" id="98"/>
+											<Events>
+												<Event name="OnChange">СчетаПроверкаЗаполненияСубконтоПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="СчетаГруппаСубконто2" id="30">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Субконто 2</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Subconto 2</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="СчетаГруппаСубконто2ExtendedTooltip" id="99"/>
+									<ChildItems>
+										<CheckBoxField name="СчетаРазрешеноВыбиратьСубконто_2" id="35">
+											<DataPath>Объект.Счета.РазрешеноВыбиратьСубконто_2</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="СчетаРазрешеноВыбиратьСубконто_2КонтекстноеМеню" id="36"/>
+											<ExtendedTooltip name="СчетаРазрешеноВыбиратьСубконто_2ExtendedTooltip" id="100"/>
+											<Events>
+												<Event name="OnChange">СчетаРазрешеноВыбиратьСубконтоПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<CheckBoxField name="СчетаПроверкаЗаполненияСубконто_2" id="43">
+											<DataPath>Объект.Счета.ПроверкаЗаполненияСубконто_2</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="СчетаПроверкаЗаполненияСубконто_2КонтекстноеМеню" id="44"/>
+											<ExtendedTooltip name="СчетаПроверкаЗаполненияСубконто_2ExtendedTooltip" id="101"/>
+											<Events>
+												<Event name="OnChange">СчетаПроверкаЗаполненияСубконтоПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="СчетаГруппаСубконто3" id="31">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Субконто 3</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Subconto 3</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="СчетаГруппаСубконто3ExtendedTooltip" id="102"/>
+									<ChildItems>
+										<CheckBoxField name="СчетаРазрешеноВыбиратьСубконто_3" id="37">
+											<DataPath>Объект.Счета.РазрешеноВыбиратьСубконто_3</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="СчетаРазрешеноВыбиратьСубконто_3КонтекстноеМеню" id="38"/>
+											<ExtendedTooltip name="СчетаРазрешеноВыбиратьСубконто_3ExtendedTooltip" id="103"/>
+											<Events>
+												<Event name="OnChange">СчетаРазрешеноВыбиратьСубконтоПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<CheckBoxField name="СчетаПроверкаЗаполненияСубконто_3" id="45">
+											<DataPath>Объект.Счета.ПроверкаЗаполненияСубконто_3</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="СчетаПроверкаЗаполненияСубконто_3КонтекстноеМеню" id="46"/>
+											<ExtendedTooltip name="СчетаПроверкаЗаполненияСубконто_3ExtendedTooltip" id="104"/>
+											<Events>
+												<Event name="OnChange">СчетаПроверкаЗаполненияСубконтоПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="СчетаГруппаСубконто4" id="32">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Субконто 4</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Subconto 4</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="СчетаГруппаСубконто4ExtendedTooltip" id="105"/>
+									<ChildItems>
+										<CheckBoxField name="СчетаРазрешеноВыбиратьСубконто_4" id="39">
+											<DataPath>Объект.Счета.РазрешеноВыбиратьСубконто_4</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="СчетаРазрешеноВыбиратьСубконто_4КонтекстноеМеню" id="40"/>
+											<ExtendedTooltip name="СчетаРазрешеноВыбиратьСубконто_4ExtendedTooltip" id="106"/>
+											<Events>
+												<Event name="OnChange">СчетаРазрешеноВыбиратьСубконтоПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<CheckBoxField name="СчетаПроверкаЗаполненияСубконто_4" id="47">
+											<DataPath>Объект.Счета.ПроверкаЗаполненияСубконто_4</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="СчетаПроверкаЗаполненияСубконто_4КонтекстноеМеню" id="48"/>
+											<ExtendedTooltip name="СчетаПроверкаЗаполненияСубконто_4ExtendedTooltip" id="107"/>
+											<Events>
+												<Event name="OnChange">СчетаПроверкаЗаполненияСубконтоПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаДополнительно" id="25">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительно</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Extra Info</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаДополнительноExtendedTooltip" id="108"/>
+					<ChildItems>
+						<CheckBoxField name="РазрешеноВыбиратьОперациюВГО" id="7">
+							<DataPath>Объект.РазрешеноВыбиратьОперациюВГО</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="РазрешеноВыбиратьОперациюВГОКонтекстноеМеню" id="8"/>
+							<ExtendedTooltip name="РазрешеноВыбиратьОперациюВГОExtendedTooltip" id="109"/>
+						</CheckBoxField>
+						<InputField name="Комментарий" id="26">
+							<DataPath>Объект.Комментарий</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="КомментарийКонтекстноеМеню" id="27"/>
+							<ExtendedTooltip name="КомментарийExtendedTooltip" id="110"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.бит_вго_НастройкиАктовСверкиВГО</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<Columns>
+				<AdditionalColumns table="Объект.Счета">
+					<Column name="КоличествоДоступныхСубконто" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество доступных субконто</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Number of Available Subconto</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>1</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="фКэшЗначений" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кэш значений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Value Cache</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ИмяРегистраБухгалтерии" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя регистра бухгалтерии</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounting Register Name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="фКоличествоСубконто" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество субконто</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Number of Subconto</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИмяПланаСчетов" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя плана счетов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Chart of Accounts Name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="КомандаСчетРасчета" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счета расчета</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounts for Settlement</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инвертируется признак счета расчета (возможно выполнить сразу для нескольких строк)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ledger account attribute is being converted (can be executed for several lines at the same time)</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаСчетРасчета</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаЗагрузитьПодчиненные" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить подчиненные</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Upload subordinates</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда загрузить подчиненные</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Team downloaded subordinates</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаЗагрузитьПодчиненные</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаСчетОборотов" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счета оборотов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounts for Debits and Credits</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инвертируется признак счета оборотов (возможно выполнить сразу для нескольких строк)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Turnover account attribute is being converted (can be executed for several lines at the same time)</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаСчетОборотов</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаСчетОплаты" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счета оплаты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounts for Payments</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инвертируется признак счета оплаты (возможно выполнить сразу для нескольких строк)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment account attribute is being converted (can be executed for several lines at the same time)</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаСчетОплаты</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаФлажкиКолокниУстановить" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить флажки в текущей колонке</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark all in the current column</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить флажки в текущей колонке</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark all in the current column</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаФлажкиКолокниУстановить</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаФлажкиКолокниСнять" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять флажки в текущей колонке</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unmark all in the current column</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять флажки в текущей колонке</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unmark all in the current column</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаФлажкиКолокниСнять</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаФлажкиКолокниИнвертировать" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инвертировать флажки в текущей колонке</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Toggle Boxes in Current Column</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инвертировать флажки в текущей колонке</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Toggle Boxes in Current Column</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.бит_ИнвертироватьФлажки</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:TransparentPixel x="13" y="12"/>
+			</Picture>
+			<Action>КомандаФлажкиКолокниИнвертировать</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

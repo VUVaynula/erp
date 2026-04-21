@@ -1,0 +1,1001 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаДекорацияПредупреждения" id="159">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предупреждение о принятие данных к учету после утверждения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Warning about the adoption of data to the account after the approval</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:бит_ЦветФонаПредупреждения</BackColor>
+			<ExtendedTooltip name="ГруппаДекорацияПредупрежденияРасширеннаяПодсказка" id="160"/>
+			<ChildItems>
+				<LabelDecoration name="ДекорацияПредупреждения" id="161">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Бюджет содержит дубли статей оборотов и не может использоваться в "Настройках формы ввода бюджета".</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>The budget contains duplicates entries and speed can not be used in "Setting a budget entry form".</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДекорацияПредупрежденияКонтекстноеМеню" id="162"/>
+					<ExtendedTooltip name="ДекорацияПредупрежденияРасширеннаяПодсказка" id="163"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="ТипБюджета" id="9">
+			<DataPath>Объект.ТипБюджета</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<BackColor>style:бит_БыстрыеОтборыФонГруппы</BackColor>
+			<ContextMenu name="ТипБюджетаКонтекстноеМеню" id="10"/>
+			<ExtendedTooltip name="ТипБюджетаExtendedTooltip" id="72"/>
+		</InputField>
+		<UsualGroup name="НаименованиеКод" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование код</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Code Name</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="НаименованиеКодExtendedTooltip" id="68"/>
+			<ChildItems>
+				<InputField name="Наименование" id="3">
+					<DataPath>Объект.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="69"/>
+					<Events>
+						<Event name="OnChange">НаименованиеПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="Код" id="1">
+					<DataPath>Объект.Code</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодExtendedTooltip" id="70"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="НаименованиеПолное" id="7">
+			<DataPath>Объект.НаименованиеПолное</DataPath>
+			<TitleLocation>Left</TitleLocation>
+			<EditMode>EnterOnInput</EditMode>
+			<Height>2</Height>
+			<VerticalStretch>false</VerticalStretch>
+			<MultiLine>true</MultiLine>
+			<DropListButton>true</DropListButton>
+			<ChoiceButton>false</ChoiceButton>
+			<ClearButton>false</ClearButton>
+			<SpinButton>false</SpinButton>
+			<OpenButton>false</OpenButton>
+			<ChooseType>false</ChooseType>
+			<ChoiceListButton>true</ChoiceListButton>
+			<ContextMenu name="НаименованиеПолноеКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="НаименованиеПолноеExtendedTooltip" id="71"/>
+			<Events>
+				<Event name="OnChange">НаименованиеПолноеПриИзменении</Event>
+				<Event name="AutoComplete">НаименованиеПолноеАвтоПодбор</Event>
+				<Event name="ChoiceProcessing">НаименованиеПолноеОбработкаВыбора</Event>
+			</Events>
+		</InputField>
+		<InputField name="Родитель" id="5">
+			<DataPath>Объект.Parent</DataPath>
+			<SkipOnInput>true</SkipOnInput>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="РодительКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="РодительExtendedTooltip" id="67"/>
+		</InputField>
+		<Pages name="ПанельОсновная" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель основная</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main Panel</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="ПанельОсновнаяExtendedTooltip" id="73"/>
+			<ChildItems>
+				<Page name="СтраницаСтатьиБюджета" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статьи бюджета</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Budget Line Items</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаСтатьиБюджетаExtendedTooltip" id="74"/>
+					<ChildItems>
+						<Table name="СтатьиБюджета" id="17">
+							<Representation>Tree</Representation>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<InitialTreeView>ExpandAllLevels</InitialTreeView>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>СтатьиБюджета</DataPath>
+							<RowPictureDataPath>СтатьиБюджета.DefaultPicture</RowPictureDataPath>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="СтатьиБюджетаКонтекстноеМеню" id="18">
+								<ChildItems>
+									<Button name="СтатьиБюджетаКонтекстноеМенюИзменитьВыделенныеСтатьи" id="172">
+										<Type>CommandBarButton</Type>
+										<Visible>false</Visible>
+										<CommandName>Form.Command.ИзменитьВыделенныеСтатьи</CommandName>
+										<ExtendedTooltip name="СтатьиБюджетаКонтекстноеМенюИзменитьВыделенныеСтатьиРасширеннаяПодсказка" id="173"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="СтатьиБюджетаКоманднаяПанель" id="19">
+								<ChildItems>
+									<Button name="СтатьиБюджетаДобавитьРасчет" id="164">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ДобавитьРасчет</CommandName>
+										<ExtendedTooltip name="СтатьиБюджетаДобавитьРасчетРасширеннаяПодсказка" id="165"/>
+									</Button>
+									<Button name="СтатьиБюджетаПодборСтатейБюджета" id="59">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПодборСтатейБюджета</CommandName>
+										<ExtendedTooltip name="СтатьиБюджетаПодборСтатейБюджетаExtendedTooltip" id="75"/>
+									</Button>
+									<Popup name="Заполнить" id="60">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Заполнить</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Fill-in</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ЗаполнитьExtendedTooltip" id="76"/>
+										<ChildItems>
+											<Button name="СтатьиБюджетаЗаполнитьПоГруппеСтатейОборотов" id="61">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ЗаполнитьПоГруппеСтатейОборотов</CommandName>
+												<ExtendedTooltip name="СтатьиБюджетаЗаполнитьПоГруппеСтатейОборотовExtendedTooltip" id="77"/>
+											</Button>
+											<Button name="СтатьиБюджетаЗаполнитьНаименованияСтатей" id="187">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ЗаполнитьНаименованияСтатей</CommandName>
+												<ExtendedTooltip name="СтатьиБюджетаЗаполнитьНаименованияСтатейРасширеннаяПодсказка" id="188"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<Button name="СтатьиБюджетаНайти" id="125">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.СтатьиБюджета.StandardCommand.Find</CommandName>
+										<ExtendedTooltip name="СтатьиБюджетаНайтиРасширеннаяПодсказка" id="126"/>
+									</Button>
+									<Button name="СтатьиБюджетаОтменитьПоиск" id="127">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.СтатьиБюджета.StandardCommand.CancelSearch</CommandName>
+										<ExtendedTooltip name="СтатьиБюджетаОтменитьПоискРасширеннаяПодсказка" id="128"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СтатьиБюджетаExtendedTooltip" id="78"/>
+							<SearchStringAddition name="СтатьиБюджетаСтрокаПоиска" id="101">
+								<AdditionSource>
+									<Item>СтатьиБюджета</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СтатьиБюджетаСтрокаПоискаКонтекстноеМеню" id="102"/>
+								<ExtendedTooltip name="СтатьиБюджетаСтрокаПоискаРасширеннаяПодсказка" id="103"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СтатьиБюджетаСостояниеПросмотра" id="104">
+								<AdditionSource>
+									<Item>СтатьиБюджета</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СтатьиБюджетаСостояниеПросмотраКонтекстноеМеню" id="105"/>
+								<ExtendedTooltip name="СтатьиБюджетаСостояниеПросмотраРасширеннаяПодсказка" id="106"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СтатьиБюджетаУправлениеПоиском" id="107">
+								<AdditionSource>
+									<Item>СтатьиБюджета</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СтатьиБюджетаУправлениеПоискомКонтекстноеМеню" id="108"/>
+								<ExtendedTooltip name="СтатьиБюджетаУправлениеПоискомРасширеннаяПодсказка" id="109"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">СтатьиБюджетаПередНачаломДобавления</Event>
+								<Event name="ChoiceProcessing">СтатьиБюджетаОбработкаВыбора</Event>
+								<Event name="OnChange">СтатьиБюджетаПриИзменении</Event>
+							</Events>
+							<ChildItems>
+								<ColumnGroup name="СтатьиБюджетаКодификаторНаименование" id="147">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Кодификатор и наименование</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Codifier and name</v8:content>
+										</v8:item>
+									</Title>
+									<Group>InCell</Group>
+									<ExtendedTooltip name="СтатьиБюджетаКодификаторНаименованиеРасширеннаяПодсказка" id="148"/>
+									<ChildItems>
+										<LabelField name="СтатьиБюджетаКодификатор" id="32">
+											<DataPath>СтатьиБюджета.Кодификатор</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<ContextMenu name="СтатьиБюджетаКодификаторКонтекстноеМеню" id="33"/>
+											<ExtendedTooltip name="СтатьиБюджетаКодификаторExtendedTooltip" id="82"/>
+										</LabelField>
+										<LabelField name="СтатьиБюджетаНаименование" id="20">
+											<DataPath>СтатьиБюджета.Description</DataPath>
+											<EditMode>Directly</EditMode>
+											<ContextMenu name="СтатьиБюджетаНаименованиеКонтекстноеМеню" id="21"/>
+											<ExtendedTooltip name="СтатьиБюджетаНаименованиеExtendedTooltip" id="80"/>
+										</LabelField>
+									</ChildItems>
+								</ColumnGroup>
+								<CheckBoxField name="СтатьиБюджетаЭтоГруппа" id="179">
+									<DataPath>СтатьиБюджета.IsFolder</DataPath>
+									<Visible>false</Visible>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="СтатьиБюджетаЭтоГруппаКонтекстноеМеню" id="180"/>
+									<ExtendedTooltip name="СтатьиБюджетаЭтоГруппаРасширеннаяПодсказка" id="181"/>
+								</CheckBoxField>
+								<LabelField name="СтатьиБюджетаСтатьяОборотов" id="28">
+									<DataPath>СтатьиБюджета.СтатьяОборотов</DataPath>
+									<ContextMenu name="СтатьиБюджетаСтатьяОборотовКонтекстноеМеню" id="29"/>
+									<ExtendedTooltip name="СтатьиБюджетаСтатьяОборотовExtendedTooltip" id="83"/>
+								</LabelField>
+								<LabelField name="СтатьиБюджетаКоэффициент" id="30">
+									<DataPath>СтатьиБюджета.Коэффициент</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>К.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Coeff.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СтатьиБюджетаКоэффициентКонтекстноеМеню" id="31"/>
+									<ExtendedTooltip name="СтатьиБюджетаКоэффициентExtendedTooltip" id="85"/>
+								</LabelField>
+								<ColumnGroup name="СтатьиБюджетаГруппаВыводВОтчеты" id="182">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вывод в отчеты</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Output to reports</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="СтатьиБюджетаГруппаВыводВОтчетыРасширеннаяПодсказка" id="183"/>
+									<ChildItems>
+										<PictureField name="СтатьиБюджетаНеОтображать" id="34">
+											<DataPath>СтатьиБюджета.НеОтображать</DataPath>
+											<Visible>false</Visible>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Не отображать в отчетах по бюджету</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Does not appear in the report on the budget</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ValuesPicture>
+												<xr:Ref>CommonPicture.бит_ВыводСтатейВОтчеты</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</ValuesPicture>
+											<ContextMenu name="СтатьиБюджетаНеОтображатьКонтекстноеМеню" id="35"/>
+											<ExtendedTooltip name="СтатьиБюджетаНеОтображатьExtendedTooltip" id="86"/>
+										</PictureField>
+										<CheckBoxField name="СтатьиБюджетаЭтоРасчет" id="166">
+											<DataPath>СтатьиБюджета.ЭтоРасчет</DataPath>
+											<Visible>false</Visible>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="СтатьиБюджетаЭтоРасчетКонтекстноеМеню" id="167"/>
+											<ExtendedTooltip name="СтатьиБюджетаЭтоРасчетРасширеннаяПодсказка" id="168"/>
+										</CheckBoxField>
+										<PictureField name="СтатьиБюджетаВыводВОтчеты" id="184">
+											<DataPath>СтатьиБюджета.ВыводВОтчеты</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Вывод в отчеты</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Output to reports</v8:content>
+												</v8:item>
+											</Title>
+											<ValuesPicture>
+												<xr:Ref>CommonPicture.бит_ВыводСтатейВОтчеты</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</ValuesPicture>
+											<ContextMenu name="СтатьиБюджетаВыводВОтчетыКонтекстноеМеню" id="185"/>
+											<ExtendedTooltip name="СтатьиБюджетаВыводВОтчетыРасширеннаяПодсказка" id="186"/>
+										</PictureField>
+										<CheckBoxField name="СтатьиБюджетаНеВключатьВИтоги" id="169">
+											<DataPath>СтатьиБюджета.НеВключатьВИтоги</DataPath>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="СтатьиБюджетаНеВключатьВИтогиКонтекстноеМеню" id="170"/>
+											<ExtendedTooltip name="СтатьиБюджетаНеВключатьВИтогиРасширеннаяПодсказка" id="171"/>
+										</CheckBoxField>
+									</ChildItems>
+								</ColumnGroup>
+								<LabelField name="СтатьиБюджетаКомментарий" id="36">
+									<DataPath>СтатьиБюджета.Комментарий</DataPath>
+									<ContextMenu name="СтатьиБюджетаКомментарийКонтекстноеМеню" id="37"/>
+									<ExtendedTooltip name="СтатьиБюджетаКомментарийExtendedTooltip" id="87"/>
+								</LabelField>
+								<LabelField name="СтатьиБюджетаКод" id="22">
+									<DataPath>СтатьиБюджета.Code</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ContextMenu name="СтатьиБюджетаКодКонтекстноеМеню" id="23"/>
+									<ExtendedTooltip name="СтатьиБюджетаКодExtendedTooltip" id="81"/>
+								</LabelField>
+								<LabelField name="СтатьиБюджетаСсылка" id="63">
+									<DataPath>СтатьиБюджета.Ref</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ContextMenu name="СтатьиБюджетаСсылкаКонтекстноеМеню" id="64"/>
+									<ExtendedTooltip name="СтатьиБюджетаСсылкаExtendedTooltip" id="79"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаСчетаБюджета" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счета бюджета</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Budget Accounts</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаСчетаБюджетаExtendedTooltip" id="88"/>
+					<ChildItems>
+						<Table name="СчетаБюджета" id="38">
+							<Representation>Tree</Representation>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<InitialTreeView>ExpandAllLevels</InitialTreeView>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>СчетаБюджета</DataPath>
+							<RowPictureDataPath>СчетаБюджета.DefaultPicture</RowPictureDataPath>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>true</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="СчетаБюджетаКонтекстноеМеню" id="39">
+								<ChildItems>
+									<Button name="СчетаБюджетаКонтекстноеМенюИзменитьВыделенныеСчета" id="174">
+										<Type>CommandBarButton</Type>
+										<Visible>false</Visible>
+										<CommandName>Form.Command.ИзменитьВыделенныеСчета</CommandName>
+										<ExtendedTooltip name="СчетаБюджетаКонтекстноеМенюИзменитьВыделенныеСчетаРасширеннаяПодсказка" id="175"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="СчетаБюджетаКоманднаяПанель" id="40">
+								<ChildItems>
+									<Button name="СчетаБюджетаПодборСчетовБюджета" id="62">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПодборСчетовБюджета</CommandName>
+										<ExtendedTooltip name="СчетаБюджетаПодборСчетовБюджетаExtendedTooltip" id="89"/>
+									</Button>
+									<Button name="СчетаБюджетаНайти" id="135">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.СчетаБюджета.StandardCommand.Find</CommandName>
+										<ExtendedTooltip name="СчетаБюджетаНайтиРасширеннаяПодсказка" id="136"/>
+									</Button>
+									<Button name="СчетаБюджетаОтменитьПоиск" id="137">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.СчетаБюджета.StandardCommand.CancelSearch</CommandName>
+										<ExtendedTooltip name="СчетаБюджетаОтменитьПоискРасширеннаяПодсказка" id="138"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СчетаБюджетаExtendedTooltip" id="90"/>
+							<SearchStringAddition name="СчетаБюджетаСтрокаПоиска" id="110">
+								<AdditionSource>
+									<Item>СчетаБюджета</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СчетаБюджетаСтрокаПоискаКонтекстноеМеню" id="111"/>
+								<ExtendedTooltip name="СчетаБюджетаСтрокаПоискаРасширеннаяПодсказка" id="112"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СчетаБюджетаСостояниеПросмотра" id="113">
+								<AdditionSource>
+									<Item>СчетаБюджета</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СчетаБюджетаСостояниеПросмотраКонтекстноеМеню" id="114"/>
+								<ExtendedTooltip name="СчетаБюджетаСостояниеПросмотраРасширеннаяПодсказка" id="115"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СчетаБюджетаУправлениеПоиском" id="116">
+								<AdditionSource>
+									<Item>СчетаБюджета</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СчетаБюджетаУправлениеПоискомКонтекстноеМеню" id="117"/>
+								<ExtendedTooltip name="СчетаБюджетаУправлениеПоискомРасширеннаяПодсказка" id="118"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">СчетаБюджетаПередНачаломДобавления</Event>
+								<Event name="ChoiceProcessing">СчетаБюджетаОбработкаВыбора</Event>
+							</Events>
+							<ChildItems>
+								<ColumnGroup name="СчетаБюджетаКодификаторНаименование" id="149">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Кодификатор и наименование</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Codifier and name</v8:content>
+										</v8:item>
+									</Title>
+									<Group>InCell</Group>
+									<ExtendedTooltip name="СчетаБюджетаКодификаторНаименованиеРасширеннаяПодсказка" id="150"/>
+									<ChildItems>
+										<LabelField name="СчетаБюджетаКодификатор" id="53">
+											<DataPath>СчетаБюджета.Кодификатор</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<ContextMenu name="СчетаБюджетаКодификаторКонтекстноеМеню" id="54"/>
+											<ExtendedTooltip name="СчетаБюджетаКодификаторExtendedTooltip" id="94"/>
+										</LabelField>
+										<LabelField name="СчетаБюджетаНаименование" id="41">
+											<DataPath>СчетаБюджета.Description</DataPath>
+											<EditMode>Directly</EditMode>
+											<ContextMenu name="СчетаБюджетаНаименованиеКонтекстноеМеню" id="42"/>
+											<ExtendedTooltip name="СчетаБюджетаНаименованиеExtendedTooltip" id="92"/>
+										</LabelField>
+									</ChildItems>
+								</ColumnGroup>
+								<LabelField name="СчетаБюджетаСчет" id="47">
+									<DataPath>СчетаБюджета.Счет</DataPath>
+									<ContextMenu name="СчетаБюджетаСчетКонтекстноеМеню" id="48"/>
+									<ExtendedTooltip name="СчетаБюджетаСчетExtendedTooltip" id="95"/>
+								</LabelField>
+								<LabelField name="СчетаБюджетаКоэффициент" id="51">
+									<DataPath>СчетаБюджета.Коэффициент</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>К.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Coeff.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СчетаБюджетаКоэффициентКонтекстноеМеню" id="52"/>
+									<ExtendedTooltip name="СчетаБюджетаКоэффициентExtendedTooltip" id="97"/>
+								</LabelField>
+								<CheckBoxField name="СчетаБюджетаНеОтображать" id="55">
+									<DataPath>СчетаБюджета.НеОтображать</DataPath>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Не отображать в отчетах по бюджету</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Does not appear in the report on the budget</v8:content>
+										</v8:item>
+									</ToolTip>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="СчетаБюджетаНеОтображатьКонтекстноеМеню" id="56"/>
+									<ExtendedTooltip name="СчетаБюджетаНеОтображатьExtendedTooltip" id="98"/>
+								</CheckBoxField>
+								<LabelField name="СчетаБюджетаКомментарий" id="57">
+									<DataPath>СчетаБюджета.Комментарий</DataPath>
+									<ContextMenu name="СчетаБюджетаКомментарийКонтекстноеМеню" id="58"/>
+									<ExtendedTooltip name="СчетаБюджетаКомментарийExtendedTooltip" id="99"/>
+								</LabelField>
+								<LabelField name="СчетаБюджетаКод" id="43">
+									<DataPath>СчетаБюджета.Code</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ContextMenu name="СчетаБюджетаКодКонтекстноеМеню" id="44"/>
+									<ExtendedTooltip name="СчетаБюджетаКодExtendedTooltip" id="93"/>
+								</LabelField>
+								<LabelField name="СчетаБюджетаСсылка" id="65">
+									<DataPath>СчетаБюджета.Ref</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ContextMenu name="СчетаБюджетаСсылкаКонтекстноеМеню" id="66"/>
+									<ExtendedTooltip name="СчетаБюджетаСсылкаExtendedTooltip" id="91"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<InputField name="Комментарий" id="11">
+			<DataPath>Объект.Комментарий</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="12"/>
+			<ExtendedTooltip name="КомментарийExtendedTooltip" id="100"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.бит_Бюджеты</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СтатьиБюджета" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статьи бюджета</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Budget Line Items</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>СтатьиБюджета.Parent</Field>
+				<Field>СтатьиБюджета.Ref</Field>
+				<Field>СтатьиБюджета.НеВключатьВИтоги</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	Справочникбит_СтатьиБюджета.Ссылка,
+	Справочникбит_СтатьиБюджета.ПометкаУдаления,
+	Справочникбит_СтатьиБюджета.Владелец,
+	Справочникбит_СтатьиБюджета.Родитель,
+	Справочникбит_СтатьиБюджета.ЭтоГруппа,
+	Справочникбит_СтатьиБюджета.Код,
+	Справочникбит_СтатьиБюджета.Наименование,
+	Справочникбит_СтатьиБюджета.НаименованиеПолное,
+	Справочникбит_СтатьиБюджета.СтатьяОборотов,
+	Справочникбит_СтатьиБюджета.Коэффициент,
+	Справочникбит_СтатьиБюджета.Кодификатор,
+	Справочникбит_СтатьиБюджета.НеОтображать,
+	Справочникбит_СтатьиБюджета.Комментарий,
+	Справочникбит_СтатьиБюджета.ЭтоРасчет,
+	Справочникбит_СтатьиБюджета.ФормулаРасчета,
+	Справочникбит_СтатьиБюджета.НеВключатьВИтоги,
+	Справочникбит_СтатьиБюджета.ВыводитьКоличество,
+	Справочникбит_СтатьиБюджета.ПоказатьТекстКоличество,
+	Справочникбит_СтатьиБюджета.ПараметрыРасчета,
+	Справочникбит_СтатьиБюджета.Предопределенный,
+	Справочникбит_СтатьиБюджета.ИмяПредопределенныхДанных,
+	ВЫБОР 
+		КОГДА Справочникбит_СтатьиБюджета.ЭтоРасчет ТОГДА 1
+		КОГДА Справочникбит_СтатьиБюджета.НеОтображать ТОГДА 0
+		ИНАЧЕ 2 КОНЕЦ КАК ВыводВОтчеты
+ИЗ
+	Справочник.бит_СтатьиБюджета КАК Справочникбит_СтатьиБюджета</QueryText>
+				<MainTable>Catalog.бит_СтатьиБюджета</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Кодификатор</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Наименование</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="СчетаБюджета" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счета бюджета</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Budget Accounts</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>СчетаБюджета.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>Catalog.бит_СчетаБюджета</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Кодификатор</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Наименование</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ТекущаяСтатья" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущая статья</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current Item</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.бит_СтатьиБюджета</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекущийСчет" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий счет</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current Account</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.бит_СчетаБюджета</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗначениеКопирования" id="6">
+			<Type>
+				<v8:Type>cfg:CatalogRef.бит_Бюджеты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЕстьМеханизмБалансовогоУчета" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Есть механизм балансового учета</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>There is a mechanism of balance sheet accounting</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗадатьВопросКопирования" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Задать вопрос копирования</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ask the copy</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекущаяГруппаСтатей" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущая группа статей</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>The current group of articles</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ФормироватьНаименованиеПолноеАвтоматически" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Формировать наименование полное автоматически</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate Full Name Automatically</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьПоГруппеСтатейОборотов" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>По группе статей оборотов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>According to the turnover of the group of articles</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по группе статей оборотов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill-in by Line-Item Group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьПоГруппеСтатейОборотов</Action>
+			<Representation>Text</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПодборСтатейБюджета" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Selection</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор статей бюджета</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Budget Line-Item Selection</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборСтатейБюджета</Action>
+			<Representation>Text</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПодборСчетовБюджета" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Selection</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор счетов бюджета</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Budget Account Selection</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборСчетовБюджета</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ДобавитьРасчет" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить расчет</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить расчет, используемый в отчетах с расчетами</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add calculation used in the reports with calculations</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CustomExpression</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ДобавитьРасчет</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ИзменитьВыделенныеСтатьи" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить выделенные...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Edit Selected...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить выделенные объекты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Edit selected objects</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИзменитьВыделенныеСтатьи</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ИзменитьВыделенныеСчета" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить выделенные...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Edit Selected...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить выделенные объекты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Edit selected objects</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИзменитьВыделенныеСчета</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаполнитьНаименованияСтатей" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименования статей</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ЗаполнитьНаименованияСтатей</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>Task.бит_Задача.Command.ЗадачиПоПредмету</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

@@ -1,0 +1,881 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Распоряжения на внутреннее потребление</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Inventory consumption references</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<CommandSet>
+		<ExcludedCommand>Change</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаВыбрать" id="40">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Выбрать</CommandName>
+				<ExtendedTooltip name="ФормаВыбратьРасширеннаяПодсказка" id="43"/>
+			</Button>
+			<ButtonGroup name="СтандартныеКомандыСписка" id="42">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Стандартные команды списка</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Standard list commands</v8:content>
+					</v8:item>
+				</Title>
+				<CommandSource>Form</CommandSource>
+				<ExtendedTooltip name="СтандартныеКомандыСпискаРасширеннаяПодсказка" id="44"/>
+			</ButtonGroup>
+			<Button name="ФормаСправка" id="41">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="45"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПользовательскихНастроек" id="67">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа пользовательских настроек</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User settings group</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПользовательскихНастроекРасширеннаяПодсказка" id="68"/>
+		</UsualGroup>
+		<Table name="Список" id="1">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<SkipOnInput>false</SkipOnInput>
+			<DefaultItem>true</DefaultItem>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<SelectionMode>SingleRow</SelectionMode>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Список</DataPath>
+			<RowPictureDataPath>Список.НестандартнаяКартинка</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Ref>CommonPicture.СостоянияДокумента</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</RowsPicture>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List</v8:content>
+				</v8:item>
+			</Title>
+			<CommandSet>
+				<ExcludedCommand>Change</ExcludedCommand>
+			</CommandSet>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>false</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<UserSettingsGroup>ГруппаПользовательскихНастроек</UserSettingsGroup>
+			<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+			<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
+			<AutoCommandBar name="СписокКоманднаяПанель" id="3"/>
+			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="46"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="57">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="58"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="59"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="60">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<HorizontalLocation>Left</HorizontalLocation>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="61"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="62"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокУправлениеПоиском" id="63">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="64"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="65"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">СписокВыбор</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="Номер" id="6">
+					<DataPath>Список.Номер</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Number</v8:content>
+						</v8:item>
+					</Title>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Wrap>false</Wrap>
+					<ContextMenu name="НомерКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="49"/>
+				</InputField>
+				<InputField name="Дата" id="4">
+					<DataPath>Список.Дата</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date</v8:content>
+						</v8:item>
+					</Title>
+					<Width>14</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Wrap>false</Wrap>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="50"/>
+				</InputField>
+				<LabelField name="ТипРаспоряжения" id="36">
+					<DataPath>Список.ТипРаспоряжения</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип распоряжения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Reference type</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ТипРаспоряженияКонтекстноеМеню" id="37"/>
+					<ExtendedTooltip name="ТипРаспоряженияРасширеннаяПодсказка" id="48"/>
+				</LabelField>
+				<LabelField name="Статус" id="24">
+					<DataPath>Список.Статус</DataPath>
+					<ContextMenu name="СтатусКонтекстноеМеню" id="25"/>
+					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="51"/>
+				</LabelField>
+				<LabelField name="Подразделение" id="30">
+					<DataPath>Список.Подразделение</DataPath>
+					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="52"/>
+				</LabelField>
+				<LabelField name="Ответственный" id="28">
+					<DataPath>Список.Ответственный</DataPath>
+					<ContextMenu name="ОтветственныйКонтекстноеМеню" id="29"/>
+					<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="53"/>
+				</LabelField>
+				<LabelField name="Склад" id="26">
+					<DataPath>Список.Склад</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Склад</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Warehouse</v8:content>
+						</v8:item>
+					</Title>
+					<Width>16</Width>
+					<ContextMenu name="СкладКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="СкладРасширеннаяПодсказка" id="54"/>
+				</LabelField>
+				<LabelField name="Организация" id="32">
+					<DataPath>Список.Организация</DataPath>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="55"/>
+				</LabelField>
+				<LabelField name="Комментарий" id="34">
+					<DataPath>Список.Комментарий</DataPath>
+					<ContextMenu name="КомментарийКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="56"/>
+				</LabelField>
+				<LabelField name="Ссылка" id="38">
+					<DataPath>Список.Ссылка</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Reference</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СсылкаКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="47"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Список" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ссылка</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	РеестрДокументов.Ссылка КАК Ссылка,
+	ТИПЗНАЧЕНИЯ(РеестрДокументов.Ссылка) КАК ТипРаспоряжения,
+	РеестрДокументов.ДатаДокументаИБ КАК Дата,
+	РеестрДокументов.НомерДокументаИБ КАК Номер,
+	РеестрДокументов.Подразделение КАК Подразделение,
+	РеестрДокументов.Организация КАК Организация,
+	РеестрДокументов.МестоХранения КАК Склад,
+	РеестрДокументов.Статус КАК Статус,
+	РеестрДокументов.Ответственный КАК Ответственный,
+	РеестрДокументов.Комментарий КАК Комментарий,
+	ВЫБОР КОГДА РеестрДокументов.Проведен ТОГДА
+				0
+			КОГДА РеестрДокументов.ПометкаУдаления ТОГДА
+				1
+			ИНАЧЕ
+				2
+		КОНЕЦ КАК НестандартнаяКартинка
+ИЗ
+	РегистрСведений.РеестрДокументов КАК РеестрДокументов
+ГДЕ
+	РеестрДокументов.Ссылка В(&amp;Ссылки)</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаименованиеПервичногоДокумента</dcssch:dataPath>
+					<dcssch:field>НаименованиеПервичногоДокумента</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МестоХранения</dcssch:dataPath>
+					<dcssch:field>МестоХранения</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дата</dcssch:dataPath>
+					<dcssch:field>Дата</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаПервичногоДокумента</dcssch:dataPath>
+					<dcssch:field>ДатаПервичногоДокумента</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаДокументаИБ</dcssch:dataPath>
+					<dcssch:field>ДатаДокументаИБ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Проведен</dcssch:dataPath>
+					<dcssch:field>Проведен</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Сумма</dcssch:dataPath>
+					<dcssch:field>Сумма</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерДокументаИБ</dcssch:dataPath>
+					<dcssch:field>НомерДокументаИБ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дополнительно</dcssch:dataPath>
+					<dcssch:field>Дополнительно</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ХозяйственнаяОперация</dcssch:dataPath>
+					<dcssch:field>ХозяйственнаяОперация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДополнительнаяЗапись</dcssch:dataPath>
+					<dcssch:field>ДополнительнаяЗапись</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ответственный</dcssch:dataPath>
+					<dcssch:field>Ответственный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Валюта</dcssch:dataPath>
+					<dcssch:field>Валюта</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Договор</dcssch:dataPath>
+					<dcssch:field>Договор</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СторноИсправление</dcssch:dataPath>
+					<dcssch:field>СторноИсправление</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерПервичногоДокумента</dcssch:dataPath>
+					<dcssch:field>НомерПервичногоДокумента</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаправлениеДеятельности</dcssch:dataPath>
+					<dcssch:field>НаправлениеДеятельности</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаОтраженияВУчете</dcssch:dataPath>
+					<dcssch:field>ДатаОтраженияВУчете</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Приоритет</dcssch:dataPath>
+					<dcssch:field>Приоритет</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Комментарий</dcssch:dataPath>
+					<dcssch:field>Комментарий</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СторнируемыйДокумент</dcssch:dataPath>
+					<dcssch:field>СторнируемыйДокумент</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИсправляемыйДокумент</dcssch:dataPath>
+					<dcssch:field>ИсправляемыйДокумент</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Контрагент</dcssch:dataPath>
+					<dcssch:field>Контрагент</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Организация</dcssch:dataPath>
+					<dcssch:field>Организация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Автор</dcssch:dataPath>
+					<dcssch:field>Автор</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТипРаспоряжения</dcssch:dataPath>
+					<dcssch:field>ТипРаспоряжения</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип распоряжения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Reference type</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номер</dcssch:dataPath>
+					<dcssch:field>Номер</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>No.</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Партнер</dcssch:dataPath>
+					<dcssch:field>Партнер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Подразделение</dcssch:dataPath>
+					<dcssch:field>Подразделение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Склад</dcssch:dataPath>
+					<dcssch:field>Склад</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Склад</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Warehouse</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Статус</dcssch:dataPath>
+					<dcssch:field>Статус</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НестандартнаяКартинка</dcssch:dataPath>
+					<dcssch:field>НестандартнаяКартинка</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Нестандартная картинка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Custom picture</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТипСсылки</dcssch:dataPath>
+					<dcssch:field>ТипСсылки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>РазделительЗаписи</dcssch:dataPath>
+					<dcssch:field>РазделительЗаписи</dcssch:field>
+				</Field>
+				<Parameter>
+					<dcssch:name>Ссылки</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>References</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:DocumentRef.ВнутреннееПотребление</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПодготовкаКПередачеНМА</v8:Type>
+						<v8:Type>cfg:DocumentRef.СписаниеОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.АктОРасхожденияхПослеПеремещения</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаписьКнигиПокупок</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПеремещениеВЭксплуатации</v8:Type>
+						<v8:Type>cfg:DocumentRef.РегистрацияДефекта</v8:Type>
+						<v8:Type>cfg:DocumentRef.АмортизацияОСМеждународныйУчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.РасходныйКассовыйОрдер</v8:Type>
+						<v8:Type>cfg:DocumentRef.АктОРасхожденияхПослеОтгрузки</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводДанныхПоНалогуНаПрибыль</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПередачаДавальцу</v8:Type>
+						<v8:Type>cfg:DocumentRef.РезервыПоОплатеТруда</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПоступлениеУслугВПодразделение</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПеремещениеМатериаловВПроизводстве</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПриходныйКассовыйОрдер</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВозвратТоваровОтКлиента</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПереоценкаНМА2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПередачаОСВАренду</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПереводОсновныхСредствИнвестиционногоИмуществаМеждународныйУчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПриобретениеТоваровУслуг</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОперацияПоПлатежнойКарте</v8:Type>
+						<v8:Type>cfg:DocumentRef.СчетФактураПолученныйАванс</v8:Type>
+						<v8:Type>cfg:DocumentRef.ТаможеннаяДекларацияИмпорт</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПоступлениеУслугПоАренде</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИнойДокументПодтвержденияНДС</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПараметрыНачисленияЗемельногоНалога</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЭтапПроизводства2_2</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетКомиссионера</v8:Type>
+						<v8:Type>cfg:DocumentRef.НачислениеРеверсивногоНДС</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетДавальцу</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПервичныйДокумент</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковВзаиморасчетовПоАренде</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаказПоставщику</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаказНаПроизводство</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПодготовкаКПередачеНМА2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПринятиеКУчетуОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.Бронирование</v8:Type>
+						<v8:Type>cfg:DocumentRef.АмортизацияНМА</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВнесениеДенежныхСредствВКассуККМ</v8:Type>
+						<v8:Type>cfg:DocumentRef.РасчетКурсовыхРазниц</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПоступлениеСырьяОтДавальца</v8:Type>
+						<v8:Type>cfg:DocumentRef.НачислениеОценочныхОбязательствПоОтпускам</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВозвратТоваровПоставщику</v8:Type>
+						<v8:Type>cfg:DocumentRef.СписаниеОС2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтгрузкаТоваровСХранения</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИзменениеПараметровОС2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаявкаНаКомандировку</v8:Type>
+						<v8:Type>cfg:DocumentRef.РаспределениеПроизводственныхЗатрат</v8:Type>
+						<v8:Type>cfg:DocumentRef.СписаниеБезналичныхДенежныхСредств</v8:Type>
+						<v8:Type>cfg:DocumentRef.АктОРасхожденияхПослеПриемки</v8:Type>
+						<v8:Type>cfg:DocumentRef.СчетФактураНаНеподтвержденнуюРеализацию0</v8:Type>
+						<v8:Type>cfg:DocumentRef.РаспределениеДоходовПоНаправлениямДеятельности</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковДенежныхСредств</v8:Type>
+						<v8:Type>cfg:DocumentRef.НаработкаТМЦВЭксплуатации</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПеремаркировкаТоваровГИСМ</v8:Type>
+						<v8:Type>cfg:DocumentRef.РегламентнаяОперацияМеждународныйУчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.АмортизацияНМАМеждународныйУчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаказМатериаловВПроизводство</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВозвратОСИзАренды2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОперацияПоЯндексКассе</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОбесценениеВНА</v8:Type>
+						<v8:Type>cfg:DocumentRef.АктВыполненныхВнутреннихРабот</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковТМЦВЭксплуатации</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВыработкаСотрудников</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатков</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПоступлениеТоваровНаСклад</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПринятиеКУчетуОСМеждународныйУчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОбъединениеОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИнвентаризационнаяОпись</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПрочиеДоходыРасходы</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИзменениеПараметровНМАМеждународныйУчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВыкупПринятыхНаХранениеТоваров</v8:Type>
+						<v8:Type>cfg:DocumentRef.СчетФактураВыданныйАванс</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковОСМеждународныйУчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.МаркировкаТоваровГИСМ</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковНМАМеждународныйУчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.КорректировкаНалогообложенияНДСПартийТоваров</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаказПереработчику</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетПоКомиссииМеждуОрганизациями</v8:Type>
+						<v8:Type>cfg:DocumentRef.СписаниеНМАМеждународныйУчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.СводнаяСправкаНДС</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПеремещениеОС2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПеремещениеНМАМеждународныйУчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.РаспределениеРасходовБудущихПериодов</v8:Type>
+						<v8:Type>cfg:DocumentRef.РазукомплектацияОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.УстановкаЗначенийНаработки</v8:Type>
+						<v8:Type>cfg:DocumentRef.МодернизацияОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПогашениеСтоимостиТМЦВЭксплуатации</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаявкаНаВозвратТоваровОтКлиента</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетКомитенту</v8:Type>
+						<v8:Type>cfg:DocumentRef.МодернизацияОС2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.СписаниеНДСНаРасходы</v8:Type>
+						<v8:Type>cfg:DocumentRef.СписаниеНедостачТоваров</v8:Type>
+						<v8:Type>cfg:DocumentRef.РаспределениеПрочихЗатрат</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПоступлениеТоваровОтХранителя</v8:Type>
+						<v8:Type>cfg:DocumentRef.РеализацияУслугПрочихАктивов</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПеремещениеТоваров</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВозвратСырьяДавальцу</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПодготовкаКПередачеОС2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИзменениеУсловийДоговораАренды</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводПервоначальныхСведенийДляРасчетаНалогаНаИмущество</v8:Type>
+						<v8:Type>cfg:DocumentRef.ДвижениеПродукцииИМатериалов</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИзменениеПараметровНМА</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаявлениеОВвозеТоваров</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаказНаСборку</v8:Type>
+						<v8:Type>cfg:DocumentRef.КорректировкаРеализации</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПереоценкаОС2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.РеализацияТоваровУслуг</v8:Type>
+						<v8:Type>cfg:DocumentRef.Сторно</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПередачаТоваровХранителю</v8:Type>
+						<v8:Type>cfg:DocumentRef.АмортизацияОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетОператораСистемыПлатон</v8:Type>
+						<v8:Type>cfg:DocumentRef.НаработкаОбъектовЭксплуатации</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПодготовкаКПередачеОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.КорректировкаЗаказаМатериаловВПроизводство</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПересортицаТоваровУХранителя</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковНДСПредъявленного</v8:Type>
+						<v8:Type>cfg:DocumentRef.ТаможеннаяДекларацияЭкспорт</v8:Type>
+						<v8:Type>cfg:DocumentRef.РасчетРезервовПодОбесценениеЗапасов</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПоступлениеАрендованныхОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтражениеЗарплатыВФинансовомУчете</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковВнеоборотныхАктивов2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПереоценкаНМА</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПередачаСырьяПереработчику</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетБанкаПоОперациямЭквайринга</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковВнеоборотныхАктивов</v8:Type>
+						<v8:Type>cfg:DocumentRef.КорректировкаЗадолженностиПоФинансовымИнструментам</v8:Type>
+						<v8:Type>cfg:DocumentRef.КорректировкаНазначенияТоваров</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПересортицаТоваров</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВыбытиеДенежныхДокументов</v8:Type>
+						<v8:Type>cfg:DocumentRef.УлучшениеНМА</v8:Type>
+						<v8:Type>cfg:DocumentRef.НачальныеОстаткиНЗППоПодразделениям</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковРасходовПриУСН</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПоступлениеДенежныхДокументов</v8:Type>
+						<v8:Type>cfg:DocumentRef.НачислениеСписаниеРезервовПоСомнительнымДолгам</v8:Type>
+						<v8:Type>cfg:DocumentRef.АвансовыйОтчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПринятиеКУчетуНМА2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПерерасчетИмущественныхНалогов</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетПоКомиссииМеждуОрганизациямиОСписании</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИзменениеСпособаОтраженияИмущественныхНалогов</v8:Type>
+						<v8:Type>cfg:DocumentRef.НачислениеДивидендов</v8:Type>
+						<v8:Type>cfg:DocumentRef.КорректировкаПриобретения</v8:Type>
+						<v8:Type>cfg:DocumentRef.СчетФактураВыданный</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетКомитентуОСписании</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетПереработчика</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВыкупВозвратнойТарыКлиентом</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПереоценкаОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПеремещениеОСМеждународныйУчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПеремещениеНМА2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВыработкаНМА</v8:Type>
+						<v8:Type>cfg:DocumentRef.АмортизацияНМА2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПриобретениеУслугПрочихАктивов</v8:Type>
+						<v8:Type>cfg:DocumentRef.АннулированиеПодарочныхСертификатов</v8:Type>
+						<v8:Type>cfg:DocumentRef.АктВыполненныхРабот</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетОРозничныхПродажах</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИзменениеСостоянияОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.СписаниеНМА2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетДавальцу2_5</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаказНаПеремещение</v8:Type>
+						<v8:Type>cfg:DocumentRef.РаспределениеВозвратныхОтходов</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковПоФинансовымИнструментам</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИнвентаризацияНаличныхДенежныхСредств</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПринятиеКУчетуОС2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИзменениеПараметровОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОприходованиеИзлишковТоваров</v8:Type>
+						<v8:Type>cfg:DocumentRef.КорректировкаСтоимостиИАмортизацииОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетОРозничныхВозвратах</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВозвратСырьяОтПереработчика</v8:Type>
+						<v8:Type>cfg:DocumentRef.СнятиеСРегистрацииТранспортныхСредств</v8:Type>
+						<v8:Type>cfg:DocumentRef.КорректировкаЗадолженности</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОприходованиеТМЦВЭксплуатации</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВыпускПродукции</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВозвратТоваровМеждуОрганизациями</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводИнформацииОПрошлыхРемонтах</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетОСписанииТоваровСХранения</v8:Type>
+						<v8:Type>cfg:DocumentRef.СборкаТоваров</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПриемкаТоваровНаХранение</v8:Type>
+						<v8:Type>cfg:DocumentRef.СписаниеОСМеждународныйУчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПараметрыНачисленияНалогаНаИмущество</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИнвентаризацияТМЦВЭксплуатации</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетОСписанииТоваровУХранителя</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводПервоначальныхСведенийДляРасчетаЗемельногоНалога</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПроизводствоБезЗаказа</v8:Type>
+						<v8:Type>cfg:DocumentRef.НачислениеПроцентовПоАренде</v8:Type>
+						<v8:Type>cfg:DocumentRef.НачальныеОстаткиНЗППоПартиямПроизводства</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИсправлениеРазвернутогоСальдоТоваровОрганизаций</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетКомиссионераОСписании</v8:Type>
+						<v8:Type>cfg:DocumentRef.АмортизацияОС2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПринятиеКУчетуУзловКомпонентовАмортизации</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаказПереработчику2_5</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВозвратМатериаловИзПроизводства</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковТоваров</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВыкупАрендованныхОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковПрочиеРасходы</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПринятиеКУчетуНМАМеждународныйУчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.СчетФактураКомиссионеру</v8:Type>
+						<v8:Type>cfg:DocumentRef.НачислениеСписаниеРезервовПредстоящихРасходов</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПередачаТоваровМеждуОрганизациями</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИзменениеПараметровНМА2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВозвратОСИзАренды</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИнвентаризацияОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.СнятиеСРегистрацииЗемельныхУчастков</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВыкупВозвратнойТарыУПоставщика</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаказДавальца2_5</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводПервоначальныхСведенийДляРасчетаТранспортногоНалога</v8:Type>
+						<v8:Type>cfg:DocumentRef.СписаниеИзЭксплуатации</v8:Type>
+						<v8:Type>cfg:DocumentRef.РегламентнаяОперация</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВзаимозачетЗадолженности</v8:Type>
+						<v8:Type>cfg:DocumentRef.ДепонированиеЗарплаты</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтражениеРасхожденийПриИнкассацииДенежныхСредств</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаказНаРемонт</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаявкаНаРасходованиеДенежныхСредств</v8:Type>
+						<v8:Type>cfg:DocumentRef.РасчетСебестоимостиТоваров</v8:Type>
+						<v8:Type>cfg:DocumentRef.СчетНаОплатуКлиенту</v8:Type>
+						<v8:Type>cfg:DocumentRef.СчетФактураПолученный</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПрочееОприходованиеТоваров</v8:Type>
+						<v8:Type>cfg:DocumentRef.НачисленияКредитовИДепозитов</v8:Type>
+						<v8:Type>cfg:DocumentRef.КорректировкаСтоимостиИАмортизацииНМА</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаказНаВнутреннееПотребление</v8:Type>
+						<v8:Type>cfg:DocumentRef.РеализацияПодарочныхСертификатов</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаказКлиента</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИзменениеПараметровОСМеждународныйУчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаписьКнигиПродаж</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПеремещениеОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетПереработчика2_5</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПризнаниеРасходовПоИсследованиямИРазработкам</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВозвратПодарочныхСертификатов</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаказДавальца</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковОПродажахЗаПрошлыеПериоды</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПоступлениеБезналичныхДенежныхСредств</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВыкупТоваровХранителем</v8:Type>
+						<v8:Type>cfg:DocumentRef.КорректировкаВидаДеятельностиНДС</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПередачаОСВАренду2_4</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПередачаМатериаловВПроизводство</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковВзаиморасчетов</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковРасчетовПоЭквайрингу</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаказНаПроизводство2_2</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПрекращениеДоговораАренды</v8:Type>
+						<v8:Type>cfg:DocumentRef.СписаниеРасхожденийПоступлениеПриобретение</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОприходованиеИзлишковТоваровУХранителя</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПринятиеКУчетуНМА</v8:Type>
+						<v8:Type>cfg:DocumentRef.ИнвентаризацияНМА</v8:Type>
+						<v8:Type>cfg:DocumentRef.СчетФактураПолученныйНалоговыйАгент</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковСПодотчетниками</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПорчаТоваров</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПоступлениеОтПереработчика</v8:Type>
+						<v8:Type>cfg:DocumentRef.СписаниеНМА</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВыбытиеАрендованныхОС</v8:Type>
+						<v8:Type>cfg:DocumentRef.СчетФактураНалоговыйАгент</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаключениеДоговораАренды</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтражениеЗарплатыВФинансовомУчете2_5</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПараметрыНачисленияТранспортногоНалога</v8:Type>
+						<v8:Type>cfg:DocumentRef.СчетФактураКомитента</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВыемкаДенежныхСредствИзКассыККМ</v8:Type>
+						<v8:Type>cfg:DocumentRef.РаспределениеНДС</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетКомитентуОЗакупках</v8:Type>
+						<v8:Type>cfg:DocumentRef.ВводОстатковПрочихАктивовПассивов</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПорчаТоваровУХранителя</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+					<dcssch:valueListAllowed>true</dcssch:valueListAllowed>
+				</Parameter>
+				<MainTable>InformationRegister.РеестрДокументов</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Выбрать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ChooseValue</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Выбрать</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>Document.ЗаявкаНаРасходованиеДенежныхСредств.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<Index>4</Index>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Document.ПриобретениеТоваровУслуг.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<Index>3</Index>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Document.ПриходныйОрдерНаТовары.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<Index>2</Index>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Document.РасходныйКассовыйОрдер.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<Index>6</Index>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Document.СписаниеБезналичныхДенежныхСредств.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>BusinessProcess.Задание.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Document.ВозвратТоваровПоставщику.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<Index>5</Index>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

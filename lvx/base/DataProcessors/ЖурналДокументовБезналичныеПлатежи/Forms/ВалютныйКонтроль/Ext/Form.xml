@@ -1,0 +1,1201 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Безналичные платежи: валютный контроль</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Electronic payments: currency control</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoURL>false</AutoURL>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Шапка" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ШапкаРасширеннаяПодсказка" id="21"/>
+			<ChildItems>
+				<InputField name="ОрганизацияОтбор" id="195">
+					<DataPath>Организация</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ClearButton>true</ClearButton>
+					<OpenButton>false</OpenButton>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="ОрганизацияОтборКонтекстноеМеню" id="196"/>
+					<ExtendedTooltip name="ОрганизацияОтборРасширеннаяПодсказка" id="197"/>
+					<Events>
+						<Event name="OnChange">ОрганизацияПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="БанковскийСчетОтбор" id="22">
+					<DataPath>БанковскийСчетОтбор</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<MaxWidth>28</MaxWidth>
+					<ClearButton>true</ClearButton>
+					<OpenButton>false</OpenButton>
+					<QuickChoice>false</QuickChoice>
+					<ChoiceFoldersAndItems>FoldersAndItems</ChoiceFoldersAndItems>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Банковский счет</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Bank account</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="БанковскийСчетОтборКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="БанковскийСчетОтборРасширеннаяПодсказка" id="24"/>
+					<Events>
+						<Event name="OnChange">БанковскийСчетОтборПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="КонтрагентОтбор" id="25">
+					<DataPath>КонтрагентПредставление</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ClearButton>true</ClearButton>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагент</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="КонтрагентОтборКонтекстноеМеню" id="26"/>
+					<ExtendedTooltip name="КонтрагентОтборРасширеннаяПодсказка" id="27"/>
+					<Events>
+						<Event name="OnChange">КонтрагентОтборПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОтборыДиректБанк" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отборы директ банк</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filters direct bank</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОтборыДиректБанкРасширеннаяПодсказка" id="29"/>
+			<ChildItems>
+				<LabelDecoration name="НадписьДиректБанкНеОтправлен" id="33">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Не отправлен</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Not sent</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ не отправлялся в банк</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document was not sent to the bank</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Hyperlink>true</Hyperlink>
+					<ContextMenu name="НадписьДиректБанкНеОтправленКонтекстноеМеню" id="34"/>
+					<ExtendedTooltip name="НадписьДиректБанкНеОтправленРасширеннаяПодсказка" id="35"/>
+					<Events>
+						<Event name="Click">ОтборДиректБанкНажатие</Event>
+					</Events>
+				</LabelDecoration>
+				<LabelDecoration name="НадписьДиректБанкСОшибкой" id="36">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>С ошибкой отправки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>With sending error</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Банк вернул признак ошибки по документу</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Bank returned error flag by document</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Hyperlink>true</Hyperlink>
+					<ContextMenu name="НадписьДиректБанкСОшибкойКонтекстноеМеню" id="37"/>
+					<ExtendedTooltip name="НадписьДиректБанкСОшибкойРасширеннаяПодсказка" id="38"/>
+					<Events>
+						<Event name="Click">ОтборДиректБанкНажатие</Event>
+					</Events>
+				</LabelDecoration>
+				<LabelDecoration name="НадписьДиректБанкОбрабатываетсяБанком" id="39">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обрабатывается банком</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Processed by bank</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ обрабатывается в банке</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document is being processed in the bank</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Hyperlink>true</Hyperlink>
+					<ContextMenu name="НадписьДиректБанкОбрабатываетсяБанкомКонтекстноеМеню" id="40"/>
+					<ExtendedTooltip name="НадписьДиректБанкОбрабатываетсяБанкомРасширеннаяПодсказка" id="41"/>
+					<Events>
+						<Event name="Click">ОтборДиректБанкНажатие</Event>
+					</Events>
+				</LabelDecoration>
+				<LabelDecoration name="НадписьДиректБанкПодтвержден" id="42">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подтвержден банком</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Confirmed by bank</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ получен и пройдена проверка банком</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document is received and checked by the bank</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Hyperlink>true</Hyperlink>
+					<ContextMenu name="НадписьДиректБанкПодтвержденКонтекстноеМеню" id="43"/>
+					<ExtendedTooltip name="НадписьДиректБанкПодтвержденРасширеннаяПодсказка" id="44"/>
+					<Events>
+						<Event name="Click">ОтборДиректБанкНажатие</Event>
+					</Events>
+				</LabelDecoration>
+				<LabelDecoration name="НадписьДиректБанкПоказатьВсе" id="45">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Все документы</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>All documents</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Все документы</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>All documents</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ContextMenu name="НадписьДиректБанкПоказатьВсеКонтекстноеМеню" id="46"/>
+					<ExtendedTooltip name="НадписьДиректБанкПоказатьВсеРасширеннаяПодсказка" id="47"/>
+					<Events>
+						<Event name="Click">ОтборДиректБанкНажатие</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ДокументыВалютногоКонтроля" id="69">
+			<TitleLocation>Auto</TitleLocation>
+			<TitleHeight>1</TitleHeight>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>ДокументыВалютногоКонтроля</DataPath>
+			<RowPictureDataPath>ДокументыВалютногоКонтроля.DefaultPicture</RowPictureDataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы валютного контроля</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Foreign exchange control documents</v8:content>
+				</v8:item>
+			</Title>
+			<TitleFont ref="style:LargeTextFont" kind="StyleItem"/>
+			<CommandSet>
+				<ExcludedCommand>Create</ExcludedCommand>
+				<ExcludedCommand>Delete</ExcludedCommand>
+			</CommandSet>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+			<ContextMenu name="ДокументыВалютногоКонтроляКонтекстноеМеню" id="70"/>
+			<AutoCommandBar name="ДокументыВалютногоКонтроляКоманднаяПанель" id="71">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Popup name="ГруппаСоздать" id="103">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Создать</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Create</v8:content>
+							</v8:item>
+						</Title>
+						<Picture>
+							<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ГруппаСоздатьРасширеннаяПодсказка" id="104"/>
+						<ChildItems>
+							<Button name="ДокументыВалютногоКонтроляСоздатьСПД" id="105">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.СоздатьСПД</CommandName>
+								<ExtendedTooltip name="ДокументыВалютногоКонтроляСоздатьСПДРасширеннаяПодсказка" id="106"/>
+							</Button>
+							<Button name="ДокументыВалютногоКонтроляСоздатьСПДПомощник" id="107">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.СоздатьСПДПомощник</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Открыть помощник создания справок о подтверждающих документах...</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Open wizard of creating justification document certificates...</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="ДокументыВалютногоКонтроляСоздатьСПДПомощникРасширеннаяПодсказка" id="108"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+					<Button name="ДокументыВалютногоКонтроляСкопировать" id="109">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ДокументыВалютногоКонтроля.StandardCommand.Copy</CommandName>
+						<ExtendedTooltip name="ДокументыВалютногоКонтроляСкопироватьРасширеннаяПодсказка" id="110"/>
+					</Button>
+					<Button name="ДокументыВалютногоКонтроляИзменить" id="111">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ДокументыВалютногоКонтроля.StandardCommand.Change</CommandName>
+						<ExtendedTooltip name="ДокументыВалютногоКонтроляИзменитьРасширеннаяПодсказка" id="112"/>
+					</Button>
+					<Button name="ДокументыВалютногоКонтроляУстановитьПометкуУдаления" id="113">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ДокументыВалютногоКонтроля.StandardCommand.SetDeletionMark</CommandName>
+						<ExtendedTooltip name="ДокументыВалютногоКонтроляУстановитьПометкуУдаленияРасширеннаяПодсказка" id="114"/>
+					</Button>
+					<Button name="ВыбратьПериодВалютногоКонтроля" id="115">
+						<Type>CommandBarButton</Type>
+						<Representation>Picture</Representation>
+						<CommandName>Form.Item.ДокументыВалютногоКонтроля.StandardCommand.SetDateInterval</CommandName>
+						<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+						<ExtendedTooltip name="ВыбратьПериодВалютногоКонтроляРасширеннаяПодсказка" id="116"/>
+					</Button>
+					<Button name="ДокументыВалютногоКонтроляПровести" id="117">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ДокументыВалютногоКонтроля.StandardCommand.Post</CommandName>
+						<ExtendedTooltip name="ДокументыВалютногоКонтроляПровестиРасширеннаяПодсказка" id="118"/>
+					</Button>
+					<Button name="ДокументыВалютногоКонтроляОтменаПроведения" id="119">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ДокументыВалютногоКонтроля.StandardCommand.UndoPosting</CommandName>
+						<ExtendedTooltip name="ДокументыВалютногоКонтроляОтменаПроведенияРасширеннаяПодсказка" id="120"/>
+					</Button>
+					<Button name="ДокументыВалютногоКонтроляНайти" id="121">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ДокументыВалютногоКонтроля.StandardCommand.Find</CommandName>
+						<ExtendedTooltip name="ДокументыВалютногоКонтроляНайтиРасширеннаяПодсказка" id="122"/>
+					</Button>
+					<Button name="ДокументыВалютногоКонтроляОтменитьПоиск" id="123">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ДокументыВалютногоКонтроля.StandardCommand.CancelSearch</CommandName>
+						<ExtendedTooltip name="ДокументыВалютногоКонтроляОтменитьПоискРасширеннаяПодсказка" id="124"/>
+					</Button>
+					<Popup name="ВКПодменюСоздатьНаОсновании" id="125">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Создать на основании</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Generate</v8:content>
+							</v8:item>
+						</Title>
+						<Picture>
+							<xr:Ref>CommonPicture.ЗаполнитьПоШаблону</xr:Ref>
+							<xr:LoadTransparent>false</xr:LoadTransparent>
+						</Picture>
+						<Representation>Picture</Representation>
+						<ExtendedTooltip name="ВКПодменюСоздатьНаОснованииРасширеннаяПодсказка" id="126"/>
+						<ChildItems>
+							<ButtonGroup name="ВКПодменюСоздатьНаОснованииВажное" id="127">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Создать на основании (Важное)</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Generate (Important)</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="ВКПодменюСоздатьНаОснованииВажноеРасширеннаяПодсказка" id="128"/>
+							</ButtonGroup>
+							<ButtonGroup name="ВКПодменюСоздатьНаОснованииОбычное" id="129">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Создать на основании (Обычное)</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Generate (Standard)</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="ВКПодменюСоздатьНаОснованииОбычноеРасширеннаяПодсказка" id="130"/>
+							</ButtonGroup>
+							<ButtonGroup name="ВКПодменюСоздатьНаОснованииСмТакже" id="131">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Создать на основании (См. также)</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Generate (See also)</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="ВКПодменюСоздатьНаОснованииСмТакжеРасширеннаяПодсказка" id="132"/>
+							</ButtonGroup>
+						</ChildItems>
+					</Popup>
+					<Popup name="СписокКомпоновщикНастроекПользовательскиеНастройкиВалютныйКонтроль" id="141">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа пользовательских настроек</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>User settings group</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="СписокКомпоновщикНастроекПользовательскиеНастройкиВалютныйКонтрольРасширеннаяПодсказка" id="142"/>
+					</Popup>
+					<ButtonGroup name="ВКГруппаГлобальныеКоманды" id="143">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа команды формы</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Form commands group</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ВКГруппаГлобальныеКомандыРасширеннаяПодсказка" id="144"/>
+						<ChildItems>
+							<Popup name="ВКПодменюПечать" id="145">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Печать</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Print </v8:content>
+									</v8:item>
+								</Title>
+								<ToolTip>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Команды печати</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Print commands</v8:content>
+									</v8:item>
+								</ToolTip>
+								<Picture>
+									<xr:Ref>StdPicture.Print</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<Representation>Picture</Representation>
+								<ExtendedTooltip name="ВКПодменюПечатьРасширеннаяПодсказка" id="146"/>
+							</Popup>
+							<Popup name="ВКПодменюОтчеты" id="147">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Отчеты</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Reports</v8:content>
+									</v8:item>
+								</Title>
+								<Picture>
+									<xr:Ref>CommonPicture.Отчеты</xr:Ref>
+									<xr:LoadTransparent>false</xr:LoadTransparent>
+								</Picture>
+								<Representation>Picture</Representation>
+								<ExtendedTooltip name="ВКПодменюОтчетыРасширеннаяПодсказка" id="148"/>
+								<ChildItems>
+									<ButtonGroup name="ВКПодменюОтчетыВажное" id="149">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>ВК подменю отчеты важное</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>CR submenu reports important</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Подменю отчеты важное</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Important reports submenu</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="ВКПодменюОтчетыВажноеРасширеннаяПодсказка" id="150"/>
+									</ButtonGroup>
+									<ButtonGroup name="ВКПодменюОтчетыОбычное" id="151">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>ВК подменю отчеты обычное</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>CR submenu reports standard</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Подменю отчеты важное</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Important reports submenu</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="ВКПодменюОтчетыОбычноеРасширеннаяПодсказка" id="152"/>
+									</ButtonGroup>
+									<ButtonGroup name="ВКПодменюОтчетыСмТакже" id="153">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>ВК подменю отчеты см также</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>CR see also reports submenu</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Подменю отчеты важное</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Important reports submenu</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="ВКПодменюОтчетыСмТакжеРасширеннаяПодсказка" id="154"/>
+									</ButtonGroup>
+								</ChildItems>
+							</Popup>
+						</ChildItems>
+					</ButtonGroup>
+					<Button name="ДокументыВалютногоКонтроляНастройкаСписка" id="157">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ДокументыВалютногоКонтроля.StandardCommand.ListSettings</CommandName>
+						<ExtendedTooltip name="ДокументыВалютногоКонтроляНастройкаСпискаРасширеннаяПодсказка" id="158"/>
+					</Button>
+					<Button name="ДокументыВалютногоКонтроляСохранитьНастройкиДинамическогоСписка" id="159">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ДокументыВалютногоКонтроля.StandardCommand.SaveDynamicListSettings</CommandName>
+						<ExtendedTooltip name="ДокументыВалютногоКонтроляСохранитьНастройкиДинамическогоСпискаРасширеннаяПодсказка" id="160"/>
+					</Button>
+					<Button name="ДокументыВалютногоКонтроляЗагрузитьНастройкиДинамическогоСписка" id="161">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ДокументыВалютногоКонтроля.StandardCommand.LoadDynamicListSettings</CommandName>
+						<ExtendedTooltip name="ДокументыВалютногоКонтроляЗагрузитьНастройкиДинамическогоСпискаРасширеннаяПодсказка" id="162"/>
+					</Button>
+					<Button name="ДокументыВалютногоКонтроляСтандартныеНастройкиДинамическогоСписка" id="163">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ДокументыВалютногоКонтроля.StandardCommand.DynamicListStandardSettings</CommandName>
+						<ExtendedTooltip name="ДокументыВалютногоКонтроляСтандартныеНастройкиДинамическогоСпискаРасширеннаяПодсказка" id="164"/>
+					</Button>
+					<Button name="ДокументыВалютногоКонтроляВывестиСписок" id="165">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ДокументыВалютногоКонтроля.StandardCommand.OutputList</CommandName>
+						<ExtendedTooltip name="ДокументыВалютногоКонтроляВывестиСписокРасширеннаяПодсказка" id="166"/>
+					</Button>
+					<Button name="ДокументыВалютногоКонтроляОбновить" id="167">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ДокументыВалютногоКонтроля.StandardCommand.Refresh</CommandName>
+						<ExtendedTooltip name="ДокументыВалютногоКонтроляОбновитьРасширеннаяПодсказка" id="168"/>
+					</Button>
+					<Button name="ДокументыВалютногоКонтроляКопироватьВБуферОбмена" id="169">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ДокументыВалютногоКонтроля.StandardCommand.CopyToClipboard</CommandName>
+						<ExtendedTooltip name="ДокументыВалютногоКонтроляКопироватьВБуферОбменаРасширеннаяПодсказка" id="170"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ДокументыВалютногоКонтроляРасширеннаяПодсказка" id="72"/>
+			<SearchStringAddition name="ДокументыВалютногоКонтроляСтрокаПоиска" id="73">
+				<AdditionSource>
+					<Item>ДокументыВалютногоКонтроля</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДокументыВалютногоКонтроляСтрокаПоискаКонтекстноеМеню" id="74"/>
+				<ExtendedTooltip name="ДокументыВалютногоКонтроляСтрокаПоискаРасширеннаяПодсказка" id="75"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ДокументыВалютногоКонтроляСостояниеПросмотра" id="76">
+				<AdditionSource>
+					<Item>ДокументыВалютногоКонтроля</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<HorizontalLocation>Left</HorizontalLocation>
+				<ContextMenu name="ДокументыВалютногоКонтроляСостояниеПросмотраКонтекстноеМеню" id="77"/>
+				<ExtendedTooltip name="ДокументыВалютногоКонтроляСостояниеПросмотраРасширеннаяПодсказка" id="78"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ДокументыВалютногоКонтроляУправлениеПоиском" id="79">
+				<AdditionSource>
+					<Item>ДокументыВалютногоКонтроля</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ДокументыВалютногоКонтроляУправлениеПоискомКонтекстноеМеню" id="80"/>
+				<ExtendedTooltip name="ДокументыВалютногоКонтроляУправлениеПоискомРасширеннаяПодсказка" id="81"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ДокументыВалютногоКонтроляВыбор</Event>
+				<Event name="OnActivateRow">ДокументыВалютногоКонтроляПриАктивизацииСтроки</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="ДокументыВалютногоКонтроляНомер" id="171">
+					<DataPath>ДокументыВалютногоКонтроля.Номер</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Number</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДокументыВалютногоКонтроляНомерКонтекстноеМеню" id="172"/>
+					<ExtendedTooltip name="ДокументыВалютногоКонтроляНомерРасширеннаяПодсказка" id="173"/>
+				</LabelField>
+				<LabelField name="ДокументыВалютногоКонтроляДата" id="174">
+					<DataPath>ДокументыВалютногоКонтроля.Дата</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДокументыВалютногоКонтроляДатаКонтекстноеМеню" id="175"/>
+					<ExtendedTooltip name="ДокументыВалютногоКонтроляДатаРасширеннаяПодсказка" id="176"/>
+				</LabelField>
+				<LabelField name="ДокументыВалютногоКонтроляОрганизация" id="177">
+					<DataPath>ДокументыВалютногоКонтроля.Организация</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДокументыВалютногоКонтроляОрганизацияКонтекстноеМеню" id="178"/>
+					<ExtendedTooltip name="ДокументыВалютногоКонтроляОрганизацияРасширеннаяПодсказка" id="179"/>
+				</LabelField>
+				<LabelField name="ДокументыВалютногоКонтроляДоговор" id="180">
+					<DataPath>ДокументыВалютногоКонтроля.Договор</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Договор</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Contract</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДокументыВалютногоКонтроляДоговорКонтекстноеМеню" id="181"/>
+					<ExtendedTooltip name="ДокументыВалютногоКонтроляДоговорРасширеннаяПодсказка" id="182"/>
+				</LabelField>
+				<LabelField name="ДокументыВалютногоКонтроляУникальныйНомерКонтракта" id="183">
+					<DataPath>ДокументыВалютногоКонтроля.УникальныйНомерКонтракта</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>УНК</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Contract unique number</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДокументыВалютногоКонтроляУникальныйНомерКонтрактаКонтекстноеМеню" id="184"/>
+					<ExtendedTooltip name="ДокументыВалютногоКонтроляУникальныйНомерКонтрактаРасширеннаяПодсказка" id="185"/>
+				</LabelField>
+				<LabelField name="ДокументыВалютногоКонтроляКонтрагент" id="192">
+					<DataPath>ДокументыВалютногоКонтроля.Контрагент</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагент</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДокументыВалютногоКонтроляКонтрагентКонтекстноеМеню" id="193"/>
+					<ExtendedTooltip name="ДокументыВалютногоКонтроляКонтрагентРасширеннаяПодсказка" id="194"/>
+				</LabelField>
+				<LabelField name="ДокументыВалютногоКонтроляБанк" id="186">
+					<DataPath>ДокументыВалютногоКонтроля.Банк</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Банк</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Bank</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДокументыВалютногоКонтроляБанкКонтекстноеМеню" id="187"/>
+					<ExtendedTooltip name="ДокументыВалютногоКонтроляБанкРасширеннаяПодсказка" id="188"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДанныеДокумента.Ссылка              КАК Ссылка,
+	ДанныеДокумента.Дата                КАК Дата,
+	ДанныеДокумента.ПометкаУдаления     КАК ПометкаУдаления,
+	ДанныеДокумента.Номер               КАК Номер,
+	ДанныеДокумента.Проведен            КАК Проведен,
+	ДанныеДокумента.Организация         КАК Организация,
+	ДанныеДокумента.Банк                КАК Банк,
+	ДанныеДокумента.Договор             КАК Договор,
+	ДанныеДокумента.Договор.УникальныйНомерВалютногоКонтроля КАК УникальныйНомерВалютногоКонтроля,
+	СостоянияОбменСБанками.Состояние КАК СостояниеДиректБанк,
+	СостоянияОбменСБанками.ПредставлениеСостояния КАК ПредставлениеСостоянияДиректБанк,
+	ВЫБОР
+		КОГДА СостоянияОбменСБанками.Состояние В (
+			ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.Аннулирован),
+			ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.Отклонен),
+			ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.ОшибкаПередачи)
+		) ТОГДА 3
+		КОГДА СостоянияОбменСБанками.Состояние В (
+			ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.НаПодписи),
+			ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.НеСформирован),
+			ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.ТребуетсяПодтверждение),
+			ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.ТребуетсяОтправка)
+		) ТОГДА 1
+		КОГДА СостоянияОбменСБанками.Состояние В (
+			ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.ОжидаетсяВыписка),
+			ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.ОжидаетсяИзвещениеОПолучении),
+			ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.ОжидаетсяИсполнение)
+		) ТОГДА 2
+		КОГДА СостоянияОбменСБанками.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияОбменСБанками.ПлатежИсполнен)
+			ТОГДА 0
+		ИНАЧЕ 4
+	КОНЕЦ КАК КартинкаДиректБанк		
+ИЗ
+	Документ.СправкаОПодтверждающихДокументах КАК ДанныеДокумента
+	
+	ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостоянияОбменСБанками КАК СостоянияОбменСБанками
+		ПО СостоянияОбменСБанками.СсылкаНаОбъект = ДанныеДокумента.Ссылка</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СостояниеДиректБанк</dcssch:dataPath>
+					<dcssch:field>СостояниеДиректБанк</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние директ банк</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>State direct bank</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УникальныйНомерВалютногоКонтроля</dcssch:dataPath>
+					<dcssch:field>УникальныйНомерВалютногоКонтроля</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уникальный номер валютного контроля</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Foreign exchange control unique number</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Организация</dcssch:dataPath>
+					<dcssch:field>Организация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Проведен</dcssch:dataPath>
+					<dcssch:field>Проведен</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дата</dcssch:dataPath>
+					<dcssch:field>Дата</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Банк</dcssch:dataPath>
+					<dcssch:field>Банк</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номер</dcssch:dataPath>
+					<dcssch:field>Номер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Договор</dcssch:dataPath>
+					<dcssch:field>Договор</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПредставлениеСостоянияДиректБанк</dcssch:dataPath>
+					<dcssch:field>ПредставлениеСостоянияДиректБанк</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление состояния директ банк</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>State presentation direct bank</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КартинкаДиректБанк</dcssch:dataPath>
+					<dcssch:field>КартинкаДиректБанк</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка директ банк</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Picture direct bank</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<ListSettings/>
+			</Settings>
+		</Attribute>
+		<Attribute name="БанковскийСчетОтбор" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Банковский счет</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Bank account</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.БанковскиеСчетаОрганизаций</v8:Type>
+			</Type>
+			<Save>
+				<Field>БанковскийСчетОтбор</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ДокументыВалютногоКонтроля" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы валютного контроля</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Foreign exchange control documents</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ДокументыВалютногоКонтроля.КонтрагентПредставление</Field>
+				<Field>ДокументыВалютногоКонтроля.Ссылка</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДанныеДокумента.Ссылка              КАК Ссылка,
+	ДанныеДокумента.Дата                КАК Дата,
+	ДанныеДокумента.ПометкаУдаления     КАК ПометкаУдаления,
+	ДанныеДокумента.Номер               КАК Номер,
+	ДанныеДокумента.Проведен            КАК Проведен,
+	ДанныеДокумента.Организация         КАК Организация,
+	ДанныеДокумента.Банк                КАК Банк,
+	ДанныеДокумента.Договор             КАК Договор,
+	ДанныеДокумента.Договор.Контрагент  КАК Контрагент,
+	ДанныеДокумента.Договор.Контрагент.Наименование КАК КонтрагентПредставление,
+	ДанныеДокумента.Договор.УникальныйНомерВалютногоКонтроля КАК УникальныйНомерКонтракта,
+	ЕСТЬNULL(СостоянияОбменСБанками.Состояние, НЕОПРЕДЕЛЕНО) КАК Состояние
+ИЗ
+	Документ.СправкаОПодтверждающихДокументах КАК ДанныеДокумента
+	
+	ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостоянияОбменСБанками КАК СостоянияОбменСБанками
+		ПО СостоянияОбменСБанками.СсылкаНаОбъект = ДанныеДокумента.Ссылка</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дата</dcssch:dataPath>
+					<dcssch:field>Дата</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПодтверждающиеДокументы</dcssch:dataPath>
+					<dcssch:field>ПодтверждающиеДокументы</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Проведен</dcssch:dataPath>
+					<dcssch:field>Проведен</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаСправки</dcssch:dataPath>
+					<dcssch:field>ДатаСправки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ответственный</dcssch:dataPath>
+					<dcssch:field>Ответственный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Комментарий</dcssch:dataPath>
+					<dcssch:field>Комментарий</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Контрагент</dcssch:dataPath>
+					<dcssch:field>Контрагент</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагент</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Организация</dcssch:dataPath>
+					<dcssch:field>Организация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Автор</dcssch:dataPath>
+					<dcssch:field>Автор</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МоментВремени</dcssch:dataPath>
+					<dcssch:field>МоментВремени</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номер</dcssch:dataPath>
+					<dcssch:field>Номер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Банк</dcssch:dataPath>
+					<dcssch:field>Банк</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Договор</dcssch:dataPath>
+					<dcssch:field>Договор</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КонтрагентПредставление</dcssch:dataPath>
+					<dcssch:field>КонтрагентПредставление</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагент представление</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty presentation</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УникальныйНомерКонтракта</dcssch:dataPath>
+					<dcssch:field>УникальныйНомерКонтракта</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уникальный номер контракта</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Unique contract number</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Состояние</dcssch:dataPath>
+					<dcssch:field>Состояние</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>State</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<MainTable>Document.СправкаОПодтверждающихДокументах</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="КонтрагентПредставление" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагент</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>КонтрагентПредставление</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ОтборСостоянияДиректБанк" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отбор состояния директ банк</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Status filter direct bank</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+		<Attribute name="Организация" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="СоздатьСПД" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Справка о подтверждающих документах</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Justification document certificate</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать СПД</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create EAS</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьСПД</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьСПДПомощник" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть помощник создания справок о подтверждающих документах...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open wizard of creating justification document certificates...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Помощник создания СПД </v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>EAS creation wizard</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьСПДПомощник</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="СтруктураБыстрогоОтбора">
+			<Type/>
+		</Parameter>
+	</Parameters>
+</Form>

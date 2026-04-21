@@ -1,0 +1,731 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаКнопкаЗаписать" id="80">
+				<Type>CommandBarButton</Type>
+				<Representation>Picture</Representation>
+				<CommandName>Form.StandardCommand.Write</CommandName>
+				<ExtendedTooltip name="ФормаКнопкаЗаписатьРасширеннаяПодсказка" id="81"/>
+			</Button>
+			<Button name="ФормаПоказатьСообщенияXML" id="78">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ПоказатьСообщенияXML</CommandName>
+				<ExtendedTooltip name="ФормаПоказатьСообщенияXMLРасширеннаяПодсказка" id="79"/>
+			</Button>
+			<Button name="ФормаОбновитьИзГИСМТ" id="82">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ОбновитьИзГИСМТ</CommandName>
+				<ExtendedTooltip name="ФормаОбновитьИзГИСМТРасширеннаяПодсказка" id="83"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelField name="СостояниеПредставление" id="72">
+			<DataPath>СостояниеПредставление</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Состояние</v8:content>
+				</v8:item>
+			</Title>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="СостояниеПредставлениеКонтекстноеМеню" id="73"/>
+			<ExtendedTooltip name="СостояниеПредставлениеРасширеннаяПодсказка" id="74"/>
+			<Events>
+				<Event name="URLProcessing">СостояниеПредставлениеОбработкаНавигационнойСсылки</Event>
+			</Events>
+		</LabelField>
+		<InputField name="Организация" id="1">
+			<DataPath>Запись.Организация</DataPath>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<MaxWidth>28</MaxWidth>
+			<ContextMenu name="ОрганизацияКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="3"/>
+			<Events>
+				<Event name="OnChange">ОрганизацияПриИзменении</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="ГруппаДействителенДо" id="68">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа действителен до</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Группа действителен до</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа действителен до</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Группа действителен до</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаДействителенДоРасширеннаяПодсказка" id="69"/>
+			<ChildItems>
+				<InputField name="ДействителенДо" id="65">
+					<DataPath>ДействителенДо</DataPath>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="ДействителенДоКонтекстноеМеню" id="66"/>
+					<ExtendedTooltip name="ДействителенДоРасширеннаяПодсказка" id="67">
+						<AutoMaxWidth>false</AutoMaxWidth>
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Предыдущее значение было 25.09.2020</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Предыдущее значение было 25.09.2020</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">ДействителенДоПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаРазрешеноВсем" id="70">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа разрешено всем</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Группа разрешено всем</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа разрешено всем</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Группа разрешено всем</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаРазрешеноВсемРасширеннаяПодсказка" id="71"/>
+			<ChildItems>
+				<RadioButtonField name="ВариантДоступа" id="60">
+					<DataPath>ВариантДоступа</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Предоставлять доступ</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Предоставлять доступ</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Top</TitleLocation>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>всем</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>всем</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">1</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>контрагентам из списка</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>контрагентам из списка</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">0</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ВариантДоступаКонтекстноеМеню" id="61"/>
+					<ExtendedTooltip name="ВариантДоступаРасширеннаяПодсказка" id="62">
+						<AutoMaxWidth>false</AutoMaxWidth>
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Пока еще действует список контрагентов перечисленный ниже.</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Пока еще действует список контрагентов перечисленный ниже.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">РазрешеноВсемПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ДоверенныеКонтрагенты" id="25">
+			<Representation>List</Representation>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ДоверенныеКонтрагенты</DataPath>
+			<CommandSet>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>CancelSearch</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+				<ExcludedCommand>Find</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>OutputList</ExcludedCommand>
+				<ExcludedCommand>SelectAll</ExcludedCommand>
+				<ExcludedCommand>ShowMultipleSelection</ExcludedCommand>
+				<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+				<ExcludedCommand>SortListAsc</ExcludedCommand>
+				<ExcludedCommand>SortListDesc</ExcludedCommand>
+			</CommandSet>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ДоверенныеКонтрагентыКонтекстноеМеню" id="26"/>
+			<AutoCommandBar name="ДоверенныеКонтрагентыКоманднаяПанель" id="27">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ДоверенныеКонтрагентыДобавитьКонтрагента" id="63">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ДобавитьКонтрагента</CommandName>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Добавить</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Добавить</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ДоверенныеКонтрагентыДобавитьКонтрагентаРасширеннаяПодсказка" id="64"/>
+					</Button>
+					<Button name="ДоверенныеКонтрагентыПодобратьКонтрагентов" id="50">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПодобратьКонтрагентов</CommandName>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Подобрать</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Подобрать</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ДоверенныеКонтрагентыПодобратьКонтрагентовРасширеннаяПодсказка" id="51"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ДоверенныеКонтрагентыРасширеннаяПодсказка" id="28"/>
+			<SearchStringAddition name="ДоверенныеКонтрагентыСтрокаПоиска" id="29">
+				<AdditionSource>
+					<Item>ДоверенныеКонтрагенты</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДоверенныеКонтрагентыСтрокаПоискаКонтекстноеМеню" id="30"/>
+				<ExtendedTooltip name="ДоверенныеКонтрагентыСтрокаПоискаРасширеннаяПодсказка" id="31"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ДоверенныеКонтрагентыСостояниеПросмотра" id="32">
+				<AdditionSource>
+					<Item>ДоверенныеКонтрагенты</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДоверенныеКонтрагентыСостояниеПросмотраКонтекстноеМеню" id="33"/>
+				<ExtendedTooltip name="ДоверенныеКонтрагентыСостояниеПросмотраРасширеннаяПодсказка" id="34"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ДоверенныеКонтрагентыУправлениеПоиском" id="35">
+				<AdditionSource>
+					<Item>ДоверенныеКонтрагенты</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ДоверенныеКонтрагентыУправлениеПоискомКонтекстноеМеню" id="36"/>
+				<ExtendedTooltip name="ДоверенныеКонтрагентыУправлениеПоискомРасширеннаяПодсказка" id="37"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ДоверенныеКонтрагентыВыбор</Event>
+				<Event name="BeforeAddRow">ДоверенныеКонтрагентыПередНачаломДобавления</Event>
+				<Event name="BeforeDeleteRow">ДоверенныеКонтрагентыПередУдалением</Event>
+				<Event name="BeforeRowChange">ДоверенныеКонтрагентыПередНачаломИзменения</Event>
+				<Event name="OnChange">ДоверенныеКонтрагентыПриИзменении</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ДоверенныеКонтрагентыИНН" id="38">
+					<DataPath>ДоверенныеКонтрагенты.ИНН</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДоверенныеКонтрагентыИННКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="ДоверенныеКонтрагентыИННРасширеннаяПодсказка" id="40"/>
+				</InputField>
+				<InputField name="ДоверенныеКонтрагентыКонтрагент" id="41">
+					<DataPath>ДоверенныеКонтрагенты.Контрагент</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДоверенныеКонтрагентыКонтрагентКонтекстноеМеню" id="42"/>
+					<ExtendedTooltip name="ДоверенныеКонтрагентыКонтрагентРасширеннаяПодсказка" id="43"/>
+					<Events>
+						<Event name="ChoiceProcessing">ДоверенныеКонтрагентыКонтрагентОбработкаВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="ДоверенныеКонтрагентыПредставлениеСостояния" id="47">
+					<DataPath>ДоверенныеКонтрагенты.ПредставлениеСостояния</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Состояние</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ChoiceButton>true</ChoiceButton>
+					<TextEdit>false</TextEdit>
+					<ContextMenu name="ДоверенныеКонтрагентыПредставлениеСостоянияКонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="ДоверенныеКонтрагентыПредставлениеСостоянияРасширеннаяПодсказка" id="49"/>
+					<Events>
+						<Event name="StartChoice">ДоверенныеКонтрагентыПредставлениеСостоянияНачалоВыбора</Event>
+						<Event name="Clearing">ДоверенныеКонтрагентыПредставлениеСостоянияОчистка</Event>
+						<Event name="ChoiceProcessing">ДоверенныеКонтрагентыПредставлениеСостоянияОбработкаВыбора</Event>
+					</Events>
+				</InputField>
+				<ColumnGroup name="ДоверенныеКонтрагентыВспомогательныеКолонки" id="55">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доверенные контрагенты вспомогательные колонки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Доверенные контрагенты вспомогательные колонки</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доверенные контрагенты вспомогательные колонки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Доверенные контрагенты вспомогательные колонки</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ДоверенныеКонтрагентыВспомогательныеКолонкиРасширеннаяПодсказка" id="56"/>
+					<ChildItems>
+						<CheckBoxField name="ДоверенныеКонтрагентыРазрешеноУдалять" id="52">
+							<DataPath>ДоверенныеКонтрагенты.РазрешеноУдалять</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ДоверенныеКонтрагентыРазрешеноУдалятьКонтекстноеМеню" id="53"/>
+							<ExtendedTooltip name="ДоверенныеКонтрагентыРазрешеноУдалятьРасширеннаяПодсказка" id="54"/>
+						</CheckBoxField>
+						<InputField name="ДоверенныеКонтрагентыДопустимыеСостояния" id="57">
+							<DataPath>ДоверенныеКонтрагенты.ДопустимыеСостояния</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДоверенныеКонтрагентыДопустимыеСостоянияКонтекстноеМеню" id="58"/>
+							<ExtendedTooltip name="ДоверенныеКонтрагентыДопустимыеСостоянияРасширеннаяПодсказка" id="59"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Запись" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.СогласиеОПредоставленииИнформацииГИСМТ</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ДоверенныеКонтрагенты" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доверенные контрагенты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Доверенные контрагенты</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ИНН" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИНН</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ИНН</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>12</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Контрагент" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагент</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Контрагент</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.КонтрагентГосИС</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Состояние" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Состояние</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПредставлениеСостояния" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление состояния</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Представление состояния</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="РазрешеноУдалять" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Разрешено удалять</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Разрешено удалять</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДопустимыеСостояния" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Допустимые состояния</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Допустимые состояния</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:ValueListType</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ИсторияИзменений" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История изменений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>История изменений</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ВариантДоступа" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант доступа</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Вариант доступа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДействителенДо" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Действительно до</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Действительно до</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СостояниеПредставление" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние представление</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Состояние представление</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:FormattedString</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Состояние" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Состояние</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.СтатусыОбработкиСогласияГИСМТ</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ХешСумма" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Хеш сумма</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Хеш сумма</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>50</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПротоколОбмена" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Протокол обмена</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Протокол обмена</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ОписаниеОшибки" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание ошибки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Описание ошибки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПодобратьКонтрагентов" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать контрагентов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Подобрать контрагентов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать контрагентов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Подобрать контрагентов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодобратьКонтрагентов</Action>
+		</Command>
+		<Command name="ДобавитьКонтрагента" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить контрагента</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Добавить контрагента</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить контрагента</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Добавить контрагента</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДобавитьКонтрагента</Action>
+		</Command>
+		<Command name="ПоказатьСообщенияXML" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать сообщения XML</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Показать сообщения XML</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать сообщения XML</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Показать сообщения XML</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПоказатьСообщенияXML</Action>
+		</Command>
+		<Command name="ОбновитьИзГИСМТ" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить из ГИС МТ</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Обновить из ГИС МТ</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОбновитьИзГИСМТ</Action>
+		</Command>
+	</Commands>
+</Form>

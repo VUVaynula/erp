@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Расшифровка произвольного отчета</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Custom Report Drilldown</v8:content>
+		</v8:item>
+	</Title>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаКомандаВернуться" id="5">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.КомандаВернуться</CommandName>
+				<ExtendedTooltip name="ФормаКомандаВернутьсяExtendedTooltip" id="17"/>
+			</Button>
+			<Button name="ФормаКомандаОбновить" id="6">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.КомандаОбновить</CommandName>
+				<ExtendedTooltip name="ФормаКомандаОбновитьExtendedTooltip" id="18"/>
+			</Button>
+			<Button name="ФормаКомандаНастройка" id="7">
+				<Type>CommandBarButton</Type>
+				<Check>true</Check>
+				<CommandName>Form.Command.КомандаНастройка</CommandName>
+				<ExtendedTooltip name="ФормаКомандаНастройкаExtendedTooltip" id="19"/>
+			</Button>
+			<Button name="ФормаЗакрыть" id="4">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ExtendedTooltip name="ФормаЗакрытьExtendedTooltip" id="20"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаКорень" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа корень</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Root group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ChildItemsWidth>LeftWidest</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКореньExtendedTooltip" id="21"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаРезультат" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Результат</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Result</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<ExtendedTooltip name="ГруппаРезультатExtendedTooltip" id="22"/>
+					<ChildItems>
+						<SpreadSheetDocumentField name="Результат" id="1">
+							<DataPath>Результат</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<VerticalScrollBar>true</VerticalScrollBar>
+							<HorizontalScrollBar>true</HorizontalScrollBar>
+							<ContextMenu name="РезультатКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="РезультатExtendedTooltip" id="23"/>
+							<Events>
+								<Event name="DetailProcessing">РезультатОбработкаРасшифровки</Event>
+							</Events>
+						</SpreadSheetDocumentField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаНастройкиРасшифровки" id="42">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки расшифровки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Decryption settings</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа настройки расшифровки</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<ExtendedTooltip name="ГруппаНастройкиРасшифровкиРасширеннаяПодсказка" id="43"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаДополнительныеНастройки" id="40">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дополнительные настройки</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Additional settings</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа дополнительные настройки</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Behavior>Usual</Behavior>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаДополнительныеНастройкиРасширеннаяПодсказка" id="41"/>
+							<ChildItems>
+								<CheckBoxField name="СкрыватьПустые" id="37">
+									<DataPath>Объект.СкрыватьПустые</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="СкрыватьПустыеКонтекстноеМеню" id="38"/>
+									<ExtendedTooltip name="СкрыватьПустыеРасширеннаяПодсказка" id="39"/>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаНастройкаИзмерений" id="8">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка измерений</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Measurement setup</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа настройка измерений</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<ExtendedTooltip name="ГруппаНастройкаИзмеренийРасширеннаяПодсказка" id="24"/>
+							<ChildItems>
+								<Table name="Измерения" id="9">
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>Объект.Измерения</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Измерения</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Dimensions</v8:content>
+										</v8:item>
+									</Title>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="ИзмеренияКонтекстноеМеню" id="10"/>
+									<AutoCommandBar name="ИзмеренияКоманднаяПанель" id="11"/>
+									<ExtendedTooltip name="ИзмеренияExtendedTooltip" id="25"/>
+									<SearchStringAddition name="ИзмеренияСтрокаПоиска" id="28">
+										<AdditionSource>
+											<Item>Измерения</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ИзмеренияСтрокаПоискаКонтекстноеМеню" id="29"/>
+										<ExtendedTooltip name="ИзмеренияСтрокаПоискаРасширеннаяПодсказка" id="30"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ИзмеренияСостояниеПросмотра" id="31">
+										<AdditionSource>
+											<Item>Измерения</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ИзмеренияСостояниеПросмотраКонтекстноеМеню" id="32"/>
+										<ExtendedTooltip name="ИзмеренияСостояниеПросмотраРасширеннаяПодсказка" id="33"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ИзмеренияУправлениеПоиском" id="34">
+										<AdditionSource>
+											<Item>Измерения</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ИзмеренияУправлениеПоискомКонтекстноеМеню" id="35"/>
+										<ExtendedTooltip name="ИзмеренияУправлениеПоискомРасширеннаяПодсказка" id="36"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="OnStartEdit">ИзмеренияПриНачалеРедактирования</Event>
+									</Events>
+									<ChildItems>
+										<LabelField name="ИзмеренияНомерСтроки" id="12">
+											<DataPath>Объект.Измерения.LineNumber</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ИзмеренияНомерСтрокиКонтекстноеМеню" id="13"/>
+											<ExtendedTooltip name="ИзмеренияНомерСтрокиExtendedTooltip" id="26"/>
+										</LabelField>
+										<InputField name="ИзмеренияПутьКДанным" id="14">
+											<DataPath>Объект.Измерения.ПутьКДанным</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ChoiceButton>true</ChoiceButton>
+											<TextEdit>false</TextEdit>
+											<ContextMenu name="ИзмеренияПутьКДаннымКонтекстноеМеню" id="15"/>
+											<ExtendedTooltip name="ИзмеренияПутьКДаннымExtendedTooltip" id="27"/>
+											<Events>
+												<Event name="StartChoice">ИзмеренияПутьКДаннымНачалоВыбора</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.бит_РасшифровкаПроизвольногоОтчета</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Save>
+				<Field>Объект.СкрыватьПустые</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Результат" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результат</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Result</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИмяФормыВладельца" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя формы владельца</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parent Form Name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПанельНастроекСкрыта" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель настроек скрыта</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings panel is hidden</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>ПанельНастроекСкрыта</Field>
+			</Save>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="КомандаВернуться" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В отчет</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>To Report</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вернуться в отчет</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Back to the report</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Back</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаВернуться</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаОбновить" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаОбновить</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаНастройка" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>adjustment</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>adjustment</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаНастройка</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

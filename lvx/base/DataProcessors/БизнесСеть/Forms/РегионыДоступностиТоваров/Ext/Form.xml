@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Регионы доступности товаров</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Goods availability regions</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаОбновить" id="240">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Перечитать</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаОбновитьРасширеннаяПодсказка" id="241"/>
+			</Button>
+			<Button name="ФормаЗаписатьЗакрыть" id="60">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьЗакрытьРасширеннаяПодсказка" id="61"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="308">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Записать</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="309"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаРегионыПродажи" id="257">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Регионы продаж (для доставки)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sales regions (for delivery)</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="ГруппаРегионыПродажиРасширеннаяПодсказка" id="258"/>
+			<ChildItems>
+				<CheckBoxField name="ИспользоватьРегионы" id="310">
+					<DataPath>ИспользоватьРегионы</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Возможна доставка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Delivery is possible</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ИспользоватьРегионыКонтекстноеМеню" id="311"/>
+					<ExtendedTooltip name="ИспользоватьРегионыРасширеннаяПодсказка" id="312"/>
+					<Events>
+						<Event name="OnChange">ВозможнаДоставкаПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<Table name="РегионыПродажи" id="5">
+					<Representation>List</Representation>
+					<HeightInTableRows>1</HeightInTableRows>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>РегионыПродажи</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Регионы продаж и поставок</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sales and delivery regions</v8:content>
+						</v8:item>
+					</Title>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="РегионыПродажиКонтекстноеМеню" id="6"/>
+					<AutoCommandBar name="РегионыПродажиКоманднаяПанель" id="7">
+						<ChildItems>
+							<Button name="РегионыАбонентаПродажиЗаполнить" id="62">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ЗаполнитьРегионыПродажи</CommandName>
+								<ExtendedTooltip name="РегионыАбонентаПродажиЗаполнитьРасширеннаяПодсказка" id="63"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="РегионыПродажиРасширеннаяПодсказка" id="8"/>
+					<SearchStringAddition name="РегионыПродажиСтрокаПоиска" id="9">
+						<AdditionSource>
+							<Item>РегионыПродажи</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="РегионыПродажиСтрокаПоискаКонтекстноеМеню" id="10"/>
+						<ExtendedTooltip name="РегионыПродажиСтрокаПоискаРасширеннаяПодсказка" id="11"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="РегионыПродажиСостояниеПросмотра" id="12">
+						<AdditionSource>
+							<Item>РегионыПродажи</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="РегионыПродажиСостояниеПросмотраКонтекстноеМеню" id="13"/>
+						<ExtendedTooltip name="РегионыПродажиСостояниеПросмотраРасширеннаяПодсказка" id="14"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="РегионыПродажиУправлениеПоиском" id="15">
+						<AdditionSource>
+							<Item>РегионыПродажи</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="РегионыПродажиУправлениеПоискомКонтекстноеМеню" id="16"/>
+						<ExtendedTooltip name="РегионыПродажиУправлениеПоискомРасширеннаяПодсказка" id="17"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">РегионыПродажиВыбор</Event>
+						<Event name="BeforeAddRow">РегионыПродажиПередНачаломДобавления</Event>
+						<Event name="BeforeRowChange">РегионыПродажиПередНачаломИзменения</Event>
+						<Event name="OnChange">РегионыПродажиПриИзменении</Event>
+					</Events>
+					<ChildItems>
+						<InputField name="РегионыПродажиПредставление" id="18">
+							<DataPath>РегионыПродажи.Представление</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Регион</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Region</v8:content>
+								</v8:item>
+							</Title>
+							<ChoiceButton>true</ChoiceButton>
+							<TextEdit>false</TextEdit>
+							<ContextMenu name="РегионыПродажиПредставлениеКонтекстноеМеню" id="19"/>
+							<ExtendedTooltip name="РегионыПродажиПредставлениеРасширеннаяПодсказка" id="20"/>
+							<Events>
+								<Event name="StartChoice">РегионыПродажиНачалоВыбора</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаАдресаПродажи" id="259">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адреса складов (для самовывоза)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Warehouse addresses (for customer pickup)</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="ГруппаАдресаПродажиРасширеннаяПодсказка" id="260"/>
+			<ChildItems>
+				<CheckBoxField name="ИспользоватьАдреса" id="313">
+					<DataPath>ИспользоватьАдреса</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Возможен самовывоз</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Customer pickup is available</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ИспользоватьАдресаКонтекстноеМеню" id="314"/>
+					<ExtendedTooltip name="ИспользоватьАдресаРасширеннаяПодсказка" id="315"/>
+					<Events>
+						<Event name="OnChange">ВозможенСамовывозПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<Table name="АдресаПродажи" id="213">
+					<Representation>List</Representation>
+					<HeightInTableRows>1</HeightInTableRows>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>АдресаПродажи</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адреса магазинов и складов</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Addresses of stores and warehouses</v8:content>
+						</v8:item>
+					</Title>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="АдресаПродажиКонтекстноеМеню" id="214"/>
+					<AutoCommandBar name="АдресаПродажиКоманднаяПанель" id="215">
+						<ChildItems>
+							<Button name="АдресаАбонентаПродажиЗаполнить" id="238">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ЗаполнитьАдресаПродажи</CommandName>
+								<ExtendedTooltip name="АдресаАбонентаПродажиЗаполнитьРасширеннаяПодсказка" id="239"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="АдресаПродажиРасширеннаяПодсказка" id="216"/>
+					<SearchStringAddition name="АдресаПродажиСтрокаПоиска" id="217">
+						<AdditionSource>
+							<Item>АдресаПродажи</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="АдресаПродажиСтрокаПоискаКонтекстноеМеню" id="218"/>
+						<ExtendedTooltip name="АдресаПродажиСтрокаПоискаРасширеннаяПодсказка" id="219"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="АдресаПродажиСостояниеПросмотра" id="220">
+						<AdditionSource>
+							<Item>АдресаПродажи</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="АдресаПродажиСостояниеПросмотраКонтекстноеМеню" id="221"/>
+						<ExtendedTooltip name="АдресаПродажиСостояниеПросмотраРасширеннаяПодсказка" id="222"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="АдресаПродажиУправлениеПоиском" id="223">
+						<AdditionSource>
+							<Item>АдресаПродажи</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="АдресаПродажиУправлениеПоискомКонтекстноеМеню" id="224"/>
+						<ExtendedTooltip name="АдресаПродажиУправлениеПоискомРасширеннаяПодсказка" id="225"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">АдресаПродажиВыбор</Event>
+						<Event name="BeforeAddRow">АдресаПродажиПередНачаломДобавления</Event>
+						<Event name="BeforeRowChange">АдресаПродажиПередНачаломИзменения</Event>
+						<Event name="OnChange">АдресаПродажиПриИзменении</Event>
+					</Events>
+					<ChildItems>
+						<InputField name="АдресаПродажиПредставление" id="226">
+							<DataPath>АдресаПродажи.Представление</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адрес</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Address</v8:content>
+								</v8:item>
+							</Title>
+							<ChoiceButton>true</ChoiceButton>
+							<TextEdit>false</TextEdit>
+							<ContextMenu name="АдресаПродажиПредставлениеКонтекстноеМеню" id="227"/>
+							<ExtendedTooltip name="АдресаПродажиПредставлениеРасширеннаяПодсказка" id="228"/>
+							<Events>
+								<Event name="StartChoice">АдресаПродажиПредставлениеНачалоВыбора</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="ДекорацияПояснение" id="299">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<TextColor>style:ПоясняющийТекст</TextColor>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Для возможности поиска по регионам, ввод контактной информации необходимо производить только с использованием адресного классификатора, не используя свободный режим ввода.</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>To search by regions, enter contact information only by using address classifier but not the free input mode.</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ДекорацияПояснениеКонтекстноеМеню" id="300"/>
+			<ExtendedTooltip name="ДекорацияПояснениеРасширеннаяПодсказка" id="301"/>
+		</LabelDecoration>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="РегионыПродажи" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Регионы продаж</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sale regions</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="Представление" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>500</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ЗначенияПолей" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значения полей</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Field values</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="АдресаПродажи" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адреса продажи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sale addresses</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="Представление" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>500</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ЗначенияПолей" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значения полей</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Field values</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПрограммноеЗакрытие" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Программное закрытие</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Program closing</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидКонтактнойИнформации" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид контактной информации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Contact details kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="Организация" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DefinedType.Организация</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьХранилищеНастроек" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать хранилище настроек</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use settings storage</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьАдреса" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать адреса</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use addresses</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьРегионы" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать регионы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use regions</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоПокупатель" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это покупатель</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is customer</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТорговоеПредложение" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Торговое предложение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Selling proposition</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ТолькоРегионы" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Только регионы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Regions only</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КлючХраненияНастроек" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ключ хранения настроек</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings storage key</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаписатьЗакрыть" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save close</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаписатьЗакрыть</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаполнитьРегионыПродажи" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill in</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить регионы продажи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill in sales regions</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьРегионыПродажи</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаполнитьАдресаПродажи" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill in</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить адреса продажи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill in sale addresses</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьАдресаПродажи</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="Перечитать" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перечитать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reread</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перечитать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reread</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Перечитать</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="Записать" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save close</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Записать</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

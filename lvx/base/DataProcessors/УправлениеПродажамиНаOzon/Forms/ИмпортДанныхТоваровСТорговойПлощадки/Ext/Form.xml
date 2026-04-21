@@ -1,0 +1,4376 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Импорт данных товаров с торговой площадки Ozon</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Import goods data from Ozon</v8:content>
+		</v8:item>
+	</Title>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<AutoURL>false</AutoURL>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="293">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header group</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:ToolTipBackColor</BackColor>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="294"/>
+			<ChildItems>
+				<Button name="ДополнительныеПараметрыИмпортаДанных" id="505">
+					<Type>Hyperlink</Type>
+					<Representation>PictureAndText</Representation>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<CommandName>Form.Command.ДополнительныеПараметрыИмпортаДанных</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вариант загрузки данных: обновить выбранные карточки товаров и загрузить отсутствующие (1 000 позиций за один запрос получения данных), загрузить текущие цены продажи с торговой площадки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Data import option: update the selected product cards and import missing cards (1,000 items per data receipt request), import the current selling prices from the trading platform</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ДополнительныеПараметрыИмпортаДанныхРасширеннаяПодсказка" id="506"/>
+				</Button>
+				<UsualGroup name="ГруппаНастройки" id="47">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settings</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Collapsible</Behavior>
+					<CollapsedRepresentationTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Показать настройки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Show settings</v8:content>
+						</v8:item>
+					</CollapsedRepresentationTitle>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ГруппаНастройкиРасширеннаяПодсказка" id="48"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаНастройкиЛево" id="483">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа настройки лево</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group settings left</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНастройкиЛевоРасширеннаяПодсказка" id="484"/>
+							<ChildItems>
+								<RadioButtonField name="ВариантЗагрузкиДанных" id="196">
+									<DataPath>ВариантЗагрузкиДанных</DataPath>
+									<RadioButtonType>Auto</RadioButtonType>
+									<ColumnsCount>1</ColumnsCount>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Обновить выбранные карточки товаров</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Update the selected product cards</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">0</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Обновить выбранные карточки товаров и загрузить отсутствующие</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Update the selected product cards and import missing cards</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">1</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Загрузить отсутствующие карточки товаров</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Import missing product cards</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">2</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="ВариантЗагрузкиДанныхКонтекстноеМеню" id="197"/>
+									<ExtendedTooltip name="ВариантЗагрузкиДанныхРасширеннаяПодсказка" id="198"/>
+									<Events>
+										<Event name="OnChange">ВариантЗагрузкиДанныхПриИзменении</Event>
+									</Events>
+								</RadioButtonField>
+								<CheckBoxField name="ЗагрузитьИзображения" id="475">
+									<DataPath>ЗагрузитьИзображения</DataPath>
+									<Visible>false</Visible>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ЗагрузитьИзображенияКонтекстноеМеню" id="476"/>
+									<ExtendedTooltip name="ЗагрузитьИзображенияРасширеннаяПодсказка" id="477"/>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаНастройкиПраво" id="478">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа настройки право</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group settings right</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНастройкиПравоРасширеннаяПодсказка" id="479"/>
+							<ChildItems>
+								<CheckBoxField name="ЗагрузитьЦеныПродажи" id="199">
+									<DataPath>ЗагрузитьЦеныПродажи</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Заполняются цены для указанных в настройках обмена видов цен продажи.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Prices are filled for selling price types specified in the exchange settings.</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ЗагрузитьЦеныПродажиКонтекстноеМеню" id="200"/>
+									<ExtendedTooltip name="ЗагрузитьЦеныПродажиРасширеннаяПодсказка" id="201">
+										<AutoMaxWidth>false</AutoMaxWidth>
+									</ExtendedTooltip>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="ДекорацияОтступ1" id="212">
+							<Width>4</Width>
+							<ContextMenu name="ДекорацияОтступ1КонтекстноеМеню" id="213"/>
+							<ExtendedTooltip name="ДекорацияОтступ1РасширеннаяПодсказка" id="214"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<LabelDecoration name="ДекорацияОтступ2" id="302">
+					<Width>2</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ContextMenu name="ДекорацияОтступ2КонтекстноеМеню" id="303"/>
+					<ExtendedTooltip name="ДекорацияОтступ2РасширеннаяПодсказка" id="304"/>
+				</LabelDecoration>
+				<UsualGroup name="ГруппаПодсказка" id="298">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подсказка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tooltip</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>false</HorizontalStretch>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+					<Group>Vertical</Group>
+					<Behavior>PopUp</Behavior>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ГруппаПодсказкаРасширеннаяПодсказка" id="299"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияПодсказка" id="295">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Для загрузки данных по товарам с торговой площадки выполните следующие шаги:
+1. Заполните настройки импорта товарного каталога:
+     - выберите вариант загрузки;
+     - выберите поле для сопоставления товаров;
+     - при необходимости установите ограничение для получения данных карточек товаров;
+     - укажите, нужно ли загружать цены.
+2. Установите отметки для товаров, требующих обновления данных.
+3. Получите данные с торговой площадки. Доступно повторное получение данных для отмеченных позиций.
+4. Проверьте полученные данные и заполните данные учетной системы, которые не удалось автоматически определить: номенклатуру, характеристику, упаковку, категорию 1С, при необходимости отредактируйте в номенклатуре ставку НДС.
+5. Установите отметки для товаров, которые требуется записать в учетную систему 1С.
+6. Запишите полученные данные товаров в учетную систему 1С.
+7. Проанализируйте результат записи. Для загруженных позиций должна поменяться пиктограмма в соответствии со статусом товара: на модерации, загружен, загружен с ошибками, в архиве.
+8. Если в настройках импорта задано ограничение получения данных карточек товаров, повторяйте пункты 2 - 7 до тех  пор, пока в зависимости от выбранного варианта загрузки не будут обновлены все переданные из формы списка публикаций выделенные позиции и/или загружены все отсутствующие карточки товаров (при отсутствии необработанных обновляемых позиций перестанет меняться количество позиций в верке загруженных позиций).</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>To import goods data from the trading platform:
+1. Fill the settings to import a goods directory:
+     - Select an import option.
+     - Select a field to map goods.
+     - If necessary, set a limit on receiving product card data.
+     - Specify if prices must be imported.
+2. Select the check boxes for goods that require data update.
+3. Get data from the trading platform. You can get the data again for the selected items.
+4. Check the received data and fill accounting system data that was not filled automatically: an item, a variant, a packaging unit, a 1C category. If necessary, change the VAT rate in the item.
+5. Select the check boxes for goods that must be saved to the 1C accounting system.
+6. Save the received goods data to the 1C accounting system.
+7. Analyze the saving result. For the imported items, the icon must change depending on the item status: moderating, imported, imported with errors, in the archive.
+8. If the import settings limit the receipt of product card data, depending on the selected import option, repeat steps 2-7 until all the selected items transferred from the publication list form are updated and/or all missing product cards are imported. When there are no unprocessed items to update, the number of items in the imported item list stops changing.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияПодсказкаКонтекстноеМеню" id="296"/>
+							<ExtendedTooltip name="ДекорацияПодсказкаРасширеннаяПодсказка" id="297"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаИмпортДанных" id="154">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные для загрузки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data to import</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаИмпортДанныхРасширеннаяПодсказка" id="155"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаКоманды" id="245">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа команды</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group commands</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаКомандыРасширеннаяПодсказка" id="246"/>
+					<ChildItems>
+						<CommandBar name="ГруппаКоманднаяПанель" id="241">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа командная панель</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group command bar</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="242"/>
+							<ChildItems>
+								<ButtonGroup name="ГруппаФлажки" id="227">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа флажки</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Check boxes group</v8:content>
+										</v8:item>
+									</Title>
+									<Representation>Compact</Representation>
+									<ExtendedTooltip name="ГруппаФлажкиРасширеннаяПодсказка" id="228"/>
+									<ChildItems>
+										<Popup name="ГруппаУстановитьФлаги" id="612">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Установить флаги</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Select check boxes</v8:content>
+												</v8:item>
+											</Title>
+											<Picture>
+												<xr:Ref>StdPicture.CheckAll</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<Representation>Picture</Representation>
+											<ExtendedTooltip name="ГруппаУстановитьФлагиРасширеннаяПодсказка" id="613"/>
+											<ChildItems>
+												<Button name="УстановитьФлажкиДляТребующихПолученияДанных" id="614">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.УстановитьФлажкиДляТребующихПолученияДанных</CommandName>
+													<ExtendedTooltip name="УстановитьФлажкиДляТребующихПолученияДанныхРасширеннаяПодсказка" id="615"/>
+												</Button>
+												<Button name="УстановитьФлажкиДляТребующихЗаписиТоваров" id="616">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.УстановитьФлажкиДляТребующихЗаписиТоваров</CommandName>
+													<Picture>
+														<xr:Ref>StdPicture.CheckAll</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</Picture>
+													<ExtendedTooltip name="УстановитьФлажкиДляТребующихЗаписиТоваровРасширеннаяПодсказка" id="617"/>
+												</Button>
+												<Button name="УстановитьФлажкиДляТребующихЗаписиЦен" id="618">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.УстановитьФлажкиДляТребующихЗаписиЦен</CommandName>
+													<ExtendedTooltip name="УстановитьФлажкиДляТребующихЗаписиЦенРасширеннаяПодсказка" id="619"/>
+												</Button>
+												<Button name="УстановитьФлажкиДляНеСопоставленнойНоменклатуры" id="622">
+													<Type>CommandBarButton</Type>
+													<Visible>false</Visible>
+													<CommandName>Form.Command.УстановитьФлажкиДляНеСопоставленнойНоменклатуры</CommandName>
+													<ExtendedTooltip name="УстановитьФлажкиДляНеСопоставленнойНоменклатурыРасширеннаяПодсказка" id="623"/>
+												</Button>
+												<Button name="ИмпортируемыеТоварыУстановитьФлажки" id="229">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.УстановитьФлажки</CommandName>
+													<ExtendedTooltip name="ИмпортируемыеТоварыУстановитьФлажкиРасширеннаяПодсказка" id="230"/>
+												</Button>
+											</ChildItems>
+										</Popup>
+										<Button name="ИмпортируемыеТоварыСнятьФлажки" id="231">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.СнятьФлажки</CommandName>
+											<ExtendedTooltip name="ИмпортируемыеТоварыСнятьФлажкиРасширеннаяПодсказка" id="232"/>
+										</Button>
+									</ChildItems>
+								</ButtonGroup>
+								<ButtonGroup name="ГруппаДанные" id="533">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа данные</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group data</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ГруппаДанныеРасширеннаяПодсказка" id="534"/>
+									<ChildItems>
+										<Button name="ПолучитьДанныеСТорговойПлощадки" id="247">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ПолучитьДанныеСТорговойПлощадки</CommandName>
+											<ExtendedTooltip name="ПолучитьДанныеСТорговойПлощадкиРасширеннаяПодсказка" id="248"/>
+										</Button>
+										<Button name="СоздатьНоменклатуру" id="624">
+											<Type>CommandBarButton</Type>
+											<Visible>false</Visible>
+											<CommandName>Form.Command.СоздатьНоменклатуру</CommandName>
+											<ExtendedTooltip name="СоздатьНоменклатуруРасширеннаяПодсказка" id="625"/>
+										</Button>
+										<Button name="ЗаписатьЗагруженныеДанные" id="277">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ЗаписатьЗагруженныеДанные</CommandName>
+											<ExtendedTooltip name="ЗаписатьЗагруженныеДанныеРасширеннаяПодсказка" id="278"/>
+										</Button>
+										<Button name="ЗаписатьЦены" id="620">
+											<Type>CommandBarButton</Type>
+											<Visible>false</Visible>
+											<CommandName>Form.Command.ЗаписатьЦены</CommandName>
+											<ExtendedTooltip name="ЗаписатьЦеныРасширеннаяПодсказка" id="621"/>
+										</Button>
+									</ChildItems>
+								</ButtonGroup>
+								<Popup name="ОтборПоСтатусам" id="519">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отбор по статусам</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter by statuses</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ОтборПоСтатусамРасширеннаяПодсказка" id="520"/>
+									<ChildItems>
+										<Button name="ОтобратьПоСтатусуВсе" id="531">
+											<Type>CommandBarButton</Type>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<CommandName>Form.Command.ОтобратьПоСтатусуВсе</CommandName>
+											<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+											<ExtendedTooltip name="ОтобратьПоСтатусуВсеРасширеннаяПодсказка" id="532"/>
+										</Button>
+										<Button name="ОтобратьПоСтатусуОжидаютИсправленияОшибок" id="525">
+											<Type>CommandBarButton</Type>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<CommandName>Form.Command.ОтобратьПоСтатусуОжидаютИсправленияОшибок</CommandName>
+											<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+											<ExtendedTooltip name="ОтобратьПоСтатусуОжидаютИсправленияОшибокРасширеннаяПодсказка" id="526"/>
+										</Button>
+										<Button name="ОтобратьПоСтатусуПодготовленыКПубликации" id="527">
+											<Type>CommandBarButton</Type>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<CommandName>Form.Command.ОтобратьПоСтатусуПодготовленыКПубликации</CommandName>
+											<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+											<ExtendedTooltip name="ОтобратьПоСтатусуПодготовленыКПубликацииРасширеннаяПодсказка" id="528"/>
+										</Button>
+										<Button name="ОтобратьПоСтатусуПеремещеныВАрхив" id="529">
+											<Type>CommandBarButton</Type>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<CommandName>Form.Command.ОтобратьПоСтатусуПеремещеныВАрхив</CommandName>
+											<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+											<ExtendedTooltip name="ОтобратьПоСтатусуПеремещеныВАрхивРасширеннаяПодсказка" id="530"/>
+										</Button>
+										<Button name="ОтобратьПоСтатусуГотовыКПродаже" id="523">
+											<Type>CommandBarButton</Type>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<CommandName>Form.Command.ОтобратьПоСтатусуГотовыКПродаже</CommandName>
+											<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+											<ExtendedTooltip name="ОтобратьПоСтатусуГотовыКПродажеРасширеннаяПодсказка" id="524"/>
+										</Button>
+										<Button name="ОтобратьПоСтатусуОжидаютПолученияДанных" id="535">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ОтобратьПоСтатусуОжидаютПолученияДанных</CommandName>
+											<ExtendedTooltip name="ОтобратьПоСтатусуОжидаютПолученияДанныхРасширеннаяПодсказка" id="536"/>
+										</Button>
+										<Button name="ОтобратьПоСтатусуНеНайденыНаПлощадке" id="537">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ОтобратьПоСтатусуНеНайденыНаПлощадке</CommandName>
+											<ExtendedTooltip name="ОтобратьПоСтатусуНеНайденыНаПлощадкеРасширеннаяПодсказка" id="538"/>
+										</Button>
+										<Button name="ОтобратьПоСтатусуОбнаруженыРасхождения" id="539">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ОтобратьПоСтатусуОбнаруженыРасхождения</CommandName>
+											<ExtendedTooltip name="ОтобратьПоСтатусуОбнаруженыРасхожденияРасширеннаяПодсказка" id="540"/>
+										</Button>
+										<Button name="ОтобратьПоСтатусуОбновлениеНеТребуется" id="541">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ОтобратьПоСтатусуОбновлениеНеТребуется</CommandName>
+											<ExtendedTooltip name="ОтобратьПоСтатусуОбновлениеНеТребуетсяРасширеннаяПодсказка" id="542"/>
+										</Button>
+									</ChildItems>
+								</Popup>
+							</ChildItems>
+						</CommandBar>
+						<LabelDecoration name="ДекорацияОтступ3" id="462">
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ДекорацияОтступ3КонтекстноеМеню" id="463"/>
+							<ExtendedTooltip name="ДекорацияОтступ3РасширеннаяПодсказка" id="464"/>
+						</LabelDecoration>
+						<RadioButtonField name="ОтображатьСопоставленные" id="469">
+							<DataPath>ОтображатьСопоставленные</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Tumbler</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Все</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>All</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">0</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Сопоставленные</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Mapped</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">1</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Несопоставленные</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Unmapped</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">2</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ОтображатьСопоставленныеКонтекстноеМеню" id="470"/>
+							<ExtendedTooltip name="ОтображатьСопоставленныеРасширеннаяПодсказка" id="471"/>
+							<Events>
+								<Event name="OnChange">ОтображатьСопоставленныеПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+						<LabelDecoration name="ДекорацияОтступ4" id="472">
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ДекорацияОтступ4КонтекстноеМеню" id="473"/>
+							<ExtendedTooltip name="ДекорацияОтступ4РасширеннаяПодсказка" id="474"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОтступ5" id="628">
+							<Width>2</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="ДекорацияОтступ5КонтекстноеМеню" id="629"/>
+							<ExtendedTooltip name="ДекорацияОтступ5РасширеннаяПодсказка" id="630"/>
+						</LabelDecoration>
+						<CheckBoxField name="ОтображатьДанныеТовара" id="282">
+							<DataPath>ОтображатьДанныеТовара</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подробно</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Details</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отображать подробные данные о товаре</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Show the detailed item data</v8:content>
+								</v8:item>
+							</ToolTip>
+							<CheckBoxType>Switcher</CheckBoxType>
+							<ContextMenu name="ОтображатьДанныеТовараКонтекстноеМеню" id="283"/>
+							<ExtendedTooltip name="ОтображатьДанныеТовараРасширеннаяПодсказка" id="284"/>
+							<Events>
+								<Event name="OnChange">ОтображатьДанныеТовараПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<CommandBar name="ГруппаКоманднаяПанельЕще" id="249">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Еще</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>More</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ExtendedTooltip name="ГруппаКоманднаяПанельЕщеРасширеннаяПодсказка" id="250"/>
+							<ChildItems>
+								<Button name="ПолучитьСледующуюПорциюДанныхСТорговойПлощадки" id="517">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Command.ПолучитьСледующуюПорциюДанныхСТорговойПлощадки</CommandName>
+									<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+									<ExtendedTooltip name="ПолучитьСледующуюПорциюДанныхСТорговойПлощадкиРасширеннаяПодсказка" id="518"/>
+								</Button>
+								<Button name="СоздатьНоменклатуру1" id="626">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Command.СоздатьНоменклатуру</CommandName>
+									<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+									<ExtendedTooltip name="СоздатьНоменклатуру1РасширеннаяПодсказка" id="627"/>
+								</Button>
+								<ButtonGroup name="ГруппаПоиск" id="515">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа поиск</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Search group</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ГруппаПоискРасширеннаяПодсказка" id="516"/>
+									<ChildItems>
+										<Button name="ПоискПоТекущемуЗначению" id="251">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.ИмпортируемыеТовары.StandardCommand.FindByCurrentValue</CommandName>
+											<ExtendedTooltip name="ПоискПоТекущемуЗначениюРасширеннаяПодсказка" id="252"/>
+										</Button>
+										<Button name="Найти" id="253">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.ИмпортируемыеТовары.StandardCommand.Find</CommandName>
+											<ExtendedTooltip name="НайтиРасширеннаяПодсказка" id="254"/>
+										</Button>
+										<Button name="ОтменитьПоиск" id="255">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.ИмпортируемыеТовары.StandardCommand.CancelSearch</CommandName>
+											<ExtendedTooltip name="ОтменитьПоискРасширеннаяПодсказка" id="256"/>
+										</Button>
+									</ChildItems>
+								</ButtonGroup>
+								<ButtonGroup name="ГруппаДополнительныеКоманды" id="257">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дополнительные команды</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Additional commands</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ГруппаДополнительныеКомандыРасширеннаяПодсказка" id="258"/>
+									<ChildItems>
+										<Button name="СортироватьСписокПоВозрастанию" id="259">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.ИмпортируемыеТовары.StandardCommand.SortListAsc</CommandName>
+											<ExtendedTooltip name="СортироватьСписокПоВозрастаниюРасширеннаяПодсказка" id="260"/>
+										</Button>
+										<Button name="СортироватьСписокПоУбыванию" id="261">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.ИмпортируемыеТовары.StandardCommand.SortListDesc</CommandName>
+											<ExtendedTooltip name="СортироватьСписокПоУбываниюРасширеннаяПодсказка" id="262"/>
+										</Button>
+										<Button name="ВывестиСписок" id="263">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.ИмпортируемыеТовары.StandardCommand.OutputList</CommandName>
+											<ExtendedTooltip name="ВывестиСписокРасширеннаяПодсказка" id="264"/>
+										</Button>
+									</ChildItems>
+								</ButtonGroup>
+								<Button name="ИзменитьФорму" id="291">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+									<ExtendedTooltip name="ИзменитьФормуРасширеннаяПодсказка" id="292"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаТаблицаТоваров" id="243">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа таблица товаров</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group goods table</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаТаблицаТоваровРасширеннаяПодсказка" id="244"/>
+					<ChildItems>
+						<Table name="ИмпортируемыеТовары" id="49">
+							<Representation>Tree</Representation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<SelectionMode>SingleRow</SelectionMode>
+							<InitialTreeView>ExpandAllLevels</InitialTreeView>
+							<DataPath>ИмпортируемыеТовары</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Загружаемые данные</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Data to import</v8:content>
+								</v8:item>
+							</Title>
+							<CommandSet>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+							</CommandSet>
+							<ContextMenu name="ИмпортируемыеТоварыКонтекстноеМеню" id="50"/>
+							<AutoCommandBar name="ИмпортируемыеТоварыКоманднаяПанель" id="51">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ИмпортируемыеТоварыРасширеннаяПодсказка" id="52"/>
+							<SearchStringAddition name="ИмпортируемыеТоварыСтрокаПоиска" id="53">
+								<AdditionSource>
+									<Item>ИмпортируемыеТовары</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ИмпортируемыеТоварыСтрокаПоискаКонтекстноеМеню" id="54"/>
+								<ExtendedTooltip name="ИмпортируемыеТоварыСтрокаПоискаРасширеннаяПодсказка" id="55"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ИмпортируемыеТоварыСостояниеПросмотра" id="56">
+								<AdditionSource>
+									<Item>ИмпортируемыеТовары</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ИмпортируемыеТоварыСостояниеПросмотраКонтекстноеМеню" id="57"/>
+								<ExtendedTooltip name="ИмпортируемыеТоварыСостояниеПросмотраРасширеннаяПодсказка" id="58"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ИмпортируемыеТоварыУправлениеПоиском" id="59">
+								<AdditionSource>
+									<Item>ИмпортируемыеТовары</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ИмпортируемыеТоварыУправлениеПоискомКонтекстноеМеню" id="60"/>
+								<ExtendedTooltip name="ИмпортируемыеТоварыУправлениеПоискомРасширеннаяПодсказка" id="61"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ИмпортируемыеТоварыВыбор</Event>
+								<Event name="BeforeAddRow">ИмпортируемыеТоварыПередНачаломДобавления</Event>
+								<Event name="BeforeDeleteRow">ИмпортируемыеТоварыПередУдалением</Event>
+								<Event name="OnActivateRow">ИмпортируемыеТоварыПриАктивизацииСтроки</Event>
+								<Event name="BeforeRowChange">ИмпортируемыеТоварыПередНачаломИзменения</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="ИмпортируемыеТоварыВариантЗагрузки" id="279">
+									<DataPath>ИмпортируемыеТовары.ВариантЗагрузки</DataPath>
+									<Visible>false</Visible>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ИмпортируемыеТоварыВариантЗагрузкиКонтекстноеМеню" id="280"/>
+									<ExtendedTooltip name="ИмпортируемыеТоварыВариантЗагрузкиРасширеннаяПодсказка" id="281"/>
+								</InputField>
+								<CheckBoxField name="ИмпортируемыеТоварыПометка" id="218">
+									<DataPath>ИмпортируемыеТовары.Пометка</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<ShowInFooter>false</ShowInFooter>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ИмпортируемыеТоварыПометкаКонтекстноеМеню" id="219"/>
+									<ExtendedTooltip name="ИмпортируемыеТоварыПометкаРасширеннаяПодсказка" id="220"/>
+									<Events>
+										<Event name="OnChange">ИмпортируемыеТоварыПометкаПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<ColumnGroup name="ИмпортируемыеТоварыГруппаПредставлениеОбъектаМаркетплейса" id="305">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Представление объекта маркетплейса</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Marketplace object presentation</v8:content>
+										</v8:item>
+									</Title>
+									<Group>InCell</Group>
+									<ExtendedTooltip name="ИмпортируемыеТоварыГруппаПредставлениеОбъектаМаркетплейсаРасширеннаяПодсказка" id="306"/>
+									<ChildItems>
+										<PictureField name="ИмпортируемыеТоварыИндексСтатуса" id="285">
+											<DataPath>ИмпортируемыеТовары.ИндексСтатуса</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>индекс статуса</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>status index</v8:content>
+												</v8:item>
+											</Title>
+											<TitleFont ref="style:NormalTextFont" kind="StyleItem" scale="100"/>
+											<TitleLocation>None</TitleLocation>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>1</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<MaxWidth>1</MaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ValuesPicture>
+												<xr:Ref>CommonPicture.КоллекцияСтатусовОбъектовТорговыхПлощадок</xr:Ref>
+												<xr:LoadTransparent>false</xr:LoadTransparent>
+											</ValuesPicture>
+											<ContextMenu name="ИмпортируемыеТоварыИндексСтатусаКонтекстноеМеню" id="286"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыИндексСтатусаРасширеннаяПодсказка" id="287"/>
+										</PictureField>
+										<InputField name="ИмпортируемыеТоварыПредставлениеОбъектаМаркетплейса" id="71">
+											<DataPath>ИмпортируемыеТовары.ПредставлениеОбъектаМаркетплейса</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Представление товара</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Goods presentation</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>25</Width>
+											<ContextMenu name="ИмпортируемыеТоварыПредставлениеОбъектаМаркетплейсаКонтекстноеМеню" id="72"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыПредставлениеОбъектаМаркетплейсаРасширеннаяПодсказка" id="73"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ИмпортируемыеТоварыГруппаСтатус" id="458">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Статус</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Status</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="ИмпортируемыеТоварыГруппаСтатусРасширеннаяПодсказка" id="459"/>
+									<ChildItems>
+										<InputField name="ИмпортируемыеТоварыСтатус" id="68">
+											<DataPath>ИмпортируемыеТовары.Статус</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="ИмпортируемыеТоварыСтатусКонтекстноеМеню" id="69"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыСтатусРасширеннаяПодсказка" id="70"/>
+										</InputField>
+										<InputField name="ИмпортируемыеТоварыСостояние" id="455">
+											<DataPath>ИмпортируемыеТовары.Состояние</DataPath>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>15</Width>
+											<TextColor>style:ТекстЗапрещеннойЯчейкиЦвет</TextColor>
+											<ContextMenu name="ИмпортируемыеТоварыСостояниеКонтекстноеМеню" id="456"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыСостояниеРасширеннаяПодсказка" id="457"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ИмпортируемыеТоварыДанныеТорговойПлощадки" id="307">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Данные торговой площадки Ozon</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Ozon data</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="ИмпортируемыеТоварыДанныеТорговойПлощадкиРасширеннаяПодсказка" id="308"/>
+									<ChildItems>
+										<InputField name="ИмпортируемыеТоварыИдентификаторОбъектаМаркетплейса" id="65">
+											<DataPath>ИмпортируемыеТовары.ИдентификаторОбъектаМаркетплейса</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Идентификатор Ozon</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Ozon ID</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>18</Width>
+											<ContextMenu name="ИмпортируемыеТоварыИдентификаторОбъектаМаркетплейсаКонтекстноеМеню" id="66"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыИдентификаторОбъектаМаркетплейсаРасширеннаяПодсказка" id="67"/>
+										</InputField>
+										<ColumnGroup name="ИмпортируемыеТоварыГруппаКатегорияМаркетплейса" id="97">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Категория маркетплейса</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Marketplace category</v8:content>
+												</v8:item>
+											</Title>
+											<Group>InCell</Group>
+											<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+											<ExtendedTooltip name="ИмпортируемыеТоварыГруппаКатегорияМаркетплейсаРасширеннаяПодсказка" id="98"/>
+											<ChildItems>
+												<InputField name="ИмпортируемыеТоварыНаименованиеКатегорииМаркетплейса" id="89">
+													<DataPath>ИмпортируемыеТовары.НаименованиеКатегорииМаркетплейса</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Категория Ozon</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Ozon category</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<ContextMenu name="ИмпортируемыеТоварыНаименованиеКатегорииМаркетплейсаКонтекстноеМеню" id="90"/>
+													<ExtendedTooltip name="ИмпортируемыеТоварыНаименованиеКатегорииМаркетплейсаРасширеннаяПодсказка" id="91"/>
+												</InputField>
+												<InputField name="ИмпортируемыеТоварыИдентификаторКатегорииМаркетплейса" id="86">
+													<DataPath>ИмпортируемыеТовары.ИдентификаторКатегорииМаркетплейса</DataPath>
+													<UserVisible>
+														<xr:Common>false</xr:Common>
+													</UserVisible>
+													<ReadOnly>true</ReadOnly>
+													<TitleLocation>None</TitleLocation>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>5</Width>
+													<ContextMenu name="ИмпортируемыеТоварыИдентификаторКатегорииМаркетплейсаКонтекстноеМеню" id="87"/>
+													<ExtendedTooltip name="ИмпортируемыеТоварыИдентификаторКатегорииМаркетплейсаРасширеннаяПодсказка" id="88"/>
+												</InputField>
+											</ChildItems>
+										</ColumnGroup>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ИмпортируемыеТоварыДанныеУчетнойСистемы" id="95">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Данные учетной системы 1С</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>1C accounting system data</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="ИмпортируемыеТоварыДанныеУчетнойСистемыРасширеннаяПодсказка" id="96"/>
+									<ChildItems>
+										<InputField name="ИмпортируемыеТоварыНаименованиеОбъектаМаркетплейса" id="74">
+											<DataPath>ИмпортируемыеТовары.НаименованиеОбъектаМаркетплейса</DataPath>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Name</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>25</Width>
+											<ContextMenu name="ИмпортируемыеТоварыНаименованиеОбъектаМаркетплейсаКонтекстноеМеню" id="75"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыНаименованиеОбъектаМаркетплейсаРасширеннаяПодсказка" id="76"/>
+										</InputField>
+										<InputField name="ИмпортируемыеТоварыИдентификаторПубликации" id="62">
+											<DataPath>ИмпортируемыеТовары.ИдентификаторПубликации</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Идентификатор 1С</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>1C ID</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>18</Width>
+											<ContextMenu name="ИмпортируемыеТоварыИдентификаторПубликацииКонтекстноеМеню" id="63"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыИдентификаторПубликацииРасширеннаяПодсказка" id="64"/>
+										</InputField>
+										<InputField name="ИмпортируемыеТоварыНоменклатура" id="77">
+											<DataPath>ИмпортируемыеТовары.Номенклатура</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>20</Width>
+											<AutoChoiceIncomplete>false</AutoChoiceIncomplete>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="ИмпортируемыеТоварыНоменклатураКонтекстноеМеню" id="78"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыНоменклатураРасширеннаяПодсказка" id="79"/>
+											<Events>
+												<Event name="OnChange">ИмпортируемыеТоварыНоменклатураПриИзменении</Event>
+												<Event name="Creating">ИмпортируемыеТоварыНоменклатураСоздание</Event>
+											</Events>
+										</InputField>
+										<InputField name="ИмпортируемыеТоварыХарактеристика" id="80">
+											<DataPath>ИмпортируемыеТовары.Характеристика</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>15</Width>
+											<AutoChoiceIncomplete>false</AutoChoiceIncomplete>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ChoiceParameterLinks>
+												<xr:Link>
+													<xr:Name>Номенклатура</xr:Name>
+													<xr:DataPath xsi:type="xs:string">Items.ИмпортируемыеТовары.CurrentData.Номенклатура</xr:DataPath>
+													<xr:ValueChange>DontChange</xr:ValueChange>
+												</xr:Link>
+											</ChoiceParameterLinks>
+											<ContextMenu name="ИмпортируемыеТоварыХарактеристикаКонтекстноеМеню" id="81"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыХарактеристикаРасширеннаяПодсказка" id="82"/>
+										</InputField>
+										<InputField name="ИмпортируемыеТоварыУпаковка" id="83">
+											<DataPath>ИмпортируемыеТовары.Упаковка</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>8</Width>
+											<DropListButton>false</DropListButton>
+											<ChoiceButton>true</ChoiceButton>
+											<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+											<AutoChoiceIncomplete>false</AutoChoiceIncomplete>
+											<ChoiceParameterLinks>
+												<xr:Link>
+													<xr:Name>Номенклатура</xr:Name>
+													<xr:DataPath xsi:type="xs:string">Items.ИмпортируемыеТовары.CurrentData.Номенклатура</xr:DataPath>
+													<xr:ValueChange>DontChange</xr:ValueChange>
+												</xr:Link>
+											</ChoiceParameterLinks>
+											<ContextMenu name="ИмпортируемыеТоварыУпаковкаКонтекстноеМеню" id="84"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыУпаковкаРасширеннаяПодсказка" id="85"/>
+										</InputField>
+										<InputField name="ИмпортируемыеТоварыКатегория" id="92">
+											<DataPath>ИмпортируемыеТовары.Категория</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Категория 1С</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>1С category</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>15</Width>
+											<AutoChoiceIncomplete>false</AutoChoiceIncomplete>
+											<ChoiceFoldersAndItems>FoldersAndItems</ChoiceFoldersAndItems>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ChooseType>false</ChooseType>
+											<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+											<ContextMenu name="ИмпортируемыеТоварыКатегорияКонтекстноеМеню" id="93"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыКатегорияРасширеннаяПодсказка" id="94"/>
+											<Events>
+												<Event name="OnChange">ИмпортируемыеТоварыКатегорияПриИзменении</Event>
+												<Event name="StartChoice">ИмпортируемыеТоварыКатегорияНачалоВыбора</Event>
+											</Events>
+										</InputField>
+										<InputField name="ИмпортируемыеТоварыИсточникКатегорииМаркетплейса" id="631">
+											<DataPath>ИмпортируемыеТовары.ИсточникКатегорииМаркетплейса</DataPath>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ИмпортируемыеТоварыИсточникКатегорииМаркетплейсаКонтекстноеМеню" id="632"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыИсточникКатегорииМаркетплейсаРасширеннаяПодсказка" id="633"/>
+										</InputField>
+										<InputField name="ИмпортируемыеТоварыСтавкаНДС" id="543">
+											<DataPath>ИмпортируемыеТовары.СтавкаНДС</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="ИмпортируемыеТоварыСтавкаНДСКонтекстноеМеню" id="544"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыСтавкаНДСРасширеннаяПодсказка" id="545"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ИмпортируемыеТоварыСхемыРаботы" id="185">
+									<Visible>false</Visible>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Схемы работы</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Work schemes</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="ИмпортируемыеТоварыСхемыРаботыРасширеннаяПодсказка" id="186"/>
+									<ChildItems>
+										<CheckBoxField name="ИмпортируемыеТоварыПродаетсяПоСхемеРаботыFBO" id="187">
+											<DataPath>ИмпортируемыеТовары.ПродаетсяПоСхемеРаботыFBO</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ИмпортируемыеТоварыПродаетсяПоСхемеРаботыFBOКонтекстноеМеню" id="188"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыПродаетсяПоСхемеРаботыFBOРасширеннаяПодсказка" id="189"/>
+										</CheckBoxField>
+										<CheckBoxField name="ИмпортируемыеТоварыПродаетсяПоСхемеРаботыFBS" id="190">
+											<DataPath>ИмпортируемыеТовары.ПродаетсяПоСхемеРаботыFBS</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ИмпортируемыеТоварыПродаетсяПоСхемеРаботыFBSКонтекстноеМеню" id="191"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыПродаетсяПоСхемеРаботыFBSРасширеннаяПодсказка" id="192"/>
+										</CheckBoxField>
+										<CheckBoxField name="ИмпортируемыеТоварыПродаетсяПоСхемеРаботыDBS" id="193">
+											<DataPath>ИмпортируемыеТовары.ПродаетсяПоСхемеРаботыDBS</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ИмпортируемыеТоварыПродаетсяПоСхемеРаботыDBSКонтекстноеМеню" id="194"/>
+											<ExtendedTooltip name="ИмпортируемыеТоварыПродаетсяПоСхемеРаботыDBSРасширеннаяПодсказка" id="195"/>
+										</CheckBoxField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+						<UsualGroup name="ГруппаДанныеКарточкиТовара" id="208">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа данные карточки товара</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group product card data</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаДанныеКарточкиТовараРасширеннаяПодсказка" id="209"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаДеревоРеквизитов" id="312">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Данные товара</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Goods data</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Behavior>Collapsible</Behavior>
+									<CollapsedRepresentationTitle>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Показать данные товара</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Show item data</v8:content>
+										</v8:item>
+									</CollapsedRepresentationTitle>
+									<Representation>None</Representation>
+									<ExtendedTooltip name="ГруппаДеревоРеквизитовРасширеннаяПодсказка" id="313"/>
+									<ChildItems>
+										<LabelField name="ПредставлениеОбъектаМаркетплейса" id="317">
+											<DataPath>Items.ИмпортируемыеТовары.CurrentData.ПредставлениеОбъектаМаркетплейса</DataPath>
+											<Visible>false</Visible>
+											<TitleLocation>None</TitleLocation>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<Font ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+											<ContextMenu name="ПредставлениеОбъектаМаркетплейсаКонтекстноеМеню" id="318"/>
+											<ExtendedTooltip name="ПредставлениеОбъектаМаркетплейсаРасширеннаяПодсказка" id="319"/>
+										</LabelField>
+										<Table name="ТаблицаИмпортированныхТоваровДеревоРеквизитов" id="132">
+											<Representation>Tree</Representation>
+											<ReadOnly>true</ReadOnly>
+											<HeightInTableRows>5</HeightInTableRows>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<InitialTreeView>ExpandAllLevels</InitialTreeView>
+											<DataPath>Items.ИмпортируемыеТовары.CurrentData.ДеревоРеквизитов</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Данные товара</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Goods data</v8:content>
+												</v8:item>
+											</Title>
+											<CommandSet>
+												<ExcludedCommand>Add</ExcludedCommand>
+												<ExcludedCommand>Copy</ExcludedCommand>
+												<ExcludedCommand>Delete</ExcludedCommand>
+												<ExcludedCommand>MoveDown</ExcludedCommand>
+												<ExcludedCommand>MoveUp</ExcludedCommand>
+												<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+												<ExcludedCommand>SortListAsc</ExcludedCommand>
+												<ExcludedCommand>SortListDesc</ExcludedCommand>
+											</CommandSet>
+											<ContextMenu name="ТаблицаИмпортированныхТоваровДеревоРеквизитовКонтекстноеМеню" id="133"/>
+											<AutoCommandBar name="ТаблицаИмпортированныхТоваровДеревоРеквизитовКоманднаяПанель" id="134">
+												<Autofill>false</Autofill>
+											</AutoCommandBar>
+											<ExtendedTooltip name="ТаблицаИмпортированныхТоваровДеревоРеквизитовРасширеннаяПодсказка" id="135"/>
+											<SearchStringAddition name="ТаблицаИмпортированныхТоваровДеревоРеквизитовСтрокаПоиска" id="136">
+												<AdditionSource>
+													<Item>ТаблицаИмпортированныхТоваровДеревоРеквизитов</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ТаблицаИмпортированныхТоваровДеревоРеквизитовСтрокаПоискаКонтекстноеМеню" id="137"/>
+												<ExtendedTooltip name="ТаблицаИмпортированныхТоваровДеревоРеквизитовСтрокаПоискаРасширеннаяПодсказка" id="138"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="ТаблицаИмпортированныхТоваровДеревоРеквизитовСостояниеПросмотра" id="139">
+												<AdditionSource>
+													<Item>ТаблицаИмпортированныхТоваровДеревоРеквизитов</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ТаблицаИмпортированныхТоваровДеревоРеквизитовСостояниеПросмотраКонтекстноеМеню" id="140"/>
+												<ExtendedTooltip name="ТаблицаИмпортированныхТоваровДеревоРеквизитовСостояниеПросмотраРасширеннаяПодсказка" id="141"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="ТаблицаИмпортированныхТоваровДеревоРеквизитовУправлениеПоиском" id="142">
+												<AdditionSource>
+													<Item>ТаблицаИмпортированныхТоваровДеревоРеквизитов</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="ТаблицаИмпортированныхТоваровДеревоРеквизитовУправлениеПоискомКонтекстноеМеню" id="143"/>
+												<ExtendedTooltip name="ТаблицаИмпортированныхТоваровДеревоРеквизитовУправлениеПоискомРасширеннаяПодсказка" id="144"/>
+											</SearchControlAddition>
+											<ChildItems>
+												<ColumnGroup name="ДеревоРеквизитовГруппаАтрибут" id="401">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Атрибут маркетплейса</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Marketplace product option</v8:content>
+														</v8:item>
+													</Title>
+													<Group>InCell</Group>
+													<ShowInHeader>true</ShowInHeader>
+													<ExtendedTooltip name="ДеревоРеквизитовГруппаАтрибутРасширеннаяПодсказка" id="402"/>
+													<ChildItems>
+														<PictureField name="ДеревоРеквизитовУровень" id="419">
+															<DataPath>Items.ИмпортируемыеТовары.CurrentData.ДеревоРеквизитов.Уровень</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<ValuesPicture>
+																<xr:Ref>CommonPicture.ПиктограммыЭлементов</xr:Ref>
+																<xr:LoadTransparent>false</xr:LoadTransparent>
+															</ValuesPicture>
+															<ContextMenu name="ДеревоРеквизитовУровеньКонтекстноеМеню" id="420"/>
+															<ExtendedTooltip name="ДеревоРеквизитовУровеньРасширеннаяПодсказка" id="421"/>
+														</PictureField>
+														<InputField name="ДеревоРеквизитовНаименованиеАтрибутаМаркетплейса" id="148">
+															<DataPath>Items.ИмпортируемыеТовары.CurrentData.ДеревоРеквизитов.НаименованиеАтрибутаМаркетплейса</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<TitleLocation>None</TitleLocation>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<Width>15</Width>
+															<ContextMenu name="ДеревоРеквизитовНаименованиеАтрибутаМаркетплейсаКонтекстноеМеню" id="149"/>
+															<ExtendedTooltip name="ДеревоРеквизитовНаименованиеАтрибутаМаркетплейсаРасширеннаяПодсказка" id="150"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<ColumnGroup name="ДеревоРеквизитовГруппаЗначенияАтрибутаТекущее" id="409">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Значение в 1С</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>1C value</v8:content>
+														</v8:item>
+													</Title>
+													<Group>Horizontal</Group>
+													<ShowInHeader>true</ShowInHeader>
+													<ExtendedTooltip name="ДеревоРеквизитовГруппаЗначенияАтрибутаТекущееРасширеннаяПодсказка" id="410"/>
+													<ChildItems>
+														<PictureField name="ДеревоРеквизитовНомерКартинкиКоллекцииТиповТекущее" id="443">
+															<DataPath>Items.ИмпортируемыеТовары.CurrentData.ДеревоРеквизитов.ТекущееНомерКартинкиКоллекцииТипов</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<Width>1</Width>
+															<AutoMaxWidth>false</AutoMaxWidth>
+															<MaxWidth>1</MaxWidth>
+															<HorizontalStretch>false</HorizontalStretch>
+															<ValuesPicture>
+																<xr:Ref>CommonPicture.ПиктограммыТиповДанных</xr:Ref>
+																<xr:LoadTransparent>false</xr:LoadTransparent>
+															</ValuesPicture>
+															<ContextMenu name="ДеревоРеквизитовНомерКартинкиКоллекцииТиповТекущееКонтекстноеМеню" id="444"/>
+															<ExtendedTooltip name="ДеревоРеквизитовНомерКартинкиКоллекцииТиповТекущееРасширеннаяПодсказка" id="445"/>
+														</PictureField>
+														<InputField name="ДеревоРеквизитовЗначениеАтрибутаМаркетплейсаТекущее" id="446">
+															<DataPath>Items.ИмпортируемыеТовары.CurrentData.ДеревоРеквизитов.ТекущееЗначениеАтрибутаМаркетплейса</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<Width>5</Width>
+															<ContextMenu name="ДеревоРеквизитовЗначениеАтрибутаМаркетплейсаТекущееКонтекстноеМеню" id="447"/>
+															<ExtendedTooltip name="ДеревоРеквизитовЗначениеАтрибутаМаркетплейсаТекущееРасширеннаяПодсказка" id="448"/>
+														</InputField>
+														<InputField name="ДеревоРеквизитовИдентификаторЗначенияАтрибутаМаркетплейсаТекущее" id="452">
+															<DataPath>Items.ИмпортируемыеТовары.CurrentData.ДеревоРеквизитов.ТекущееИдентификаторЗначенияАтрибутаМаркетплейса</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<Width>3</Width>
+															<ContextMenu name="ДеревоРеквизитовИдентификаторЗначенияАтрибутаМаркетплейсаТекущееКонтекстноеМеню" id="453"/>
+															<ExtendedTooltip name="ДеревоРеквизитовИдентификаторЗначенияАтрибутаМаркетплейсаТекущееРасширеннаяПодсказка" id="454"/>
+														</InputField>
+														<CheckBoxField name="ДеревоРеквизитовЗначениеАтрибутаМаркетплейсаБулевоТекущее" id="449">
+															<DataPath>Items.ИмпортируемыеТовары.CurrentData.ДеревоРеквизитов.ТекущееЗначениеАтрибутаМаркетплейсаБулево</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<CheckBoxType>Auto</CheckBoxType>
+															<ContextMenu name="ДеревоРеквизитовЗначениеАтрибутаМаркетплейсаБулевоТекущееКонтекстноеМеню" id="450"/>
+															<ExtendedTooltip name="ДеревоРеквизитовЗначениеАтрибутаМаркетплейсаБулевоТекущееРасширеннаяПодсказка" id="451"/>
+														</CheckBoxField>
+														<InputField name="ДеревоРеквизитовЗначенияАтрибутаМаркетплейсаТекущее" id="440">
+															<DataPath>Items.ИмпортируемыеТовары.CurrentData.ДеревоРеквизитов.ТекущееЗначенияАтрибутаМаркетплейса</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<Width>5</Width>
+															<ContextMenu name="ДеревоРеквизитовЗначенияАтрибутаМаркетплейсаТекущееКонтекстноеМеню" id="441"/>
+															<ExtendedTooltip name="ДеревоРеквизитовЗначенияАтрибутаМаркетплейсаТекущееРасширеннаяПодсказка" id="442"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<PictureField name="ДеревоРеквизитовЕстьРазличия" id="437">
+													<DataPath>Items.ИмпортируемыеТовары.CurrentData.ДеревоРеквизитов.ЕстьРазличия</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Есть различия</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>There are differences</v8:content>
+														</v8:item>
+													</ToolTip>
+													<EditMode>EnterOnInput</EditMode>
+													<HeaderPicture>
+														<xr:Ref>CommonPicture.УровеньДоступаРедактирование</xr:Ref>
+														<xr:LoadTransparent>false</xr:LoadTransparent>
+													</HeaderPicture>
+													<Width>1</Width>
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<MaxWidth>1</MaxWidth>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ValuesPicture>
+														<xr:Ref>CommonPicture.УровеньДоступаРедактирование</xr:Ref>
+														<xr:LoadTransparent>false</xr:LoadTransparent>
+													</ValuesPicture>
+													<ContextMenu name="ДеревоРеквизитовЕстьРазличияКонтекстноеМеню" id="438"/>
+													<ExtendedTooltip name="ДеревоРеквизитовЕстьРазличияРасширеннаяПодсказка" id="439"/>
+												</PictureField>
+												<ColumnGroup name="ДеревоРеквизитовГруппаЗначенияАтрибута" id="417">
+													<EnableContentChange>true</EnableContentChange>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Значение на Ozon</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Ozon value</v8:content>
+														</v8:item>
+													</Title>
+													<Width>15</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<Group>Horizontal</Group>
+													<ShowInHeader>true</ShowInHeader>
+													<ExtendedTooltip name="ДеревоРеквизитовГруппаЗначенияАтрибутаРасширеннаяПодсказка" id="418"/>
+													<ChildItems>
+														<PictureField name="ДеревоРеквизитовНомерКартинкиКоллекцииТипов" id="425">
+															<DataPath>Items.ИмпортируемыеТовары.CurrentData.ДеревоРеквизитов.НомерКартинкиКоллекцииТипов</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<Width>1</Width>
+															<AutoMaxWidth>false</AutoMaxWidth>
+															<MaxWidth>1</MaxWidth>
+															<HorizontalStretch>false</HorizontalStretch>
+															<ValuesPicture>
+																<xr:Ref>CommonPicture.ПиктограммыТиповДанных</xr:Ref>
+																<xr:LoadTransparent>false</xr:LoadTransparent>
+															</ValuesPicture>
+															<ContextMenu name="ДеревоРеквизитовНомерКартинкиКоллекцииТиповКонтекстноеМеню" id="426"/>
+															<ExtendedTooltip name="ДеревоРеквизитовНомерКартинкиКоллекцииТиповРасширеннаяПодсказка" id="427"/>
+														</PictureField>
+														<InputField name="ДеревоРеквизитовЗначениеАтрибутаМаркетплейса" id="431">
+															<DataPath>Items.ИмпортируемыеТовары.CurrentData.ДеревоРеквизитов.ЗначениеАтрибутаМаркетплейса</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<Width>5</Width>
+															<ContextMenu name="ДеревоРеквизитовЗначениеАтрибутаМаркетплейсаКонтекстноеМеню" id="432"/>
+															<ExtendedTooltip name="ДеревоРеквизитовЗначениеАтрибутаМаркетплейсаРасширеннаяПодсказка" id="433"/>
+														</InputField>
+														<InputField name="ДеревоРеквизитовИдентификаторЗначенияАтрибутаМаркетплейса" id="434">
+															<DataPath>Items.ИмпортируемыеТовары.CurrentData.ДеревоРеквизитов.ИдентификаторЗначенияАтрибутаМаркетплейса</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<Width>3</Width>
+															<ContextMenu name="ДеревоРеквизитовИдентификаторЗначенияАтрибутаМаркетплейсаКонтекстноеМеню" id="435"/>
+															<ExtendedTooltip name="ДеревоРеквизитовИдентификаторЗначенияАтрибутаМаркетплейсаРасширеннаяПодсказка" id="436"/>
+														</InputField>
+														<CheckBoxField name="ДеревоРеквизитовЗначениеАтрибутаМаркетплейсаБулево" id="428">
+															<DataPath>Items.ИмпортируемыеТовары.CurrentData.ДеревоРеквизитов.ЗначениеАтрибутаМаркетплейсаБулево</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<CheckBoxType>Auto</CheckBoxType>
+															<ContextMenu name="ДеревоРеквизитовЗначениеАтрибутаМаркетплейсаБулевоКонтекстноеМеню" id="429"/>
+															<ExtendedTooltip name="ДеревоРеквизитовЗначениеАтрибутаМаркетплейсаБулевоРасширеннаяПодсказка" id="430"/>
+														</CheckBoxField>
+														<InputField name="ДеревоРеквизитовЗначенияАтрибутаМаркетплейса" id="422">
+															<DataPath>Items.ИмпортируемыеТовары.CurrentData.ДеревоРеквизитов.ЗначенияАтрибутаМаркетплейса</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<Width>5</Width>
+															<ContextMenu name="ДеревоРеквизитовЗначенияАтрибутаМаркетплейсаКонтекстноеМеню" id="423"/>
+															<ExtendedTooltip name="ДеревоРеквизитовЗначенияАтрибутаМаркетплейсаРасширеннаяПодсказка" id="424"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаИзображенияТовара" id="300">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Загруженные изображения товара</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Imported item images</v8:content>
+										</v8:item>
+									</Title>
+									<Behavior>Collapsible</Behavior>
+									<CollapsedRepresentationTitle>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Показать загруженные изображения товара</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Show imported item images</v8:content>
+										</v8:item>
+									</CollapsedRepresentationTitle>
+									<Representation>None</Representation>
+									<ExtendedTooltip name="ГруппаИзображенияТовараРасширеннаяПодсказка" id="301"/>
+									<ChildItems>
+										<Table name="ТаблицаИмпортированныхТоваровИзображения" id="161">
+											<Representation>List</Representation>
+											<ReadOnly>true</ReadOnly>
+											<HeightInTableRows>3</HeightInTableRows>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Items.ИмпортируемыеТовары.CurrentData.Изображения</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Изображения товара</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Item images</v8:content>
+												</v8:item>
+											</Title>
+											<CommandSet>
+												<ExcludedCommand>Add</ExcludedCommand>
+												<ExcludedCommand>CancelSearch</ExcludedCommand>
+												<ExcludedCommand>Change</ExcludedCommand>
+												<ExcludedCommand>Copy</ExcludedCommand>
+												<ExcludedCommand>Delete</ExcludedCommand>
+												<ExcludedCommand>EndEdit</ExcludedCommand>
+												<ExcludedCommand>Find</ExcludedCommand>
+												<ExcludedCommand>FindByCurrentValue</ExcludedCommand>
+												<ExcludedCommand>MoveDown</ExcludedCommand>
+												<ExcludedCommand>MoveUp</ExcludedCommand>
+												<ExcludedCommand>SearchEverywhere</ExcludedCommand>
+												<ExcludedCommand>SearchHistory</ExcludedCommand>
+												<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+												<ExcludedCommand>SortListAsc</ExcludedCommand>
+												<ExcludedCommand>SortListDesc</ExcludedCommand>
+											</CommandSet>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="ТаблицаИмпортированныхТоваровИзображенияКонтекстноеМеню" id="162"/>
+											<AutoCommandBar name="ТаблицаИмпортированныхТоваровИзображенияКоманднаяПанель" id="163">
+												<Autofill>false</Autofill>
+											</AutoCommandBar>
+											<ExtendedTooltip name="ТаблицаИмпортированныхТоваровИзображенияРасширеннаяПодсказка" id="164"/>
+											<SearchStringAddition name="ТаблицаИмпортированныхТоваровИзображенияСтрокаПоиска" id="165">
+												<AdditionSource>
+													<Item>ТаблицаИмпортированныхТоваровИзображения</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ТаблицаИмпортированныхТоваровИзображенияСтрокаПоискаКонтекстноеМеню" id="166"/>
+												<ExtendedTooltip name="ТаблицаИмпортированныхТоваровИзображенияСтрокаПоискаРасширеннаяПодсказка" id="167"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="ТаблицаИмпортированныхТоваровИзображенияСостояниеПросмотра" id="168">
+												<AdditionSource>
+													<Item>ТаблицаИмпортированныхТоваровИзображения</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ТаблицаИмпортированныхТоваровИзображенияСостояниеПросмотраКонтекстноеМеню" id="169"/>
+												<ExtendedTooltip name="ТаблицаИмпортированныхТоваровИзображенияСостояниеПросмотраРасширеннаяПодсказка" id="170"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="ТаблицаИмпортированныхТоваровИзображенияУправлениеПоиском" id="171">
+												<AdditionSource>
+													<Item>ТаблицаИмпортированныхТоваровИзображения</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="ТаблицаИмпортированныхТоваровИзображенияУправлениеПоискомКонтекстноеМеню" id="172"/>
+												<ExtendedTooltip name="ТаблицаИмпортированныхТоваровИзображенияУправлениеПоискомРасширеннаяПодсказка" id="173"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="OnActivateRow">ТаблицаИмпортированныхТоваровИзображенияПриАктивизацииСтроки</Event>
+											</Events>
+											<ChildItems>
+												<InputField name="ТаблицаИмпортированныхТоваровИзображенияПорядок" id="177">
+													<DataPath>Items.ИмпортируемыеТовары.CurrentData.Изображения.Порядок</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>№</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>No.</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ТаблицаИмпортированныхТоваровИзображенияПорядокКонтекстноеМеню" id="178"/>
+													<ExtendedTooltip name="ТаблицаИмпортированныхТоваровИзображенияПорядокРасширеннаяПодсказка" id="179"/>
+												</InputField>
+												<InputField name="ТаблицаИмпортированныхТоваровИзображенияПутьКФайлу" id="205">
+													<DataPath>Items.ИмпортируемыеТовары.CurrentData.Изображения.ПутьКФайлу</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Адрес URL</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>URL address</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ТаблицаИмпортированныхТоваровИзображенияПутьКФайлуКонтекстноеМеню" id="206"/>
+													<ExtendedTooltip name="ТаблицаИмпортированныхТоваровИзображенияПутьКФайлуРасширеннаяПодсказка" id="207"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+										<PictureField name="Изображение" id="309">
+											<DataPath>АдресИзображения</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<TitleLocation>None</TitleLocation>
+											<PictureSize>Proportionally</PictureSize>
+											<NonselectedPictureText>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Изображение товара</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Item image</v8:content>
+												</v8:item>
+											</NonselectedPictureText>
+											<TextColor>style:ЦветТекстаНевыбраннойКартинки</TextColor>
+											<ContextMenu name="ИзображениеКонтекстноеМеню" id="310"/>
+											<ExtendedTooltip name="ИзображениеРасширеннаяПодсказка" id="311"/>
+										</PictureField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПодвал" id="320">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Легенда</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Legend</v8:content>
+				</v8:item>
+			</Title>
+			<VerticalStretch>true</VerticalStretch>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<CollapsedRepresentationTitle>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать легенду</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show legend</v8:content>
+				</v8:item>
+			</CollapsedRepresentationTitle>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПодвалРасширеннаяПодсказка" id="321"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаСтатистикаПоСтатусам" id="322">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статистика по статусам</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Statistics by statuses</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>AlwaysHorizontal</Group>
+					<HorizontalAlign>Left</HorizontalAlign>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСтатистикаПоСтатусамРасширеннаяПодсказка" id="323"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаЛегендаОжидаютИсправленияОшибок" id="344">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа легенда ожидают исправления ошибок</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group legend pending error correction</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>AlwaysHorizontal</Group>
+							<ChildrenAlign>None</ChildrenAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЛегендаОжидаютИсправленияОшибокРасширеннаяПодсказка" id="345"/>
+							<ChildItems>
+								<PictureDecoration name="ДекорацияЛегендаОжидаютИсправленияОшибок" id="324">
+									<Width>2</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Декорация красный шар</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Decoration red ball</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.КрасныйШарБЭД</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ДекорацияЛегендаОжидаютИсправленияОшибокКонтекстноеМеню" id="325"/>
+									<ExtendedTooltip name="ДекорацияЛегендаОжидаютИсправленияОшибокРасширеннаяПодсказка" id="326"/>
+								</PictureDecoration>
+								<LabelField name="ЛегендаОжидаютИсправленияОшибок" id="327">
+									<DataPath>ЛегендаОжидаютИсправленияОшибок</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="ЛегендаОжидаютИсправленияОшибокКонтекстноеМеню" id="328"/>
+									<ExtendedTooltip name="ЛегендаОжидаютИсправленияОшибокРасширеннаяПодсказка" id="329"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаЛегендаПодготовленыКПубликации" id="346">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа легенда подготовлены к публикации</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group legend ready for publishing</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>AlwaysHorizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЛегендаПодготовленыКПубликацииРасширеннаяПодсказка" id="347"/>
+							<ChildItems>
+								<PictureDecoration name="ДекорацияЛегендаПодготовленыКПубликации" id="330">
+									<Width>2</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Декорация желтый шар</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Decoration yellow ball</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.ЖелтыйШарБЭД</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ДекорацияЛегендаПодготовленыКПубликацииКонтекстноеМеню" id="331"/>
+									<ExtendedTooltip name="ДекорацияЛегендаПодготовленыКПубликацииРасширеннаяПодсказка" id="332"/>
+								</PictureDecoration>
+								<LabelField name="ЛегендаПодготовленыКПубликации" id="333">
+									<DataPath>ЛегендаПодготовленыКПубликации</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="ЛегендаПодготовленыКПубликацииКонтекстноеМеню" id="334"/>
+									<ExtendedTooltip name="ЛегендаПодготовленыКПубликацииРасширеннаяПодсказка" id="335"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаЛегендаПеремещеныВАрхив" id="348">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа легенда перемещены в архив</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group legend transferred to archive</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>AlwaysHorizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЛегендаПеремещеныВАрхивРасширеннаяПодсказка" id="349"/>
+							<ChildItems>
+								<PictureDecoration name="ДекорацияЛегендаПеремещеныВАрхив" id="350">
+									<Width>2</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Декорация серый шар</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Decoration gray ball</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.СерыйШарБЭД</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ДекорацияЛегендаПеремещеныВАрхивКонтекстноеМеню" id="351"/>
+									<ExtendedTooltip name="ДекорацияЛегендаПеремещеныВАрхивРасширеннаяПодсказка" id="352"/>
+								</PictureDecoration>
+								<LabelField name="ЛегендаПеремещеныВАрхив" id="353">
+									<DataPath>ЛегендаПеремещеныВАрхив</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="ЛегендаПеремещеныВАрхивКонтекстноеМеню" id="354"/>
+									<ExtendedTooltip name="ЛегендаПеремещеныВАрхивРасширеннаяПодсказка" id="355"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаЛегендаГотовыКПродаже" id="356">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа легенда готовы к продаже</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group legend ready for sale</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>AlwaysHorizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЛегендаГотовыКПродажеРасширеннаяПодсказка" id="357"/>
+							<ChildItems>
+								<PictureDecoration name="ДекорацияЛегендаГотовыКПродаже" id="358">
+									<Width>2</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Декорация зеленый шар</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Decoration green ball</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.ЗеленыйШарБЭД</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ДекорацияЛегендаГотовыКПродажеКонтекстноеМеню" id="359"/>
+									<ExtendedTooltip name="ДекорацияЛегендаГотовыКПродажеРасширеннаяПодсказка" id="360"/>
+								</PictureDecoration>
+								<LabelField name="ЛегендаГотовыКПродаже" id="361">
+									<DataPath>ЛегендаГотовыКПродаже</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="ЛегендаГотовыКПродажеКонтекстноеМеню" id="362"/>
+									<ExtendedTooltip name="ЛегендаГотовыКПродажеРасширеннаяПодсказка" id="363"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаЛегендаОжидаютПолученияДанных" id="507">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа легенда ожидают получения данных</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group legend pending data receipt</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>AlwaysHorizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЛегендаОжидаютПолученияДанныхРасширеннаяПодсказка" id="508"/>
+							<ChildItems>
+								<PictureDecoration name="ДекорацияЛегендаОжидаютПолученияДанных" id="509">
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Декорация легенда ожидают получения данных</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Decoration legend pending data receipt</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.ПредупреждениеСНачалаСтроки</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ДекорацияЛегендаОжидаютПолученияДанныхКонтекстноеМеню" id="510"/>
+									<ExtendedTooltip name="ДекорацияЛегендаОжидаютПолученияДанныхРасширеннаяПодсказка" id="511"/>
+								</PictureDecoration>
+								<LabelField name="ЛегендаОжидаютПолученияДанных" id="512">
+									<DataPath>ЛегендаОжидаютПолученияДанных</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="ЛегендаОжидаютПолученияДанныхКонтекстноеМеню" id="513"/>
+									<ExtendedTooltip name="ЛегендаОжидаютПолученияДанныхРасширеннаяПодсказка" id="514"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаЛегендаНеНайденыНаПлощадке" id="364">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа легенда не найдены на площадке</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group legend not found on trading platform</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>AlwaysHorizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЛегендаНеНайденыНаПлощадкеРасширеннаяПодсказка" id="365"/>
+							<ChildItems>
+								<PictureDecoration name="ДекорацияЛегендаНеНайденыНаПлощадке" id="366">
+									<Width>2</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Декорация красный восклицательный знак</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Decoration red exclamation mark</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.СтатусРаспознаванияДокументаОшибка</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ДекорацияЛегендаНеНайденыНаПлощадкеКонтекстноеМеню" id="367"/>
+									<ExtendedTooltip name="ДекорацияЛегендаНеНайденыНаПлощадкеРасширеннаяПодсказка" id="368"/>
+								</PictureDecoration>
+								<LabelField name="ЛегендаНеНайденыНаПлощадке" id="369">
+									<DataPath>ЛегендаНеНайденыНаПлощадке</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="ЛегендаНеНайденыНаПлощадкеКонтекстноеМеню" id="370"/>
+									<ExtendedTooltip name="ЛегендаНеНайденыНаПлощадкеРасширеннаяПодсказка" id="371"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаЛегендаОбнаруженыРасхождения" id="372">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа легенда обнаружены расхождения</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group legend discrepancies are detected</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>AlwaysHorizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЛегендаОбнаруженыРасхожденияРасширеннаяПодсказка" id="373"/>
+							<ChildItems>
+								<PictureDecoration name="ДекорацияЛегендаОбнаруженыРасхождения" id="374">
+									<Width>2</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Декорация синий восклицательный знак</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Decoration blue exclamation mark</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.Информация16</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ДекорацияЛегендаОбнаруженыРасхожденияКонтекстноеМеню" id="375"/>
+									<ExtendedTooltip name="ДекорацияЛегендаОбнаруженыРасхожденияРасширеннаяПодсказка" id="376"/>
+								</PictureDecoration>
+								<LabelField name="ЛегендаОбнаруженыРасхождения" id="377">
+									<DataPath>ЛегендаОбнаруженыРасхождения</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="ЛегендаОбнаруженыРасхожденияКонтекстноеМеню" id="378"/>
+									<ExtendedTooltip name="ЛегендаОбнаруженыРасхожденияРасширеннаяПодсказка" id="379"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаЛегендаОбновлениеНеТребуется" id="380">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа легенда обновление не требуется</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group legend no update required</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>AlwaysHorizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЛегендаОбновлениеНеТребуетсяРасширеннаяПодсказка" id="381"/>
+							<ChildItems>
+								<PictureDecoration name="ДекорацияЛегендаОбновлениеНеТребуется" id="382">
+									<Width>2</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Декорация зеленый флажок</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Decoration green check box</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.СтатусРаспознаванияДокументаОбработан</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ДекорацияЛегендаОбновлениеНеТребуетсяКонтекстноеМеню" id="383"/>
+									<ExtendedTooltip name="ДекорацияЛегендаОбновлениеНеТребуетсяРасширеннаяПодсказка" id="384"/>
+								</PictureDecoration>
+								<LabelField name="ЛегендаОбновлениеНеТребуется" id="385">
+									<DataPath>ЛегендаОбновлениеНеТребуется</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="ЛегендаОбновлениеНеТребуетсяКонтекстноеМеню" id="386"/>
+									<ExtendedTooltip name="ЛегендаОбновлениеНеТребуетсяРасширеннаяПодсказка" id="387"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСтатусЗагрузкиТовара" id="546">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус текущей строки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Current row status</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСтатусЗагрузкиТовараРасширеннаяПодсказка" id="547"/>
+					<ChildItems>
+						<PictureField name="ИндексСтатусаЗагрузкиТовара" id="609">
+							<DataPath>Items.ИмпортируемыеТовары.CurrentData.ИндексСтатуса</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<TitleLocation>None</TitleLocation>
+							<Width>2</Width>
+							<Height>1</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<ValuesPicture>
+								<xr:Ref>CommonPicture.КоллекцияСтатусовОбъектовТорговыхПлощадок</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</ValuesPicture>
+							<Border width="1">
+								<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+							</Border>
+							<ContextMenu name="ИндексСтатусаЗагрузкиТовараКонтекстноеМеню" id="610"/>
+							<ExtendedTooltip name="ИндексСтатусаЗагрузкиТовараРасширеннаяПодсказка" id="611"/>
+						</PictureField>
+						<LabelField name="СтатусЗагрузкиТовара" id="288">
+							<DataPath>СтатусЗагрузкиТовара</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<TitleLocation>None</TitleLocation>
+							<VerticalAlign>Top</VerticalAlign>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<AutoMaxHeight>false</AutoMaxHeight>
+							<MaxHeight>2</MaxHeight>
+							<VerticalStretch>true</VerticalStretch>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<ContextMenu name="СтатусЗагрузкиТовараКонтекстноеМеню" id="289"/>
+							<ExtendedTooltip name="СтатусЗагрузкиТовараРасширеннаяПодсказка" id="290"/>
+						</LabelField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ИмпортируемыеТовары" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Импортируемые товары</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Goods to import</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ИдентификаторПубликации" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор 1С</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>1C ID</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИдентификаторОбъектаМаркетплейса" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор Ozon</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ozon ID</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Статус" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Status</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.СтатусыОбъектовМаркетплейсаOzon</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ПредставлениеОбъектаМаркетплейса" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление товара на Ozon</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Item presentation on Ozon</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>250</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НаименованиеОбъектаМаркетплейса" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование товара в 1С</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Item name in 1C system</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>250</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Номенклатура" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номенклатура</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Item</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Характеристика" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Характеристика</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Variant</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ХарактеристикиНоменклатуры</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Упаковка" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Упаковка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Packaging unit</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.УпаковкиЕдиницыИзмерения</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДеревоРеквизитов" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дерево реквизитов</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attribute tree</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:ValueTree</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИдентификаторКатегорииМаркетплейса" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор категории Ozon</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Category ID Ozon</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НаименованиеКатегорииМаркетплейса" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Категория Ozon</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ozon category</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>250</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Категория" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Категория 1С</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>1С category</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ВидыНоменклатуры</v8:Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+						<v8:Type>cfg:CatalogRef.ТоварныеКатегории</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Изображения" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Изображения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Images</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:ValueTable</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ОписаниеОбъектаМаркетплейса" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПродаетсяПоСхемеРаботыFBO" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>FBO</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>FBO</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ПродаетсяПоСхемеРаботыFBS" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>FBS</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>FBS</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ПродаетсяПоСхемеРаботыDBS" id="17">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Real FBS</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Real FBS</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Пометка" id="18">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пометка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Check</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВариантЗагрузки" id="19">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вариант загрузки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Import data</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>1</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИндексСтатуса" id="20">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Индекс статуса</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Status index</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>5</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДанныеОбъекта" id="21">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данные объекта</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Object data</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:ValueTable</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДанныеТовараИзСервиса" id="22">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данные товара из сервиса</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Item data from service</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:ValueTable</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ЗначенияРеквизитовИзСервиса" id="23">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значения реквизитов товара из сервиса</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Item attribute values from service</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:ValueTable</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ХарактеристикиИспользуются" id="26">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Характеристики используются</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Variants are used</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИспользоватьУпаковки" id="27">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Использовать упаковки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Use packaging units</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ЕдиницаИзмерения" id="28">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ед. изм.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>unit</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.УпаковкиЕдиницыИзмерения</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ЕстьРазличияСтавкаНДС" id="24">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Есть различия ставки НДС</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>There are VAT rate differences</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ЕстьРазличияЦеновыеПоказатели" id="25">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Есть различия по ценам</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>There are price differences</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ЕстьРазличияКатегорииOzon" id="29">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Есть различия категории Ozon</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>There are category differences Ozon</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ТекущееИдентификаторКатегорииМаркетплейса" id="30">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текущий идентификатор категории Ozon</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Current category ID Ozon</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ТекущееНаименованиеКатегорииМаркетплейса" id="31">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текущее наименование категории Ozon</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Current category name Ozon</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>250</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Состояние" id="33">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>State</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>200</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ЦеныТовара" id="32">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цены товара</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Item prices</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+				<Column name="КоличествоОтмеченныхСтрок" id="34">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество отмеченных строк</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Number of selected lines</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="СтавкаНДС" id="35">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ставка НДС</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>VAT rate</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.СтавкиНДС</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Ставка" id="36">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ставка НДС</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>VAT rate</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>5</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИсточникКатегорииМаркетплейса" id="37">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Источник категории</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Category source</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ВидыНоменклатуры</v8:Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+						<v8:Type>cfg:CatalogRef.ТоварныеКатегории</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ЭтоМаркируемаяПродукция" id="38">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это маркируемая продукция</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>It is a product to mark</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<AdditionalColumns table="ИмпортируемыеТовары.ДеревоРеквизитов">
+					<Column name="Уровень" id="7">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Уровень</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Level</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>2</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+					<Column name="ИдентификаторАтрибутаМаркетплейса" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Идентификатор атрибута маркетплейса</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Marketplace product option ID</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>50</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="НаименованиеАтрибутаМаркетплейса" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Атрибут маркетплейса</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Marketplace product option</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>250</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ОписаниеНазначенияАтрибута" id="8">
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ОбязательныйАтрибут" id="9">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Обязательный атрибут</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Required product option</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ЯвляетсяКоллекциейЗначений" id="10">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Является коллекцией значений</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>This is a value collection</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ДоступенВыборЗначенияИзСписка" id="11">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Доступен выбор значения из списка</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>You can select value from list</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ТипЗначенияАтрибута" id="12">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Тип значения атрибута</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Product option value type</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>50</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ЗначениеАтрибутаМаркетплейса" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Значение Ozon</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Ozon value</v8:content>
+							</v8:item>
+						</Title>
+						<Type/>
+					</Column>
+					<Column name="ИдентификаторЗначенияАтрибутаМаркетплейса" id="4">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Значение на Ozon</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Ozon value</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>50</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ЗначениеАтрибутаМаркетплейсаБулево" id="5">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Значение Ozon</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Ozon value</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ЗначенияАтрибутаМаркетплейса" id="6">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Значение Ozon</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Ozon value</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>v8:ValueListType</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ЗначениеАтрибутаЗаполнено" id="13">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Значение атрибута заполнено</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Product option value is filled</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="НомерКартинкиКоллекцииТипов" id="14">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Номер картинки коллекции типов</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Type collection picture number</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>2</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+					<Column name="ЕстьРазличия" id="15">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Есть различия</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>There are differences</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ТекущееОбязательныйАтрибут" id="16">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Обязательный атрибут</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Required product option</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ТекущееЯвляетсяКоллекциейЗначений" id="17">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Является коллекцией значений</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>This is a value collection</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ТекущееДоступенВыборЗначенияИзСписка" id="18">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Доступен выбор значения из списка</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>You can select value from list</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ТекущееТипЗначенияАтрибута" id="19">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Тип значения атрибута</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Product option value type</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>50</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ТекущееЗначениеАтрибутаМаркетплейса" id="20">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Текущее значение Ozon</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Current value Ozon</v8:content>
+							</v8:item>
+						</Title>
+						<Type/>
+					</Column>
+					<Column name="ТекущееИдентификаторЗначенияАтрибутаМаркетплейса" id="21">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Текущее значение Ozon</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Current value Ozon</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>50</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ТекущееЗначениеАтрибутаМаркетплейсаБулево" id="22">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Текущее значение Ozon</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Current value Ozon</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ТекущееЗначенияАтрибутаМаркетплейса" id="23">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Текущее значение Ozon</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Current value Ozon</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>v8:ValueListType</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ТекущееЗначениеАтрибутаЗаполнено" id="24">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Текущее значение атрибута заполнено</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Current product option value is filled</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ТекущееНомерКартинкиКоллекцииТипов" id="25">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Номер картинки коллекции типов</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Type collection picture number</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>2</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+					<Column name="ОсновныеПоказатели" id="26">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Основные показатели</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Main indicators</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ЦеновыеПоказатели" id="27">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Ценовые показатели</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Price indicators</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="МаксимальноеКоличествоЗначений" id="28">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Максимальное количество значений</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Maximum number of values</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>5</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Any</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+					<Column name="ТекущееМаксимальноеКоличествоЗначений" id="29">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Текущее максимальное количество значений</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Current maximum number of values</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>5</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Any</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+					<Column name="АспектныйАтрибут" id="30">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Аспектный атрибут</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Aspect product option</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ТекущееАспектныйАтрибут" id="31">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Текущее аспектный атрибут</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Current aspect product option</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="ИмпортируемыеТовары.Изображения">
+					<Column name="Порядок" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Порядок</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Order</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>2</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+					<Column name="ПутьКФайлу" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Путь к файлу</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>File path</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="ВариантЗагрузкиДанных" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант загрузки данных</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data import option</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<Save>
+				<Field>ВариантЗагрузкиДанных</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ЗагрузитьЦеныПродажи" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить текущие цены продажи с торговой площадки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import current selling prices from trading platform</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>ЗагрузитьЦеныПродажи</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="УчетнаяЗаписьМаркетплейса" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Учетная запись маркетплейса</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Marketplace account</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.УчетныеЗаписиМаркетплейсов</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтображатьДанныеТовара" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отображать данные товара</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show item data</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>ОтображатьДанныеТовара</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="СтатусЗагрузкиТовара" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус загрузки товара</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Item import status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресИзображения" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес изображения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Image address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторИзображения" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор изображения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Image ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЛегендаОжидаютИсправленияОшибок" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ожидают исправления ошибок</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pending error correction</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЛегендаПодготовленыКПубликации" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подготовлены к публикации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ready for publishing</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЛегендаПеремещеныВАрхив" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перемещены в архив</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Transferred to archive</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЛегендаГотовыКПродаже" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Готовы к продаже</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ready for sale</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЛегендаНеНайденыНаПлощадке" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не найдены на площадке</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Not found on trading platform</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЛегендаОбнаруженыРасхождения" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обнаружены расхождения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Discrepancies are detected</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЛегендаОбновлениеНеТребуется" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновление не требуется</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>No update required</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДополнительныеПараметрыИмпортаДанных" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные параметры импорта данных</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional data import parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+			<Save>
+				<Field>ДополнительныеПараметрыИмпортаДанных</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ОтображатьСопоставленные" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отображать сопоставленные</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Display mapped</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СоздатьЭлементыНоменклатуры" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать несопоставленные элементы справочника "Номенклатуры"</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create unmapped items of the Item catalog</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗагрузитьИзображения" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить изображения товаров</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import goods images</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЛегендаОжидаютПолученияДанных" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ожидают получения данных</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pending data receipt</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтображатьПоСтатусу" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отображать по статусу</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show by status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗакрытьФормуОбработки" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть форму обработки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close processing form</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗаписатьЦеныОтдельнойКомандой" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать цены отдельной командой</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save prices using separate command</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторыТоваров" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификаторы товаров</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Goods IDs</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбработкаПереданныхПозиций" id="25">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="УстановитьФлажки" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Все товары</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>All goods</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить пометку для всех строк дерева товаров</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select the check box for all goods tree rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьФлажки</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="СнятьФлажки" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Убрать пометки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear check boxes</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Убрать пометку для всех строк дерева товаров</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear the check box for all goods tree rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СнятьФлажки</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ЗаписатьЗагруженныеДанные" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать данные</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save data</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать загруженные данные</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save the imported data</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаписатьЗагруженныеДанные</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ПолучитьДанныеСТорговойПлощадки" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получить данные</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Receive data</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получить данные с торговой площадки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get data from the trading platform</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПолучитьДанныеСТорговойПлощадки</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ДополнительныеПараметрыИмпортаДанных" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные параметры</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional parameters</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные параметры импорта данных</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional data import parameters</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Setting</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ДополнительныеПараметрыИмпортаДанных</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ПолучитьСледующуюПорциюДанныхСТорговойПлощадки" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получить следующую порцию данных</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get next data chunk</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получить данные с торговой площадки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get data from the trading platform</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПолучитьСледующуюПорциюДанныхСТорговойПлощадки</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ОтобратьПоСтатусуОжидаютИсправленияОшибок" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ожидают исправления ошибок</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pending error correction</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобрать по статусу "Ожидают исправления ошибок"</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter by the Pending error correction status</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.КрасныйШарБЭД</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтобратьПоСтатусуОжидаютИсправленияОшибок</Action>
+		</Command>
+		<Command name="ОтобратьПоСтатусуПеремещеныВАрхив" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перемещены в архив</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Transferred to archive</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобрать по статусу "Перемещены в архив"</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter by the Transferred to archive status</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СерыйШарБЭД</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтобратьПоСтатусуПеремещеныВАрхив</Action>
+		</Command>
+		<Command name="ОтобратьПоСтатусуПодготовленыКПубликации" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подготовлены к публикации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ready for publishing</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобрать по статусу "Подготовлены к публикации"</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter by the Ready for publishing status</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ЖелтыйШарБЭД</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтобратьПоСтатусуПодготовленыКПубликации</Action>
+		</Command>
+		<Command name="ОтобратьПоСтатусуГотовыКПродаже" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Готовы к продаже</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ready for sale</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобрать по статусу "Готовы к продаже"</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter by the Ready for sale status</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ЗеленыйШарБЭД</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтобратьПоСтатусуГотовыКПродаже</Action>
+		</Command>
+		<Command name="ОтобратьПоСтатусуВсе" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать все</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать все</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show all</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Состояние0Процентов</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтобратьПоСтатусуВсе</Action>
+		</Command>
+		<Command name="ОтобратьПоСтатусуОжидаютПолученияДанных" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ожидают получения данных</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pending data receipt</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобрать по статусу "Ожидают получения данных"</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter by the Pending data receipt status</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ПредупреждениеСНачалаСтроки</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтобратьПоСтатусуОжидаютПолученияДанных</Action>
+		</Command>
+		<Command name="ОтобратьПоСтатусуНеНайденыНаПлощадке" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не найдены на площадке</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Not found on trading platform</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобрать по статусу "Не найдены на площадке"</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter by the Not found on trading platform status</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СтатусРаспознаванияДокументаОшибка</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтобратьПоСтатусуНеНайденыНаПлощадке</Action>
+		</Command>
+		<Command name="ОтобратьПоСтатусуОбнаруженыРасхождения" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обнаружены расхождения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Discrepancies are detected</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобрать по статусу "Обнаружены расхождения"</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter by the Discrepancies are detected status</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Информация16</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтобратьПоСтатусуОбнаруженыРасхождения</Action>
+		</Command>
+		<Command name="ОтобратьПоСтатусуОбновлениеНеТребуется" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновление не требуется</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>No update required</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобрать по статусу "Обновление не требуется"</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter by the No update required status</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СтатусРаспознаванияДокументаОбработан</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтобратьПоСтатусуОбновлениеНеТребуется</Action>
+		</Command>
+		<Command name="УстановитьФлажкиДляТребующихЗаписиЦен" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Товары, требующие загрузки цен</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Goods for which prices must be imported</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить пометку строк для требующих записи цен</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select the check box for prices that must be saved</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьФлажкиДляТребующихЗаписиЦен</Action>
+		</Command>
+		<Command name="УстановитьФлажкиДляТребующихЗаписиТоваров" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Товары, требующие записи данных в 1С</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Goods whose data must be saved to 1C system</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить пометку строк для требующих записи товаров</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select the check box for goods that must be saved</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УстановитьФлажкиДляТребующихЗаписиТоваров</Action>
+		</Command>
+		<Command name="УстановитьФлажкиДляТребующихПолученияДанных" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Товары, требующие получения данных из Ozon</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Goods for which data must be received from Ozon</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить пометку строк для требующих получения данных</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select the check box for data that must be received</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьФлажкиДляТребующихПолученияДанных</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ЗаписатьЦены" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать цены</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save prices</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать цены</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save the prices</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаписатьЦены</Action>
+		</Command>
+		<Command name="УстановитьФлажкиДляНеСопоставленнойНоменклатуры" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Товары с несопоставленной номенклатурой</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Goods with unmapped item</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить пометку строк для не сопоставленной номенклатуры</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select the check box for goods with an unmapped item</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьФлажкиДляНесопоставленнойНоменклатуры</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="СоздатьНоменклатуру" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать номенклатуру</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create products</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать номенклатуру для выбранных несопоставленных позиций</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create an item for the selected unmapped items</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьНоменклатуру</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="УчетнаяЗаписьМаркетплейса">
+			<Type>
+				<v8:Type>cfg:CatalogRef.УчетныеЗаписиМаркетплейсов</v8:Type>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="ВариантЗагрузкиДанных">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ОбработкаПереданныхПозиций">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ЗагрузитьЦеныПродажи">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ЗагрузитьИзображения">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="УстановитьВариантЗагрузки">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ИмяИдентификатора">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>50</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ДанныеВыделенныхСтрок">
+			<Type/>
+		</Parameter>
+	</Parameters>
+</Form>

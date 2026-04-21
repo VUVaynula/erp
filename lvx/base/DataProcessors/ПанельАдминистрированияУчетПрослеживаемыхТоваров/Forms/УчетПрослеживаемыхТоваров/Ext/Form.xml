@@ -1,0 +1,2397 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Учет прослеживаемых товаров</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Traced goods accounting</v8:content>
+		</v8:item>
+	</Title>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаЗаголовок" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заголовок</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Title</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаЗаголовокРасширеннаяПодсказка" id="5"/>
+			<ChildItems>
+				<LabelDecoration name="ОписаниеРаздела" id="6">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Учет прослеживаемых товаров — учет товаров по РНПТ, классификатор ТН ВЭД.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Traced goods accounting - accounting of goods by GBRN, FEACN classifier.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ОписаниеРазделаКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="ОписаниеРазделаРасширеннаяПодсказка" id="8"/>
+				</LabelDecoration>
+				<LabelDecoration name="ДекорацияЗаголовка" id="9">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ToolTipRepresentation>None</ToolTipRepresentation>
+					<ContextMenu name="ДекорацияЗаголовкаКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="ДекорацияЗаголовкаРасширеннаяПодсказка" id="11"/>
+				</LabelDecoration>
+				<CommandBar name="ГруппаСправка" id="84">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Справка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Help</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаСправкаРасширеннаяПодсказка" id="85"/>
+					<ChildItems>
+						<Button name="Обновить" id="353">
+							<Type>CommandBarButton</Type>
+							<Representation>Picture</Representation>
+							<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+							<CommandName>Form.Command.Обновить</CommandName>
+							<Picture>
+								<xr:Ref>StdPicture.Refresh</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ExtendedTooltip name="ОбновитьРасширеннаяПодсказка" id="354"/>
+						</Button>
+						<Button name="Справка" id="86">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.StandardCommand.Help</CommandName>
+							<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+							<ExtendedTooltip name="СправкаРасширеннаяПодсказка" id="87"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаНСИИВводОстатков" id="66">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>НСИ и ввод остатков</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Master data and balance entry</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<ExtendedTooltip name="ГруппаНСИИВводОстатковРасширеннаяПодсказка" id="67"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаПроверкиНоменклатурыНаСайтеФНС" id="374">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа проверки номенклатуры на сайте ФНС</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group of item check on the FTC website</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПроверкиНоменклатурыНаСайтеФНСРасширеннаяПодсказка" id="375"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияПроверитьНоменклатуруНаСайтеФНС" id="376">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;link https://www.nalog.gov.ru/rn77/service/traceability/#tab3&gt;Проверить номенклатуру на сайте ФНС России&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;link https://www.nalog.gov.ru/rn77/service/traceability/#tab3&gt;Verify items on the website of FTC of the Russian Federation&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Перейдя по ссылке, можно проверить подлежат ли товары прослеживаемости (по наименованию, коду ТН ВЭД или ОКПД 2).</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Click the link to check if the goods are to be traced (by name, FEACN code, or RNCPA 2).</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияПроверитьНоменклатуруНаСайтеФНСКонтекстноеМеню" id="377"/>
+							<ExtendedTooltip name="ДекорацияПроверитьНоменклатуруНаСайтеФНСРасширеннаяПодсказка" id="378"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаНастройкаНСИ" id="214">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройка НСИ</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Master data setup</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНастройкаНСИРасширеннаяПодсказка" id="215"/>
+					<ChildItems>
+						<LabelDecoration name="НастройкаНСИ" id="216">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Настройка НСИ&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;Master data settings&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>При начале прослеживания импортных товаров требуется заполнить классификатор торговой внешнеэкономической деятельности (ТН ВЭД) и указать коды ТН ВЭД в номенклатуре.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Upon starting tracing imported goods, fill in the classifier of foreign economic activity (FEACN) and specify FEACN codes in items.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="НастройкаНСИКонтекстноеМеню" id="217"/>
+							<ExtendedTooltip name="НастройкаНСИРасширеннаяПодсказка" id="218"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияКлассификаторТНВЭД" id="219">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Классификатор ТН ВЭД</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>FEACN classifier</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияКлассификаторТНВЭДКонтекстноеМеню" id="220"/>
+							<ExtendedTooltip name="ДекорацияКлассификаторТНВЭДРасширеннаяПодсказка" id="278"/>
+							<Events>
+								<Event name="Click">ДекорацияКлассификаторТНВЭДНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияНоменклатура" id="222">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номенклатура</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Items</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияНоменклатураКонтекстноеМеню" id="223"/>
+							<ExtendedTooltip name="ДекорацияНоменклатураРасширеннаяПодсказка" id="279"/>
+							<Events>
+								<Event name="Click">ДекорацияНоменклатураНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаИнвентаризацияОстатков" id="245">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Инвентаризация остатков</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Physical inventory count of remaining stock</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаИнвентаризацияОстатковРасширеннаяПодсказка" id="246"/>
+					<ChildItems>
+						<LabelDecoration name="ИнвентаризацияОстатков" id="247">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Инвентаризация остатков&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;Physical inventory count&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>До оформления уведомлений следует провести инвентаризацию остатков товаров, подлежащих прослеживаемости.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>To register notifications, carry out physical inventory count for the goods to be traced.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ИнвентаризацияОстатковКонтекстноеМеню" id="248"/>
+							<ExtendedTooltip name="ИнвентаризацияОстатковРасширеннаяПодсказка" id="249"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияИнвентаризацияОстатковПересчет" id="250">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Пересчеты товаров</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Inventory count sheets</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияИнвентаризацияОстатковПересчетКонтекстноеМеню" id="251"/>
+							<ExtendedTooltip name="ДекорацияИнвентаризацияОстатковПересчетРасширеннаяПодсказка" id="252"/>
+							<Events>
+								<Event name="Click">ДекорацияИнвентаризацияОстатковПересчетНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияИнвентаризацияОстатковСкладскиеАкты" id="262">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Складские акты</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Inventory adjustments</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияИнвентаризацияОстатковСкладскиеАктыКонтекстноеМеню" id="263"/>
+							<ExtendedTooltip name="ДекорацияИнвентаризацияОстатковСкладскиеАктыРасширеннаяПодсказка" id="264"/>
+							<Events>
+								<Event name="Click">ДекорацияИнвентаризацияОстатковСкладскиеАктыНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПроверкаОтрицательныхОстатков" id="265">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проверка отрицательных остатков</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Check negative stock</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПроверкаОтрицательныхОстатковРасширеннаяПодсказка" id="266"/>
+					<ChildItems>
+						<LabelDecoration name="ПроверкаОтрицательныхОстатков" id="267">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Проверка отрицательных остатков товаров организаций&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;Check negative company goods balances&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Если в регистре Товары организаций есть отрицательные остатки, в уведомления могут попасть некорректные данные. Рекомендуется исправить отрицательные остатки специальным помощником и уже после этого составлять уведомления.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>If there is negative balance in the Company goods register, incorrect data may be included in the notifications. It is recommended that you correct negative balance using a special wizard and only after that create notifications.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ПроверкаОтрицательныхОстатковКонтекстноеМеню" id="268"/>
+							<ExtendedTooltip name="ПроверкаОтрицательныхОстатковРасширеннаяПодсказка" id="269"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияПроверкаОтрицательныхОстатковОткрытьПомощник" id="270">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Открыть помощник</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Open wizard</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияПроверкаОтрицательныхОстатковОткрытьПомощникКонтекстноеМеню" id="271"/>
+							<ExtendedTooltip name="ДекорацияПроверкаОтрицательныхОстатковОткрытьПомощникРасширеннаяПодсказка" id="272"/>
+							<Events>
+								<Event name="Click">ДекорацияПроверкаОтрицательныхОстатковОткрытьПомощникНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаУведомленияОСобственныхОстатках" id="225">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уведомления о собственных остатках</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Notifications of own remaining stock</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаУведомленияОСобственныхОстаткахРасширеннаяПодсказка" id="226"/>
+					<ChildItems>
+						<LabelDecoration name="УведомленияОбОстатках" id="273">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Уведомления об остатках&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;Balance notifications&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>По всем импортным товарам, подлежащим прослеживаемости, необходимо отправить уведомления об остатках, получить РНПТ и ввести остатки по каждой организации.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>For all the imported goods to be traced, send balance notifications, receive a goods batch registration number and enter balances for each company.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="УведомленияОбОстаткахКонтекстноеМеню" id="280"/>
+							<ExtendedTooltip name="УведомленияОбОстаткахРасширеннаяПодсказка" id="281"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияУведомленияОбОстаткахОформить" id="230">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оформить</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияУведомленияОбОстаткахОформитьКонтекстноеМеню" id="231"/>
+							<ExtendedTooltip name="ДекорацияУведомленияОбОстаткахОформитьРасширеннаяПодсказка" id="282"/>
+							<Events>
+								<Event name="Click">ДекорацияУведомленияОбОстаткахОформитьНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияУведомленияОбОстаткахОтправить" id="236">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отправить</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Send</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияУведомленияОбОстаткахОтправитьКонтекстноеМеню" id="237"/>
+							<ExtendedTooltip name="ДекорацияУведомленияОбОстаткахОтправитьРасширеннаяПодсказка" id="283"/>
+							<Events>
+								<Event name="Click">ДекорацияУведомленияОбОстаткахОтправитьНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияУведомленияОбОстаткахОжидать" id="239">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ожидать получение РНПТ</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Await receiving GBRN</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияУведомленияОбОстаткахОжидатьКонтекстноеМеню" id="284"/>
+							<ExtendedTooltip name="ДекорацияУведомленияОбОстаткахОжидатьРасширеннаяПодсказка" id="241"/>
+							<Events>
+								<Event name="Click">ДекорацияУведомленияОбОстаткахОжидатьНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияУведомленияОбОстаткахАрхив" id="242">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Архив</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Archive</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияУведомленияОбОстаткахАрхивКонтекстноеМеню" id="285"/>
+							<ExtendedTooltip name="ДекорацияУведомленияОбОстаткахАрхивРасширеннаяПодсказка" id="244"/>
+							<Events>
+								<Event name="Click">ДекорацияУведомленияОбОстаткахАрхивНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаВводОстатковПереданныхНаКомиссию" id="88">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ввод в прослеживаемость остатков, переданных на комиссию</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enter remaining goods transferred to commission agents for traceability</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<ExtendedTooltip name="ГруппаВводОстатковПереданныхНаКомиссиюРасширеннаяПодсказка" id="89"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаСоглашенияСКомиссионерами" id="90">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Соглашения с комиссионерами</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Agreements with commission agents</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСоглашенияСКомиссионерамиРасширеннаяПодсказка" id="91"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияСоглашенияСКомиссионерами" id="107">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Соглашения с комиссионерами</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Agreements with commission agents</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройте в соглашениях с комиссионерами ведение комиссионерами учета по номерам РНПТ. По умолчанию в существующих соглашениях ведение комиссионерами учета по РНПТ отключено</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Set up accounting by goods batch registration numbers in agreements with commission agents. By default, accounting by goods batch registration numbers by commission agents is disabled in the existing agreements</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияСоглашенияСКомиссионерамиКонтекстноеМеню" id="108"/>
+							<ExtendedTooltip name="ДекорацияСоглашенияСКомиссионерамиРасширеннаяПодсказка" id="109"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОткрытьСписокСоглашенияСКомиссионерами" id="104">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Открыть список</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Open list</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОткрытьСписокСоглашенияСКомиссионерамиКонтекстноеМеню" id="105"/>
+							<ExtendedTooltip name="ДекорацияОткрытьСписокСоглашенияСКомиссионерамиРасширеннаяПодсказка" id="106"/>
+							<Events>
+								<Event name="Click">ДекорацияОткрытьСписокСоглашенияСКомиссионерамиНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаОтчетыКомиссионеров" id="92">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отчеты комиссионеров</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Consignment issue notifications</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОтчетыКомиссионеровРасширеннаяПодсказка" id="93"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияОтчетыКомиссионеров" id="110">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отчеты комиссионеров о продажах/списании</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Consignment reports from customer</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оформите отчеты комиссионеров о совершенных продажах и списании до даты начала прослеживаемости</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Register consignment reports from customer before traceability start date</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияОтчетыКомиссионеровКонтекстноеМеню" id="111"/>
+							<ExtendedTooltip name="ДекорацияОтчетыКомиссионеровРасширеннаяПодсказка" id="112"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОформитьОтчеты" id="131">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оформить</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОформитьОтчетыКонтекстноеМеню" id="132"/>
+							<ExtendedTooltip name="ДекорацияОформитьОтчетыРасширеннаяПодсказка" id="133"/>
+							<Events>
+								<Event name="Click">ДекорацияОформитьОтчетыНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОткрытьСписокОтчетов" id="128">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Открыть список</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Open list</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОткрытьСписокОтчетовКонтекстноеМеню" id="129"/>
+							<ExtendedTooltip name="ДекорацияОткрытьСписокОтчетовРасширеннаяПодсказка" id="130"/>
+							<Events>
+								<Event name="Click">ДекорацияОткрытьСписокОтчетовНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСверкаОстатковСКомиссионерами" id="94">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сверка остатков с комиссионерами</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Balance reconciliation with commission agents</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСверкаОстатковСКомиссионерамиРасширеннаяПодсказка" id="95"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияСверкаОстатковСКомиссионерами" id="113">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сверка остатков с комиссионерами</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Balance reconciliation with commission agents</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сверьте остатки товаров с комиссионерами с помощью отчета "Остатки товаров, переданных на комиссию". При необходимости установите отбор по товарам, подлежащим прослеживаемости</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Reconcile the goods balance with commission agents using the "Consigned stock balance issued" report. If necessary, set filter by traceable goods</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияСверкаОстатковСКомиссионерамиКонтекстноеМеню" id="114"/>
+							<ExtendedTooltip name="ДекорацияСверкаОстатковСКомиссионерамиРасширеннаяПодсказка" id="115"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияСформироватьОтчет" id="134">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сформировать отчет</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate report</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияСформироватьОтчетКонтекстноеМеню" id="135"/>
+							<ExtendedTooltip name="ДекорацияСформироватьОтчетРасширеннаяПодсказка" id="136"/>
+							<Events>
+								<Event name="Click">ДекорацияСформироватьОтчетНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаВыборСкладаДляВозврата" id="96">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выбор склада для возврата</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Select a warehouse for return</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаВыборСкладаДляВозвратаРасширеннаяПодсказка" id="97"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияВыборСкладаДляВозврата" id="116">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выбор склада для возврата</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Select a warehouse for return</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Укажите "виртуальный" склад, на который будут оформлены возвраты импортных товаров, подлежащих прослеживаемости, для оформления уведомления об остатках и получения РНПТ</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Specify a "virtual" warehouse, to which return of imported goods to be traced will be registered to issue a balance notification and receive a goods batch registration number</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияВыборСкладаДляВозвратаКонтекстноеМеню" id="117"/>
+							<ExtendedTooltip name="ДекорацияВыборСкладаДляВозвратаРасширеннаяПодсказка" id="118"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияВыбратьСклад" id="137">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выбрать склад</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Select a warehouse</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияВыбратьСкладКонтекстноеМеню" id="138"/>
+							<ExtendedTooltip name="ДекорацияВыбратьСкладРасширеннаяПодсказка" id="139"/>
+							<Events>
+								<Event name="Click">ДекорацияВыбратьСкладНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаВозвратыТоваровОтКомиссионеров" id="98">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Возвраты товаров от комиссионеров</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Return of goods from commission agents</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаВозвратыТоваровОтКомиссионеровРасширеннаяПодсказка" id="99"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияВозвратыТоваровОтКомиссионеров" id="119">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Возвраты товаров от комиссионеров</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Return of goods from commission agents</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>После того, как оформлены отчеты комиссионеров о продажах, оформите возвраты от комиссионеров импортных товаров, подлежащих прослеживаемости, на "виртуальный" склад для оформления уведомления об остатках и получения  РНПТ</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Once consignment reports from customers are registered, register return of traceable import goods to a "virtual" warehouse to register a balance notification and receive a goods batch registration number</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияВозвратыТоваровОтКомиссионеровКонтекстноеМеню" id="120"/>
+							<ExtendedTooltip name="ДекорацияВозвратыТоваровОтКомиссионеровРасширеннаяПодсказка" id="121"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОформитьВозвраты" id="140">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оформить</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОформитьВозвратыКонтекстноеМеню" id="141"/>
+							<ExtendedTooltip name="ДекорацияОформитьВозвратыРасширеннаяПодсказка" id="142"/>
+							<Events>
+								<Event name="Click">ДекорацияОформитьВозвратыНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОткрытьСписокВозвраты" id="143">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Открыть список</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Open list</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОткрытьСписокВозвратыКонтекстноеМеню" id="144"/>
+							<ExtendedTooltip name="ДекорацияОткрытьСписокВозвратыРасширеннаяПодсказка" id="286"/>
+							<Events>
+								<Event name="Click">ДекорацияОткрытьСписокВозвратыНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаУведомленияОбОстатках" id="100">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уведомления об остатках</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Balance notification</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаУведомленияОбОстаткахРасширеннаяПодсказка" id="101"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияУведомленияОбОстатках" id="122">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Уведомления об остатках</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Balance notifications</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>По всем импортным товарам, возвращенным от комиссионеров, оформите уведомления об остатках, отправьте в ФНС  и дождитесь получения РНПТ</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>For all imported goods returned from commission agents, register balance notifications, send them to FTS and wait for a goods batch registration number receiving</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияУведомленияОбОстаткахКонтекстноеМеню" id="123"/>
+							<ExtendedTooltip name="ДекорацияУведомленияОбОстаткахРасширеннаяПодсказка" id="124"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОформитьВводОстатков" id="274">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оформить</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОформитьВводОстатковКонтекстноеМеню" id="287"/>
+							<ExtendedTooltip name="ДекорацияОформитьВводОстатковРасширеннаяПодсказка" id="288"/>
+							<Events>
+								<Event name="Click">ДекорацияОформитьВводОстатковНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОтправитьУведомление" id="149">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отправить</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Send</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОтправитьУведомлениеКонтекстноеМеню" id="150"/>
+							<ExtendedTooltip name="ДекорацияОтправитьУведомлениеРасширеннаяПодсказка" id="151"/>
+							<Events>
+								<Event name="Click">ДекорацияОтправитьУведомлениеНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОжидатьПолученияРНПТ" id="152">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ожидать получения РНПТ</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Await receiving GBRN</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОжидатьПолученияРНПТКонтекстноеМеню" id="153"/>
+							<ExtendedTooltip name="ДекорацияОжидатьПолученияРНПТРасширеннаяПодсказка" id="154"/>
+							<Events>
+								<Event name="Click">ДекорацияОжидатьПолученияРНПТНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияАрхив" id="155">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Архив</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Archive</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияАрхивКонтекстноеМеню" id="156"/>
+							<ExtendedTooltip name="ДекорацияАрхивРасширеннаяПодсказка" id="157"/>
+							<Events>
+								<Event name="Click">ДекорацияАрхивНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПередачиТоваровКомиссионерам" id="102">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Передачи товаров комиссионерам</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Customer stock fill-up documents</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПередачиТоваровКомиссионерамРасширеннаяПодсказка" id="103"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияПередачиТоваровКомиссионерам" id="125">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Передачи товаров комиссионерам</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Customer stock fill-up documents</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оформите передачи комиссионерам импортных товаров с РНПТ  с "виртуального" склада”. При необходимости распечатайте и подпишите возвраты от комиссионеров и передачи комиссионерам с РНПТ.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Register transfer of imported goods with goods batch registration numbers to commission agents from the "virtual warehouse”. If necessary, print and sign returns from commission agents and transfers to commission agents with goods batch registration numbers.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияПередачиТоваровКомиссионерамКонтекстноеМеню" id="126"/>
+							<ExtendedTooltip name="ДекорацияПередачиТоваровКомиссионерамРасширеннаяПодсказка" id="127"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОформитьПередачиТоваровКомиссионерам" id="161">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оформить</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОформитьПередачиТоваровКомиссионерамКонтекстноеМеню" id="162"/>
+							<ExtendedTooltip name="ДекорацияОформитьПередачиТоваровКомиссионерамРасширеннаяПодсказка" id="163"/>
+							<Events>
+								<Event name="Click">ДекорацияОформитьПередачиТоваровКомиссионерамНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОткрытьСписокПередачКомиссионерам" id="158">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Открыть список</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Open list</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОткрытьСписокПередачКомиссионерамКонтекстноеМеню" id="159"/>
+							<ExtendedTooltip name="ДекорацияОткрытьСписокПередачКомиссионерамРасширеннаяПодсказка" id="160"/>
+							<Events>
+								<Event name="Click">ДекорацияОткрытьСписокПередачКомиссионерамНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаВводВПрослеживаемостьОстатковНаКомиссии" id="145">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ввод в прослеживаемость остатков, принятых на комиссию</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enter remaining goods received by commission agents for traceability</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<ExtendedTooltip name="ГруппаВводВПрослеживаемостьОстатковНаКомиссииРасширеннаяПодсказка" id="146"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаОтчетыКомитентам" id="147">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа отчеты комитентам</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group consignment reports</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа соглашения с комиссионерами</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group agreements with commission agents</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОтчетыКомитентамРасширеннаяПодсказка" id="148"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияОтчетыКомитентам" id="275">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отчеты комитентам о продажах/списании</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Consignment reports from customer</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оформите отчеты комитентам о совершенных продажах и списании до даты начала прослеживаемости</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Register consignment reports before traceability start date</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияОтчетыКомитентамКонтекстноеМеню" id="289"/>
+							<ExtendedTooltip name="ДекорацияОтчетыКомитентамРасширеннаяПодсказка" id="290"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОформлениеОтчетовКомитентам" id="221">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оформить</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОформлениеОтчетовКомитентамКонтекстноеМеню" id="291"/>
+							<ExtendedTooltip name="ДекорацияОформлениеОтчетовКомитентамРасширеннаяПодсказка" id="292"/>
+							<Events>
+								<Event name="Click">ДекорацияОформлениеОтчетовКомитентамНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОткрытьСписокОтчетовКомитентам" id="224">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Открыть список</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Open list</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОткрытьСписокОтчетовКомитентамКонтекстноеМеню" id="293"/>
+							<ExtendedTooltip name="ДекорацияОткрытьСписокОтчетовКомитентамРасширеннаяПодсказка" id="294"/>
+							<Events>
+								<Event name="Click">ДекорацияОткрытьСписокОтчетовКомитентамНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСверкаОстатковСКомитентами" id="227">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа сверка остатков с комитентами</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group reconciliation with consignors</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа соглашения с комиссионерами</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group agreements with commission agents</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСверкаОстатковСКомитентамиРасширеннаяПодсказка" id="228"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияСверкаОстатковСКомитентами" id="229">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сверка остатков с комитентами</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Balance reconciliation with commission agents</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сверьте остатки товаров с комитентами с помощью отчета "Остатки товаров, принятых на комиссию". При необходимости установите отбор по товарам, подлежащим прослеживаемости</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Reconcile goods balance with vendors using the "Consigned stock balance received" report. If necessary, set filter by traceable goods</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияСверкаОстатковСКомитентамиКонтекстноеМеню" id="295"/>
+							<ExtendedTooltip name="ДекорацияСверкаОстатковСКомитентамиРасширеннаяПодсказка" id="296"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияФормированиеОтчетаСверкиСКомитентами" id="232">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сформировать отчет</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate report</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияФормированиеОтчетаСверкиСКомитентамиКонтекстноеМеню" id="233"/>
+							<ExtendedTooltip name="ДекорацияФормированиеОтчетаСверкиСКомитентамиРасширеннаяПодсказка" id="234"/>
+							<Events>
+								<Event name="Click">ДекорацияФормированиеОтчетаСверкиСКомитентамиНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаВозвратыТоваров" id="238">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа возвраты товаров</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group return of goods</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа соглашения с комиссионерами</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group agreements with commission agents</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаВозвратыТоваровРасширеннаяПодсказка" id="276"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияВозвратыТоваровКомитентам" id="240">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Возвраты товаров комитентам и прием на комиссию</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Return of goods to vendors and consignment procurement</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оформите "виртуальные" возвраты комитентам для оформления комитентами уведомления об остатках и получения  РНПТ. По оформленным возвратам будут автоматически созданы "виртуальные" приемы на комиссию, в которых необходимо вручную указать полученные от комитентов номера РНПТ, затем провести документы возврата комитентам и приема на комиссию</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Register "virtual" return of consignment stock so that vendors can register a balance notification and receive a goods batch registration number. For registered returns, "virtual" consignment procurement will be automatically created. In these returns specify manually goods batch registration numbers from the vendors and then post the documents of consignment stock return and procurement</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияВозвратыТоваровКомитентамКонтекстноеМеню" id="297"/>
+							<ExtendedTooltip name="ДекорацияВозвратыТоваровКомитентамРасширеннаяПодсказка" id="298"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОформлениеВозвратов" id="243">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оформить</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОформлениеВозвратовКонтекстноеМеню" id="299"/>
+							<ExtendedTooltip name="ДекорацияОформлениеВозвратовРасширеннаяПодсказка" id="300"/>
+							<Events>
+								<Event name="Click">ДекорацияОформлениеВозвратовНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОткрытьСписокВозвратовИПриемов" id="277">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Открыть список</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Open list</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОткрытьСписокВозвратовИПриемовКонтекстноеМеню" id="301"/>
+							<ExtendedTooltip name="ДекорацияОткрытьСписокВозвратовИПриемовРасширеннаяПодсказка" id="302"/>
+							<Events>
+								<Event name="Click">ДекорацияОткрытьСписокВозвратовИПриемовНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаВвозИзЕАЭСИПеремещениеВывозВЕАЭС" id="164">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ввоз из ЕАЭС и перемещение (вывоз) в ЕАЭС</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import from EAEU and transfer (export) to EAEU</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<ExtendedTooltip name="ГруппаВвозИзЕАЭСИПеремещениеВывозВЕАЭСРасширеннаяПодсказка" id="165"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаУведомленияОВвозе" id="166">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уведомления о ввозе</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Import notification</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаУведомленияОВвозеРасширеннаяПодсказка" id="169"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияУведомленияОВвозе" id="170">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Уведомления о ввозе&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;Import notification&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>По всем прослеживаемым товарам, ввозимым из ЕЭАС, необходимо оформить уведомление о ввозе.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>For all traceable goods imported from EAEU, register an import notification.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияУведомленияОВвозеКонтекстноеМеню" id="177"/>
+							<ExtendedTooltip name="ДекорацияУведомленияОВвозеРасширеннаяПодсказка" id="178"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияУведомленияОВвозеОформить" id="187">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оформить</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияУведомленияОВвозеОформитьКонтекстноеМеню" id="188"/>
+							<ExtendedTooltip name="ДекорацияУведомленияОВвозеОформитьРасширеннаяПодсказка" id="189"/>
+							<Events>
+								<Event name="Click">ДекорацияУведомленияОВвозеОформитьНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияУведомленияОВвозеОтправить" id="202">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отправить</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Send</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияУведомленияОВвозеОтправитьКонтекстноеМеню" id="203"/>
+							<ExtendedTooltip name="ДекорацияУведомленияОВвозеОтправитьРасширеннаяПодсказка" id="204"/>
+							<Events>
+								<Event name="Click">ДекорацияУведомленияОВвозеОтправитьНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияУведомленияОВвозеОжидать" id="199">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ожидать получения РНПТ</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Await receiving GBRN</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияУведомленияОВвозеОжидатьКонтекстноеМеню" id="200"/>
+							<ExtendedTooltip name="ДекорацияУведомленияОВвозеОжидатьРасширеннаяПодсказка" id="201"/>
+							<Events>
+								<Event name="Click">ДекорацияУведомленияОВвозеОжидатьНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияУведомленияОВвозеАрхив" id="196">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Архив</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Archive</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияУведомленияОВвозеАрхивКонтекстноеМеню" id="197"/>
+							<ExtendedTooltip name="ДекорацияУведомленияОВвозеАрхивРасширеннаяПодсказка" id="198"/>
+							<Events>
+								<Event name="Click">ДекорацияУведомленияОВвозеАрхивНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаУведомленияОВывозе" id="167">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа уведомления о вывозе</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group export notification</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаУведомленияОВывозеРасширеннаяПодсказка" id="172"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияУведомленияОВывозе" id="173">
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Уведомления о перемещении (вывозе)&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;Transfer (export) notification&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>По всем прослеживаемым товарам, перемещаемым (вывозимым) в ЕЭАС, необходимо оформить уведомление о перемещении (вывозе).</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>For all traceable goods transferred (exported) from EAEU, register a notification of transfer (export).</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияУведомленияОВывозеКонтекстноеМеню" id="181"/>
+							<ExtendedTooltip name="ДекорацияУведомленияОВывозеРасширеннаяПодсказка" id="182"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияУведомленияОВывозеОформить" id="205">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оформить</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияУведомленияОВывозеОформитьКонтекстноеМеню" id="206"/>
+							<ExtendedTooltip name="ДекорацияУведомленияОВывозеОформитьРасширеннаяПодсказка" id="207"/>
+							<Events>
+								<Event name="Click">ДекорацияУведомленияОВывозеОформитьНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияУведомленияОВывозеОтправить" id="208">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отправить</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Send</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияУведомленияОВывозеОтправитьКонтекстноеМеню" id="209"/>
+							<ExtendedTooltip name="ДекорацияУведомленияОВывозеОтправитьРасширеннаяПодсказка" id="210"/>
+							<Events>
+								<Event name="Click">ДекорацияУведомленияОВывозеОтправитьНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияУведомленияОВывозеАрхив" id="211">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Архив</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Archive</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияУведомленияОВывозеАрхивКонтекстноеМеню" id="212"/>
+							<ExtendedTooltip name="ДекорацияУведомленияОВывозеАрхивРасширеннаяПодсказка" id="213"/>
+							<Events>
+								<Event name="Click">ДекорацияУведомленияОВывозеАрхивНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОтчетыПрослеживаемыхТоваров" id="77">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отчетность</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reporting</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<ExtendedTooltip name="ГруппаОтчетыПрослеживаемыхТоваровРасширеннаяПодсказка" id="78"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаЖурналПрослеживаемыхОпераций" id="305">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Журнал прослеживаемых операций</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Traceable operations log</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЖурналПрослеживаемыхОперацийРасширеннаяПодсказка" id="306"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияЖурналПрослеживаемыхОпераций" id="317">
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Журнал прослеживаемых операций&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;Traceable operations log&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияЖурналПрослеживаемыхОперацийКонтекстноеМеню" id="318"/>
+							<ExtendedTooltip name="ДекорацияЖурналПрослеживаемыхОперацийРасширеннаяПодсказка" id="319"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОткрытьЖурналПрослеживаемыхОпераций" id="335">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Открыть журнал</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Open log</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОткрытьЖурналПрослеживаемыхОперацийКонтекстноеМеню" id="336"/>
+							<ExtendedTooltip name="ДекорацияОткрытьЖурналПрослеживаемыхОперацийРасширеннаяПодсказка" id="337"/>
+							<Events>
+								<Event name="Click">ДекорацияОткрытьЖурналПрослеживаемыхОперацийНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаОтчетОбОперациях" id="307">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отчет об операциях</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Operations report</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОтчетОбОперацияхРасширеннаяПодсказка" id="308"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияОтчетОбОперациях" id="320">
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Отчет об операциях&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;Operations report&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияОтчетОбОперацияхКонтекстноеМеню" id="321"/>
+							<ExtendedTooltip name="ДекорацияОтчетОбОперацияхРасширеннаяПодсказка" id="322"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияСформироватьОтчетОбОперациях" id="338">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сформировать отчет</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate report</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияСформироватьОтчетОбОперацияхКонтекстноеМеню" id="339"/>
+							<ExtendedTooltip name="ДекорацияСформироватьОтчетОбОперацияхРасширеннаяПодсказка" id="340"/>
+							<Events>
+								<Event name="Click">ДекорацияСформироватьОтчетОбОперацияхНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаДекларацияПоНДС" id="309">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Декларация по НДС</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>VAT declaration</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаДекларацияПоНДСРасширеннаяПодсказка" id="310"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияДекларацияПоНДС" id="323">
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Декларация по НДС&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;VAT declaration&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияДекларацияПоНДСКонтекстноеМеню" id="324"/>
+							<ExtendedTooltip name="ДекорацияДекларацияПоНДСРасширеннаяПодсказка" id="325"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияСформироватьДекларациюПоНДС" id="341">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сформировать отчет</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate report</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияСформироватьДекларациюПоНДСКонтекстноеМеню" id="342"/>
+							<ExtendedTooltip name="ДекорацияСформироватьДекларациюПоНДСРасширеннаяПодсказка" id="343"/>
+							<Events>
+								<Event name="Click">ДекорацияСформироватьДекларациюПоНДСНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаКнигаПродаж" id="313">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа книга продаж</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group sales ledger</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаКнигаПродажРасширеннаяПодсказка" id="314"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияКнигаПродаж" id="326">
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Книга продаж&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;Sales ledger&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияКнигаПродажКонтекстноеМеню" id="327"/>
+							<ExtendedTooltip name="ДекорацияКнигаПродажРасширеннаяПодсказка" id="328"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияСформироватьКнигуПродаж" id="344">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сформировать отчет</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate report</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияСформироватьКнигуПродажКонтекстноеМеню" id="345"/>
+							<ExtendedTooltip name="ДекорацияСформироватьКнигуПродажРасширеннаяПодсказка" id="346"/>
+							<Events>
+								<Event name="Click">ДекорацияСформироватьКнигуПродажНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаКнигаПокупок" id="311">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа книга покупок</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group purchase ledger</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаКнигаПокупокРасширеннаяПодсказка" id="312"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияКнигаПокупок" id="329">
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Книга покупок&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;Purchase ledger&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияКнигаПокупокКонтекстноеМеню" id="330"/>
+							<ExtendedTooltip name="ДекорацияКнигаПокупокРасширеннаяПодсказка" id="331"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияСформироватьКнигуПокупок" id="347">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сформировать отчет</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate report</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияСформироватьКнигуПокупокКонтекстноеМеню" id="348"/>
+							<ExtendedTooltip name="ДекорацияСформироватьКнигуПокупокРасширеннаяПодсказка" id="349"/>
+							<Events>
+								<Event name="Click">ДекорацияСформироватьКнигуПокупокНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаЖурналСчетовФактур" id="315">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Журнал счетов фактур</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tax invoice register</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЖурналСчетовФактурРасширеннаяПодсказка" id="316"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияЖурналУчетаСчетовФактур" id="332">
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Журнал учета счетов-фактур&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;Tax invoice register&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияЖурналУчетаСчетовФактурКонтекстноеМеню" id="333"/>
+							<ExtendedTooltip name="ДекорацияЖурналУчетаСчетовФактурРасширеннаяПодсказка" id="334"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияСформироватьЖурналУчетаСчетовФактур" id="350">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сформировать отчет</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate report</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияСформироватьЖурналУчетаСчетовФактурКонтекстноеМеню" id="351"/>
+							<ExtendedTooltip name="ДекорацияСформироватьЖурналУчетаСчетовФактурРасширеннаяПодсказка" id="352"/>
+							<Events>
+								<Event name="Click">ДекорацияСформироватьЖурналУчетаСчетовФактурНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаСмТакже" id="303">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>См. также</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>See also:</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<ExtendedTooltip name="ГруппаСмТакжеРасширеннаяПодсказка" id="304"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаВедомостьПоОстаткам" id="168">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ведомость по остаткам</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Statement on remaining stock</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаВедомостьПоОстаткамРасширеннаяПодсказка" id="175"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияВедомостьПоОстаткам" id="176">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Ведомость прослеживаемых импортных товаров организаций (по РНПТ)&lt;/&gt;
+</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;List of traceable imported goods of companies (by RNPT)&lt;/&gt;
+</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Контроль остатков и движений прослеживаемых импортных товаров в разрезе организаций.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Control of balance and register records of traceable imported goods by companies.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияВедомостьПоОстаткамКонтекстноеМеню" id="185"/>
+							<ExtendedTooltip name="ДекорацияВедомостьПоОстаткамРасширеннаяПодсказка" id="186"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияВедомостьПоОстаткамСформировать" id="81">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сформировать</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияВедомостьПоОстаткамСформироватьКонтекстноеМеню" id="82"/>
+							<ExtendedTooltip name="ДекорацияВедомостьПоОстаткамСформироватьРасширеннаяПодсказка" id="83"/>
+							<Events>
+								<Event name="Click">ДекорацияВедомостьПоОстаткамСформироватьНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаВедомостьРНПТВПроизводстве" id="395">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа "РНПТ в производстве"</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>"RNPT in production" group</v8:content>
+						</v8:item>
+					</Title>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаВедомостьРНПТВПроизводствеРасширеннаяПодсказка" id="396"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияВедомостьВПроизводстве" id="397">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Учет &lt;/&gt;&lt;b&gt;прослеживаемых&lt;/&gt;&lt;b&gt; материалов &lt;/&gt;&lt;b&gt;в&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;производстве&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;(по&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;РНПТ)&lt;/&gt;
+</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;Account for&lt;/&gt;&lt;b&gt;traceable&lt;/&gt;&lt;b&gt;materials&lt;/&gt;&lt;b&gt;in&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;production&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;(by&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;RNPT)&lt;/&gt;
+</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Учет прослеживаемых материалов в производстве.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Traceable goods accounting in production.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияВедомостьВПроизводствеКонтекстноеМеню" id="398"/>
+							<ExtendedTooltip name="ДекорацияВедомостьВПроизводствеРасширеннаяПодсказка" id="399"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияВедомостьВПроизводствеСформировать" id="400">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сформировать ведомость</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate list</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияВедомостьВПроизводствеСформироватьКонтекстноеМеню" id="401"/>
+							<ExtendedTooltip name="ДекорацияВедомостьВПроизводствеСформироватьРасширеннаяПодсказка" id="402"/>
+							<Events>
+								<Event name="Click">ДекорацияВедомостьВПроизводствеСформироватьНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияВедомостьВПроизводствеКОформлению" id="403">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>К переносу</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>To transfer</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияВедомостьВПроизводствеКОформлениюКонтекстноеМеню" id="404"/>
+							<ExtendedTooltip name="ДекорацияВедомостьВПроизводствеКОформлениюРасширеннаяПодсказка" id="405"/>
+							<Events>
+								<Event name="Click">ДекорацияВедомостьВПроизводствеКОформлениюНажатие</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияВедомостьВПроизводствеКВыбытию" id="406">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>К выбытию</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>To retire</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияВедомостьВПроизводствеКВыбытиюКонтекстноеМеню" id="407"/>
+							<ExtendedTooltip name="ДекорацияВедомостьВПроизводствеКВыбытиюРасширеннаяПодсказка" id="408"/>
+							<Events>
+								<Event name="Click">ДекорацияВедомостьВПроизводствеКВыбытиюНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаВедомостьТМЦВЭксплуатации" id="379">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ведомость ТМЦ в эксплуатации</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>List of inventory in operation</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаВедомостьТМЦВЭксплуатацииРасширеннаяПодсказка" id="380"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияВедомостьТМЦВЭксплуатации" id="381">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Ведомость прослеживаемых ТМЦ в эксплуатации (по РНПТ)&lt;/&gt;
+</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;List of traceable inventory in operation (by RNPT)&lt;/&gt;
+</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Контроль остатков и движений прослеживаемых ТМЦ в эксплуатации.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Control the availability and movements of traceable inventory in operation.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияВедомостьТМЦВЭксплуатацииКонтекстноеМеню" id="382"/>
+							<ExtendedTooltip name="ДекорацияВедомостьТМЦВЭксплуатацииРасширеннаяПодсказка" id="383"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияВедомостьТМЦВЭксплуатацииСформировать" id="384">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сформировать</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияВедомостьТМЦВЭксплуатацииСформироватьКонтекстноеМеню" id="385"/>
+							<ExtendedTooltip name="ДекорацияВедомостьТМЦВЭксплуатацииСформироватьРасширеннаяПодсказка" id="386"/>
+							<Events>
+								<Event name="Click">ДекорацияВедомостьТМЦВЭксплуатацииСформироватьНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаОстаткиТМЦВЭксплуатации" id="387">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Остатки ТМЦ в эксплуатации</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Balance of inventory in operation</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОстаткиТМЦВЭксплуатацииРасширеннаяПодсказка" id="388"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияОстаткиТМЦВЭксплуатации" id="389">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<TextColor>style:ToolTipTextColor</TextColor>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;b&gt;Остатки прослеживаемых ТМЦ в эксплуатации (по РНПТ)&lt;/&gt;
+</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;b&gt;Available traceable inventory in operation (by RNPT)&lt;/&gt;
+</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Контроль остатков прослеживаемых ТМЦ в эксплуатации.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Control the availability of traceable inventory in operation.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияОстаткиТМЦВЭксплуатацииКонтекстноеМеню" id="390"/>
+							<ExtendedTooltip name="ДекорацияОстаткиТМЦВЭксплуатацииРасширеннаяПодсказка" id="391"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияОстаткиТМЦВЭксплуатацииСформировать" id="392">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сформировать</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияОстаткиТМЦВЭксплуатацииСформироватьКонтекстноеМеню" id="393"/>
+							<ExtendedTooltip name="ДекорацияОстаткиТМЦВЭксплуатацииСформироватьРасширеннаяПодсказка" id="394"/>
+							<Events>
+								<Event name="Click">ДекорацияОстаткиТМЦВЭксплуатацииСформироватьНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаОстаткиПрослеживаемыхТоваровВСоставеОС" id="357">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа остатки прослеживаемых товаров в составе ОС</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group balance of traceable goods in fixed assets</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОстаткиПрослеживаемыхТоваровВСоставеОСРасширеннаяПодсказка" id="358"/>
+					<ChildItems>
+						<PictureDecoration name="ДекорацияЕстьОстаткиПрослеживаемыхТоваров" id="365">
+							<Picture>
+								<xr:Ref>CommonPicture.ВниманиеКрасный</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="ДекорацияЕстьОстаткиПрослеживаемыхТоваровКонтекстноеМеню" id="366"/>
+							<ExtendedTooltip name="ДекорацияЕстьОстаткиПрослеживаемыхТоваровРасширеннаяПодсказка" id="367"/>
+						</PictureDecoration>
+						<LabelDecoration name="ДекорацияОстаткиПрослеживаемыхТоваровВСоставеОС" id="368">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остатки прослеживаемых товаров в составе ОС, не принятых к учету</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Balance of traceable goods in unrecognized fixed assets</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияОстаткиПрослеживаемыхТоваровВСоставеОСКонтекстноеМеню" id="369"/>
+							<ExtendedTooltip name="ДекорацияОстаткиПрослеживаемыхТоваровВСоставеОСРасширеннаяПодсказка" id="370"/>
+						</LabelDecoration>
+						<LabelDecoration name="СформироватьОстаткиПрослеживаемыхТоваровВСоставеОС" id="371">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сформировать</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="СформироватьОстаткиПрослеживаемыхТоваровВСоставеОСКонтекстноеМеню" id="372"/>
+							<ExtendedTooltip name="СформироватьОстаткиПрослеживаемыхТоваровВСоставеОСРасширеннаяПодсказка" id="373"/>
+							<Events>
+								<Event name="Click">СформироватьОстаткиПрослеживаемыхТоваровВСоставеОСНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаВедомостьПрослеживаемыхТоваровВСоставеОС" id="355">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа ведомость прослеживаемых товаров в составе ОС</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group traceable goods list in fixed assets</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаВедомостьПрослеживаемыхТоваровВСоставеОСРасширеннаяПодсказка" id="356"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияВедомостьПрослеживаемыхТоваровВСоставеОС" id="359">
+							<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ведомость прослеживаемых товаров в составе ОС</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Traceable goods list in fixed assets</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияВедомостьПрослеживаемыхТоваровВСоставеОСКонтекстноеМеню" id="360"/>
+							<ExtendedTooltip name="ДекорацияВедомостьПрослеживаемыхТоваровВСоставеОСРасширеннаяПодсказка" id="361"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияСформироватьВедомостьПрослеживаемыхТоваровВСоставеОС" id="362">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сформировать</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generate</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="ДекорацияСформироватьВедомостьПрослеживаемыхТоваровВСоставеОСКонтекстноеМеню" id="363"/>
+							<ExtendedTooltip name="ДекорацияСформироватьВедомостьПрослеживаемыхТоваровВСоставеОСРасширеннаяПодсказка" id="364"/>
+							<Events>
+								<Event name="Click">ДекорацияСформироватьВедомостьПрослеживаемыхТоваровВСоставеОСНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Склад" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Склад</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Warehouse</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Склады</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Save>
+				<Field>Склад</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Объект" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ПанельАдминистрированияУчетПрослеживаемыхТоваров</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Обновить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Обновить</Action>
+		</Command>
+	</Commands>
+</Form>

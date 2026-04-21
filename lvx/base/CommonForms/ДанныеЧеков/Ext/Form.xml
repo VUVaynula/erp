@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Данные чеков</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Receipt data</v8:content>
+		</v8:item>
+	</Title>
+	<Width>85</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelField name="Документ" id="1">
+			<DataPath>Документ</DataPath>
+			<Width>40</Width>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Hiperlink>true</Hiperlink>
+			<ContextMenu name="ДокументКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ДокументРасширеннаяПодсказка" id="3"/>
+		</LabelField>
+		<Table name="ДанныеЧеков" id="4">
+			<Representation>List</Representation>
+			<ReadOnly>true</ReadOnly>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ЧекиПоДокументу</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ДанныеЧековКонтекстноеМеню" id="5"/>
+			<AutoCommandBar name="ДанныеЧековКоманднаяПанель" id="6">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ДанныеЧековРасширеннаяПодсказка" id="7"/>
+			<SearchStringAddition name="ДанныеЧековСтрокаПоиска" id="8">
+				<AdditionSource>
+					<Item>ДанныеЧеков</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДанныеЧековСтрокаПоискаКонтекстноеМеню" id="9"/>
+				<ExtendedTooltip name="ДанныеЧековСтрокаПоискаРасширеннаяПодсказка" id="10"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ДанныеЧековСостояниеПросмотра" id="11">
+				<AdditionSource>
+					<Item>ДанныеЧеков</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДанныеЧековСостояниеПросмотраКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="ДанныеЧековСостояниеПросмотраРасширеннаяПодсказка" id="13"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ДанныеЧековУправлениеПоиском" id="14">
+				<AdditionSource>
+					<Item>ДанныеЧеков</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ДанныеЧековУправлениеПоискомКонтекстноеМеню" id="15"/>
+				<ExtendedTooltip name="ДанныеЧековУправлениеПоискомРасширеннаяПодсказка" id="16"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="OnActivateCell">ДанныеЧековПриАктивизацииЯчейки</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ДанныеЧековПредставлениеЧека" id="17">
+					<DataPath>ЧекиПоДокументу.ПредставлениеЧека</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>20</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ContextMenu name="ДанныеЧековПредставлениеЧекаКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ДанныеЧековПредставлениеЧекаРасширеннаяПодсказка" id="19"/>
+				</InputField>
+				<InputField name="ДанныеЧековСуммаНаличными" id="20">
+					<DataPath>ЧекиПоДокументу.СуммаНаличными</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>10</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ContextMenu name="ДанныеЧековСуммаНаличнымиКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ДанныеЧековСуммаНаличнымиРасширеннаяПодсказка" id="22"/>
+				</InputField>
+				<InputField name="ДанныеЧековСуммаЭлектронными" id="23">
+					<DataPath>ЧекиПоДокументу.СуммаЭлектронными</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>10</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ContextMenu name="ДанныеЧековСуммаЭлектроннымиКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ДанныеЧековСуммаЭлектроннымиРасширеннаяПодсказка" id="25"/>
+				</InputField>
+				<InputField name="ДанныеЧековСуммаПредоплатами" id="26">
+					<DataPath>ЧекиПоДокументу.СуммаПредоплатами</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>10</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ContextMenu name="ДанныеЧековСуммаПредоплатамиКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="ДанныеЧековСуммаПредоплатамиРасширеннаяПодсказка" id="28"/>
+				</InputField>
+				<InputField name="ДанныеЧековСуммаПостоплатами" id="29">
+					<DataPath>ЧекиПоДокументу.СуммаПостоплатами</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>10</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ContextMenu name="ДанныеЧековСуммаПостоплатамиКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ДанныеЧековСуммаПостоплатамиРасширеннаяПодсказка" id="31"/>
+				</InputField>
+				<ColumnGroup name="ДанныеЧековОперации" id="41">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Операции</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Transactions</v8:content>
+						</v8:item>
+					</Title>
+					<ShowInHeader>true</ShowInHeader>
+					<ExtendedTooltip name="ДанныеЧековОперацииРасширеннаяПодсказка" id="42"/>
+					<ChildItems>
+						<InputField name="ДанныеЧековПросмотр" id="38">
+							<DataPath>ЧекиПоДокументу.Просмотр</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Просмотр</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>View</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<CellHyperlink>true</CellHyperlink>
+							<ShowInHeader>false</ShowInHeader>
+							<ShowInFooter>false</ShowInFooter>
+							<TextColor>style:ГиперссылкаЦвет</TextColor>
+							<ContextMenu name="ДанныеЧековПросмотрКонтекстноеМеню" id="39"/>
+							<ExtendedTooltip name="ДанныеЧековПросмотрРасширеннаяПодсказка" id="40"/>
+						</InputField>
+						<InputField name="ДанныеЧековСохранение" id="35">
+							<DataPath>ЧекиПоДокументу.Сохранение</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сохранение</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Save</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<CellHyperlink>true</CellHyperlink>
+							<ShowInHeader>false</ShowInHeader>
+							<ShowInFooter>false</ShowInFooter>
+							<TextColor>style:ГиперссылкаЦвет</TextColor>
+							<ContextMenu name="ДанныеЧековСохранениеКонтекстноеМеню" id="36"/>
+							<ExtendedTooltip name="ДанныеЧековСохранениеРасширеннаяПодсказка" id="37"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Документ" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DefinedType.ДокументОФДБИП</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="ЧекиПоДокументу" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Чеки по документу</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document receipts</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ПредставлениеЧека" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Чек</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Receipt</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СуммаНаличными" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наличными</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cash</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="СуммаЭлектронными" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Безналичными</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Bank account</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="СуммаПредоплатами" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Предоплатами</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Prepayments</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="СуммаПостоплатами" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Постоплатами</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Postpayments</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="UrlПросмотраЧека" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление чека</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Receipt presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="UrlPdfЧека" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Url pdf чека</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Receipt PDF URL</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Просмотр" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Просмотр</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>View</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Сохранение" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сохранение</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Save</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+</Form>

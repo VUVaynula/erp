@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>РегистрацияОповещений</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Период</dataPath>
+			<field>Период</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидСобытия</dataPath>
+			<field>ВидСобытия</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Виза</dataPath>
+			<field>Виза</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Объект</dataPath>
+			<field>Объект</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Оповещение</dataPath>
+			<field>Оповещение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Пользователь</dataPath>
+			<field>Пользователь</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Решение</dataPath>
+			<field>Решение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Статус</dataPath>
+			<field>Статус</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтатусРегистрации</dataPath>
+			<field>СтатусРегистрации</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Комментарий</dataPath>
+			<field>Комментарий</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИД</dataPath>
+			<field>ИД</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаЗаявки</dataPath>
+			<field>СуммаЗаявки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма заявки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>The amount of application</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	РегистрацияСобытийОповещений.Период КАК Период,
+	РегистрацияСобытийОповещений.СтатусРегистрации КАК СтатусРегистрации,
+	РегистрацияСобытийОповещений.ВидСобытия КАК ВидСобытия,
+	РегистрацияСобытийОповещений.Оповещение КАК Оповещение,
+	РегистрацияСобытийОповещений.Объект КАК Объект,
+	РегистрацияСобытийОповещений.ИД КАК ИД,
+	СУММА(ЕСТЬNULL(ПлатежнаяПозиция.СуммаДокумента, 0)) КАК СуммаЗаявки,
+	РегистрацияСобытийОповещений.Статус КАК Статус,
+	РегистрацияСобытийОповещений.Виза КАК Виза,
+	РегистрацияСобытийОповещений.Решение КАК Решение,
+	РегистрацияСобытийОповещений.Пользователь КАК Пользователь,
+	РегистрацияСобытийОповещений.Комментарий КАК Комментарий
+{ВЫБРАТЬ
+	Период,
+	СтатусРегистрации.*,
+	ВидСобытия.*,
+	Оповещение.*,
+	Объект.*,
+	ИД,
+	Статус.*,
+	Виза.*,
+	Решение.*,
+	Пользователь.*}
+ИЗ
+	РегистрСведений.бит_фн_РегистрацияСобытийОповещений КАК РегистрацияСобытийОповещений
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.бит_кзн_ПлатежнаяПозиция КАК ПлатежнаяПозиция
+		ПО РегистрацияСобытийОповещений.Объект = ПлатежнаяПозиция.ДокументПланирования
+{ГДЕ
+	РегистрацияСобытийОповещений.Период,
+	РегистрацияСобытийОповещений.СтатусРегистрации.*,
+	РегистрацияСобытийОповещений.ВидСобытия.*,
+	РегистрацияСобытийОповещений.Оповещение.*,
+	РегистрацияСобытийОповещений.Объект.*,
+	РегистрацияСобытийОповещений.Статус.*,
+	РегистрацияСобытийОповещений.Виза.*,
+	РегистрацияСобытийОповещений.Решение.*,
+	РегистрацияСобытийОповещений.Пользователь.*}
+
+СГРУППИРОВАТЬ ПО
+	РегистрацияСобытийОповещений.Период,
+	РегистрацияСобытийОповещений.СтатусРегистрации,
+	РегистрацияСобытийОповещений.ВидСобытия,
+	РегистрацияСобытийОповещений.Оповещение,
+	РегистрацияСобытийОповещений.Объект,
+	РегистрацияСобытийОповещений.ИД,
+	РегистрацияСобытийОповещений.Статус,
+	РегистрацияСобытийОповещений.Виза,
+	РегистрацияСобытийОповещений.Решение,
+	РегистрацияСобытийОповещений.Пользователь,
+	РегистрацияСобытийОповещений.Комментарий</query>
+	</dataSet>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ВидСобытия</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Виза</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Объект</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Оповещение</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Период</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Пользователь</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Решение</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Статус</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СтатусРегистрации</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Комментарий</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ИД</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаЗаявки</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Период</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+						<v8:date>0001-01-01T00:00:00</v8:date>
+					</dcsset:right>
+					<dcsset:userSettingID>a02a7456-85f8-48f0-acc9-f175cc32b9f5</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ВидСобытия</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.бит_фн_ВидыСобытийОповещений.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>08d41706-2041-449c-a0db-611b27b28c55</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид события</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Event Type</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Пользователь</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Пользователи.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>33706914-9eff-4c89-a0e0-51c3d492073c</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">СтатусРегистрации</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.бит_фн_СтатусыРегистрацииОповещений.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>4891fa21-13a5-4c92-a4f6-bbd16caf76a2</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус регистрации</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Registration Status</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcsset:item>
+				<dcsset:userSettingID>4a05ea31-e973-4134-9189-4331190decf8</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

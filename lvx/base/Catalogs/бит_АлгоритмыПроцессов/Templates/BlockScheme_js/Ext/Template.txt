@@ -1,0 +1,532 @@
+﻿/**
+ * @author mzyubin
+ */
+var sData = "";
+var sLines = "";
+var sSvgAreaParam = "";
+
+// point in 2D space
+function Point(x, y) {
+	this.x = x;
+	this.y = y;
+}
+
+// abstract rectangle
+function Rectangle(left, top, width, height) {
+
+	this.left = left;
+	this.top = top;
+	this.width = width;
+	this.height = height;
+
+	this.RightTopPoint = function() {
+
+		var x = this.left + this.width;
+		var y = this.top;
+		var curPoint = new Point(x, y);
+
+		return curPoint;
+
+	};
+	this.RightLowPoint = function() {
+
+		var x = this.left + this.width;
+		var y = this.top + this.height;
+
+		var curPoint = new Point(x, y);
+
+		return curPoint;
+
+	};
+	this.LeftTopPoint = function() {
+
+		var x = this.left;
+		var y = this.top;
+		var curPoint = new Point(x, y);
+
+		return curPoint;
+	};
+	this.LeftLowPoint = function() {
+
+		var x = this.left;
+		var y = this.top + this.height;
+		var curPoint = new Point(x, y);
+
+		return curPoint;
+
+	};
+	this.UpCenterPoint = function() {
+
+		var x = this.left + this.width / 2;
+		var y = this.top;
+		var curPoint = new Point(x, y);
+
+		return curPoint;
+	};
+	this.LowCenterPoint = function() {
+
+		var x = this.left + this.width / 2;
+		var y = this.top + this.height;
+		var curPoint = new Point(x, y);
+
+		return curPoint;
+	};
+	this.LeftCenterPoint = function() {
+
+		var x = this.left;
+		var y = this.top + this.height / 2;
+		var curPoint = new Point(x, y);
+
+		return curPoint;
+	};
+	this.RightCenterPoint = function() {
+
+		var x = this.left + this.width;
+		var y = this.top + this.height / 2;
+		var curPoint = new Point(x, y);
+
+		return curPoint;
+	};
+	this.CenterPoint = function() {
+
+		var x = this.left + this.width / 2;
+		var y = this.top + this.height / 2;
+		var curPoint = new Point(x, y);
+
+		return curPoint;
+
+	};
+}
+
+// line
+function Line(startPoint, endPoint, color, width) {
+	this.startPoint = startPoint;
+	this.endPoint = endPoint;
+	this.color = color;
+	this.width = width;
+
+	this.Draw = function(ContName) {
+		var cont = document.getElementById(ContName);
+
+		if(cont != null) {
+
+			var ln = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+			ln.setAttribute("x1", this.startPoint.x);
+			ln.setAttribute("y1", this.startPoint.y);
+			ln.setAttribute("x2", this.endPoint.x);
+			ln.setAttribute("y2", this.endPoint.y);
+			ln.setAttribute("stroke", this.color);
+			ln.setAttribute("stroke-width", this.width);
+			cont.appendChild(ln);
+
+		}
+	};
+}
+
+// start point
+function StartPoint(left, top, width, height, borderColor, fillColor, title, id) {
+
+	this.left = left;
+	this.top = top;
+	this.width = width;
+	this.height = height;
+	this.borderColor = borderColor;
+	this.fillColor = fillColor;
+	this.title = title;
+	this.poindId = id;
+
+	this.BorderRect = new Rectangle(this.left, this.top, this.width, this.height);
+
+	this.Draw = function(ContName) {
+
+		var cont = document.getElementById(ContName);
+		if(cont != null) {
+
+			var p = null;
+			// temp var for current point
+			var pathDescr = "";
+			// description of path
+			p = this.BorderRect.LeftTopPoint();
+			pathDescr = pathDescr + "M" + p.x + " " + p.y;
+			p = this.BorderRect.LeftCenterPoint();
+			pathDescr = pathDescr + " L" + p.x + " " + p.y;
+			p = this.BorderRect.LowCenterPoint();
+			pathDescr = pathDescr + " L" + p.x + " " + p.y;
+			p = this.BorderRect.RightCenterPoint();
+			pathDescr = pathDescr + " L" + p.x + " " + p.y;
+			p = this.BorderRect.RightTopPoint();
+			pathDescr = pathDescr + " L" + p.x + " " + p.y + " Z";
+
+			var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+			path.setAttribute("d", pathDescr);
+			path.setAttribute("stroke", this.borderColor);
+			path.setAttribute("stroke-width", 2);
+			path.setAttribute("fill", this.fillColor);
+			cont.appendChild(path);
+
+		}
+
+	};
+} // start point
+
+// definition of condition point
+function ConditionPoint(left, top, width, height, borderColor, fillColor, title, id) {
+
+	this.left = left;
+	this.top = top;
+	this.width = width;
+	this.height = height;
+	this.borderColor = borderColor;
+	this.fillColor = fillColor;
+	this.title = title;
+	this.poindId = id;
+
+	this.BorderRect = new Rectangle(this.left, this.top, this.width, this.height);
+
+	this.Draw = function(ContName) {
+
+		var cont = document.getElementById(ContName);
+		if(cont != null) {
+
+			var p = null;
+			// temp var for current point
+			var pathDescr = "";
+			// description of path
+			p = this.BorderRect.LeftCenterPoint();
+			pathDescr = pathDescr + "M" + p.x + " " + p.y;
+			p = this.BorderRect.UpCenterPoint();
+			pathDescr = pathDescr + " L" + p.x + " " + p.y;
+			p = this.BorderRect.RightCenterPoint();
+			pathDescr = pathDescr + " L" + p.x + " " + p.y;
+			p = this.BorderRect.LowCenterPoint();
+			pathDescr = pathDescr + " L" + p.x + " " + p.y + " Z";
+
+			var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+			path.setAttribute("d", pathDescr);
+			path.setAttribute("stroke", this.borderColor);
+			path.setAttribute("stroke-width", 2);
+			path.setAttribute("fill", this.fillColor);
+			cont.appendChild(path);
+
+		}
+
+	};
+}
+
+// separation point
+function SeparationPoint(left, top, width, height, borderColor, fillColor, title, id) {
+
+	this.left = left;
+	this.top = top;
+	this.width = width;
+	this.height = height;
+	this.borderColor = borderColor;
+	this.fillColor = fillColor;
+	this.title = title;
+	this.poindId = id;
+
+	this.BorderRect = new Rectangle(this.left, this.top, this.width, this.height);
+
+	this.Draw = function(ContName) {
+
+		var cont = document.getElementById(ContName);
+		if(cont != null) {
+
+			var p = null;
+			// temp var for current point
+			var pathDescr = "";
+			// description of path
+			p = this.BorderRect.LeftLowPoint();
+			pathDescr = pathDescr + "M" + p.x + " " + p.y;
+			p = this.BorderRect.UpCenterPoint();
+			pathDescr = pathDescr + " L" + p.x + " " + p.y;
+			p = this.BorderRect.RightLowPoint();
+			pathDescr = pathDescr + " L" + p.x + " " + p.y + " Z";
+
+			var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+			path.setAttribute("d", pathDescr);
+			path.setAttribute("stroke", this.borderColor);
+			path.setAttribute("stroke-width", 2);
+			path.setAttribute("fill", this.fillColor);
+			cont.appendChild(path);
+
+		}
+
+	};
+}
+
+// joining point
+function JoinPoint(left, top, width, height, borderColor, fillColor, title, id) {
+
+	this.left = left;
+	this.top = top;
+	this.width = width;
+	this.height = height;
+	this.borderColor = borderColor;
+	this.fillColor = fillColor;
+	this.title = title;
+	this.poindId = id;
+
+	this.BorderRect = new Rectangle(this.left, this.top, this.width, this.height);
+
+	this.Draw = function(ContName) {
+
+		var cont = document.getElementById(ContName);
+		if(cont != null) {
+
+			var p = null;
+			// temp var for current point
+			var pathDescr = "";
+			// description of path
+			p = this.BorderRect.LeftTopPoint();
+			pathDescr = pathDescr + "M" + p.x + " " + p.y;
+			p = this.BorderRect.LowCenterPoint();
+			pathDescr = pathDescr + " L" + p.x + " " + p.y;
+			p = this.BorderRect.RightTopPoint();
+			pathDescr = pathDescr + " L" + p.x + " " + p.y + " Z";
+
+			var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+			path.setAttribute("d", pathDescr);
+			path.setAttribute("stroke", this.borderColor);
+			path.setAttribute("stroke-width", 2);
+			path.setAttribute("fill", this.fillColor);
+			cont.appendChild(path);
+
+		}
+
+	};
+}
+
+// definition of action point
+function ActionPoint(left, top, width, height, borderColor, fillColor, title) {
+
+	this.left = left;
+	this.top = top;
+	this.width = width;
+	this.height = height;
+	this.borderColor = borderColor;
+	this.fillColor = fillColor;
+	this.title = title;
+
+	this.BorderRect = new Rectangle(this.left, this.top, this.width, this.height);
+
+	this.UpCenterPoint = function() {
+
+		var x = this.left + this.width / 2;
+		var y = this.top;
+		var curPoint = new Point(x, y);
+
+		return curPoint;
+	}
+	this.LowCenterPoint = function() {
+
+		var x = this.left + this.width / 2;
+		var y = this.top + this.height;
+		var curPoint = new Point(x, y);
+
+		return curPoint;
+	}
+	this.Draw = function(ContName) {
+
+		var cont = document.getElementById(ContName);
+
+		if(cont != null) {
+
+			var rc = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+			rc.setAttribute("x", this.left);
+			rc.setAttribute("y", this.top);
+			rc.setAttribute("width", this.width);
+			rc.setAttribute("height", this.height);
+			rc.setAttribute("stroke", this.borderColor);
+			rc.setAttribute("stroke-width", 2);
+			rc.setAttribute("fill", this.fillColor);
+			rc.setAttribute("rx", "10");
+			rc.setAttribute("ry", "10");
+			cont.appendChild(rc);
+
+			/*
+			 var txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+			 txt.setAttribute("x", this.left);
+			 txt.setAttribute("y", this.top + this.height / 2);
+			 //txt.setAttribute("textLength", this.width);
+			 //txt.setAttribute("lengthAdjust", "spacingAndGlyphs");
+			 //txt.setAttribute("text-anchor", "middle");
+			 //txt.setAttribute("dominant-baseline", "mathematical");
+			 txt.textContent = this.title;
+			 cont.appendChild(txt);
+			 */
+
+		}
+	};
+}
+
+function AddTextToString(sStart, sAdd, sSeparator) {
+
+	var sSep = "";
+	if(sStart != "") {
+		sSep = sSeparator;
+	}
+
+	var sRes = sStart + sSep + sAdd;
+
+	return sRes;
+
+}
+
+function TextParam(fontSize, textColor, textAlign, verticalAlign) {
+
+	this.fontSize = fontSize || 14;
+	this.textColor = textColor || "black";
+	this.textAlign = textAlign || "center";
+	this.verticalAlign = verticalAlign || "middle";
+
+	this.PrepareTextStyle = function() {
+
+		var txtStyle = "";
+		var sAdd = "";
+		sAdd = "font-size: " + this.fontSize.toString() + "px;";
+		txtStyle = AddTextToString(txtStyle, sAdd, " ");
+		sAdd = "color: " + this.textColor + ";";
+		txtStyle = AddTextToString(txtStyle, sAdd, " ");
+		sAdd = "text-align: " + this.textAlign.toString() + ";";
+		txtStyle = AddTextToString(txtStyle, sAdd, " ");
+		sAdd = "vertical-align: " + this.verticalAlign.toString() + ";";
+		txtStyle = AddTextToString(txtStyle, sAdd, " ");
+
+		return txtStyle;
+	}
+}
+
+function TextBlock(contName, id, rect, text, txtParam) {
+
+	var cont = document.getElementById(contName);
+
+	if(cont != null) {
+
+		var fo = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');
+		fo.setAttribute("id", "textBlock_" + id);
+		fo.setAttribute("x", rect.left);
+		fo.setAttribute("y", rect.top);
+		fo.setAttribute("width", rect.width);
+		fo.setAttribute("height", rect.height);
+
+		cont.appendChild(fo);
+
+		var txtBlock = document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
+		//var txtStyle = 'display: table-cell; text-align: center; vertical-align: middle;';
+		var txtStyle = 'display: table-cell;';
+
+		if(txtParam != null) {
+			var sTxtParam = txtParam.PrepareTextStyle();
+			txtStyle = AddTextToString(txtStyle, sTxtParam, " ");
+		}
+		txtStyle = txtStyle + " height: " + rect.height.toString() + "px; width: " + rect.width + "px;";
+		//alert(txtStyle);
+		txtBlock.setAttribute("style", txtStyle);
+		txtBlock.textContent = text;
+		fo.appendChild(txtBlock);
+	}
+
+}
+
+function DrawScheme(contName, sData) {
+
+	try {
+		var points = JSON.parse(sData);
+	} catch(e) {
+		var points = [];
+	}
+	var col = "black";
+	var back = "white";
+
+	var i = 0;
+	for( i = 0; i < points.length; i++) {
+		var p = points[i];
+		if(p != null) {
+			switch (p.type) {
+				case 'StartPoint':
+					var point = new StartPoint(p.left, p.top, p.width, p.height, col, back, p.id);
+					break;
+				case 'ActionPoint':
+					var point = new ActionPoint(p.left, p.top, p.width, p.height, col, back, p.id);
+					break;
+				case 'ConditionPoint':
+					var point = new ConditionPoint(p.left, p.top, p.width, p.height, col, back, p.id);
+					break;
+				case 'SeparationPoint':
+					var point = new SeparationPoint(p.left, p.top, p.width, p.height, col, back, p.id);
+					break;
+				case 'JoinPoint':
+					var point = new JoinPoint(p.left, p.top, p.width, p.height, col, back, p.id);
+					break;
+			}
+		}
+		if(point != null) {
+			point.Draw(contName);
+
+			if(p.title != null) {
+				var txtParam = new TextParam(p.fontSize, p.textColor, p.textAlign, p.verticalAlign);
+				var id = "txt_" + p.id.toString();
+				TextBlock("svgCont", id, point.BorderRect, p.title, txtParam);
+			}
+
+		}
+
+		//alert(p.type.toString());
+	}
+
+}
+
+function DrawLines(contName, sLines) {
+
+	try {
+		var lines = JSON.parse(sLines);
+	} catch(e) {
+		var lines = [];
+	}
+
+	var i = 0;
+
+	for( i = 0; i <= lines.length; i++) {
+
+		var lnData = lines[i];
+		if(lnData != null) {
+			var startPoint = new Point(lnData.x1, lnData.y1);
+			var endPoint = new Point(lnData.x2, lnData.y2);
+			var ln = new Line(startPoint, endPoint, lnData.color, lnData.width);
+			ln.Draw(contName);
+		}
+	};
+
+}
+
+function SetSvgAreaParam(contName, sParam)
+{
+	try{
+		var param = JSON.parse(sParam);
+	}
+	catch(e)
+	{
+		var param = "";
+	}
+	
+	var cont = document.getElementById(contName);
+	
+	if (cont != null)
+	{
+		if (param.height != null){
+		cont.setAttribute("height", param.height);
+		}
+		if (param.width != null){
+		cont.setAttribute("width", param.width);
+		} 
+	}
+}
+
+function CreateMap() {
+
+    SetSvgAreaParam("svgCont", sSvgAreaParam);
+	DrawScheme("svgCont", sData);
+	DrawLines("svgCont", sLines);
+
+}

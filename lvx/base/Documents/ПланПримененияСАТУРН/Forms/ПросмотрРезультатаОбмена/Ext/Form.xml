@@ -1,0 +1,759 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="Обновить" id="40">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Обновить</CommandName>
+				<Picture>
+					<xr:Ref>StdPicture.Refresh</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="ОбновитьРасширеннаяПодсказка" id="41"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапкаОтборов" id="90">
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаОтборовРасширеннаяПодсказка" id="91"/>
+			<ChildItems>
+				<LabelField name="ПланПрименения" id="35">
+					<DataPath>ПланПрименения</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Документ</v8:content>
+						</v8:item>
+					</Title>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="ПланПримененияКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="ПланПримененияРасширеннаяПодсказка" id="37"/>
+				</LabelField>
+				<CheckBoxField name="ОтправленныеНеОтправленные" id="87">
+					<DataPath>ОтправленныеНеОтправленные</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<CheckBoxType>Tumbler</CheckBoxType>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>БЛ=Неотправленные; БИ=Все</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>БЛ=Неотправленные; БИ=Все</v8:content>
+						</v8:item>
+					</EditFormat>
+					<ContextMenu name="ОтправленныеНеОтправленныеКонтекстноеМеню" id="88"/>
+					<ExtendedTooltip name="ОтправленныеНеОтправленныеРасширеннаяПодсказка" id="89"/>
+					<Events>
+						<Event name="OnChange">ОтправленныеНеОтправленныеПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="СтраницыРезультатовОбмена" id="44">
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыРезультатовОбменаРасширеннаяПодсказка" id="45"/>
+			<ChildItems>
+				<Page name="СтраницаВсе" id="46">
+					<ExtendedTooltip name="СтраницаВсеРасширеннаяПодсказка" id="47"/>
+					<ChildItems>
+						<Table name="РезультатОбмена" id="1">
+							<Representation>List</Representation>
+							<CommandBarLocation>None</CommandBarLocation>
+							<ReadOnly>true</ReadOnly>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<Width>100</Width>
+							<DataPath>РезультатОбмена</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="РезультатОбменаКонтекстноеМеню" id="3"/>
+							<AutoCommandBar name="РезультатОбменаКоманднаяПанель" id="2"/>
+							<ExtendedTooltip name="РезультатОбменаРасширеннаяПодсказка" id="4"/>
+							<SearchStringAddition name="РезультатОбменаСтрокаПоиска" id="5">
+								<AdditionSource>
+									<Item>РезультатОбмена</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="РезультатОбменаСтрокаПоискаКонтекстноеМеню" id="6"/>
+								<ExtendedTooltip name="РезультатОбменаСтрокаПоискаРасширеннаяПодсказка" id="7"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="РезультатОбменаСостояниеПросмотра" id="11">
+								<AdditionSource>
+									<Item>РезультатОбмена</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="РезультатОбменаСостояниеПросмотраКонтекстноеМеню" id="12"/>
+								<ExtendedTooltip name="РезультатОбменаСостояниеПросмотраРасширеннаяПодсказка" id="13"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="РезультатОбменаУправлениеПоиском" id="8">
+								<AdditionSource>
+									<Item>РезультатОбмена</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="РезультатОбменаУправлениеПоискомКонтекстноеМеню" id="9"/>
+								<ExtendedTooltip name="РезультатОбменаУправлениеПоискомРасширеннаяПодсказка" id="10"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">РезультатОбменаВыбор</Event>
+							</Events>
+							<ChildItems>
+								<PictureField name="РезультатОбменаИндексСтатусаОбмена" id="32">
+									<DataPath>РезультатОбмена.ИндексСтатусаОбмена</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<FixingInTable>Left</FixingInTable>
+									<ValuesPicture>
+										<xr:Ref>CommonPicture.ПротоколОбменаГосИС</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</ValuesPicture>
+									<ContextMenu name="РезультатОбменаИндексСтатусаОбменаКонтекстноеМеню" id="33"/>
+									<ExtendedTooltip name="РезультатОбменаИндексСтатусаОбменаРасширеннаяПодсказка" id="34"/>
+								</PictureField>
+								<InputField name="РезультатОбменаСообщение" id="92">
+									<DataPath>РезультатОбмена.Сообщение</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<ContextMenu name="РезультатОбменаСообщениеКонтекстноеМеню" id="93"/>
+									<ExtendedTooltip name="РезультатОбменаСообщениеРасширеннаяПодсказка" id="94"/>
+								</InputField>
+								<InputField name="РезультатОбменаОписаниеОшибки" id="95">
+									<DataPath>РезультатОбмена.ОписаниеОшибки</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<ContextMenu name="РезультатОбменаОписаниеОшибкиКонтекстноеМеню" id="96"/>
+									<ExtendedTooltip name="РезультатОбменаОписаниеОшибкиРасширеннаяПодсказка" id="97"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаНеотправленные" id="48">
+					<ExtendedTooltip name="СтраницаНеотправленныеРасширеннаяПодсказка" id="49"/>
+					<ChildItems>
+						<Table name="Неотправленные" id="50">
+							<Representation>List</Representation>
+							<CommandBarLocation>None</CommandBarLocation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<DataPath>Неотправленные</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="НеотправленныеКонтекстноеМеню" id="52"/>
+							<AutoCommandBar name="НеотправленныеКоманднаяПанель" id="51"/>
+							<ExtendedTooltip name="НеотправленныеРасширеннаяПодсказка" id="53"/>
+							<SearchStringAddition name="НеотправленныеСтрокаПоиска" id="54">
+								<AdditionSource>
+									<Item>Неотправленные</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НеотправленныеСтрокаПоискаКонтекстноеМеню" id="55"/>
+								<ExtendedTooltip name="НеотправленныеСтрокаПоискаРасширеннаяПодсказка" id="56"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="НеотправленныеСостояниеПросмотра" id="60">
+								<AdditionSource>
+									<Item>Неотправленные</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НеотправленныеСостояниеПросмотраКонтекстноеМеню" id="61"/>
+								<ExtendedTooltip name="НеотправленныеСостояниеПросмотраРасширеннаяПодсказка" id="62"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="НеотправленныеУправлениеПоиском" id="57">
+								<AdditionSource>
+									<Item>Неотправленные</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="НеотправленныеУправлениеПоискомКонтекстноеМеню" id="58"/>
+								<ExtendedTooltip name="НеотправленныеУправлениеПоискомРасширеннаяПодсказка" id="59"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">НеотправленныеВыбор</Event>
+							</Events>
+							<ChildItems>
+								<PictureField name="НеотправленныеИндексСтатусаОбмена" id="84">
+									<DataPath>Неотправленные.ИндексСтатусаОбмена</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<FixingInTable>Left</FixingInTable>
+									<ValuesPicture>
+										<xr:Ref>CommonPicture.ПротоколОбменаГосИС</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</ValuesPicture>
+									<ContextMenu name="НеотправленныеИндексСтатусаОбменаКонтекстноеМеню" id="85"/>
+									<ExtendedTooltip name="НеотправленныеИндексСтатусаОбменаРасширеннаяПодсказка" id="86"/>
+								</PictureField>
+								<InputField name="НеотправленныеСообщение" id="98">
+									<DataPath>Неотправленные.Сообщение</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<ContextMenu name="НеотправленныеСообщениеКонтекстноеМеню" id="99"/>
+									<ExtendedTooltip name="НеотправленныеСообщениеРасширеннаяПодсказка" id="100"/>
+								</InputField>
+								<InputField name="НеотправленныеОписаниеОшибки" id="101">
+									<DataPath>Неотправленные.ОписаниеОшибки</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Результат обмена</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Результат обмена</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="НеотправленныеОписаниеОшибкиКонтекстноеМеню" id="102"/>
+									<ExtendedTooltip name="НеотправленныеОписаниеОшибкиРасширеннаяПодсказка" id="103"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="РезультатОбмена" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результат обмена</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Результат обмена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ИдентификаторМестаПрименения" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор места применения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Идентификатор места применения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИдентификаторТовара" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор товара</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Идентификатор товара</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="МестоПрименения" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Место применения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Место применения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.МестаПримененияСАТУРН</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ОписаниеМестаПрименения" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание места применения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Описание места применения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПАТ" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПАТ</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ПАТ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КлассификаторПАТСАТУРН</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Дозировка" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дозировка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Дозировка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СтатусОбмена" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус обмена</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Статус обмена</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.СтатусыОбработкиПланаПримененияСАТУРН</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИндексСтатусаОбмена" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Индекс статуса обмена</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Индекс статуса обмена</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>1</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИдентификаторСтроки" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор строки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Идентификатор строки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.УникальныйИдентификаторИС</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="ТипМестаПрименения" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип места применения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Тип места применения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.ТипыМестПримененияСАТУРН</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ОписаниеОшибки" id="19">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Результат обмена</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Результат обмена</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Сообщение" id="22">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сообщение</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Сообщение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПланПрименения" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>План применения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>План применения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.ПланПримененияСАТУРН</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Организация" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.КлассификаторОрганизацийСАТУРН</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Неотправленные" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результат обмена</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Результат обмена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ИдентификаторМестаПрименения" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор места применения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Идентификатор места применения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИдентификаторТовара" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор товара</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Идентификатор товара</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="МестоПрименения" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Место применения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Место применения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.МестаПримененияСАТУРН</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ОписаниеМестаПрименения" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание места применения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Описание места применения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПАТ" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПАТ</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ПАТ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КлассификаторПАТСАТУРН</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Дозировка" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дозировка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Дозировка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СтатусОбмена" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус обмена</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Статус обмена</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.СтатусыОбработкиПланаПримененияСАТУРН</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИндексСтатусаОбмена" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Индекс статуса обмена</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Индекс статуса обмена</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>1</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИдентификаторСтроки" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор строки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Идентификатор строки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.УникальныйИдентификаторИС</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="ТипМестаПрименения" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип места применения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Тип места применения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.ТипыМестПримененияСАТУРН</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ОписаниеОшибки" id="20">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Результат обмена</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Результат обмена</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Сообщение" id="21">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сообщение</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Сообщение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ОтправленныеНеОтправленные" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправленные не отправленные</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Отправленные не отправленные</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Обновить" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Обновить</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Документ">
+			<Type>
+				<v8:Type>cfg:DocumentRef.ПланПримененияСАТУРН</v8:Type>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

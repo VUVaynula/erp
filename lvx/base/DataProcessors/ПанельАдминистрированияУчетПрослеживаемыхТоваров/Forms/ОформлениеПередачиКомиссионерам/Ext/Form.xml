@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Оформление передачи комиссионерам</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Register transfer to commission agent</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаИнформация" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа информация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information group</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаИнформацияРасширеннаяПодсказка" id="11"/>
+			<ChildItems>
+				<PictureDecoration name="ДекорацияКартинкаИнформация" id="12">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Декорация картинка информация</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Decoration image information</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.ВажнаяИнформация32</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="ДекорацияКартинкаИнформацияКонтекстноеМеню" id="13"/>
+					<ExtendedTooltip name="ДекорацияКартинкаИнформацияРасширеннаяПодсказка" id="14"/>
+				</PictureDecoration>
+				<LabelDecoration name="ДекорацияИнформация" id="15">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<TextColor>style:ТекстСправочнойНадписи</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выделите строки и оформите передачи комиссионерам импортных товаров с РНПТ с "виртуального" склада. При необходимости распечатайте и подпишите возвраты от комиссионеров и передачи комиссионерам с РНПТ</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Select rows and register transfers of imported goods with goods batch registration numbers to commission agents from the "virtual" warehouse”. If necessary, print and sign returns from commission agents and transfers to commission agents with goods batch registration numbers</v8:content>
+						</v8:item>
+					</Title>
+					<GroupVerticalAlign>Center</GroupVerticalAlign>
+					<ContextMenu name="ДекорацияИнформацияКонтекстноеМеню" id="16"/>
+					<ExtendedTooltip name="ДекорацияИнформацияРасширеннаяПодсказка" id="17"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="КОформлениюПередач" id="18">
+			<Representation>List</Representation>
+			<ReadOnly>true</ReadOnly>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>КОформлениюПередач</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="КОформлениюПередачКонтекстноеМеню" id="19"/>
+			<AutoCommandBar name="КОформлениюПередачКоманднаяПанель" id="20">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="КОформлениюПередачОформитьПередачу" id="50">
+						<Type>CommandBarButton</Type>
+						<DefaultButton>true</DefaultButton>
+						<CommandName>Form.Command.ОформитьПередачу</CommandName>
+						<ExtendedTooltip name="КОформлениюПередачОформитьПередачуРасширеннаяПодсказка" id="51"/>
+					</Button>
+					<Button name="КОформлениюПередачОформитьВсеПередачи" id="48">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ОформитьВсеПередачи</CommandName>
+						<ExtendedTooltip name="КОформлениюПередачОформитьВсеПередачиРасширеннаяПодсказка" id="49"/>
+					</Button>
+					<Popup name="ОформитьИРаспечатать" id="52">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Оформить и распечатать</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Register and print</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ОформитьИРаспечататьРасширеннаяПодсказка" id="53"/>
+						<ChildItems>
+							<Button name="КОформлениюПередачОформитьИРаспечататьВсе" id="60">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ОформитьИРаспечататьВсе</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Все</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>All</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="КОформлениюПередачОформитьИРаспечататьВсеРасширеннаяПодсказка" id="61"/>
+							</Button>
+							<Button name="КОформлениюПередачОформитьИРаспечататьВыделенные" id="62">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ОформитьИРаспечататьВыделенные</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Выделенные</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Selected</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="КОформлениюПередачОформитьИРаспечататьВыделенныеРасширеннаяПодсказка" id="63"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+					<Popup name="Распечатать" id="54">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Распечатать</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Print</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="РаспечататьРасширеннаяПодсказка" id="55"/>
+						<ChildItems>
+							<Button name="КОформлениюПередачРаспечататьВсе" id="56">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.РаспечататьВсе</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Все</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>All</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="КОформлениюПередачРаспечататьВсеРасширеннаяПодсказка" id="57"/>
+							</Button>
+							<Button name="КОформлениюПередачРаспечататьВыделенные" id="58">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.РаспечататьВыделенные</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Выделенные</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Selected</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="КОформлениюПередачРаспечататьВыделенныеРасширеннаяПодсказка" id="59"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="КОформлениюПередачРасширеннаяПодсказка" id="21"/>
+			<SearchStringAddition name="КОформлениюПередачСтрокаПоиска" id="22">
+				<AdditionSource>
+					<Item>КОформлениюПередач</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="КОформлениюПередачСтрокаПоискаКонтекстноеМеню" id="23"/>
+				<ExtendedTooltip name="КОформлениюПередачСтрокаПоискаРасширеннаяПодсказка" id="24"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="КОформлениюПередачСостояниеПросмотра" id="25">
+				<AdditionSource>
+					<Item>КОформлениюПередач</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="КОформлениюПередачСостояниеПросмотраКонтекстноеМеню" id="26"/>
+				<ExtendedTooltip name="КОформлениюПередачСостояниеПросмотраРасширеннаяПодсказка" id="27"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="КОформлениюПередачУправлениеПоиском" id="28">
+				<AdditionSource>
+					<Item>КОформлениюПередач</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="КОформлениюПередачУправлениеПоискомКонтекстноеМеню" id="29"/>
+				<ExtendedTooltip name="КОформлениюПередачУправлениеПоискомРасширеннаяПодсказка" id="30"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="КОформлениюПередачОрганизация" id="31">
+					<DataPath>КОформлениюПередач.Организация</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="КОформлениюПередачОрганизацияКонтекстноеМеню" id="32"/>
+					<ExtendedTooltip name="КОформлениюПередачОрганизацияРасширеннаяПодсказка" id="33"/>
+				</InputField>
+				<InputField name="КОформлениюПередачКомиссионер" id="34">
+					<DataPath>КОформлениюПередач.Комиссионер</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="КОформлениюПередачКомиссионерКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="КОформлениюПередачКомиссионерРасширеннаяПодсказка" id="36"/>
+				</InputField>
+				<InputField name="КОформлениюПередачСоглашение" id="37">
+					<DataPath>КОформлениюПередач.Соглашение</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="КОформлениюПередачСоглашениеКонтекстноеМеню" id="38"/>
+					<ExtendedTooltip name="КОформлениюПередачСоглашениеРасширеннаяПодсказка" id="39"/>
+				</InputField>
+				<InputField name="КОформлениюПередачВозврат" id="40">
+					<DataPath>КОформлениюПередач.Возврат</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="КОформлениюПередачВозвратКонтекстноеМеню" id="41"/>
+					<ExtendedTooltip name="КОформлениюПередачВозвратРасширеннаяПодсказка" id="42"/>
+				</InputField>
+				<CheckBoxField name="КОформлениюПередачПередача" id="43">
+					<DataPath>КОформлениюПередач.Передача</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="КОформлениюПередачПередачаКонтекстноеМеню" id="44"/>
+					<ExtendedTooltip name="КОформлениюПередачПередачаРасширеннаяПодсказка" id="45"/>
+				</CheckBoxField>
+			</ChildItems>
+		</Table>
+		<Button name="Закрыть" id="46">
+			<Type>UsualButton</Type>
+			<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+			<CommandName>Form.Command.ЗакрытьФорму</CommandName>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="ЗакрытьРасширеннаяПодсказка" id="47"/>
+		</Button>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ПанельАдминистрированияУчетПрослеживаемыхТоваров</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="КОформлениюПередач" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>К оформлению передач</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>To register transfer</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Организация" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Комиссионер" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комиссионер</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Commission agent</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Партнеры</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Соглашение" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Соглашение</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Agreement</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.СоглашенияСКлиентами</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Возврат" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Возврат</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Return</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ВозвратТоваровОтКлиента</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Передача" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Передача</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Transfer</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Склад" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Склад</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Warehouse</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Склады</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗакрытьФорму" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть форму</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close form</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть форму</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close form</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗакрытьФорму</Action>
+		</Command>
+		<Command name="ОформитьПередачу" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить передачу</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register transfer</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить передачу</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register transfer</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОформитьПередачу</Action>
+		</Command>
+		<Command name="ОформитьВсеПередачи" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить все передачи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register all transfers</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить все передачи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register all transfers</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОформитьВсеПередачи</Action>
+		</Command>
+		<Command name="ОформитьИРаспечататьВсе" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить и распечатать все</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register and print all</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОформитьИРаспечататьВсе</Action>
+		</Command>
+		<Command name="ОформитьИРаспечататьВыделенные" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить и распечатать выделенные</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register and print selected</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОформитьИРаспечататьВыделенные</Action>
+		</Command>
+		<Command name="РаспечататьВсе" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Распечатать все</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print all</v8:content>
+				</v8:item>
+			</Title>
+			<Action>РаспечататьВсе</Action>
+		</Command>
+		<Command name="РаспечататьВыделенные" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Распечатать выделенные</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print selected ones</v8:content>
+				</v8:item>
+			</Title>
+			<Action>РаспечататьВыделенные</Action>
+		</Command>
+	</Commands>
+</Form>

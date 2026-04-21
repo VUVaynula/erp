@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаНаименованиеКод" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование код</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНаименованиеКодРасширеннаяПодсказка" id="11"/>
+			<ChildItems>
+				<InputField name="Наименование" id="4">
+					<DataPath>Объект.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
+				</InputField>
+				<InputField name="Код" id="1">
+					<DataPath>Объект.Code</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="3"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Родитель" id="7">
+			<DataPath>Объект.Parent</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="РодительКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<UsualGroup name="ГруппаСостав" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состав группы</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаСоставРасширеннаяПодсказка" id="13"/>
+			<ChildItems>
+				<Table name="СоставГруппы" id="14">
+					<Representation>List</Representation>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>СоставГруппы</DataPath>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="СоставГруппыКонтекстноеМеню" id="15"/>
+					<AutoCommandBar name="СоставГруппыКоманднаяПанель" id="16">
+						<ChildItems>
+							<Button name="СоставГруппыПодбор" id="39">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Подбор</CommandName>
+								<ExtendedTooltip name="СоставГруппыПодборРасширеннаяПодсказка" id="40"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="СоставГруппыРасширеннаяПодсказка" id="17"/>
+					<SearchStringAddition name="СоставГруппыСтрокаПоиска" id="18">
+						<AdditionSource>
+							<Item>СоставГруппы</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СоставГруппыСтрокаПоискаКонтекстноеМеню" id="19"/>
+						<ExtendedTooltip name="СоставГруппыСтрокаПоискаРасширеннаяПодсказка" id="20"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="СоставГруппыСостояниеПросмотра" id="21">
+						<AdditionSource>
+							<Item>СоставГруппы</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СоставГруппыСостояниеПросмотраКонтекстноеМеню" id="22"/>
+						<ExtendedTooltip name="СоставГруппыСостояниеПросмотраРасширеннаяПодсказка" id="23"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="СоставГруппыУправлениеПоиском" id="24">
+						<AdditionSource>
+							<Item>СоставГруппы</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="СоставГруппыУправлениеПоискомКонтекстноеМеню" id="25"/>
+						<ExtendedTooltip name="СоставГруппыУправлениеПоискомРасширеннаяПодсказка" id="26"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<InputField name="СоставГруппыКлючСценарийЦФО" id="27">
+							<DataPath>СоставГруппы.КлючСценарийЦФО</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="СоставГруппыКлючСценарийЦФОКонтекстноеМеню" id="28"/>
+							<ExtendedTooltip name="СоставГруппыКлючСценарийЦФОРасширеннаяПодсказка" id="29"/>
+						</InputField>
+						<InputField name="СоставГруппыКлючСценарийЦФОКод" id="36">
+							<DataPath>СоставГруппы.КлючСценарийЦФО.Code</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="СоставГруппыКлючСценарийЦФОКодКонтекстноеМеню" id="37"/>
+							<ExtendedTooltip name="СоставГруппыКлючСценарийЦФОКодРасширеннаяПодсказка" id="38"/>
+						</InputField>
+						<InputField name="СоставГруппыКлючСценарийЦФОСценарий" id="30">
+							<DataPath>СоставГруппы.КлючСценарийЦФО.Сценарий</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="СоставГруппыКлючСценарийЦФОСценарийКонтекстноеМеню" id="31"/>
+							<ExtendedTooltip name="СоставГруппыКлючСценарийЦФОСценарийРасширеннаяПодсказка" id="32"/>
+						</InputField>
+						<InputField name="СоставГруппыКлючСценарийЦФОЦФО" id="33">
+							<DataPath>СоставГруппы.КлючСценарийЦФО.ЦФО</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="СоставГруппыКлючСценарийЦФОЦФОКонтекстноеМеню" id="34"/>
+							<ExtendedTooltip name="СоставГруппыКлючСценарийЦФОЦФОРасширеннаяПодсказка" id="35"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.бит_ГруппыЗапретаИзмененияДанныхБюджетирования</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СоставГруппы" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состав группы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="КлючСценарийЦФО" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.бит_КлючиСценарийЦФО</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Подбор" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Подбор</Action>
+		</Command>
+	</Commands>
+</Form>

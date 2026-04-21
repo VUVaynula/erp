@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Настройка подключения</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Connection settings</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandSet>
+		<ExcludedCommand>WriteAndClose</ExcludedCommand>
+	</CommandSet>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="80">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="81"/>
+			</Button>
+			<ButtonGroup name="КомандыФормы" id="78">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Команды формы</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Form commands</v8:content>
+					</v8:item>
+				</Title>
+				<CommandSource>Form</CommandSource>
+				<ExtendedTooltip name="КомандыФормыРасширеннаяПодсказка" id="79"/>
+			</ButtonGroup>
+			<Button name="ФормаОбновитьНастройки" id="68">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ОтправитьВСервис</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаОбновитьНастройкиРасширеннаяПодсказка" id="69"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПредупреждение" id="85">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа предупреждение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Warning group</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>AlwaysHorizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:ЦветФонаВниманиеБИП</BackColor>
+			<ExtendedTooltip name="ГруппаПредупреждениеРасширеннаяПодсказка" id="86"/>
+			<ChildItems>
+				<LabelDecoration name="ДекорацияПредупреждение" id="87">
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Не удалось обновить данные в сервисе. &lt;link operation:pageSettings&gt;Повторить отправку&lt;/&gt;</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cannot update data in the service. &lt;link operation:pageSettings&gt;Send again&lt;/&gt;</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДекорацияПредупреждениеКонтекстноеМеню" id="88"/>
+					<ExtendedTooltip name="ДекорацияПредупреждениеРасширеннаяПодсказка" id="89"/>
+					<Events>
+						<Event name="URLProcessing">ДекорацияПредупреждениеОбработкаНавигационнойСсылки</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<CheckBoxField name="Используется" id="9">
+			<DataPath>Объект.Используется</DataPath>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ИспользуетсяКонтекстноеМеню" id="10"/>
+			<ExtendedTooltip name="ИспользуетсяРасширеннаяПодсказка" id="11"/>
+		</CheckBoxField>
+		<InputField name="Организация" id="15">
+			<DataPath>Объект.Организация</DataPath>
+			<ContextMenu name="ОрганизацияКонтекстноеМеню" id="16"/>
+			<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="17"/>
+			<Events>
+				<Event name="OnChange">ОрганизацияПриИзменении</Event>
+				<Event name="ChoiceProcessing">ОрганизацияОбработкаВыбора</Event>
+			</Events>
+		</InputField>
+		<InputField name="Наименование" id="48">
+			<DataPath>Объект.Description</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление
+организации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company
+presentation</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление организации на странице заказа</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company presentation on the order page</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="49"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="50"/>
+		</InputField>
+		<UsualGroup name="ГруппаНастройкаПодключенияСБПc2b" id="73">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа настройка подключения СБПc2b</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group FPS connection setting c2b</v8:content>
+				</v8:item>
+			</Title>
+			<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+			<Group>AlwaysHorizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНастройкаПодключенияСБПc2bРасширеннаяПодсказка" id="74"/>
+			<ChildItems>
+				<LabelDecoration name="ДекорацияПодключениеКСБПc2bЗаголовок" id="70">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Прием оплаты СБП:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Faster Payments System payment receipt</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДекорацияПодключениеКСБПc2bЗаголовокКонтекстноеМеню" id="71"/>
+					<ExtendedTooltip name="ДекорацияПодключениеКСБПc2bЗаголовокРасширеннаяПодсказка" id="72"/>
+				</LabelDecoration>
+				<LabelDecoration name="ДекорацияПодключениеКСБПc2b" id="75">
+					<Title formatted="true"/>
+					<ContextMenu name="ДекорацияПодключениеКСБПc2bКонтекстноеМеню" id="76"/>
+					<ExtendedTooltip name="ДекорацияПодключениеКСБПc2bРасширеннаяПодсказка" id="77"/>
+					<Events>
+						<Event name="URLProcessing">ДекорацияПодключениекСБПc2bОбработкаНавигационнойСсылки</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<Button name="НастроитьСтраницуЗаказа" id="60">
+			<Type>Hyperlink</Type>
+			<Height>1</Height>
+			<CommandName>Form.Command.НастроитьСтраницуЗаказа</CommandName>
+			<ExtendedTooltip name="НастроитьСтраницуЗаказаРасширеннаяПодсказка" id="61"/>
+		</Button>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.НастройкиПодключенияКОнлайнЗаказам</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="НастройкаПодключенияКСБПc2b" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка подключения КСБПc2b</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set up connection to FPS c2b</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="РезультатПроверкиШаблонов" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результат проверки шаблонов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Template check result</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="НастройкаВыгруженаВСервис" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка выгружена в сервис</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Setting is exported to service</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НеобходимОтзывТокенов" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Необходим отзыв токенов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Revoke tokens</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПользовательскоеСоглашениеПринято" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользовательское соглашение принято</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User agreement is accepted</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкаОнлайнЗаказовДоступна" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка онлайн-заказов доступна</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Online order setup is available</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЧтениеНастроекСБПДоступно" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Чтение настроек СБП доступно</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reading FPS settings is available</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИзменениеАктуальности" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменение актуальности</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change relevance</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПредставлениеНеРедактировалось" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление не редактировалось</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Presentation was not edited</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="НастроитьСтраницуЗаказа" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить страницу заказа</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set up order page</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить страницу заказа</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set up order page</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>НастроитьСтраницуЗаказа</Action>
+		</Command>
+		<Command name="ОтправитьВСервис" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить в сервис</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send to service</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить в сервис</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send to service</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОтправитьВСервис</Action>
+		</Command>
+		<Command name="ЗаписатьИЗакрыть" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаписатьИЗакрыть</Action>
+		</Command>
+	</Commands>
+</Form>
