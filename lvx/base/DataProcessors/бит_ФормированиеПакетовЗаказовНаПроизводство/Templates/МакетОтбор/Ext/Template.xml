@@ -100,6 +100,26 @@
 			<dataPath>Назначение</dataPath>
 			<field>Назначение</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Распоряжение</dataPath>
+			<field>Распоряжение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дата</dataPath>
+			<field>Дата</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Характеристика</dataPath>
+			<field>Характеристика</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ЭтапПроизводства2_2.Дата КАК ДатаЭтапа,
@@ -114,18 +134,66 @@
 	ЭтапПроизводства2_2.Ссылка КАК Этап,
 	ЭтапПроизводства2_2.Распоряжение КАК ЗаказНаПроизводство,
 	ЭтапПроизводства2_2.Назначение КАК Назначение
+	//{ДОПОЛНИТЕЛЬНЫЕ_ПОЛЯ_БАЗА}
 ПОМЕСТИТЬ База
 ИЗ
 	Документ.ЭтапПроизводства2_2.ВыходныеИзделия КАК ЭтапПроизводства2_2ВыходныеИзделия
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЭтапПроизводства2_2 КАК ЭтапПроизводства2_2
 			ПРАВОЕ СОЕДИНЕНИЕ Документ.ЭтапПроизводства2_2.ОбеспечениеМатериаламиИРаботами КАК ЭтапПроизводства2_2ОбеспечениеМатериаламиИРаботами
 			ПО (ЭтапПроизводства2_2ОбеспечениеМатериаламиИРаботами.Ссылка = ЭтапПроизводства2_2.Ссылка)
-		ПО ЭтапПроизводства2_2ВыходныеИзделия.Ссылка = ЭтапПроизводства2_2.Ссылка
+		ПО ЭтапПроизводства2_2ВыходныеИзделия.Ссылка = ЭтапПроизводства2_2.Ссылка 
+		//{ДОПОЛНИТЕЛЬНЫЕ_СОЕДИНЕНИЯ_БАЗА}
+ГДЕ
+	ЭтапПроизводства2_2.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+{ГДЕ
+	ЭтапПроизводства2_2.Дата,
+	ЭтапПроизводства2_2.Статус.*,
+	ЭтапПроизводства2_2.Подразделение.*,
+	ЭтапПроизводства2_2.Организация.*,
+	ЭтапПроизводства2_2.Спецификация.*,
+	ЭтапПроизводства2_2ВыходныеИзделия.Номенклатура.*,
+	ЭтапПроизводства2_2ВыходныеИзделия.Характеристика.*,
+	ЭтапПроизводства2_2ОбеспечениеМатериаламиИРаботами.Номенклатура.*,
+	ЭтапПроизводства2_2ОбеспечениеМатериаламиИРаботами.Характеристика.*,
+	ЭтапПроизводства2_2.Ссылка.*,
+	ЭтапПроизводства2_2.Распоряжение.*,
+	ЭтапПроизводства2_2.Назначение.*}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	ЭтапПроизводства2_2ВидыРабочихЦентров.ВидРабочегоЦентра КАК ВидРабочегоЦентра,
+	База.Этап КАК Этап
+ПОМЕСТИТЬ втВРЦ
+ИЗ
+	Документ.ЭтапПроизводства2_2.ВидыРабочихЦентров КАК ЭтапПроизводства2_2ВидыРабочихЦентров
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ База КАК База
+		ПО (ЭтапПроизводства2_2ВидыРабочихЦентров.Использовать)
+ГДЕ
+	ЭтапПроизводства2_2ВидыРабочихЦентров.Использовать
+{ГДЕ
+	ЭтапПроизводства2_2ВидыРабочихЦентров.ВидРабочегоЦентра.*,
+	База.Этап.*}
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	ЭтапПроизводства2_2АльтернативныеВидыРабочихЦентров.ВидРабочегоЦентра,
+	База.Этап
+ИЗ
+	Документ.ЭтапПроизводства2_2.АльтернативныеВидыРабочихЦентров КАК ЭтапПроизводства2_2АльтернативныеВидыРабочихЦентров
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ База КАК База
+		ПО (ЭтапПроизводства2_2АльтернативныеВидыРабочихЦентров.Использовать)
+ГДЕ
+	ЭтапПроизводства2_2АльтернативныеВидыРабочихЦентров.Использовать
+{ГДЕ
+	ЭтапПроизводства2_2АльтернативныеВидыРабочихЦентров.ВидРабочегоЦентра.*,
+	База.Этап.*}
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	ВложенныйЗапрос.ВидРабочегоЦентра КАК ВидРабочегоЦентра,
+	втВРЦ.ВидРабочегоЦентра КАК ВидРабочегоЦентра,
 	База.ДатаЭтапа КАК ДатаЭтапа,
 	База.Статус КАК Статус,
 	База.Подразделение КАК Подразделение,
@@ -137,26 +205,14 @@
 	База.ХарактеристикаМатериала КАК ХарактеристикаМатериала,
 	База.Этап КАК Этап,
 	База.ЗаказНаПроизводство КАК ЗаказНаПроизводство,
-	База.Назначение КАК Назначение
+	База.Назначение КАК Назначение    
+	//{ДОПОЛНИТЕЛЬНЫЕ_ПОЛЯ_ИТОГ}
 ИЗ
-	(ВЫБРАТЬ РАЗЛИЧНЫЕ
-		ЭтапПроизводства2_2ВидыРабочихЦентров.ВидРабочегоЦентра КАК ВидРабочегоЦентра
-	ИЗ
-		Документ.ЭтапПроизводства2_2.ВидыРабочихЦентров КАК ЭтапПроизводства2_2ВидыРабочихЦентров
-			ВНУТРЕННЕЕ СОЕДИНЕНИЕ База КАК База
-			ПО (ЭтапПроизводства2_2ВидыРабочихЦентров.Использовать)
-	
-	ОБЪЕДИНИТЬ
-	
-	ВЫБРАТЬ РАЗЛИЧНЫЕ
-		ЭтапПроизводства2_2АльтернативныеВидыРабочихЦентров.ВидРабочегоЦентра
-	ИЗ
-		Документ.ЭтапПроизводства2_2.АльтернативныеВидыРабочихЦентров КАК ЭтапПроизводства2_2АльтернативныеВидыРабочихЦентров
-			ВНУТРЕННЕЕ СОЕДИНЕНИЕ База КАК База
-			ПО (ЭтапПроизводства2_2АльтернативныеВидыРабочихЦентров.Использовать)) КАК ВложенныйЗапрос,
 	База КАК База
+		ЛЕВОЕ СОЕДИНЕНИЕ втВРЦ КАК втВРЦ
+		ПО База.Этап = втВРЦ.Этап
 {ГДЕ
-	ВложенныйЗапрос.ВидРабочегоЦентра.*,
+	втВРЦ.ВидРабочегоЦентра.*,
 	База.ДатаЭтапа,
 	База.Статус.*,
 	База.Подразделение.*,
@@ -168,8 +224,64 @@
 	База.ХарактеристикаМатериала.*,
 	База.Этап.*,
 	База.ЗаказНаПроизводство.*,
-	База.Назначение.*}</query>
+	База.Назначение.*
+	//{ДОПОЛНИТЕЛЬНЫЕ_ПОЛЯ_ГДЕ}
+	}</query>
 	</dataSet>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>Конецпериода(&amp;Период.ДатаОкончания, "День")</expression>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -217,62 +329,121 @@
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:left xsi:type="dcscor:Field">ДатаЭтапа</dcsset:left>
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="xs:string">ВыводитьВРазрезеВРЦ</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="v8:StandardBeginningDate">
-						<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
-						<v8:date>0001-01-01T00:00:00</v8:date>
-					</dcsset:right>
+					<dcsset:right xsi:type="dcscor:Field"/>
+					<dcsset:presentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выводить в разрезе ВРЦ</v8:content>
+						</v8:item>
+					</dcsset:presentation>
+					<dcsset:userSettingID>23ca0ca4-ccb1-46b2-acd5-9dcce0c06438</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="xs:string">ДополнятьЭтапамиВыбранногоЗаказа</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:Field"/>
+					<dcsset:presentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнять этапами выбранного заказа</v8:content>
+						</v8:item>
+					</dcsset:presentation>
+					<dcsset:userSettingID>e15f36e4-485b-40e6-aae4-158b50e8efc2</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">ЗаказНаПроизводство</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>3c6634e1-f383-4ce6-be4e-cb62d0d007e1</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Назначение</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>e98df8dc-a076-4d0b-842c-d8773fea4546</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">НоменклатураВыходногоИзделия</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>095d748f-cab6-4591-9a80-b0a836a9bcc9</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">НоменклатураМатериала</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>812f0d3b-308a-430d-9ce9-241455d9e7d3</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>49275362-910f-448b-8bc5-3c6eb6fa7113</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Подразделение</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:comparisonType>InList</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:ValueListType">
+						<v8:valueType/>
+						<v8:lastId xsi:type="xs:decimal">-1</v8:lastId>
+					</dcsset:right>
+					<dcsset:userSettingID>aaf90490-2065-43f0-8b51-9435e331a1ce</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Спецификация</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>ce05f5b7-0944-43a0-b8d1-f98425f4bf37</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>c73f8f00-862c-4526-ac0e-03b6335a67f1</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">ХарактеристикаВыходногоИзделия</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>ea3b4ddb-5983-45f3-ba5a-5d6f095ac3e7</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">ХарактеристикаМатериала</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>86c1efe7-ef21-47a5-bb41-e6f562409a28</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Этап</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>34652a1c-eca2-41c2-8989-844ab71cb61f</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">ВидРабочегоЦентра</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:comparisonType>InList</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:ValueListType">
+						<v8:valueType/>
+						<v8:lastId xsi:type="xs:decimal">-1</v8:lastId>
+					</dcsset:right>
+					<dcsset:userSettingID>2a1ff63d-662f-4def-a37e-5baea4155d7c</dcsset:userSettingID>
 				</dcsset:item>
 			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>e88a3c6b-9bec-436e-b6d6-3e82b3e215dc</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
