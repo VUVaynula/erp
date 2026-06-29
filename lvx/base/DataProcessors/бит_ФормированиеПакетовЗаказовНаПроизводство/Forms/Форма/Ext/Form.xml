@@ -19,8 +19,20 @@
 					<DataPath>ПодразделениеОтбор</DataPath>
 					<TitleLocation>None</TitleLocation>
 					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ChoiceParameters>
+						<app:item name="Отбор.ПроизводственноеПодразделение">
+							<app:value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xs:boolean">true</Value>
+							</app:value>
+						</app:item>
+					</ChoiceParameters>
 					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="3"/>
+					<Events>
+						<Event name="OnChange">ПодразделениеПриИзменении</Event>
+						<Event name="StartChoice">ПодразделениеНачалоВыбора</Event>
+					</Events>
 				</InputField>
 				<InputField name="ВРЦ" id="4">
 					<DataPath>ВРЦОтбор</DataPath>
@@ -28,6 +40,9 @@
 					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
 					<ContextMenu name="ВРЦКонтекстноеМеню" id="5"/>
 					<ExtendedTooltip name="ВРЦРасширеннаяПодсказка" id="6"/>
+					<Events>
+						<Event name="OnChange">ВРЦПриИзменении</Event>
+					</Events>
 				</InputField>
 				<CheckBoxField name="ВыводитьВРазрезеВРЦ" id="9">
 					<DataPath>ВыводитьВРазрезеВРЦ</DataPath>
@@ -35,6 +50,9 @@
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ВыводитьВРазрезеВРЦКонтекстноеМеню" id="10"/>
 					<ExtendedTooltip name="ВыводитьВРазрезеВРЦРасширеннаяПодсказка" id="11"/>
+					<Events>
+						<Event name="OnChange">ВыводитьВРазрезеВРЦПриИзменении</Event>
+					</Events>
 				</CheckBoxField>
 				<InputField name="Статус" id="12">
 					<DataPath>СтатусОтбор</DataPath>
@@ -42,6 +60,9 @@
 					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
 					<ContextMenu name="СтатусКонтекстноеМеню" id="13"/>
 					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="14"/>
+					<Events>
+						<Event name="OnChange">СтатусПриИзменении</Event>
+					</Events>
 				</InputField>
 				<Button name="Период1" id="18">
 					<Type>UsualButton</Type>
@@ -67,6 +88,9 @@
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ДополнятьЭтапамиВыбранногоЗаказаКонтекстноеМеню" id="25"/>
 					<ExtendedTooltip name="ДополнятьЭтапамиВыбранногоЗаказаРасширеннаяПодсказка" id="26"/>
+					<Events>
+						<Event name="OnChange">ДополнятьЭтапамиВыбранногоЗаказаПриИзменении</Event>
+					</Events>
 				</CheckBoxField>
 				<LabelDecoration name="ПроизвольныеОтборы" id="27">
 					<Title formatted="false">
@@ -103,137 +127,6 @@
 				</v8:item>
 			</ToolTip>
 			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="33"/>
-			<ChildItems>
-				<Page name="Группа3" id="34">
-					<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="35"/>
-					<ChildItems>
-						<Table name="ДеревоЭтапы" id="36">
-							<Representation>Tree</Representation>
-							<AutoInsertNewRow>true</AutoInsertNewRow>
-							<EnableStartDrag>true</EnableStartDrag>
-							<EnableDrag>true</EnableDrag>
-							<DataPath>ДеревоЭтапы</DataPath>
-							<ContextMenu name="ДеревоЭтапыКонтекстноеМеню" id="37"/>
-							<AutoCommandBar name="ДеревоЭтапыКоманднаяПанель" id="38"/>
-							<ExtendedTooltip name="ДеревоЭтапыРасширеннаяПодсказка" id="39"/>
-							<SearchStringAddition name="ДеревоЭтапыСтрокаПоиска" id="40">
-								<AdditionSource>
-									<Item>ДеревоЭтапы</Item>
-									<Type>SearchStringRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="ДеревоЭтапыСтрокаПоискаКонтекстноеМеню" id="41"/>
-								<ExtendedTooltip name="ДеревоЭтапыСтрокаПоискаРасширеннаяПодсказка" id="42"/>
-							</SearchStringAddition>
-							<ViewStatusAddition name="ДеревоЭтапыСостояниеПросмотра" id="43">
-								<AdditionSource>
-									<Item>ДеревоЭтапы</Item>
-									<Type>ViewStatusRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="ДеревоЭтапыСостояниеПросмотраКонтекстноеМеню" id="44"/>
-								<ExtendedTooltip name="ДеревоЭтапыСостояниеПросмотраРасширеннаяПодсказка" id="45"/>
-							</ViewStatusAddition>
-							<SearchControlAddition name="ДеревоЭтапыУправлениеПоиском" id="46">
-								<AdditionSource>
-									<Item>ДеревоЭтапы</Item>
-									<Type>SearchControl</Type>
-								</AdditionSource>
-								<ContextMenu name="ДеревоЭтапыУправлениеПоискомКонтекстноеМеню" id="47"/>
-								<ExtendedTooltip name="ДеревоЭтапыУправлениеПоискомРасширеннаяПодсказка" id="48"/>
-							</SearchControlAddition>
-							<ChildItems>
-								<InputField name="ДеревоЭтапыТипСоставляющей" id="49">
-									<DataPath>ДеревоЭтапы.ТипСоставляющей</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-									<ContextMenu name="ДеревоЭтапыТипСоставляющейКонтекстноеМеню" id="50"/>
-									<ExtendedTooltip name="ДеревоЭтапыТипСоставляющейРасширеннаяПодсказка" id="51"/>
-								</InputField>
-								<InputField name="ДеревоЭтапыСоставляющая" id="52">
-									<DataPath>ДеревоЭтапы.Составляющая</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-									<ContextMenu name="ДеревоЭтапыСоставляющаяКонтекстноеМеню" id="53"/>
-									<ExtendedTooltip name="ДеревоЭтапыСоставляющаяРасширеннаяПодсказка" id="54"/>
-								</InputField>
-								<InputField name="ДеревоЭтапыДатаЭтапа" id="55">
-									<DataPath>ДеревоЭтапы.ДатаЭтапа</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-									<ContextMenu name="ДеревоЭтапыДатаЭтапаКонтекстноеМеню" id="56"/>
-									<ExtendedTooltip name="ДеревоЭтапыДатаЭтапаРасширеннаяПодсказка" id="57"/>
-								</InputField>
-								<InputField name="ДеревоЭтапыЭтап" id="58">
-									<DataPath>ДеревоЭтапы.Этап</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-									<ContextMenu name="ДеревоЭтапыЭтапКонтекстноеМеню" id="59"/>
-									<ExtendedTooltip name="ДеревоЭтапыЭтапРасширеннаяПодсказка" id="60"/>
-								</InputField>
-								<InputField name="ДеревоЭтапыВидРабот" id="61">
-									<DataPath>ДеревоЭтапы.ВидРабот</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-									<ContextMenu name="ДеревоЭтапыВидРаботКонтекстноеМеню" id="62"/>
-									<ExtendedTooltip name="ДеревоЭтапыВидРаботРасширеннаяПодсказка" id="63"/>
-								</InputField>
-								<InputField name="ДеревоЭтапыНоменклатураВыходногоИзделия" id="64">
-									<DataPath>ДеревоЭтапы.НоменклатураВыходногоИзделия</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-									<ContextMenu name="ДеревоЭтапыНоменклатураВыходногоИзделияКонтекстноеМеню" id="65"/>
-									<ExtendedTooltip name="ДеревоЭтапыНоменклатураВыходногоИзделияРасширеннаяПодсказка" id="66"/>
-								</InputField>
-								<InputField name="ДеревоЭтапыСтатус" id="67">
-									<DataPath>ДеревоЭтапы.Статус</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-									<ContextMenu name="ДеревоЭтапыСтатусКонтекстноеМеню" id="68"/>
-									<ExtendedTooltip name="ДеревоЭтапыСтатусРасширеннаяПодсказка" id="69"/>
-								</InputField>
-								<InputField name="ДеревоЭтапыОбеспечено" id="70">
-									<DataPath>ДеревоЭтапы.Обеспечено</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-									<ContextMenu name="ДеревоЭтапыОбеспеченоКонтекстноеМеню" id="71"/>
-									<ExtendedTooltip name="ДеревоЭтапыОбеспеченоРасширеннаяПодсказка" id="72"/>
-								</InputField>
-								<InputField name="ДеревоЭтапыЗаказКлиента" id="73">
-									<DataPath>ДеревоЭтапы.ЗаказКлиента</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-									<ContextMenu name="ДеревоЭтапыЗаказКлиентаКонтекстноеМеню" id="74"/>
-									<ExtendedTooltip name="ДеревоЭтапыЗаказКлиентаРасширеннаяПодсказка" id="75"/>
-								</InputField>
-								<InputField name="ДеревоЭтапыПакетЭтапов" id="76">
-									<DataPath>ДеревоЭтапы.ПакетЭтапов</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-									<ContextMenu name="ДеревоЭтапыПакетЭтаповКонтекстноеМеню" id="77"/>
-									<ExtendedTooltip name="ДеревоЭтапыПакетЭтаповРасширеннаяПодсказка" id="78"/>
-								</InputField>
-								<CheckBoxField name="ДеревоЭтапыПометка" id="79">
-									<DataPath>ДеревоЭтапы.Пометка</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="ДеревоЭтапыПометкаКонтекстноеМеню" id="80"/>
-									<ExtendedTooltip name="ДеревоЭтапыПометкаРасширеннаяПодсказка" id="81"/>
-								</CheckBoxField>
-								<LabelField name="ДеревоЭтапыИдентификаторСтроки" id="82">
-									<DataPath>ДеревоЭтапы.ИдентификаторСтроки</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ДеревоЭтапыИдентификаторСтрокиКонтекстноеМеню" id="83"/>
-									<ExtendedTooltip name="ДеревоЭтапыИдентификаторСтрокиРасширеннаяПодсказка" id="84"/>
-								</LabelField>
-							</ChildItems>
-						</Table>
-						<SpreadSheetDocumentField name="Реквизит1" id="85">
-							<DataPath>Реквизит1</DataPath>
-							<ContextMenu name="Реквизит1КонтекстноеМеню" id="86"/>
-							<ExtendedTooltip name="Реквизит1РасширеннаяПодсказка" id="87"/>
-						</SpreadSheetDocumentField>
-					</ChildItems>
-				</Page>
-			</ChildItems>
 		</Pages>
 	</ChildItems>
 	<Attributes>
@@ -546,30 +439,6 @@
 				<v8:Type>v8:ValueTree</v8:Type>
 			</Type>
 			<Columns>
-				<Column name="ТипСоставляющей" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Тип составляющей</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>0</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
-					</Type>
-				</Column>
-				<Column name="Составляющая" id="2">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Составляющая</v8:content>
-						</v8:item>
-					</Title>
-					<Type/>
-				</Column>
 				<Column name="ДатаЭтапа" id="3">
 					<Title>
 						<v8:item>
@@ -606,22 +475,11 @@
 						<v8:Type>cfg:CatalogRef.ВидыРаботСотрудников</v8:Type>
 					</Type>
 				</Column>
-				<Column name="НоменклатураВыходногоИзделия" id="6">
+				<Column name="СостояниеЭтапа" id="7">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Номенклатура выходного изделия</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
-					</Type>
-				</Column>
-				<Column name="Статус" id="7">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Статус</v8:content>
+							<v8:content>Состояние</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -644,22 +502,11 @@
 						</v8:NumberQualifiers>
 					</Type>
 				</Column>
-				<Column name="ЗаказКлиента" id="9">
+				<Column name="ПакетРаскроя" id="10">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Заказ клиента</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>cfg:DocumentRef.ЗаказКлиента</v8:Type>
-					</Type>
-				</Column>
-				<Column name="ПакетЭтапов" id="10">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Пакет этапов</v8:content>
+							<v8:content>Пакет раскроя</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -688,6 +535,28 @@
 						<v8:Type>v8:UUID</v8:Type>
 					</Type>
 				</Column>
+				<Column name="ЗаказНаПроизводство" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заказ на производство</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ЗаказНаПроизводство2_2</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВидРабочегоЦентра" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид рабочего центра</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ВидыРабочихЦентров</v8:Type>
+					</Type>
+				</Column>
 			</Columns>
 		</Attribute>
 		<Attribute name="АдресТаблицыДинамическихПолей" id="12">
@@ -703,11 +572,6 @@
 					<v8:Length>0</v8:Length>
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="Реквизит1" id="13">
-			<Type>
-				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
