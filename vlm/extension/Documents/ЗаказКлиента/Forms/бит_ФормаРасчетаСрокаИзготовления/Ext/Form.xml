@@ -1,0 +1,2087 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Расчет срока изготовления</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Группа2" id="16">
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ThroughAlign>Use</ThroughAlign>
+			<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="17"/>
+			<ChildItems>
+				<UsualGroup name="Группа1" id="12">
+					<Representation>None</Representation>
+					<United>false</United>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="13"/>
+					<ChildItems>
+						<Button name="ФормаПеренестиВДокумент" id="10">
+							<Type>UsualButton</Type>
+							<DefaultButton>true</DefaultButton>
+							<CommandName>Form.Command.ПеренестиВДокумент</CommandName>
+							<ExtendedTooltip name="ФормаПеренестиВДокументРасширеннаяПодсказка" id="11"/>
+						</Button>
+						<InputField name="Ссылка" id="57">
+							<DataPath>Объект.Ref</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<TitleLocation>None</TitleLocation>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="СсылкаКонтекстноеМеню" id="58"/>
+							<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="59"/>
+						</InputField>
+						<InputField name="ДатаРасчета" id="54">
+							<DataPath>ДатаРасчета</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ДатаРасчетаКонтекстноеМеню" id="55"/>
+							<ExtendedTooltip name="ДатаРасчетаРасширеннаяПодсказка" id="56"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<Button name="РассчитатьСрокИзготовленияЗаказа" id="14">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.РассчитатьСрокИзготовленияЗаказа</CommandName>
+					<ExtendedTooltip name="РассчитатьСрокИзготовленияЗаказаРасширеннаяПодсказка" id="15"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Группа3" id="18">
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="19"/>
+			<ChildItems>
+				<CheckBoxField name="ВоеннаяПродукция" id="20">
+					<DataPath>ВоеннаяПродукция</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ВоеннаяПродукцияКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ВоеннаяПродукцияРасширеннаяПодсказка" id="22"/>
+					<Events>
+						<Event name="OnChange">ВоеннаяПродукцияПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<RadioButtonField name="ВариантОтгрузки" id="23">
+					<DataPath>ВариантОтгрузки</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Частичная отгрузка</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">0</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Полная отгрузка</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">1</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ВариантОтгрузкиКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ВариантОтгрузкиРасширеннаяПодсказка" id="25"/>
+					<Events>
+						<Event name="OnChange">ВариантОтгрузкиПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ТаблицаТоваров" id="26">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<DataPath>ТаблицаТоваров</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ТаблицаТоваровКонтекстноеМеню" id="27"/>
+			<AutoCommandBar name="ТаблицаТоваровКоманднаяПанель" id="28">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ТаблицаТоваровРасширеннаяПодсказка" id="29"/>
+			<SearchStringAddition name="ТаблицаТоваровСтрокаПоиска" id="30">
+				<AdditionSource>
+					<Item>ТаблицаТоваров</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаТоваровСтрокаПоискаКонтекстноеМеню" id="31"/>
+				<ExtendedTooltip name="ТаблицаТоваровСтрокаПоискаРасширеннаяПодсказка" id="32"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ТаблицаТоваровСостояниеПросмотра" id="33">
+				<AdditionSource>
+					<Item>ТаблицаТоваров</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаТоваровСостояниеПросмотраКонтекстноеМеню" id="34"/>
+				<ExtendedTooltip name="ТаблицаТоваровСостояниеПросмотраРасширеннаяПодсказка" id="35"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ТаблицаТоваровУправлениеПоиском" id="36">
+				<AdditionSource>
+					<Item>ТаблицаТоваров</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаТоваровУправлениеПоискомКонтекстноеМеню" id="37"/>
+				<ExtendedTooltip name="ТаблицаТоваровУправлениеПоискомРасширеннаяПодсказка" id="38"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="ТаблицаТоваровНоменклатура" id="39">
+					<DataPath>ТаблицаТоваров.Номенклатура</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ТаблицаТоваровНоменклатураКонтекстноеМеню" id="40"/>
+					<ExtendedTooltip name="ТаблицаТоваровНоменклатураРасширеннаяПодсказка" id="41"/>
+				</InputField>
+				<InputField name="ТаблицаТоваровСпецификация" id="42">
+					<DataPath>ТаблицаТоваров.Спецификация</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ТаблицаТоваровСпецификацияКонтекстноеМеню" id="43"/>
+					<ExtendedTooltip name="ТаблицаТоваровСпецификацияРасширеннаяПодсказка" id="44"/>
+				</InputField>
+				<InputField name="ТаблицаТоваровКоличество" id="45">
+					<DataPath>ТаблицаТоваров.Количество</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ТаблицаТоваровКоличествоКонтекстноеМеню" id="46"/>
+					<ExtendedTooltip name="ТаблицаТоваровКоличествоРасширеннаяПодсказка" id="47"/>
+				</InputField>
+				<InputField name="ТаблицаТоваровСрокИзготовления" id="48">
+					<DataPath>ТаблицаТоваров.СрокИзготовления</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ТаблицаТоваровСрокИзготовленияКонтекстноеМеню" id="49"/>
+					<ExtendedTooltip name="ТаблицаТоваровСрокИзготовленияРасширеннаяПодсказка" id="50"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<InputField name="СрокИзготовленияЗаказа" id="51">
+			<DataPath>СрокИзготовленияЗаказа</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="СрокИзготовленияЗаказаКонтекстноеМеню" id="52"/>
+			<ExtendedTooltip name="СрокИзготовленияЗаказаРасширеннаяПодсказка" id="53"/>
+		</InputField>
+		<Table name="Ошибки" id="60">
+			<Representation>List</Representation>
+			<TitleLocation>Top</TitleLocation>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Ошибки</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ошибки планирования</v8:content>
+				</v8:item>
+			</Title>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ОшибкиКонтекстноеМеню" id="61"/>
+			<AutoCommandBar name="ОшибкиКоманднаяПанель" id="62">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ОшибкиРасширеннаяПодсказка" id="63"/>
+			<SearchStringAddition name="ОшибкиСтрокаПоиска" id="64">
+				<AdditionSource>
+					<Item>Ошибки</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ОшибкиСтрокаПоискаКонтекстноеМеню" id="65"/>
+				<ExtendedTooltip name="ОшибкиСтрокаПоискаРасширеннаяПодсказка" id="66"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ОшибкиСостояниеПросмотра" id="67">
+				<AdditionSource>
+					<Item>Ошибки</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ОшибкиСостояниеПросмотраКонтекстноеМеню" id="68"/>
+				<ExtendedTooltip name="ОшибкиСостояниеПросмотраРасширеннаяПодсказка" id="69"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ОшибкиУправлениеПоиском" id="70">
+				<AdditionSource>
+					<Item>Ошибки</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ОшибкиУправлениеПоискомКонтекстноеМеню" id="71"/>
+				<ExtendedTooltip name="ОшибкиУправлениеПоискомРасширеннаяПодсказка" id="72"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="ОшибкиОписание" id="73">
+					<DataPath>Ошибки.Описание</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОшибкиОписаниеКонтекстноеМеню" id="74"/>
+					<ExtendedTooltip name="ОшибкиОписаниеРасширеннаяПодсказка" id="75"/>
+				</InputField>
+				<InputField name="ОшибкиРасшифровка" id="76">
+					<DataPath>Ошибки.Расшифровка</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОшибкиРасшифровкаКонтекстноеМеню" id="77"/>
+					<ExtendedTooltip name="ОшибкиРасшифровкаРасширеннаяПодсказка" id="78"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.ЗаказКлиента</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="ВоеннаяПродукция" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Военная продукция</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВариантОтгрузки" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант отгрузки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТаблицаТоваров" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица товаров</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Номенклатура" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номенклатура</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Спецификация" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Спецификация</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.РесурсныеСпецификации</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Количество" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>3</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="СрокИзготовления" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Срок изготовления</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="НомерСтроки" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер строки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>0</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="СрокИзготовленияЗаказа" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Срок изготовления заказа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаРасчета" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата расчета</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПараметрыОбработчикаОжидания" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры обработчика ожидания</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="АдресХранилищаФоноваяОперация" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес хранилища фоновая операция</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторЗадания" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор задания</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Ошибки" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ошибки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Errors</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Описание" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Details</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Расшифровка" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расшифровка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Drill-down</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="РазмещенныеЭтапы" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Размещенные этапы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Placed stages</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+		<Attribute name="ЗаказНаПроизводство" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказ на производство</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.ЗаказНаПроизводство2_2</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СохранениеПередЗакрытием" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранение перед закрытием</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="УдалениеРезультатовПередЗакрытием" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удаление результатов перед закрытием</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПеречитываниеДанных" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перечитывание данных</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДлительныеОперацииФормы" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Длительные операции формы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Form long actions</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Имя" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НачатьОжидание" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Начать ожидание</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Start waiting </v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДлительнаяОперация" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Длительная операция</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Long-running operation</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТекущаяФоноваяОперация" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущая фоновая операция</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ГрафикЗапланирован" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>График запланирован</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НачатьНеРанее" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Начать не ранее</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Earliest start date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаПотребности" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата потребности</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Demand date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Этапы" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Этапы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Stages</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>Этапы.Ссылка</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ЭтапыПереопределяемый.Ссылка КАК Ссылка,
+	ЭтапыПереопределяемый.Подразделение КАК Подразделение,
+	&amp;ПредставлениеЭтапа КАК ПредставлениеЭтапа,
+
+	ГрафикПроизводстваПереопределяемый.Начало КАК Начало,
+	ГрафикПроизводстваПереопределяемый.Окончание КАК Окончание,
+	
+	ВЫБОР
+		КОГДА ЭтапыПереопределяемый.РучноеРазмещениеВГрафике
+			ТОГДА 1
+		ИНАЧЕ -1
+	КОНЕЦ КАК ДатаНачалаИндексКартинки,
+	
+	ВЫБОР
+		КОГДА ЭтапыПереопределяемый.РучноеРазмещениеВГрафике
+			ТОГДА 1
+		ИНАЧЕ -1
+	КОНЕЦ КАК ДатаОкончанияИндексКартинки,
+
+	ГрафикПроизводстваПереопределяемый.ОграничиваетСрокВыпуска КАК ЗадерживаетЗаказ,
+	
+	ИСТИНА В
+		(ВЫБРАТЬ ПЕРВЫЕ 1
+			ИСТИНА
+		ИЗ
+			РегистрСведений.ЗаданияКРасчетуГрафикаПроизводства КАК ЗаданияПереопределяемый
+		ГДЕ
+			ЗаданияПереопределяемый.Распоряжение = ЭтапыПереопределяемый.Распоряжение
+			И ЗаданияПереопределяемый.ЭтапПроизводства = ЭтапыПереопределяемый.Ссылка) КАК ТребуетПланирования
+ИЗ
+	Документ.ЭтапПроизводства2_2 КАК ЭтапыПереопределяемый
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ГрафикЭтаповПроизводства2_2 КАК ГрафикПроизводстваПереопределяемый
+		ПО ЭтапыПереопределяемый.Ссылка = ГрафикПроизводстваПереопределяемый.Этап
+			И (ГрафикПроизводстваПереопределяемый.СтатусГрафика = &amp;СтатусГрафика)
+ГДЕ
+	ЭтапыПереопределяемый.Распоряжение = &amp;Распоряжение
+	И ЭтапыПереопределяемый.Статус В(&amp;СтатусыЭтапа)
+	И ЭтапыПереопределяемый.Проведен = ИСТИНА</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номер</dcssch:dataPath>
+					<dcssch:field>Номер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Спецификация</dcssch:dataPath>
+					<dcssch:field>Спецификация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕдиницаИзмеренияПредварительногоБуфера</dcssch:dataPath>
+					<dcssch:field>ЕдиницаИзмеренияПредварительногоБуфера</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Распоряжение</dcssch:dataPath>
+					<dcssch:field>Распоряжение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Статус</dcssch:dataPath>
+					<dcssch:field>Статус</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МаксимальныйКодСтрокиОбеспечение</dcssch:dataPath>
+					<dcssch:field>МаксимальныйКодСтрокиОбеспечение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПартияПроизводства</dcssch:dataPath>
+					<dcssch:field>ПартияПроизводства</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПроизводствоОднойДатой</dcssch:dataPath>
+					<dcssch:field>ПроизводствоОднойДатой</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НазначениеПродукция</dcssch:dataPath>
+					<dcssch:field>НазначениеПродукция</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаВыполненияРабот</dcssch:dataPath>
+					<dcssch:field>ДатаВыполненияРабот</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПланироватьНеРанее</dcssch:dataPath>
+					<dcssch:field>ПланироватьНеРанее</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПредварительныйБуфер</dcssch:dataPath>
+					<dcssch:field>ПредварительныйБуфер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Этап</dcssch:dataPath>
+					<dcssch:field>Этап</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВыпускПодДеятельность</dcssch:dataPath>
+					<dcssch:field>ВыпускПодДеятельность</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Назначение</dcssch:dataPath>
+					<dcssch:field>Назначение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ФактическоеОкончаниеЭтапа</dcssch:dataPath>
+					<dcssch:field>ФактическоеОкончаниеЭтапа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УникальныйИдентификатор</dcssch:dataPath>
+					<dcssch:field>УникальныйИдентификатор</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>РучноеРазмещениеВГрафике</dcssch:dataPath>
+					<dcssch:field>РучноеРазмещениеВГрафике</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Организация</dcssch:dataPath>
+					<dcssch:field>Организация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОперацияКакРаспоряжениеВыработки</dcssch:dataPath>
+					<dcssch:field>ОперацияКакРаспоряжениеВыработки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ответственный</dcssch:dataPath>
+					<dcssch:field>Ответственный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Валюта</dcssch:dataPath>
+					<dcssch:field>Валюта</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Комментарий</dcssch:dataPath>
+					<dcssch:field>Комментарий</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЭкономияМатериаловСерии</dcssch:dataPath>
+					<dcssch:field>ЭкономияМатериаловСерии</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаименованиеЭтапа</dcssch:dataPath>
+					<dcssch:field>НаименованиеЭтапа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ФактическоеНачалоЭтапа</dcssch:dataPath>
+					<dcssch:field>ФактическоеНачалоЭтапа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПричинаЗадержкиВыполненияЭтапа</dcssch:dataPath>
+					<dcssch:field>ПричинаЗадержкиВыполненияЭтапа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПроизводствоНаСтороне</dcssch:dataPath>
+					<dcssch:field>ПроизводствоНаСтороне</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПроизводствоНаСтороне2_5</dcssch:dataPath>
+					<dcssch:field>ПроизводствоНаСтороне2_5</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПланироватьРаботуВидовРабочихЦентров</dcssch:dataPath>
+					<dcssch:field>ПланироватьРаботуВидовРабочихЦентров</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Непрерывный</dcssch:dataPath>
+					<dcssch:field>Непрерывный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДлительностьЭтапа</dcssch:dataPath>
+					<dcssch:field>ДлительностьЭтапа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕдиницаИзмеренияДлительностиЭтапа</dcssch:dataPath>
+					<dcssch:field>ЕдиницаИзмеренияДлительностиЭтапа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЗавершающийБуфер</dcssch:dataPath>
+					<dcssch:field>ЗавершающийБуфер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕдиницаИзмеренияЗавершающегоБуфера</dcssch:dataPath>
+					<dcssch:field>ЕдиницаИзмеренияЗавершающегоБуфера</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НеОтгружатьЧастями</dcssch:dataPath>
+					<dcssch:field>НеОтгружатьЧастями</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МаршрутнаяКарта</dcssch:dataPath>
+					<dcssch:field>МаршрутнаяКарта</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>РасходОднойДатой</dcssch:dataPath>
+					<dcssch:field>РасходОднойДатой</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КоэффициентМаршрутнойКарты</dcssch:dataPath>
+					<dcssch:field>КоэффициентМаршрутнойКарты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СтатьяКалькуляции</dcssch:dataPath>
+					<dcssch:field>СтатьяКалькуляции</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МаксимальныйКодСтрокиИзделия</dcssch:dataPath>
+					<dcssch:field>МаксимальныйКодСтрокиИзделия</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерЭтапаВПартииЗапуска</dcssch:dataPath>
+					<dcssch:field>НомерЭтапаВПартииЗапуска</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МаксимальныйКодСтрокиЭкономия</dcssch:dataPath>
+					<dcssch:field>МаксимальныйКодСтрокиЭкономия</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МаксимальныйКодСтрокиТрудозатраты</dcssch:dataPath>
+					<dcssch:field>МаксимальныйКодСтрокиТрудозатраты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидЦены</dcssch:dataPath>
+					<dcssch:field>ВидЦены</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаОтгрузки</dcssch:dataPath>
+					<dcssch:field>ДатаОтгрузки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЗаказПереработчику</dcssch:dataPath>
+					<dcssch:field>ЗаказПереработчику</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерЭтапа</dcssch:dataPath>
+					<dcssch:field>НомерЭтапа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Партнер</dcssch:dataPath>
+					<dcssch:field>Партнер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерСледующегоЭтапа</dcssch:dataPath>
+					<dcssch:field>НомерСледующегоЭтапа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Исполнитель</dcssch:dataPath>
+					<dcssch:field>Исполнитель</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаправлениеДеятельности</dcssch:dataPath>
+					<dcssch:field>НаправлениеДеятельности</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОставитьИзделияУПереработчика</dcssch:dataPath>
+					<dcssch:field>ОставитьИзделияУПереработчика</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПорядокРаботыВидовРабочихЦентров</dcssch:dataPath>
+					<dcssch:field>ПорядокРаботыВидовРабочихЦентров</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаПроизводства</dcssch:dataPath>
+					<dcssch:field>ДатаПроизводства</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПобочныеИзделия</dcssch:dataPath>
+					<dcssch:field>ПобочныеИзделия</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТипПроизводственногоПроцесса</dcssch:dataPath>
+					<dcssch:field>ТипПроизводственногоПроцесса</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаРасхода</dcssch:dataPath>
+					<dcssch:field>ДатаРасхода</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕстьМаркируемаяПродукцияГИСМ</dcssch:dataPath>
+					<dcssch:field>ЕстьМаркируемаяПродукцияГИСМ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ХозяйственнаяОперация</dcssch:dataPath>
+					<dcssch:field>ХозяйственнаяОперация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Договор</dcssch:dataPath>
+					<dcssch:field>Договор</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерПартииЗапуска</dcssch:dataPath>
+					<dcssch:field>НомерПартииЗапуска</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КомментарийПриКонвертации</dcssch:dataPath>
+					<dcssch:field>КомментарийПриКонвертации</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТребуетсяЗаполнитьПоОперациям</dcssch:dataPath>
+					<dcssch:field>ТребуетсяЗаполнитьПоОперациям</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерНаПечать</dcssch:dataPath>
+					<dcssch:field>НомерНаПечать</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВариантПриемкиТоваров</dcssch:dataPath>
+					<dcssch:field>ВариантПриемкиТоваров</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВыполнениеРаботОднойДатой</dcssch:dataPath>
+					<dcssch:field>ВыполнениеРаботОднойДатой</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СпособРаспределенияЗатратНаВыходныеИзделия</dcssch:dataPath>
+					<dcssch:field>СпособРаспределенияЗатратНаВыходныеИзделия</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЯвляетсяНазначениемПродукции</dcssch:dataPath>
+					<dcssch:field>ЯвляетсяНазначениемПродукции</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КоличествоУпаковокФакт</dcssch:dataPath>
+					<dcssch:field>КоличествоУпаковокФакт</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаРеестраДокументов</dcssch:dataPath>
+					<dcssch:field>ДатаРеестраДокументов</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОперацияРеестраДокументов</dcssch:dataPath>
+					<dcssch:field>ОперацияРеестраДокументов</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КоличествоУпаковокПлан</dcssch:dataPath>
+					<dcssch:field>КоличествоУпаковокПлан</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КоличествоУпаковокОтменено</dcssch:dataPath>
+					<dcssch:field>КоличествоУпаковокОтменено</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УпаковкаПлан</dcssch:dataPath>
+					<dcssch:field>УпаковкаПлан</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УпаковкаФакт</dcssch:dataPath>
+					<dcssch:field>УпаковкаФакт</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УпаковкаОтменено</dcssch:dataPath>
+					<dcssch:field>УпаковкаОтменено</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КоличествоНаЕдиницуПартииВыпуска</dcssch:dataPath>
+					<dcssch:field>КоличествоНаЕдиницуПартииВыпуска</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОтветственноеПодразделение</dcssch:dataPath>
+					<dcssch:field>ОтветственноеПодразделение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДинамическаяСтруктура</dcssch:dataPath>
+					<dcssch:field>ДинамическаяСтруктура</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДлительностьДоВыпуска</dcssch:dataPath>
+					<dcssch:field>ДлительностьДоВыпуска</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УдалитьСворачиватьВидыЗапасовПоМесяцам</dcssch:dataPath>
+					<dcssch:field>УдалитьСворачиватьВидыЗапасовПоМесяцам</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВыходныеИзделия</dcssch:dataPath>
+					<dcssch:field>ВыходныеИзделия</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВыходныеИзделияСерии</dcssch:dataPath>
+					<dcssch:field>ВыходныеИзделияСерии</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПобочныеИзделияСерии</dcssch:dataPath>
+					<dcssch:field>ПобочныеИзделияСерии</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОбеспечениеМатериаламиИРаботами</dcssch:dataPath>
+					<dcssch:field>ОбеспечениеМатериаламиИРаботами</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>РасходМатериаловИРабот</dcssch:dataPath>
+					<dcssch:field>РасходМатериаловИРабот</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЭкономияМатериалов</dcssch:dataPath>
+					<dcssch:field>ЭкономияМатериалов</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Трудозатраты</dcssch:dataPath>
+					<dcssch:field>Трудозатраты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидыРабочихЦентров</dcssch:dataPath>
+					<dcssch:field>ВидыРабочихЦентров</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>АльтернативныеВидыРабочихЦентров</dcssch:dataPath>
+					<dcssch:field>АльтернативныеВидыРабочихЦентров</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЗанятостьВидовРабочихЦентров</dcssch:dataPath>
+					<dcssch:field>ЗанятостьВидовРабочихЦентров</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Последователи</dcssch:dataPath>
+					<dcssch:field>Последователи</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидыЗапасовИзделия</dcssch:dataPath>
+					<dcssch:field>ВидыЗапасовИзделия</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидыЗапасовМатериалы</dcssch:dataPath>
+					<dcssch:field>ВидыЗапасовМатериалы</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Подразделение</dcssch:dataPath>
+					<dcssch:field>Подразделение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДополнительныеРеквизиты</dcssch:dataPath>
+					<dcssch:field>ДополнительныеРеквизиты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ШтрихкодыУпаковок</dcssch:dataPath>
+					<dcssch:field>ШтрихкодыУпаковок</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дата</dcssch:dataPath>
+					<dcssch:field>Дата</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаборыМатериаловИРабот</dcssch:dataPath>
+					<dcssch:field>НаборыМатериаловИРабот</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МоментВремени</dcssch:dataPath>
+					<dcssch:field>МоментВремени</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПредставлениеЭтапа</dcssch:dataPath>
+					<dcssch:field>ПредставлениеЭтапа</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление этапа</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Stage presentation</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаОкончанияИндексКартинки</dcssch:dataPath>
+					<dcssch:field>ДатаОкончанияИндексКартинки</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата окончания индекс картинки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>End date picture index</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЗадерживаетЗаказ</dcssch:dataPath>
+					<dcssch:field>ЗадерживаетЗаказ</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Задерживает заказ</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Delays the order</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТребуетПланирования</dcssch:dataPath>
+					<dcssch:field>ТребуетПланирования</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Требует планирования</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Planning is required</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Проведен</dcssch:dataPath>
+					<dcssch:field>Проведен</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВнутренняяПереработка</dcssch:dataPath>
+					<dcssch:field>ВнутренняяПереработка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОрганизацияДавалец</dcssch:dataPath>
+					<dcssch:field>ОрганизацияДавалец</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ШтрихкодыУпаковокМатериалы</dcssch:dataPath>
+					<dcssch:field>ШтрихкодыУпаковокМатериалы</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Начало</dcssch:dataPath>
+					<dcssch:field>Начало</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Окончание</dcssch:dataPath>
+					<dcssch:field>Окончание</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаНачалаИндексКартинки</dcssch:dataPath>
+					<dcssch:field>ДатаНачалаИндексКартинки</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата начала индекс картинки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Start date picture index</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Parameter>
+					<dcssch:name>ПредставлениеЭтапа</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление этапа</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Stage presentation</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<Parameter>
+					<dcssch:name>Распоряжение</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Распоряжение</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Reference</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:DocumentRef.ЗаказНаПроизводство2_2</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<Parameter>
+					<dcssch:name>СтатусГрафика</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус графика</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Schedule status</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>0</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</dcssch:valueType>
+					<dcssch:value xsi:type="xs:decimal">0</dcssch:value>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<Parameter>
+					<dcssch:name>СтатусыЭтапа</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статусы этапа</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Stage statuses</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+					<dcssch:valueListAllowed>true</dcssch:valueListAllowed>
+				</Parameter>
+				<MainTable>1:03503ac6-a4b9-4d70-b0ef-949dac7b8de4</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Начало</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Окончание</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Ссылка</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ЭтапыДинамические" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Этапы динамические</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Dynamic stages</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ЭтапыДинамические.ДатаГрафикаИндексКартинки</Field>
+				<Field>ЭтапыДинамические.КлючПартия</Field>
+				<Field>ЭтапыДинамические.Этап</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ГрафикПереопределяемый.ЗаказНаПроизводство КАК ЗаказНаПроизводство,
+	ГрафикПереопределяемый.Этап КАК Этап,
+	ВЫБОР
+		КОГДА ГрафикПереопределяемый.Этап ССЫЛКА Справочник.ЭтапыПроизводства
+			ТОГДА ВЫРАЗИТЬ(ГрафикПереопределяемый.Этап КАК Справочник.ЭтапыПроизводства).Наименование
+		ИНАЧЕ &amp;ПредставлениеЭтапа
+	КОНЕЦ КАК ПредставлениеЭтапа,
+	ГрафикПереопределяемый.КлючПартия,
+	ГрафикПереопределяемый.Начало КАК Начало,
+	ГрафикПереопределяемый.Окончание КАК Окончание,
+	ГрафикПереопределяемый.Подразделение КАК Подразделение,
+	ГрафикПереопределяемый.Спецификация КАК Спецификация,
+	ВЫБОР
+		КОГДА ГрафикПереопределяемый.Спецификация.ОсновноеИзделиеНоменклатура = ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка)
+			ТОГДА ГрафикПереопределяемый.Спецификация.ОсновноеИзделиеВидНоменклатуры
+		ИНАЧЕ ГрафикПереопределяемый.Спецификация.ОсновноеИзделиеНоменклатура
+	КОНЕЦ КАК Номенклатура,
+	ГрафикПереопределяемый.Спецификация.ОсновноеИзделиеХарактеристика КАК Характеристика,
+	ВЫБОР
+		КОГДА ГрафикПереопределяемый.Спецификация.ОсновноеИзделиеУпаковка = ЗНАЧЕНИЕ(Справочник.УпаковкиЕдиницыИзмерения.ПустаяСсылка)
+			ТОГДА ГрафикПереопределяемый.Спецификация.ОсновноеИзделиеНоменклатура.ЕдиницаИзмерения
+		ИНАЧЕ ГрафикПереопределяемый.Спецификация.ОсновноеИзделиеУпаковка
+	КОНЕЦ КАК Упаковка,
+	ГрафикПереопределяемый.Спецификация.ОсновноеИзделиеКоличествоУпаковок * ГрафикПереопределяемый.КоличествоПартий КАК Количество,
+	ИСТИНА В
+		(ВЫБРАТЬ ПЕРВЫЕ 1
+			ИСТИНА
+		ИЗ
+			РегистрСведений.ЗаданияКРасчетуСтруктурыЗаказаГрафикПроизводства КАК ЗаданияКРасчетуПереопределяемый
+		ГДЕ
+			ЗаданияКРасчетуПереопределяемый.ЭтапПроизводства = ГрафикПереопределяемый.Этап) КАК ТребуетПланирования,
+	ВЫБОР
+		КОГДА ГрафикПереопределяемый.Этап ССЫЛКА Документ.ЭтапПроизводства2_2
+			И ВЫРАЗИТЬ(ГрафикПереопределяемый.Этап КАК Документ.ЭтапПроизводства2_2).РучноеРазмещениеВГрафике
+			ТОГДА 1
+		ИНАЧЕ -1
+	КОНЕЦ КАК ДатаГрафикаИндексКартинки
+ИЗ
+	РегистрСведений.ГрафикЭтаповПроизводства2_2 КАК ГрафикПереопределяемый
+ГДЕ
+	ГрафикПереопределяемый.ЗаказНаПроизводство = &amp;Распоряжение
+	И ГрафикПереопределяемый.СтатусГрафика = &amp;СтатусГрафика
+	И ГрафикПереопределяемый.Этап &lt;&gt; ЗНАЧЕНИЕ(Справочник.ЭтапыПроизводства.ПустаяСсылка)</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЗаказНаПроизводство</dcssch:dataPath>
+					<dcssch:field>ЗаказНаПроизводство</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Этап</dcssch:dataPath>
+					<dcssch:field>Этап</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Начало</dcssch:dataPath>
+					<dcssch:field>Начало</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Окончание</dcssch:dataPath>
+					<dcssch:field>Окончание</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Подразделение</dcssch:dataPath>
+					<dcssch:field>Подразделение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Спецификация</dcssch:dataPath>
+					<dcssch:field>Спецификация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номенклатура</dcssch:dataPath>
+					<dcssch:field>Номенклатура</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номенклатура</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Items</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Характеристика</dcssch:dataPath>
+					<dcssch:field>Характеристика</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Характеристика</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Variant</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Упаковка</dcssch:dataPath>
+					<dcssch:field>Упаковка</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Упаковка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Packaging unit</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТребуетПланирования</dcssch:dataPath>
+					<dcssch:field>ТребуетПланирования</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Требует планирования</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Planning is required</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:useRestriction>
+						<dcssch:group>true</dcssch:group>
+						<dcssch:order>true</dcssch:order>
+					</dcssch:useRestriction>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Количество</dcssch:dataPath>
+					<dcssch:field>Количество</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПредставлениеЭтапа</dcssch:dataPath>
+					<dcssch:field>ПредставлениеЭтапа</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление этапа</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Stage presentation</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КлючПартия</dcssch:dataPath>
+					<dcssch:field>КлючПартия</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаГрафикаИндексКартинки</dcssch:dataPath>
+					<dcssch:field>ДатаГрафикаИндексКартинки</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата графика индекс картинки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Schedule date picture index</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОкончаниеПредварительногоБуфера</dcssch:dataPath>
+					<dcssch:field>ОкончаниеПредварительногоБуфера</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НачалоЗавершающегоБуфера</dcssch:dataPath>
+					<dcssch:field>НачалоЗавершающегоБуфера</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НачалоСледующегоЭтапа</dcssch:dataPath>
+					<dcssch:field>НачалоСледующегоЭтапа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаКритическомПути</dcssch:dataPath>
+					<dcssch:field>НаКритическомПути</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОграничиваетСрокВыпуска</dcssch:dataPath>
+					<dcssch:field>ОграничиваетСрокВыпуска</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОграниченПоМатериалам</dcssch:dataPath>
+					<dcssch:field>ОграниченПоМатериалам</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОграниченПоОборудованию</dcssch:dataPath>
+					<dcssch:field>ОграниченПоОборудованию</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>РазмещениеВыпуска</dcssch:dataPath>
+					<dcssch:field>РазмещениеВыпуска</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КоличествоПартий</dcssch:dataPath>
+					<dcssch:field>КоличествоПартий</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Порядок</dcssch:dataPath>
+					<dcssch:field>Порядок</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидСтроки</dcssch:dataPath>
+					<dcssch:field>ВидСтроки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СтатусГрафика</dcssch:dataPath>
+					<dcssch:field>СтатусГрафика</dcssch:field>
+				</Field>
+				<Parameter>
+					<dcssch:name>Распоряжение</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Распоряжение</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Reference</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:DocumentRef.ЗаказНаПроизводство2_2</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<Parameter>
+					<dcssch:name>ПредставлениеЭтапа</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление этапа</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Stage presentation</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<Parameter>
+					<dcssch:name>СтатусГрафика</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус графика</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Schedule status</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>1</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<MainTable>1:ffd8e00a-d270-470b-af3f-cdee53e0c9e8</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Начало</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Окончание</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>ПредставлениеЭтапа</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>f9b65236-c615-47c5-a1a9-21aadff9cb7e</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ЭтоРазборка" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это разборка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is reverse kitting</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДинамическаяСтруктура" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Динамическая структура</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="МодельЗапланирована" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Модель запланирована</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Model is planned</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Продукция" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продукция</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Manufactured products</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Номенклатура" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номенклатура</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Items</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Характеристика" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Характеристика</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Variant</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Назначение" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Назначение</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Assignment</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Упаковка" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Упаковка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Packaging unit</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.УпаковкиЕдиницыИзмерения</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КоличествоУпаковок" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>3</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаЗапускаГрафик" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата запуска (график)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Start date (schedule)</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаВыпускаГрафик" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата выпуска (график)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Release date (schedule)</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДлительностьГрафик" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Длительность (график)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Duration (schedule)</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>10</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ОпозданиеГрафик" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Опоздание (график)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Delay (schedule)</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>10</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаЗапускаМодель" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата запуска (модель)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Start date (model)</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаВыпускаМодель" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата выпуска (модель)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Release date (model)</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДлительностьМодель" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Длительность (модель)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Duration (model)</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>10</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ОпозданиеМодель" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Опоздание (модель)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Delay (model)</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>10</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Получатель" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Получатель</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Recipient</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаПотребности" id="41">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата потребности</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Demand date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="НомерЗаданияКРасчетуГрафикаПроизводства" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер задания к расчету графика производства</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Number of job for calculating production schedule</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтменитьРучныеИзмененияГрафика" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить ручные изменения графика</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Discard manual changes of schedule</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РасчетЗавершен" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расчет завершен</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПеренестиВДокумент" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перенести в документ</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перенести в документ</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПеренестиВДокумент</Action>
+		</Command>
+		<Command name="РассчитатьСрокИзготовленияЗаказа" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рассчитать срок изготовления заказа</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рассчитать срок изготовления заказа</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>РассчитатьСрокИзготовленияЗаказа</Action>
+		</Command>
+	</Commands>
+</Form>

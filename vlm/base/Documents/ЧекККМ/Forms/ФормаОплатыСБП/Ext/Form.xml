@@ -1,0 +1,1387 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Оплата СБП</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Faster Payments System payment</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<EnterKeyBehavior>DefaultButton</EnterKeyBehavior>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаВыбратьДоговор" id="118">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.ВыбратьДоговор</CommandName>
+				<ExtendedTooltip name="ФормаВыбратьДоговорРасширеннаяПодсказка" id="119"/>
+			</Button>
+			<Button name="ФормаПовторитьОперацию" id="120">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ПовторитьОперацию</CommandName>
+				<ExtendedTooltip name="ФормаПовторитьОперациюРасширеннаяПодсказка" id="121"/>
+			</Button>
+			<Button name="ФормаВывестиПречек" id="122">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.ВывестиПречек</CommandName>
+				<ExtendedTooltip name="ФормаВывестиПречекРасширеннаяПодсказка" id="123"/>
+			</Button>
+			<Button name="ФормаПодтвердитьВозвратОплаты" id="153">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.ПодтвердитьВозвратОплаты</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Подтвердить</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Confirm</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаПодтвердитьВозвратОплатыРасширеннаяПодсказка" id="154"/>
+			</Button>
+			<Button name="ФормаПодтвердитьОплату" id="124">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ПодтвердитьОплату</CommandName>
+				<ExtendedTooltip name="ФормаПодтвердитьОплатуРасширеннаяПодсказка" id="125"/>
+			</Button>
+			<Button name="ФормаВернутьОплату" id="148">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.ВернутьОплату</CommandName>
+				<ExtendedTooltip name="ФормаВернутьОплатуРасширеннаяПодсказка" id="149"/>
+			</Button>
+			<Button name="ФормаОтложитьЧек" id="126">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.ОтложитьЧек</CommandName>
+				<ExtendedTooltip name="ФормаОтложитьЧекРасширеннаяПодсказка" id="127"/>
+			</Button>
+			<Button name="ФормаОтменитьОперацию" id="128">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ОтменитьОперацию</CommandName>
+				<ExtendedTooltip name="ФормаОтменитьОперациюРасширеннаяПодсказка" id="129"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="ГруппаСтраницы" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа страниц</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages group</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="ГруппаСтраницыРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<Page name="ГруппаСписокДоговоровИПодключений" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список договоров и подключений</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>List of contracts and connections</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаСписокДоговоровИПодключенийРасширеннаяПодсказка" id="4"/>
+					<ChildItems>
+						<Table name="СписокДоговоровИПодключений" id="5">
+							<Representation>List</Representation>
+							<ReadOnly>true</ReadOnly>
+							<SelectionMode>SingleRow</SelectionMode>
+							<DataPath>СписокДоговоровИПодключений</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="СписокДоговоровИПодключенийКонтекстноеМеню" id="7"/>
+							<AutoCommandBar name="СписокДоговоровИПодключенийКоманднаяПанель" id="6">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокДоговоровИПодключенийРасширеннаяПодсказка" id="8"/>
+							<SearchStringAddition name="СписокДоговоровИПодключенийСтрокаПоиска" id="9">
+								<AdditionSource>
+									<Item>СписокДоговоровИПодключений</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокДоговоровИПодключенийСтрокаПоискаКонтекстноеМеню" id="10"/>
+								<ExtendedTooltip name="СписокДоговоровИПодключенийСтрокаПоискаРасширеннаяПодсказка" id="11"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокДоговоровИПодключенийСостояниеПросмотра" id="15">
+								<AdditionSource>
+									<Item>СписокДоговоровИПодключений</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокДоговоровИПодключенийСостояниеПросмотраКонтекстноеМеню" id="16"/>
+								<ExtendedTooltip name="СписокДоговоровИПодключенийСостояниеПросмотраРасширеннаяПодсказка" id="17"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокДоговоровИПодключенийУправлениеПоиском" id="12">
+								<AdditionSource>
+									<Item>СписокДоговоровИПодключений</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокДоговоровИПодключенийУправлениеПоискомКонтекстноеМеню" id="13"/>
+								<ExtendedTooltip name="СписокДоговоровИПодключенийУправлениеПоискомРасширеннаяПодсказка" id="14"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">СписокДоговоровИПодключенийВыбор</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="СписокПодключенийНастройкаПодключения" id="18">
+									<DataPath>СписокДоговоровИПодключений.НастройкаПодключения</DataPath>
+									<ContextMenu name="СписокПодключенийНастройкаПодключенияКонтекстноеМеню" id="19"/>
+									<ExtendedTooltip name="СписокПодключенийНастройкаПодключенияРасширеннаяПодсказка" id="20"/>
+								</InputField>
+								<InputField name="СписокПодключенийДоговор" id="21">
+									<DataPath>СписокДоговоровИПодключений.ДоговорПодключения</DataPath>
+									<ContextMenu name="СписокПодключенийДоговорКонтекстноеМеню" id="22"/>
+									<ExtendedTooltip name="СписокПодключенийДоговорРасширеннаяПодсказка" id="23"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<LabelDecoration name="ДекорацияПодсказкаГруппыСписокПодключений" id="24">
+							<TextColor>style:FieldSelectionBackColor</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выберите договор подключения к платежной системе</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Select a payment system contract</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияПодсказкаГруппыСписокПодключенийКонтекстноеМеню" id="25"/>
+							<ExtendedTooltip name="ДекорацияПодсказкаГруппыСписокПодключенийРасширеннаяПодсказка" id="26"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаОжиданиеЗавершенияОперации" id="29">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ожидание завершения операции</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Awaiting transaction completion</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаОжиданиеЗавершенияОперацииРасширеннаяПодсказка" id="30"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаОжиданиеЗавершениеОперацииГоризонтально" id="61">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа1</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group1</v8:content>
+								</v8:item>
+							</Title>
+							<Height>5</Height>
+							<Group>AlwaysHorizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаОжиданиеЗавершениеОперацииГоризонтальноРасширеннаяПодсказка" id="62"/>
+							<ChildItems>
+								<PictureDecoration name="ДекорацияКартинкаДлительнаяОперация" id="33">
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<Picture>
+										<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ДекорацияКартинкаДлительнаяОперацияКонтекстноеМеню" id="34"/>
+									<ExtendedTooltip name="ДекорацияКартинкаДлительнаяОперацияРасширеннаяПодсказка" id="35"/>
+								</PictureDecoration>
+								<LabelDecoration name="ДекорацияНадписьТекстДлительнойОперации" id="133">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>&lt;Отображаемый пользователю текст&gt;</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>&lt;Text displayed to the user&gt;</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<ContextMenu name="ДекорацияНадписьТекстДлительнойОперацииКонтекстноеМеню" id="134"/>
+									<ExtendedTooltip name="ДекорацияНадписьТекстДлительнойОперацииРасширеннаяПодсказка" id="135"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаQRКодОплаты" id="57">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>QR-код оплаты</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payment QR code</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаQRКодОплатыРасширеннаяПодсказка" id="58"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаПерейтиКИнструкции" id="65">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Перейти к инструкции</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Go to help</v8:content>
+								</v8:item>
+							</Title>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПерейтиКИнструкцииРасширеннаяПодсказка" id="66"/>
+							<ChildItems>
+								<Button name="ПоказатьИнструкцию" id="136">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.ПоказатьИнструкцию</CommandName>
+									<ExtendedTooltip name="ПоказатьИнструкциюРасширеннаяПодсказка" id="137"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<PictureField name="QRКодОплаты" id="69">
+							<DataPath>QRКодОплаты</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+							<GroupVerticalAlign>Center</GroupVerticalAlign>
+							<Width>45</Width>
+							<Height>13</Height>
+							<ContextMenu name="QRКодОплатыКонтекстноеМеню" id="70"/>
+							<ExtendedTooltip name="QRКодОплатыРасширеннаяПодсказка" id="71"/>
+						</PictureField>
+						<LabelDecoration name="ДекорацияНадписьСуммаОплаты" id="75">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма оплаты: 1000,00 руб.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Payment amount: 1,000 rub.</v8:content>
+								</v8:item>
+							</Title>
+							<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+							<ContextMenu name="ДекорацияНадписьСуммаОплатыКонтекстноеМеню" id="76"/>
+							<ExtendedTooltip name="ДекорацияНадписьСуммаОплатыРасширеннаяПодсказка" id="77"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияНадписьПодсказкаПользователю" id="72">
+							<TextColor>style:ЗаголовокПоляЗаполняемогоАвтоматическиЦветБЗК</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ожидайте подтверждения оплаты покупателем…</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Waiting for the payment confirmation by the customer...</v8:content>
+								</v8:item>
+							</Title>
+							<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+							<ContextMenu name="ДекорацияНадписьПодсказкаПользователюКонтекстноеМеню" id="73"/>
+							<ExtendedTooltip name="ДекорацияНадписьПодсказкаПользователюРасширеннаяПодсказка" id="74"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаИнструкция" id="80">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Инструкция</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Help</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаИнструкцияРасширеннаяПодсказка" id="81"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаВернутьсяКQRКодуОплаты" id="82">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Вернуться к QR-коду оплаты</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Return to a payment QR code</v8:content>
+								</v8:item>
+							</Title>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаВернутьсяКQRКодуОплатыРасширеннаяПодсказка" id="83"/>
+							<ChildItems>
+								<Button name="ПоказатьQRКодОплаты" id="138">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.ПоказатьИнструкцию</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Показать QR-код оплаты</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Show a payment QR code</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ПоказатьQRКодОплатыРасширеннаяПодсказка" id="139"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="ДекорацияНадписьИнструкция" id="86">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оплачивайте покупки с помощью QR-кода в несколько простых действий:
+1. Откройте на смартфоне приложение своего банка.	
+2. Нажмите кнопку «Оплата по QR-коду» (название может отличаться в разных мобильных банках).
+3. Камерой смартфона отсканируйте QR-код, сформированный на кассе. 
+4. Проверьте данные о покупке и нажмите кнопку "Оплатить" или "Подтвердить".
+Деньги спишутся с вашего счета, а продавец получит уведомление об оплате</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Pay for the things you buy using a QR code in a few simple steps:
+ 1. Open your bank application on your smartphone.	
+2. Click "Payment by QR code" (the name may differ in different mobile banks).
+3. Use your smartphone camera to scan the QR code generated at the cash account.
+ 4. Check the purchase details and click "Pay" or "Confirm".
+ The money will be debited from your account, and the seller will receive a payment notification</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияНадписьИнструкцияКонтекстноеМеню" id="87"/>
+							<ExtendedTooltip name="ДекорацияНадписьИнструкцияРасширеннаяПодсказка" id="88"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаОшибкаЗавершенияОперации" id="39">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибка завершения операции</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Transaction completion error</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalSpacing>None</VerticalSpacing>
+					<ExtendedTooltip name="ГруппаОшибкаЗавершенияОперацииРасширеннаяПодсказка" id="40"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаОписаниеОшибкиЗавершенияОперации" id="53">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа1</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group1</v8:content>
+								</v8:item>
+							</Title>
+							<Height>5</Height>
+							<Group>AlwaysHorizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаОписаниеОшибкиЗавершенияОперацииРасширеннаяПодсказка" id="54"/>
+							<ChildItems>
+								<PictureDecoration name="ДекорацияКартинкаОшибки" id="41">
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<Picture>
+										<xr:Ref>CommonPicture.Ошибка32</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ДекорацияКартинкаОшибкиКонтекстноеМеню" id="42"/>
+									<ExtendedTooltip name="ДекорацияКартинкаОшибкиРасширеннаяПодсказка" id="43"/>
+								</PictureDecoration>
+								<LabelDecoration name="ДекорацияНадписьТекстОшибки" id="44">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>&lt;Текст ошибки&gt;</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>&lt;Error text&gt;</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<ContextMenu name="ДекорацияНадписьТекстОшибкиКонтекстноеМеню" id="45"/>
+									<ExtendedTooltip name="ДекорацияНадписьТекстОшибкиРасширеннаяПодсказка" id="46"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаВозможныеДействияПриОшибкеЗавершенияОперации" id="158">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Возможные действия при ошибке завершения операции</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Possible actions upon transaction completion error</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Возможные действия в случае ошибки завершения операции</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Possible actions in case of the transaction completion error</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Height>5</Height>
+							<Group>AlwaysHorizontal</Group>
+							<Collapsed>true</Collapsed>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаВозможныеДействияПриОшибкеЗавершенияОперацииРасширеннаяПодсказка" id="159"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияОтступ1" id="169">
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<ContextMenu name="ДекорацияОтступ1КонтекстноеМеню" id="170"/>
+									<ExtendedTooltip name="ДекорацияОтступ1РасширеннаяПодсказка" id="171"/>
+								</LabelDecoration>
+								<LabelDecoration name="ДекорацияОтступ2" id="172">
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<ContextMenu name="ДекорацияОтступ2КонтекстноеМеню" id="173"/>
+									<ExtendedTooltip name="ДекорацияОтступ2РасширеннаяПодсказка" id="174"/>
+								</LabelDecoration>
+								<LabelDecoration name="ДекорацияОтступ3" id="175">
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<ContextMenu name="ДекорацияОтступ3КонтекстноеМеню" id="176"/>
+									<ExtendedTooltip name="ДекорацияОтступ3РасширеннаяПодсказка" id="177"/>
+								</LabelDecoration>
+								<LabelDecoration name="ДекорацияОтступ4" id="178">
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<ContextMenu name="ДекорацияОтступ4КонтекстноеМеню" id="179"/>
+									<ExtendedTooltip name="ДекорацияОтступ4РасширеннаяПодсказка" id="180"/>
+								</LabelDecoration>
+								<UsualGroup name="ГруппаВозможныеНадписиПриОшибке" id="181">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа возможные надписи при ошибке</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group Possible labels upon error</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа возможные надписи при ошибке</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group Possible labels upon error</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<VerticalSpacing>None</VerticalSpacing>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаВозможныеНадписиПриОшибкеРасширеннаяПодсказка" id="182"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияНадписьПриОшибкеПовторитьОперацию" id="183">
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Возможны следующие действия:
+ - Если вы хотите повторить процесс возврата оплаты, нажмите кнопку "Повторить попытку".</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>You can do the following:
+ - If you want to repeat the refund process, click Retry.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ДекорацияНадписьПриОшибкеПовторитьОперациюКонтекстноеМеню" id="184"/>
+											<ExtendedTooltip name="ДекорацияНадписьПриОшибкеПовторитьОперациюРасширеннаяПодсказка" id="185"/>
+										</LabelDecoration>
+										<LabelDecoration name="ДекорацияНадписьПриОшибкеПодтвердитьОплату" id="186">
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content> - Если вы хотите подтвердить вручную, что возврат оплаты произведен, нажмите кнопку "Платеж прошел".</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content> - If you want to manually confirm that the refund is made, click Payment succeeded.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ДекорацияНадписьПриОшибкеПодтвердитьОплатуКонтекстноеМеню" id="187"/>
+											<ExtendedTooltip name="ДекорацияНадписьПриОшибкеПодтвердитьОплатуРасширеннаяПодсказка" id="188"/>
+										</LabelDecoration>
+										<LabelDecoration name="ДекорацияНадписьПриОшибкеОтменитьОперацию" id="189">
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content> - Если вы хотите отменить операцию возврата оплаты, нажмите кнопку "Отмена". </v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content> - If you want to cancel the refund operation, click Cancel.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ДекорацияНадписьПриОшибкеОтменитьОперациюКонтекстноеМеню" id="190"/>
+											<ExtendedTooltip name="ДекорацияНадписьПриОшибкеОтменитьОперациюРасширеннаяПодсказка" id="191"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаВозвратОплаты" id="93">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Возврат оплаты</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Refund</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаВозвратОплатыРасширеннаяПодсказка" id="94"/>
+					<ChildItems>
+						<InputField name="КВозврату" id="145">
+							<DataPath>КОплате</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>К возврату</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>For return</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ChoiceButton>false</ChoiceButton>
+							<TextEdit>false</TextEdit>
+							<Font ref="style:NormalTextFont" height="16" kind="StyleItem"/>
+							<ContextMenu name="КВозвратуКонтекстноеМеню" id="146"/>
+							<ExtendedTooltip name="КВозвратуРасширеннаяПодсказка" id="147"/>
+						</InputField>
+						<InputField name="БанкКлиента" id="150">
+							<DataPath>БанкКлиента</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выберите банк клиента, только если клиент хочет вернуть деньги на счет в банке, отличающийся от банка клиента в чеке продажи. Если клиент хочет вернуть на счет в том же банке, поле должно остаться пустым!</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Select the customer's bank only if the customer wants to return the money to a bank account that is different from the customer's bank on the sales receipt. If the customer wants to return the money to the account in the same bank, leave the field blank.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ListChoiceMode>true</ListChoiceMode>
+							<ContextMenu name="БанкКлиентаКонтекстноеМеню" id="151"/>
+							<ExtendedTooltip name="БанкКлиентаРасширеннаяПодсказка" id="152"/>
+						</InputField>
+						<InputField name="ИдентификаторОплаты" id="105">
+							<DataPath>ИдентификаторОплаты</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>true</HorizontalStretch>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<ContextMenu name="ИдентификаторОплатыКонтекстноеМеню" id="106"/>
+							<ExtendedTooltip name="ИдентификаторОплатыРасширеннаяПодсказка" id="107"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаПодтверждениеОперации" id="140">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подтверждение операции</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Operation confirmation</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаПодтверждениеОперацииРасширеннаяПодсказка" id="141"/>
+					<ChildItems>
+						<InputField name="КВозвратуПодтверждениеОперации" id="155">
+							<DataPath>КОплате</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>К возврату</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>For return</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ChoiceButton>false</ChoiceButton>
+							<TextEdit>false</TextEdit>
+							<Font ref="style:NormalTextFont" height="16" kind="StyleItem"/>
+							<ContextMenu name="КВозвратуПодтверждениеОперацииКонтекстноеМеню" id="156"/>
+							<ExtendedTooltip name="КВозвратуПодтверждениеОперацииРасширеннаяПодсказка" id="157"/>
+						</InputField>
+						<LabelDecoration name="ДекорацияНадписьПодтверждениеОперации" id="142">
+							<Height>4</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;Подтверждение операции&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;Transaction confirmation&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+							<VerticalAlign>Center</VerticalAlign>
+							<ContextMenu name="ДекорацияНадписьПодтверждениеОперацииКонтекстноеМеню" id="143"/>
+							<ExtendedTooltip name="ДекорацияНадписьПодтверждениеОперацииРасширеннаяПодсказка" id="144"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СписокДоговоровИПодключений" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список договоров и подключений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of contracts and connections</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="НастройкаПодключения" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройка подключения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Configure connection</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.НастройкиПодключенияКСистемеБыстрыхПлатежей</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДоговорПодключения" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Договор подключения</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payment system contract</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ДоговорыЭквайринга</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВидСсылкиСБП" id="36">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид ссылки СБП</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>FPS link kind</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.ВидыСсылокСБП</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КассоваяСсылка" id="37">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кассовая ссылка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>QR code payment link</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИдентификаторОплаты" id="39">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор оплаты</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payment ID</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="QRКодОплаты" id="8">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкаПодключения" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка подключения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Configure connection</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.НастройкиПодключенияКСистемеБыстрыхПлатежей</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДоговорПодключения" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Договор подключения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment system contract</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ДоговорыЭквайринга</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторОплаты" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор оплаты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекущийЭтапПроцессаОплатыСБП" id="12">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Дисплеи" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дисплеи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Displays</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+		<Attribute name="ДокументОплаты" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ оплаты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>AR/AP transaction</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="КассаККМ" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Касса ККМ</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash register</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.КассыККМ</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Организация" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КОплате" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>К оплате</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount due</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DefinedType.ДенежнаяСуммаЛюбогоЗнака</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="РабочееМестоКлиента" id="22">
+			<Type>
+				<v8:Type>cfg:CatalogRef.РабочиеМеста</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторЗаданияФормированияQRКода" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор задания формирования QRКода</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>ID of QR code generation job</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаОплаты" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата оплаты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Валюта" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Currency</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторЗаданияПроверкиСтатуса" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор задания проверки статуса</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Status check job ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторПлатежнойСистемы" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор платежной системы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment system ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоВозврат" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это возврат</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is return</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДокументВозврата" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ оплаты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>AR/AP transaction</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="БанкКлиента" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Банк клиента</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Customer bank</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторЗаданияВозврата" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор задания возврата</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Return job ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаВозврата" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата возврата</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Return date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтруктураQRКода" id="34">
+			<Type/>
+		</Attribute>
+		<Attribute name="ИдентификаторФискальногоУстройства" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор фискального устройства</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fiscal device ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ПодключаемоеОборудование</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПраваДоступа" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Права доступа</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Access rights</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ПоследнийСтатусОперации" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Последний статус операции</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Latest transaction status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДанныеКассовойСсылки" id="41">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные кассовой ссылки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data of QR code payment link</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ВидСсылкиСБП" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид ссылки СБП</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>FPS link kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ВидыСсылокСБП</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ВыбратьДоговор" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ВыбратьДоговор</Action>
+		</Command>
+		<Command name="ПовторитьОперацию" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Повторить попытку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Retry</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПовторитьОперацию</Action>
+		</Command>
+		<Command name="ВывестиПречек" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пречек</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Preliminary receipt</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ВывестиПречек</Action>
+		</Command>
+		<Command name="ПодтвердитьОплату" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Платеж прошел</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment succeeded</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПодтвердитьОплату</Action>
+		</Command>
+		<Command name="ОтложитьЧек" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отложить чек</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Put receipt on hold</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОтложитьЧек</Action>
+		</Command>
+		<Command name="ОтменитьОперацию" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОтменитьОперацию</Action>
+		</Command>
+		<Command name="ПоказатьИнструкцию" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Как покупателю провести оплату?</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>How can the customer make the payment?</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПоказатьИнструкцию</Action>
+		</Command>
+		<Command name="ВернутьОплату" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вернуть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Return</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ВернутьОплату</Action>
+		</Command>
+		<Command name="ПодтвердитьВозвратОплаты" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Платеж прошел</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment succeeded</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПодтвердитьВозвратОплаты</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ИнформацияОбОплате">
+			<Type/>
+		</Parameter>
+		<Parameter name="КассаККМ">
+			<Type>
+				<v8:Type>cfg:CatalogRef.КассыККМ</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Организация">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Партнер">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Партнеры</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Валюта">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ДатаВозврата">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ДокументОплаты">
+			<Type>
+				<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+			</Type>
+		</Parameter>
+		<Parameter name="ДоговорПодключения">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ДоговорыЭквайринга</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="СсылочныйНомер">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ДатаОплаты">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ИдентификаторФискальногоУстройства">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ОфлайнОборудование</v8:Type>
+				<v8:Type>cfg:CatalogRef.ПодключаемоеОборудование</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="БанкКлиента">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

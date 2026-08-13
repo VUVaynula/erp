@@ -1,0 +1,1270 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаОтправить" id="256">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Зарегистрировать</CommandName>
+				<ExtendedTooltip name="ФормаОтправитьРасширеннаяПодсказка" id="257"/>
+			</Button>
+			<Button name="ФормаПроверитьСостояние" id="266">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ПроверитьСостояние</CommandName>
+				<ExtendedTooltip name="ФормаПроверитьСостояниеРасширеннаяПодсказка" id="267"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="СостояниеДекорация" id="258">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Font ref="style:LargeTextFont" kind="StyleItem"/>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние: Создание новой ...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>State: Create new...</v8:content>
+				</v8:item>
+			</Title>
+			<BackColor>style:ФонУправляющегоПоля</BackColor>
+			<ContextMenu name="СостояниеДекорацияКонтекстноеМеню" id="259"/>
+			<ExtendedTooltip name="СостояниеДекорацияРасширеннаяПодсказка" id="260"/>
+		</LabelDecoration>
+		<UsualGroup name="ТелоГруппа" id="217">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тело (группа)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Body (group)</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ТелоГруппаРасширеннаяПодсказка" id="218"/>
+			<ChildItems>
+				<UsualGroup name="НомерДатаСрокГруппа" id="240">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер, дата, срок (группа)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Number, date, validity period (group)</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="НомерДатаСрокГруппаРасширеннаяПодсказка" id="241"/>
+					<ChildItems>
+						<UsualGroup name="СрокДействияГруппа" id="34">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Срок действия (группа)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Valid until (group)</v8:content>
+								</v8:item>
+							</Title>
+							<Group>AlwaysHorizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="СрокДействияГруппаРасширеннаяПодсказка" id="35"/>
+							<ChildItems>
+								<InputField name="ДатаНачала" id="16">
+									<DataPath>Объект.ДатаНачала</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Действует с</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Valid from</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДатаНачалаКонтекстноеМеню" id="17"/>
+									<ExtendedTooltip name="ДатаНачалаРасширеннаяПодсказка" id="18"/>
+									<Events>
+										<Event name="OnChange">ДатаНачалаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ДатаОкончания" id="19">
+									<DataPath>Объект.ДатаОкончания</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>по</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>to</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДатаОкончанияКонтекстноеМеню" id="20"/>
+									<ExtendedTooltip name="ДатаОкончанияРасширеннаяПодсказка" id="21"/>
+									<Events>
+										<Event name="OnChange">ДатаОкончанияПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="Дата" id="245">
+							<DataPath>Объект.Дата</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<ContextMenu name="ДатаКонтекстноеМеню" id="246"/>
+							<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="247"/>
+						</InputField>
+						<InputField name="Номер" id="242">
+							<DataPath>Объект.Номер</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>12</MaxWidth>
+							<ClearButton>true</ClearButton>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>б/н</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>without number</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="НомерКонтекстноеМеню" id="243"/>
+							<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="244"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ДоверительПредставительГруппа" id="238">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доверитель представитель (группа)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Authorizing party representative (group)</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ДоверительПредставительГруппаРасширеннаяПодсказка" id="239"/>
+					<ChildItems>
+						<UsualGroup name="ДоверительГруппа" id="60">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Доверитель</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Authorizing party</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<United>false</United>
+							<ThroughAlign>Use</ThroughAlign>
+							<ExtendedTooltip name="ДоверительГруппаРасширеннаяПодсказка" id="61"/>
+							<ChildItems>
+								<InputField name="Доверитель" id="4">
+									<DataPath>Объект.Доверитель</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Организация</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Company</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Left</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<EditMode>EnterOnInput</EditMode>
+									<MaxWidth>63</MaxWidth>
+									<VerticalStretch>false</VerticalStretch>
+									<MultiLine>true</MultiLine>
+									<ExtendedEdit>true</ExtendedEdit>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="ДоверительКонтекстноеМеню" id="5"/>
+									<ExtendedTooltip name="ДоверительРасширеннаяПодсказка" id="6"/>
+									<Events>
+										<Event name="OnChange">ДоверительПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ОтветственныйДоверителя" id="7">
+									<DataPath>Объект.ОтветственныйДоверителя</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ответственный</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Person responsible</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Left</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<EditMode>EnterOnInput</EditMode>
+									<MaxWidth>63</MaxWidth>
+									<VerticalStretch>false</VerticalStretch>
+									<MultiLine>true</MultiLine>
+									<ExtendedEdit>true</ExtendedEdit>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="ОтветственныйДоверителяКонтекстноеМеню" id="8"/>
+									<ExtendedTooltip name="ОтветственныйДоверителяРасширеннаяПодсказка" id="9"/>
+									<Events>
+										<Event name="OnChange">ОтветственныйДоверителяПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ПредставительГруппа" id="62">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Представитель</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Representative</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<United>false</United>
+							<ThroughAlign>Use</ThroughAlign>
+							<ExtendedTooltip name="ПредставительГруппаРасширеннаяПодсказка" id="63"/>
+							<ChildItems>
+								<InputField name="Представитель" id="10">
+									<DataPath>Объект.Представитель</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Организация</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Company</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Left</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<EditMode>EnterOnInput</EditMode>
+									<MaxWidth>63</MaxWidth>
+									<VerticalStretch>false</VerticalStretch>
+									<MultiLine>true</MultiLine>
+									<ExtendedEdit>true</ExtendedEdit>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="ПредставительКонтекстноеМеню" id="11"/>
+									<ExtendedTooltip name="ПредставительРасширеннаяПодсказка" id="12"/>
+									<Events>
+										<Event name="OnChange">ПредставительПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ОтветственныйПредставителя" id="13">
+									<DataPath>Объект.ОтветственныйПредставителя</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ответственный</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Person responsible</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Left</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<EditMode>EnterOnInput</EditMode>
+									<MaxWidth>63</MaxWidth>
+									<VerticalStretch>false</VerticalStretch>
+									<MultiLine>true</MultiLine>
+									<ExtendedEdit>true</ExtendedEdit>
+									<ContextMenu name="ОтветственныйПредставителяКонтекстноеМеню" id="14"/>
+									<ExtendedTooltip name="ОтветственныйПредставителяРасширеннаяПодсказка" id="15"/>
+									<Events>
+										<Event name="OnChange">ОтветственныйПредставителяПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ПередовериеГруппа" id="264">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Передоверие (группа)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sub-authorization (group)</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ThroughAlign>Use</ThroughAlign>
+					<ExtendedTooltip name="ПередовериеГруппаРасширеннаяПодсказка" id="265"/>
+					<ChildItems>
+						<InputField name="Передоверие" id="64">
+							<DataPath>Объект.ВозможноПередоверие</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Передоверие</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Sub-authorization</v8:content>
+								</v8:item>
+							</Title>
+							<Width>32</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ListChoiceMode>true</ListChoiceMode>
+							<ChooseType>false</ChooseType>
+							<TextEdit>false</TextEdit>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>без права передоверия</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>without sub-authorization right</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">1</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>однократное передоверие</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>one-time sub-authorization</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">2</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>с правом последующего передоверия</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>with further sub-authorization right</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">3</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ПередовериеКонтекстноеМеню" id="65"/>
+							<ExtendedTooltip name="ПередовериеРасширеннаяПодсказка" id="66"/>
+							<Events>
+								<Event name="OnChange">ПередовериеПриИзменении</Event>
+							</Events>
+						</InputField>
+						<CheckBoxField name="ПризнакУтратыПолномочийПриПередоверии" id="261">
+							<DataPath>Объект.ПризнакУтратыПолномочийПриПередоверии</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Полномочия утрачиваются при передоверии</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Authorities are lost upon sub-authorization</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПризнакУтратыПолномочийПриПередоверииКонтекстноеМеню" id="262"/>
+							<ExtendedTooltip name="ПризнакУтратыПолномочийПриПередоверииРасширеннаяПодсказка" id="263"/>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="ДополнительныеДанныеГруппа" id="248">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные данные (группа)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional data (group)</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="ДополнительныеДанныеГруппаРасширеннаяПодсказка" id="249"/>
+			<ChildItems>
+				<Page name="ПолномочияТекстомГруппа" id="252">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Полномочия</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Authorities</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ПолномочияТекстомГруппаРасширеннаяПодсказка" id="253"/>
+					<ChildItems>
+						<InputField name="Комментарий" id="31">
+							<DataPath>Объект.Комментарий</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<VerticalStretch>true</VerticalStretch>
+							<MultiLine>true</MultiLine>
+							<ExtendedEdit>true</ExtendedEdit>
+							<ContextMenu name="КомментарийКонтекстноеМеню" id="32"/>
+							<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="33"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="ПодписиГруппа" id="254">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подписи</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Signatures</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ПодписиГруппаРасширеннаяПодсказка" id="255"/>
+					<ChildItems>
+						<Table name="ЭлектронныеПодписи" id="75">
+							<Representation>List</Representation>
+							<ReadOnly>true</ReadOnly>
+							<MaxWidth>77</MaxWidth>
+							<HeightInTableRows>1</HeightInTableRows>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>ЭлектронныеПодписи</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Электронные подписи</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Digital signatures</v8:content>
+								</v8:item>
+							</Title>
+							<CommandSet>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>SelectAll</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ЭлектронныеПодписиКонтекстноеМеню" id="76"/>
+							<AutoCommandBar name="ЭлектронныеПодписиКоманднаяПанель" id="77">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="ЭлектронныеПодписиПодписать" id="111">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Подписать</CommandName>
+										<ExtendedTooltip name="ЭлектронныеПодписиПодписатьРасширеннаяПодсказка" id="112"/>
+									</Button>
+									<Button name="ЭлектронныеПодписиДобавитьПодписьСДиска" id="207">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ДобавитьПодписьСДиска</CommandName>
+										<ExtendedTooltip name="ЭлектронныеПодписиДобавитьПодписьСДискаРасширеннаяПодсказка" id="208"/>
+									</Button>
+									<Button name="ЭлектронныеПодписиОткрыть" id="113">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ОткрытьПодпись</CommandName>
+										<ExtendedTooltip name="ЭлектронныеПодписиОткрытьРасширеннаяПодсказка" id="114"/>
+									</Button>
+									<Button name="ЭлектронныеПодписиПроверить" id="115">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПроверитьЭП</CommandName>
+										<ExtendedTooltip name="ЭлектронныеПодписиПроверитьРасширеннаяПодсказка" id="116"/>
+									</Button>
+									<Button name="ЭлектронныеПодписиПроверитьВсе" id="117">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПроверитьВсе</CommandName>
+										<ExtendedTooltip name="ЭлектронныеПодписиПроверитьВсеРасширеннаяПодсказка" id="118"/>
+									</Button>
+									<Button name="ЭлектронныеПодписиУдалить" id="119">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.УдалитьЭП</CommandName>
+										<ExtendedTooltip name="ЭлектронныеПодписиУдалитьРасширеннаяПодсказка" id="120"/>
+									</Button>
+									<Button name="ЭлектронныеПодписиСохранить" id="121">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.СохранитьПодпись</CommandName>
+										<ExtendedTooltip name="ЭлектронныеПодписиСохранитьРасширеннаяПодсказка" id="122"/>
+									</Button>
+									<Button name="ЭлектронныеПодписиПродлитьДействиеПодписей" id="123">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПродлитьДействиеПодписей</CommandName>
+										<ExtendedTooltip name="ЭлектронныеПодписиПродлитьДействиеПодписейРасширеннаяПодсказка" id="124"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ЭлектронныеПодписиРасширеннаяПодсказка" id="78"/>
+							<SearchStringAddition name="ЭлектронныеПодписиСтрокаПоиска" id="79">
+								<AdditionSource>
+									<Item>ЭлектронныеПодписи</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ЭлектронныеПодписиСтрокаПоискаКонтекстноеМеню" id="80"/>
+								<ExtendedTooltip name="ЭлектронныеПодписиСтрокаПоискаРасширеннаяПодсказка" id="81"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ЭлектронныеПодписиСостояниеПросмотра" id="82">
+								<AdditionSource>
+									<Item>ЭлектронныеПодписи</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ЭлектронныеПодписиСостояниеПросмотраКонтекстноеМеню" id="83"/>
+								<ExtendedTooltip name="ЭлектронныеПодписиСостояниеПросмотраРасширеннаяПодсказка" id="84"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ЭлектронныеПодписиУправлениеПоиском" id="85">
+								<AdditionSource>
+									<Item>ЭлектронныеПодписи</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ЭлектронныеПодписиУправлениеПоискомКонтекстноеМеню" id="86"/>
+								<ExtendedTooltip name="ЭлектронныеПодписиУправлениеПоискомРасширеннаяПодсказка" id="87"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ЭлектронныеПодписиВыбор</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="ЭлектронныеПодписиКомуВыданСертификат" id="128">
+									<DataPath>ЭлектронныеПодписи.КомуВыданСертификат</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<Height>2</Height>
+									<ContextMenu name="ЭлектронныеПодписиКомуВыданСертификатКонтекстноеМеню" id="129"/>
+									<ExtendedTooltip name="ЭлектронныеПодписиКомуВыданСертификатРасширеннаяПодсказка" id="130"/>
+								</InputField>
+								<InputField name="ЭлектронныеПодписиТипПодписи" id="167">
+									<DataPath>ЭлектронныеПодписи.ТипПодписи</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ЭлектронныеПодписиТипПодписиКонтекстноеМеню" id="168"/>
+									<ExtendedTooltip name="ЭлектронныеПодписиТипПодписиРасширеннаяПодсказка" id="169"/>
+								</InputField>
+								<InputField name="ЭлектронныеПодписиДатаПодписи" id="131">
+									<DataPath>ЭлектронныеПодписи.ДатаПодписи</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ЭлектронныеПодписиДатаПодписиКонтекстноеМеню" id="132"/>
+									<ExtendedTooltip name="ЭлектронныеПодписиДатаПодписиРасширеннаяПодсказка" id="133"/>
+								</InputField>
+								<ColumnGroup name="ЭлектронныеПодписиПроверка" id="97">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Электронные подписи проверка</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Digital signatures validation</v8:content>
+										</v8:item>
+									</Title>
+									<Height>2</Height>
+									<Group>InCell</Group>
+									<ExtendedTooltip name="ЭлектронныеПодписиПроверкаРасширеннаяПодсказка" id="98"/>
+									<ChildItems>
+										<InputField name="ЭлектронныеПодписиСтатус" id="137">
+											<DataPath>ЭлектронныеПодписи.Статус</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ЭлектронныеПодписиСтатусКонтекстноеМеню" id="138"/>
+											<ExtendedTooltip name="ЭлектронныеПодписиСтатусРасширеннаяПодсказка" id="139"/>
+										</InputField>
+										<InputField name="ЭлектронныеПодписиОписаниеОшибки" id="164">
+											<DataPath>ЭлектронныеПодписи.ОписаниеОшибки</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ЭлектронныеПодписиОписаниеОшибкиКонтекстноеМеню" id="165"/>
+											<ExtendedTooltip name="ЭлектронныеПодписиОписаниеОшибкиРасширеннаяПодсказка" id="166"/>
+										</InputField>
+										<InputField name="ЭлектронныеПодписиДатаПроверкиПодписи" id="158">
+											<DataPath>ЭлектронныеПодписи.ДатаПроверкиПодписи</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ЭлектронныеПодписиДатаПроверкиПодписиКонтекстноеМеню" id="159"/>
+											<ExtendedTooltip name="ЭлектронныеПодписиДатаПроверкиПодписиРасширеннаяПодсказка" id="160"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<InputField name="ЭлектронныеПодписиКомментарий" id="134">
+									<DataPath>ЭлектронныеПодписи.Комментарий</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<EditMode>EnterOnInput</EditMode>
+									<Height>2</Height>
+									<ContextMenu name="ЭлектронныеПодписиКомментарийКонтекстноеМеню" id="135"/>
+									<ExtendedTooltip name="ЭлектронныеПодписиКомментарийРасширеннаяПодсказка" id="136"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<InputField name="Наименование" id="1">
+			<DataPath>Объект.Description</DataPath>
+			<UserVisible>
+				<xr:Common>false</xr:Common>
+			</UserVisible>
+			<SkipOnInput>true</SkipOnInput>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="3"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.УдалитьМашиночитаемыеДоверенностиКЭДО</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Отозвана" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отозвана</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Revoked</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="АдресДоверенности" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес доверенности</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Authorization letter address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СоздатьИзФайла" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать из файла</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create from file</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭлектронныеПодписи" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Электронные подписи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Digital signatures</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="КомуВыданСертификат" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Автор подписи</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Signed by</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаПодписи" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата подписи</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date signed</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Комментарий" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Comment</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Статус" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Status</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Объект" id="5">
+					<Type>
+						<v8:TypeSet>cfg:AnyIBRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="АдресПодписи" id="6">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Отпечаток" id="7">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПодписьВерна" id="8">
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="УстановившийПодпись" id="11">
+					<Type>
+						<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
+					</Type>
+				</Column>
+				<Column name="АдресСертификата" id="9">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаПроверкиПодписи" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата проверки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Revised on</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПорядковыйНомер" id="12">
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>0</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ОписаниеОшибки" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание ошибки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Error description</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ТипПодписи" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип подписи</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Signature type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.ТипыПодписиКриптографии</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СрокДействияПоследнейМеткиВремени" id="15">
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ТребуетсяПроверка" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Требуется проверка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Verification required</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ИмяФайлаДоверенности" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя файла доверенности</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Name of authorization letter file</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗначенияРеквизитовОбъектов" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Значения реквизитов объектов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object attribute values</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="Состояние" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>State</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.УдалитьСостоянияМЧДКЭДО</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Подписать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подписать ...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sign...</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Подписать</Action>
+		</Command>
+		<Command name="ПроверитьЭП" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить ЭП</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check the digital signature</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроверитьЭП</Action>
+		</Command>
+		<Command name="ПроверитьВсе" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить все</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Validate all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить все</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Validate all</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроверитьВсе</Action>
+		</Command>
+		<Command name="УдалитьЭП" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delete</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить ЭП</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delete the digital signature</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УдалитьЭП</Action>
+		</Command>
+		<Command name="СохранитьПодпись" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить подпись</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save the signature</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СохранитьПодпись</Action>
+		</Command>
+		<Command name="ОткрытьПодпись" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть подпись</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open the signature.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьПодпись</Action>
+		</Command>
+		<Command name="ПродлитьДействиеПодписей" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продлить действие...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Renew signature...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продлить действие подписей</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Renew signatures.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПродлитьДействиеПодписей</Action>
+		</Command>
+		<Command name="ДобавитьПодписьСДиска" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Из файла</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>From file</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить подпись с диска</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add a signature from the hard drive</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ЗагрузитьФайлСертификата</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ДобавитьПодписьСДиска</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Зарегистрировать" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Зарегистрировать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Зарегистрировать в реестре</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register in the registry</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Зарегистрировать</Action>
+		</Command>
+		<Command name="ПроверитьСостояние" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить состояние</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check state</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить состояние</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check the state</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроверитьСостояние</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="СоздатьИзФайла">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>InformationRegister.ЭлектронныеПодписиКЭДО.StandardCommand.OpenByValue.ПодписанныйОбъект</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.УдалитьСостоянияМЧДКЭДО.StandardCommand.OpenByValue.МЧД</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

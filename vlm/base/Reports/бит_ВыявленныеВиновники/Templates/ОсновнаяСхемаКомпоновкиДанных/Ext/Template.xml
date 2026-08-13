@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Период</dataPath>
+			<field>Период</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОкончательныйБракКоличество</dataPath>
+			<field>ОкончательныйБракКоличество</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Окончательный брак количество</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктНомер</dataPath>
+			<field>АктНомер</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>№ Акта</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОкончательныйБракСумма</dataPath>
+			<field>ОкончательныйБракСумма</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Окончательный брак сумма</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ФИОВиновника</dataPath>
+			<field>ФИОВиновника</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ф.И.О. виновника</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИсправленныйБракКоличество</dataPath>
+			<field>ИсправленныйБракКоличество</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исправленный брак количество</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИсправленныйБракСумма</dataPath>
+			<field>ИсправленныйБракСумма</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исправленный брак сумма</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>бит_Номенклатура</dataPath>
+			<field>бит_Номенклатура</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Маркоразмер</dataPath>
+			<field>Маркоразмер</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Маркоразмер</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор</dataPath>
+			<field>Регистратор</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	бит_БракВозвратСрезкаПродукции.Номенклатура КАК Номенклатура,
+	бит_БракВозвратСрезкаПродукции.ВиновноеЛицо КАК ФИОВиновника,
+	бит_БракВозвратСрезкаПродукции.КоличествоИсправимогоБракаПоВинеРаботника КАК ИсправленныйБракКоличество,
+	бит_БракВозвратСрезкаПродукции.СтоимостьИсправимогоБракаПоВинеРаботника КАК ИсправленныйБракСумма,
+	бит_БракВозвратСрезкаПродукции.КоличествоОкончательногоБракаПоВинеРаботника КАК ОкончательныйБракКоличество,
+	бит_БракВозвратСрезкаПродукции.СтоимостьОкончательногоБракаПоВинеРаботника КАК ОкончательныйБракСумма,
+	НАЧАЛОПЕРИОДА(бит_БракВозвратСрезкаПродукции.Регистратор.Дата, ДЕНЬ) КАК Период,
+	бит_БракВозвратСрезкаПродукции.Регистратор.Номер + ВЫБОР
+		КОГДА бит_БракВозвратСрезкаПродукции.Регистратор ССЫЛКА Документ.ЗаявкаНаВозвратТоваровОтКлиента
+			ТОГДА "(В)"
+		ИНАЧЕ ""
+	КОНЕЦ КАК АктНомер,
+	бит_БракВозвратСрезкаПродукции.Регистратор КАК Регистратор
+ПОМЕСТИТЬ База
+ИЗ
+	РегистрСведений.бит_БракВозвратСрезкаПродукции КАК бит_БракВозвратСрезкаПродукции
+ГДЕ
+	бит_БракВозвратСрезкаПродукции.Статус В (ЗНАЧЕНИЕ(Перечисление.бит_СтатусыОБраке.РассмотренНаКомиссии), ЗНАЧЕНИЕ(Перечисление.бит_СтатусРекламации.Признана), ЗНАЧЕНИЕ(Перечисление.бит_СтатусРекламации.ПризнанаЧастично))
+{ГДЕ
+	(НАЧАЛОПЕРИОДА(бит_БракВозвратСрезкаПродукции.Регистратор.Дата, ДЕНЬ) &gt;= &amp;НачалоПериода),
+	(КОНЕЦПЕРИОДА(бит_БракВозвратСрезкаПродукции.Регистратор.Дата, ДЕНЬ) &lt;= &amp;КонецПериода)}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	База.Номенклатура КАК Номенклатура,
+	База.ФИОВиновника КАК ФИОВиновника,
+	СУММА(База.ИсправленныйБракКоличество) КАК ИсправленныйБракКоличество,
+	СУММА(База.ИсправленныйБракСумма) КАК ИсправленныйБракСумма,
+	СУММА(База.ОкончательныйБракКоличество) КАК ОкончательныйБракКоличество,
+	СУММА(База.ОкончательныйБракСумма) КАК ОкончательныйБракСумма,
+	База.Период КАК Период,
+	База.АктНомер КАК АктНомер,
+	ЕСТЬNULL(влПризнакМАРКА.Маркоразмер, "") КАК Маркоразмер,
+	База.Регистратор КАК Регистратор
+ИЗ
+	База КАК База
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ РАЗЛИЧНЫЕ
+			бит_ЗначенияПризнаковНоменклатуры.бит_Номенклатура КАК бит_Номенклатура,
+			бит_ЗначенияПризнаковНоменклатуры.бит_Значение КАК Маркоразмер
+		ИЗ
+			РегистрСведений.бит_ЗначенияПризнаковНоменклатуры КАК бит_ЗначенияПризнаковНоменклатуры
+				ВНУТРЕННЕЕ СОЕДИНЕНИЕ База КАК База
+				ПО бит_ЗначенияПризнаковНоменклатуры.бит_Номенклатура = База.Номенклатура
+		ГДЕ
+			бит_ЗначенияПризнаковНоменклатуры.бит_Признак В
+					(ВЫБРАТЬ ПЕРВЫЕ 1
+						бит_ЗначенияПоУмолчаниюЗначения.Значение КАК Значение
+					ИЗ
+						Справочник.бит_ЗначенияПоУмолчанию.Значения КАК бит_ЗначенияПоУмолчаниюЗначения
+					ГДЕ
+						бит_ЗначенияПоУмолчаниюЗначения.Ссылка = ЗНАЧЕНИЕ(Справочник.бит_ЗначенияПоУмолчанию.ПризнакMARKA))) КАК влПризнакМАРКА
+		ПО (влПризнакМАРКА.бит_Номенклатура = База.Номенклатура)
+
+СГРУППИРОВАТЬ ПО
+	База.АктНомер,
+	База.Период,
+	ЕСТЬNULL(влПризнакМАРКА.Маркоразмер, ""),
+	База.Номенклатура,
+	База.ФИОВиновника,
+	База.Регистратор
+
+УПОРЯДОЧИТЬ ПО
+	АктНомер</query>
+	</dataSet>
+	<totalField>
+		<dataPath>ИсправленныйБракКоличество</dataPath>
+		<expression>Сумма(ИсправленныйБракКоличество)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ИсправленныйБракСумма</dataPath>
+		<expression>Сумма(ИсправленныйБракСумма)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОкончательныйБракКоличество</dataPath>
+		<expression>Сумма(ОкончательныйБракКоличество)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОкончательныйБракСумма</dataPath>
+		<expression>Сумма(ОкончательныйБракСумма)</expression>
+	</totalField>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выявленные виновники</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Основной</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Маркоразмер</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ФИОВиновника</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Окончательный брак (отходы)</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ОкончательныйБракКоличество</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество, кг</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ОкончательныйБракСумма</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Сумма, руб</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:placement>Horizontally</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исправленный брак (перемотанный)</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИсправленныйБракКоличество</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество, кг</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИсправленныйБракСумма</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Сумма, руб</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>АктНомер</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>1f94e23f-ce4b-43bc-9501-0a3ec18ccb94</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>РасположениеГруппировки</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionGroupPlacement">BeginAndEnd</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Output</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выявленные виновники</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>АвтоПозицияРесурсов</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionResourcesAutoPosition">DontUse</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

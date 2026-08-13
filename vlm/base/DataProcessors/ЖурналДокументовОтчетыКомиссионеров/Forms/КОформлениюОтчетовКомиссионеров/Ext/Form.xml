@@ -1,0 +1,982 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Отчеты комиссионеров о продажах/Реализации через комиссионеров (к оформлению)</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Consignment notifications and invoices via consignee (to register)</v8:content>
+		</v8:item>
+	</Title>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeLoadDataFromSettingsAtServer">ПередЗагрузкойДанныхИзНастроекНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="542">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header group</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="543"/>
+		</UsualGroup>
+		<UsualGroup name="ГруппаКОформлению" id="614">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>К оформлению</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>To register</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКОформлениюРасширеннаяПодсказка" id="615"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаКОформлениюБыстрыеОтборы" id="755">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа к оформлению быстрые отборы</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group to registration quick filter</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаКОформлениюБыстрыеОтборыРасширеннаяПодсказка" id="756"/>
+					<ChildItems>
+						<InputField name="Организация" id="471">
+							<DataPath>Организация</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ClearButton>true</ClearButton>
+							<OpenButton>false</OpenButton>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Организация</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Company</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="ОрганизацияКонтекстноеМеню" id="472"/>
+							<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="473"/>
+							<Events>
+								<Event name="OnChange">ОрганизацияПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="Комиссионер" id="483">
+							<DataPath>Комиссионер</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ClearButton>true</ClearButton>
+							<OpenButton>false</OpenButton>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Комиссионер</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Consignee</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="КомиссионерКонтекстноеМеню" id="484"/>
+							<ExtendedTooltip name="КомиссионерРасширеннаяПодсказка" id="485"/>
+							<Events>
+								<Event name="OnChange">КомиссионерПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<Table name="СписокНаОформление" id="206">
+					<Representation>List</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<MultipleChoice>true</MultipleChoice>
+					<SelectionMode>SingleRow</SelectionMode>
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<EnableStartDrag>true</EnableStartDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>СписокНаОформление</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список назначений  на оформление</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Purpose list for registration</v8:content>
+						</v8:item>
+					</Title>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>true</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+					<ContextMenu name="СписокНаОформлениеКонтекстноеМеню" id="207"/>
+					<AutoCommandBar name="СписокНаОформлениеКоманднаяПанель" id="208">
+						<ChildItems>
+							<Button name="СписокНаОформлениеОформитьОтчет" id="371">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ОформитьОтчетКомиссионера</CommandName>
+								<ExtendedTooltip name="СписокНаОформлениеОформитьОтчетРасширеннаяПодсказка" id="372"/>
+							</Button>
+							<Button name="СписокНаОформлениеОформитьРеализациюЧерезКомиссионера" id="775">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ОформитьРеализациюЧерезКомиссионера</CommandName>
+								<ExtendedTooltip name="СписокНаОформлениеОформитьРеализациюЧерезКомиссионераРасширеннаяПодсказка" id="776"/>
+							</Button>
+							<Button name="СписокНаОформлениеИзменитьФорму" id="357">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+								<ExtendedTooltip name="СписокНаОформлениеИзменитьФормуРасширеннаяПодсказка" id="358"/>
+							</Button>
+							<Button name="СписокНаОформлениеСправка" id="283">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.StandardCommand.Help</CommandName>
+								<ExtendedTooltip name="СписокНаОформлениеСправкаРасширеннаяПодсказка" id="284"/>
+							</Button>
+							<Button name="СписокНаОформлениеНайти" id="452">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.СписокНаОформление.StandardCommand.Find</CommandName>
+								<ExtendedTooltip name="СписокНаОформлениеНайтиРасширеннаяПодсказка" id="453"/>
+							</Button>
+							<Button name="СписокНаОформлениеОтменитьПоиск" id="454">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.СписокНаОформление.StandardCommand.CancelSearch</CommandName>
+								<ExtendedTooltip name="СписокНаОформлениеОтменитьПоискРасширеннаяПодсказка" id="455"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="СписокНаОформлениеРасширеннаяПодсказка" id="209"/>
+					<SearchStringAddition name="СписокНаОформлениеСтрокаПоиска" id="210">
+						<AdditionSource>
+							<Item>СписокНаОформление</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокНаОформлениеСтрокаПоискаКонтекстноеМеню" id="213"/>
+						<ExtendedTooltip name="СписокНаОформлениеСтрокаПоискаРасширеннаяПодсказка" id="214"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="СписокНаОформлениеСостояниеПросмотра" id="215">
+						<AdditionSource>
+							<Item>СписокНаОформление</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<HorizontalLocation>Left</HorizontalLocation>
+						<ContextMenu name="СписокНаОформлениеСостояниеПросмотраКонтекстноеМеню" id="218"/>
+						<ExtendedTooltip name="СписокНаОформлениеСостояниеПросмотраРасширеннаяПодсказка" id="219"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="СписокНаОформлениеУправлениеПоиском" id="220">
+						<AdditionSource>
+							<Item>СписокНаОформление</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокНаОформлениеУправлениеПоискомКонтекстноеМеню" id="223"/>
+						<ExtendedTooltip name="СписокНаОформлениеУправлениеПоискомРасширеннаяПодсказка" id="224"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="OnActivateRow">СписокНаОформлениеПриАктивизацииСтроки</Event>
+					</Events>
+					<ChildItems>
+						<LabelField name="СписокНаОформлениеКомиссионер" id="495">
+							<DataPath>СписокНаОформление.Партнер</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Комиссионер</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Consignee</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="СписокНаОформлениеКомиссионерКонтекстноеМеню" id="496"/>
+							<ExtendedTooltip name="СписокНаОформлениеКомиссионерРасширеннаяПодсказка" id="497"/>
+						</LabelField>
+						<LabelField name="СписокНаОформлениеКонтрагент" id="772">
+							<DataPath>СписокНаОформление.Контрагент</DataPath>
+							<ContextMenu name="СписокНаОформлениеКонтрагентКонтекстноеМеню" id="773"/>
+							<ExtendedTooltip name="СписокНаОформлениеКонтрагентРасширеннаяПодсказка" id="774"/>
+						</LabelField>
+						<LabelField name="СписокНаОформлениеДоговорСКомиссионером" id="524">
+							<DataPath>СписокНаОформление.Договор</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Договор с комиссионером</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Contract with consignee</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="СписокНаОформлениеДоговорСКомиссионеромКонтекстноеМеню" id="525"/>
+							<ExtendedTooltip name="СписокНаОформлениеДоговорСКомиссионеромРасширеннаяПодсказка" id="526"/>
+						</LabelField>
+						<LabelField name="СписокНаОформлениеОрганизация" id="507">
+							<DataPath>СписокНаОформление.Организация</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Организация</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Company</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="СписокНаОформлениеОрганизацияКонтекстноеМеню" id="508"/>
+							<ExtendedTooltip name="СписокНаОформлениеОрганизацияРасширеннаяПодсказка" id="509"/>
+						</LabelField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<LabelField name="СмТакжеВРаботе" id="777">
+			<DataPath>СмТакжеВРаботе</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="СмТакжеВРаботеКонтекстноеМеню" id="778"/>
+			<ExtendedTooltip name="СмТакжеВРаботеРасширеннаяПодсказка" id="779"/>
+			<Events>
+				<Event name="URLProcessing">СмТакжеВРаботеОбработкаНавигационнойСсылки</Event>
+			</Events>
+		</LabelField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СтруктураБыстрогоОтбора" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Структура быстрого отбора</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick filter structure</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="СписокНаОформление" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список на оформление</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List to register</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>~СписокНаОформление.АналитикаУчетаНоменклатурыДоговор</Field>
+				<Field>~СписокНаОформление.Валюта</Field>
+				<Field>~СписокНаОформление.ГруппаФинансовогоУчета</Field>
+				<Field>~СписокНаОформление.ДоговорСКомитентом</Field>
+				<Field>~СписокНаОформление.ДокументПриобретения</Field>
+				<Field>~СписокНаОформление.Комиссионер</Field>
+				<Field>~СписокНаОформление.Комитент</Field>
+				<Field>~СписокНаОформление.КонтрагентКомитент</Field>
+				<Field>~СписокНаОформление.Назначение</Field>
+				<Field>~СписокНаОформление.НалогообложениеНДС</Field>
+				<Field>~СписокНаОформление.НаправлениеДеятельности</Field>
+				<Field>~СписокНаОформление.Поставщик</Field>
+				<Field>~СписокНаОформление.Распоряжение</Field>
+				<Field>~СписокНаОформление.Соглашение</Field>
+				<Field>~СписокНаОформление.Ссылка</Field>
+				<Field>~СписокНаОформление.ЦенаВключаетНДС</Field>
+				<Field>СписокНаОформление.ВестиРасчетыЧерезКонечныхПокупателей</Field>
+				<Field>СписокНаОформление.Договор</Field>
+				<Field>СписокНаОформление.Контрагент</Field>
+				<Field>СписокНаОформление.Организация</Field>
+				<Field>СписокНаОформление.ПорядокРасчетов</Field>
+			</UseAlways>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьКомиссиюПриПродажах</Item>
+			</FunctionalOptions>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ТоварыОрганизаций.Организация КАК Организация,
+	ТоварыОрганизаций.АналитикаУчетаНоменклатуры.Партнер КАК Партнер,
+	ТоварыОрганизаций.АналитикаУчетаНоменклатуры.Договор КАК Договор,
+	ТоварыОрганизаций.АналитикаУчетаНоменклатуры.Контрагент КАК Контрагент,
+	ДоговорыКонтрагентов.ВестиРасчетыЧерезКонечныхПокупателей КАК ВестиРасчетыЧерезКонечныхПокупателей,
+	ДоговорыКонтрагентов.ПорядокРасчетов КАК ПорядокРасчетов
+		ИЗ
+	РегистрНакопления.ТоварыОрганизаций.Остатки(
+			,
+			АналитикаУчетаНоменклатуры.МестоХранения &lt;&gt; ЗНАЧЕНИЕ(Справочник.Партнеры.НашеПредприятие)
+				И АналитикаУчетаНоменклатуры.ТипМестаХранения = ЗНАЧЕНИЕ(Перечисление.ТипыМестХранения.ДоговорКонтрагента)) КАК ТоварыОрганизаций
+	ЛЕВОЕ СОЕДИНЕНИЕ
+		Справочник.ДоговорыКонтрагентов КАК ДоговорыКонтрагентов
+		ПО ТоварыОрганизаций.АналитикаУчетаНоменклатуры.Договор = ДоговорыКонтрагентов.Ссылка
+ГДЕ ТоварыОрганизаций.КоличествоОстаток &gt; 0
+	И ДоговорыКонтрагентов.КомиссионныеПродажи25
+	
+СГРУППИРОВАТЬ ПО
+	ТоварыОрганизаций.Организация,
+	ТоварыОрганизаций.АналитикаУчетаНоменклатуры.Партнер,
+	ТоварыОрганизаций.АналитикаУчетаНоменклатуры.Договор,
+	ТоварыОрганизаций.АналитикаУчетаНоменклатуры.Контрагент,
+	ДоговорыКонтрагентов.ВестиРасчетыЧерезКонечныхПокупателей,
+	ДоговорыКонтрагентов.ПорядокРасчетов</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Организация</dcssch:dataPath>
+					<dcssch:field>Организация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Контрагент</dcssch:dataPath>
+					<dcssch:field>Контрагент</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагент</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Партнер</dcssch:dataPath>
+					<dcssch:field>Партнер</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Партнер</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Partner</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>АналитикаУчетаНоменклатуры</dcssch:dataPath>
+					<dcssch:field>АналитикаУчетаНоменклатуры</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПорядокРасчетов</dcssch:dataPath>
+					<dcssch:field>ПорядокРасчетов</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВестиРасчетыЧерезКонечныхПокупателей</dcssch:dataPath>
+					<dcssch:field>ВестиРасчетыЧерезКонечныхПокупателей</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Договор</dcssch:dataPath>
+					<dcssch:field>Договор</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Договор</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Contract</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидЗапасов</dcssch:dataPath>
+					<dcssch:field>ВидЗапасов</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерГТД</dcssch:dataPath>
+					<dcssch:field>НомерГТД</dcssch:field>
+				</Field>
+				<Parameter>
+					<dcssch:name>Период</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Period</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</dcssch:valueType>
+					<dcssch:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcssch:value>
+					<dcssch:useRestriction>false</dcssch:useRestriction>
+				</Parameter>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ИспользоватьАктыВыполненныхРаботПоНесколькимЗаказам" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать Акт выполненных работ по нескольким заказам</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use "Customer invoice — Services" for several orders</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьРасширенныеВозможностиЗаказаКлиента" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать расширенные возможности заказа клиента</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use advanced features of sales order</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Организация" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+			<Save>
+				<Field>Организация</Field>
+			</Save>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьНесколькоОрганизаций</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="РежимБезВопросов" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим без вопросов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mode with no confirmations</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НеОткрыватьФормуСозданногоДокумента" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не открывать форму созданного документа</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Do not open form of created document</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Save>
+				<Field>НеОткрыватьФормуСозданногоДокумента</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="СохраненыНастройкиОформления" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки оформления сохранены</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Registration settings saved</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>СохраненыНастройкиОформления</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Комиссионер" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Комиссионер</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Consignee</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Партнеры</v8:Type>
+			</Type>
+			<Save>
+				<Field>Комиссионер</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="СписокОтбора" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список отбора</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Организация" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Партнер" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комиссионер</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Consignee</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Партнеры</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Договор" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Договор</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Contract</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ДоговорыКонтрагентов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Контрагент" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагент</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ИспользоватьПодключаемоеОборудование" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать подключаемое оборудование</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use peripherals</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Attachable command parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ПоддерживаемыеТипыПодключаемогоОборудования" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поддерживаемые типы подключаемого оборудования</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Supported peripheral types</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СмТакжеВРаботе" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>К оформлению</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>To register</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:FormattedString</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторЗадания" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор задания</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Job ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресХранилища" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес хранилища</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Storage address </v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОформитьОтчетКомиссионера" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить отчет комиссионера</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register consignment notification</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить отчет комиссионера</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register consignment notification</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ОформитьПоРаспоряжению</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ОформитьОтчетКомиссионера</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОформитьРеализациюЧерезКомиссионера" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить реализацию через комиссионера</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Issue invoices via consignee</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить реализацию через комиссионера</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Issue invoices via consignee</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ОформитьПоРаспоряжению</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ОформитьРеализациюЧерезКомиссионера</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="СтруктураБыстрогоОтбора">
+			<Type/>
+		</Parameter>
+		<Parameter name="ЗаголовокФормы">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>CommonCommand.ИнтеграцияС1СДокументооборотСоздатьПисьмо</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ИнтеграцияС1СДокументооборотСоздатьБизнесПроцесс</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>BusinessProcess.Задание.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Document.ЗаявкаНаРасходованиеДенежныхСредств.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Document.ПоступлениеБезналичныхДенежныхСредств.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Document.ПриходныйКассовыйОрдер.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.СозданиеСвязанныхОбъектов</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Document.РасходныйКассовыйОрдер.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Document.СписаниеБезналичныхДенежныхСредств.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Document.СчетНаОплатуКлиенту.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ИсторияИзменений</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>DataProcessor.ОтражениеДокументовВРеглУчете.Command.ПроводкиРеглУчета</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<Index>2</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ДополнительныеСведенияКоманднаяПанель</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.Напомнить</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ОтправитьSMS</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ОтправитьПисьмо</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.СоздатьЗаметкуПоПредмету</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>DataProcessor.ОтражениеДокументовВМеждународномУчете.Command.ПроводкиДокументаОперативногоУчета</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

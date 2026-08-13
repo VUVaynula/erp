@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Оформление возвратов от комиссионеров</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Register returns from commission agents</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаИнформация" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа информация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information group</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаИнформацияРасширеннаяПодсказка" id="11"/>
+			<ChildItems>
+				<PictureDecoration name="ДекорацияКартинкаИнформация" id="12">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Декорация картинка информация</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Decoration image information</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.ВажнаяИнформация32</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="ДекорацияКартинкаИнформацияКонтекстноеМеню" id="13"/>
+					<ExtendedTooltip name="ДекорацияКартинкаИнформацияРасширеннаяПодсказка" id="14"/>
+				</PictureDecoration>
+				<LabelDecoration name="ДекорацияИнформация" id="15">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<TextColor>style:ТекстСправочнойНадписи</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выделите строки и оформите возвраты от комиссионеров импортных товаров, подлежащих прослеживаемости, на "виртуальный" склад для оформления уведомления об остатках и получения РНПТ</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Select rows and register returns from commission agents of imported goods to be traced to the "virtual" warehouse to register a balance notification and receive a goods batch registration number</v8:content>
+						</v8:item>
+					</Title>
+					<GroupVerticalAlign>Center</GroupVerticalAlign>
+					<ContextMenu name="ДекорацияИнформацияКонтекстноеМеню" id="16"/>
+					<ExtendedTooltip name="ДекорацияИнформацияРасширеннаяПодсказка" id="17"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ТаблицаКОформлению" id="18">
+			<Representation>List</Representation>
+			<ReadOnly>true</ReadOnly>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ТаблицаКОформлению</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ТаблицаКОформлениюКонтекстноеМеню" id="19"/>
+			<AutoCommandBar name="ТаблицаКОформлениюКоманднаяПанель" id="20">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ТаблицаКОформлениюОформитьВозврат" id="43">
+						<Type>CommandBarButton</Type>
+						<DefaultButton>true</DefaultButton>
+						<CommandName>Form.Command.ОформитьВозврат</CommandName>
+						<ExtendedTooltip name="ТаблицаКОформлениюОформитьВозвратРасширеннаяПодсказка" id="44"/>
+					</Button>
+					<Button name="ТаблицаКОформлениюОформитьВсеВозвраты" id="45">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ОформитьВсеВозвраты</CommandName>
+						<ExtendedTooltip name="ТаблицаКОформлениюОформитьВсеВозвратыРасширеннаяПодсказка" id="46"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ТаблицаКОформлениюРасширеннаяПодсказка" id="21"/>
+			<SearchStringAddition name="ТаблицаКОформлениюСтрокаПоиска" id="22">
+				<AdditionSource>
+					<Item>ТаблицаКОформлению</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаКОформлениюСтрокаПоискаКонтекстноеМеню" id="23"/>
+				<ExtendedTooltip name="ТаблицаКОформлениюСтрокаПоискаРасширеннаяПодсказка" id="24"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ТаблицаКОформлениюСостояниеПросмотра" id="25">
+				<AdditionSource>
+					<Item>ТаблицаКОформлению</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаКОформлениюСостояниеПросмотраКонтекстноеМеню" id="26"/>
+				<ExtendedTooltip name="ТаблицаКОформлениюСостояниеПросмотраРасширеннаяПодсказка" id="27"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ТаблицаКОформлениюУправлениеПоиском" id="28">
+				<AdditionSource>
+					<Item>ТаблицаКОформлению</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаКОформлениюУправлениеПоискомКонтекстноеМеню" id="29"/>
+				<ExtendedTooltip name="ТаблицаКОформлениюУправлениеПоискомРасширеннаяПодсказка" id="30"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="ТаблицаКОформлениюОрганизация" id="31">
+					<DataPath>ТаблицаКОформлению.Организация</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТаблицаКОформлениюОрганизацияКонтекстноеМеню" id="32"/>
+					<ExtendedTooltip name="ТаблицаКОформлениюОрганизацияРасширеннаяПодсказка" id="33"/>
+				</InputField>
+				<InputField name="ТаблицаКОформлениюКомиссионер" id="34">
+					<DataPath>ТаблицаКОформлению.Комиссионер</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТаблицаКОформлениюКомиссионерКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="ТаблицаКОформлениюКомиссионерРасширеннаяПодсказка" id="36"/>
+				</InputField>
+				<InputField name="ТаблицаКОформлениюСоглашение" id="37">
+					<DataPath>ТаблицаКОформлению.Соглашение</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТаблицаКОформлениюСоглашениеКонтекстноеМеню" id="38"/>
+					<ExtendedTooltip name="ТаблицаКОформлениюСоглашениеРасширеннаяПодсказка" id="39"/>
+				</InputField>
+				<CheckBoxField name="ТаблицаКОформлениюОформленОтчет" id="40">
+					<DataPath>ТаблицаКОформлению.ОформленОтчет</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТаблицаКОформлениюОформленОтчетКонтекстноеМеню" id="41"/>
+					<ExtendedTooltip name="ТаблицаКОформлениюОформленОтчетРасширеннаяПодсказка" id="42"/>
+				</CheckBoxField>
+			</ChildItems>
+		</Table>
+		<Button name="Закрыть" id="47">
+			<Type>UsualButton</Type>
+			<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+			<CommandName>Form.Command.ЗакрытьФорму</CommandName>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="ЗакрытьРасширеннаяПодсказка" id="48"/>
+		</Button>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ПанельАдминистрированияУчетПрослеживаемыхТоваров</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ТаблицаКОформлению" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица к оформлению</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Table to register</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Организация" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Комиссионер" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комиссионер</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Commission agent</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Партнеры</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Соглашение" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Соглашение</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Agreement</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.СоглашенияСКлиентами</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ОформленОтчет" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оформлен отчет</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Report registered</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Склад" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Склад</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Warehouse</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Склады</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОформитьВозврат" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить возврат</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register return</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить возврат</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register return</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОформитьВозврат</Action>
+		</Command>
+		<Command name="ОформитьВсеВозвраты" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить все возвраты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register all returns</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить все возвраты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register all returns</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОформитьВсеВозвраты</Action>
+		</Command>
+		<Command name="ЗакрытьФорму" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть форму</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close form</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть форму</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close form</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗакрытьФорму</Action>
+		</Command>
+	</Commands>
+</Form>

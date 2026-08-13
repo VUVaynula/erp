@@ -1,0 +1,772 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>СписокУзлов</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УзелОбъектаЭксплуатации</dataPath>
+			<field>УзелОбъектаЭксплуатации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Узел объекта эксплуатации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sub-asset</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОбъектЭксплуатации</dataPath>
+			<field>ОбъектЭксплуатации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект эксплуатации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Asset</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	УзлыОбъектовЭксплуатации.Владелец КАК ОбъектЭксплуатации,
+	УзлыОбъектовЭксплуатации.Ссылка КАК УзелОбъектаЭксплуатации
+ИЗ
+	Справочник.УзлыОбъектовЭксплуатации КАК УзлыОбъектовЭксплуатации</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Наработка</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СреднесуточноеЗначение</dataPath>
+			<field>СреднесуточноеЗначение</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Среднесуточное значение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Average daily value</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаВыработкиНазначенногоРесурса</dataPath>
+			<field>ДатаВыработкиНазначенногоРесурса</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата выработки назначенного ресурса</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assigned resource output date</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДЛФ=D</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DLF=D</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РассчитыватьОстаточныйРесурс</dataPath>
+			<field>РассчитыватьОстаточныйРесурс</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рассчитывать остаточный ресурс</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calculate residual lifetime</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПоказательНаработки</dataPath>
+			<field>ПоказательНаработки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показатель наработки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Asset activity measure</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НазначенныйРесурс</dataPath>
+			<field>НазначенныйРесурс</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назначенный ресурс</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assigned resource</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОстаточныйРесурсДней</dataPath>
+			<field>ОстаточныйРесурсДней</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остаточный ресурс дней</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Residual lifetime in days</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТекущееЗначение</dataPath>
+			<field>ТекущееЗначение</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущее значение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current value</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОстаточныйРесурс</dataPath>
+			<field>ОстаточныйРесурс</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остаточный ресурс</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Residual lifetime</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УзелОбъектаЭксплуатации</dataPath>
+			<field>УзелОбъектаЭксплуатации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Узел объекта эксплуатации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sub-asset</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОбъектЭксплуатации</dataPath>
+			<field>ОбъектЭксплуатации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект эксплуатации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Asset</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаРегистрации</dataPath>
+			<field>ДатаРегистрации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата регистрации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Registration date</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДЛФ=D</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DLF=D</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ОбъектыРемонта.Ссылка КАК УзелОбъектаЭксплуатации,
+	ОбъектыРемонта.Владелец КАК ОбъектЭксплуатации,
+	ПоказателиНаработки.ПоказательНаработки КАК ПоказательНаработки,
+	ПоказателиНаработки.РассчитыватьОстаточныйРесурс КАК РассчитыватьОстаточныйРесурс
+ПОМЕСТИТЬ АктуальныеПоказателиОбъектов
+ИЗ
+	Справочник.УзлыОбъектовЭксплуатации КАК ОбъектыРемонта
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Справочник.КлассыОбъектовЭксплуатации.ПоказателиНаработки КАК ПоказателиНаработки
+		ПО ОбъектыРемонта.Класс = ПоказателиНаработки.Ссылка
+
+ГДЕ
+	НЕ ОбъектыРемонта.ПометкаУдаления
+	
+ИНДЕКСИРОВАТЬ ПО
+	УзелОбъектаЭксплуатации,
+	ПоказательНаработки
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	АктуальныеПоказателиОбъектов.УзелОбъектаЭксплуатации КАК УзелОбъектаЭксплуатации,
+	АктуальныеПоказателиОбъектов.ПоказательНаработки КАК ПоказательНаработки,
+	АктуальныеПоказателиОбъектов.РассчитыватьОстаточныйРесурс КАК РассчитыватьОстаточныйРесурс,
+	ПараметрыНаработки.НазначенныйРесурс КАК НазначенныйРесурс
+ПОМЕСТИТЬ ПараметрыНаработки
+ИЗ
+	АктуальныеПоказателиОбъектов КАК АктуальныеПоказателиОбъектов
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.УзлыОбъектовЭксплуатации.ПараметрыУчетаНаработок КАК ПараметрыНаработки
+		ПО АктуальныеПоказателиОбъектов.УзелОбъектаЭксплуатации = ПараметрыНаработки.Ссылка
+			И АктуальныеПоказателиОбъектов.ПоказательНаработки = ПараметрыНаработки.ПоказательНаработки
+
+ИНДЕКСИРОВАТЬ ПО
+	УзелОбъектаЭксплуатации,
+	ПоказательНаработки
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ПараметрыНаработки.УзелОбъектаЭксплуатации КАК УзелОбъектаЭксплуатации,
+	ПараметрыНаработки.ПоказательНаработки КАК ПоказательНаработки,
+	ЕСТЬNULL(НаработкиСрезПоследних.Период, ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)) КАК ДатаРегистрации,
+	ЕСТЬNULL(НаработкиСрезПоследних.Значение, 0) КАК ТекущееЗначение,
+	ЕСТЬNULL(НаработкиСрезПоследних.СреднесуточноеЗначение, 0) КАК СреднесуточноеЗначение,
+	ВЫБОР
+		КОГДА ПараметрыНаработки.РассчитыватьОстаточныйРесурс
+			ТОГДА ПараметрыНаработки.НазначенныйРесурс
+		ИНАЧЕ 0
+	КОНЕЦ КАК НазначенныйРесурс,
+	ВЫБОР
+		КОГДА ПараметрыНаработки.РассчитыватьОстаточныйРесурс
+			ТОГДА ПараметрыНаработки.НазначенныйРесурс - ЕСТЬNULL(НаработкиСрезПоследних.Значение, 0)
+		ИНАЧЕ 0
+	КОНЕЦ КАК ОстаточныйРесурс,
+	ВЫБОР
+		КОГДА НЕ ПараметрыНаработки.РассчитыватьОстаточныйРесурс
+				ИЛИ НаработкиСрезПоследних.СреднесуточноеЗначение ЕСТЬ NULL 
+				ИЛИ НаработкиСрезПоследних.СреднесуточноеЗначение = 0
+			ТОГДА ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)
+		ИНАЧЕ ДОБАВИТЬКДАТЕ(ЕСТЬNULL(НаработкиСрезПоследних.Период, ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)), ДЕНЬ, (ПараметрыНаработки.НазначенныйРесурс - ЕСТЬNULL(НаработкиСрезПоследних.Значение, 0)) / ЕСТЬNULL(НаработкиСрезПоследних.СреднесуточноеЗначение, 0))
+	КОНЕЦ КАК ДатаВыработкиНазначенногоРесурса,
+	ПараметрыНаработки.РассчитыватьОстаточныйРесурс,
+	ВЫБОР
+		КОГДА НЕ ПараметрыНаработки.РассчитыватьОстаточныйРесурс
+				ИЛИ НаработкиСрезПоследних.СреднесуточноеЗначение ЕСТЬ NULL 
+				ИЛИ НаработкиСрезПоследних.СреднесуточноеЗначение = 0
+			ТОГДА 0
+		ИНАЧЕ (ПараметрыНаработки.НазначенныйРесурс - ЕСТЬNULL(НаработкиСрезПоследних.Значение, 0)) / НаработкиСрезПоследних.СреднесуточноеЗначение
+	КОНЕЦ КАК ОстаточныйРесурсДней
+ИЗ
+	ПараметрыНаработки КАК ПараметрыНаработки
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НаработкиОбъектовЭксплуатации.СрезПоследних({&amp;Период}
+				,
+				(ОбъектЭксплуатации, ПоказательНаработки) В
+					(ВЫБРАТЬ
+						ПараметрыНаработки.УзелОбъектаЭксплуатации,
+						ПараметрыНаработки.ПоказательНаработки
+					ИЗ
+						ПараметрыНаработки КАК ПараметрыНаработки)) КАК НаработкиСрезПоследних
+		ПО ПараметрыНаработки.УзелОбъектаЭксплуатации = НаработкиСрезПоследних.ОбъектЭксплуатации
+			И ПараметрыНаработки.ПоказательНаработки = НаработкиСрезПоследних.ПоказательНаработки</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>ПланРемонтов</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидРемонта</dataPath>
+			<field>ВидРемонта</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид ремонта</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>R&amp;M work</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УзелОбъектаЭксплуатации</dataPath>
+			<field>УзелОбъектаЭксплуатации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Узел объекта эксплуатации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sub-asset</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаЗавершенияРемонта</dataPath>
+			<field>ДатаЗавершенияРемонта</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата завершения ремонта</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>R&amp;M completion date</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЗаказНаРемонт</dataPath>
+			<field>ЗаказНаРемонт</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказ на ремонт</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>R&amp;M order</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ПланРемонтов.ВидРемонта,
+	ПланРемонтов.ОбъектЭксплуатации КАК УзелОбъектаЭксплуатации,
+	ПланРемонтов.Период КАК ДатаЗавершенияРемонта,
+	ПланРемонтов.Регистратор КАК ЗаказНаРемонт
+ИЗ
+	РегистрСведений.ПланРемонтов КАК ПланРемонтов
+ГДЕ
+	ПланРемонтов.Активность</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Дефекты</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОписаниеДефекта</dataPath>
+			<field>ОписаниеДефекта</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание дефекта</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Details</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидДефекта</dataPath>
+			<field>ВидДефекта</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид дефекта</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Problem category</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаРегистрацииДефекта</dataPath>
+			<field>ДатаРегистрацииДефекта</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата регистрации дефекта</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>R&amp;M request date</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДЛФ=D</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DLF=D</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УзелОбъектаЭксплуатации</dataPath>
+			<field>УзелОбъектаЭксплуатации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Узел объекта эксплуатации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sub-asset</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтатусДефекта</dataPath>
+			<field>СтатусДефекта</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус дефекта</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Defect status</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	РегистрацияДефектаДефектныеУзлы.Узел КАК УзелОбъектаЭксплуатации,
+	РегистрацияДефектаДефектныеУзлы.ОписаниеДефекта,
+	РегистрацияДефекта.Статус КАК СтатусДефекта,
+	РегистрацияДефекта.Дата КАК ДатаРегистрацииДефекта,
+	РегистрацияДефекта.ВидДефекта
+ИЗ
+	Документ.РегистрацияДефекта.ДефектныеУзлы КАК РегистрацияДефектаДефектныеУзлы
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.РегистрацияДефекта КАК РегистрацияДефекта
+		ПО РегистрацияДефектаДефектныеУзлы.Ссылка = РегистрацияДефекта.Ссылка
+ГДЕ
+	РегистрацияДефекта.Проведен</query>
+	</dataSet>
+	<dataSetLink>
+		<sourceDataSet>СписокУзлов</sourceDataSet>
+		<destinationDataSet>Наработка</destinationDataSet>
+		<sourceExpression>УзелОбъектаЭксплуатации</sourceExpression>
+		<destinationExpression>УзелОбъектаЭксплуатации</destinationExpression>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>СписокУзлов</sourceDataSet>
+		<destinationDataSet>ПланРемонтов</destinationDataSet>
+		<sourceExpression>УзелОбъектаЭксплуатации</sourceExpression>
+		<destinationExpression>УзелОбъектаЭксплуатации</destinationExpression>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>СписокУзлов</sourceDataSet>
+		<destinationDataSet>Дефекты</destinationDataSet>
+		<sourceExpression>УзелОбъектаЭксплуатации</sourceExpression>
+		<destinationExpression>УзелОбъектаЭксплуатации</destinationExpression>
+	</dataSetLink>
+	<totalField>
+		<dataPath>ТекущееЗначение</dataPath>
+		<expression>Сумма(ТекущееЗначение)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СреднесуточноеЗначение</dataPath>
+		<expression>Сумма(СреднесуточноеЗначение)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОстаточныйРесурс</dataPath>
+		<expression>Сумма(ОстаточныйРесурс)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОстаточныйРесурсДней</dataPath>
+		<expression>Сумма(ОстаточныйРесурсДней)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ДатаВыработкиНазначенногоРесурса</dataPath>
+		<expression>Максимум(ДатаВыработкиНазначенногоРесурса)</expression>
+	</totalField>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>На дату</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>As of</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">2020-08-24T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>СостояниеУзлаОбъектаЭксплуатацииКонтекст</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Состояние узла</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Sub-asset state</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>843dbce9-1d56-431a-b6bb-03f5cd0d311b</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние узла</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sub-asset state</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ПоказательНаработки</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					<dcsset:item xsi:type="dcsset:OrderItemField">
+						<dcsset:field>ПоказательНаработки</dcsset:field>
+						<dcsset:orderType>Asc</dcsset:orderType>
+					</dcsset:item>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ТекущееЗначение</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Остаточный ресурс</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Residual lifetime</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ОстаточныйРесурс</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Наработки</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Asset activity</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ОстаточныйРесурсДней</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Времени</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Time</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:placement>Horizontally</dcsset:placement>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДатаВыработкиНазначенногоРесурса</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+						<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Наработка</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Asset activity</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ВидРемонта</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ДатаЗавершенияРемонта</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					<dcsset:item xsi:type="dcsset:OrderItemField">
+						<dcsset:field>ДатаЗавершенияРемонта</dcsset:field>
+						<dcsset:orderType>Asc</dcsset:orderType>
+					</dcsset:item>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Ремонты</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>R&amp;M works</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ВидДефекта</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ОписаниеДефекта</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>СтатусДефекта</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ДатаРегистрацииДефекта</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					<dcsset:item xsi:type="dcsset:OrderItemField">
+						<dcsset:field>ДатаРегистрацииДефекта</dcsset:field>
+						<dcsset:orderType>Asc</dcsset:orderType>
+					</dcsset:item>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Дефекты</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Defects</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

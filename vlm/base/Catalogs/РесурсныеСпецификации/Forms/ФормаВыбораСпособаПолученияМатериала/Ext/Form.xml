@@ -1,0 +1,986 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Способ получения</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Receipt method</v8:content>
+		</v8:item>
+	</Title>
+	<Width>55</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаОК" id="159">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ОК</CommandName>
+				<ExtendedTooltip name="ФормаОКРасширеннаяПодсказка" id="160"/>
+			</Button>
+			<Button name="ФормаЗакрыть" id="39">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отмена</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Cancel</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаЗакрытьРасширеннаяПодсказка" id="40"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаОбеспечивать" id="183">
+			<EnableContentChange>true</EnableContentChange>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обеспечивать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Supply</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОбеспечиватьРасширеннаяПодсказка" id="185"/>
+			<ChildItems>
+				<RadioButtonField name="СпособОбеспечивать" id="79">
+					<DataPath>СпособПолученияМатериала</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Обеспечивать</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Supply</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.СпособыПолученияМатериаловВСпецификации.EnumValue.Обеспечивать</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="СпособОбеспечиватьКонтекстноеМеню" id="80"/>
+					<ExtendedTooltip name="СпособОбеспечиватьРасширеннаяПодсказка" id="81"/>
+					<Events>
+						<Event name="OnChange">СпособПолученияМатериалаПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<UsualGroup name="ГруппаСоставПоСпецификации" id="172">
+					<EnableContentChange>true</EnableContentChange>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состав по спецификации</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Composition according to BOM</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСоставПоСпецификацииРасширеннаяПодсказка" id="173"/>
+					<ChildItems>
+						<LabelDecoration name="Декорация1" id="174">
+							<Width>1</Width>
+							<ContextMenu name="Декорация1КонтекстноеМеню" id="175"/>
+							<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="176"/>
+						</LabelDecoration>
+						<CheckBoxField name="ОтметкаСоставПоСпецификации" id="180">
+							<DataPath>ОтметкаСоставПоСпецификации</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ОтметкаСоставПоСпецификацииКонтекстноеМеню" id="181"/>
+							<ExtendedTooltip name="ОтметкаСоставПоСпецификацииРасширеннаяПодсказка" id="182"/>
+							<Events>
+								<Event name="OnChange">ОтметкаСоставПоСпецификацииПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<InputField name="СпецификацияНабора" id="177">
+							<DataPath>Спецификация</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ChoiceButton>true</ChoiceButton>
+							<ClearButton>true</ClearButton>
+							<OpenButton>false</OpenButton>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<AutoMarkIncomplete>false</AutoMarkIncomplete>
+							<ChoiceForm>Catalog.РесурсныеСпецификации.Form.ФормаВыбораПоНоменклатуре</ChoiceForm>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Номенклатура</xr:Name>
+									<xr:DataPath xsi:type="xs:string">Номенклатура</xr:DataPath>
+									<xr:ValueChange>DontChange</xr:ValueChange>
+								</xr:Link>
+								<xr:Link>
+									<xr:Name>Характеристика</xr:Name>
+									<xr:DataPath xsi:type="xs:string">Характеристика</xr:DataPath>
+									<xr:ValueChange>DontChange</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<ContextMenu name="СпецификацияНабораКонтекстноеМеню" id="178"/>
+							<ExtendedTooltip name="СпецификацияНабораРасширеннаяПодсказка" id="179"/>
+							<Events>
+								<Event name="OnChange">СпецификацияНабораПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПроизводитсяНаЭтапе" id="93">
+			<EnableContentChange>true</EnableContentChange>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Производится на этапе</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Produced during stage</v8:content>
+				</v8:item>
+			</Title>
+			<Width>56</Width>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПроизводитсяНаЭтапеРасширеннаяПодсказка" id="94"/>
+			<ChildItems>
+				<UsualGroup name="Группа1" id="161">
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="162"/>
+					<ChildItems>
+						<RadioButtonField name="СпособПроизводитсяНаЭтапе" id="95">
+							<DataPath>СпособПолученияМатериала</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Получить с этапа</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Receive from the stage</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.СпособыПолученияМатериаловВСпецификации.EnumValue.ПроизводитсяНаЭтапе</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="СпособПроизводитсяНаЭтапеКонтекстноеМеню" id="96"/>
+							<ExtendedTooltip name="СпособПроизводитсяНаЭтапеРасширеннаяПодсказка" id="97"/>
+							<Events>
+								<Event name="OnChange">СпособПолученияМатериалаПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+						<UsualGroup name="Группа6" id="137">
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Группа6РасширеннаяПодсказка" id="138"/>
+							<ChildItems>
+								<InputField name="ЭтапВыпуска" id="23">
+									<DataPath>ЭтапВыпускаПредставление</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ChoiceButton>true</ChoiceButton>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<CreateButton>false</CreateButton>
+									<TextEdit>false</TextEdit>
+									<ChoiceParameterLinks>
+										<xr:Link>
+											<xr:Name>Отбор.Владелец</xr:Name>
+											<xr:DataPath xsi:type="xs:string">Владелец</xr:DataPath>
+											<xr:ValueChange>Clear</xr:ValueChange>
+										</xr:Link>
+									</ChoiceParameterLinks>
+									<ContextMenu name="ЭтапВыпускаКонтекстноеМеню" id="24"/>
+									<ExtendedTooltip name="ЭтапВыпускаРасширеннаяПодсказка" id="25"/>
+									<Events>
+										<Event name="StartChoice">ЭтапВыпускаНачалоВыбора</Event>
+										<Event name="Opening">ЭтапВыпускаОткрытие</Event>
+										<Event name="Clearing">ЭтапВыпускаОчистка</Event>
+									</Events>
+								</InputField>
+								<LabelDecoration name="Декорация4" id="139">
+									<Font ref="style:NormalTextFont" height="14" kind="StyleItem"/>
+									<ContextMenu name="Декорация4КонтекстноеМеню" id="140"/>
+									<ExtendedTooltip name="Декорация4РасширеннаяПодсказка" id="141"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаРемонтПоСпецификации" id="126">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ремонт по спецификации</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>R&amp;M according to BOM</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРемонтПоСпецификацииРасширеннаяПодсказка" id="127"/>
+					<ChildItems>
+						<LabelDecoration name="Декорация3" id="128">
+							<Width>1</Width>
+							<ContextMenu name="Декорация3КонтекстноеМеню" id="129"/>
+							<ExtendedTooltip name="Декорация3РасширеннаяПодсказка" id="130"/>
+						</LabelDecoration>
+						<CheckBoxField name="ОтметкаРемонтПоСпецификации" id="131">
+							<DataPath>ОтметкаРемонтПоСпецификации</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ОтметкаРемонтПоСпецификацииКонтекстноеМеню" id="132"/>
+							<ExtendedTooltip name="ОтметкаРемонтПоСпецификацииРасширеннаяПодсказка" id="133"/>
+							<Events>
+								<Event name="OnChange">СпособПолученияМатериалаПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<UsualGroup name="Группа7" id="142">
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Группа7РасширеннаяПодсказка" id="143"/>
+							<ChildItems>
+								<InputField name="СпецификацияРемонта" id="165">
+									<DataPath>СпецификацияРемонта</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ChoiceButton>true</ChoiceButton>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+									<ChoiceForm>Catalog.РесурсныеСпецификации.Form.ФормаВыбораПоНоменклатуре</ChoiceForm>
+									<ChoiceParameterLinks>
+										<xr:Link>
+											<xr:Name>Номенклатура</xr:Name>
+											<xr:DataPath xsi:type="xs:string">Номенклатура</xr:DataPath>
+											<xr:ValueChange>DontChange</xr:ValueChange>
+										</xr:Link>
+										<xr:Link>
+											<xr:Name>Характеристика</xr:Name>
+											<xr:DataPath xsi:type="xs:string">Характеристика</xr:DataPath>
+											<xr:ValueChange>DontChange</xr:ValueChange>
+										</xr:Link>
+									</ChoiceParameterLinks>
+									<ContextMenu name="СпецификацияРемонтаКонтекстноеМеню" id="166"/>
+									<ExtendedTooltip name="СпецификацияРемонтаРасширеннаяПодсказка" id="167"/>
+								</InputField>
+								<LabelDecoration name="Декорация5" id="144">
+									<Font ref="style:NormalTextFont" height="14" kind="StyleItem"/>
+									<ContextMenu name="Декорация5КонтекстноеМеню" id="145"/>
+									<ExtendedTooltip name="Декорация5РасширеннаяПодсказка" id="146"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПроизвестиПоСпецификации" id="102">
+			<EnableContentChange>true</EnableContentChange>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Произвести по спецификации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Produce by BOM</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПроизвестиПоСпецификацииРасширеннаяПодсказка" id="103"/>
+			<ChildItems>
+				<UsualGroup name="Группа2" id="163">
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="164"/>
+					<ChildItems>
+						<RadioButtonField name="СпособПроизводитсяПоСпецификации" id="104">
+							<DataPath>СпособПолученияМатериала</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<Shortcut>Ctrl+Z</Shortcut>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Произвести по спецификации</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Produce by BOM</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.СпособыПолученияМатериаловВСпецификации.EnumValue.ПроизвестиПоСпецификации</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="СпособПроизводитсяПоСпецификацииКонтекстноеМеню" id="105"/>
+							<ExtendedTooltip name="СпособПроизводитсяПоСпецификацииРасширеннаяПодсказка" id="106"/>
+							<Events>
+								<Event name="OnChange">СпособПолученияМатериалаПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+						<UsualGroup name="Группа8" id="147">
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Группа8РасширеннаяПодсказка" id="148"/>
+							<ChildItems>
+								<InputField name="Спецификация" id="18">
+									<DataPath>Спецификация</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>45</MaxWidth>
+									<ChoiceButton>true</ChoiceButton>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+									<ChoiceForm>Catalog.РесурсныеСпецификации.Form.ФормаВыбораПоНоменклатуре</ChoiceForm>
+									<ChoiceParameterLinks>
+										<xr:Link>
+											<xr:Name>Номенклатура</xr:Name>
+											<xr:DataPath xsi:type="xs:string">Номенклатура</xr:DataPath>
+											<xr:ValueChange>DontChange</xr:ValueChange>
+										</xr:Link>
+										<xr:Link>
+											<xr:Name>Характеристика</xr:Name>
+											<xr:DataPath xsi:type="xs:string">Характеристика</xr:DataPath>
+											<xr:ValueChange>DontChange</xr:ValueChange>
+										</xr:Link>
+									</ChoiceParameterLinks>
+									<ContextMenu name="СпецификацияКонтекстноеМеню" id="19"/>
+									<ExtendedTooltip name="СпецификацияРасширеннаяПодсказка" id="20"/>
+								</InputField>
+								<LabelDecoration name="Декорация6" id="149">
+									<Font ref="style:NormalTextFont" height="14" kind="StyleItem"/>
+									<ContextMenu name="Декорация6КонтекстноеМеню" id="150"/>
+									<ExtendedTooltip name="Декорация6РасширеннаяПодсказка" id="151"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПланироватьНеРанее" id="115">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Планировать не ранее</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Plan not earlier than</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПланироватьНеРанееРасширеннаяПодсказка" id="116"/>
+					<ChildItems>
+						<LabelDecoration name="Декорация2" id="123">
+							<Width>1</Width>
+							<ContextMenu name="Декорация2КонтекстноеМеню" id="124"/>
+							<ExtendedTooltip name="Декорация2РасширеннаяПодсказка" id="125"/>
+						</LabelDecoration>
+						<CheckBoxField name="ОтметкаПланироватьНеРанее" id="117">
+							<DataPath>ОтметкаПланироватьНеРанее</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>планировать после</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>plan after</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ОтметкаПланироватьНеРанееКонтекстноеМеню" id="118"/>
+							<ExtendedTooltip name="ОтметкаПланироватьНеРанееРасширеннаяПодсказка" id="119"/>
+							<Events>
+								<Event name="OnChange">СпособПолученияМатериалаПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<UsualGroup name="Группа9" id="152">
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Группа9РасширеннаяПодсказка" id="153"/>
+							<ChildItems>
+								<InputField name="ПланироватьНеРанее" id="120">
+									<DataPath>ПланироватьНеРанееПредставление</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ChoiceButton>true</ChoiceButton>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<CreateButton>false</CreateButton>
+									<TextEdit>false</TextEdit>
+									<ChoiceParameterLinks>
+										<xr:Link>
+											<xr:Name>Отбор.Владелец</xr:Name>
+											<xr:DataPath xsi:type="xs:string">Владелец</xr:DataPath>
+											<xr:ValueChange>DontChange</xr:ValueChange>
+										</xr:Link>
+										<xr:Link>
+											<xr:Name>ПоказыватьТолькоПредшественников</xr:Name>
+											<xr:DataPath xsi:type="xs:string">Этап</xr:DataPath>
+											<xr:ValueChange>DontChange</xr:ValueChange>
+										</xr:Link>
+									</ChoiceParameterLinks>
+									<ContextMenu name="ПланироватьНеРанееКонтекстноеМеню" id="121"/>
+									<ExtendedTooltip name="ПланироватьНеРанееРасширеннаяПодсказка" id="122"/>
+									<Events>
+										<Event name="StartChoice">ПланироватьНеРанееНачалоВыбора</Event>
+										<Event name="Opening">ПланироватьНеРанееОткрытие</Event>
+										<Event name="Clearing">ПланироватьНеРанееОчистка</Event>
+									</Events>
+								</InputField>
+								<LabelDecoration name="Декорация7" id="154">
+									<Font ref="style:NormalTextFont" height="14" kind="StyleItem"/>
+									<ContextMenu name="Декорация7КонтекстноеМеню" id="155"/>
+									<ExtendedTooltip name="Декорация7РасширеннаяПодсказка" id="156"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Группа3" id="168">
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="169"/>
+			<ChildItems>
+				<Page name="СтатическаяСтруктура" id="170">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статическая структура</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Static structure</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтатическаяСтруктураРасширеннаяПодсказка" id="171"/>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СпособПолученияМатериала" id="1">
+			<Type>
+				<v8:Type>cfg:EnumRef.СпособыПолученияМатериаловВСпецификации</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Спецификация" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Спецификация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Bill of materials</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.РесурсныеСпецификации</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="ЭтапВыпуска" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Этап</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Stage</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ЭтапыПроизводства</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="ОтметкаПланироватьНеРанее" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отметка планировать не ранее</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark plan not earlier than</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ОтметкаРемонтПоСпецификации" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ремонт по спецификации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>R&amp;M according to BOM</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ПланироватьНеРанее" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Планировать не ранее</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Plan not earlier than</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ЭтапыПроизводства</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="Номенклатура" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Items</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Характеристика" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Характеристика</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Item variant</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ХарактеристикиНоменклатуры</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СпецификацияРемонта" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Спецификация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Bill of materials</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.РесурсныеСпецификации</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="АдресПолуфабрикаты" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес полуфабрикаты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Address semi-finished products</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДобавитьПромежуточныйВыпускПриВыборе" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить промежуточный выпуск при выборе</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add intermediate release on selection</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Этап" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Этап</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Stage</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ЭтапыПроизводства</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Владелец" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Владелец</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Owner</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.РесурсныеСпецификации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоПервыйЭтап" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это первый этап</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is the first stage</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользуетсяПроизводство21" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать производство 2.1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use production 2.1</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользуетсяПроизводство22" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать производство 2.2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use production 2.2</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтапВыпускаПредставление" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Этап</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Stage</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПланироватьНеРанееПредставление" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Планировать не ранее</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Plan not earlier than</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоМатериалНабор" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это материал набор</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is a material set</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтметкаСоставПоСпецификации" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>состав по спецификации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>bill of materials content</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ЭтоТехнологическийНабор" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это технологический набор</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is a technological set</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДинамическаяСтруктураЗаказовНаПроизводство" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Динамическая структура заказов на производство</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Dynamic structure of production orders</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОК" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОК</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ТипПроизводственногоПроцесса">
+			<Type>
+				<v8:Type>cfg:EnumRef.ТипыПроизводственныхПроцессов</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Владелец">
+			<Type>
+				<v8:Type>cfg:CatalogRef.РесурсныеСпецификации</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Номенклатура">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ПланироватьНеРанее">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ЭтапыПроизводства</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="СпецификацияРемонта">
+			<Type>
+				<v8:Type>cfg:CatalogRef.РесурсныеСпецификации</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Характеристика">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ХарактеристикиНоменклатуры</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Этап">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ЭтапыПроизводства</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="СпособПолученияМатериала">
+			<Type>
+				<v8:Type>cfg:EnumRef.СпособыПолученияМатериаловВСпецификации</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ИсточникПолученияПолуфабриката">
+			<Type>
+				<v8:Type>cfg:CatalogRef.РесурсныеСпецификации</v8:Type>
+				<v8:Type>cfg:CatalogRef.ЭтапыПроизводства</v8:Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="АдресПолуфабрикаты">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="СпособАвтовыбораНоменклатуры">
+			<Type>
+				<v8:Type>cfg:EnumRef.СпособыАвтовыбораНоменклатуры</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ЭтоПервыйЭтап">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ЭтоМатериалНабор">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ЭтоТехнологическийНабор">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

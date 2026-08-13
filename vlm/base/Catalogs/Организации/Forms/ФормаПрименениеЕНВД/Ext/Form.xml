@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Применение ЕНВД</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Apply unified tax on imputed income</v8:content>
+		</v8:item>
+	</Title>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаОК" id="30">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<DefaultItem>true</DefaultItem>
+				<CommandName>Form.Command.ОК</CommandName>
+				<RepresentationInContextMenu>None</RepresentationInContextMenu>
+				<ExtendedTooltip name="ФормаОКРасширеннаяПодсказка" id="31"/>
+			</Button>
+			<Button name="ФормаОтмена" id="28">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Cancel</CommandName>
+				<RepresentationInContextMenu>None</RepresentationInContextMenu>
+				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="29"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Table name="ПрименениеЕНВД" id="1">
+			<Representation>List</Representation>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>ПрименениеЕНВД</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ПрименениеЕНВДКонтекстноеМеню" id="3"/>
+			<AutoCommandBar name="ПрименениеЕНВДКоманднаяПанель" id="2"/>
+			<ExtendedTooltip name="ПрименениеЕНВДРасширеннаяПодсказка" id="4"/>
+			<SearchStringAddition name="ПрименениеЕНВДСтрокаПоиска" id="5">
+				<AdditionSource>
+					<Item>ПрименениеЕНВД</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПрименениеЕНВДСтрокаПоискаКонтекстноеМеню" id="6"/>
+				<ExtendedTooltip name="ПрименениеЕНВДСтрокаПоискаРасширеннаяПодсказка" id="7"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ПрименениеЕНВДСостояниеПросмотра" id="11">
+				<AdditionSource>
+					<Item>ПрименениеЕНВД</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<HorizontalLocation>Left</HorizontalLocation>
+				<ContextMenu name="ПрименениеЕНВДСостояниеПросмотраКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="ПрименениеЕНВДСостояниеПросмотраРасширеннаяПодсказка" id="13"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ПрименениеЕНВДУправлениеПоиском" id="8">
+				<AdditionSource>
+					<Item>ПрименениеЕНВД</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ПрименениеЕНВДУправлениеПоискомКонтекстноеМеню" id="9"/>
+				<ExtendedTooltip name="ПрименениеЕНВДУправлениеПоискомРасширеннаяПодсказка" id="10"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ПрименениеЕНВДВыбор</Event>
+				<Event name="BeforeAddRow">ПрименениеЕНВДПередНачаломДобавления</Event>
+				<Event name="BeforeDeleteRow">ПрименениеЕНВДПередУдалением</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ПрименениеЕНВДПериод" id="23">
+					<DataPath>ПрименениеЕНВД.Период</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ПрименениеЕНВДПериодКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ПрименениеЕНВДПериодРасширеннаяПодсказка" id="25"/>
+				</InputField>
+				<InputField name="ПрименениеЕНВДСклад" id="14">
+					<DataPath>ПрименениеЕНВД.Склад</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ПрименениеЕНВДСкладКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="ПрименениеЕНВДСкладРасширеннаяПодсказка" id="16"/>
+				</InputField>
+				<CheckBoxField name="ПрименениеЕНВДРозничнаяТорговляОблагаетсяЕНВД" id="17">
+					<DataPath>ПрименениеЕНВД.РозничнаяТорговляОблагаетсяЕНВД</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ПрименениеЕНВДРозничнаяТорговляОблагаетсяЕНВДКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ПрименениеЕНВДРозничнаяТорговляОблагаетсяЕНВДРасширеннаяПодсказка" id="19"/>
+					<Events>
+						<Event name="OnChange">ПрименениеЕНВДРозничнаяТорговляОблагаетсяЕНВДПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<LabelField name="ПрименениеЕНВДИстория" id="20">
+					<DataPath>ПрименениеЕНВД.История</DataPath>
+					<CellHyperlink>true</CellHyperlink>
+					<ContextMenu name="ПрименениеЕНВДИсторияКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ПрименениеЕНВДИсторияРасширеннаяПодсказка" id="22"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ПрименениеЕНВД" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применение ЕНВД</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Apply unified tax on imputed income</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Склад" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Склад</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Warehouse</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Склады</v8:Type>
+					</Type>
+				</Column>
+				<Column name="РозничнаяТорговляОблагаетсяЕНВД" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Розничная торговля облагается ЕНВД</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Retailing is subject to unified tax on imputed income</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="История" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>История</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>History</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>7</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Период" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Применяется с</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Applied from</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ОткрытаФормаВыбораДаты" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыта форма выбора даты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data choice form is opened</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Организация" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОК" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОК</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Организация">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

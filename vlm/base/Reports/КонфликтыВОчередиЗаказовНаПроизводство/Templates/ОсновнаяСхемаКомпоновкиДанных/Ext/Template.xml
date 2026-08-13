@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Заказы</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЗаказНаПоступление</dataPath>
+			<field>ЗаказНаПоступление</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказ</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Order</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЗаказНаОтгрузку</dataPath>
+			<field>ЗаказНаОтгрузку</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказ на отгрузку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Shipment order</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗЛИЧНЫЕ
+	ВЫРАЗИТЬ(РаспределениеЗапасов.ЗаказНаПоступление КАК Документ.ЭтапПроизводства2_2).Распоряжение КАК ЗаказНаПоступление,
+	ВЫРАЗИТЬ(РаспределениеЗапасов.ЗаказНаОтгрузку КАК Документ.ЭтапПроизводства2_2).Распоряжение    КАК ЗаказНаОтгрузку
+ИЗ
+	РегистрСведений.РаспределениеЗапасов КАК РаспределениеЗапасов
+ГДЕ
+	РаспределениеЗапасов.Состояние = ЗНАЧЕНИЕ(Перечисление.РаспределениеЗапасовСостояния.ОбеспеченКДате)
+	И РаспределениеЗапасов.ЗаказНаОтгрузку ССЫЛКА Документ.ЭтапПроизводства2_2
+	И РаспределениеЗапасов.ЗаказНаПоступление ССЫЛКА Документ.ЭтапПроизводства2_2
+	И ИСТИНА В (
+		ВЫБРАТЬ ПЕРВЫЕ 1 ИСТИНА
+		ИЗ
+			Документ.ЭтапПроизводства2_2 КАК ЗаказНаПоступление
+				ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЭтапПроизводства2_2 КАК ЗаказНаОтгрузку
+				ПО ИСТИНА
+		ГДЕ
+			ЗаказНаПоступление.Ссылка = РаспределениеЗапасов.ЗаказНаПоступление
+			И ЗаказНаПоступление.Распоряжение.Проведен
+			И ЗаказНаПоступление.Распоряжение.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыЗаказовНаПроизводство2_2.КПроизводству)
+			И ЗаказНаОтгрузку.Ссылка = РаспределениеЗапасов.ЗаказНаОтгрузку
+			И ЗаказНаОтгрузку.Распоряжение.Проведен
+			И ЗаказНаОтгрузку.Распоряжение.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыЗаказовНаПроизводство2_2.КПроизводству)
+			И (
+				ЗаказНаПоступление.Распоряжение.Приоритет.РеквизитДопУпорядочивания &gt; ЗаказНаОтгрузку.Распоряжение.Приоритет.РеквизитДопУпорядочивания
+				ИЛИ ЗаказНаПоступление.Распоряжение.Приоритет.РеквизитДопУпорядочивания = ЗаказНаОтгрузку.Распоряжение.Приоритет.РеквизитДопУпорядочивания
+					И ЗаказНаПоступление.Распоряжение.Подразделение.РеквизитДопУпорядочивания &gt; ЗаказНаОтгрузку.Распоряжение.Подразделение.РеквизитДопУпорядочивания
+				ИЛИ ЗаказНаПоступление.Распоряжение.Приоритет.РеквизитДопУпорядочивания = ЗаказНаОтгрузку.Распоряжение.Приоритет.РеквизитДопУпорядочивания
+					И ЗаказНаПоступление.Распоряжение.Подразделение.РеквизитДопУпорядочивания = ЗаказНаОтгрузку.Распоряжение.Подразделение.РеквизитДопУпорядочивания
+					И ЗаказНаПоступление.Распоряжение.Очередь &gt; ЗаказНаОтгрузку.Распоряжение.Очередь))</query>
+	</dataSet>
+	<calculatedField>
+		<dataPath>ОбеспечиваемыеЗаказы</dataPath>
+		<expression/>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Обеспечиваемые заказы с большим приоритетом</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>High priority supplied orders</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>Действие</dataPath>
+		<expression>&amp;СтрокаДействие</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Действие</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Action</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<totalField>
+		<dataPath>ОбеспечиваемыеЗаказы</dataPath>
+		<expression>ВычислитьВыражениеСГруппировкойМассив("ЗаказНаОтгрузку", "ЗаказНаОтгрузку")</expression>
+	</totalField>
+	<parameter>
+		<name>СтрокаДействие</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Строка действие</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Line action</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>50</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:type="xs:string"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+		<use>Always</use>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>КонфликтыВОчередиКонтекст</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конфликты очереди заказов и их порядка обеспечения</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Order queue conflicts and their supply procedure</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОбеспечиваемыеЗаказы</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>Действие</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter/>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветТекста</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">style:ГиперссылкаТабличнойЧасти</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Шрифт</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="false" underline="true" strikeout="false" kind="WindowsFont"/>
+						</dcscor:item>
+					</dcsset:appearance>
+					<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+					<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+					<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+					<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+					<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+					<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ЗаказНаПоступление</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Действие</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ЗаказНаПоступление</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ОбеспечиваемыеЗаказы</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Действие</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>АвтоПозицияРесурсов</dcscor:parameter>
+						<dcscor:value xsi:type="dcsset:DataCompositionResourcesAutoPosition">DontUse</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

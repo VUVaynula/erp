@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Popup name="ПодменюПечать" id="52">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Печать</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Print</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Команды печати</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Print commands</v8:content>
+					</v8:item>
+				</ToolTip>
+				<Picture>
+					<xr:Ref>StdPicture.Print</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="ПодменюПечатьРасширеннаяПодсказка" id="53"/>
+			</Popup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="группаШапка" id="47">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="группаШапкаРасширеннаяПодсказка" id="48"/>
+			<ChildItems>
+				<InputField name="Номер" id="1">
+					<DataPath>Объект.Number</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+				</InputField>
+				<InputField name="Дата" id="4">
+					<DataPath>Объект.Date</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Смена" id="7">
+			<DataPath>Объект.Смена</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="СменаКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="СменаРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<Table name="ДанныеСмены" id="10">
+			<Representation>List</Representation>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Объект.ДанныеСмены</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ДанныеСменыКонтекстноеМеню" id="11"/>
+			<AutoCommandBar name="ДанныеСменыКоманднаяПанель" id="12"/>
+			<ExtendedTooltip name="ДанныеСменыРасширеннаяПодсказка" id="13"/>
+			<SearchStringAddition name="ДанныеСменыСтрокаПоиска" id="14">
+				<AdditionSource>
+					<Item>ДанныеСмены</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДанныеСменыСтрокаПоискаКонтекстноеМеню" id="15"/>
+				<ExtendedTooltip name="ДанныеСменыСтрокаПоискаРасширеннаяПодсказка" id="16"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ДанныеСменыСостояниеПросмотра" id="17">
+				<AdditionSource>
+					<Item>ДанныеСмены</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДанныеСменыСостояниеПросмотраКонтекстноеМеню" id="18"/>
+				<ExtendedTooltip name="ДанныеСменыСостояниеПросмотраРасширеннаяПодсказка" id="19"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ДанныеСменыУправлениеПоиском" id="20">
+				<AdditionSource>
+					<Item>ДанныеСмены</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ДанныеСменыУправлениеПоискомКонтекстноеМеню" id="21"/>
+				<ExtendedTooltip name="ДанныеСменыУправлениеПоискомРасширеннаяПодсказка" id="22"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="ДанныеСменыНомерСтроки" id="23">
+					<DataPath>Объект.ДанныеСмены.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДанныеСменыНомерСтрокиКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ДанныеСменыНомерСтрокиРасширеннаяПодсказка" id="25"/>
+				</LabelField>
+				<InputField name="ДанныеСменыНоменклатура" id="26">
+					<DataPath>Объект.ДанныеСмены.Номенклатура</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ДанныеСменыНоменклатураКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="ДанныеСменыНоменклатураРасширеннаяПодсказка" id="28"/>
+					<Events>
+						<Event name="OnChange">ДанныеСменыНоменклатураПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ДанныеСменыТара" id="29">
+					<DataPath>Объект.ДанныеСмены.Тара</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ДанныеСменыТараКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ДанныеСменыТараРасширеннаяПодсказка" id="31"/>
+				</InputField>
+				<InputField name="ДанныеСменыСерия" id="32">
+					<DataPath>Объект.ДанныеСмены.Серия</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ДанныеСменыСерияКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ДанныеСменыСерияРасширеннаяПодсказка" id="34"/>
+					<Events>
+						<Event name="OnChange">ДанныеСменыСерияПриИзменении</Event>
+						<Event name="StartChoice">ДанныеСменыСерияНачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="ДанныеСменыНазначение" id="35">
+					<DataPath>Объект.ДанныеСмены.Назначение</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ДанныеСменыНазначениеКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="ДанныеСменыНазначениеРасширеннаяПодсказка" id="37"/>
+					<Events>
+						<Event name="StartChoice">ДанныеСменыНазначениеНачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="ДанныеСменыВесовщик" id="38">
+					<DataPath>Объект.ДанныеСмены.Весовщик</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ДанныеСменыВесовщикКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="ДанныеСменыВесовщикРасширеннаяПодсказка" id="40"/>
+				</InputField>
+				<InputField name="ДанныеСменыКонтроллер" id="41">
+					<DataPath>Объект.ДанныеСмены.Контроллер</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ДанныеСменыКонтроллерКонтекстноеМеню" id="42"/>
+					<ExtendedTooltip name="ДанныеСменыКонтроллерРасширеннаяПодсказка" id="43"/>
+				</InputField>
+				<InputField name="ДанныеСменыКоличество" id="44">
+					<DataPath>Объект.ДанныеСмены.Количество</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ДанныеСменыКоличествоКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="ДанныеСменыКоличествоРасширеннаяПодсказка" id="46"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<LabelField name="Автор" id="49">
+			<DataPath>Объект.Автор</DataPath>
+			<ContextMenu name="АвторКонтекстноеМеню" id="50"/>
+			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="51"/>
+		</LabelField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.бит_ПартияЗавесов</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+	</Attributes>
+</Form>

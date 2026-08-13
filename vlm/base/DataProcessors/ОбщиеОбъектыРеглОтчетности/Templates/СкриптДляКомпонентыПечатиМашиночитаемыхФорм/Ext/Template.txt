@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<package>
+	<job id="TestFiles">
+		<script language="JScript"><![CDATA[
+			function OSVersion() {
+				if (!arguments.callee.result) {
+					var loc = "";
+					try {
+						loc = "Чтение версии Windows";
+						try {
+							var version = wsh.RegRead("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\VersionNumber");
+						} catch (e) {
+							switch (e.number) {
+							case -2147024894: // Не удается открыть для чтения раздел реестра - имеем дело с Windows NT / 2000 / XP / 2003 / Vista / 2008 / 7
+								var version = wsh.RegRead("HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\CurrentVersion");
+							}
+						}
+
+						loc = "Чистка версии Windows";
+						// удаляем ведущие нули
+						version = version.replace(/\b0+([1-9][0-9]*|0)\b/g, "$1");
+						// удаляем номер сборки
+						version = version.replace(/^([0-9]+\.[0-9]+).*/, "$1");
+
+						loc = "Чтение переменной среды %ProgramFiles(x86)%";
+						var platform = wsh.ExpandEnvironmentStrings("%ProgramFiles(x86)%");
+						if ("%ProgramFiles(x86)%" != platform) {
+							platform = "x64";
+						} else {
+							platform = "x86";
+						}
+
+						arguments.callee.result = {
+							version:
+								version,
+							platform:
+								platform
+						};
+					} catch (e) {
+						if ("" != loc) {
+							e.message = loc + " : " + e.message;
+						}
+						throw e;
+					}
+				}
+				return arguments.callee.result;
+			}
+
+			function ProgramFilesFolder_x86() {
+				if (!arguments.callee.result) {
+					var osvers = OSVersion();
+					var path2 = "gnivc\\print-nd-pdf417";
+					switch (osvers.platform) {
+					case "x86":
+						var path1 = "%ProgramFiles%";
+						break;
+					case "x64":
+						var path1 = "%ProgramFiles(x86)%";
+						break;
+					default:
+						throw new Error(-1, "Не идентифицирована платформа x86 / x64");
+					}
+
+					arguments.callee.result = fso.BuildPath(wsh.ExpandEnvironmentStrings(path1), path2);
+				}
+				return arguments.callee.result;
+			}
+
+			function SystemFolder_x86() {
+				if (!arguments.callee.result) {
+					var osvers = OSVersion();
+					var path1 = "%SystemRoot%";
+					switch (osvers.platform) {
+					case "x86":
+						var path2 = "system32";
+						if (/^4\./.test(osvers.version)) {
+							var path1 = "%windir%";
+							var path2 = "system";
+						}
+						break;
+					case "x64":
+						var path2 = "SysWOW64";
+						break;
+					default:
+						throw new Error(-1, "Не идентифицирована платформа x86 / x64");
+					}
+
+					arguments.callee.result = fso.BuildPath(wsh.ExpandEnvironmentStrings(path1), path2);
+				}
+				return arguments.callee.result;
+			}
+
+			function TestFiles() {
+				var loc = "";
+				try {
+					loc = "Получение системного каталога";
+					var path1 = ProgramFilesFolder_x86();
+					var path2 = SystemFolder_x86();
+
+					loc = "Подготовка проверки";
+					var test = [{
+							"folder": path1,
+							"files": [
+								"TAXDOCPrt.dll"
+							]
+						}, {
+							"folder": path2,
+							"files": [
+								"comcat.dll",
+								"GDIPlus.dll",
+								"GNIVCPDOCd.dll",
+								"mfc42.dll",
+								"mscomct2.ocx",
+								"msvbvm60.dll",
+								"msvcrt.dll",
+								"msxml4.dll",
+								"msxml4r.dll",
+								"msxml4a.dll",
+								"oleaut32.dll",
+								"olepro32.dll",
+								"asycfilt.dll",
+								"version.dll"
+							]
+						}
+					];
+
+					var absent = [];
+
+					loc = "Проверка";
+					for (var i1 = 0, L1 = test.length; i1 < L1; i1++) {
+						var item = test[i1];
+						var path = item.folder;
+						var list = item.files;
+						item.absent = [];
+						for (var i2 = 0, L2 = list.length; i2 < L2; i2++) {
+							var name = list[i2];
+							if (!fso.FileExists(fso.BuildPath(path, name))) {
+								item.absent.push(name);
+							}
+						}
+						if (item.absent.length > 0) {
+							absent.push("В каталоге\n\t" + path + "\nотсутствуют файлы:\n\t" + item.absent.join("\n\t"));
+						}
+					}
+
+					loc = "Результат проверки"
+					if (absent.length > 0) {
+						WScript.Echo("ПРОВЕРКА ИСПОЛЬЗУЕМЫХ БИБЛИОТЕК\n\n" + absent.join("\n\n") + "\n\nВОССТАНОВИТЕ ФАЙЛЫ");
+						try {
+							var outf = fso.OpenTextFile(outp, 8, false, -1);
+							outf.Write("ПРОВЕРКА ИСПОЛЬЗУЕМЫХ БИБЛИОТЕК\n\n" + absent.join("\n\n") + "\n\nВОССТАНОВИТЕ ФАЙЛЫ\n\n");
+							outf.Close();
+						} catch (i) {}
+					} else {
+						WScript.Echo("ПРОВЕРКА ИСПОЛЬЗУЕМЫХ БИБЛИОТЕК\n\nВсе необходимые библиотеки найдены.");
+						try {
+							var outf = fso.OpenTextFile(outp, 8, false, -1);
+							outf.Write("ПРОВЕРКА ИСПОЛЬЗУЕМЫХ БИБЛИОТЕК\n\nВсе необходимые библиотеки найдены.\n\n");
+							outf.Close();
+						} catch (i) {}
+					}
+				} catch (e) {
+					if ("" != loc) {
+						e.message = loc + " : " + e.message;
+					}
+					throw e;
+				}
+			}
+
+			function TestPrint() {
+				var loc = "";
+				try {
+					loc = "Получение системного каталога";
+					var path = SystemFolder_x86();
+
+					loc = "Получение имени файла движка";
+					var file = fso.GetFileName(WScript.FullName);
+
+					if (/^4\./.test(OSVersion().version)) {
+						file = "..\\" + file;
+					};
+
+					loc = "Получение полного имени файла движка";
+					path = fso.BuildPath(path, file);
+					path = '"' + path + '"';
+
+					loc = "Запуск скрипта в окружении x86";
+					return wsh.Run(path + ' //job:testPrint "' + WScript.ScriptFullName + '" "' + outp + '"', 10, true);
+
+				} catch (e) {
+					if ("" != loc) {
+						e.message = loc + " : " + e.message;
+					}
+					throw e;
+				}
+			}
+
+			var loc = "";
+			try {
+				loc = "Создание Scripting.FileSystemObject";
+				var fso = new ActiveXObject("Scripting.FileSystemObject");
+
+				loc = "Создание WScript.Shell";
+				var wsh = new ActiveXObject("WScript.Shell");
+
+				loc = "Получение версии Windows";
+				OSVersion();
+
+				loc = "Получение имени файла протокола";
+				var outp = WScript.ScriptFullName.replace(/\.wsf$/i, ".out");
+				try {
+					var outf = fso.CreateTextFile(outp, true, true);
+					outf.Close();
+				} catch (i) {}
+			} catch (e) {
+				WScript.Echo("ОШИБКА! " + e.number + "\n\nПолучение версии операционной системы : \n" + e.message.split(" : ").join(" : \n"));
+				WScript.Sleep(10000);
+			}
+
+			try {
+				TestFiles();
+				TestPrint();
+				WScript.Sleep(10000);
+			} catch (e) {
+				WScript.Echo("ОШИБКА! " + e.number + "\n\n" + e.message.split(" : ").join(" : \n"));
+				try {
+					var outf = fso.OpenTextFile(outp, 8, false, -1);
+					outf.Write("ОШИБКА! " + e.number + "\n\n" + e.message.split(" : ").join(" : \n"));
+					outf.Close();
+				} catch (i) {}
+				WScript.Sleep(10000);
+				WScript.Quit(1);
+			}
+		]]></script>
+	</job>
+	<job id="TestPrint">
+		<script language="JScript"><![CDATA[
+			var fso;
+
+			function TestPrint() {
+				var loc = "";
+				try {
+					loc = "Создание Scripting.FileSystemObject";
+					fso = new ActiveXObject("Scripting.FileSystemObject");
+					
+					loc = "Создание TAXDOCPrt.TAXDOCPrint";
+					var prtr = new ActiveXObject("TAXDOCPrt.TAXDOCPrint2");
+
+					if (WScript.Arguments.Unnamed.Count != 0) {
+						
+						loc = "Получение каталога запуска";
+						var path = fso.GetParentFolderName(WScript.ScriptFullName);
+						
+						loc = "Получение файла предпросмотра";
+						var file = fso.BuildPath(path, "test.tst");
+
+						loc = "Получение каталога шаблонов";
+						var tiff = fso.BuildPath(path, "test.tif");
+						
+						loc = "Установка каталога с шаблонами печати";
+						prtr.PrintTiffFolder = tiff;
+
+						loc = "Предварительный просмотр файла";
+						try {
+							prtr.PreviewFile(file, 0);
+						} catch (e) {
+							switch (e.number) {
+							case -2147221454:
+								e.message = e.message + " (" + file + ")"
+							}
+							throw e;
+						}
+					}	
+
+				} catch (e) {
+					if ("" != loc) {
+						e.message = loc + " : " + e.message;
+					}
+					throw e;
+				}
+			}
+
+			try {
+				TestPrint();
+			} catch (e) {
+				WScript.Echo("ОШИБКА! " + e.number + "\n\n" + e.message.split(" : ").join(" : \n"));
+				try {
+					var outp = WScript.ScriptFullName.replace(/\.wsf$/i, ".out");
+					var outf = fso.OpenTextFile(outp, 8, true, -1);
+					outf.Write("ОШИБКА! " + e.number + "\n\n" + e.message.split(" : ").join(" : \n"));
+					outf.Close();
+				} catch (i) {}
+
+				if (WScript.Arguments.Unnamed.Count != 0) {
+					WScript.Sleep(10000);
+				}
+				WScript.Quit(1);
+			}
+		]]></script>
+	</job>
+	<job id="PrintFile">
+		<script language="JScript"><![CDATA[
+			var fso;
+
+			function PrintFile() {
+				var loc = "";
+				try {
+					
+					var argNamed = WScript.Arguments.Named;
+					
+					loc = "Создание Scripting.FileSystemObject";
+					fso = new ActiveXObject("Scripting.FileSystemObject");
+
+					loc = "Получение файла для печати";
+					var file = "";
+					if (argNamed.Exists("File")) file = argNamed.Item("File");
+
+					loc = "Получение каталога шаблонов";
+					var tiff = "";
+					if (argNamed.Exists("Tiff")) tiff = argNamed.Item("Tiff");
+					
+					loc = "Получение списка печатаемых страниц";
+					var plst = "";
+					if (argNamed.Exists("Plst")) plst = argNamed.Item("Plst");
+					
+					loc = "Получение полного имени принтера";
+					var fprn = "";
+					if (argNamed.Exists("Fprn")) fprn = argNamed.Item("Fprn");
+
+					loc = "Получение флага управления окном прогресса";
+					var sprg = 0;
+					if (argNamed.Exists("Sprg")) {
+						var strSprg = argNamed.Item("Sprg");
+						if (/^(\-|\+)?([0-9]+)$/.test(strSprg)) sprg = Number(strSprg);
+ 					} 
+
+					loc = "Получение названия параметра печати";
+					var pkey = "";
+					if (argNamed.Exists("Pkey")) pkey = argNamed.Item("Pkey");
+					
+					loc = "Получение значения параметра печати";
+					var pval = "";
+					if (argNamed.Exists("Pval")) pval = argNamed.Item("Pval");
+
+					loc = "Создание TAXDOCPrt.TAXDOCPrint";
+					var prtr = new ActiveXObject("TAXDOCPrt.TAXDOCPrint2");
+
+					loc = "Установка каталога с шаблонами печати";
+					prtr.PrintTiffFolder = tiff;
+					
+					loc = "Установка дополнительного параметра печати";
+					if ("" != pkey) {
+						prtr.SetPrintTiffParam1C(pkey, pval);
+					}
+
+					loc = "Печать файла на принтере";
+					try {
+						prtr.PrintFile1C(file, plst, fprn, sprg);
+					} catch (e) {
+						switch (e.number) {
+						case -2147221454:
+							e.message = e.message + " (" + file + ")"
+						}
+						throw e;
+					}
+				} catch (e) {
+					if ("" != loc) {
+						e.message = loc + " : " + e.message;
+					}
+					throw e;
+				}
+			}
+
+			try {
+				PrintFile();
+			} catch (e) {
+				WScript.Echo("ОШИБКА! " + e.number + "\n\n" + e.message.split(" : ").join(" : \n"));
+				try {
+					var outp = WScript.ScriptFullName.replace(/\.wsf$/i, ".out");
+					var outf = fso.OpenTextFile(outp, 8, true, -1);
+					outf.Write("ОШИБКА! " + e.number + "\n\n" + e.message.split(" : ").join(" : \n"));
+					outf.Close();
+				} catch (i) {}
+
+				if (WScript.Arguments.Unnamed.Count != 0) {
+					WScript.Sleep(10000);
+				}
+				WScript.Quit(1);
+			}
+		]]></script>
+	</job>
+	<job id="PreviewFile">
+		<script language="JScript"><![CDATA[
+			var fso;
+
+			function PreviewFile() {
+				var loc = "";
+				try {
+					
+					var argNamed = WScript.Arguments.Named;
+					
+					loc = "Создание Scripting.FileSystemObject";
+					fso = new ActiveXObject("Scripting.FileSystemObject");
+
+					loc = "Получение файла предпросмотра";
+					var file = "";
+					if (argNamed.Exists("File")) file = argNamed.Item("File");
+
+					loc = "Получение каталога шаблонов";
+					var tiff = "";
+					if (argNamed.Exists("Tiff")) tiff = argNamed.Item("Tiff");
+					
+					loc = "Получение идентификатора окна";
+					var hwnd = 0;
+					if (argNamed.Exists("Hwnd")) {
+						var strHwnd = argNamed.Item("Hwnd");
+						if (/^(\-|\+)?([0-9]+)$/.test(strHwnd)) hwnd = Number(strHwnd);
+ 					} 
+
+					loc = "Получение названия параметра печати";
+					var pkey = "";
+					if (argNamed.Exists("Pkey")) pkey = argNamed.Item("Pkey");
+					
+					loc = "Получение значения параметра печати";
+					var pval = "";
+					if (argNamed.Exists("Pval")) pval = argNamed.Item("Pval");
+
+					loc = "Создание TAXDOCPrt.TAXDOCPrint";
+					var prtr = new ActiveXObject("TAXDOCPrt.TAXDOCPrint2");
+
+					loc = "Установка каталога с шаблонами печати";
+					prtr.PrintTiffFolder = tiff;
+					
+					loc = "Установка дополнительного параметра печати";
+					if ("" != pkey) {
+						prtr.SetPrintTiffParam1C(pkey, pval);
+					}
+
+					loc = "Предварительный просмотр файла";
+					try {
+						prtr.PreviewFile1C(file, hwnd);
+					} catch (e) {
+						switch (e.number) {
+						case -2147221454:
+							e.message = e.message + " (" + file + ")"
+						}
+						throw e;
+					}
+				} catch (e) {
+					if ("" != loc) {
+						e.message = loc + " : " + e.message;
+					}
+					throw e;
+				}
+			}
+
+			try {
+				PreviewFile();
+			} catch (e) {
+				WScript.Echo("ОШИБКА! " + e.number + "\n\n" + e.message.split(" : ").join(" : \n"));
+				try {
+					var outp = WScript.ScriptFullName.replace(/\.wsf$/i, ".out");
+					var outf = fso.OpenTextFile(outp, 8, true, -1);
+					outf.Write("ОШИБКА! " + e.number + "\n\n" + e.message.split(" : ").join(" : \n"));
+					outf.Close();
+				} catch (i) {}
+
+				if (WScript.Arguments.Unnamed.Count != 0) {
+					WScript.Sleep(10000);
+				}
+				WScript.Quit(1);
+			}
+		]]></script>
+	</job>
+</package>

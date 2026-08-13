@@ -1,0 +1,1600 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>ДанныеДокумента</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.ХарактеристикаПредставление</dataPath>
+			<field>Товары.ХарактеристикаПредставление</field>
+			<useRestriction>
+				<field>true</field>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldNestedDataSet">
+			<dataPath>Товары</dataPath>
+			<field>Товары</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.НоменклатураПредставление</dataPath>
+			<field>Товары.НоменклатураПредставление</field>
+			<useRestriction>
+				<field>true</field>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.НомерСтроки</dataPath>
+			<field>Товары.НомерСтроки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерВходящегоДокументаИсходный</dataPath>
+			<field>НомерВходящегоДокументаИсходный</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер входящего документа (исходный)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Incoming document number (original)</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаВходящегоДокументаИсходная</dataPath>
+			<field>ДатаВходящегоДокументаИсходная</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата входящего документа (исходная)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Incoming document date (original)</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	УсловияРетроБонусовПоставщика.Ссылка КАК Ссылка,
+	УсловияРетроБонусовПоставщика.Товары.(
+		Номенклатура.Представление КАК НоменклатураПредставление,
+		Характеристика.Представление КАК ХарактеристикаПредставление,
+		НомерСтроки КАК НомерСтроки
+	) КАК Товары,
+	ВЫБОР
+		КОГДА УсловияРетроБонусовПоставщика.Исправление
+			ТОГДА УсловияРетроБонусовПоставщика.ИсправляемыйДокумент.НомерВходящегоДокумента
+		ИНАЧЕ УсловияРетроБонусовПоставщика.НомерВходящегоДокумента
+	КОНЕЦ КАК НомерВходящегоДокументаИсходный,
+	ВЫБОР
+		КОГДА УсловияРетроБонусовПоставщика.Исправление
+			ТОГДА УсловияРетроБонусовПоставщика.ИсправляемыйДокумент.ДатаВходящегоДокумента
+		ИНАЧЕ УсловияРетроБонусовПоставщика.ДатаВходящегоДокумента
+	КОНЕЦ КАК ДатаВходящегоДокументаИсходная
+{ВЫБРАТЬ
+	Ссылка.*,
+	Товары.(
+		НоменклатураПредставление,
+		ХарактеристикаПредставление,
+		НомерСтроки
+	) ,
+	НомерВходящегоДокументаИсходный,
+	ДатаВходящегоДокументаИсходная}
+ИЗ
+	Документ.УсловияРетроБонусовПоставщика КАК УсловияРетроБонусовПоставщика
+{ГДЕ
+	УсловияРетроБонусовПоставщика.Ссылка.*,
+	УсловияРетроБонусовПоставщика.Товары.(
+		Номенклатура.Представление,
+		Характеристика.Представление,
+		НомерСтроки
+	) ,
+	(ВЫБОР
+			КОГДА УсловияРетроБонусовПоставщика.Исправление
+				ТОГДА УсловияРетроБонусовПоставщика.ИсправляемыйДокумент.НомерВходящегоДокумента
+			ИНАЧЕ УсловияРетроБонусовПоставщика.НомерВходящегоДокумента
+		КОНЕЦ) КАК НомерВходящегоДокументаИсходный,
+	(ВЫБОР
+			КОГДА УсловияРетроБонусовПоставщика.Исправление
+				ТОГДА УсловияРетроБонусовПоставщика.ИсправляемыйДокумент.ДатаВходящегоДокумента
+			ИНАЧЕ УсловияРетроБонусовПоставщика.ДатаВходящегоДокумента
+		КОНЕЦ) КАК ДатаВходящегоДокументаИсходная}</query>
+		<autoFillFields>false</autoFillFields>
+	</dataSet>
+	<dataSet xsi:type="DataSetObject">
+		<name>Склады</name>
+		<field xsi:type="DataSetFieldNestedDataSet">
+			<dataPath>АктуальныеДанныеТаблицаСклады</dataPath>
+			<field>АктуальныеДанныеТаблицаСклады</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица склады</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table warehouses</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаСклады.ДокументУсловий</dataPath>
+			<field>АктуальныеДанныеТаблицаСклады.ДокументУсловий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица склады.Документ условий</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table warehouses.Condition document</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.УсловияРетроБонусовПоставщика</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаСклады.Склад</dataPath>
+			<field>АктуальныеДанныеТаблицаСклады.Склад</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица склады.Склад</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table warehouses.Warehouse</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Склады</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаСклады.НомерСтроки</dataPath>
+			<field>АктуальныеДанныеТаблицаСклады.НомерСтроки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица склады.Номер строки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table warehouses.Row number.</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reference</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.УсловияРетроБонусовПоставщика</v8:Type>
+			</valueType>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<objectName>НаборСклады</objectName>
+	</dataSet>
+	<dataSet xsi:type="DataSetObject">
+		<name>Поставщики</name>
+		<field xsi:type="DataSetFieldNestedDataSet">
+			<dataPath>АктуальныеДанныеТаблицаПоставщики</dataPath>
+			<field>АктуальныеДанныеТаблицаПоставщики</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица поставщики</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table vendors</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаПоставщики.ДокументУсловий</dataPath>
+			<field>АктуальныеДанныеТаблицаПоставщики.ДокументУсловий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица поставщики.Документ условий</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table vendors. Condition document</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.УсловияРетроБонусовПоставщика</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаПоставщики.НачалоДействия</dataPath>
+			<field>АктуальныеДанныеТаблицаПоставщики.НачалоДействия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица поставщики.Начало действия</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table vendors.Effective date</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаПоставщики.ОкончаниеДействия</dataPath>
+			<field>АктуальныеДанныеТаблицаПоставщики.ОкончаниеДействия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица поставщики.Окончание действия</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table vendors.End date</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаПоставщики.Контрагент</dataPath>
+			<field>АктуальныеДанныеТаблицаПоставщики.Контрагент</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица поставщики.Контрагент</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table vendors.Counterparty</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Контрагенты</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаПоставщики.Партнер</dataPath>
+			<field>АктуальныеДанныеТаблицаПоставщики.Партнер</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица поставщики.Поставщик</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table vendors.Vendor</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Партнеры</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаПоставщики.Договор</dataPath>
+			<field>АктуальныеДанныеТаблицаПоставщики.Договор</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица поставщики.Договор</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table vendors.Contract</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ДоговорыКонтрагентов</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаПоставщики.Соглашение</dataPath>
+			<field>АктуальныеДанныеТаблицаПоставщики.Соглашение</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица поставщики.Соглашение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table vendors.Agreement</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.СоглашенияСПоставщиками</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаПоставщики.НомерСтроки</dataPath>
+			<field>АктуальныеДанныеТаблицаПоставщики.НомерСтроки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица поставщики.Номер строки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table vendors.Row number</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reference</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.УсловияРетроБонусовПоставщика</v8:Type>
+			</valueType>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<objectName>НаборПоставщики</objectName>
+	</dataSet>
+	<dataSet xsi:type="DataSetObject">
+		<name>СегментыТоваров</name>
+		<field xsi:type="DataSetFieldNestedDataSet">
+			<dataPath>АктуальныеДанныеТаблицаСегментыТоваров</dataPath>
+			<field>АктуальныеДанныеТаблицаСегментыТоваров</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица сегменты товаров</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods segments</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаСегментыТоваров.ДокументУсловий</dataPath>
+			<field>АктуальныеДанныеТаблицаСегментыТоваров.ДокументУсловий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица сегменты товаров.Документ условий</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods segments.Condition document</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.УсловияРетроБонусовПоставщика</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаСегментыТоваров.Сегмент</dataPath>
+			<field>АктуальныеДанныеТаблицаСегментыТоваров.Сегмент</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица сегменты товаров.Сегмент</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods segments.Segment</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.СегментыНоменклатуры</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаСегментыТоваров.НомерСтроки</dataPath>
+			<field>АктуальныеДанныеТаблицаСегментыТоваров.НомерСтроки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица сегменты товаров.Номер строки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods segments.Row number</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reference</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.УсловияРетроБонусовПоставщика</v8:Type>
+			</valueType>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<objectName>НаборСегментыТоваров</objectName>
+	</dataSet>
+	<dataSet xsi:type="DataSetObject">
+		<name>Контрагенты</name>
+		<field xsi:type="DataSetFieldNestedDataSet">
+			<dataPath>АктуальныеДанныеТаблицаКонтрагенты</dataPath>
+			<field>АктуальныеДанныеТаблицаКонтрагенты</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица контрагенты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table counterparties</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаКонтрагенты.НачалоДействия</dataPath>
+			<field>АктуальныеДанныеТаблицаКонтрагенты.НачалоДействия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица контрагенты.Начало действия</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table counterparty.Effective date</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаКонтрагенты.ОкончаниеДействия</dataPath>
+			<field>АктуальныеДанныеТаблицаКонтрагенты.ОкончаниеДействия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица контрагенты.Окончание действия</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table counterparty.End date</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаКонтрагенты.ДокументУсловия</dataPath>
+			<field>АктуальныеДанныеТаблицаКонтрагенты.ДокументУсловия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица контрагенты.Документ условия</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table counterparties.Condition document</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.УсловияРетроБонусовПоставщика</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаКонтрагенты.Контрагент</dataPath>
+			<field>АктуальныеДанныеТаблицаКонтрагенты.Контрагент</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица контрагенты.Контрагент</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table counterparties.Counterparty</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Контрагенты</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаКонтрагенты.НомерСтроки</dataPath>
+			<field>АктуальныеДанныеТаблицаКонтрагенты.НомерСтроки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица контрагенты.Номер строки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table counterparty.Row number</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ref</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.УсловияРетроБонусовПоставщика</v8:Type>
+			</valueType>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<objectName>НаборКонтрагенты</objectName>
+	</dataSet>
+	<dataSet xsi:type="DataSetObject">
+		<name>ИНН</name>
+		<field xsi:type="DataSetFieldNestedDataSet">
+			<dataPath>АктуальныеДанныеТаблицаИНН</dataPath>
+			<field>АктуальныеДанныеТаблицаИНН</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица ИНН</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table TIN</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаИНН.НачалоДействия</dataPath>
+			<field>АктуальныеДанныеТаблицаИНН.НачалоДействия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица ИНН.Начало действия</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table TIN.Effective date</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаИНН.ОкончаниеДействия</dataPath>
+			<field>АктуальныеДанныеТаблицаИНН.ОкончаниеДействия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица ИНН.Окончание действия</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table TIN.End date</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаИНН.ДокументУсловий</dataPath>
+			<field>АктуальныеДанныеТаблицаИНН.ДокументУсловий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица ИНН.Документ условий</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table TIN.Condition document</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.УсловияРетроБонусовПоставщика</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаИНН.ИНН</dataPath>
+			<field>АктуальныеДанныеТаблицаИНН.ИНН</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица ИНН.ИНН</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data TIN table.TIN</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:TypeId>c7789e6a-123e-411f-aa24-30177c9c7b72</v8:TypeId>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаИНН.НомерСтроки</dataPath>
+			<field>АктуальныеДанныеТаблицаИНН.НомерСтроки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица ИНН.Номер строки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table TIN.Row number</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reference</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.УсловияРетроБонусовПоставщика</v8:Type>
+			</valueType>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<objectName>НаборИНН</objectName>
+	</dataSet>
+	<dataSet xsi:type="DataSetObject">
+		<name>Товары</name>
+		<field xsi:type="DataSetFieldNestedDataSet">
+			<dataPath>АктуальныеДанныеТаблицаТовары</dataPath>
+			<field>АктуальныеДанныеТаблицаТовары</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица товары</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаТовары.НачалоДействия</dataPath>
+			<field>АктуальныеДанныеТаблицаТовары.НачалоДействия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица товары.Начало действия</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods.Effective date</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаТовары.ОкончаниеДействия</dataPath>
+			<field>АктуальныеДанныеТаблицаТовары.ОкончаниеДействия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица товары.Окончание действия</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods.End date</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаТовары.Номенклатура</dataPath>
+			<field>АктуальныеДанныеТаблицаТовары.Номенклатура</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица товары.Номенклатура</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods.Items</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Номенклатура</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаТовары.Характеристика</dataPath>
+			<field>АктуальныеДанныеТаблицаТовары.Характеристика</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица товары.Характеристика</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods.Variant</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ХарактеристикиНоменклатуры</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаТовары.КоличествоПлан</dataPath>
+			<field>АктуальныеДанныеТаблицаТовары.КоличествоПлан</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица товары.Количество, план</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods.Quantity, plan</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>3</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаТовары.Процент</dataPath>
+			<field>АктуальныеДанныеТаблицаТовары.Процент</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица товары.Бонус, %</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods.Rebate, %</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>4</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаТовары.БазоваяЦена</dataPath>
+			<field>АктуальныеДанныеТаблицаТовары.БазоваяЦена</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица товары.Базовая цена</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods.Base price</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:TypeId>eefd8557-e29c-43fd-87f1-9c69afa7aa83</v8:TypeId>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаТовары.ПредставлениеНоменклатуры</dataPath>
+			<field>АктуальныеДанныеТаблицаТовары.ПредставлениеНоменклатуры</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица товары.Представление номенклатуры</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods.Item presentation</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>500</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаТовары.БонусЗаЕдиницу</dataPath>
+			<field>АктуальныеДанныеТаблицаТовары.БонусЗаЕдиницу</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица товары.Бонус за единицу</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods.Rebate per unit</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:TypeId>eefd8557-e29c-43fd-87f1-9c69afa7aa83</v8:TypeId>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаТовары.СуммаБонус</dataPath>
+			<field>АктуальныеДанныеТаблицаТовары.СуммаБонус</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица товары.Сумма, бонус</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods.Amount, rebate</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:TypeId>ae2f89b3-a2ce-4f0a-a0a9-61e5b32d3e81</v8:TypeId>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаТовары.ДокументУсловий</dataPath>
+			<field>АктуальныеДанныеТаблицаТовары.ДокументУсловий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица товары.Документ условий</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods.Condition document</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.УсловияРетроБонусовПоставщика</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаТовары.НомерСтроки</dataPath>
+			<field>АктуальныеДанныеТаблицаТовары.НомерСтроки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица товары.Номер строки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table goods.Row number</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reference</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.УсловияРетроБонусовПоставщика</v8:Type>
+			</valueType>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<objectName>НаборТовары</objectName>
+	</dataSet>
+	<dataSet xsi:type="DataSetObject">
+		<name>Условия</name>
+		<field xsi:type="DataSetFieldNestedDataSet">
+			<dataPath>АктуальныеДанныеТаблицаУсловия</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.НачалоДействия</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.НачалоДействия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Начало действия</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Effective date</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.ОкончаниеДействия</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.ОкончаниеДействия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Окончание действия</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.End date</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.ДокументУсловий</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.ДокументУсловий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Документ условий</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Condition document</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.УсловияРетроБонусовПоставщика</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.Вид</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.Вид</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Вид</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Type</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ВидыРетроБонусовПоставщиков</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.Описание</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.Описание</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Описание</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Description</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>300</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.Участники</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.Участники</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Участники</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Participants</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:EnumRef.СоставыСписковРетроБонусов</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.Товары</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.Товары</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Товары</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Goods</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:EnumRef.СоставыСписковРетроБонусов</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.УчитыватьНДС</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.УчитыватьНДС</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Учитывать НДС</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Consider VAT</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:boolean</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.БонусПроцент</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.БонусПроцент</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Бонус, %</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Rebate, %</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>4</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.СуммаПлан</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.СуммаПлан</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Сумма, план</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Amount, plan</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:TypeId>ae2f89b3-a2ce-4f0a-a0a9-61e5b32d3e81</v8:TypeId>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.Валюта</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.Валюта</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Валюта</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Currency</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Валюты</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.ПериодичностьУсловий</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.ПериодичностьУсловий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Периодичность условий</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Condition frequency</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:EnumRef.ПериодичностиРетроБонусов</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.ПериодичностьНачислений</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.ПериодичностьНачислений</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Периодичность начислений</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Charge frequency </v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:EnumRef.ПериодичностиРетроБонусов</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.ЗапретСверхПлана</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.ЗапретСверхПлана</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Запрет сверх плана</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Restrict plan excess</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:boolean</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.НомерСтроки</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.НомерСтроки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Номер строки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Row number</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.НомерДокументаУсловийСПрефиксом</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.НомерДокументаУсловийСПрефиксом</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Номер документа условий с префиксом</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Condition  document number with prefix</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>15</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.Ответственный</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.Ответственный</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Ответственный</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Person responsible</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Пользователи</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.Склады</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.Склады</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Склады</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Warehouses</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:EnumRef.СоставыСписковРетроБонусов</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.ДатаОстатков</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.ДатаОстатков</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Дата остатков</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Balance date</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ref</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.УсловияРетроБонусовПоставщика</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.Организация</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.Организация</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Company</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Организации</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.Контрагент</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.Контрагент</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Контрагент</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Counterparty</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Контрагенты</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АктуальныеДанныеТаблицаУсловия.Партнер</dataPath>
+			<field>АктуальныеДанныеТаблицаУсловия.Партнер</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Актуальные данные таблица условия.Партнер</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relevant data table conditions.Partner</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Партнеры</v8:Type>
+			</valueType>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<objectName>НаборУсловия</objectName>
+	</dataSet>
+	<dataSet xsi:type="DataSetObject">
+		<name>ПереопределяемыеПоля</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reference</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.УсловияРетроБонусовПоставщика</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Валюта</dataPath>
+			<field>Валюта</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Currency</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Валюты</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Организации</v8:Type>
+			</valueType>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<objectName>ПереопределяемыеДанные</objectName>
+	</dataSet>
+	<dataSetLink>
+		<sourceDataSet>ДанныеДокумента</sourceDataSet>
+		<destinationDataSet>Склады</destinationDataSet>
+		<sourceExpression>Ссылка</sourceExpression>
+		<destinationExpression>Ссылка</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>ДанныеДокумента</sourceDataSet>
+		<destinationDataSet>Поставщики</destinationDataSet>
+		<sourceExpression>Ссылка</sourceExpression>
+		<destinationExpression>Ссылка</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>ДанныеДокумента</sourceDataSet>
+		<destinationDataSet>СегментыТоваров</destinationDataSet>
+		<sourceExpression>Ссылка</sourceExpression>
+		<destinationExpression>Ссылка</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>ДанныеДокумента</sourceDataSet>
+		<destinationDataSet>Контрагенты</destinationDataSet>
+		<sourceExpression>Ссылка</sourceExpression>
+		<destinationExpression>Ссылка</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>ДанныеДокумента</sourceDataSet>
+		<destinationDataSet>ИНН</destinationDataSet>
+		<sourceExpression>Ссылка</sourceExpression>
+		<destinationExpression>Ссылка</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>ДанныеДокумента</sourceDataSet>
+		<destinationDataSet>Товары</destinationDataSet>
+		<sourceExpression>Ссылка</sourceExpression>
+		<destinationExpression>Ссылка</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>ДанныеДокумента</sourceDataSet>
+		<destinationDataSet>ПереопределяемыеПоля</destinationDataSet>
+		<sourceExpression>Ссылка</sourceExpression>
+		<destinationExpression>Ссылка</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>ДанныеДокумента</sourceDataSet>
+		<destinationDataSet>Условия</destinationDataSet>
+		<sourceExpression>Ссылка</sourceExpression>
+		<destinationExpression>Ссылка</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<calculatedField>
+		<dataPath>НомерИсправляемогоДокументаСПрефиксом</dataPath>
+		<expression>Ссылка.ИсправляемыйДокумент.Номер</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Номер исправляемого документа с префиксом</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Correct document number with prefix</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>Товары.ПредставлениеНоменклатуры</dataPath>
+		<expression>НоменклатураКлиентСервер.ПредставлениеНоменклатурыДляПечати(Товары.НоменклатураПредставление, Товары.ХарактеристикаПредставление)</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Товары.Представление номенклатуры</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Goods.Item presentation</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Основной</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Main</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows"/>
+	</settingsVariant>
+</DataCompositionSchema>

@@ -1,0 +1,563 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерСмены</dataPath>
+			<field>НомерСмены</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер смены</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дата</dataPath>
+			<field>Дата</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Машина</dataPath>
+			<field>Машина</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Машина</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ход</dataPath>
+			<field>Ход</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ход</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВыходноеИзделие</dataPath>
+			<field>ВыходноеИзделие</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выходное изделие</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Исполнитель</dataPath>
+			<field>Исполнитель</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоИсполнителей</dataPath>
+			<field>КоличествоИсполнителей</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество исполнителей</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоХодовВРаботе</dataPath>
+			<field>КоличествоХодовВРаботе</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество ходов в работе</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РабочийЦентрДоступен</dataPath>
+			<field>РабочийЦентрДоступен</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рабочий центр доступен</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Тара</dataPath>
+			<field>Тара</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тара</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ПроизводственнаяОперация2_2.СменноеЗадание КАК СменноеЗадание,
+	ПроизводственнаяОперация2_2.Ссылка КАК ПроизводственнаяОперация,
+	ПроизводственнаяОперация2_2.Исполнитель КАК Исполнитель,
+	ПроизводственнаяОперация2_2.СменноеЗадание.Дата КАК Дата,
+	ПроизводственнаяОперация2_2.СменноеЗадание.Смена.бит_НомерСмены КАК НомерСмены,
+	ПроизводственнаяОперация2_2.ВидРабочегоЦентра.Родитель КАК Машина,
+	ПроизводственнаяОперация2_2.ВидРабочегоЦентра КАК Ход,
+	ПроизводственнаяОперация2_2.Этап.Спецификация.ОсновноеИзделиеНоменклатура КАК ВыходноеИзделие,
+	ПроизводственнаяОперация2_2.Этап КАК Этап
+ПОМЕСТИТЬ вт_ДанныеПоПроизводственнымОперациям
+ИЗ
+	Документ.ПроизводственнаяОперация2_2 КАК ПроизводственнаяОперация2_2
+ГДЕ
+	ПроизводственнаяОперация2_2.СменноеЗадание.Проведен
+	И ПроизводственнаяОперация2_2.Проведен
+	И ПроизводственнаяОперация2_2.СменноеЗадание.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+	И ПроизводственнаяОперация2_2.Подразделение = &amp;Подразделение
+	И ПроизводственнаяОперация2_2.ВидРабочегоЦентра &lt;&gt; ЗНАЧЕНИЕ(Справочник.ВидыРабочихЦентров.ПустаяСсылка)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ПроизводственнаяОперация2_2.СменноеЗадание.Дата КАК Дата,
+	ПроизводственнаяОперация2_2.СменноеЗадание.Смена.бит_НомерСмены КАК НомерСмены,
+	ПроизводственнаяОперация2_2.ВидРабочегоЦентра.Родитель КАК Машина,
+	ВидыРабочихЦентров.Ссылка КАК Ход
+ПОМЕСТИТЬ вт_ВсеХодыПоДатамИСменам
+ИЗ
+	Документ.ПроизводственнаяОперация2_2 КАК ПроизводственнаяОперация2_2
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ВидыРабочихЦентров КАК ВидыРабочихЦентров
+		ПО ПроизводственнаяОперация2_2.ВидРабочегоЦентра.Родитель = ВидыРабочихЦентров.Родитель
+ГДЕ
+	ПроизводственнаяОперация2_2.СменноеЗадание.Проведен
+	И ПроизводственнаяОперация2_2.Проведен
+	И ПроизводственнаяОперация2_2.СменноеЗадание.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+	И ПроизводственнаяОперация2_2.Подразделение = &amp;Подразделение
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ вт_ДанныеПоПроизводственнымОперациям.Ход) КАК КоличествоХодовВРаботе,
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ вт_ДанныеПоПроизводственнымОперациям.Исполнитель) КАК КоличествоИсполнителей
+ПОМЕСТИТЬ вт_КоличествоХодовИсполнителей
+ИЗ
+	вт_ДанныеПоПроизводственнымОперациям КАК вт_ДанныеПоПроизводственнымОперациям
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	вт_ДанныеПоПроизводственнымОперациям.СменноеЗадание КАК СменноеЗадание,
+	вт_ДанныеПоПроизводственнымОперациям.ПроизводственнаяОперация КАК ПроизводственнаяОперация,
+	вт_ДанныеПоПроизводственнымОперациям.Дата КАК Дата,
+	вт_ДанныеПоПроизводственнымОперациям.НомерСмены КАК НомерСмены,
+	вт_ДанныеПоПроизводственнымОперациям.Машина КАК Машина,
+	вт_ДанныеПоПроизводственнымОперациям.ВыходноеИзделие КАК ВыходноеИзделие,
+	вт_ДанныеПоПроизводственнымОперациям.Ход КАК Ход,
+	ЭтапПроизводства2_2ВыходныеИзделия.Номенклатура КАК Номенклатура,
+	ВЫБОР
+		КОГДА ЗаказКлиентаТовары.бит_Тара = ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка)
+			ТОГДА вт_ДанныеПоПроизводственнымОперациям.ВыходноеИзделие.бит_СтандартныйТипТары
+		ИНАЧЕ ЗаказКлиентаТовары.бит_Тара
+	КОНЕЦ КАК Тара
+ПОМЕСТИТЬ вт_ТараНоменклатурыИзЗаказа
+ИЗ
+	вт_ДанныеПоПроизводственнымОперациям КАК вт_ДанныеПоПроизводственнымОперациям
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЭтапПроизводства2_2.ВыходныеИзделия КАК ЭтапПроизводства2_2ВыходныеИзделия
+			ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЗаказКлиента.Товары КАК ЗаказКлиентаТовары
+			ПО ЭтапПроизводства2_2ВыходныеИзделия.Назначение.Заказ = ЗаказКлиентаТовары.Ссылка
+				И (ЗаказКлиентаТовары.Ссылка.Проведен)
+				И ЭтапПроизводства2_2ВыходныеИзделия.Номенклатура = ЗаказКлиентаТовары.Номенклатура
+		ПО вт_ДанныеПоПроизводственнымОперациям.Этап = ЭтапПроизводства2_2ВыходныеИзделия.Ссылка
+			И (ЭтапПроизводства2_2ВыходныеИзделия.Ссылка.Проведен)
+			И вт_ДанныеПоПроизводственнымОперациям.ВыходноеИзделие = ЭтапПроизводства2_2ВыходныеИзделия.Номенклатура
+
+СГРУППИРОВАТЬ ПО
+	ЭтапПроизводства2_2ВыходныеИзделия.Номенклатура,
+	вт_ДанныеПоПроизводственнымОперациям.ВыходноеИзделие,
+	вт_ДанныеПоПроизводственнымОперациям.СменноеЗадание,
+	вт_ДанныеПоПроизводственнымОперациям.ПроизводственнаяОперация,
+	вт_ДанныеПоПроизводственнымОперациям.Дата,
+	вт_ДанныеПоПроизводственнымОперациям.НомерСмены,
+	вт_ДанныеПоПроизводственнымОперациям.Машина,
+	вт_ДанныеПоПроизводственнымОперациям.Ход,
+	ВЫБОР
+		КОГДА ЗаказКлиентаТовары.бит_Тара = ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка)
+			ТОГДА вт_ДанныеПоПроизводственнымОперациям.ВыходноеИзделие.бит_СтандартныйТипТары
+		ИНАЧЕ ЗаказКлиентаТовары.бит_Тара
+	КОНЕЦ
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	вт_ДанныеПоПроизводственнымОперациям.Дата КАК Дата,
+	вт_ДанныеПоПроизводственнымОперациям.НомерСмены КАК НомерСмены,
+	вт_ДанныеПоПроизводственнымОперациям.Машина КАК Машина,
+	вт_ДанныеПоПроизводственнымОперациям.Ход КАК Ход,
+	вт_ДанныеПоПроизводственнымОперациям.ВыходноеИзделие КАК ВыходноеИзделие,
+	вт_ТараНоменклатурыИзЗаказа.Тара КАК Тара,
+	вт_ДанныеПоПроизводственнымОперациям.Исполнитель КАК Исполнитель,
+	вт_КоличествоХодовИсполнителей.КоличествоИсполнителей КАК КоличествоИсполнителей,
+	вт_КоличествоХодовИсполнителей.КоличествоХодовВРаботе КАК КоличествоХодовВРаботе,
+	ЕСТЬNULL(ДоступностьРабочихЦентров.Начало, 0) КАК РабочийЦентрДоступен
+ИЗ
+	вт_ДанныеПоПроизводственнымОперациям КАК вт_ДанныеПоПроизводственнымОперациям
+		ЛЕВОЕ СОЕДИНЕНИЕ вт_КоличествоХодовИсполнителей КАК вт_КоличествоХодовИсполнителей
+		ПО (ИСТИНА)
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ДоступностьРабочихЦентров КАК ДоступностьРабочихЦентров
+		ПО вт_ДанныеПоПроизводственнымОперациям.Ход = ДоступностьРабочихЦентров.РабочийЦентр.ВидРабочегоЦентра
+			И (НАЧАЛОПЕРИОДА(вт_ДанныеПоПроизводственнымОперациям.Дата, ДЕНЬ) = НАЧАЛОПЕРИОДА(ДоступностьРабочихЦентров.Начало, ДЕНЬ))
+		ЛЕВОЕ СОЕДИНЕНИЕ вт_ТараНоменклатурыИзЗаказа КАК вт_ТараНоменклатурыИзЗаказа
+		ПО вт_ДанныеПоПроизводственнымОперациям.СменноеЗадание = вт_ТараНоменклатурыИзЗаказа.СменноеЗадание
+			И вт_ДанныеПоПроизводственнымОперациям.ПроизводственнаяОперация = вт_ТараНоменклатурыИзЗаказа.ПроизводственнаяОперация
+			И вт_ДанныеПоПроизводственнымОперациям.Дата = вт_ТараНоменклатурыИзЗаказа.Дата
+			И вт_ДанныеПоПроизводственнымОперациям.НомерСмены = вт_ТараНоменклатурыИзЗаказа.НомерСмены
+			И вт_ДанныеПоПроизводственнымОперациям.Машина = вт_ТараНоменклатурыИзЗаказа.Машина
+			И вт_ДанныеПоПроизводственнымОперациям.Ход = вт_ТараНоменклатурыИзЗаказа.Ход
+			И вт_ДанныеПоПроизводственнымОперациям.ВыходноеИзделие = вт_ТараНоменклатурыИзЗаказа.ВыходноеИзделие
+
+СГРУППИРОВАТЬ ПО
+	вт_ДанныеПоПроизводственнымОперациям.Машина,
+	вт_ДанныеПоПроизводственнымОперациям.НомерСмены,
+	вт_ДанныеПоПроизводственнымОперациям.Ход,
+	вт_ДанныеПоПроизводственнымОперациям.ВыходноеИзделие,
+	вт_ДанныеПоПроизводственнымОперациям.Дата,
+	вт_ДанныеПоПроизводственнымОперациям.Исполнитель,
+	вт_КоличествоХодовИсполнителей.КоличествоИсполнителей,
+	вт_КоличествоХодовИсполнителей.КоличествоХодовВРаботе,
+	ЕСТЬNULL(ДоступностьРабочихЦентров.Начало, 0),
+	вт_ТараНоменклатурыИзЗаказа.Тара
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	вт_ВсеХодыПоДатамИСменам.Дата,
+	вт_ВсеХодыПоДатамИСменам.НомерСмены,
+	вт_ВсеХодыПоДатамИСменам.Машина,
+	вт_ВсеХодыПоДатамИСменам.Ход,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+ИЗ
+	вт_ВсеХодыПоДатамИСменам КАК вт_ВсеХодыПоДатамИСменам
+ГДЕ
+	НЕ &amp;ТолькоЗадейстованныеХоды
+	И НЕ (вт_ВсеХодыПоДатамИСменам.Дата, вт_ВсеХодыПоДатамИСменам.НомерСмены, вт_ВсеХодыПоДатамИСменам.Машина, вт_ВсеХодыПоДатамИСменам.Ход) В
+				(ВЫБРАТЬ
+					вт_ДанныеПоПроизводственнымОперациям.Дата КАК Дата,
+					вт_ДанныеПоПроизводственнымОперациям.НомерСмены КАК НомерСмены,
+					вт_ДанныеПоПроизводственнымОперациям.Машина КАК Машина,
+					вт_ДанныеПоПроизводственнымОперациям.Ход КАК Ход
+				ИЗ
+					вт_ДанныеПоПроизводственнымОперациям КАК вт_ДанныеПоПроизводственнымОперациям)
+
+СГРУППИРОВАТЬ ПО
+	вт_ВсеХодыПоДатамИСменам.Дата,
+	вт_ВсеХодыПоДатамИСменам.Ход,
+	вт_ВсеХодыПоДатамИСменам.Машина,
+	вт_ВсеХодыПоДатамИСменам.НомерСмены</query>
+	</dataSet>
+	<parameter>
+		<name>ПериодОтчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период отчета</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>Подразделение</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Подразделение</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.СтруктураПредприятия</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>ДатаНачала</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата начала</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;ПериодОтчета.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>ДатаОкончания</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата окончания</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>ТолькоЗадейстованныеХоды</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Только задейстованные ходы</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">true</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>(бит) Отчет "Что Идет?"</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Основной</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Машина</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Ход</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ВыходноеИзделие</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Тара</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">НомерСмены</dcsset:left>
+					<dcsset:comparisonType>InList</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:ValueListType">
+						<v8:valueType/>
+						<v8:lastId xsi:type="xs:decimal">-1</v8:lastId>
+					</dcsset:right>
+					<dcsset:userSettingID>68c0a908-102f-4cb9-9dbb-15ce2e4d6c0d</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">Машина</dcsset:left>
+					<dcsset:comparisonType>InListByHierarchy</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:ValueListType">
+						<v8:valueType/>
+						<v8:lastId xsi:type="xs:decimal">-1</v8:lastId>
+					</dcsset:right>
+					<dcsset:userSettingID>b9f6b6cd-9386-4990-855d-80ad4eff48f9</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">Ход</dcsset:left>
+					<dcsset:comparisonType>InList</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:ValueListType">
+						<v8:valueType/>
+						<v8:lastId xsi:type="xs:decimal">-1</v8:lastId>
+					</dcsset:right>
+					<dcsset:userSettingID>80a1c501-743c-4e61-b9bc-52105d29cfd3</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">ВыходноеИзделие</dcsset:left>
+					<dcsset:comparisonType>InList</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:ValueListType">
+						<v8:valueType/>
+						<v8:lastId xsi:type="xs:decimal">-1</v8:lastId>
+					</dcsset:right>
+					<dcsset:userSettingID>6a6a0276-c4af-430e-a736-484e0369c023</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>e1f7be41-78f5-404c-a326-ccc5a0f5dbf4</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Подразделение</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>0045bc82-6ddb-4888-b341-361b63833e4d</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ТолькоЗадейстованныеХоды</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					<dcsset:userSettingID>e445090d-1ffe-4d37-9f42-d4c593e3f888</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>Машина</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Ход</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ВыходноеИзделие</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Тара</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">РабочийЦентрДоступен</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветФона</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">style:ВыборСтандартногоПериодаФонКнопокСНачалаГода</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+					<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+					<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+					<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+					<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+					<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+					<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+					<dcsset:useInResourceFieldsHeader>DontUse</dcsset:useInResourceFieldsHeader>
+					<dcsset:useInOverallHeader>DontUse</dcsset:useInOverallHeader>
+					<dcsset:useInOverallResourceFieldsHeader>DontUse</dcsset:useInOverallResourceFieldsHeader>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>КоличествоХодовВРаботе</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоХодовВРаботе</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>КоличествоИсполнителей</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоИсполнителей</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Дата</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>НомерСмены</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Оформление возвратов комитентам и приема на комиссию</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Register consignment stock return and consignment procurement</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаЗакрыть" id="41">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ExtendedTooltip name="ФормаЗакрытьРасширеннаяПодсказка" id="42"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаКомментарий" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа комментарий</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Comment group</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКомментарийРасширеннаяПодсказка" id="36"/>
+			<ChildItems>
+				<PictureDecoration name="ДекорацияКомментарий" id="29">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Декорация комментарий</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Decoration comment</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.Информация16</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<FileDragMode>AsFile</FileDragMode>
+					<ContextMenu name="ДекорацияКомментарийКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ДекорацияКомментарийРасширеннаяПодсказка" id="31"/>
+				</PictureDecoration>
+				<LabelDecoration name="Комментарий" id="32">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>60</MaxWidth>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выделите строки и оформите "виртуальные" возвраты комитентам для оформления комитентами уведомления об остатках и получения РНПТ. По оформленным возвратам будут автоматически созданы "виртуальные" приемы на комиссию, в которых необходимо вручную указать полученные от комитентов номера РНПТ, затем провести документы возврата комитентам и приема на комиссию</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Select the lines and register "virtual" return of consignment stock so that vendors can register a balance notification and receive a goods batch registration number. For registered returns, "virtual" consignment procurement will be automatically created. In these returns specify manually goods batch registration numbers from the vendors and then post the documents of consignment stock return and procurement</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="КомментарийКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="34"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ДокументыВозвратовИПриемов" id="1">
+			<Representation>List</Representation>
+			<ReadOnly>true</ReadOnly>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<DataPath>ДокументыВозвратовИПриемов</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ДокументыВозвратовИПриемовКонтекстноеМеню" id="3"/>
+			<AutoCommandBar name="ДокументыВозвратовИПриемовКоманднаяПанель" id="2">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ДокументыВозвратовИПриемовОформитьВозвратИПрием" id="37">
+						<Type>CommandBarButton</Type>
+						<DefaultButton>true</DefaultButton>
+						<CommandName>Form.Command.ОформитьВозвратИПрием</CommandName>
+						<ExtendedTooltip name="ДокументыВозвратовИПриемовОформитьВозвратИПриемРасширеннаяПодсказка" id="38"/>
+					</Button>
+					<Button name="ДокументыВозвратовИПриемовОформитьВсеВозвратыИПриемы" id="39">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ОформитьВсеВозвратыИПриемы</CommandName>
+						<ExtendedTooltip name="ДокументыВозвратовИПриемовОформитьВсеВозвратыИПриемыРасширеннаяПодсказка" id="40"/>
+					</Button>
+					<Button name="ДокументыВозвратовИПриемовОбновитьТаблицуДокументов" id="43">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ЗаполнитьТаблицуДокументов</CommandName>
+						<ExtendedTooltip name="ДокументыВозвратовИПриемовОбновитьТаблицуДокументовРасширеннаяПодсказка" id="44"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ДокументыВозвратовИПриемовРасширеннаяПодсказка" id="4"/>
+			<SearchStringAddition name="ДокументыВозвратовИПриемовСтрокаПоиска" id="5">
+				<AdditionSource>
+					<Item>ДокументыВозвратовИПриемов</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДокументыВозвратовИПриемовСтрокаПоискаКонтекстноеМеню" id="6"/>
+				<ExtendedTooltip name="ДокументыВозвратовИПриемовСтрокаПоискаРасширеннаяПодсказка" id="7"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ДокументыВозвратовИПриемовСостояниеПросмотра" id="11">
+				<AdditionSource>
+					<Item>ДокументыВозвратовИПриемов</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДокументыВозвратовИПриемовСостояниеПросмотраКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="ДокументыВозвратовИПриемовСостояниеПросмотраРасширеннаяПодсказка" id="13"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ДокументыВозвратовИПриемовУправлениеПоиском" id="8">
+				<AdditionSource>
+					<Item>ДокументыВозвратовИПриемов</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ДокументыВозвратовИПриемовУправлениеПоискомКонтекстноеМеню" id="9"/>
+				<ExtendedTooltip name="ДокументыВозвратовИПриемовУправлениеПоискомРасширеннаяПодсказка" id="10"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ДокументыВозвратовИПриемовВыбор</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ДокументыВозвратовИПриемовОрганизация" id="14">
+					<DataPath>ДокументыВозвратовИПриемов.Организация</DataPath>
+					<ContextMenu name="ДокументыВозвратовИПриемовОрганизацияКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="ДокументыВозвратовИПриемовОрганизацияРасширеннаяПодсказка" id="16"/>
+				</InputField>
+				<InputField name="ДокументыВозвратовИПриемовКомитент" id="17">
+					<DataPath>ДокументыВозвратовИПриемов.Комитент</DataPath>
+					<ContextMenu name="ДокументыВозвратовИПриемовКомитентКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ДокументыВозвратовИПриемовКомитентРасширеннаяПодсказка" id="19"/>
+				</InputField>
+				<InputField name="ДокументыВозвратовИПриемовСклад" id="45">
+					<DataPath>ДокументыВозвратовИПриемов.Склад</DataPath>
+					<ContextMenu name="ДокументыВозвратовИПриемовСкладКонтекстноеМеню" id="46"/>
+					<ExtendedTooltip name="ДокументыВозвратовИПриемовСкладРасширеннаяПодсказка" id="47"/>
+				</InputField>
+				<InputField name="ДокументыВозвратовИПриемовСоглашение" id="20">
+					<DataPath>ДокументыВозвратовИПриемов.Соглашение</DataPath>
+					<ContextMenu name="ДокументыВозвратовИПриемовСоглашениеКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ДокументыВозвратовИПриемовСоглашениеРасширеннаяПодсказка" id="22"/>
+				</InputField>
+				<PictureField name="ДокументыВозвратовИПриемовДокументВозвратаСостояние" id="60">
+					<DataPath>ДокументыВозвратовИПриемов.ДокументВозвратаСостояние</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.СостоянияДокумента</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</ValuesPicture>
+					<ContextMenu name="ДокументыВозвратовИПриемовДокументВозвратаСостояниеКонтекстноеМеню" id="61"/>
+					<ExtendedTooltip name="ДокументыВозвратовИПриемовДокументВозвратаСостояниеРасширеннаяПодсказка" id="62"/>
+				</PictureField>
+				<InputField name="ДокументыВозвратовИПриемовДокументВозврата" id="23">
+					<DataPath>ДокументыВозвратовИПриемов.ДокументВозврата</DataPath>
+					<ContextMenu name="ДокументыВозвратовИПриемовДокументВозвратаКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ДокументыВозвратовИПриемовДокументВозвратаРасширеннаяПодсказка" id="25"/>
+				</InputField>
+				<PictureField name="ДокументыВозвратовИПриемовДокументПриемаСостояние" id="63">
+					<DataPath>ДокументыВозвратовИПриемов.ДокументПриемаСостояние</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.СостоянияДокумента</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</ValuesPicture>
+					<ContextMenu name="ДокументыВозвратовИПриемовДокументПриемаСостояниеКонтекстноеМеню" id="64"/>
+					<ExtendedTooltip name="ДокументыВозвратовИПриемовДокументПриемаСостояниеРасширеннаяПодсказка" id="65"/>
+				</PictureField>
+				<InputField name="ДокументыВозвратовИПриемовДокументПриемаНаКомиссию" id="26">
+					<DataPath>ДокументыВозвратовИПриемов.ДокументПриемаНаКомиссию</DataPath>
+					<ContextMenu name="ДокументыВозвратовИПриемовДокументПриемаНаКомиссиюКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="ДокументыВозвратовИПриемовДокументПриемаНаКомиссиюРасширеннаяПодсказка" id="28"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ДокументыВозвратовИПриемов" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы возвратов и приемов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Return and receiving documents</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Организация" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Комитент" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комитент</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Consignor</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Партнеры</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Соглашение" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Соглашение</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Agreement</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.СоглашенияСПоставщиками</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДокументВозврата" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ возврата</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Returns document</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ВозвратТоваровПоставщику</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДокументПриемаНаКомиссию" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ приема на комиссию</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Consignment procurement document</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ПриобретениеТоваровУслуг</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Склад" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Склад</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Warehouse</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Склады</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДокументВозвратаСостояние" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ возврата состояние</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Return document state</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>1</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДокументПриемаСостояние" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ приема состояние</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Receipt document state</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>1</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОформитьВозвратИПрием" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить возврат и прием</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register return and receipt</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОформитьВозвратИПрием</Action>
+		</Command>
+		<Command name="ОформитьВсеВозвратыИПриемы" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформить все возвраты и приемы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register all returns and receipts</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОформитьВсеВозвратыИПриемы</Action>
+		</Command>
+		<Command name="ЗаполнитьТаблицуДокументов" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить таблицу документов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh document table</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗаполнитьТаблицуДокументов</Action>
+			<Representation>Picture</Representation>
+		</Command>
+	</Commands>
+</Form>

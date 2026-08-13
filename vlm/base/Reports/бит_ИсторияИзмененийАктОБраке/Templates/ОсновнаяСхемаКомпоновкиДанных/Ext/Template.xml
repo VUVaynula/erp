@@ -1,0 +1,796 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Примечание</dataPath>
+			<field>Примечание</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Примечание</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Пользователь</dataPath>
+			<field>Пользователь</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователь</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Статус</dataPath>
+			<field>Статус</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ВыводитьКартинку</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionPictureOutputType">OutputByValue</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Картинка</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Picture" t="false" ref="v8ui:бит_КолекцияШаров"/>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаУстановкиСтатуса</dataPath>
+			<field>ДатаУстановкиСтатуса</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата установки статуса</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Действие</dataPath>
+			<field>Действие</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Действие</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Картинка</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Picture" t="false" ref="v8ui:КоллекцияПиктограммСостоянияЗадач"/>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаРегистрацииСтатуса</dataPath>
+			<field>ДатаРегистрацииСтатуса</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата регистрации статуса</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Наименование</dataPath>
+			<field>Наименование</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Документ</dataPath>
+			<field>Документ</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерСтроки</dataPath>
+			<field>НомерСтроки</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ВЫБОР
+		КОГДА бит_ИсторияИзмененийСсогласованияАктовОБраке.бит_СтатусДокумента = ЗНАЧЕНИЕ(Перечисление.бит_СтатусыОБраке.АктСформированСК)
+			ТОГДА 1
+		КОГДА бит_ИсторияИзмененийСсогласованияАктовОБраке.бит_СтатусДокумента = ЗНАЧЕНИЕ(Перечисление.бит_СтатусыОБраке.ОформленМастером)
+			ТОГДА 2
+		КОГДА бит_ИсторияИзмененийСсогласованияАктовОБраке.бит_СтатусДокумента = ЗНАЧЕНИЕ(Перечисление.бит_СтатусыОБраке.ВыполненРасчетМатериаловТехнолог)
+			ТОГДА 3
+		КОГДА бит_ИсторияИзмененийСсогласованияАктовОБраке.бит_СтатусДокумента = ЗНАЧЕНИЕ(Перечисление.бит_СтатусыОБраке.ВыполненРасчетНормировщиком)
+			ТОГДА 4
+		КОГДА бит_ИсторияИзмененийСсогласованияАктовОБраке.бит_СтатусДокумента = ЗНАЧЕНИЕ(Перечисление.бит_СтатусыОБраке.СогласованНачальникомЦеха)
+			ТОГДА 5
+		КОГДА бит_ИсторияИзмененийСсогласованияАктовОБраке.бит_СтатусДокумента = ЗНАЧЕНИЕ(Перечисление.бит_СтатусыОБраке.ОформленБухгалтером)
+			ТОГДА 6
+		КОГДА бит_ИсторияИзмененийСсогласованияАктовОБраке.бит_СтатусДокумента = ЗНАЧЕНИЕ(Перечисление.бит_СтатусыОБраке.ПереданНаКомиссию)
+			ТОГДА 7
+		КОГДА бит_ИсторияИзмененийСсогласованияАктовОБраке.бит_СтатусДокумента = ЗНАЧЕНИЕ(Перечисление.бит_СтатусыОБраке.РассмотренНаКомиссии)
+			ТОГДА 8
+		ИНАЧЕ 0
+	КОНЕЦ КАК Статус,
+	бит_ИсторияИзмененийСсогласованияАктовОБраке.бит_Действие КАК Действие,
+	бит_ИсторияИзмененийСсогласованияАктовОБраке.бит_ДатаУстановкиСтатуса КАК ДатаУстановкиСтатуса,
+	бит_ИсторияИзмененийСсогласованияАктовОБраке.бит_ДатаРегистрацииСтатуса КАК ДатаРегистрацииСтатуса,
+	бит_ИсторияИзмененийСсогласованияАктовОБраке.бит_СтатусДокумента КАК Наименование,
+	бит_ИсторияИзмененийСсогласованияАктовОБраке.Регистратор КАК Документ,
+	бит_ИсторияИзмененийСсогласованияАктовОБраке.бит_Исполнитель КАК Пользователь,
+	бит_ИсторияИзмененийСсогласованияАктовОБраке.бит_Примечание КАК Примечание,
+	бит_ИсторияИзмененийСсогласованияАктовОБраке.НомерСтроки КАК НомерСтроки
+ИЗ
+	РегистрСведений.бит_ИсторияИзмененийСсогласованияАктовОБраке КАК бит_ИсторияИзмененийСсогласованияАктовОБраке
+{ГДЕ
+	(бит_ИсторияИзмененийСсогласованияАктовОБраке.Регистратор В (&amp;Ссылка)),
+	(бит_ИсторияИзмененийСсогласованияАктовОБраке.Период &gt; &amp;НачалоПериода
+			И бит_ИсторияИзмененийСсогласованияАктовОБраке.Период &lt; &amp;КонецПериода)}
+
+УПОРЯДОЧИТЬ ПО
+	Документ,
+	НомерСтроки,
+	ДатаРегистрацииСтатуса</query>
+	</dataSet>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>Ссылка</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Ссылка</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:DocumentRef.бит_АктОБраке</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<valueListAllowed>true</valueListAllowed>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>История изменений документа "Акт о браке"</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Основной</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Статус</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Действие</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДатаУстановкиСтатуса</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДатаРегистрацииСтатуса</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Наименование</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Пользователь</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Примечание</dcsset:field>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>c6052e5f-582e-468e-8f07-41435e4e38ae</dcsset:userSettingID>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>71628bb9-3b47-4608-af13-08dd8afb1967</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Ссылка</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>e1c7473b-90de-4329-b1ce-13f7fa568828</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>98e732b0-c15e-4e16-8ce0-80897e898093</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период:</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>aafba96b-00ef-4f77-bc32-2f1a38105957</dcsset:userSettingID>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>3ea7aa83-2402-431d-99be-b8151c920b0e</dcsset:userSettingID>
+			</dcsset:conditionalAppearance>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto">
+						<dcsset:use>false</dcsset:use>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Статус</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Действие</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДатаУстановкиСтатуса</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДатаРегистрацииСтатуса</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Наименование</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Пользователь</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Примечание</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:conditionalAppearance>
+					<dcsset:item>
+						<dcsset:use>false</dcsset:use>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>Статус</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter/>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВыводитьКартинку</dcscor:parameter>
+								<dcscor:value xsi:type="dcsset:DataCompositionPictureOutputType">OutputByValue</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:use>false</dcscor:use>
+								<dcscor:parameter>РазмерКартинки</dcscor:parameter>
+								<dcscor:value xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet" xsi:type="mxl:PictureSize">Proportionally</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:use>false</dcscor:use>
+								<dcscor:parameter>ВертикальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:use>false</dcscor:use>
+								<dcscor:parameter>ГоризонтальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>Картинка</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Picture" tx="143" ty="15" ref="v8ui:бит_КолекцияШаров"/>
+							</dcscor:item>
+						</dcsset:appearance>
+						<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+						<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+						<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+						<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+						<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+						<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+						<dcsset:useInResourceFieldsHeader>DontUse</dcsset:useInResourceFieldsHeader>
+						<dcsset:useInOverallHeader>DontUse</dcsset:useInOverallHeader>
+						<dcsset:useInOverallResourceFieldsHeader>DontUse</dcsset:useInOverallResourceFieldsHeader>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>Действие</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">Действие</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+							</dcsset:item>
+						</dcsset:filter>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВыводитьКартинку</dcscor:parameter>
+								<dcscor:value xsi:type="dcsset:DataCompositionPictureOutputType">Auto</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>РазмерКартинки</dcscor:parameter>
+								<dcscor:value xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet" xsi:type="mxl:PictureSize">ByFontSize</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВертикальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ГоризонтальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>Картинка</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Picture" t="false" ref="v8ui:ОформленаНакладная"/>
+							</dcscor:item>
+						</dcsset:appearance>
+						<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+						<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+						<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+						<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+						<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+						<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+						<dcsset:useInResourceFieldsHeader>DontUse</dcsset:useInResourceFieldsHeader>
+						<dcsset:useInOverallHeader>DontUse</dcsset:useInOverallHeader>
+						<dcsset:useInOverallResourceFieldsHeader>DontUse</dcsset:useInOverallResourceFieldsHeader>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>Статус</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+							</dcsset:item>
+						</dcsset:filter>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВыводитьКартинку</dcscor:parameter>
+								<dcscor:value xsi:type="dcsset:DataCompositionPictureOutputType">OutputByValue</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>РазмерКартинки</dcscor:parameter>
+								<dcscor:value xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet" xsi:type="mxl:PictureSize">ByFontSize</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВертикальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ГоризонтальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>Картинка</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Picture" t="false" ref="v8ui:бит_СерыйШар"/>
+							</dcscor:item>
+						</dcsset:appearance>
+						<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+						<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+						<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+						<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+						<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+						<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+						<dcsset:useInResourceFieldsHeader>DontUse</dcsset:useInResourceFieldsHeader>
+						<dcsset:useInOverallHeader>DontUse</dcsset:useInOverallHeader>
+						<dcsset:useInOverallResourceFieldsHeader>DontUse</dcsset:useInOverallResourceFieldsHeader>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>Статус</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:decimal">2</dcsset:right>
+							</dcsset:item>
+						</dcsset:filter>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВыводитьКартинку</dcscor:parameter>
+								<dcscor:value xsi:type="dcsset:DataCompositionPictureOutputType">OutputByValue</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>РазмерКартинки</dcscor:parameter>
+								<dcscor:value xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet" xsi:type="mxl:PictureSize">ByFontSize</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВертикальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ГоризонтальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>Картинка</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Picture" t="false" ref="v8ui:бит_ЖелтыШар"/>
+							</dcscor:item>
+						</dcsset:appearance>
+						<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+						<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+						<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+						<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+						<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+						<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+						<dcsset:useInResourceFieldsHeader>DontUse</dcsset:useInResourceFieldsHeader>
+						<dcsset:useInOverallHeader>DontUse</dcsset:useInOverallHeader>
+						<dcsset:useInOverallResourceFieldsHeader>DontUse</dcsset:useInOverallResourceFieldsHeader>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>Статус</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:decimal">3</dcsset:right>
+							</dcsset:item>
+						</dcsset:filter>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВыводитьКартинку</dcscor:parameter>
+								<dcscor:value xsi:type="dcsset:DataCompositionPictureOutputType">OutputByValue</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>РазмерКартинки</dcscor:parameter>
+								<dcscor:value xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet" xsi:type="mxl:PictureSize">ByFontSize</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВертикальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ГоризонтальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>Картинка</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Picture" t="false" ref="v8ui:бит_ГолубойШар"/>
+							</dcscor:item>
+						</dcsset:appearance>
+						<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+						<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+						<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+						<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+						<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+						<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+						<dcsset:useInResourceFieldsHeader>DontUse</dcsset:useInResourceFieldsHeader>
+						<dcsset:useInOverallHeader>DontUse</dcsset:useInOverallHeader>
+						<dcsset:useInOverallResourceFieldsHeader>DontUse</dcsset:useInOverallResourceFieldsHeader>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>Статус</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:decimal">4</dcsset:right>
+							</dcsset:item>
+						</dcsset:filter>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВыводитьКартинку</dcscor:parameter>
+								<dcscor:value xsi:type="dcsset:DataCompositionPictureOutputType">OutputByValue</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>РазмерКартинки</dcscor:parameter>
+								<dcscor:value xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet" xsi:type="mxl:PictureSize">ByFontSize</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВертикальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ГоризонтальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>Картинка</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Picture" t="false" ref="v8ui:бит_СинийШар"/>
+							</dcscor:item>
+						</dcsset:appearance>
+						<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+						<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+						<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+						<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+						<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+						<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+						<dcsset:useInResourceFieldsHeader>DontUse</dcsset:useInResourceFieldsHeader>
+						<dcsset:useInOverallHeader>DontUse</dcsset:useInOverallHeader>
+						<dcsset:useInOverallResourceFieldsHeader>DontUse</dcsset:useInOverallResourceFieldsHeader>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>Статус</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:decimal">5</dcsset:right>
+							</dcsset:item>
+						</dcsset:filter>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВыводитьКартинку</dcscor:parameter>
+								<dcscor:value xsi:type="dcsset:DataCompositionPictureOutputType">OutputByValue</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>РазмерКартинки</dcscor:parameter>
+								<dcscor:value xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet" xsi:type="mxl:PictureSize">ByFontSize</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВертикальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ГоризонтальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>Картинка</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Picture" t="false" ref="v8ui:бит_ЗеленыйШар"/>
+							</dcscor:item>
+						</dcsset:appearance>
+						<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+						<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+						<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+						<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+						<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+						<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+						<dcsset:useInResourceFieldsHeader>DontUse</dcsset:useInResourceFieldsHeader>
+						<dcsset:useInOverallHeader>DontUse</dcsset:useInOverallHeader>
+						<dcsset:useInOverallResourceFieldsHeader>DontUse</dcsset:useInOverallResourceFieldsHeader>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>Статус</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+							</dcsset:item>
+						</dcsset:filter>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВыводитьКартинку</dcscor:parameter>
+								<dcscor:value xsi:type="dcsset:DataCompositionPictureOutputType">OutputByValue</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>РазмерКартинки</dcscor:parameter>
+								<dcscor:value xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet" xsi:type="mxl:PictureSize">ByFontSize</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВертикальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ГоризонтальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>Картинка</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Picture" t="false" ref="v8ui:бит_ОранжевыйШар"/>
+							</dcscor:item>
+						</dcsset:appearance>
+						<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+						<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+						<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+						<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+						<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+						<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+						<dcsset:useInResourceFieldsHeader>DontUse</dcsset:useInResourceFieldsHeader>
+						<dcsset:useInOverallHeader>DontUse</dcsset:useInOverallHeader>
+						<dcsset:useInOverallResourceFieldsHeader>DontUse</dcsset:useInOverallResourceFieldsHeader>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>Статус</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+							</dcsset:item>
+						</dcsset:filter>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВыводитьКартинку</dcscor:parameter>
+								<dcscor:value xsi:type="dcsset:DataCompositionPictureOutputType">OutputByValue</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>РазмерКартинки</dcscor:parameter>
+								<dcscor:value xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet" xsi:type="mxl:PictureSize">ByFontSize</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВертикальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ГоризонтальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>Картинка</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Picture" t="false" ref="v8ui:бит_РозовыйШар"/>
+							</dcscor:item>
+						</dcsset:appearance>
+						<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+						<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+						<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+						<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+						<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+						<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+						<dcsset:useInResourceFieldsHeader>DontUse</dcsset:useInResourceFieldsHeader>
+						<dcsset:useInOverallHeader>DontUse</dcsset:useInOverallHeader>
+						<dcsset:useInOverallResourceFieldsHeader>DontUse</dcsset:useInOverallResourceFieldsHeader>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>Статус</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:decimal">8</dcsset:right>
+							</dcsset:item>
+						</dcsset:filter>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВыводитьКартинку</dcscor:parameter>
+								<dcscor:value xsi:type="dcsset:DataCompositionPictureOutputType">OutputByValue</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>РазмерКартинки</dcscor:parameter>
+								<dcscor:value xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet" xsi:type="mxl:PictureSize">ByFontSize</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВертикальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ГоризонтальноеПоложениеКартинки</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>Картинка</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Picture" t="false" ref="v8ui:бит_КрасныйШар"/>
+							</dcscor:item>
+						</dcsset:appearance>
+						<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+						<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+						<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+						<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+						<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+						<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+						<dcsset:useInResourceFieldsHeader>DontUse</dcsset:useInResourceFieldsHeader>
+						<dcsset:useInOverallHeader>DontUse</dcsset:useInOverallHeader>
+						<dcsset:useInOverallResourceFieldsHeader>DontUse</dcsset:useInOverallResourceFieldsHeader>
+					</dcsset:item>
+				</dcsset:conditionalAppearance>
+			</dcsset:item>
+			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+			<dcsset:itemsUserSettingID>ed35ded6-6b5d-408b-a626-d61ab92a1156</dcsset:itemsUserSettingID>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

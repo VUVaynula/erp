@@ -1,0 +1,3485 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Оформление приходных кассовых ордеров</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Incoming payments — Cash account</v8:content>
+		</v8:item>
+	</Title>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<SaveDataInSettings>UseList</SaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<AutoURL>false</AutoURL>
+	<CommandBarLocation>None</CommandBarLocation>
+	<CommandSet>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>CancelSearch</ExcludedCommand>
+		<ExcludedCommand>Change</ExcludedCommand>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>Create</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+		<ExcludedCommand>Find</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>ListSettings</ExcludedCommand>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+		<ExcludedCommand>OpenFromStandaloneServer</ExcludedCommand>
+		<ExcludedCommand>OutputList</ExcludedCommand>
+		<ExcludedCommand>Refresh</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаОтборы" id="445">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отборы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filters</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОтборыРасширеннаяПодсказка" id="446"/>
+			<ChildItems>
+				<InputField name="КассаОтбор" id="442">
+					<DataPath>Касса</DataPath>
+					<Width>28</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ClearButton>true</ClearButton>
+					<QuickChoice>false</QuickChoice>
+					<ContextMenu name="КассаОтборКонтекстноеМеню" id="443"/>
+					<ExtendedTooltip name="КассаОтборРасширеннаяПодсказка" id="444"/>
+					<Events>
+						<Event name="OnChange">КассаОтборПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ПлательщикПредставлениеОтбор" id="324">
+					<DataPath>ПлательщикПредставление</DataPath>
+					<Width>28</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="ПлательщикПредставлениеОтборКонтекстноеМеню" id="325"/>
+					<ExtendedTooltip name="ПлательщикПредставлениеОтборРасширеннаяПодсказка" id="326"/>
+					<Events>
+						<Event name="OnChange">ПлательщикПредставлениеОтборПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="ГруппаСтраницы" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="ГруппаСтраницыРасширеннаяПодсказка" id="164"/>
+			<Events>
+				<Event name="OnCurrentPageChange">ГруппаСтраницыПриСменеСтраницы</Event>
+			</Events>
+			<ChildItems>
+				<Page name="СтраницаПриходныеКассовыеОрдера" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Приходные кассовые ордера</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Incoming payments — Cash account</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаПриходныеКассовыеОрдераРасширеннаяПодсказка" id="165"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаПользовательскихНастроек" id="555">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа пользовательских настроек</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>User settings group</v8:content>
+								</v8:item>
+							</Title>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПользовательскихНастроекРасширеннаяПодсказка" id="556"/>
+						</UsualGroup>
+						<Table name="ПриходныеКассовыеОрдера" id="1">
+							<Representation>List</Representation>
+							<SkipOnInput>false</SkipOnInput>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<InitialTreeView>ExpandTopLevel</InitialTreeView>
+							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>ПриходныеКассовыеОрдера</DataPath>
+							<RowPictureDataPath>ПриходныеКассовыеОрдера.НестандартнаяКартинка</RowPictureDataPath>
+							<RowsPicture>
+								<xr:Ref>CommonPicture.СостоянияДокумента</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</RowsPicture>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Приходные кассовые ордера</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Incoming payments — Cash account</v8:content>
+								</v8:item>
+							</Title>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+							</CommandSet>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<UserSettingsGroup>ГруппаПользовательскихНастроек</UserSettingsGroup>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="ПриходныеКассовыеОрдераКонтекстноеМеню" id="2">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Popup name="КонтекстноеМенюСоздать" id="67">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Создать</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Create</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="КонтекстноеМенюСоздатьРасширеннаяПодсказка" id="166"/>
+										<ChildItems>
+											<Button name="КонтекстноеМенюСоздатьПКО" id="68">
+												<Type>CommandBarButton</Type>
+												<SkipOnInput>false</SkipOnInput>
+												<CommandName>Form.Item.ПриходныеКассовыеОрдера.StandardCommand.Create</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Поступление оплаты от клиента</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Customer payment</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="КонтекстноеМенюСоздатьПКОРасширеннаяПодсказка" id="167"/>
+											</Button>
+											<Button name="КонтекстноеМенюСоздатьПоступлениеДенежныхСредствИзБанка" id="69">
+												<Type>CommandBarButton</Type>
+												<Representation>PictureAndText</Representation>
+												<SkipOnInput>false</SkipOnInput>
+												<CommandName>Form.Command.СоздатьПоступлениеДенежныхСредствИзБанка</CommandName>
+												<Picture>
+													<xr:Ref>StdPicture.AddListItem</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="КонтекстноеМенюСоздатьПоступлениеДенежныхСредствИзБанкаРасширеннаяПодсказка" id="168"/>
+											</Button>
+											<Button name="КонтекстноеМенюПриходныеКассовыеОрдераСоздатьПоступлениеДенежныхСредствИзКассыККМ" id="154">
+												<Type>CommandBarButton</Type>
+												<SkipOnInput>false</SkipOnInput>
+												<CommandName>Form.Command.СоздатьПоступлениеДенежныхСредствИзКассыККМ</CommandName>
+												<ExtendedTooltip name="КонтекстноеМенюПриходныеКассовыеОрдераСоздатьПоступлениеДенежныхСредствИзКассыККМРасширеннаяПодсказка" id="169"/>
+											</Button>
+											<Button name="КонтекстноеМенюСоздатьПоступлениеДенежныхСредствИзДругойКассы" id="70">
+												<Type>CommandBarButton</Type>
+												<Representation>PictureAndText</Representation>
+												<SkipOnInput>false</SkipOnInput>
+												<CommandName>Form.Command.СоздатьПоступлениеДенежныхСредствИзДругойКассы</CommandName>
+												<Picture>
+													<xr:Ref>StdPicture.AddListItem</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="КонтекстноеМенюСоздатьПоступлениеДенежныхСредствИзДругойКассыРасширеннаяПодсказка" id="170"/>
+											</Button>
+											<Button name="КонтекстноеМенюПриходныеКассовыеОрдераСоздатьПоступлениеДенежныхСредствИзДругойОрганизации" id="153">
+												<Type>CommandBarButton</Type>
+												<SkipOnInput>false</SkipOnInput>
+												<CommandName>Form.Command.СоздатьПоступлениеДенежныхСредствИзДругойОрганизации</CommandName>
+												<ExtendedTooltip name="КонтекстноеМенюПриходныеКассовыеОрдераСоздатьПоступлениеДенежныхСредствИзДругойОрганизацииРасширеннаяПодсказка" id="171"/>
+											</Button>
+											<Button name="КонтекстноеМенюСоздатьВозвратДенежныхСредствОтПоставщика" id="71">
+												<Type>CommandBarButton</Type>
+												<Representation>PictureAndText</Representation>
+												<SkipOnInput>false</SkipOnInput>
+												<CommandName>Form.Command.СоздатьВозвратДенежныхСредствОтПоставщика</CommandName>
+												<Picture>
+													<xr:Ref>StdPicture.AddListItem</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="КонтекстноеМенюСоздатьВозвратДенежныхСредствОтПоставщикаРасширеннаяПодсказка" id="172"/>
+											</Button>
+											<Button name="КонтекстноеМенюСоздатьВозвратДенежныхСредствОтПодотчетника" id="72">
+												<Type>CommandBarButton</Type>
+												<Representation>PictureAndText</Representation>
+												<SkipOnInput>false</SkipOnInput>
+												<CommandName>Form.Command.СоздатьВозвратДенежныхСредствОтПодотчетника</CommandName>
+												<Picture>
+													<xr:Ref>StdPicture.AddListItem</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="КонтекстноеМенюСоздатьВозвратДенежныхСредствОтПодотчетникаРасширеннаяПодсказка" id="173"/>
+											</Button>
+											<Button name="КонтекстноеМенюСоздатьПрочееПоступлениеДенежныхСредств" id="73">
+												<Type>CommandBarButton</Type>
+												<Representation>PictureAndText</Representation>
+												<SkipOnInput>false</SkipOnInput>
+												<CommandName>Form.Command.СоздатьПрочееПоступлениеДенежныхСредств</CommandName>
+												<Picture>
+													<xr:Ref>StdPicture.AddListItem</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="КонтекстноеМенюСоздатьПрочееПоступлениеДенежныхСредствРасширеннаяПодсказка" id="174"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<ButtonGroup name="КонтекстноеМеню" id="74">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Контекстное меню</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Context menu</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Группа ПКО</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>"Incoming payment — Cash account" group</v8:content>
+											</v8:item>
+										</ToolTip>
+										<CommandSource>Item.ПриходныеКассовыеОрдера</CommandSource>
+										<ExtendedTooltip name="КонтекстноеМенюРасширеннаяПодсказка" id="175"/>
+									</ButtonGroup>
+									<ButtonGroup name="СписокКонтекстноеМенюГруппаОсновное" id="493">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Список контекстное меню группа основное</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>List context menu group main</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="СписокКонтекстноеМенюГруппаОсновноеРасширеннаяПодсказка" id="494"/>
+										<ChildItems>
+											<Button name="ПриходныеКассовыеОрдераКонтекстноеМенюСкопировать" id="495">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ПриходныеКассовыеОрдераСкопировать</CommandName>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераКонтекстноеМенюСкопироватьРасширеннаяПодсказка" id="496"/>
+											</Button>
+											<Button name="ПриходныеКассовыеОрдераКонтекстноеМенюИзменить" id="497">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.ПриходныеКассовыеОрдера.StandardCommand.Change</CommandName>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераКонтекстноеМенюИзменитьРасширеннаяПодсказка" id="498"/>
+											</Button>
+											<Button name="ПриходныеКассовыеОрдераКонтекстноеМенюУстановитьПометкуУдаления" id="499">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ПриходныеКассовыеОрдераУстановитьСнятьПометкуУдаления</CommandName>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераКонтекстноеМенюУстановитьПометкуУдаленияРасширеннаяПодсказка" id="500"/>
+											</Button>
+											<ButtonGroup name="СписокГруппаУстановитьИнтервалКонтекст" id="501">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Список группа установить интервал</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>List group set interval</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="СписокГруппаУстановитьИнтервалКонтекстРасширеннаяПодсказка" id="502"/>
+												<ChildItems>
+													<Button name="ПриходныеКассовыеОрдераУстановитьИнтервалКонтекст" id="503">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.УстановитьИнтервал</CommandName>
+														<Picture>
+															<xr:Ref>StdPicture.SetDateInterval</xr:Ref>
+															<xr:LoadTransparent>true</xr:LoadTransparent>
+														</Picture>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераУстановитьИнтервалКонтекстРасширеннаяПодсказка" id="504"/>
+													</Button>
+												</ChildItems>
+											</ButtonGroup>
+										</ChildItems>
+									</ButtonGroup>
+									<ButtonGroup name="СписокКонтекстноеМенюГруппаДополнительно" id="487">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Список контекстное меню группа дополнительно</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>List context menu group more</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="СписокКонтекстноеМенюГруппаДополнительноРасширеннаяПодсказка" id="488"/>
+										<ChildItems>
+											<Button name="ПриходныеКассовыеОрдераКонтекстноеМенюПровести" id="489">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ПриходныеКассовыеОрдераПровести</CommandName>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераКонтекстноеМенюПровестиРасширеннаяПодсказка" id="490"/>
+											</Button>
+											<Button name="ПриходныеКассовыеОрдераКонтекстноеМенюОтменаПроведения" id="491">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ПриходныеКассовыеОрдераОтменаПроведения</CommandName>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераКонтекстноеМенюОтменаПроведенияРасширеннаяПодсказка" id="492"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<ButtonGroup name="СписокГруппаПоискКонтекст" id="479">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Список группа поиск</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>List group search</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="СписокГруппаПоискКонтекстРасширеннаяПодсказка" id="535"/>
+										<ChildItems>
+											<Button name="ПриходныеКассовыеОрдераПоискПоТекущемуЗначениюКонтекст" id="536">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.ПриходныеКассовыеОрдера.StandardCommand.FindByCurrentValue</CommandName>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераПоискПоТекущемуЗначениюКонтекстРасширеннаяПодсказка" id="539"/>
+											</Button>
+											<Button name="ПриходныеКассовыеОрдераНайтиКонтекст" id="537">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.ПриходныеКассовыеОрдера.StandardCommand.Find</CommandName>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераНайтиКонтекстРасширеннаяПодсказка" id="540"/>
+											</Button>
+											<Button name="ПриходныеКассовыеОрдераОтменитьПоискКонтекст" id="538">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.ПриходныеКассовыеОрдера.StandardCommand.CancelSearch</CommandName>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераОтменитьПоискКонтекстРасширеннаяПодсказка" id="541"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<Button name="ПриходныеКассовыеОрдераКонтекстноеМенюКопироватьВБуферОбмена" id="529">
+										<Type>CommandBarButton</Type>
+										<CommandName>0</CommandName>
+										<ExtendedTooltip name="ПриходныеКассовыеОрдераКонтекстноеМенюКопироватьВБуферОбменаРасширеннаяПодсказка" id="531"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="ПриходныеКассовыеОрдераКоманднаяПанель" id="3">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Popup name="ГруппаСоздать" id="30">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Создать</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Create</v8:content>
+											</v8:item>
+										</Title>
+										<Picture>
+											<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="ГруппаСоздатьРасширеннаяПодсказка" id="176"/>
+										<ChildItems>
+											<ButtonGroup name="ПриходныеКассовыеОрдераГруппаОплата" id="411">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Приходные кассовые ордера группа оплата</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Incoming payments — Cash account group payment</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераГруппаОплатаРасширеннаяПодсказка" id="412"/>
+												<ChildItems>
+													<Button name="ПриходныеКассовыеОрдераСоздать" id="31">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Item.ПриходныеКассовыеОрдера.StandardCommand.Create</CommandName>
+														<Picture>
+															<xr:Ref>CommonPicture.ПустаяКартинка</xr:Ref>
+															<xr:LoadTransparent>false</xr:LoadTransparent>
+														</Picture>
+														<Title>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Поступление оплаты от клиента</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Customer payment</v8:content>
+															</v8:item>
+														</Title>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьРасширеннаяПодсказка" id="177"/>
+													</Button>
+													<Button name="ПриходныеКассовыеОрдераСоздатьПоступлениеДенежныхСредствИзДругойОрганизации" id="152">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьПоступлениеДенежныхСредствИзДругойОрганизации</CommandName>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьПоступлениеДенежныхСредствИзДругойОрганизацииРасширеннаяПодсказка" id="184"/>
+													</Button>
+													<Button name="ПриходныеКассовыеОрдераСоздатьВнутреннююПередачуДенежныхСредств" id="158">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьВнутреннююПередачуДенежныхСредств</CommandName>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьВнутреннююПередачуДенежныхСредствРасширеннаяПодсказка" id="185"/>
+													</Button>
+												</ChildItems>
+											</ButtonGroup>
+											<ButtonGroup name="ПриходныеКассовыеОрдераГруппаПеремещение" id="413">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Приходные кассовые ордера группа перемещение</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Incoming payments — Cash account group transfer</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераГруппаПеремещениеРасширеннаяПодсказка" id="414"/>
+												<ChildItems>
+													<Button name="ПриходныеКассовыеОрдераСоздатьПоступлениеДенежныхСредствИзБанка" id="32">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьПоступлениеДенежныхСредствИзБанка</CommandName>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьПоступлениеДенежныхСредствИзБанкаРасширеннаяПодсказка" id="182"/>
+													</Button>
+													<Button name="ПриходныеКассовыеОрдераСоздатьИнкассациюДенежныхСредствИзБанка" id="415">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьИнкассациюДенежныхСредствИзБанка</CommandName>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьИнкассациюДенежныхСредствИзБанкаРасширеннаяПодсказка" id="416"/>
+													</Button>
+													<Button name="ПриходныеКассовыеОрдераСоздатьПоступлениеДенежныхСредствИзДругойКассы" id="33">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьПоступлениеДенежныхСредствИзДругойКассы</CommandName>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьПоступлениеДенежныхСредствИзДругойКассыРасширеннаяПодсказка" id="183"/>
+													</Button>
+													<Button name="ПриходныеКассовыеОрдераСоздатьПоступлениеДенежныхСредствИзКассыККМ" id="151">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьПоступлениеДенежныхСредствИзКассыККМ</CommandName>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьПоступлениеДенежныхСредствИзКассыККМРасширеннаяПодсказка" id="181"/>
+													</Button>
+												</ChildItems>
+											</ButtonGroup>
+											<ButtonGroup name="ПриходныеКассовыеОрдераГруппаКредитыДепозиты" id="417">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Приходные кассовые ордера группа кредиты депозиты</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Incoming payments — Cash account group credits deposits</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераГруппаКредитыДепозитыРасширеннаяПодсказка" id="418"/>
+												<ChildItems>
+													<Button name="ПриходныеКассовыеОрдераСоздатьПоступлениеПоКредиту" id="162">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьПоступлениеПоКредитам</CommandName>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьПоступлениеПоКредитуРасширеннаяПодсказка" id="188"/>
+													</Button>
+													<Button name="ПриходныеКассовыеОрдераСоздатьПогашениеЗаймаКонтрагентом" id="161">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьПогашениеЗаймаКонтрагентом</CommandName>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьПогашениеЗаймаКонтрагентомРасширеннаяПодсказка" id="189"/>
+													</Button>
+													<Button name="ПриходныеКассовыеОрдераСоздатьПогашениеЗаймаСотрудником" id="440">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьПогашениеЗаймаСотрудником</CommandName>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьПогашениеЗаймаСотрудникомРасширеннаяПодсказка" id="441"/>
+													</Button>
+												</ChildItems>
+											</ButtonGroup>
+											<ButtonGroup name="ПриходныеКассовыеОрдераГруппаПрочее" id="419">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Приходные кассовые ордера группа прочее</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Incoming payments — Cash account group other</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераГруппаПрочееРасширеннаяПодсказка" id="420"/>
+												<ChildItems>
+													<Button name="ПриходныеКассовыеОрдераСоздатьКонвертацияВалюты" id="159">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьКонвертацияВалюты</CommandName>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьКонвертацияВалютыРасширеннаяПодсказка" id="180"/>
+													</Button>
+													<Button name="ПриходныеКассовыеОрдераСоздатьПрочееПоступлениеДенежныхСредств" id="36">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьПрочееПоступлениеДенежныхСредств</CommandName>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьПрочееПоступлениеДенежныхСредствРасширеннаяПодсказка" id="187"/>
+													</Button>
+												</ChildItems>
+											</ButtonGroup>
+											<ButtonGroup name="ПриходныеКассовыеОрдераГруппаВозвраты" id="421">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Приходные кассовые ордера группа возвраты</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Incoming payments — Cash account group refunds</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераГруппаВозвратыРасширеннаяПодсказка" id="422"/>
+												<ChildItems>
+													<Button name="ПриходныеКассовыеОрдераСоздатьВозвратДенежныхСредствОтПоставщика" id="34">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьВозвратДенежныхСредствОтПоставщика</CommandName>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьВозвратДенежныхСредствОтПоставщикаРасширеннаяПодсказка" id="178"/>
+													</Button>
+													<Button name="ПриходныеКассовыеОрдераСоздатьВозвратДенежныхСредствОтПодотчетника" id="35">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьВозвратДенежныхСредствОтПодотчетника</CommandName>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьВозвратДенежныхСредствОтПодотчетникаРасширеннаяПодсказка" id="179"/>
+													</Button>
+													<Button name="ПриходныеКассовыеОрдераСоздатьВозвратДенежныхСредствОтДругойОрганизации" id="423">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьВозвратДенежныхСредствОтДругойОрганизации</CommandName>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьВозвратДенежныхСредствОтДругойОрганизацииРасширеннаяПодсказка" id="424"/>
+													</Button>
+													<Button name="ПриходныеКассовыеОрдераСоздатьВозвратДенежныхСредствОтАрендодателя" id="480">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьВозвратДенежныхСредствОтАрендодателя</CommandName>
+														<ExtendedTooltip name="ПриходныеКассовыеОрдераСоздатьВозвратДенежныхСредствОтАрендодателяРасширеннаяПодсказка" id="481"/>
+													</Button>
+												</ChildItems>
+											</ButtonGroup>
+										</ChildItems>
+									</Popup>
+									<ButtonGroup name="ГруппаПКО" id="37">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>ПКО</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Incoming payment — Cash account</v8:content>
+											</v8:item>
+										</Title>
+										<CommandSource>Item.ПриходныеКассовыеОрдера</CommandSource>
+										<ExtendedTooltip name="ГруппаПКОРасширеннаяПодсказка" id="190"/>
+									</ButtonGroup>
+									<Button name="РасходныеКассовыеОрдераСкопировать" id="517">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПриходныеКассовыеОрдераСкопировать</CommandName>
+										<ExtendedTooltip name="РасходныеКассовыеОрдераСкопироватьРасширеннаяПодсказка" id="518"/>
+									</Button>
+									<Button name="СписокУстановитьПометкуУдаления" id="553">
+										<Type>CommandBarButton</Type>
+										<Representation>Picture</Representation>
+										<CommandName>Form.Command.СписокУстановитьСнятьПометкуУдаления</CommandName>
+										<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+										<ExtendedTooltip name="СписокУстановитьПометкуУдаленияРасширеннаяПодсказка" id="554"/>
+									</Button>
+									<Button name="ПриходныеКассовыеОрдераУдалить" id="557">
+										<Type>CommandBarButton</Type>
+										<Visible>false</Visible>
+										<CommandName>Form.Item.ПриходныеКассовыеОрдера.StandardCommand.Delete</CommandName>
+										<ExtendedTooltip name="ПриходныеКассовыеОрдераУдалитьРасширеннаяПодсказка" id="558"/>
+									</Button>
+									<Button name="ПриходныеКассовыеОрдераУстановитьИнтервал" id="542">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.УстановитьИнтервал</CommandName>
+										<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+										<ExtendedTooltip name="ПриходныеКассовыеОрдераУстановитьИнтервалРасширеннаяПодсказка" id="543"/>
+									</Button>
+									<ButtonGroup name="СписокГруппаПроведение" id="547">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Список группа проведение</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>List group posting</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="СписокГруппаПроведениеРасширеннаяПодсказка" id="548"/>
+										<ChildItems>
+											<Button name="СписокПровести" id="549">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.СписокПровести</CommandName>
+												<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+												<ExtendedTooltip name="СписокПровестиРасширеннаяПодсказка" id="550"/>
+											</Button>
+											<Button name="СписокОтменаПроведения" id="551">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.СписокОтменаПроведения</CommandName>
+												<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+												<ExtendedTooltip name="СписокОтменаПроведенияРасширеннаяПодсказка" id="552"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<Button name="СписокДокументыЗакупкиОбщаяКомандаДополнительныеСведенияКоманднаяПанель" id="511">
+										<Type>CommandBarButton</Type>
+										<CommandName>CommonCommand.ДополнительныеСведенияКоманднаяПанель</CommandName>
+										<DataPath>Items.ПриходныеКассовыеОрдера.CurrentData.Ссылка</DataPath>
+										<ExtendedTooltip name="СписокДокументыЗакупкиОбщаяКомандаДополнительныеСведенияКоманднаяПанельРасширеннаяПодсказка" id="512"/>
+									</Button>
+									<Button name="ФормаРегистрБухгалтерииМеждународныйПроводкиДокументаОперативногоУчета" id="513">
+										<Type>CommandBarButton</Type>
+										<CommandName>DataProcessor.ОтражениеДокументовВМеждународномУчете.Command.ПроводкиДокументаОперативногоУчета</CommandName>
+										<DataPath>Items.ПриходныеКассовыеОрдера.CurrentData.Ссылка</DataPath>
+										<ExtendedTooltip name="ФормаРегистрБухгалтерииМеждународныйПроводкиДокументаОперативногоУчетаРасширеннаяПодсказка" id="514"/>
+									</Button>
+									<Button name="ФормаОбработкаОтражениеДокументовВРеглУчетеПроводкиРеглУчета" id="515">
+										<Type>CommandBarButton</Type>
+										<CommandName>DataProcessor.ОтражениеДокументовВРеглУчете.Command.ПроводкиРеглУчета</CommandName>
+										<DataPath>Items.ПриходныеКассовыеОрдера.CurrentData.Ссылка</DataPath>
+										<ExtendedTooltip name="ФормаОбработкаОтражениеДокументовВРеглУчетеПроводкиРеглУчетаРасширеннаяПодсказка" id="516"/>
+									</Button>
+									<Popup name="ПодменюСоздатьНаОсновании" id="430">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Создать на основании</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Generate</v8:content>
+											</v8:item>
+										</Title>
+										<Picture>
+											<xr:Ref>CommonPicture.ЗаполнитьПоШаблону</xr:Ref>
+											<xr:LoadTransparent>false</xr:LoadTransparent>
+										</Picture>
+										<Representation>Picture</Representation>
+										<ExtendedTooltip name="ПодменюСоздатьНаОснованииРасширеннаяПодсказка" id="431"/>
+										<ChildItems>
+											<ButtonGroup name="ПодменюСоздатьНаОснованииВажное" id="471">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Создать на основании (Важное)</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Generate (Important)</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="ПодменюСоздатьНаОснованииВажноеРасширеннаяПодсказка" id="472"/>
+											</ButtonGroup>
+											<ButtonGroup name="ПодменюСоздатьНаОснованииОбычное" id="473">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Создать на основании (Обычное)</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Generate (Standard)</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="ПодменюСоздатьНаОснованииОбычноеРасширеннаяПодсказка" id="474"/>
+											</ButtonGroup>
+											<ButtonGroup name="ПодменюСоздатьНаОснованииСмТакже" id="475">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Создать на основании (См. также)</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Generate (See also)</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="ПодменюСоздатьНаОснованииСмТакжеРасширеннаяПодсказка" id="476"/>
+											</ButtonGroup>
+										</ChildItems>
+									</Popup>
+									<ButtonGroup name="ГруппаГлобальныеКоманды" id="155">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Группа команды формы</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Form commands group</v8:content>
+											</v8:item>
+										</Title>
+										<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+										<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="191"/>
+										<ChildItems>
+											<Popup name="ПодменюЭДО" id="485">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>ЭДО</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>EDI</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="ПодменюЭДОРасширеннаяПодсказка" id="486"/>
+											</Popup>
+											<Popup name="ПодменюПечать" id="425">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Печать</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Print</v8:content>
+													</v8:item>
+												</Title>
+												<ToolTip>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Команды печати</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Print commands</v8:content>
+													</v8:item>
+												</ToolTip>
+												<Picture>
+													<xr:Ref>StdPicture.Print</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="ПодменюПечатьРасширеннаяПодсказка" id="426"/>
+											</Popup>
+											<Popup name="ГруппаОрганайзер" id="519">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Органайзер</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Organizer</v8:content>
+													</v8:item>
+												</Title>
+												<Picture>
+													<xr:Ref>CommonPicture.Органайзер</xr:Ref>
+													<xr:LoadTransparent>false</xr:LoadTransparent>
+												</Picture>
+												<Representation>Picture</Representation>
+												<ExtendedTooltip name="ГруппаОрганайзерРасширеннаяПодсказка" id="520"/>
+												<ChildItems>
+													<Button name="ФормаОбщаяКомандаОтправитьПисьмо" id="521">
+														<Type>CommandBarButton</Type>
+														<CommandName>CommonCommand.ОтправитьПисьмо</CommandName>
+														<DataPath>Items.ПриходныеКассовыеОрдера.CurrentData.Ссылка</DataPath>
+														<ExtendedTooltip name="ФормаОбщаяКомандаОтправитьПисьмоРасширеннаяПодсказка" id="522"/>
+													</Button>
+													<Button name="ФормаОбщаяКомандаНапомнить" id="523">
+														<Type>CommandBarButton</Type>
+														<CommandName>CommonCommand.Напомнить</CommandName>
+														<DataPath>Items.ПриходныеКассовыеОрдера.CurrentData.Ссылка</DataPath>
+														<ExtendedTooltip name="ФормаОбщаяКомандаНапомнитьРасширеннаяПодсказка" id="524"/>
+													</Button>
+													<Button name="ФормаОбщаяКомандаОтправитьSMS" id="525">
+														<Type>CommandBarButton</Type>
+														<CommandName>CommonCommand.ОтправитьSMS</CommandName>
+														<DataPath>Items.ПриходныеКассовыеОрдера.CurrentData.Ссылка</DataPath>
+														<ExtendedTooltip name="ФормаОбщаяКомандаОтправитьSMSРасширеннаяПодсказка" id="526"/>
+													</Button>
+													<Button name="ФормаОбщаяКомандаСоздатьЗаметкуПоПредмету" id="527">
+														<Type>CommandBarButton</Type>
+														<CommandName>CommonCommand.СоздатьЗаметкуПоПредмету</CommandName>
+														<DataPath>Items.ПриходныеКассовыеОрдера.CurrentData.Ссылка</DataPath>
+														<ExtendedTooltip name="ФормаОбщаяКомандаСоздатьЗаметкуПоПредметуРасширеннаяПодсказка" id="528"/>
+													</Button>
+												</ChildItems>
+											</Popup>
+										</ChildItems>
+									</ButtonGroup>
+									<ButtonGroup name="ГруппаФорма" id="38">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Форма</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Form</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ГруппаФормаРасширеннаяПодсказка" id="192"/>
+										<ChildItems>
+											<Button name="ПриходныеКассовыеОрдераИзменитьФорму" id="447">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераИзменитьФормуРасширеннаяПодсказка" id="448"/>
+											</Button>
+											<Button name="ПриходныеКассовыеОрдераСохранитьЗначения" id="449">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.StandardCommand.SaveValues</CommandName>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераСохранитьЗначенияРасширеннаяПодсказка" id="450"/>
+											</Button>
+											<Button name="ПриходныеКассовыеОрдераВосстановитьЗначения" id="451">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.StandardCommand.RestoreValues</CommandName>
+												<ExtendedTooltip name="ПриходныеКассовыеОрдераВосстановитьЗначенияРасширеннаяПодсказка" id="452"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<Popup name="ПодменюОтчеты" id="432">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Отчеты</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Reports</v8:content>
+											</v8:item>
+										</Title>
+										<Picture>
+											<xr:Ref>CommonPicture.Отчеты</xr:Ref>
+											<xr:LoadTransparent>false</xr:LoadTransparent>
+										</Picture>
+										<Representation>Picture</Representation>
+										<ExtendedTooltip name="ПодменюОтчетыРасширеннаяПодсказка" id="433"/>
+										<ChildItems>
+											<ButtonGroup name="ПодменюОтчетыВажное" id="434">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Подменю отчеты важное</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Important reports submenu</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="ПодменюОтчетыВажноеРасширеннаяПодсказка" id="435"/>
+											</ButtonGroup>
+											<ButtonGroup name="ПодменюОтчетыОбычное" id="436">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Подменю отчеты обычное</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Standard reports submenu</v8:content>
+													</v8:item>
+												</Title>
+												<ToolTip>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Подменю отчеты важное</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Important reports submenu</v8:content>
+													</v8:item>
+												</ToolTip>
+												<ExtendedTooltip name="ПодменюОтчетыОбычноеРасширеннаяПодсказка" id="437"/>
+											</ButtonGroup>
+											<ButtonGroup name="ПодменюОтчетыСмТакже" id="438">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Подменю отчеты см также</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>See also reports submenu</v8:content>
+													</v8:item>
+												</Title>
+												<ToolTip>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Подменю отчеты важное</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Important reports submenu</v8:content>
+													</v8:item>
+												</ToolTip>
+												<ExtendedTooltip name="ПодменюОтчетыСмТакжеРасширеннаяПодсказка" id="439"/>
+											</ButtonGroup>
+										</ChildItems>
+									</Popup>
+									<Button name="ПриходныеКассовыеОрдераСправка" id="157">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.StandardCommand.Help</CommandName>
+										<ExtendedTooltip name="ПриходныеКассовыеОрдераСправкаРасширеннаяПодсказка" id="193"/>
+									</Button>
+									<SearchStringAddition name="ДополнениеСтрокаПоиска" id="462">
+										<AdditionSource>
+											<Item>ПриходныеКассовыеОрдера</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Дополнение строка поиска</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Addition search bar</v8:content>
+											</v8:item>
+										</Title>
+										<ContextMenu name="ДополнениеСтрокаПоискаКонтекстноеМеню" id="463"/>
+										<ExtendedTooltip name="ДополнениеСтрокаПоискаРасширеннаяПодсказка" id="464"/>
+									</SearchStringAddition>
+									<SearchControlAddition name="ДополнениеУправлениеПоиском" id="465">
+										<AdditionSource>
+											<Item>ПриходныеКассовыеОрдера</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Управление поиском</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Search management</v8:content>
+											</v8:item>
+										</Title>
+										<ContextMenu name="ДополнениеУправлениеПоискомКонтекстноеМеню" id="466"/>
+										<ExtendedTooltip name="ДополнениеУправлениеПоискомРасширеннаяПодсказка" id="467"/>
+									</SearchControlAddition>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ПриходныеКассовыеОрдераРасширеннаяПодсказка" id="194"/>
+							<SearchStringAddition name="ПриходныеКассовыеОрдераСтрокаПоиска" id="391">
+								<AdditionSource>
+									<Item>ПриходныеКассовыеОрдера</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПриходныеКассовыеОрдераСтрокаПоискаКонтекстноеМеню" id="392"/>
+								<ExtendedTooltip name="ПриходныеКассовыеОрдераСтрокаПоискаРасширеннаяПодсказка" id="393"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ПриходныеКассовыеОрдераСостояниеПросмотра" id="394">
+								<AdditionSource>
+									<Item>ПриходныеКассовыеОрдера</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<HorizontalLocation>Left</HorizontalLocation>
+								<ContextMenu name="ПриходныеКассовыеОрдераСостояниеПросмотраКонтекстноеМеню" id="395"/>
+								<ExtendedTooltip name="ПриходныеКассовыеОрдераСостояниеПросмотраРасширеннаяПодсказка" id="396"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ПриходныеКассовыеОрдераУправлениеПоиском" id="397">
+								<AdditionSource>
+									<Item>ПриходныеКассовыеОрдера</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ПриходныеКассовыеОрдераУправлениеПоискомКонтекстноеМеню" id="398"/>
+								<ExtendedTooltip name="ПриходныеКассовыеОрдераУправлениеПоискомРасширеннаяПодсказка" id="399"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ПриходныеКассовыеОрдераВыбор</Event>
+								<Event name="BeforeAddRow">ПриходныеКассовыеОрдераПередНачаломДобавления</Event>
+								<Event name="BeforeDeleteRow">СписокПередУдалением</Event>
+								<Event name="OnActivateRow">ПриходныеКассовыеОрдераПриАктивизацииСтроки</Event>
+								<Event name="BeforeRowChange">ПриходныеКассовыеОрдераПередНачаломИзменения</Event>
+							</Events>
+							<ChildItems>
+								<PictureField name="ЕстьОшибкиПроверкиКонтрагентов" id="427">
+									<DataPath>ПриходныеКассовыеОрдера.ЕстьОшибкиПроверкиКонтрагентов</DataPath>
+									<Visible>false</Visible>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Есть ошибки проверки контрагентов</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>There are counterparty check errors</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Признак того, что один или несколько контрагентов документа не прошли проверку сервисом ФНС.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Shows whether one or multiple document counterparties did not pass the FTS service check.</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HeaderPicture>
+										<xr:Ref>CommonPicture.СостояниеПроверкиКонтрагента</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</HeaderPicture>
+									<ValuesPicture>
+										<xr:Ref>CommonPicture.ВниманиеКрасный</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</ValuesPicture>
+									<FileDragMode>AsFile</FileDragMode>
+									<ContextMenu name="ЕстьОшибкиПроверкиКонтрагентовКонтекстноеМеню" id="428"/>
+									<ExtendedTooltip name="ЕстьОшибкиПроверкиКонтрагентовРасширеннаяПодсказка" id="429"/>
+								</PictureField>
+								<LabelField name="Номер" id="12">
+									<DataPath>ПриходныеКассовыеОрдера.Номер</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Номер</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Number</v8:content>
+										</v8:item>
+									</Title>
+									<Width>10</Width>
+									<ContextMenu name="НомерКонтекстноеМеню" id="13"/>
+									<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="195"/>
+								</LabelField>
+								<CheckBoxField name="СторноИсправление" id="505">
+									<DataPath>ПриходныеКассовыеОрдера.СторноИсправление</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Исправление или сторно</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Correction or storno</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HeaderPicture>
+										<xr:Ref>CommonPicture.ВРасписаниеРабочегоЦентраВнесеныРучныеИзменения</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</HeaderPicture>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="СторноИсправлениеКонтекстноеМеню" id="506"/>
+									<ExtendedTooltip name="СторноИсправлениеРасширеннаяПодсказка" id="507"/>
+								</CheckBoxField>
+								<LabelField name="Дата" id="453">
+									<DataPath>ПриходныеКассовыеОрдера.Дата</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Date</v8:content>
+										</v8:item>
+									</Title>
+									<Width>9</Width>
+									<ContextMenu name="ДатаКонтекстноеМеню" id="454"/>
+									<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="455"/>
+								</LabelField>
+								<LabelField name="СуммаДокумента" id="16">
+									<DataPath>ПриходныеКассовыеОрдера.СуммаДокумента</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Amount</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СуммаДокументаКонтекстноеМеню" id="17"/>
+									<ExtendedTooltip name="СуммаДокументаРасширеннаяПодсказка" id="197"/>
+								</LabelField>
+								<LabelField name="Валюта" id="18">
+									<DataPath>ПриходныеКассовыеОрдера.Валюта</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Валюта</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Currency</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ВалютаКонтекстноеМеню" id="19"/>
+									<ExtendedTooltip name="ВалютаРасширеннаяПодсказка" id="198"/>
+								</LabelField>
+								<LabelField name="Аналитика" id="20">
+									<DataPath>ПриходныеКассовыеОрдера.Аналитика</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>От кого принято</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Received from</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="АналитикаКонтекстноеМеню" id="21"/>
+									<ExtendedTooltip name="АналитикаРасширеннаяПодсказка" id="199"/>
+								</LabelField>
+								<LabelField name="ХозяйственнаяОперация" id="22">
+									<DataPath>ПриходныеКассовыеОрдера.ХозяйственнаяОперация</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Операция</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Transaction</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ХозяйственнаяОперацияКонтекстноеМеню" id="23"/>
+									<ExtendedTooltip name="ХозяйственнаяОперацияРасширеннаяПодсказка" id="200"/>
+								</LabelField>
+								<LabelField name="Основание" id="24">
+									<DataPath>ПриходныеКассовыеОрдера.Основание</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Основание</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Base document</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОснованиеКонтекстноеМеню" id="25"/>
+									<ExtendedTooltip name="ОснованиеРасширеннаяПодсказка" id="201"/>
+								</LabelField>
+								<LabelField name="Касса" id="26">
+									<DataPath>ПриходныеКассовыеОрдера.Касса</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Касса</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Cash account</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="КассаКонтекстноеМеню" id="27"/>
+									<ExtendedTooltip name="КассаРасширеннаяПодсказка" id="202"/>
+								</LabelField>
+								<LabelField name="Организация" id="28">
+									<DataPath>ПриходныеКассовыеОрдера.Организация</DataPath>
+									<ContextMenu name="ОрганизацияКонтекстноеМеню" id="29"/>
+									<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="203"/>
+								</LabelField>
+								<InputField name="СторнируемыйИсправляемыйДокумент" id="532">
+									<DataPath>ПриходныеКассовыеОрдера.СторнируемыйИсправляемыйДокумент</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Исправляемый (сторнируемый) документ</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Corrected (reversed) document</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СторнируемыйИсправляемыйДокументКонтекстноеМеню" id="533"/>
+									<ExtendedTooltip name="СторнируемыйИсправляемыйДокументРасширеннаяПодсказка" id="534"/>
+								</InputField>
+								<InputField name="ПредставлениеСостояния" id="482">
+									<DataPath>ПриходныеКассовыеОрдера.ПредставлениеСостояния</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Состояние ЭДО</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>EDI state</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ПредставлениеСостоянияКонтекстноеМеню" id="483"/>
+									<ExtendedTooltip name="ПредставлениеСостоянияРасширеннаяПодсказка" id="484"/>
+								</InputField>
+								<LabelField name="Автор" id="477">
+									<DataPath>ПриходныеКассовыеОрдера.Автор</DataPath>
+									<ContextMenu name="АвторКонтекстноеМеню" id="478"/>
+									<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="530"/>
+								</LabelField>
+								<LabelField name="Ссылка" id="248">
+									<DataPath>ПриходныеКассовыеОрдера.Ссылка</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ContextMenu name="СсылкаКонтекстноеМеню" id="249"/>
+									<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="250"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаРаспоряженияНаПоступление" id="260">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>К поступлению</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>To receive</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Распоряжения на поступление</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Receipt references</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаРаспоряженияНаПоступлениеРасширеннаяПодсказка" id="261"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаРаспоряженияНаПоступлениеОтбор" id="322">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Распоряжения на поступление отбор</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>References for receipt filter</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаРаспоряженияНаПоступлениеОтборРасширеннаяПодсказка" id="323"/>
+							<ChildItems>
+								<Button name="РаспоряженияНаПоступлениеПриходныйКассовыйОрдерСоздатьНаОсновании" id="309">
+									<Type>UsualButton</Type>
+									<Representation>PictureAndText</Representation>
+									<SkipOnInput>false</SkipOnInput>
+									<CommandName>Form.Command.СоздатьПриходныйКассовыйОрдерПоРаспоряжению</CommandName>
+									<Picture>
+										<xr:Ref>CommonPicture.ОформитьПоРаспоряжению</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Оформить поступление</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Register payment</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="РаспоряженияНаПоступлениеПриходныйКассовыйОрдерСоздатьНаОснованииРасширеннаяПодсказка" id="310"/>
+								</Button>
+								<InputField name="ДатаКПоступлению" id="459">
+									<DataPath>ДатаКПоступлению</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>До</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>By</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Left</TitleLocation>
+									<ClearButton>true</ClearButton>
+									<ContextMenu name="ДатаКПоступлениюКонтекстноеМеню" id="460"/>
+									<ExtendedTooltip name="ДатаКПоступлениюРасширеннаяПодсказка" id="461"/>
+									<Events>
+										<Event name="OnChange">ДатаКПоступлениюПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ХозяйственнаяОперацияПредставлениеОтбор" id="319">
+									<DataPath>ХозяйственнаяОперацияПредставление</DataPath>
+									<DropListButton>true</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+									<ClearButton>true</ClearButton>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="ХозяйственнаяОперацияПредставлениеОтборКонтекстноеМеню" id="320"/>
+									<ExtendedTooltip name="ХозяйственнаяОперацияПредставлениеОтборРасширеннаяПодсказка" id="321"/>
+									<Events>
+										<Event name="StartChoice">ХозяйственнаяОперацияПредставлениеОтборНачалоВыбора</Event>
+										<Event name="Clearing">ХозяйственнаяОперацияПредставлениеОтборОчистка</Event>
+										<Event name="ChoiceProcessing">ХозяйственнаяОперацияПредставлениеОтборОбработкаВыбора</Event>
+									</Events>
+								</InputField>
+								<UsualGroup name="ГруппаКомандыРаспоряженияНаПоступления" id="336">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Команды распоряжения на поступления</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Commands references for receipts</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаКомандыРаспоряженияНаПоступленияРасширеннаяПодсказка" id="337"/>
+									<ChildItems>
+										<CommandBar name="КоманднаяПанельРаспоряженияНаПоступление" id="338">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Командная панель распоряжения на поступление</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Command bar of the receipt reference</v8:content>
+												</v8:item>
+											</Title>
+											<CommandSource>Item.РаспоряженияНаПоступление</CommandSource>
+											<ExtendedTooltip name="КоманднаяПанельРаспоряженияНаПоступлениеРасширеннаяПодсказка" id="339"/>
+										</CommandBar>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="РаспоряженияНаПоступление" id="262">
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>РаспоряженияНаПоступление</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Распоряжения на поступление</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Receipt references</v8:content>
+								</v8:item>
+							</Title>
+							<CommandSet>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Create</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>ShowMultipleSelection</ExcludedCommand>
+							</CommandSet>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="РаспоряженияНаПоступлениеКонтекстноеМеню" id="263"/>
+							<AutoCommandBar name="РаспоряженияНаПоступлениеКоманднаяПанель" id="264">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="РаспоряженияНаПоступлениеРасширеннаяПодсказка" id="265"/>
+							<SearchStringAddition name="РаспоряженияНаПоступлениеСтрокаПоиска" id="400">
+								<AdditionSource>
+									<Item>РаспоряженияНаПоступление</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="РаспоряженияНаПоступлениеСтрокаПоискаКонтекстноеМеню" id="401"/>
+								<ExtendedTooltip name="РаспоряженияНаПоступлениеСтрокаПоискаРасширеннаяПодсказка" id="402"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="РаспоряженияНаПоступлениеСостояниеПросмотра" id="403">
+								<AdditionSource>
+									<Item>РаспоряженияНаПоступление</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<HorizontalLocation>Left</HorizontalLocation>
+								<ContextMenu name="РаспоряженияНаПоступлениеСостояниеПросмотраКонтекстноеМеню" id="404"/>
+								<ExtendedTooltip name="РаспоряженияНаПоступлениеСостояниеПросмотраРасширеннаяПодсказка" id="405"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="РаспоряженияНаПоступлениеУправлениеПоиском" id="406">
+								<AdditionSource>
+									<Item>РаспоряженияНаПоступление</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="РаспоряженияНаПоступлениеУправлениеПоискомКонтекстноеМеню" id="407"/>
+								<ExtendedTooltip name="РаспоряженияНаПоступлениеУправлениеПоискомРасширеннаяПодсказка" id="408"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">РаспоряженияНаПоступлениеВыбор</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="РаспоряженияНаПоступлениеДатаПлатежа" id="468">
+									<DataPath>РаспоряженияНаПоступление.ДатаПлатежа</DataPath>
+									<ContextMenu name="РаспоряженияНаПоступлениеДатаПлатежаКонтекстноеМеню" id="469"/>
+									<ExtendedTooltip name="РаспоряженияНаПоступлениеДатаПлатежаРасширеннаяПодсказка" id="470"/>
+								</LabelField>
+								<LabelField name="РаспоряженияНаПоступлениеПлательщик" id="284">
+									<DataPath>РаспоряженияНаПоступление.Плательщик</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Плательщик</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Payer</v8:content>
+										</v8:item>
+									</Title>
+									<Width>16</Width>
+									<ContextMenu name="РаспоряженияНаПоступлениеПлательщикКонтекстноеМеню" id="285"/>
+									<ExtendedTooltip name="РаспоряженияНаПоступлениеПлательщикРасширеннаяПодсказка" id="286"/>
+								</LabelField>
+								<LabelField name="РаспоряженияНаПоступлениеСуммаКОплате" id="272">
+									<DataPath>РаспоряженияНаПоступление.СуммаКОплате</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>К поступлению</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>To receive</v8:content>
+										</v8:item>
+									</Title>
+									<Width>9</Width>
+									<Format>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ЧДЦ=2</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>NFD=2</v8:content>
+										</v8:item>
+									</Format>
+									<ContextMenu name="РаспоряженияНаПоступлениеСуммаКОплатеКонтекстноеМеню" id="273"/>
+									<ExtendedTooltip name="РаспоряженияНаПоступлениеСуммаКОплатеРасширеннаяПодсказка" id="274"/>
+								</LabelField>
+								<LabelField name="РаспоряженияНаПоступлениеСуммаДокумента" id="275">
+									<DataPath>РаспоряженияНаПоступление.СуммаДокумента</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма документа</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Document amount</v8:content>
+										</v8:item>
+									</Title>
+									<Width>9</Width>
+									<Format>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ЧДЦ=2</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>NFD=2</v8:content>
+										</v8:item>
+									</Format>
+									<ContextMenu name="РаспоряженияНаПоступлениеСуммаДокументаКонтекстноеМеню" id="276"/>
+									<ExtendedTooltip name="РаспоряженияНаПоступлениеСуммаДокументаРасширеннаяПодсказка" id="277"/>
+								</LabelField>
+								<LabelField name="РаспоряженияНаПоступлениеВалюта" id="278">
+									<DataPath>РаспоряженияНаПоступление.Валюта</DataPath>
+									<ContextMenu name="РаспоряженияНаПоступлениеВалютаКонтекстноеМеню" id="279"/>
+									<ExtendedTooltip name="РаспоряженияНаПоступлениеВалютаРасширеннаяПодсказка" id="280"/>
+								</LabelField>
+								<LabelField name="РаспоряженияНаПоступлениеТип" id="333">
+									<DataPath>РаспоряженияНаПоступление.ТипОбъектаОплаты</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Основание</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Base document</v8:content>
+										</v8:item>
+									</Title>
+									<Width>16</Width>
+									<ContextMenu name="РаспоряженияНаПоступлениеТипКонтекстноеМеню" id="334"/>
+									<ExtendedTooltip name="РаспоряженияНаПоступлениеТипРасширеннаяПодсказка" id="335"/>
+								</LabelField>
+								<LabelField name="РаспоряженияНаПоступлениеНомер" id="327">
+									<DataPath>РаспоряженияНаПоступление.Номер</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Номер</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Number</v8:content>
+										</v8:item>
+									</Title>
+									<Width>9</Width>
+									<ContextMenu name="РаспоряженияНаПоступлениеНомерКонтекстноеМеню" id="328"/>
+									<ExtendedTooltip name="РаспоряженияНаПоступлениеНомерРасширеннаяПодсказка" id="329"/>
+								</LabelField>
+								<LabelField name="РаспоряженияНаПоступлениеДата" id="456">
+									<DataPath>РаспоряженияНаПоступление.Дата</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Date</v8:content>
+										</v8:item>
+									</Title>
+									<Width>9</Width>
+									<Format>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДЛФ=D</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>DLF=D</v8:content>
+										</v8:item>
+									</Format>
+									<ContextMenu name="РаспоряженияНаПоступлениеДатаКонтекстноеМеню" id="457"/>
+									<ExtendedTooltip name="РаспоряженияНаПоступлениеДатаРасширеннаяПодсказка" id="458"/>
+								</LabelField>
+								<LabelField name="РаспоряженияНаПоступлениеХозяйственнаяОперация" id="302">
+									<DataPath>РаспоряженияНаПоступление.ХозяйственнаяОперация</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Операция</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Transaction</v8:content>
+										</v8:item>
+									</Title>
+									<Width>16</Width>
+									<ContextMenu name="РаспоряженияНаПоступлениеХозяйственнаяОперацияКонтекстноеМеню" id="303"/>
+									<ExtendedTooltip name="РаспоряженияНаПоступлениеХозяйственнаяОперацияРасширеннаяПодсказка" id="304"/>
+								</LabelField>
+								<LabelField name="РаспоряженияНаПоступлениеКасса" id="296">
+									<DataPath>РаспоряженияНаПоступление.Касса</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Касса</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Cash account</v8:content>
+										</v8:item>
+									</Title>
+									<Width>16</Width>
+									<ContextMenu name="РаспоряженияНаПоступлениеКассаКонтекстноеМеню" id="297"/>
+									<ExtendedTooltip name="РаспоряженияНаПоступлениеКассаРасширеннаяПодсказка" id="298"/>
+								</LabelField>
+								<LabelField name="РаспоряженияНаПоступлениеОрганизация" id="290">
+									<DataPath>РаспоряженияНаПоступление.Организация</DataPath>
+									<Width>16</Width>
+									<ContextMenu name="РаспоряженияНаПоступлениеОрганизацияКонтекстноеМеню" id="291"/>
+									<ExtendedTooltip name="РаспоряженияНаПоступлениеОрганизацияРасширеннаяПодсказка" id="292"/>
+								</LabelField>
+								<LabelField name="РаспоряженияНаПоступлениеСсылка" id="293">
+									<DataPath>РаспоряженияНаПоступление.Ссылка</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ссылка</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Reference</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="РаспоряженияНаПоступлениеСсылкаКонтекстноеМеню" id="294"/>
+									<ExtendedTooltip name="РаспоряженияНаПоступлениеСсылкаРасширеннаяПодсказка" id="295"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ПриходныеКассовыеОрдера" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Приходные кассовые ордера</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Incoming payments — Cash account</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>~ПриходныеКассовыеОрдера.Ref</Field>
+				<Field>ПриходныеКассовыеОрдера.Касса</Field>
+				<Field>ПриходныеКассовыеОрдера.ПлательщикПредставление</Field>
+				<Field>ПриходныеКассовыеОрдера.ПометкаУдаления</Field>
+				<Field>ПриходныеКассовыеОрдера.Ссылка</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ВЫРАЗИТЬ(РеестрДокументов.Ссылка КАК Документ.ПриходныйКассовыйОрдер) КАК Ссылка,
+	РеестрДокументов.ПометкаУдаления КАК ПометкаУдаления,
+	РеестрДокументов.НомерДокументаИБ КАК Номер,
+	РеестрДокументов.ДатаДокументаИБ КАК Дата,
+	РеестрДокументов.Проведен КАК Проведен,
+	РеестрДокументов.Организация КАК Организация,
+	ВЫБОР
+		КОГДА ТИПЗНАЧЕНИЯ(РеестрДокументов.Ссылка) = ТИП(Документ.Сторно) 
+			ТОГДА ДанныеСторно.Касса
+		ИНАЧЕ ДокументПриходноКассовыйОрдер.Касса
+	КОНЕЦ КАК Касса,
+	ВЫБОР
+		КОГДА ТИПЗНАЧЕНИЯ(РеестрДокументов.Ссылка) = ТИП(Документ.Сторно) 
+			ТОГДА ДанныеСторно.Касса.ВалютаДенежныхСредств
+		ИНАЧЕ ДокументПриходноКассовыйОрдер.Касса.ВалютаДенежныхСредств
+	КОНЕЦ КАК Валюта,
+	РеестрДокументов.Сумма КАК СуммаДокумента,
+	РеестрДокументов.ХозяйственнаяОперация КАК ХозяйственнаяОперация,
+	ВЫБОР
+		КОГДА РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ПоступлениеОплатыОтКлиента)
+				ИЛИ РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратДенежныхСредствОтПоставщика)
+			ТОГДА РеестрДокументов.Контрагент
+		КОГДА РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ПоступлениеДенежныхСредствИзБанка)
+			ТОГДА
+				ВЫБОР
+					КОГДА ТИПЗНАЧЕНИЯ(РеестрДокументов.Ссылка) = ТИП(Документ.Сторно) 
+						ТОГДА ДанныеСторно.БанковскийСчет
+					ИНАЧЕ ДокументПриходноКассовыйОрдер.БанковскийСчет
+				КОНЕЦ
+		КОГДА РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратДенежныхСредствОтПодотчетника)
+				ИЛИ РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ПогашениеЗаймаСотрудником)
+			ТОГДА
+				ВЫБОР
+					КОГДА ТИПЗНАЧЕНИЯ(РеестрДокументов.Ссылка) = ТИП(Документ.Сторно) 
+						ТОГДА ДанныеСторно.ПодотчетноеЛицо
+					ИНАЧЕ ДокументПриходноКассовыйОрдер.ПодотчетноеЛицо
+				КОНЕЦ
+		КОГДА РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ПоступлениеДенежныхСредствИзДругойКассы)
+				ИЛИ РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ПоступлениеДенежныхСредствИзДругойОрганизации)
+				ИЛИ РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВнутренняяПередачаДенежныхСредств)
+			ТОГДА
+				ВЫБОР
+					КОГДА ТИПЗНАЧЕНИЯ(РеестрДокументов.Ссылка) = ТИП(Документ.Сторно) 
+						ТОГДА ДанныеСторно.КассаОтправитель
+					ИНАЧЕ ДокументПриходноКассовыйОрдер.КассаОтправитель
+				КОНЕЦ
+		КОГДА РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ПоступлениеДенежныхСредствИзКассыККМ)
+			ТОГДА
+				ВЫБОР
+					КОГДА ТИПЗНАЧЕНИЯ(РеестрДокументов.Ссылка) = ТИП(Документ.Сторно) 
+						ТОГДА ДанныеСторно.КассаККМ
+					ИНАЧЕ ДокументПриходноКассовыйОрдер.КассаККМ
+				КОНЕЦ
+		ИНАЧЕ РеестрДокументов.Контрагент
+	КОНЕЦ КАК Аналитика,
+	ВЫБОР
+		КОГДА РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ПоступлениеОплатыОтКлиента)
+				ИЛИ РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратДенежныхСредствОтПоставщика)
+			ТОГДА РеестрДокументов.Контрагент.Наименование
+		КОГДА РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ПоступлениеДенежныхСредствИзБанка)
+			ТОГДА
+				ВЫБОР
+					КОГДА ТИПЗНАЧЕНИЯ(РеестрДокументов.Ссылка) = ТИП(Документ.Сторно) 
+						ТОГДА ДанныеСторно.БанковскийСчет.Наименование
+					ИНАЧЕ ДокументПриходноКассовыйОрдер.БанковскийСчет.Наименование
+				КОНЕЦ
+		КОГДА РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратДенежныхСредствОтПодотчетника)
+				ИЛИ РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ПогашениеЗаймаСотрудником)
+			ТОГДА
+				ВЫБОР
+					КОГДА ТИПЗНАЧЕНИЯ(РеестрДокументов.Ссылка) = ТИП(Документ.Сторно) 
+						ТОГДА ДанныеСторно.ПодотчетноеЛицо.Наименование
+					ИНАЧЕ ДокументПриходноКассовыйОрдер.ПодотчетноеЛицо.Наименование
+				КОНЕЦ
+		КОГДА РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ПоступлениеДенежныхСредствИзДругойКассы)
+				ИЛИ РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ПоступлениеДенежныхСредствИзДругойОрганизации)
+				ИЛИ РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВнутренняяПередачаДенежныхСредств)
+			ТОГДА
+				ВЫБОР
+					КОГДА ТИПЗНАЧЕНИЯ(РеестрДокументов.Ссылка) = ТИП(Документ.Сторно) 
+						ТОГДА ДанныеСторно.КассаОтправитель.Наименование
+					ИНАЧЕ ДокументПриходноКассовыйОрдер.КассаОтправитель.Наименование
+				КОНЕЦ
+		КОГДА РеестрДокументов.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ПоступлениеДенежныхСредствИзКассыККМ)
+			ТОГДА
+				ВЫБОР
+					КОГДА ТИПЗНАЧЕНИЯ(РеестрДокументов.Ссылка) = ТИП(Документ.Сторно) 
+						ТОГДА ДанныеСторно.КассаККМ.Наименование
+					ИНАЧЕ ДокументПриходноКассовыйОрдер.КассаККМ.Наименование
+				КОНЕЦ
+		ИНАЧЕ РеестрДокументов.Контрагент.Наименование
+	КОНЕЦ КАК ПлательщикПредставление,
+	ДокументПриходноКассовыйОрдер.Представление КАК Представление,
+	ДокументПриходноКассовыйОрдер.МоментВремени КАК МоментВремени,
+	ДокументПриходноКассовыйОрдер.Автор КАК Автор,
+	РеестрДокументов.СторноИсправление КАК СторноИсправление,
+	ВЫБОР
+		КОГДА НЕ РеестрДокументов.СторноИсправление
+			ТОГДА НЕОПРЕДЕЛЕНО
+		ИНАЧЕ РеестрДокументов.СторнируемыйДокумент
+	КОНЕЦ КАК СторнируемыйИсправляемыйДокумент,
+		ВЫБОР
+		КОГДА РеестрДокументов.Проведен
+			ТОГДА 0
+		КОГДА РеестрДокументов.ПометкаУдаления
+			ТОГДА 1
+		ИНАЧЕ 2
+	КОНЕЦ КАК НестандартнаяКартинка,
+	ВЫБОР
+		КОГДА ТИПЗНАЧЕНИЯ(РеестрДокументов.Ссылка) = ТИП(Документ.Сторно) 
+			ТОГДА ДанныеСторно.Основание
+		ИНАЧЕ ДокументПриходноКассовыйОрдер.Основание
+	КОНЕЦ КАК Основание,
+	ВЫБОР
+		КОГДА ДокументыСОшибкамиПроверкиКонтрагентов.Документ ЕСТЬ NULL
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК ЕстьОшибкиПроверкиКонтрагентов,
+    СостоянияЭД.СостояниеЭДО КАК СостояниеВерсииЭД,
+    СостоянияЭД.ПредставлениеСостояния КАК ПредставлениеСостояния
+ИЗ
+	РегистрСведений.РеестрДокументов КАК РеестрДокументов
+	ЛЕВОЕ СОЕДИНЕНИЕ Документ.ПриходныйКассовыйОрдер КАК ДокументПриходноКассовыйОрдер
+		ПО РеестрДокументов.Ссылка = ДокументПриходноКассовыйОрдер.Ссылка
+	ЛЕВОЕ СОЕДИНЕНИЕ Документ.ПриходныйКассовыйОрдер КАК ДанныеСторно
+		ПО РеестрДокументов.СторнируемыйДокумент = ДанныеСторно.Ссылка
+	{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ДокументыСОшибкамиПроверкиКонтрагентов КАК ДокументыСОшибкамиПроверкиКонтрагентов
+		ПО ДокументПриходноКассовыйОрдер.Ссылка = ДокументыСОшибкамиПроверкиКонтрагентов.Документ
+			И (&amp;ИспользованиеПроверкиВозможно)}
+	ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостоянияПоОбъектамУчетаЭДО КАК СостоянияЭД
+		ПО (СостоянияЭД.СсылкаНаОбъект = РеестрДокументов.Ссылка)
+ГДЕ
+	РеестрДокументов.ТипСсылки = &amp;ТипСсылки
+	И Не РеестрДокументов.ДополнительнаяЗапись
+{ГДЕ
+	ВЫРАЗИТЬ(РеестрДокументов.Ссылка КАК Документ.ПриходныйКассовыйОрдер).* КАК Ссылка,
+	РеестрДокументов.Организация.* КАК Организация,
+	РеестрДокументов.ДатаДокументаИБ КАК Дата,
+	РеестрДокументов.НомерДокументаИБ КАК Номер,
+	РеестрДокументов.ХозяйственнаяОперация КАК ХозяйственнаяОперация,
+	РеестрДокументов.Ответственный.* КАК Ответственный,
+	РеестрДокументов.Комментарий КАК Комментарий,
+	РеестрДокументов.Проведен КАК Проведен,
+	РеестрДокументов.ПометкаУдаления КАК ПометкаУдаления}</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТипСсылки</dcssch:dataPath>
+					<dcssch:field>ТипСсылки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка1</dcssch:dataPath>
+					<dcssch:field>Ссылка1</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка1</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Reference1</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Контрагент</dcssch:dataPath>
+					<dcssch:field>Контрагент</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Автор</dcssch:dataPath>
+					<dcssch:field>Автор</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Организация</dcssch:dataPath>
+					<dcssch:field>Организация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПлательщикПредставление</dcssch:dataPath>
+					<dcssch:field>ПлательщикПредставление</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Плательщик представление</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payer presentation</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Reference</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаДокументаИБ</dcssch:dataPath>
+					<dcssch:field>ДатаДокументаИБ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Проведен</dcssch:dataPath>
+					<dcssch:field>Проведен</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаПервичногоДокумента</dcssch:dataPath>
+					<dcssch:field>ДатаПервичногоДокумента</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дата</dcssch:dataPath>
+					<dcssch:field>Дата</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Касса</dcssch:dataPath>
+					<dcssch:field>Касса</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Касса</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cash account</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номер</dcssch:dataPath>
+					<dcssch:field>Номер</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Number</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДополнительнаяЗапись</dcssch:dataPath>
+					<dcssch:field>ДополнительнаяЗапись</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ХозяйственнаяОперация</dcssch:dataPath>
+					<dcssch:field>ХозяйственнаяОперация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕстьОшибкиПроверкиКонтрагентов</dcssch:dataPath>
+					<dcssch:field>ЕстьОшибкиПроверкиКонтрагентов</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Есть ошибки проверки контрагентов</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>There are counterparty check errors</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СторнируемыйДокумент</dcssch:dataPath>
+					<dcssch:field>СторнируемыйДокумент</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Комментарий</dcssch:dataPath>
+					<dcssch:field>Комментарий</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Валюта</dcssch:dataPath>
+					<dcssch:field>Валюта</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Валюта</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Currency</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ответственный</dcssch:dataPath>
+					<dcssch:field>Ответственный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаименованиеПервичногоДокумента</dcssch:dataPath>
+					<dcssch:field>НаименованиеПервичногоДокумента</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерДокументаИБ</dcssch:dataPath>
+					<dcssch:field>НомерДокументаИБ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Статус</dcssch:dataPath>
+					<dcssch:field>Статус</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дополнительно</dcssch:dataPath>
+					<dcssch:field>Дополнительно</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Сумма</dcssch:dataPath>
+					<dcssch:field>Сумма</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Договор</dcssch:dataPath>
+					<dcssch:field>Договор</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СторноИсправление</dcssch:dataPath>
+					<dcssch:field>СторноИсправление</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерПервичногоДокумента</dcssch:dataPath>
+					<dcssch:field>НомерПервичногоДокумента</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаправлениеДеятельности</dcssch:dataPath>
+					<dcssch:field>НаправлениеДеятельности</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаОтраженияВУчете</dcssch:dataPath>
+					<dcssch:field>ДатаОтраженияВУчете</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Приоритет</dcssch:dataPath>
+					<dcssch:field>Приоритет</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИсправляемыйДокумент</dcssch:dataPath>
+					<dcssch:field>ИсправляемыйДокумент</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НестандартнаяКартинка</dcssch:dataPath>
+					<dcssch:field>НестандартнаяКартинка</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Нестандартная картинка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Custom picture</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СуммаДокумента</dcssch:dataPath>
+					<dcssch:field>СуммаДокумента</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма документа</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document amount</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Аналитика</dcssch:dataPath>
+					<dcssch:field>Аналитика</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аналитика</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Dimension</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Представление</dcssch:dataPath>
+					<dcssch:field>Представление</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МоментВремени</dcssch:dataPath>
+					<dcssch:field>МоментВремени</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Основание</dcssch:dataPath>
+					<dcssch:field>Основание</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основание</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Base document</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СторнируемыйИсправляемыйДокумент</dcssch:dataPath>
+					<dcssch:field>СторнируемыйИсправляемыйДокумент</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сторнируемый исправляемый документ</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Reversed corrected document</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СостояниеВерсииЭД</dcssch:dataPath>
+					<dcssch:field>СостояниеВерсииЭД</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние версии ЭД</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ED version state</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПредставлениеСостояния</dcssch:dataPath>
+					<dcssch:field>ПредставлениеСостояния</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Подразделение</dcssch:dataPath>
+					<dcssch:field>Подразделение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Партнер</dcssch:dataPath>
+					<dcssch:field>Партнер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МестоХранения</dcssch:dataPath>
+					<dcssch:field>МестоХранения</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>РазделительЗаписи</dcssch:dataPath>
+					<dcssch:field>РазделительЗаписи</dcssch:field>
+				</Field>
+				<Parameter>
+					<dcssch:name>ИспользованиеПроверкиВозможно</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Использование проверки возможно</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Using of check is an option</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>xs:boolean</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:type="xs:boolean">false</dcssch:value>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<Parameter>
+					<dcssch:name>ТипСсылки</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип ссылки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Reference type</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:CatalogRef.ИдентификаторыОбъектовМетаданных</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<MainTable>InformationRegister.РеестрДокументов</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="Касса" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Касса</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash account</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Кассы</v8:Type>
+			</Type>
+			<Save>
+				<Field>Касса</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Организация" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+			<Save>
+				<Field>Организация</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ИспользоватьПодключаемоеОборудование" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать подключаемое оборудование</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use peripherals</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьНесколькоКасс" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать несколько касс</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use multiple cash accounts</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РаспоряженияНаПоступление" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Распоряжения на поступление</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Receipt references</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>~РаспоряженияНаПоступление.Контрагент</Field>
+				<Field>РаспоряженияНаПоступление.Валюта</Field>
+				<Field>РаспоряженияНаПоступление.Касса</Field>
+				<Field>РаспоряженияНаПоступление.Организация</Field>
+				<Field>РаспоряженияНаПоступление.Плательщик</Field>
+				<Field>РаспоряженияНаПоступление.ПлательщикПредставление</Field>
+				<Field>РаспоряженияНаПоступление.Ссылка</Field>
+				<Field>РаспоряженияНаПоступление.СуммаКОплате</Field>
+				<Field>РаспоряженияНаПоступление.ХозяйственнаяОперация</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ГрафикПлатежей.ДатаПлатежа КАК ДатаПлатежа,
+	ГрафикПлатежей.ПлательщикПолучатель КАК Плательщик,
+	ГрафикПлатежей.ПлательщикПолучатель.Наименование КАК ПлательщикПредставление,
+	ГрафикПлатежей.Сумма КАК СуммаКОплате,
+	ГрафикПлатежей.Валюта КАК Валюта,
+	
+	ГрафикПлатежей.Номер КАК Номер,
+	ГрафикПлатежей.Дата КАК Дата,
+	ГрафикПлатежей.ТипОбъектаОплаты КАК ТипОбъектаОплаты,
+	ГрафикПлатежей.СуммаДокумента КАК СуммаДокумента,
+	ВЫРАЗИТЬ(ГрафикПлатежей.БанковскийСчетКасса КАК Справочник.Кассы) КАК Касса,
+	
+	ГрафикПлатежей.ХозяйственнаяОперация КАК ХозяйственнаяОперация,
+	ГрафикПлатежей.СтатьяДвиженияДенежныхСредств КАК СтатьяДвиженияДенежныхСредств,
+	ГрафикПлатежей.Подразделение КАК Подразделение,
+	ГрафикПлатежей.НаправлениеДеятельности КАК НаправлениеДеятельности,
+	ГрафикПлатежей.Ответственный КАК Ответственный,
+	
+	ГрафикПлатежей.Организация КАК Организация,
+	ГрафикПлатежей.ДатаАктуальностиГрафика КАК ДатаАктуальностиГрафика,
+	ГрафикПлатежей.ОбластьПланирования КАК ОбластьПланирования,
+	
+	ГрафикПлатежей.ОбъектОплаты КАК Ссылка
+ИЗ
+	РегистрСведений.ГрафикПлатежей КАК ГрафикПлатежей
+	
+	ЛЕВОЕ СОЕДИНЕНИЕ
+		Документ.РаспоряжениеНаПеремещениеДенежныхСредств КАК Распоряжение
+	ПО
+		Распоряжение.Ссылка = ГрафикПлатежей.ОбъектОплаты
+	
+ГДЕ
+	ГрафикПлатежей.ПоступлениеСписание = ЗНАЧЕНИЕ(Перечисление.ТипыДвиженияДенежныхСредств.Поступление)
+	И ГрафикПлатежей.ДатаПлатежа &lt;= &amp;ДатаПлатежа
+	И ГрафикПлатежей.ОбластьПланирования В (
+		ЗНАЧЕНИЕ(Перечисление.ОбластиПланированияПлатежей.РасчетыСКлиентами),
+		ЗНАЧЕНИЕ(Перечисление.ОбластиПланированияПлатежей.ВозвратыОтПоставщиков),
+		ЗНАЧЕНИЕ(Перечисление.ОбластиПланированияПлатежей.ДенежныеСредстваВПути),
+		ЗНАЧЕНИЕ(Перечисление.ОбластиПланированияПлатежей.РаспоряженияНаПеремещениеДенежныхСредств))
+	И (Распоряжение.ХозяйственнаяОперация В (
+		ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ПоступлениеДенежныхСредствИзБанка),
+		ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.СнятиеНаличныхДенежныхСредств)
+		)
+		ИЛИ Распоряжение.Ссылка ЕСТЬ NULL)
+	И ГрафикПлатежей.ФормаОплаты В (
+		ЗНАЧЕНИЕ(Перечисление.ФормыОплаты.Наличная),
+		ЗНАЧЕНИЕ(Перечисление.ФормыОплаты.ПустаяСсылка))
+{ГДЕ
+	ГрафикПлатежей.Организация В (&amp;РазрешенныеЗначенияПоляОрганизация),
+	(ГрафикПлатежей.БанковскийСчетКасса В (&amp;РазрешенныеЗначенияПоляКасса) ИЛИ ТИПЗНАЧЕНИЯ(ГрафикПлатежей.БанковскийСчетКасса) &lt;&gt; ТИП(Справочник.Кассы))
+}</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПоступлениеСписание</dcssch:dataPath>
+					<dcssch:field>ПоступлениеСписание</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Плательщик</dcssch:dataPath>
+					<dcssch:field>Плательщик</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Плательщик</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payer</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПлательщикПолучатель</dcssch:dataPath>
+					<dcssch:field>ПлательщикПолучатель</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаАктуальностиГрафика</dcssch:dataPath>
+					<dcssch:field>ДатаАктуальностиГрафика</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОбъектОплаты</dcssch:dataPath>
+					<dcssch:field>ОбъектОплаты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Сумма</dcssch:dataPath>
+					<dcssch:field>Сумма</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Reference</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПлательщикПредставление</dcssch:dataPath>
+					<dcssch:field>ПлательщикПредставление</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Плательщик представление</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payer presentation</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Приоритет</dcssch:dataPath>
+					<dcssch:field>Приоритет</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ФормаОплаты</dcssch:dataPath>
+					<dcssch:field>ФормаОплаты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаПлатежа</dcssch:dataPath>
+					<dcssch:field>ДатаПлатежа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КорВалюта</dcssch:dataPath>
+					<dcssch:field>КорВалюта</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СуммаКОплате</dcssch:dataPath>
+					<dcssch:field>СуммаКОплате</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма к оплате</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount due</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ответственный</dcssch:dataPath>
+					<dcssch:field>Ответственный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Валюта</dcssch:dataPath>
+					<dcssch:field>Валюта</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Касса</dcssch:dataPath>
+					<dcssch:field>Касса</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Касса</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cash account</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номер</dcssch:dataPath>
+					<dcssch:field>Номер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дата</dcssch:dataPath>
+					<dcssch:field>Дата</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаправлениеДеятельности</dcssch:dataPath>
+					<dcssch:field>НаправлениеДеятельности</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТипОбъектаОплаты</dcssch:dataPath>
+					<dcssch:field>ТипОбъектаОплаты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СуммаДокумента</dcssch:dataPath>
+					<dcssch:field>СуммаДокумента</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ХозяйственнаяОперация</dcssch:dataPath>
+					<dcssch:field>ХозяйственнаяОперация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СтатьяДвиженияДенежныхСредств</dcssch:dataPath>
+					<dcssch:field>СтатьяДвиженияДенежныхСредств</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Подразделение</dcssch:dataPath>
+					<dcssch:field>Подразделение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Организация</dcssch:dataPath>
+					<dcssch:field>Организация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОбластьПланирования</dcssch:dataPath>
+					<dcssch:field>ОбластьПланирования</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>БанковскийСчетКасса</dcssch:dataPath>
+					<dcssch:field>БанковскийСчетКасса</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТипСуммы</dcssch:dataPath>
+					<dcssch:field>ТипСуммы</dcssch:field>
+				</Field>
+				<Parameter>
+					<dcssch:name>ДатаПлатежа</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата платежа</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payment date</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</dcssch:valueType>
+					<dcssch:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcssch:value>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<Parameter>
+					<dcssch:name>РазрешенныеЗначенияПоляКасса</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Разрешенные значения поля касса</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Allowed values fields cash account</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:CatalogRef.БанковскиеСчетаОрганизаций</v8:Type>
+						<v8:Type>cfg:CatalogRef.Кассы</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>false</dcssch:useRestriction>
+					<dcssch:valueListAllowed>true</dcssch:valueListAllowed>
+				</Parameter>
+				<Parameter>
+					<dcssch:name>РазрешенныеЗначенияПоляОрганизация</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Разрешенные значения поля организация</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Allowed values fields company</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>false</dcssch:useRestriction>
+					<dcssch:valueListAllowed>true</dcssch:valueListAllowed>
+				</Parameter>
+				<MainTable>InformationRegister.ГрафикПлатежей</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>ДатаПлатежа</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:field>Организация</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:field>Ответственный</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ХозяйственнаяОперацияПредставление" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основание платежа</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment purpose</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СписокОперацийПоступления" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список операций поступления</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Transaction list receipts</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Save>
+				<Field>СписокОперацийПоступления</Field>
+			</Save>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+		<Attribute name="ПлательщикПредставление" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Плательщик</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payer</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>ПлательщикПредставление</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ИспользоватьСчетаНаОплату" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать счета на оплату</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use commercial invoices</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьДоверенности" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать доверенности</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use authorization letters</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьЗаявкиНаРасходованиеДенежныхСредств" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать заявки на расходование денежных средств</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use payment requests</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаКПоступлению" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата к поступлению</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Date for receipt</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<Save>
+				<Field>ДатаКПоступлению</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ПоддерживаемыеТипыПодключаемогоОборудования" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поддерживаемые типы подключаемого оборудования</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Supported peripheral types</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Attachable command parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ИспользоватьРозничныеПродажи" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать розничные продажи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use retail sales</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Период" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:StandardPeriod</v8:Type>
+			</Type>
+			<Save>
+				<Field>Период</Field>
+				<Field>Период.Variant</Field>
+			</Save>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="СоздатьВозвратДенежныхСредствОтПодотчетника" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Возврат от подотчетника</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Return from advance holder</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать возврат денежных средств от подотчетника</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create refund from advance holder</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьВозвратДенежныхСредствОтПодотчетника</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьВозвратДенежныхСредствОтПоставщика" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Возврат или иное поступление от поставщика</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refund or other receipt from vendor</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать возврат денежных средств от поставщика</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create refund from vendor</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьВозвратДенежныхСредствОтПоставщика</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьПоступлениеДенежныхСредствИзБанка" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поступление из банка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Receipt from bank</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать поступление денежных средств из банка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create incoming payment from bank</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьПоступлениеДенежныхСредствИзБанка</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьПоступлениеДенежныхСредствИзДругойКассы" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поступление из другой кассы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Transfer from another cash account</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать поступление денежных средств из другой кассы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create incoming payment from another cash account</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьПоступлениеДенежныхСредствИзДругойКассы</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьПрочееПоступлениеДенежныхСредств" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочее поступление</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Other payment</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать прочее поступление денежных средств</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create other incoming payment</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьПрочееПоступлениеДенежныхСредств</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьУчетПрочихАктивовПассивов</Item>
+				<Item>FunctionalOption.ИспользоватьУчетПрочихДоходовРасходов</Item>
+			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьПоступлениеДенежныхСредствИзКассыККМ" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поступление из кассы ККМ</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Withdrawal from cash register</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать поступление денежных средств из кассы ККМ</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create incoming payment from cash register</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьПоступлениеДенежныхСредствИзКассыККМ</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьРозничныеПродажи</Item>
+			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьПоступлениеДенежныхСредствИзДругойОрганизации" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поступление от другой организации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment from another company</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать поступление денежных средств из другой организации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create incoming payment from another company</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьПоступлениеДенежныхСредствИзДругойОрганизации</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьПередачиТоваровМеждуОрганизациями</Item>
+			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьВнутреннююПередачуДенежныхСредств" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Передачу между организацией и филиалом</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Transfer between the company and its branch office</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать внутреннюю передачу денежных средств</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create internal cash transfer</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьВнутреннююПередачуДенежныхСредств</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьОбособленныеПодразделенияВыделенныеНаБаланс</Item>
+			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьКонвертацияВалюты" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Конвертацию валюты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Currency conversion</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать конвертация валюты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create currency conversion</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьКонвертацияВалюты</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьНесколькоВалют</Item>
+			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьПоступлениеПоКредитам" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поступление по кредитам</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Loan repayment</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать поступление по кредитам</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create loan repayment</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьПоступлениеПоКредитам</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьДоговорыКредитовИДепозитов</Item>
+			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьПогашениеЗаймаКонтрагентом" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Погашение займа контрагентом</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Loan repayment by counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать погашение займа контрагентом</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create loan repayment by counterparty</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьПогашениеЗаймаКонтрагентом</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьДоговорыКредитовИДепозитов</Item>
+			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьПриходныйКассовыйОрдерПоРаспоряжению" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать приходный кассовый ордер по распоряжению</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create "Incoming payment — Cash account" from cash transfer order</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать приходный кассовый ордер по распоряжению</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create "Incoming payment — Cash account" from cash transfer order</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьПриходныйКассовыйОрдерПоРаспоряжению</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьИнкассациюДенежныхСредствИзБанка" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инкассацию из банка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash withdrawal from bank</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать инкассацию денежных средств из банка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create cash withdrawal from bank</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьИнкассациюДенежныхСредствИзБанка</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьВозвратДенежныхСредствОтДругойОрганизации" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Возврат от другой организации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Other company refund</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать возврат денежных средств от другой организации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create refund from another company</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьВозвратДенежныхСредствОтДругойОрганизации</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьПередачиТоваровМеждуОрганизациями</Item>
+			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьПогашениеЗаймаСотрудником" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Погашение займа сотрудником</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Loan repayment by employee</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать поступление по выданным займам</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create receipt from issued loans</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьПогашениеЗаймаСотрудником</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПриходныеКассовыеОрдераПровести" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Провести</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Post</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Провести</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Post</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Post</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПриходныеКассовыеОрдераПровести</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПриходныеКассовыеОрдераСкопировать" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скопировать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Copy</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скопировать</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Copy</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F9</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.CloneObject</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПриходныеКассовыеОрдераСкопировать</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПриходныеКассовыеОрдераУстановитьСнятьПометкуУдаления" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пометить на удаление / Снять пометку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark for deletion / Clear deletion mark</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Приходные кассовые ордера установить снять пометку удаления</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Incoming payments — Cash account set remove deletion mark</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MarkToDelete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПриходныеКассовыеОрдераУстановитьСнятьПометкуУдаления</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПриходныеКассовыеОрдераОтменаПроведения" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена проведения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel posting</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена проведения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel posting</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UndoPosting</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПриходныеКассовыеОрдераОтменаПроведения</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="УстановитьИнтервал" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить период...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set period...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить период...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set period...</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SetDateInterval</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьИнтервал</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьВозвратДенежныхСредствОтАрендодателя" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Возврат от арендодателя</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Lessor refund</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать возврат денежных средств от арендодателя</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create refund from lessor</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьВозвратДенежныхСредствОтАрендодателя</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьВнеоборотныеАктивы2_4</Item>
+				<Item>FunctionalOption.ИспользоватьВнеоборотныеАктивы2_2</Item>
+			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СписокПровести" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Провести</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Post</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Провести</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Post</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Post</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СписокПровести</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СписокОтменаПроведения" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена проведения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unpost</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена проведения</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unpost</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UndoPosting</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СписокОтменаПроведения</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СписокУстановитьСнятьПометкуУдаления" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пометить на удаление / Снять пометку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark for deletion / Clear deletion mark</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.MarkToDelete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СписокУстановитьСнятьПометкуУдаления</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>CommonCommand.ИнтеграцияС1СДокументооборотСоздатьПисьмо</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ИнтеграцияС1СДокументооборотСоздатьБизнесПроцесс</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>BusinessProcess.Задание.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.СозданиеСвязанныхОбъектов</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Document.СчетФактураВыданныйАванс.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

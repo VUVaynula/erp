@@ -1,0 +1,860 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаПрименить" id="4">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Применить</CommandName>
+				<ExtendedTooltip name="ФормаПрименитьРасширеннаяПодсказка" id="5"/>
+			</Button>
+			<Button name="ФормаОтмена" id="74">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отмена</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Cancel</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="75"/>
+			</Button>
+			<ButtonGroup name="ГруппаКнопокФормы" id="78">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Кнопок формы</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Buttons forms</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ГруппаКнопокФормыРасширеннаяПодсказка" id="79"/>
+				<ChildItems>
+					<Button name="ФормаСправка" id="76">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.Help</CommandName>
+						<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="77"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<RadioButtonField name="ИспользоватьШаблон" id="68">
+			<DataPath>ИспользоватьШаблон</DataPath>
+			<Visible>false</Visible>
+			<TitleLocation>None</TitleLocation>
+			<RadioButtonType>Tumbler</RadioButtonType>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Типовые варианты</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Standard options</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:decimal">1</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Произвольная настройка</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Arbitrary setting</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:decimal">0</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<ContextMenu name="ИспользоватьШаблонКонтекстноеМеню" id="69"/>
+			<ExtendedTooltip name="ИспользоватьШаблонРасширеннаяПодсказка" id="70"/>
+			<Events>
+				<Event name="OnChange">ИспользоватьШаблонПриИзменении</Event>
+			</Events>
+		</RadioButtonField>
+		<UsualGroup name="ПараметрыШаблона" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ПараметрыШаблонаРасширеннаяПодсказка" id="43"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаТипРасчетов" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Операция</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Transaction</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>NormalSeparation</Representation>
+					<ExtendedTooltip name="ГруппаТипРасчетовРасширеннаяПодсказка" id="7"/>
+					<ChildItems>
+						<RadioButtonField name="КлиентАванс" id="10">
+							<DataPath>ТипРасчетов</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Перенос аванса клиента</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Customer prepayment offset</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ItemWidth>16</ItemWidth>
+							<EqualColumnsWidth>true</EqualColumnsWidth>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Перенос аванса клиента</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Customer prepayment offset</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">0</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="КлиентАвансКонтекстноеМеню" id="11"/>
+							<ExtendedTooltip name="КлиентАвансРасширеннаяПодсказка" id="12"/>
+							<Events>
+								<Event name="OnChange">ТипРасчетовПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+						<RadioButtonField name="КлиентДолг" id="88">
+							<DataPath>ТипРасчетов</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Перенос долга клиента</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Accounts receivable offset</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ItemWidth>16</ItemWidth>
+							<EqualColumnsWidth>true</EqualColumnsWidth>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Перенос долга клиента</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Accounts receivable offset</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">1</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="КлиентДолгКонтекстноеМеню" id="89"/>
+							<ExtendedTooltip name="КлиентДолгРасширеннаяПодсказка" id="90"/>
+							<Events>
+								<Event name="OnChange">ТипРасчетовПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+						<RadioButtonField name="ПоставщикАванс" id="15">
+							<DataPath>ТипРасчетов</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ItemWidth>16</ItemWidth>
+							<EqualColumnsWidth>true</EqualColumnsWidth>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Перенос аванса поставщику</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Prepayment to vendor offset</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">2</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ПоставщикАвансКонтекстноеМеню" id="16"/>
+							<ExtendedTooltip name="ПоставщикАвансРасширеннаяПодсказка" id="17"/>
+							<Events>
+								<Event name="OnChange">ТипРасчетовПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+						<RadioButtonField name="ПоставщикДолг" id="93">
+							<DataPath>ТипРасчетов</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ItemWidth>16</ItemWidth>
+							<EqualColumnsWidth>true</EqualColumnsWidth>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Перенос долга поставщику</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Accounts payable offset</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">3</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ПоставщикДолгКонтекстноеМеню" id="94"/>
+							<ExtendedTooltip name="ПоставщикДолгРасширеннаяПодсказка" id="95"/>
+							<Events>
+								<Event name="OnChange">ТипРасчетовПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+						<RadioButtonField name="Бартер" id="20">
+							<DataPath>ТипРасчетов</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ItemWidth>16</ItemWidth>
+							<EqualColumnsWidth>true</EqualColumnsWidth>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Зачет встречных обязательств</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>AR/AP clearing</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">4</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="БартерКонтекстноеМеню" id="21"/>
+							<ExtendedTooltip name="БартерРасширеннаяПодсказка" id="22"/>
+							<Events>
+								<Event name="OnChange">ТипРасчетовПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+						<RadioButtonField name="Произвольный" id="98">
+							<DataPath>ТипРасчетов</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Произвольный</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Arbitrary</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ItemWidth>16</ItemWidth>
+							<EqualColumnsWidth>true</EqualColumnsWidth>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Произвольный взаимозачет</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Arbitrary offset</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">5</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ПроизвольныйКонтекстноеМеню" id="99"/>
+							<ExtendedTooltip name="ПроизвольныйРасширеннаяПодсказка" id="100"/>
+							<Events>
+								<Event name="OnChange">ТипРасчетовПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+						<RadioButtonField name="Прочее" id="110">
+							<DataPath>ТипРасчетов</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Прочие</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Other</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">6</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ПрочееКонтекстноеМеню" id="111"/>
+							<ExtendedTooltip name="ПрочееРасширеннаяПодсказка" id="112"/>
+							<Events>
+								<Event name="OnChange">ТипРасчетовПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаВариантУчастия" id="23">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Стороны зачета</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Offset parties</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>NormalSeparation</Representation>
+					<ExtendedTooltip name="ГруппаВариантУчастияРасширеннаяПодсказка" id="24"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаВРамкахКонтрагента" id="28">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>В рамках контрагента</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Within counterparty</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаВРамкахКонтрагентаРасширеннаяПодсказка" id="29"/>
+							<ChildItems>
+								<RadioButtonField name="ВРамкахКонтрагента" id="30">
+									<DataPath>ВариантУчастия</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<RadioButtonType>RadioButtons</RadioButtonType>
+									<ItemWidth>23</ItemWidth>
+									<EqualColumnsWidth>true</EqualColumnsWidth>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>В рамках одной организации и одного контрагента</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Within one company and one counterparty</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">0</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="ВРамкахКонтрагентаКонтекстноеМеню" id="31"/>
+									<ExtendedTooltip name="ВРамкахКонтрагентаРасширеннаяПодсказка" id="32"/>
+									<Events>
+										<Event name="OnChange">ТипРасчетовПриИзменении</Event>
+									</Events>
+								</RadioButtonField>
+								<LabelDecoration name="ДекорацияВРамкахКонтрагента" id="80">
+									<Visible>false</Visible>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Одной организацией и одним контрагентом</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>One company and one counterparty</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ДекорацияВРамкахКонтрагентаКонтекстноеМеню" id="81"/>
+									<ExtendedTooltip name="ДекорацияВРамкахКонтрагентаРасширеннаяПодсказка" id="82"/>
+								</LabelDecoration>
+								<LabelDecoration name="ДекорацияПроизвольный" id="101">
+									<Visible>false</Visible>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настраивается в форме документа</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Configured in the document form</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ДекорацияПроизвольныйКонтекстноеМеню" id="102"/>
+									<ExtendedTooltip name="ДекорацияПроизвольныйРасширеннаяПодсказка" id="103"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<RadioButtonField name="МеждуКонтрагентами" id="52">
+							<DataPath>ВариантУчастия</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ItemWidth>23</ItemWidth>
+							<EqualColumnsWidth>true</EqualColumnsWidth>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>В рамках одной организации между двумя контрагентами</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Within one company and between two counterparties</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">1</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="МеждуКонтрагентамиКонтекстноеМеню" id="53"/>
+							<ExtendedTooltip name="МеждуКонтрагентамиРасширеннаяПодсказка" id="54"/>
+							<Events>
+								<Event name="OnChange">ТипРасчетовПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+						<RadioButtonField name="МеждуОрганизациями" id="60">
+							<DataPath>ВариантУчастия</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ItemWidth>23</ItemWidth>
+							<EqualColumnsWidth>true</EqualColumnsWidth>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Между двумя организациями в рамках одного контрагента</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Between two companies and within one counterparty</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">2</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="МеждуОрганизациямиКонтекстноеМеню" id="61"/>
+							<ExtendedTooltip name="МеждуОрганизациямиРасширеннаяПодсказка" id="62"/>
+							<Events>
+								<Event name="OnChange">ТипРасчетовПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+						<RadioButtonField name="МеждуОрганизациямиБезКонтрагента" id="122">
+							<DataPath>ВариантУчастия</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ItemWidth>23</ItemWidth>
+							<EqualColumnsWidth>true</EqualColumnsWidth>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Между двумя организациями</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Between two companies</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">3</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="МеждуОрганизациямиБезКонтрагентаКонтекстноеМеню" id="123"/>
+							<ExtendedTooltip name="МеждуОрганизациямиБезКонтрагентаРасширеннаяПодсказка" id="124"/>
+							<Events>
+								<Event name="OnChange">ТипРасчетовПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+						<RadioButtonField name="МеждуКомиссионеромИКлиентом" id="113">
+							<DataPath>ВариантУчастия</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Отражение оплаты через комиссионера</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Record of payment through the consignee</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">0</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="МеждуКомиссионеромИКлиентомКонтекстноеМеню" id="114"/>
+							<ExtendedTooltip name="МеждуКомиссионеромИКлиентомРасширеннаяПодсказка" id="115"/>
+						</RadioButtonField>
+						<RadioButtonField name="МеждуКлиентомИКомиссионером" id="116">
+							<DataPath>ВариантУчастия</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Отражение возврата оплаты через комиссионера</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Record of refund through the consignee</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">1</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="МеждуКлиентомИКомиссионеромКонтекстноеМеню" id="117"/>
+							<ExtendedTooltip name="МеждуКлиентомИКомиссионеромРасширеннаяПодсказка" id="118"/>
+						</RadioButtonField>
+						<RadioButtonField name="ОплатаПодарочнымСертификатомРозничнойПродажи" id="119">
+							<DataPath>ВариантУчастия</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Оплата подарочным сертификатом</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Payment with gift card</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">2</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ОплатаПодарочнымСертификатомРозничнойПродажиКонтекстноеМеню" id="120"/>
+							<ExtendedTooltip name="ОплатаПодарочнымСертификатомРозничнойПродажиРасширеннаяПодсказка" id="121"/>
+						</RadioButtonField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="ДекорацияПояснение" id="83">
+			<TextColor>style:ПоясняющийТекст</TextColor>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Декорация пояснение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Decoration explanation</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ДекорацияПояснениеКонтекстноеМеню" id="84"/>
+			<ExtendedTooltip name="ДекорацияПояснениеРасширеннаяПодсказка" id="85"/>
+		</LabelDecoration>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ТипРасчетов" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип расчетов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment type</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВариантУчастия" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант участия</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Participation option</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ИспользоватьШаблон" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать шаблон</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use template</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ИспользоватьНесколькоОрганизаций" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать несколько организаций</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use multiple companies</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СохранитьПараметры" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить параметры</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВыполняетсяЗакрытие" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполняется закрытие</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Closing is in progress</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьКомиссиюПриПродажах" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать комиссию при продажах</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use sales commission</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьПодарочныеСертификаты" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать подарочные сертификаты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use gift cards</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НоваяАрхитектураВзаиморасчетов" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Новая архитектура взаиморасчетов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>New AR/AP configuration</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Применить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Apply</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Apply</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Применить</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ВидОперации">
+			<Type>
+				<v8:Type>cfg:EnumRef.ВидыОперацийВзаимозачетаЗадолженности</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

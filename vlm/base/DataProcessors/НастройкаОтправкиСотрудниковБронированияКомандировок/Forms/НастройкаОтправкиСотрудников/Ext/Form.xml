@@ -1,0 +1,837 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Настройка отправки информации о сотрудниках в систему бронирования командировок</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Set up sending employee information to the system of business trip booking</v8:content>
+		</v8:item>
+	</Title>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаПрименитьИЗакрыть" id="216">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ПрименитьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаПрименитьИЗакрытьРасширеннаяПодсказка" id="217"/>
+			</Button>
+			<Button name="ФормаПрименить" id="238">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Применить</CommandName>
+				<ExtendedTooltip name="ФормаПрименитьРасширеннаяПодсказка" id="239"/>
+			</Button>
+			<Button name="ФормаОтмена" id="230">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отмена</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Cancel</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="231"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="URLProcessing">ОбработкаНавигационнойСсылки</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="236">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="237"/>
+			<ChildItems>
+				<UsualGroup name="РезультатПоследнейОтправкиГруппа" id="220">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Результат последней отправки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Result of last sending</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<BackColor>style:ToolTipBackColor</BackColor>
+					<ExtendedTooltip name="РезультатПоследнейОтправкиГруппаРасширеннаяПодсказка" id="221"/>
+					<ChildItems>
+						<PictureDecoration name="РезультатПоследнейОтправкиКартинка" id="222">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Результат последней отправки</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Result of last sending</v8:content>
+								</v8:item>
+							</Title>
+							<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+							<GroupVerticalAlign>Center</GroupVerticalAlign>
+							<Picture>
+								<xr:Ref>StdPicture.Information</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="РезультатПоследнейОтправкиКартинкаКонтекстноеМеню" id="223"/>
+							<ExtendedTooltip name="РезультатПоследнейОтправкиКартинкаРасширеннаяПодсказка" id="224"/>
+						</PictureDecoration>
+						<LabelDecoration name="РезультатПоследнейОтправкиПояснение" id="225">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Результат последней отправки</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Result of last sending</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>None</ToolTipRepresentation>
+							<GroupVerticalAlign>Top</GroupVerticalAlign>
+							<ContextMenu name="РезультатПоследнейОтправкиПояснениеКонтекстноеМеню" id="226"/>
+							<ExtendedTooltip name="РезультатПоследнейОтправкиПояснениеРасширеннаяПодсказка" id="227"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаКнопки" id="234">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кнопки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Buttons</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаКнопкиРасширеннаяПодсказка" id="235"/>
+					<ChildItems>
+						<Button name="ВыполнитьОтправкуСейчас" id="228">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ВыполнитьОтправкуСейчас</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выполнить отправку</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Send</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ВыполнитьОтправкуСейчасРасширеннаяПодсказка" id="229"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="НастройкиГруппа" id="77">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправлять информацию</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send information</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<HorizontalSpacing>OneAndHalf</HorizontalSpacing>
+			<VerticalSpacing>OneAndHalf</VerticalSpacing>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="НастройкиГруппаРасширеннаяПодсказка" id="78"/>
+			<ChildItems>
+				<UsualGroup name="ОтправлятьИнформациюГруппа" id="39">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отправлять информацию</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Send information</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<VerticalSpacing>Single</VerticalSpacing>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ОтправлятьИнформациюГруппаРасширеннаяПодсказка" id="40"/>
+					<ChildItems>
+						<RadioButtonField name="ОтправлятьИнформациюЧисло" id="190">
+							<DataPath>ОтправлятьИнформациюЧисло</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отправлять информацию</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Send information</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Top</TitleLocation>
+							<ToolTipRepresentation>None</ToolTipRepresentation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ColumnsCount>1</ColumnsCount>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>По всем сотрудникам</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>By all employees</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">0</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Только по работающим в выбранных подразделениях</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Only for employees working in the selected business units</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">1</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ОтправлятьИнформациюЧислоКонтекстноеМеню" id="191"/>
+							<ExtendedTooltip name="ОтправлятьИнформациюЧислоРасширеннаяПодсказка" id="192"/>
+							<Events>
+								<Event name="OnChange">ОтправлятьИнформациюЧислоПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="НастройкиПодразделенийИСотрудниковГруппа" id="57">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки подразделений и сотрудников</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settings of business units and employees</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<HorizontalSpacing>Double</HorizontalSpacing>
+					<VerticalSpacing>Double</VerticalSpacing>
+					<Behavior>Usual</Behavior>
+					<CollapsedRepresentationTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список непринятых физических лиц</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>List of rejected individuals</v8:content>
+						</v8:item>
+					</CollapsedRepresentationTitle>
+					<Collapsed>true</Collapsed>
+					<ControlRepresentation>Picture</ControlRepresentation>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="НастройкиПодразделенийИСотрудниковГруппаРасширеннаяПодсказка" id="58"/>
+					<ChildItems>
+						<UsualGroup name="ПодразделенияНеотправляемыеСотрудникиГруппа" id="212">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки подразделений и сотрудников</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings of business units and employees</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ПодразделенияНеотправляемыеСотрудникиГруппаРасширеннаяПодсказка" id="213"/>
+							<ChildItems>
+								<Table name="ПодразделенияОтбора" id="193">
+									<Representation>List</Representation>
+									<Height>3</Height>
+									<HorizontalLines>false</HorizontalLines>
+									<VerticalLines>false</VerticalLines>
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>ПодразделенияОтбора</DataPath>
+									<RowPictureDataPath>ПодразделенияОтбора.Picture</RowPictureDataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Подразделения отбора</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter business units</v8:content>
+										</v8:item>
+									</Title>
+									<CommandSet>
+										<ExcludedCommand>Add</ExcludedCommand>
+										<ExcludedCommand>Change</ExcludedCommand>
+										<ExcludedCommand>Copy</ExcludedCommand>
+										<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+										<ExcludedCommand>EndEdit</ExcludedCommand>
+										<ExcludedCommand>MoveDown</ExcludedCommand>
+										<ExcludedCommand>MoveUp</ExcludedCommand>
+										<ExcludedCommand>ShowMultipleSelection</ExcludedCommand>
+									</CommandSet>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ContextMenu name="ПодразделенияОтбораКонтекстноеМеню" id="194"/>
+									<AutoCommandBar name="ПодразделенияОтбораКоманднаяПанель" id="195"/>
+									<ExtendedTooltip name="ПодразделенияОтбораРасширеннаяПодсказка" id="196">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>&lt;link СотрудникиОтправляемыеПоУсловию&gt;Сотрудники подразделений&lt;/&gt;</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>&lt;link СотрудникиОтправляемыеПоУсловию&gt;Business unit employees&lt;/&gt;</v8:content>
+											</v8:item>
+										</Title>
+										<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+										<HorizontalAlign>Right</HorizontalAlign>
+									</ExtendedTooltip>
+									<SearchStringAddition name="ПодразделенияОтбораСтрокаПоиска" id="197">
+										<AdditionSource>
+											<Item>ПодразделенияОтбора</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ПодразделенияОтбораСтрокаПоискаКонтекстноеМеню" id="198"/>
+										<ExtendedTooltip name="ПодразделенияОтбораСтрокаПоискаРасширеннаяПодсказка" id="199"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ПодразделенияОтбораСостояниеПросмотра" id="200">
+										<AdditionSource>
+											<Item>ПодразделенияОтбора</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ПодразделенияОтбораСостояниеПросмотраКонтекстноеМеню" id="201"/>
+										<ExtendedTooltip name="ПодразделенияОтбораСостояниеПросмотраРасширеннаяПодсказка" id="202"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ПодразделенияОтбораУправлениеПоиском" id="203">
+										<AdditionSource>
+											<Item>ПодразделенияОтбора</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ПодразделенияОтбораУправлениеПоискомКонтекстноеМеню" id="204"/>
+										<ExtendedTooltip name="ПодразделенияОтбораУправлениеПоискомРасширеннаяПодсказка" id="205"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="ChoiceProcessing">ПодразделенияОтбораОбработкаВыбора</Event>
+										<Event name="OnChange">ПодразделенияОтбораПриИзменении</Event>
+									</Events>
+									<ChildItems>
+										<InputField name="ПодразделенияОтбораЗначение" id="206">
+											<DataPath>ПодразделенияОтбора.Value</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Подразделение</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Business unit</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>2</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<MaxWidth>2</MaxWidth>
+											<DropListButton>false</DropListButton>
+											<ChoiceButton>true</ChoiceButton>
+											<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+											<ClearButton>false</ClearButton>
+											<SpinButton>false</SpinButton>
+											<OpenButton>true</OpenButton>
+											<CreateButton>false</CreateButton>
+											<QuickChoice>false</QuickChoice>
+											<TextEdit>false</TextEdit>
+											<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+											<ContextMenu name="ПодразделенияОтбораЗначениеКонтекстноеМеню" id="207"/>
+											<ExtendedTooltip name="ПодразделенияОтбораЗначениеРасширеннаяПодсказка" id="208"/>
+										</InputField>
+										<CheckBoxField name="ПодразделенияОтбораПометка" id="209">
+											<DataPath>ПодразделенияОтбора.Check</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Включать подчиненные</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Include subordinate ones</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Left</TitleLocation>
+											<ToolTipRepresentation>None</ToolTipRepresentation>
+											<EditMode>EnterOnInput</EditMode>
+											<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ПодразделенияОтбораПометкаКонтекстноеМеню" id="210"/>
+											<ExtendedTooltip name="ПодразделенияОтбораПометкаРасширеннаяПодсказка" id="211"/>
+										</CheckBoxField>
+									</ChildItems>
+								</Table>
+								<Table name="НеотправляемыеСотрудники" id="143">
+									<Representation>List</Representation>
+									<TitleLocation>Top</TitleLocation>
+									<Height>3</Height>
+									<Header>false</Header>
+									<HorizontalLines>false</HorizontalLines>
+									<VerticalLines>false</VerticalLines>
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>НеотправляемыеСотрудники</DataPath>
+									<RowPictureDataPath>НеотправляемыеСотрудники.Picture</RowPictureDataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Кроме перечисленных сотрудников</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Except for the listed employees</v8:content>
+										</v8:item>
+									</Title>
+									<CommandSet>
+										<ExcludedCommand>Add</ExcludedCommand>
+										<ExcludedCommand>Change</ExcludedCommand>
+										<ExcludedCommand>CheckAll</ExcludedCommand>
+										<ExcludedCommand>Copy</ExcludedCommand>
+										<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+										<ExcludedCommand>EndEdit</ExcludedCommand>
+										<ExcludedCommand>MoveDown</ExcludedCommand>
+										<ExcludedCommand>MoveUp</ExcludedCommand>
+										<ExcludedCommand>ShowMultipleSelection</ExcludedCommand>
+										<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+										<ExcludedCommand>UncheckAll</ExcludedCommand>
+									</CommandSet>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ContextMenu name="НеотправляемыеСотрудникиКонтекстноеМеню" id="144"/>
+									<AutoCommandBar name="НеотправляемыеСотрудникиКоманднаяПанель" id="145"/>
+									<ExtendedTooltip name="НеотправляемыеСотрудникиРасширеннаяПодсказка" id="146">
+										<AutoMaxWidth>false</AutoMaxWidth>
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Информация по перечисленным сотрудникам не будет отправляться, даже если они относятся к указанным подразделениям</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Information on the listed employees will not be sent even if they belong to the specified business units</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<SearchStringAddition name="НеотправляемыеСотрудникиСтрокаПоиска" id="147">
+										<AdditionSource>
+											<Item>НеотправляемыеСотрудники</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="НеотправляемыеСотрудникиСтрокаПоискаКонтекстноеМеню" id="148"/>
+										<ExtendedTooltip name="НеотправляемыеСотрудникиСтрокаПоискаРасширеннаяПодсказка" id="149"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="НеотправляемыеСотрудникиСостояниеПросмотра" id="150">
+										<AdditionSource>
+											<Item>НеотправляемыеСотрудники</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="НеотправляемыеСотрудникиСостояниеПросмотраКонтекстноеМеню" id="151"/>
+										<ExtendedTooltip name="НеотправляемыеСотрудникиСостояниеПросмотраРасширеннаяПодсказка" id="152"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="НеотправляемыеСотрудникиУправлениеПоиском" id="153">
+										<AdditionSource>
+											<Item>НеотправляемыеСотрудники</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="НеотправляемыеСотрудникиУправлениеПоискомКонтекстноеМеню" id="154"/>
+										<ExtendedTooltip name="НеотправляемыеСотрудникиУправлениеПоискомРасширеннаяПодсказка" id="155"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="ChoiceProcessing">НеотправляемыеСотрудникиОбработкаВыбора</Event>
+										<Event name="OnChange">НеотправляемыеСотрудникиПриИзменении</Event>
+									</Events>
+									<ChildItems>
+										<InputField name="НеотправляемыеСотрудникиЗначение" id="156">
+											<DataPath>НеотправляемыеСотрудники.Value</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<DropListButton>false</DropListButton>
+											<ChoiceButton>true</ChoiceButton>
+											<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+											<ClearButton>false</ClearButton>
+											<SpinButton>false</SpinButton>
+											<OpenButton>true</OpenButton>
+											<CreateButton>false</CreateButton>
+											<AutoChoiceIncomplete>false</AutoChoiceIncomplete>
+											<QuickChoice>false</QuickChoice>
+											<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+											<TextEdit>false</TextEdit>
+											<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+											<ContextMenu name="НеотправляемыеСотрудникиЗначениеКонтекстноеМеню" id="157"/>
+											<ExtendedTooltip name="НеотправляемыеСотрудникиЗначениеРасширеннаяПодсказка" id="158"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ОтправляемыеСотрудникиГруппа" id="214">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сотрудники отправляемые в виде исключения</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Employees sent as an exception</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ОтправляемыеСотрудникиГруппаРасширеннаяПодсказка" id="215"/>
+							<ChildItems>
+								<Table name="ОтправляемыеСотрудники" id="159">
+									<Representation>List</Representation>
+									<TitleLocation>Top</TitleLocation>
+									<Height>6</Height>
+									<Header>false</Header>
+									<HorizontalLines>false</HorizontalLines>
+									<VerticalLines>false</VerticalLines>
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>ОтправляемыеСотрудники</DataPath>
+									<RowPictureDataPath>ОтправляемыеСотрудники.Picture</RowPictureDataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сотрудники, отправляемые вне зависимости от подразделения, в котором работают</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Employees sent regardless of the business unit they work in</v8:content>
+										</v8:item>
+									</Title>
+									<CommandSet>
+										<ExcludedCommand>Add</ExcludedCommand>
+										<ExcludedCommand>Change</ExcludedCommand>
+										<ExcludedCommand>CheckAll</ExcludedCommand>
+										<ExcludedCommand>Copy</ExcludedCommand>
+										<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+										<ExcludedCommand>EndEdit</ExcludedCommand>
+										<ExcludedCommand>MoveDown</ExcludedCommand>
+										<ExcludedCommand>MoveUp</ExcludedCommand>
+										<ExcludedCommand>ShowMultipleSelection</ExcludedCommand>
+										<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+										<ExcludedCommand>UncheckAll</ExcludedCommand>
+									</CommandSet>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ContextMenu name="ОтправляемыеСотрудникиКонтекстноеМеню" id="160"/>
+									<AutoCommandBar name="ОтправляемыеСотрудникиКоманднаяПанель" id="161"/>
+									<ExtendedTooltip name="ОтправляемыеСотрудникиРасширеннаяПодсказка" id="162">
+										<AutoMaxWidth>false</AutoMaxWidth>
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Информация по перечисленным сотрудникам будет отправляться в виде исключения</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Information on the listed employees will be sent as an exception</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<SearchStringAddition name="ОтправляемыеСотрудникиСтрокаПоиска" id="163">
+										<AdditionSource>
+											<Item>ОтправляемыеСотрудники</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ОтправляемыеСотрудникиСтрокаПоискаКонтекстноеМеню" id="164"/>
+										<ExtendedTooltip name="ОтправляемыеСотрудникиСтрокаПоискаРасширеннаяПодсказка" id="165"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ОтправляемыеСотрудникиСостояниеПросмотра" id="166">
+										<AdditionSource>
+											<Item>ОтправляемыеСотрудники</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ОтправляемыеСотрудникиСостояниеПросмотраКонтекстноеМеню" id="167"/>
+										<ExtendedTooltip name="ОтправляемыеСотрудникиСостояниеПросмотраРасширеннаяПодсказка" id="168"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ОтправляемыеСотрудникиУправлениеПоиском" id="169">
+										<AdditionSource>
+											<Item>ОтправляемыеСотрудники</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ОтправляемыеСотрудникиУправлениеПоискомКонтекстноеМеню" id="170"/>
+										<ExtendedTooltip name="ОтправляемыеСотрудникиУправлениеПоискомРасширеннаяПодсказка" id="171"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="ChoiceProcessing">ОтправляемыеСотрудникиОбработкаВыбора</Event>
+										<Event name="OnChange">ОтправляемыеСотрудникиПриИзменении</Event>
+									</Events>
+									<ChildItems>
+										<InputField name="ОтправляемыеСотрудникиЗначение" id="172">
+											<DataPath>ОтправляемыеСотрудники.Value</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<DropListButton>false</DropListButton>
+											<ChoiceButton>true</ChoiceButton>
+											<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+											<ClearButton>false</ClearButton>
+											<SpinButton>false</SpinButton>
+											<OpenButton>true</OpenButton>
+											<CreateButton>false</CreateButton>
+											<QuickChoice>false</QuickChoice>
+											<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+											<TextEdit>false</TextEdit>
+											<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+											<ContextMenu name="ОтправляемыеСотрудникиЗначениеКонтекстноеМеню" id="173"/>
+											<ExtendedTooltip name="ОтправляемыеСотрудникиЗначениеРасширеннаяПодсказка" id="174"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.НастройкаОтправкиСотрудниковБронированияКомандировок</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="СистемаБронирования" id="2">
+			<Type>
+				<v8:Type>cfg:EnumRef.СистемыБронированияКомандировок</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкиДоИзменений" id="7">
+			<Type/>
+		</Attribute>
+		<Attribute name="НеотправляемыеСотрудники" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Неотправляемые сотрудники</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Employees not to send</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription">
+				<v8:Type>cfg:CatalogRef.ФизическиеЛица</v8:Type>
+			</Settings>
+		</Attribute>
+		<Attribute name="ОтправляемыеСотрудники" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправляемые сотрудники</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Employees to be sent</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription">
+				<v8:Type>cfg:CatalogRef.ФизическиеЛица</v8:Type>
+			</Settings>
+		</Attribute>
+		<Attribute name="ОтправлятьИнформациюЧисло" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправлять информацию</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send information</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПодразделенияОтбора" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подразделения отбора</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter business units</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription">
+				<v8:TypeSet>cfg:DefinedType.МестоВСтруктуреПредприятия</v8:TypeSet>
+			</Settings>
+		</Attribute>
+		<Attribute name="РезультатВыполненияДлительнойОперации" id="20">
+			<Type/>
+		</Attribute>
+		<Attribute name="ИспользоватьОтборПоПодразделениям" id="21">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КартинкиФормы" id="22">
+			<Type/>
+		</Attribute>
+		<Attribute name="ЦветаФона" id="23">
+			<Type/>
+		</Attribute>
+		<Attribute name="ТекстОтправкаСотрудников" id="25">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПрименитьИЗакрыть" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применить и закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Apply and close</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Принять изменения и закрыть форму</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Apply changes and close the form</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПрименитьИЗакрыть</Action>
+		</Command>
+		<Command name="ВыполнитьОтправкуСейчас" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить отправку сейчас</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send now</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить отправку сотрудников в систему бронирования командировок Smartway</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send employees to Smartway business trip booking system</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыполнитьОтправкуСейчас</Action>
+		</Command>
+		<Command name="Применить" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Apply</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Применить</Action>
+		</Command>
+	</Commands>
+</Form>

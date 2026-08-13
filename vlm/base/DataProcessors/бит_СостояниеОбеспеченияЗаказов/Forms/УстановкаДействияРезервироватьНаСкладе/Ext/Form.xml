@@ -1,0 +1,746 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Резервировать на складе, используя резервы других заказов</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Reserve at warehouse using other order reserves</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="Зарезервировать" id="133">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Ок</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Зарезервировать</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Reserve</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ЗарезервироватьРасширеннаяПодсказка" id="134"/>
+			</Button>
+			<Button name="Отмена" id="135">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Cancel</CommandName>
+				<ExtendedTooltip name="ОтменаРасширеннаяПодсказка" id="136"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="ЗаказНаОтгрузку" id="111">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Font faceName="" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="Absolute" scale="100"/>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказ: &lt;заказ клиента 1&gt;</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Order: &lt;sales order 1&gt;</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ЗаказНаОтгрузкуКонтекстноеМеню" id="112"/>
+			<ExtendedTooltip name="ЗаказНаОтгрузкуРасширеннаяПодсказка" id="113"/>
+		</LabelDecoration>
+		<LabelDecoration name="ПозицияЗаказаНадпись" id="86">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Font faceName="" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="Absolute" scale="100"/>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Позиция заказа: &lt;номенклатура,характеристика,склад&gt;</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Order item: &lt;item,variant,warehouse&gt;</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ПозицияЗаказаНадписьКонтекстноеМеню" id="87"/>
+			<ExtendedTooltip name="ПозицияЗаказаНадписьРасширеннаяПодсказка" id="88"/>
+		</LabelDecoration>
+		<UsualGroup name="ГруппаВсегоЗаказано" id="198">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа всего заказано</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group total ordered</v8:content>
+				</v8:item>
+			</Title>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаВсегоЗаказаноРасширеннаяПодсказка" id="199"/>
+			<ChildItems>
+				<LabelDecoration name="ВсегоЗаказаноНадпись" id="83">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Всего заказано (обособленно): &lt;0,000 шт&gt;; Из них "Резервировать на складе" &lt;0,000 шт&gt;</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Total ordered (separately): &lt;0,000 pcs&gt;; Out of them "Reserve at warehouse" &lt;0,000 pcs&gt;</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ВсегоЗаказаноНадписьКонтекстноеМеню" id="84"/>
+					<ExtendedTooltip name="ВсегоЗаказаноНадписьРасширеннаяПодсказка" id="85"/>
+				</LabelDecoration>
+				<CommandBar name="КомандыТаблицы" id="192">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Команды таблицы</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Table commands</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<CommandSource>Item.ТаблицаЗаказов</CommandSource>
+					<ExtendedTooltip name="КомандыТаблицыРасширеннаяПодсказка" id="193"/>
+					<ChildItems>
+						<Button name="Обновить" id="203">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Обновить</CommandName>
+							<ExtendedTooltip name="ОбновитьРасширеннаяПодсказка" id="204"/>
+						</Button>
+						<Button name="ФормаПереместитьВверх" id="194">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.ТаблицаЗаказов.StandardCommand.MoveUp</CommandName>
+							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+							<ExtendedTooltip name="ФормаПереместитьВверхРасширеннаяПодсказка" id="195"/>
+						</Button>
+						<Button name="ФормаПереместитьВниз" id="196">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.ТаблицаЗаказов.StandardCommand.MoveDown</CommandName>
+							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+							<ExtendedTooltip name="ФормаПереместитьВнизРасширеннаяПодсказка" id="197"/>
+						</Button>
+						<Button name="Справка" id="137">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.StandardCommand.Help</CommandName>
+							<ExtendedTooltip name="СправкаРасширеннаяПодсказка" id="138"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ТаблицаЗаказов" id="150">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<DataPath>ТаблицаЗаказов</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ТаблицаЗаказовКонтекстноеМеню" id="152"/>
+			<AutoCommandBar name="ТаблицаЗаказовКоманднаяПанель" id="151">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ТаблицаЗаказовРасширеннаяПодсказка" id="153"/>
+			<SearchStringAddition name="ТаблицаЗаказовСтрокаПоиска" id="154">
+				<AdditionSource>
+					<Item>ТаблицаЗаказов</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаЗаказовСтрокаПоискаКонтекстноеМеню" id="155"/>
+				<ExtendedTooltip name="ТаблицаЗаказовСтрокаПоискаРасширеннаяПодсказка" id="156"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ТаблицаЗаказовСостояниеПросмотра" id="160">
+				<AdditionSource>
+					<Item>ТаблицаЗаказов</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаЗаказовСостояниеПросмотраКонтекстноеМеню" id="161"/>
+				<ExtendedTooltip name="ТаблицаЗаказовСостояниеПросмотраРасширеннаяПодсказка" id="162"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ТаблицаЗаказовУправлениеПоиском" id="157">
+				<AdditionSource>
+					<Item>ТаблицаЗаказов</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаЗаказовУправлениеПоискомКонтекстноеМеню" id="158"/>
+				<ExtendedTooltip name="ТаблицаЗаказовУправлениеПоискомРасширеннаяПодсказка" id="159"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ТаблицаЗаказовВыбор</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="ТаблицаЗаказовЗаказ" id="166">
+					<DataPath>ТаблицаЗаказов.Заказ</DataPath>
+					<ContextMenu name="ТаблицаЗаказовЗаказКонтекстноеМеню" id="167"/>
+					<ExtendedTooltip name="ТаблицаЗаказовЗаказРасширеннаяПодсказка" id="168"/>
+				</LabelField>
+				<LabelField name="ТаблицаЗаказовПриоритет" id="200">
+					<DataPath>ТаблицаЗаказов.Приоритет</DataPath>
+					<ContextMenu name="ТаблицаЗаказовПриоритетКонтекстноеМеню" id="201"/>
+					<ExtendedTooltip name="ТаблицаЗаказовПриоритетРасширеннаяПодсказка" id="202"/>
+				</LabelField>
+				<LabelField name="ТаблицаЗаказовЖелаемаяДатаОтгрузки" id="169">
+					<DataPath>ТаблицаЗаказов.ЖелаемаяДатаОтгрузки</DataPath>
+					<ContextMenu name="ТаблицаЗаказовЖелаемаяДатаОтгрузкиКонтекстноеМеню" id="170"/>
+					<ExtendedTooltip name="ТаблицаЗаказовЖелаемаяДатаОтгрузкиРасширеннаяПодсказка" id="171"/>
+				</LabelField>
+				<LabelField name="ТаблицаЗаказовДействие" id="175">
+					<DataPath>ТаблицаЗаказов.Действие</DataPath>
+					<ContextMenu name="ТаблицаЗаказовДействиеКонтекстноеМеню" id="176"/>
+					<ExtendedTooltip name="ТаблицаЗаказовДействиеРасширеннаяПодсказка" id="177"/>
+				</LabelField>
+				<LabelField name="ТаблицаЗаказовЕдиницаИзмерения" id="178">
+					<DataPath>ТаблицаЗаказов.ЕдиницаИзмерения</DataPath>
+					<ContextMenu name="ТаблицаЗаказовЕдиницаИзмеренияКонтекстноеМеню" id="179"/>
+					<ExtendedTooltip name="ТаблицаЗаказовЕдиницаИзмеренияРасширеннаяПодсказка" id="180"/>
+				</LabelField>
+				<LabelField name="ТаблицаЗаказовКоличество" id="205">
+					<DataPath>ТаблицаЗаказов.Количество</DataPath>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧДЦ=3; ЧН=0,000</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>NFD=3; NZ=0.000</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="ТаблицаЗаказовКоличествоКонтекстноеМеню" id="206"/>
+					<ExtendedTooltip name="ТаблицаЗаказовКоличествоРасширеннаяПодсказка" id="207"/>
+				</LabelField>
+				<ColumnGroup name="ТаблицаЗаказовГруппаКРезервированию" id="190">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таблица заказов группа к резервированию</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Order table group to reserve</v8:content>
+						</v8:item>
+					</Title>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ТаблицаЗаказовГруппаКРезервированиюРасширеннаяПодсказка" id="191"/>
+					<ChildItems>
+						<CheckBoxField name="ТаблицаЗаказовОтметка" id="187">
+							<DataPath>ТаблицаЗаказов.Отметка</DataPath>
+							<ShowInHeader>false</ShowInHeader>
+							<ShowInFooter>false</ShowInFooter>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ТаблицаЗаказовОтметкаКонтекстноеМеню" id="188"/>
+							<ExtendedTooltip name="ТаблицаЗаказовОтметкаРасширеннаяПодсказка" id="189"/>
+							<Events>
+								<Event name="OnChange">ТаблицаЗаказовОтметкаПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<InputField name="ТаблицаЗаказовКРезервированию" id="184">
+							<DataPath>ТаблицаЗаказов.КРезервированию</DataPath>
+							<Format>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ЧДЦ=3; ЧН=0,000</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>NFD=3; NZ=0.000</v8:content>
+								</v8:item>
+							</Format>
+							<EditFormat>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ЧДЦ=3; ЧН=0,000</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>NFD=3; NZ=0.000</v8:content>
+								</v8:item>
+							</EditFormat>
+							<ContextMenu name="ТаблицаЗаказовКРезервированиюКонтекстноеМеню" id="185"/>
+							<ExtendedTooltip name="ТаблицаЗаказовКРезервированиюРасширеннаяПодсказка" id="186"/>
+							<Events>
+								<Event name="OnChange">ТаблицаЗаказовКРезервированиюПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="ГруппаИтого" id="142">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа итого</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Total group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<HorizontalAlign>Left</HorizontalAlign>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:ИтогиФон</BackColor>
+			<ExtendedTooltip name="ГруппаИтогоРасширеннаяПодсказка" id="143"/>
+			<ChildItems>
+				<InputField name="Доступно" id="139">
+					<DataPath>Доступно</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Будет зарезервировано из доступного остатка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Will be reserved from available balance</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Left</TitleLocation>
+					<ContextMenu name="ДоступноКонтекстноеМеню" id="140"/>
+					<ExtendedTooltip name="ДоступноРасширеннаяПодсказка" id="141"/>
+				</InputField>
+				<InputField name="РезервыДругихЗаказов" id="144">
+					<DataPath>РезервыДругихЗаказов</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>из других заказов</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>from other orders</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Left</TitleLocation>
+					<ContextMenu name="РезервыДругихЗаказовКонтекстноеМеню" id="145"/>
+					<ExtendedTooltip name="РезервыДругихЗаказовРасширеннаяПодсказка" id="146"/>
+				</InputField>
+				<LabelField name="ЕдиницаИзмерения" id="147">
+					<DataPath>ЕдиницаИзмерения</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ContextMenu name="ЕдиницаИзмеренияКонтекстноеМеню" id="148"/>
+					<ExtendedTooltip name="ЕдиницаИзмеренияРасширеннаяПодсказка" id="149"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="РезервПодЗаказом" id="3">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>3</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Доступно" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Из доступного остатка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>From available balance</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>3</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЕдиницаИзмерения" id="6">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПотребностьПоЗаказу" id="8">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>3</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ШрифтЖирный" id="16">
+			<Type>
+				<v8:Type>v8ui:Font</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТаблицаЗаказов" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица заказов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Order table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="КРезервированиюСУчетомФлага" id="24">
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>3</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Заказ" id="25">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заказ</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Order</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.ОжидаемаяОтгрузка</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="ЖелаемаяДатаОтгрузки" id="26">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата отгрузки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Shipment date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Количество" id="27">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество по документу</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Documented quantity</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>3</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Действие" id="28">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Действие</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Action</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.ВариантыОбеспечения</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ЕдиницаИзмерения" id="29">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ед. изм.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Unit</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.УпаковкиЕдиницыИзмерения</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Состояние" id="30">
+					<Type>
+						<v8:Type>cfg:EnumRef.РаспределениеЗапасовСостояния</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КРезервированию" id="31">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>К резервированию</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>To reserve</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>3</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Отметка" id="32">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отметка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Mark</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Приоритет" id="33">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Приоритет</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Priority</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Приоритеты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ТолькоПросмотр" id="39">
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="РезервыДругихЗаказов" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Из других заказов</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>From other orders</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>3</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Номенклатура" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Item</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Характеристика" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Характеристика</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Variant</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ХарактеристикиНоменклатуры</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Склад" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Склад</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Warehouse</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Склады</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Назначение" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назначение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assignment</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Назначения</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗаказНаОтгрузку" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказ на отгрузку</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Shipment order</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DefinedType.ОжидаемаяОтгрузка</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="Обособленно" id="43">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Ок" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Ок</Action>
+		</Command>
+		<Command name="Обновить" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Обновить</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ЕдиницаИзмерения">
+			<Type>
+				<v8:Type>cfg:CatalogRef.УпаковкиЕдиницыИзмерения</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Номенклатура">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Характеристика">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ХарактеристикиНоменклатуры</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Склад">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Склады</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Назначение">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Назначения</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ЗаказНаОтгрузку">
+			<Type>
+				<v8:TypeSet>cfg:AnyIBRef</v8:TypeSet>
+			</Type>
+		</Parameter>
+		<Parameter name="Обособленно">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

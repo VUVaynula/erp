@@ -1,0 +1,1744 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Подбор сертификатов номенклатуры</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Select quality certificates</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="110">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="111"/>
+			</Button>
+			<Button name="ФормаОтменить" id="156">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Отменить</CommandName>
+				<ExtendedTooltip name="ФормаОтменитьРасширеннаяПодсказка" id="157"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаОтборы" id="154">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отборы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filters</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<ChildrenAlign>ItemsLeftTitlesLeft</ChildrenAlign>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОтборыРасширеннаяПодсказка" id="155"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаОтборНоменклатураТипСертификата" id="203">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отборы по номенклатуре и типу сертификата</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filters by item and certificate type</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<ShowTitle>false</ShowTitle>
+					<ThroughAlign>Use</ThroughAlign>
+					<ExtendedTooltip name="ГруппаОтборНоменклатураТипСертификатаРасширеннаяПодсказка" id="204"/>
+					<ChildItems>
+						<InputField name="НоменклатураОтбор" id="78">
+							<DataPath>НоменклатураОтбор</DataPath>
+							<ClearButton>true</ClearButton>
+							<ChoiceForm>Catalog.Номенклатура.Form.ФормаВыбора</ChoiceForm>
+							<ChoiceParameters>
+								<app:item name="Отбор.ВестиУчетСертификатовНоменклатуры">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:boolean">true</Value>
+									</app:value>
+								</app:item>
+							</ChoiceParameters>
+							<ContextMenu name="НоменклатураОтборКонтекстноеМеню" id="79"/>
+							<ExtendedTooltip name="НоменклатураОтборРасширеннаяПодсказка" id="80"/>
+							<Events>
+								<Event name="OnChange">НоменклатураОтборПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ТипСертификата" id="118">
+							<DataPath>ТипСертификата</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>21</MaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ClearButton>true</ClearButton>
+							<ListChoiceMode>true</ListChoiceMode>
+							<ChooseType>false</ChooseType>
+							<ContextMenu name="ТипСертификатаКонтекстноеМеню" id="119"/>
+							<ExtendedTooltip name="ТипСертификатаРасширеннаяПодсказка" id="120"/>
+							<Events>
+								<Event name="OnChange">ТипСертификатаПриИзменении</Event>
+								<Event name="AutoComplete">ТипСертификатаАвтоПодбор</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаОтборСтатусРосаккредитацииДата" id="205">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отборы по статусу Росаккредитации и дате</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filter by RusAccreditation status and date</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<ShowTitle>false</ShowTitle>
+					<ThroughAlign>Use</ThroughAlign>
+					<ExtendedTooltip name="ГруппаОтборСтатусРосаккредитацииДатаРасширеннаяПодсказка" id="206"/>
+					<ChildItems>
+						<InputField name="СтатусРосаккредитацииОтбор" id="197">
+							<DataPath>СтатусРосаккредитацииОтбор</DataPath>
+							<Width>40</Width>
+							<ClearButton>true</ClearButton>
+							<ListChoiceMode>true</ListChoiceMode>
+							<ChooseType>false</ChooseType>
+							<ContextMenu name="СтатусРосаккредитацииОтборКонтекстноеМеню" id="198"/>
+							<ExtendedTooltip name="СтатусРосаккредитацииОтборРасширеннаяПодсказка" id="199"/>
+							<Events>
+								<Event name="OnChange">ПриИзмененииРеквизитаФормы</Event>
+							</Events>
+						</InputField>
+						<CheckBoxField name="ТолькоДействующиеНаДату" id="112">
+							<DataPath>ТолькоДействующиеНаДату</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ТолькоДействующиеНаДатуКонтекстноеМеню" id="113"/>
+							<ExtendedTooltip name="ТолькоДействующиеНаДатуРасширеннаяПодсказка" id="114"/>
+							<Events>
+								<Event name="OnChange">ТолькоДействующиеНаДатуПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<InputField name="Дата" id="115">
+							<DataPath>Дата</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="ДатаКонтекстноеМеню" id="116"/>
+							<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="117"/>
+							<Events>
+								<Event name="OnChange">ДатаПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОсновнаяПанель" id="47">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основная панель</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main bar</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОсновнаяПанельРасширеннаяПодсказка" id="48"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаСертификатыИОбластьДействия" id="125">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сертификаты и область действия</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Certificates and scope</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСертификатыИОбластьДействияРасширеннаяПодсказка" id="126"/>
+					<ChildItems>
+						<Table name="СертификатыНоменклатуры" id="16">
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>СертификатыНоменклатуры</DataPath>
+							<RowPictureDataPath>СертификатыНоменклатуры.DefaultPicture</RowPictureDataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подобрать сертификаты</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Select certificates</v8:content>
+								</v8:item>
+							</Title>
+							<CommandSet>
+								<ExcludedCommand>CreateFolder</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+							</CommandSet>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>FoldersAndItems</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="СертификатыНоменклатурыКонтекстноеМеню" id="17"/>
+							<AutoCommandBar name="СертификатыНоменклатурыКоманднаяПанель" id="18">
+								<ChildItems>
+									<Popup name="ГруппаКоманднаяПанельУстановитьСтатус" id="185">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Установить статус</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Set status</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ГруппаКоманднаяПанельУстановитьСтатусРасширеннаяПодсказка" id="186"/>
+										<ChildItems>
+											<Button name="УстановитьСтатусДействующий" id="187">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.УстановитьСтатусДействующий</CommandName>
+												<ExtendedTooltip name="УстановитьСтатусДействующийРасширеннаяПодсказка" id="188"/>
+											</Button>
+											<Button name="УстановитьСтатусНеДействующий" id="189">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.УстановитьСтатусНеДействующий</CommandName>
+												<ExtendedTooltip name="УстановитьСтатусНеДействующийРасширеннаяПодсказка" id="190"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<Button name="ОбновитьСтатусыРосаккредитации" id="191">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ОбновитьСтатусыРосаккредитации</CommandName>
+										<ExtendedTooltip name="ОбновитьСтатусыРосаккредитацииРасширеннаяПодсказка" id="192"/>
+									</Button>
+									<Popup name="ГруппаКоманднаяПанельИзображение" id="193">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Изображение</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Image</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ГруппаКоманднаяПанельИзображениеРасширеннаяПодсказка" id="194"/>
+										<ChildItems>
+											<Button name="СертификатыНоменклатурыПоИерархииОткрытьИзображение" id="150">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ОткрытьИзображение</CommandName>
+												<ExtendedTooltip name="СертификатыНоменклатурыПоИерархииОткрытьИзображениеРасширеннаяПодсказка" id="151"/>
+											</Button>
+											<Popup name="ПодменюПечать" id="195">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Печать</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Print </v8:content>
+													</v8:item>
+												</Title>
+												<ToolTip>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Команды печати</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Form's print commands.</v8:content>
+													</v8:item>
+												</ToolTip>
+												<Picture>
+													<xr:Ref>StdPicture.Print</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="ПодменюПечатьРасширеннаяПодсказка" id="196"/>
+											</Popup>
+										</ChildItems>
+									</Popup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СертификатыНоменклатурыРасширеннаяПодсказка" id="19"/>
+							<SearchStringAddition name="СертификатыНоменклатурыСтрокаПоиска" id="158">
+								<AdditionSource>
+									<Item>СертификатыНоменклатуры</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СертификатыНоменклатурыСтрокаПоискаКонтекстноеМеню" id="159"/>
+								<ExtendedTooltip name="СертификатыНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="160"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СертификатыНоменклатурыСостояниеПросмотра" id="161">
+								<AdditionSource>
+									<Item>СертификатыНоменклатуры</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<HorizontalLocation>Left</HorizontalLocation>
+								<ContextMenu name="СертификатыНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="162"/>
+								<ExtendedTooltip name="СертификатыНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="163"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СертификатыНоменклатурыУправлениеПоиском" id="164">
+								<AdditionSource>
+									<Item>СертификатыНоменклатуры</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СертификатыНоменклатурыУправлениеПоискомКонтекстноеМеню" id="165"/>
+								<ExtendedTooltip name="СертификатыНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="166"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">СертификатыНоменклатурыВыбор</Event>
+								<Event name="BeforeAddRow">СертификатыНоменклатурыПередНачаломДобавления</Event>
+								<Event name="OnActivateRow">СертификатыНоменклатурыПриАктивизацииСтроки</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="СертификатыНоменклатурыПредставлениеСертификата" id="207">
+									<DataPath>СертификатыНоменклатуры.СертификатНоменклатуры</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сертификат</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Certificate</v8:content>
+										</v8:item>
+									</Title>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>1</MaxWidth>
+									<ContextMenu name="СертификатыНоменклатурыПредставлениеСертификатаКонтекстноеМеню" id="208"/>
+									<ExtendedTooltip name="СертификатыНоменклатурыПредставлениеСертификатаРасширеннаяПодсказка" id="209"/>
+								</InputField>
+								<LabelField name="СертификатыНоменклатурыСтатусРосаккредитации" id="200">
+									<DataPath>СертификатыНоменклатуры.СтатусРосаккредитации</DataPath>
+									<CellHyperlink>true</CellHyperlink>
+									<Hiperlink>true</Hiperlink>
+									<ContextMenu name="СертификатыНоменклатурыСтатусРосаккредитацииКонтекстноеМеню" id="201"/>
+									<ExtendedTooltip name="СертификатыНоменклатурыСтатусРосаккредитацииРасширеннаяПодсказка" id="202"/>
+								</LabelField>
+								<ColumnGroup name="СертификатыНоменклатурыСрокДействия" id="74">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Срок действия</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Validity period</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="СертификатыНоменклатурыСрокДействияРасширеннаяПодсказка" id="75"/>
+									<ChildItems>
+										<LabelField name="СертификатыНоменклатурыДатаНачалаСрокаДействия" id="29">
+											<DataPath>СертификатыНоменклатуры.ДатаНачалаСрокаДействия</DataPath>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="СертификатыНоменклатурыДатаНачалаСрокаДействияКонтекстноеМеню" id="30"/>
+											<ExtendedTooltip name="СертификатыНоменклатурыДатаНачалаСрокаДействияРасширеннаяПодсказка" id="31"/>
+										</LabelField>
+										<LabelField name="СертификатыНоменклатурыДатаОкончанияСрокаДействия" id="32">
+											<DataPath>СертификатыНоменклатуры.ДатаОкончанияСрокаДействия</DataPath>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="СертификатыНоменклатурыДатаОкончанияСрокаДействияКонтекстноеМеню" id="33"/>
+											<ExtendedTooltip name="СертификатыНоменклатурыДатаОкончанияСрокаДействияРасширеннаяПодсказка" id="34"/>
+										</LabelField>
+									</ChildItems>
+								</ColumnGroup>
+								<LabelField name="СертификатыНоменклатурыСсылка" id="68">
+									<DataPath>СертификатыНоменклатуры.Ссылка</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ссылка</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Reference</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СертификатыНоменклатурыСсылкаКонтекстноеМеню" id="69"/>
+									<ExtendedTooltip name="СертификатыНоменклатурыСсылкаРасширеннаяПодсказка" id="70"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+						<UsualGroup name="ГруппаОбластьДействия" id="108">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Область действия</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Scope</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Collapsible</Behavior>
+							<Collapsed>true</Collapsed>
+							<ControlRepresentation>Picture</ControlRepresentation>
+							<Representation>None</Representation>
+							<ShowLeftMargin>false</ShowLeftMargin>
+							<ExtendedTooltip name="ГруппаОбластьДействияРасширеннаяПодсказка" id="109"/>
+							<ChildItems>
+								<Table name="ОбластьДействия" id="49">
+									<ReadOnly>true</ReadOnly>
+									<Height>7</Height>
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>ОбластьДействия</DataPath>
+									<RowPictureDataPath>ОбластьДействия.DefaultPicture</RowPictureDataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Область действия</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Scope</v8:content>
+										</v8:item>
+									</Title>
+									<CommandSet>
+										<ExcludedCommand>CancelSearch</ExcludedCommand>
+										<ExcludedCommand>DynamicListStandardSettings</ExcludedCommand>
+										<ExcludedCommand>Find</ExcludedCommand>
+										<ExcludedCommand>ListSettings</ExcludedCommand>
+										<ExcludedCommand>LoadDynamicListSettings</ExcludedCommand>
+										<ExcludedCommand>OutputList</ExcludedCommand>
+										<ExcludedCommand>Refresh</ExcludedCommand>
+										<ExcludedCommand>SaveDynamicListSettings</ExcludedCommand>
+									</CommandSet>
+									<AutoRefresh>false</AutoRefresh>
+									<AutoRefreshPeriod>60</AutoRefreshPeriod>
+									<Period>
+										<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+										<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+										<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+									</Period>
+									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+									<RestoreCurrentRow>false</RestoreCurrentRow>
+									<TopLevelParent xsi:nil="true"/>
+									<ShowRoot>true</ShowRoot>
+									<AllowRootChoice>false</AllowRootChoice>
+									<UpdateOnDataChange>Auto</UpdateOnDataChange>
+									<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+									<ContextMenu name="ОбластьДействияКонтекстноеМеню" id="50"/>
+									<AutoCommandBar name="ОбластьДействияКоманднаяПанель" id="51">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="ОбластьДействияРасширеннаяПодсказка" id="52"/>
+									<SearchStringAddition name="ОбластьДействияСтрокаПоиска" id="167">
+										<AdditionSource>
+											<Item>ОбластьДействия</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ОбластьДействияСтрокаПоискаКонтекстноеМеню" id="168"/>
+										<ExtendedTooltip name="ОбластьДействияСтрокаПоискаРасширеннаяПодсказка" id="169"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ОбластьДействияСостояниеПросмотра" id="170">
+										<AdditionSource>
+											<Item>ОбластьДействия</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<HorizontalLocation>Left</HorizontalLocation>
+										<ContextMenu name="ОбластьДействияСостояниеПросмотраКонтекстноеМеню" id="171"/>
+										<ExtendedTooltip name="ОбластьДействияСостояниеПросмотраРасширеннаяПодсказка" id="172"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ОбластьДействияУправлениеПоиском" id="173">
+										<AdditionSource>
+											<Item>ОбластьДействия</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ОбластьДействияУправлениеПоискомКонтекстноеМеню" id="174"/>
+										<ExtendedTooltip name="ОбластьДействияУправлениеПоискомРасширеннаяПодсказка" id="175"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="Selection">ОбластьДействияВыбор</Event>
+									</Events>
+									<ChildItems>
+										<LabelField name="ОбластьДействияВидНоменклатуры" id="53">
+											<DataPath>ОбластьДействия.ВидНоменклатуры</DataPath>
+											<ContextMenu name="ОбластьДействияВидНоменклатурыКонтекстноеМеню" id="54"/>
+											<ExtendedTooltip name="ОбластьДействияВидНоменклатурыРасширеннаяПодсказка" id="55"/>
+										</LabelField>
+										<LabelField name="ОбластьДействияНоменклатура" id="56">
+											<DataPath>ОбластьДействия.Номенклатура</DataPath>
+											<ContextMenu name="ОбластьДействияНоменклатураКонтекстноеМеню" id="57"/>
+											<ExtendedTooltip name="ОбластьДействияНоменклатураРасширеннаяПодсказка" id="58"/>
+										</LabelField>
+										<LabelField name="ОбластьДействияХарактеристика" id="59">
+											<DataPath>ОбластьДействия.Характеристика</DataPath>
+											<ContextMenu name="ОбластьДействияХарактеристикаКонтекстноеМеню" id="60"/>
+											<ExtendedTooltip name="ОбластьДействияХарактеристикаРасширеннаяПодсказка" id="61"/>
+										</LabelField>
+										<LabelField name="ОбластьДействияСерия" id="62">
+											<DataPath>ОбластьДействия.Серия</DataPath>
+											<ContextMenu name="ОбластьДействияСерияКонтекстноеМеню" id="63"/>
+											<ExtendedTooltip name="ОбластьДействияСерияРасширеннаяПодсказка" id="64"/>
+										</LabelField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаИерархииСертификатов" id="81">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Иерархии сертификатов</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Certificate hierarchies</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаИерархииСертификатовРасширеннаяПодсказка" id="82"/>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПодобранныеСертификаты" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобранные сертификаты</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Selected certificates</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>None</Representation>
+			<ShowLeftMargin>false</ShowLeftMargin>
+			<ExtendedTooltip name="ГруппаПодобранныеСертификатыРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<Table name="ПодобранныеСертификатыНоменклатуры" id="3">
+					<Representation>List</Representation>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>ПодобранныеСертификатыНоменклатуры</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подобранные сертификаты номенклатуры</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Selected quality certificates</v8:content>
+						</v8:item>
+					</Title>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ПодобранныеСертификатыНоменклатурыКонтекстноеМеню" id="4"/>
+					<AutoCommandBar name="ПодобранныеСертификатыНоменклатурыКоманднаяПанель" id="5"/>
+					<ExtendedTooltip name="ПодобранныеСертификатыНоменклатурыРасширеннаяПодсказка" id="6"/>
+					<SearchStringAddition name="ПодобранныеСертификатыНоменклатурыСтрокаПоиска" id="176">
+						<AdditionSource>
+							<Item>ПодобранныеСертификатыНоменклатуры</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ПодобранныеСертификатыНоменклатурыСтрокаПоискаКонтекстноеМеню" id="177"/>
+						<ExtendedTooltip name="ПодобранныеСертификатыНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="178"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ПодобранныеСертификатыНоменклатурыСостояниеПросмотра" id="179">
+						<AdditionSource>
+							<Item>ПодобранныеСертификатыНоменклатуры</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<HorizontalLocation>Left</HorizontalLocation>
+						<ContextMenu name="ПодобранныеСертификатыНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="180"/>
+						<ExtendedTooltip name="ПодобранныеСертификатыНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="181"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ПодобранныеСертификатыНоменклатурыУправлениеПоиском" id="182">
+						<AdditionSource>
+							<Item>ПодобранныеСертификатыНоменклатуры</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ПодобранныеСертификатыНоменклатурыУправлениеПоискомКонтекстноеМеню" id="183"/>
+						<ExtendedTooltip name="ПодобранныеСертификатыНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="184"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="OnEditEnd">ПодобранныеСертификатыНоменклатурыПриОкончанииРедактирования</Event>
+						<Event name="OnChange">ПодобранныеСертификатыНоменклатурыПриИзменении</Event>
+					</Events>
+					<ChildItems>
+						<InputField name="ПодобранныеСертификатыНоменклатурыСертификат" id="7">
+							<DataPath>ПодобранныеСертификатыНоменклатуры.Сертификат</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<ContextMenu name="ПодобранныеСертификатыНоменклатурыСертификатКонтекстноеМеню" id="8"/>
+							<ExtendedTooltip name="ПодобранныеСертификатыНоменклатурыСертификатРасширеннаяПодсказка" id="9"/>
+						</InputField>
+						<InputField name="ПодобранныеСертификатыНоменклатурыХарактеристика" id="10">
+							<DataPath>ПодобранныеСертификатыНоменклатуры.Характеристика</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Номенклатура</xr:Name>
+									<xr:DataPath xsi:type="xs:string">ИсходнаяНоменклатура</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;для всех характеристик&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;for all variants&gt;</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="ПодобранныеСертификатыНоменклатурыХарактеристикаКонтекстноеМеню" id="11"/>
+							<ExtendedTooltip name="ПодобранныеСертификатыНоменклатурыХарактеристикаРасширеннаяПодсказка" id="12"/>
+						</InputField>
+						<InputField name="ПодобранныеСертификатыНоменклатурыСерия" id="13">
+							<DataPath>ПодобранныеСертификатыНоменклатуры.Серия</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Номенклатура</xr:Name>
+									<xr:DataPath xsi:type="xs:string">ИсходнаяНоменклатура</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+								<xr:Link>
+									<xr:Name>Характеристика</xr:Name>
+									<xr:DataPath xsi:type="xs:string">Items.ОбластьДействия.CurrentData.Характеристика</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;для всех серий&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;for all batches&gt;</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="ПодобранныеСертификатыНоменклатурыСерияКонтекстноеМеню" id="14"/>
+							<ExtendedTooltip name="ПодобранныеСертификатыНоменклатурыСерияРасширеннаяПодсказка" id="15"/>
+							<Events>
+								<Event name="StartChoice">ПодобранныеСертификатыНоменклатурыСерияНачалоВыбора</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ПодобранныеСертификатыНоменклатуры" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобранные сертификаты номенклатуры</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Selected quality certificates</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Сертификат" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сертификат</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Certificate</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.СертификатыНоменклатуры</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Характеристика" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Характеристика</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Variant</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ХарактеристикиНоменклатуры</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Серия" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Серия</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Batch</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.СерииНоменклатуры</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ОбластьДействия" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Область действия</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Scope</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ОбластьДействия.ВидНоменклатуры</Field>
+				<Field>ОбластьДействия.ИспользоватьСерии</Field>
+				<Field>ОбластьДействия.ИспользоватьХарактеристики</Field>
+				<Field>ОбластьДействия.Номенклатура</Field>
+				<Field>ОбластьДействия.Серия</Field>
+				<Field>ОбластьДействия.СертификатНоменклатуры</Field>
+				<Field>ОбластьДействия.Характеристика</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	РегистрСведенийОбластиДействияСертификатовНоменклатуры.ВидНоменклатуры,
+	РегистрСведенийОбластиДействияСертификатовНоменклатуры.Номенклатура,
+	РегистрСведенийОбластиДействияСертификатовНоменклатуры.Характеристика,
+	РегистрСведенийОбластиДействияСертификатовНоменклатуры.Серия,
+	РегистрСведенийОбластиДействияСертификатовНоменклатуры.СертификатНоменклатуры,
+	ВЫБОР
+		КОГДА РегистрСведенийОбластиДействияСертификатовНоменклатуры.Номенклатура.ИспользованиеХарактеристик = ЗНАЧЕНИЕ(Перечисление.ВариантыИспользованияХарактеристикНоменклатуры.НеИспользовать)
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК ИспользоватьХарактеристики,
+	РегистрСведенийОбластиДействияСертификатовНоменклатуры.ВидНоменклатуры.ИспользоватьСерии КАК ИспользоватьСерии
+ИЗ
+	РегистрСведений.ОбластиДействияСертификатовНоменклатуры КАК РегистрСведенийОбластиДействияСертификатовНоменклатуры</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИспользоватьСерии</dcssch:dataPath>
+					<dcssch:field>ИспользоватьСерии</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Использовать серии</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Use batches</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидНоменклатуры</dcssch:dataPath>
+					<dcssch:field>ВидНоменклатуры</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номенклатура</dcssch:dataPath>
+					<dcssch:field>Номенклатура</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Характеристика</dcssch:dataPath>
+					<dcssch:field>Характеристика</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИспользоватьХарактеристики</dcssch:dataPath>
+					<dcssch:field>ИспользоватьХарактеристики</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Использовать характеристики</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Use characteristics</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Серия</dcssch:dataPath>
+					<dcssch:field>Серия</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СертификатНоменклатуры</dcssch:dataPath>
+					<dcssch:field>СертификатНоменклатуры</dcssch:field>
+				</Field>
+				<MainTable>InformationRegister.ОбластиДействияСертификатовНоменклатуры</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="СертификатыНоменклатуры" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификаты номенклатуры</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quality certificates</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>СертификатыНоменклатуры.Бессрочный</Field>
+				<Field>СертификатыНоменклатуры.ДатаОкончанияСрокаДействия</Field>
+				<Field>СертификатыНоменклатуры.Ссылка</Field>
+				<Field>СертификатыНоменклатуры.СсылкаНаСертификатРосаккредитации</Field>
+				<Field>СертификатыНоменклатуры.Статус</Field>
+				<Field>СертификатыНоменклатуры.ТипСертификата</Field>
+				<Field>СертификатыНоменклатуры.ЭтоГруппа</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ РАЗЛИЧНЫЕ
+	СертификатыНоменклатуры.Ссылка,
+	СертификатыНоменклатуры.Статус,
+	СертификатыНоменклатуры.ДатаНачалаСрокаДействия,
+	СертификатыНоменклатуры.ДатаОкончанияСрокаДействия,
+	СертификатыНоменклатуры.Бессрочный,
+	СертификатыНоменклатуры.ТипСертификата,
+	СертификатыНоменклатуры.СтатусРосаккредитации,
+	ВЫРАЗИТЬ(СертификатыНоменклатуры.СсылкаНаСертификатРосаккредитации КАК СТРОКА(1000)) КАК
+		СсылкаНаСертификатРосаккредитации,
+	СертификатыНоменклатуры.ЭтоГруппа,
+	СертификатыНоменклатуры.Ссылка КАК СертификатНоменклатуры
+ИЗ
+	Справочник.СертификатыНоменклатуры КАК СертификатыНоменклатуры
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ОбластиДействияСертификатовНоменклатуры КАК ОбластиДействияСертификатовНоменклатуры
+		ПО СертификатыНоменклатуры.Ссылка = ОбластиДействияСертификатовНоменклатуры.СертификатНоменклатуры
+ГДЕ
+	(((СертификатыНоменклатуры.ЭтоГруппа = ИСТИНА)
+	И &amp;Номенклатура = ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка))
+	ИЛИ (ОбластиДействияСертификатовНоменклатуры.Номенклатура = &amp;Номенклатура
+	ИЛИ (ОбластиДействияСертификатовНоменклатуры.ВидНоменклатуры = &amp;ВидНоменклатуры
+	И ОбластиДействияСертификатовНоменклатуры.Номенклатура = ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка))
+	ИЛИ &amp;ВидНоменклатуры = ЗНАЧЕНИЕ(Справочник.ВидыНоменклатуры.ПустаяСсылка)))</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СтатусРосаккредитации</dcssch:dataPath>
+					<dcssch:field>СтатусРосаккредитации</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус Росаккредитации</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>RusAccreditation status</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СсылкаНаСертификатРосаккредитации</dcssch:dataPath>
+					<dcssch:field>СсылкаНаСертификатРосаккредитации</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка на сертификат Росаккредитации</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>A reference to the RusAccreditation certificate</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Reference</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Статус</dcssch:dataPath>
+					<dcssch:field>Статус</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Status</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаНачалаСрокаДействия</dcssch:dataPath>
+					<dcssch:field>ДатаНачалаСрокаДействия</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата начала срока действия</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Valid from</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаОкончанияСрокаДействия</dcssch:dataPath>
+					<dcssch:field>ДатаОкончанияСрокаДействия</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата окончания срока действия</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Valid to</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Бессрочный</dcssch:dataPath>
+					<dcssch:field>Бессрочный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТипСертификата</dcssch:dataPath>
+					<dcssch:field>ТипСертификата</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЭтоГруппа</dcssch:dataPath>
+					<dcssch:field>ЭтоГруппа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Наименование</dcssch:dataPath>
+					<dcssch:field>Наименование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОрганВыдавшийДокумент</dcssch:dataPath>
+					<dcssch:field>ОрганВыдавшийДокумент</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номер</dcssch:dataPath>
+					<dcssch:field>Номер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПредставлениеСертификата</dcssch:dataPath>
+					<dcssch:field>ПредставлениеСертификата</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПубликуетсяВСервисах</dcssch:dataPath>
+					<dcssch:field>ПубликуетсяВСервисах</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаОбновленияСтатусаРосаккредитации</dcssch:dataPath>
+					<dcssch:field>ДатаОбновленияСтатусаРосаккредитации</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДополнительныеРеквизиты</dcssch:dataPath>
+					<dcssch:field>ДополнительныеРеквизиты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Предопределенный</dcssch:dataPath>
+					<dcssch:field>Предопределенный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИмяПредопределенныхДанных</dcssch:dataPath>
+					<dcssch:field>ИмяПредопределенныхДанных</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Родитель</dcssch:dataPath>
+					<dcssch:field>Родитель</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СертификатНоменклатуры</dcssch:dataPath>
+					<dcssch:field>СертификатНоменклатуры</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сертификат номенклатуры</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Quality certificate</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Parameter>
+					<dcssch:name>ВидНоменклатуры</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид номенклатуры</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Product kind</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:CatalogRef.ВидыНоменклатуры</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<Parameter>
+					<dcssch:name>Номенклатура</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номенклатура</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Item</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<MainTable>Catalog.СертификатыНоменклатуры</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="НоменклатураОтбор" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификаты по номенклатуре</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificates for product</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТолькоДействующиеНаДату" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Только действующие на дату</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Only valid on</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Дата" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТипСертификата" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип сертификата</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate type</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>50</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВариантОтображенияТаблицы" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант отображения таблицы</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Table view option</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИсходнаяНоменклатура" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исходная номенклатура</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Original product</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИсходныйВидНоменклатуры" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исходный вид номенклатуры</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Original item kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ВидыНоменклатуры</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьХарактеристики" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать характеристики</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use variants</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьСерии" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать характеристики</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use variants</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СертификатыПодобраны" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификаты подобраны</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificates are selected</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СтатусРосаккредитацииОтбор" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус Росаккредитации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>RusAccreditation status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.СтатусыСертификатовНоменклатурыРосаккредитации</v8:Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОбластьДействияНоменклатура</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ОбластьДействия.Номенклатура</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НезаполненноеПолеТаблицы</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ЦветТекстаОтмененнойСтрокиДокумента</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>&lt;для всей номенклатуры&gt;</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>&lt;for all items&gt;</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОбластьДействияХарактеристика</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ОбластьДействия.Характеристика</dcsset:left>
+							<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ОбластьДействия.ИспользоватьХарактеристики</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НезаполненноеПолеТаблицы</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ЦветТекстаОтмененнойСтрокиДокумента</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>&lt;для всех характеристик&gt;</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>&lt;for all variants&gt;</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОбластьДействияСерия</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ОбластьДействия.Серия</dcsset:left>
+							<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ОбластьДействия.ИспользоватьСерии</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НезаполненноеПолеТаблицы</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ЦветТекстаОтмененнойСтрокиДокумента</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>&lt;для всех серий&gt;</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>&lt;for all batches&gt;</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОбластьДействияХарактеристика</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ОбластьДействия.ИспользоватьХарактеристики</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ЦветТекстаОтмененнойСтрокиДокумента</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>&lt;характеристики не используются&gt;</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>&lt;variants are not used&gt;</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Доступность</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОбластьДействияСерия</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ОбластьДействия.ИспользоватьСерии</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ЦветТекстаОтмененнойСтрокиДокумента</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>&lt;серия не указывается&gt;</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>&lt;batch is not specified&gt;</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Доступность</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СертификатыНоменклатурыДатаОкончанияСрокаДействия</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">СертификатыНоменклатуры.Бессрочный</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ЦветТекстаОтмененнойСтрокиДокумента</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>&lt;бессрочный&gt;</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>&lt;permanent&gt;</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ПодобранныеСертификатыНоменклатурыХарактеристика</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ПодобранныеСертификатыНоменклатуры.Характеристика</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ЦветТекстаОтмененнойСтрокиДокумента</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>&lt;для всех характеристик&gt;</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>&lt;for all variants&gt;</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ПодобранныеСертификатыНоменклатурыСерия</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ПодобранныеСертификатыНоменклатуры.Серия</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ЦветТекстаОтмененнойСтрокиДокумента</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>&lt;для всех серий&gt;</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>&lt;for all batches&gt;</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ПодобранныеСертификатыНоменклатурыСерия</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ПодобранныеСертификатыНоменклатуры.Характеристика</dcsset:left>
+							<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ИспользоватьХарактеристики</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Доступность</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаписатьИЗакрыть" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаписатьИЗакрыть</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОткрытьИзображение" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать изображение</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show image</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать сертификат</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show certificate</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Picture</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьИзображение</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="Отменить" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Отменить</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="УстановитьСтатусДействующий" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Действующий</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Valid</v8:content>
+				</v8:item>
+			</Title>
+			<Action>УстановитьСтатусДействующий</Action>
+			<AssociatedTableElementId xsi:type="xs:string">СертификатыНоменклатуры</AssociatedTableElementId>
+		</Command>
+		<Command name="УстановитьСтатусНеДействующий" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Недействующий</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Invalid</v8:content>
+				</v8:item>
+			</Title>
+			<Action>УстановитьСтатусНеДействующий</Action>
+			<AssociatedTableElementId xsi:type="xs:string">СертификатыНоменклатуры</AssociatedTableElementId>
+		</Command>
+		<Command name="ОбновитьСтатусыРосаккредитации" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить статусы Росаккредитации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update RusAccreditation statuses</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ВыполнитьКомандуФормы</Action>
+			<AssociatedTableElementId xsi:type="xs:string">СертификатыНоменклатуры</AssociatedTableElementId>
+		</Command>
+	</Commands>
+</Form>

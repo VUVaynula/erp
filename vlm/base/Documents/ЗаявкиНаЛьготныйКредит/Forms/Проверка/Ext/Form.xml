@@ -1,0 +1,739 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Проверка возможности получения льготного кредита</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Проверка возможности получения льготного кредита</v8:content>
+		</v8:item>
+	</Title>
+	<Width>70</Width>
+	<Height>30</Height>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="ИнформационнаяПанель" id="1">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<MaxWidth>80</MaxWidth>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверка предназначена для определения возможности получения организацией кредита для выплаты заработной платы в период пандемии в соответствии с Постановлением Правительства Российской Федерации от 02.04.2020 № 422.</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Проверка предназначена для определения возможности получения организацией кредита для выплаты заработной платы в период пандемии в соответствии с Постановлением Правительства Российской Федерации от 02.04.2020 № 422.</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ИнформационнаяПанельКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ИнформационнаяПанельРасширеннаяПодсказка" id="3"/>
+		</LabelDecoration>
+		<UsualGroup name="ГруппаОрганизация" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Группа организация</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Группа организация</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОрганизацияРасширеннаяПодсказка" id="10"/>
+			<ChildItems>
+				<LabelDecoration name="ЗаголовокОрганизация" id="63">
+					<Width>20</Width>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Организация:</v8:content>
+						</v8:item>
+					</Title>
+					<GroupVerticalAlign>Center</GroupVerticalAlign>
+					<ContextMenu name="ЗаголовокОрганизацияКонтекстноеМеню" id="64"/>
+					<ExtendedTooltip name="ЗаголовокОрганизацияРасширеннаяПодсказка" id="65"/>
+				</LabelDecoration>
+				<InputField name="Организация" id="4">
+					<DataPath>Организация</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="6"/>
+					<Events>
+						<Event name="OnChange">ОрганизацияПриИзменении</Event>
+					</Events>
+				</InputField>
+				<Button name="Проверить" id="7">
+					<Type>UsualButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Command.Проверить</CommandName>
+					<ExtendedTooltip name="ПроверитьРасширеннаяПодсказка" id="8"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПодсказкаОрганизации" id="52">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа подсказка организации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Группа подсказка организации</v8:content>
+				</v8:item>
+			</Title>
+			<VerticalAlign>Center</VerticalAlign>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПодсказкаОрганизацииРасширеннаяПодсказка" id="53"/>
+			<ChildItems>
+				<LabelDecoration name="Отступ1" id="54">
+					<Width>20</Width>
+					<GroupVerticalAlign>Center</GroupVerticalAlign>
+					<ContextMenu name="Отступ1КонтекстноеМеню" id="55"/>
+					<ExtendedTooltip name="Отступ1РасширеннаяПодсказка" id="56"/>
+				</LabelDecoration>
+				<PictureDecoration name="Бублик" id="57">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Бублик</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Бублик</v8:content>
+						</v8:item>
+					</Title>
+					<GroupVerticalAlign>Center</GroupVerticalAlign>
+					<Picture>
+						<xr:Ref>CommonPicture.ДлительнаяОперация16</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="БубликКонтекстноеМеню" id="58"/>
+					<ExtendedTooltip name="БубликРасширеннаяПодсказка" id="59"/>
+				</PictureDecoration>
+				<LabelDecoration name="ТекстОшибкиСервера" id="60">
+					<GroupVerticalAlign>Center</GroupVerticalAlign>
+					<ContextMenu name="ТекстОшибкиСервераКонтекстноеМеню" id="61"/>
+					<ExtendedTooltip name="ТекстОшибкиСервераРасширеннаяПодсказка" id="62"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="Отступ" id="11">
+			<ContextMenu name="ОтступКонтекстноеМеню" id="12"/>
+			<ExtendedTooltip name="ОтступРасширеннаяПодсказка" id="13"/>
+		</LabelDecoration>
+		<UsualGroup name="ГруппаРезультатПроверки" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результат проверки:</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Результат проверки:</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:FormTextColor</TitleTextColor>
+			<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>true</VerticalStretch>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаРезультатПроверкиРасширеннаяПодсказка" id="15"/>
+			<ChildItems>
+				<LabelDecoration name="РезультатПроверки" id="16">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>80</MaxWidth>
+					<ContextMenu name="РезультатПроверкиКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="РезультатПроверкиРасширеннаяПодсказка" id="18"/>
+				</LabelDecoration>
+				<UsualGroup name="ГруппаЧисленность" id="19">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа численность</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Группа численность</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа численность</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Группа численность</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЧисленностьРасширеннаяПодсказка" id="20"/>
+					<ChildItems>
+						<LabelDecoration name="ЗаголовокЧисленность" id="21">
+							<Width>20</Width>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Численность работников по данным ФНС:</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Численность работников по данным ФНС:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ЗаголовокЧисленностьКонтекстноеМеню" id="22"/>
+							<ExtendedTooltip name="ЗаголовокЧисленностьРасширеннаяПодсказка" id="23"/>
+						</LabelDecoration>
+						<LabelDecoration name="Численность" id="24">
+							<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<ContextMenu name="ЧисленностьКонтекстноеМеню" id="25"/>
+							<ExtendedTooltip name="ЧисленностьРасширеннаяПодсказка" id="26"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСумма" id="27">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма кредита:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Сумма кредита:</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа численность</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Группа численность</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСуммаРасширеннаяПодсказка" id="28"/>
+					<ChildItems>
+						<LabelDecoration name="ЗаголовокСумма" id="29">
+							<Width>20</Width>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма кредита:</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Сумма кредита:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ЗаголовокСуммаКонтекстноеМеню" id="30"/>
+							<ExtendedTooltip name="ЗаголовокСуммаРасширеннаяПодсказка" id="31"/>
+						</LabelDecoration>
+						<LabelDecoration name="Сумма" id="32">
+							<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<ContextMenu name="СуммаКонтекстноеМеню" id="33"/>
+							<ExtendedTooltip name="СуммаРасширеннаяПодсказка" id="34"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаЗаявка" id="69">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа заявка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Группа заявка</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа заявка</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Группа заявка</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЗаявкаРасширеннаяПодсказка" id="70"/>
+					<ChildItems>
+						<LabelDecoration name="Отступ2" id="66">
+							<Width>20</Width>
+							<GroupVerticalAlign>Center</GroupVerticalAlign>
+							<ContextMenu name="Отступ2КонтекстноеМеню" id="67"/>
+							<ExtendedTooltip name="Отступ2РасширеннаяПодсказка" id="68"/>
+						</LabelDecoration>
+						<UsualGroup name="ГруппаЗаявкаГоризонтальная" id="38">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа заявка горизонтальная</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Группа заявка горизонтальная</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа численность</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Группа численность</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>AlwaysHorizontal</Group>
+							<VerticalAlign>Center</VerticalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЗаявкаГоризонтальнаяРасширеннаяПодсказка" id="39"/>
+							<ChildItems>
+								<PictureDecoration name="Картинка" id="43">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Картинка</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Картинка</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.ИнформацияПоДлительнойОтправке</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="КартинкаКонтекстноеМеню" id="44"/>
+									<ExtendedTooltip name="КартинкаРасширеннаяПодсказка" id="45"/>
+								</PictureDecoration>
+								<LabelDecoration name="ТекстПроЗаявку" id="40">
+									<Width>20</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<ContextMenu name="ТекстПроЗаявкуКонтекстноеМеню" id="41"/>
+									<ExtendedTooltip name="ТекстПроЗаявкуРасширеннаяПодсказка" id="42"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаБанки" id="71">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа банки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Группа банки</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа банки</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Группа банки</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<VerticalSpacing>None</VerticalSpacing>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаБанкиРасширеннаяПодсказка" id="72"/>
+					<ChildItems>
+						<LabelDecoration name="Отступ3" id="73">
+							<Width>20</Width>
+							<GroupVerticalAlign>Center</GroupVerticalAlign>
+							<ContextMenu name="Отступ3КонтекстноеМеню" id="74"/>
+							<ExtendedTooltip name="Отступ3РасширеннаяПодсказка" id="75"/>
+						</LabelDecoration>
+						<LabelDecoration name="Банки" id="49">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Для оформления заявки на льготный кредит обратитесь в один из банков:</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Для оформления заявки на льготный кредит обратитесь в один из банков:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="БанкиКонтекстноеМеню" id="50"/>
+							<ExtendedTooltip name="БанкиРасширеннаяПодсказка" id="51"/>
+						</LabelDecoration>
+						<LabelDecoration name="БанкиСсылка" id="76">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Перечень банков по программе льготного кредитования</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Перечень банков по программе льготного кредитования</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="БанкиСсылкаКонтекстноеМеню" id="77"/>
+							<ExtendedTooltip name="БанкиСсылкаРасширеннаяПодсказка" id="78"/>
+							<Events>
+								<Event name="Click">БанкиСсылкаНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Организация" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИНН" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ИНН</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>ИНН</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>12</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВыполняетсяПроверка" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполняется проверка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Выполняется проверка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекстОшибкиПроверкиОрганизации" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст ошибки проверки организации</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Текст ошибки проверки организации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="РаботаетВПострадавшейОтрасли" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Работает в пострадавшей отрасли</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Работает в пострадавшей отрасли</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РаботаетБолееГода" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Работает более года</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Работает более года</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Действующая" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Действующая</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Действующая</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЧисленностьСотрудников" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Численность сотрудников</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Численность сотрудников</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЛимитКредита" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Лимит кредита</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Лимит кредита</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОрганизацияПострадалаОтПандемии" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация пострадала от пандемии</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Организация пострадала от пандемии</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЕстьЗаявка" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Есть заявка</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Есть заявка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СтатусЗаявки" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус заявки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Статус заявки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.СостоянияЛьготныхЗаявок</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Банк" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Банк</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Банк</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекстОшибкиСервера" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст ошибки сервера</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Текст ошибки сервера</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПроверкаВыполнена" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверка выполнена</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Проверка выполнена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СсылкаНаБанки" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка на банки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ссылка на банки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Проверить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Проверить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Проверить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Проверить</Action>
+		</Command>
+	</Commands>
+</Form>

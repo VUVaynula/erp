@@ -1,0 +1,497 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Сумма</dataPath>
+			<field>Сумма</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтатьяЦелевыхСредств</dataPath>
+			<field>СтатьяЦелевыхСредств</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статья целевых средств</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Target fund item</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор</dataPath>
+			<field>Регистратор</field>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтавкаНДС</dataPath>
+			<field>СтавкаНДС</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ставка НДС</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>VAT rate</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТипРегистратора</dataPath>
+			<field>ТипРегистратора</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип регистратора</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Recorder type</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УкрупненныйКод</dataPath>
+			<field>УкрупненныйКод</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Укрупненный код</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Consolidated code</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДетализированныйКод</dataPath>
+			<field>ДетализированныйКод</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Детализированный код</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Detailed code</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ВЫРАЗИТЬ(ДвиженияДенежныеСредстваКонтрагент.СтатьяЦелевыхСредств КАК Справочник.НаправленияРасходованияЦелевыхСредств) КАК СтатьяЦелевыхСредств,
+	ДвиженияДенежныеСредстваКонтрагент.Регистратор КАК Регистратор,
+	ВЫБОР
+		КОГДА &amp;ИмяРесурса = "СуммаОплаты"
+			ТОГДА ДвиженияДенежныеСредстваКонтрагент.СуммаОплатыРегл
+		ИНАЧЕ ДвиженияДенежныеСредстваКонтрагент.СуммаНДСРегл
+	КОНЕЦ КАК Сумма,
+	ДвиженияДенежныеСредстваКонтрагент.СтавкаНДС.ПеречислениеСтавкаНДС КАК СтавкаНДС,
+	ТИПЗНАЧЕНИЯ(ДвиженияДенежныеСредстваКонтрагент.Регистратор) КАК ТипРегистратора,
+	ВЫРАЗИТЬ(ДвиженияДенежныеСредстваКонтрагент.СтатьяЦелевыхСредств КАК Справочник.НаправленияРасходованияЦелевыхСредств).Код КАК ДетализированныйКод,
+	ВЫРАЗИТЬ(ДвиженияДенежныеСредстваКонтрагент.СтатьяЦелевыхСредств КАК Справочник.НаправленияРасходованияЦелевыхСредств).УкрупненныйКодРасходов КАК УкрупненныйКод
+{ВЫБРАТЬ
+	СтатьяЦелевыхСредств.*,
+	Регистратор.*,
+	Сумма,
+	СтавкаНДС.*}
+ИЗ
+	РегистрНакопления.ДвиженияДенежныеСредстваКонтрагент КАК ДвиженияДенежныеСредстваКонтрагент
+ГДЕ
+	ДвиженияДенежныеСредстваКонтрагент.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И ДвиженияДенежныеСредстваКонтрагент.НаправлениеДеятельностиДС = &amp;НаправлениеДеятельности
+	И ДвиженияДенежныеСредстваКонтрагент.Организация = &amp;Организация
+{ГДЕ
+	(ТИПЗНАЧЕНИЯ(ДвиженияДенежныеСредстваКонтрагент.Регистратор)) КАК ТипРегистратора,
+	(ВЫРАЗИТЬ(ДвиженияДенежныеСредстваКонтрагент.СтатьяЦелевыхСредств КАК Справочник.НаправленияРасходованияЦелевыхСредств).Код) КАК ДетализированныйКод,
+	(ВЫРАЗИТЬ(ДвиженияДенежныеСредстваКонтрагент.СтатьяЦелевыхСредств КАК Справочник.НаправленияРасходованияЦелевыхСредств).УкрупненныйКодРасходов) КАК УкрупненныйКод,
+	ДвиженияДенежныеСредстваКонтрагент.СтавкаНДС.ПеречислениеСтавкаНДС.* КАК СтавкаНДС}
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВЫРАЗИТЬ(ДвиженияДенежныеСредстваДоходыРасходы.СтатьяЦелевыхСредств КАК Справочник.НаправленияРасходованияЦелевыхСредств),
+	ДвиженияДенежныеСредстваДоходыРасходы.Регистратор,
+	ВЫБОР
+		КОГДА &amp;ИмяРесурса = "СуммаОплаты"
+			ТОГДА ДвиженияДенежныеСредстваДоходыРасходы.СуммаРегл
+		ИНАЧЕ ДвиженияДенежныеСредстваДоходыРасходы.СуммаНДСРегл
+	КОНЕЦ,
+	ДвиженияДенежныеСредстваДоходыРасходы.СтавкаНДС.ПеречислениеСтавкаНДС,
+	ТИПЗНАЧЕНИЯ(ДвиженияДенежныеСредстваДоходыРасходы.Регистратор),
+	ВЫРАЗИТЬ(ДвиженияДенежныеСредстваДоходыРасходы.СтатьяЦелевыхСредств КАК Справочник.НаправленияРасходованияЦелевыхСредств).Код,
+	ВЫРАЗИТЬ(ДвиженияДенежныеСредстваДоходыРасходы.СтатьяЦелевыхСредств КАК Справочник.НаправленияРасходованияЦелевыхСредств).УкрупненныйКодРасходов
+ИЗ
+	РегистрНакопления.ДвиженияДенежныеСредстваДоходыРасходы КАК ДвиженияДенежныеСредстваДоходыРасходы
+ГДЕ
+	ДвиженияДенежныеСредстваДоходыРасходы.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И ДвиженияДенежныеСредстваДоходыРасходы.НаправлениеДеятельностиДС = &amp;НаправлениеДеятельности
+	И ДвиженияДенежныеСредстваДоходыРасходы.Организация = &amp;Организация
+{ГДЕ
+	(ТИПЗНАЧЕНИЯ(ДвиженияДенежныеСредстваДоходыРасходы.Регистратор)) КАК ТипРегистратора,
+	(ВЫРАЗИТЬ(ДвиженияДенежныеСредстваДоходыРасходы.СтатьяЦелевыхСредств КАК Справочник.НаправленияРасходованияЦелевыхСредств).Код) КАК ДетализированныйКод,
+	(ВЫРАЗИТЬ(ДвиженияДенежныеСредстваДоходыРасходы.СтатьяЦелевыхСредств КАК Справочник.НаправленияРасходованияЦелевыхСредств).УкрупненныйКодРасходов) КАК УкрупненныйКод,
+	ДвиженияДенежныеСредстваДоходыРасходы.СтавкаНДС.ПеречислениеСтавкаНДС КАК СтавкаНДС}
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВЫРАЗИТЬ(ДвиженияДенежныхСредств.СтатьяЦелевыхСредств КАК Справочник.НаправленияРасходованияЦелевыхСредств),
+	ДвиженияДенежныхСредств.Регистратор,
+	ВЫБОР
+		КОГДА &amp;ИмяРесурса = "СуммаОплаты"
+			ТОГДА ДвиженияДенежныхСредств.СуммаРегл
+		ИНАЧЕ 0
+	КОНЕЦ,
+	ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.ПустаяСсылка),
+	ТИПЗНАЧЕНИЯ(ДвиженияДенежныхСредств.Регистратор),
+	ВЫРАЗИТЬ(ДвиженияДенежныхСредств.СтатьяЦелевыхСредств КАК Справочник.НаправленияРасходованияЦелевыхСредств).Код,
+	ВЫРАЗИТЬ(ДвиженияДенежныхСредств.СтатьяЦелевыхСредств КАК Справочник.НаправленияРасходованияЦелевыхСредств).УкрупненныйКодРасходов
+ИЗ
+	РегистрНакопления.ДвиженияДенежныхСредств КАК ДвиженияДенежныхСредств
+ГДЕ
+	ДвиженияДенежныхСредств.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И ДвиженияДенежныхСредств.НаправлениеДеятельности = &amp;НаправлениеДеятельности
+	И ДвиженияДенежныхСредств.Организация = &amp;Организация
+{ГДЕ
+	(ТИПЗНАЧЕНИЯ(ДвиженияДенежныхСредств.Регистратор)) КАК ТипРегистратора,
+	(ВЫРАЗИТЬ(ДвиженияДенежныхСредств.СтатьяЦелевыхСредств КАК Справочник.НаправленияРасходованияЦелевыхСредств).Код) КАК ДетализированныйКод,
+	(ВЫРАЗИТЬ(ДвиженияДенежныхСредств.СтатьяЦелевыхСредств КАК Справочник.НаправленияРасходованияЦелевыхСредств).УкрупненныйКодРасходов) КАК УкрупненныйКод,
+	(ЗНАЧЕНИЕ(Перечисление.СтавкиНДС.ПустаяСсылка)).* КАК СтавкаНДС}</query>
+	</dataSet>
+	<totalField>
+		<dataPath>Сумма</dataPath>
+		<expression>Сумма(Сумма)</expression>
+	</totalField>
+	<parameter>
+		<name>Показатель</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Показатель</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Indicator</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>0</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Period end</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Period start</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>НаправлениеДеятельности</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Направление деятельности</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Line of business</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.НаправленияДеятельности</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>Организация</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Организация</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Company</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Организации</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>ИмяРесурса</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Имя ресурса</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Resource name</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>0</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:type="xs:string"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>КодПредставление</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Код представление</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Code presentation</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>10</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ЗаголовокПоказателя</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Заголовок показателя</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Indicator title</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>10</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Графа</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Графа</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Column</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>10</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Фактическое расходование денежных средств</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Actual cash expense</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Регистратор</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СтатьяЦелевыхСредств</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Сумма</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДетализированныйКод</dcsset:left>
+					<dcsset:comparisonType>InList</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:ValueListType">
+						<v8:valueType/>
+						<v8:lastId xsi:type="xs:decimal">-1</v8:lastId>
+					</dcsset:right>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">СтавкаНДС</dcsset:left>
+					<dcsset:comparisonType>InList</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:ValueListType">
+						<v8:valueType/>
+						<v8:lastId xsi:type="xs:decimal">-1</v8:lastId>
+					</dcsset:right>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ТипРегистратора</dcsset:left>
+					<dcsset:comparisonType>InList</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:ValueListType">
+						<v8:valueType/>
+						<v8:lastId xsi:type="xs:decimal">-1</v8:lastId>
+					</dcsset:right>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">УкрупненныйКод</dcsset:left>
+					<dcsset:comparisonType>InList</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:ValueListType">
+						<v8:valueType/>
+						<v8:lastId xsi:type="xs:decimal">-1</v8:lastId>
+					</dcsset:right>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType"/>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>СтатьяЦелевыхСредств</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Регистратор</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
